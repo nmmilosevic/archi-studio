@@ -11,6 +11,7 @@ interface PageHeroProps {
 }
 
 export function PageHero({
+  label,
   heading,
   subtext,
   variant = "light",
@@ -27,6 +28,18 @@ export function PageHero({
     >
       <div className="container-site">
         <div className="max-w-4xl">
+          {label && (
+            <AnimatedText
+              as="p"
+              className={clsx(
+                "editorial-note mb-7",
+                isDark ? "text-inverted/30" : "text-muted/50"
+              )}
+              delay={0.04}
+            >
+              {label}
+            </AnimatedText>
+          )}
           <AnimatedTitle
             text={heading}
             as="h1"

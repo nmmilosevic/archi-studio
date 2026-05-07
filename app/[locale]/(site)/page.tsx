@@ -19,96 +19,108 @@ interface Props {
 const copy = {
   en: {
     label: "Architecture website redesigns\nCosta del Sol",
-    headline: "Your studio already looks premium. Your website should too.",
-    sub: "Refined website redesigns for architecture and interior design studios across Marbella, Estepona, Sotogrande, Benahavís and Málaga.",
-    primary: "See redesign previews",
-    secondary: "Request a Reframe Audit",
-    heroMockLabel: "Reframe Preview",
-    proof: "Not a proposal. A Reframe Audit first.",
-    proofBody:
-      "Before any conversation about a project, we redesign part of the website, deploy it on Vercel, and send the live preview. This site exists to prove the level of taste, restraint, and execution behind that approach.",
-    beforeTitle: "Most studios do not need more marketing. They need a stronger first impression.",
-    beforeBody:
-      "The Perception Gap — the distance between how a studio's work actually feels and how its website presents it — is the most common obstacle to winning better clients. A dated layout, weak mobile experience, or unclear portfolio creates doubt before the first conversation.",
-    redesignLabel: "Reframe Audit",
-    redesignTitle: "A redesign before the pitch.",
-    redesignBody:
-      "Most proposals ask you to imagine the result. The First Impression System starts with something visible: a focused website preview, deployed privately, so the new direction can be judged before the project begins.",
-    redesignCta: "See preview examples",
-    annotations: [
-      { label: "Reframe Preview", desc: "A private link showing the redesigned direction before any commitment." },
-      { label: "Perception Gap Analysis", desc: "The current website and the new direction become easy to compare side by side." },
-      { label: "First Impression System", desc: "If the direction feels right, the preview becomes the base for the final site." },
+    headline: "Websites that match the quality of the work.",
+    sub: "We help architecture and interior design studios across Costa del Sol improve their online presence. Better first impressions, clearer portfolios, and websites that win better clients.",
+    primary: "See redesign examples",
+    secondary: "Get a free website review",
+    heroProof: "Free first review · No commitment · Response within 48 hours",
+    heroMockLabel: "Redesign preview",
+    beforeTitle: "Most architecture websites don't match the quality of the work.",
+    beforeProblems: [
+      "Outdated layouts that lose visitor trust within seconds",
+      "Projects shown as image grids, not as curated stories",
+      "Poor mobile experience when opened from a phone",
+      "No clear path from interest to enquiry",
+      "Generic templates that don't reflect the studio's real quality",
     ],
-    offerTitle: "Full Reframe & Launch",
+    beforeBody: "We redesign the website — and show you a live preview before any contract.",
+    redesignLabel: "How it works",
+    redesignTitle: "You see the new direction first.",
+    redesignBody:
+      "Before any contract, we redesign a key section of your website, deploy it as a private live preview, and send you the link. If it feels right, the preview becomes the foundation for the full website.",
+    redesignCta: "See redesign examples",
+    annotations: [
+      { label: "Live preview", desc: "A private link to the redesigned website — deployed before any contract." },
+      { label: "Side-by-side comparison", desc: "The current website and the new direction are easy to compare directly." },
+      { label: "Launch-ready", desc: "If the direction feels right, the preview becomes the base for the final website." },
+    ],
+    offerTitle: "Full Website Redesign & Launch",
     offerIntro:
-      "One clear price for studios that already have the work, but need a website that presents it properly.",
-    careTitle: "Portfolio Clarity · Ongoing",
-    finalTitle: "If your work already carries the quality, the website should not dilute it.",
+      "One fixed price. A complete website redesign for studios that need a stronger online presence.",
+    careTitle: "Monthly Website Care",
+    finalTitle: "See what your website could look like.",
     finalBody:
-      "Send the current website. We identify the Perception Gap and, when there is a clear opportunity, prepare a private Reframe Preview. No long proposal. No abstract pitch.",
+      "Send your website URL. We review it for free and show you a better version — before any commitment.",
   },
   es: {
     label: "Rediseños web para arquitectura\nCosta del Sol",
-    headline: "Tu estudio ya parece premium. Tu web también debería.",
-    sub: "Rediseños refinados para estudios de arquitectura e interiorismo en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
-    primary: "Ver previews de rediseño",
-    secondary: "Solicitar un Reframe Audit",
-    heroMockLabel: "Reframe Preview",
-    proof: "No una propuesta. Un Reframe Audit primero.",
-    proofBody:
-      "Antes de hablar de un proyecto, rediseño una parte de tu web, la despliego en Vercel y te envío la vista previa. Esta web existe para demostrar el nivel de gusto, calma y ejecución detrás de ese método.",
-    beforeTitle: "La mayoría de los estudios no necesitan más marketing. Necesitan una mejor primera impresión.",
-    beforeBody:
-      "El Perception Gap — la distancia entre cómo se siente realmente el trabajo de un estudio y cómo lo presenta su web — es el obstáculo más común para atraer mejores clientes.",
-    redesignLabel: "Reframe Audit",
-    redesignTitle: "Un rediseño antes del pitch.",
-    redesignBody:
-      "La mayoría de las propuestas te piden que imagines el resultado. El First Impression System empieza con algo visible: una preview web enfocada, desplegada de forma privada, para que la nueva dirección pueda juzgarse antes de que el proyecto comience.",
-    redesignCta: "Ver ejemplos de preview",
-    annotations: [
-      { label: "Reframe Preview", desc: "Un enlace privado que muestra la dirección de rediseño antes de cualquier compromiso." },
-      { label: "Perception Gap Analysis", desc: "La web actual y la nueva dirección se pueden comparar fácilmente." },
-      { label: "First Impression System", desc: "Si la dirección convence, la preview se convierte en la base del sitio final." },
+    headline: "Webs que reflejan la calidad del trabajo.",
+    sub: "Ayudamos a estudios de arquitectura e interiorismo en la Costa del Sol a mejorar su presencia online. Mejor primera impresión, portfolios más claros y webs que atraen mejores clientes.",
+    primary: "Ver ejemplos de rediseño",
+    secondary: "Obtener revisión gratuita",
+    heroProof: "Primera revisión gratuita · Sin compromiso · Respuesta en 48 horas",
+    heroMockLabel: "Preview de rediseño",
+    beforeTitle: "La mayoría de webs de arquitectura no reflejan la calidad del trabajo.",
+    beforeProblems: [
+      "Diseños desactualizados que pierden la confianza del visitante en segundos",
+      "Proyectos mostrados como galerías, no como historias curadas",
+      "Mala experiencia móvil al abrirla desde el teléfono",
+      "Sin camino claro desde el interés hasta el contacto",
+      "Plantillas genéricas que no reflejan la calidad real del estudio",
     ],
-    offerTitle: "Reframe Completo & Lanzamiento",
+    beforeBody: "Rediseñamos la web — y te mostramos una preview antes de cualquier contrato.",
+    redesignLabel: "Cómo funciona",
+    redesignTitle: "Primero ves la nueva dirección.",
+    redesignBody:
+      "Antes de cualquier contrato, rediseñamos una sección clave de tu web, la desplegamos como preview privada y te enviamos el enlace. Si convence, esa preview se convierte en la base del sitio final.",
+    redesignCta: "Ver ejemplos de rediseño",
+    annotations: [
+      { label: "Preview en vivo", desc: "Un enlace privado a la web rediseñada — desplegada antes de cualquier contrato." },
+      { label: "Comparación directa", desc: "La web actual y la nueva dirección se comparan de forma sencilla." },
+      { label: "Lista para lanzar", desc: "Si la dirección convence, la preview se convierte en la base del sitio final." },
+    ],
+    offerTitle: "Rediseño Web Completo & Lanzamiento",
     offerIntro:
-      "Un precio claro para estudios que ya tienen el trabajo, pero necesitan una web que lo presente correctamente.",
-    careTitle: "Portfolio Clarity · Continuo",
-    finalTitle: "Si tu trabajo ya tiene calidad, la web no debería rebajarla.",
+      "Un precio fijo. Un rediseño web completo para estudios que necesitan una presencia online más sólida.",
+    careTitle: "Mantenimiento Web Mensual",
+    finalTitle: "Ve cómo podría ser tu web.",
     finalBody:
-      "Envía la web actual. Identificamos el Perception Gap y, cuando hay una oportunidad clara, preparamos un Reframe Preview privado. Sin propuesta larga. Sin pitch abstracto.",
+      "Envía la URL de tu web. La revisamos gratis y te mostramos una versión mejorada — sin ningún compromiso.",
   },
   fr: {
     label: "Refontes de sites d'architecture\nCosta del Sol",
-    headline: "Votre studio paraît déjà premium. Votre site devrait aussi.",
-    sub: "Refontes raffinées pour studios d'architecture et de design intérieur à Marbella, Estepona, Sotogrande, Benahavís et Málaga.",
-    primary: "Voir les previews",
-    secondary: "Demander un Reframe Audit",
-    heroMockLabel: "Reframe Preview",
-    proof: "Pas une proposition. Un Reframe Audit d'abord.",
-    proofBody:
-      "Avant de parler d'un projet, je refais une partie de votre site, je la déploie sur Vercel et je vous envoie l'aperçu. Ce site existe pour prouver le niveau de goût, de retenue et d'exécution derrière cette approche.",
-    beforeTitle: "La plupart des studios n'ont pas besoin de plus de marketing. Ils ont besoin d'une meilleure première impression.",
-    beforeBody:
-      "Le Perception Gap — l'écart entre ce que le travail d'un studio inspire réellement et ce que son site transmet — est l'obstacle le plus courant à l'acquisition de meilleurs clients.",
-    redesignLabel: "Reframe Audit",
-    redesignTitle: "Une refonte avant le pitch.",
-    redesignBody:
-      "La plupart des propositions vous demandent d'imaginer le résultat. Le First Impression System commence par quelque chose de visible : une preview web ciblée, déployée en privé, pour que la nouvelle direction puisse être jugée avant le projet.",
-    redesignCta: "Voir les previews",
-    annotations: [
-      { label: "Reframe Preview", desc: "Un lien privé montrant la direction de refonte avant tout engagement." },
-      { label: "Perception Gap Analysis", desc: "Le site actuel et la nouvelle direction deviennent faciles à comparer." },
-      { label: "First Impression System", desc: "Si la direction convient, la preview devient la base du site final." },
+    headline: "Des sites qui reflètent la qualité du travail.",
+    sub: "Nous aidons les studios d'architecture et de design intérieur sur la Costa del Sol à améliorer leur présence en ligne. Meilleures premières impressions, portfolios plus clairs, sites qui attirent de meilleurs clients.",
+    primary: "Voir les exemples",
+    secondary: "Obtenir un avis gratuit",
+    heroProof: "Premier avis gratuit · Sans engagement · Réponse sous 48 heures",
+    heroMockLabel: "Aperçu de refonte",
+    beforeTitle: "La plupart des sites d'architecture ne reflètent pas la qualité du travail.",
+    beforeProblems: [
+      "Des mises en page dépassées qui font perdre confiance en quelques secondes",
+      "Des projets présentés comme des galeries, pas comme des récits soignés",
+      "Une mauvaise expérience mobile quand on ouvre le site depuis un téléphone",
+      "Pas de chemin clair entre l'intérêt et la prise de contact",
+      "Des templates génériques qui ne reflètent pas la vraie qualité du studio",
     ],
-    offerTitle: "Reframe Complet & Lancement",
+    beforeBody: "Nous refondons le site — et vous montrons un aperçu avant tout contrat.",
+    redesignLabel: "Comment ça marche",
+    redesignTitle: "Vous voyez la nouvelle direction en premier.",
+    redesignBody:
+      "Avant tout contrat, nous refondons une section clé de votre site, la déployons en aperçu privé et vous envoyons le lien. Si la direction convient, cet aperçu devient la base du site final.",
+    redesignCta: "Voir les exemples",
+    annotations: [
+      { label: "Aperçu en direct", desc: "Un lien privé vers le site refait — déployé avant tout contrat." },
+      { label: "Comparaison directe", desc: "Le site actuel et la nouvelle direction sont faciles à comparer." },
+      { label: "Prêt au lancement", desc: "Si la direction convient, l'aperçu devient la base du site final." },
+    ],
+    offerTitle: "Refonte Complète & Lancement",
     offerIntro:
-      "Un prix clair pour les studios qui ont déjà le travail, mais qui ont besoin d'un site capable de le présenter correctement.",
-    careTitle: "Portfolio Clarity · Continu",
-    finalTitle: "Si votre travail porte déjà la qualité, le site ne doit pas l'affaiblir.",
+      "Un prix fixe. Une refonte complète pour les studios qui ont besoin d'une présence en ligne plus solide.",
+    careTitle: "Maintenance Web Mensuelle",
+    finalTitle: "Voyez à quoi pourrait ressembler votre site.",
     finalBody:
-      "Envoyez le site actuel. Nous identifions le Perception Gap et, lorsqu'il existe une opportunité claire, préparons un Reframe Preview privé. Pas de longue proposition. Pas de pitch abstrait.",
+      "Envoyez l'URL de votre site. Nous l'évaluons gratuitement et vous montrons une meilleure version — sans aucun engagement.",
   },
 } as const;
 
@@ -123,7 +135,13 @@ const includes = [
   "Launch support",
 ];
 
-const studios = ["Marbella", "Estepona", "Sotogrande", "Benahavís", "Málaga"];
+const studioCoords = [
+  { name: "Marbella",    coord: "36° 30' N · 4° 53' W" },
+  { name: "Estepona",   coord: "36° 25' N · 5° 08' W" },
+  { name: "Sotogrande", coord: "36° 17' N · 5° 23' W" },
+  { name: "Benahavís",  coord: "36° 31' N · 5° 03' W" },
+  { name: "Málaga",     coord: "36° 43' N · 4° 25' W" },
+];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -191,32 +209,28 @@ export default async function HomePage({ params }: Props) {
                   <Link href={`/${locale}/audit`}>{c.secondary}</Link>
                 </Button>
               </div>
+              <p className="mt-5 font-body text-[13px] text-muted/50 leading-relaxed">
+                {c.heroProof}
+              </p>
             </AnimatedText>
           </div>
 
           <AnimatedText as="div" delay={0.22} className="hidden min-w-0 md:block">
             <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
-              <div className="overflow-hidden border border-charcoal/10 bg-charcoal shadow-[0_28px_80px_rgb(17_17_17/0.22)]">
-                <div className="flex h-9 items-center justify-between border-b border-white/10 px-3">
-                  <div className="flex items-center gap-1.5" aria-hidden="true">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/45" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/18" />
-                  </div>
-                  <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/45">
-                    {c.heroMockLabel}
-                  </span>
-                </div>
-                <div className="relative h-[min(48dvh,440px)] overflow-hidden bg-stone">
-                  <Image
-                    src={assetPath("/images/heromock.png")}
-                    alt="Example architecture studio website redesign"
-                    fill
-                    priority
-                    className="object-cover object-top"
-                    sizes="(min-width: 1280px) 540px, 500px"
-                  />
-                </div>
+              <div className="relative h-[min(48dvh,440px)] overflow-hidden shadow-[0_24px_64px_rgb(10_10_10/0.10)]">
+                <Image
+                  src={assetPath("/images/heromock.png")}
+                  alt="Example architecture studio website redesign"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                  sizes="(min-width: 1280px) 540px, 500px"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-px bg-bronze/40" aria-hidden="true" />
+              </div>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="h-px w-8 bg-bronze/35" aria-hidden="true" />
+                <span className="editorial-note text-muted/45">{c.heroMockLabel}</span>
               </div>
             </div>
           </AnimatedText>
@@ -227,10 +241,37 @@ export default async function HomePage({ params }: Props) {
         <Container>
           <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-display max-w-[820px] text-inverted" />
-            <AnimatedText className="max-w-[560px] text-[17px] leading-[1.65] text-inverted/62 lg:ml-auto" delay={0.12}>
-              {c.beforeBody}
+            <AnimatedText as="div" className="max-w-[560px] lg:ml-auto" delay={0.12}>
+              <ul className="space-y-3 mb-7">
+                {(c.beforeProblems as readonly string[]).map((problem) => (
+                  <li key={problem} className="flex items-start gap-3">
+                    <span className="mt-2.5 h-px w-4 bg-bronze/55 flex-shrink-0" />
+                    <span className="font-body text-[16px] leading-[1.6] text-inverted/65">{problem}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="font-body text-[14px] leading-[1.6] text-inverted/38">{c.beforeBody}</p>
             </AnimatedText>
           </div>
+
+          {/* Perception diagnostic */}
+          <AnimatedText as="div" delay={0.22}>
+            <div className="mt-10 mb-10 border-t border-white/8 pt-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5">
+                {[
+                  { label: "First Impression", note: "Impact in the first 3 seconds" },
+                  { label: "Portfolio Clarity", note: "Whether work quality is legible" },
+                  { label: "Mobile Rhythm", note: "Phone-screen experience" },
+                  { label: "Digital Credibility", note: "Studio trust signals" },
+                ].map(({ label, note }) => (
+                  <div key={label}>
+                    <p className="editorial-note text-bronze/65 mb-1.5">{label}</p>
+                    <p className="font-body text-[12px] text-inverted/30 leading-snug">{note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </AnimatedText>
 
           <AnimatedText as="div" delay={0.08}>
             <BeforeAfterSlider
@@ -387,21 +428,34 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-stone py-24 md:py-36 overflow-hidden" aria-label="Costa del Sol locations">
+      <section className="bg-offwhite py-20 md:py-28 overflow-hidden" aria-label="Costa del Sol locations">
         <Container>
-          <div className="mb-8">
-            <span className="annotation-meta">Service area · Costa del Sol</span>
+          <div className="flex items-center justify-between pb-5 mb-12 md:mb-14 border-b border-charcoal/8">
+            <span className="editorial-note text-muted/45">Selected territory</span>
+            <span className="editorial-note text-muted/30 hidden sm:block">36° N · Costa del Sol · Spain</span>
           </div>
-          <div className="flex flex-wrap gap-x-8 gap-y-1">
-            {studios.map((studio) => (
-              <span
-                key={studio}
-                className="font-heading font-medium leading-[0.90] tracking-normal text-primary/40 transition-colors duration-700 hover:text-primary/80 cursor-default"
-                style={{ fontSize: "clamp(36px, 6vw, 80px)" }}
+
+          <div>
+            {studioCoords.map(({ name, coord }) => (
+              <div
+                key={name}
+                className="group flex items-baseline justify-between border-b border-charcoal/6 py-3.5 md:py-4 cursor-default"
               >
-                {studio}
-              </span>
+                <span
+                  className="font-heading font-medium text-primary/14 group-hover:text-primary/60 transition-colors duration-500 leading-none"
+                  style={{ fontSize: "clamp(40px, 6.5vw, 88px)", letterSpacing: "-0.02em" }}
+                >
+                  {name}
+                </span>
+                <span className="editorial-note text-muted/30 group-hover:text-muted/55 transition-colors duration-500 hidden sm:block">
+                  {coord}
+                </span>
+              </div>
             ))}
+          </div>
+
+          <div className="flex items-center justify-between pt-5 border-t border-charcoal/6 mt-1">
+            <span className="editorial-note text-muted/30">Architecture & Interior Design Studios</span>
           </div>
         </Container>
       </section>
@@ -416,7 +470,7 @@ export default async function HomePage({ params }: Props) {
             <AnimatedText as="div" delay={0.22}>
               <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild variant="secondary" size="lg">
-                  <Link href={`/${locale}/audit`}>Request a redesign review</Link>
+                  <Link href={`/${locale}/audit`}>Get a free website review</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white/25 text-inverted hover:border-bronze hover:text-bronze">
                   <a href={`mailto:${BRAND.email}`}>
@@ -424,6 +478,9 @@ export default async function HomePage({ params }: Props) {
                   </a>
                 </Button>
               </div>
+              <p className="mt-5 font-body text-[13px] text-inverted/35 text-center leading-relaxed">
+                Free review · No commitment · Response within 48 hours
+              </p>
             </AnimatedText>
           </div>
         </Container>

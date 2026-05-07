@@ -184,10 +184,10 @@ export default async function ContactPage({ params }: Props) {
                 <div className="bg-stone px-8 py-10 md:px-10 md:py-12">
                   <div className="mb-8">
                     <h2 className="font-heading text-[26px] font-medium leading-tight text-primary mb-3">
-                      Send the current site.
+                      Send your website for a free review.
                     </h2>
                     <p className="font-body text-[14px] leading-relaxed text-muted max-w-[400px]">
-                      Share the website, location, and what feels wrong with the current presentation.
+                      Share the URL and briefly describe what feels wrong. We will review the first impression, portfolio clarity, and mobile experience — and reply with a clear recommendation.
                     </p>
                   </div>
                   <ContactForm />

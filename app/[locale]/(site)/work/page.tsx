@@ -3,6 +3,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { WorkCard } from "@/components/cards/WorkCard";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
+import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { Button } from "@/components/ui/Button";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
@@ -47,7 +48,7 @@ export default async function WorkPage({ params }: Props) {
       <PageHero
         label={work.label}
         heading={work.heading}
-        subtext="Website redesign studies for architecture and interior design studios. The focus is not the buildings; it is how the work is presented, understood, and trusted online."
+        subtext="Website redesigns for architecture and interior design studios. Each project focuses on first impression, portfolio clarity, and mobile experience — making the work easier to understand and trust online."
       />
 
       <section className="py-16 md:py-24 bg-offwhite" aria-label="Work grid">
@@ -70,28 +71,30 @@ export default async function WorkPage({ params }: Props) {
       <section className="py-24 bg-stone" aria-labelledby="work-cta-heading">
         <Container>
           <div className="max-w-2xl">
+            <AnimatedTitle
+              text="Websites that match the quality of the work."
+              as="h2"
+              id="work-cta-heading"
+              className="text-display text-primary mb-5"
+            />
             <AnimatedText
-              className="font-heading text-[32px] md:text-[40px] font-light text-primary mb-4 leading-tight"
-              as="p"
-            >
-              Make the website easier to believe.
-            </AnimatedText>
-            <AnimatedText
-              className="font-body text-[16px] text-muted leading-relaxed mb-8"
+              className="font-body text-[16px] text-muted leading-relaxed mb-8 max-w-[500px]"
               delay={0.1}
             >
-              Send the current site. We will review the first impression,
-              portfolio clarity, mobile presentation, and the clearest path toward a redesign preview.
+              Send your website URL for a free review. We look at first impression, portfolio clarity, and mobile experience — and show you what a better version looks like.
             </AnimatedText>
             <AnimatedText delay={0.2} as="div">
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="md">
-                  <Link href={`/${locale}/audit`}>Request a redesign review</Link>
+                  <Link href={`/${locale}/audit`}>Get a free website review</Link>
                 </Button>
                 <Button asChild variant="outline" size="md">
                   <Link href={`/${locale}/contact`}>Get in touch</Link>
                 </Button>
               </div>
+              <p className="mt-4 font-body text-[13px] text-muted/45">
+                Free review · No commitment · Response within 48 hours
+              </p>
             </AnimatedText>
           </div>
         </Container>

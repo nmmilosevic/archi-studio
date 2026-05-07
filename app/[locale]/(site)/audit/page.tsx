@@ -230,10 +230,11 @@ export default async function AuditPage({ params }: Props) {
                 {audit.sub}
               </AnimatedText>
               <AnimatedText as="div" delay={0.26}>
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <Button asChild size="lg">
                     <Link href="#audit-form">{audit.cta}</Link>
                   </Button>
+                  <p className="font-body text-[13px] text-muted/50">Free · No commitment</p>
                 </div>
               </AnimatedText>
             </div>

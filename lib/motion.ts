@@ -84,3 +84,28 @@ export const slideInRight = {
     transition: { duration: 1.0, ease: EASE },
   },
 };
+
+export const cinematicReveal = {
+  hidden: { clipPath: "inset(0 0 100% 0)" },
+  show: {
+    clipPath: "inset(0 0 0% 0)",
+    transition: { duration: 1.4, ease: EASE_SLOW },
+  },
+};
+
+export const revealLine = {
+  hidden: { scaleX: 0 },
+  show: {
+    scaleX: 1,
+    transition: { duration: 0.9, ease: EASE, delay: 0.3 },
+  },
+};
+
+export const annotationReveal = {
+  hidden: { opacity: 0, x: -10 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: EASE },
+  },
+};
