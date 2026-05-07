@@ -53,7 +53,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
   const improvements = {
     visual: [
-      "New typographic identity using Cormorant Garamond for headings",
+      "New typographic identity using Fraunces for headings",
       "Warm stone-based color palette aligned with Mediterranean context",
       "Full-bleed imagery with editorial proportions",
       "Asymmetric layout grid with generous whitespace",
@@ -168,7 +168,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 className={`${img.size === "lg" ? "md:col-span-2 h-[360px]" : "h-[280px]"} bg-gradient-to-br from-sand to-[#D4C9B8] relative overflow-hidden group`}
                 /*
                   Art direction: Clean editorial website screenshots with warm stone palette,
-                  Cormorant Garamond headings, generous whitespace, architecture photography.
+                  Fraunces headings, generous whitespace, architecture photography.
                   Replace with: actual design screenshots.
                 */
               >

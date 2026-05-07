@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter, DM_Mono } from "next/font/google";
+import { Fraunces, Inter, DM_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "@/app/globals.css";
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-cormorant",
+  weight: "variable",
+  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-fraunces",
   display: "swap",
   preload: true,
 });
@@ -64,7 +65,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${cormorant.variable} ${inter.variable} ${dmMono.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${dmMono.variable}`}
       data-scroll-behavior="smooth"
     >
       <head>
