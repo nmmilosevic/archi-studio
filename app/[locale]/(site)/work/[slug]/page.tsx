@@ -79,7 +79,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <Link
             href={`/${locale}/work`}
-            className="inline-flex items-center gap-2 font-mono-label text-[11px] tracking-widest text-muted/60 uppercase hover:text-bronze transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+            className="inline-flex items-center gap-2 font-mono-label text-[14px] tracking-widest text-muted/60 uppercase hover:text-bronze transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
           >
             <ArrowLeft className="h-3 w-3" aria-hidden="true" />
             Back to work
@@ -91,11 +91,11 @@ export default async function WorkDetailPage({ params }: Props) {
       <section className="pt-6 pb-16 bg-stone" aria-label="Case study hero">
         <Container>
           <div className="flex flex-wrap gap-4 mb-8">
-            <span className="flex items-center gap-1.5 font-mono-label text-[10px] tracking-widest text-bronze uppercase">
+            <span className="flex items-center gap-1.5 font-mono-label text-[14px] tracking-widest text-bronze uppercase">
               <Tag className="h-3 w-3" aria-hidden="true" />
               {item.category}
             </span>
-            <span className="flex items-center gap-1.5 font-mono-label text-[10px] tracking-widest text-muted/60 uppercase">
+            <span className="flex items-center gap-1.5 font-mono-label text-[14px] tracking-widest text-muted/60 uppercase">
               <MapPin className="h-3 w-3" aria-hidden="true" />
               {item.location}
             </span>
@@ -109,7 +109,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
           {/* Notice */}
           <div className="inline-flex items-center gap-2 bg-sand/60 border border-bronze/20 px-4 py-2.5 mb-12">
-            <span className="font-mono-label text-[10px] tracking-widest text-muted/70 uppercase">
+            <span className="font-mono-label text-[14px] tracking-widest text-muted/70 uppercase">
               Concept study — direction and execution demonstrated
             </span>
           </div>
@@ -122,7 +122,7 @@ export default async function WorkDetailPage({ params }: Props) {
           */}
           <div className="h-[420px] md:h-[560px] bg-[#cfc7ba] relative overflow-hidden">
             <div className="absolute inset-0 flex items-end p-8">
-              <span className="font-mono-label text-[10px] text-muted/40 tracking-widest uppercase">
+              <span className="font-mono-label text-[14px] text-muted/40 tracking-widest uppercase">
                 {item.location} — editorial photography placeholder
               </span>
             </div>
@@ -173,7 +173,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 */
               >
                 <div className="absolute inset-0 flex items-end p-5">
-                  <span className="font-mono-label text-[10px] text-muted/40 tracking-widest uppercase">
+                  <span className="font-mono-label text-[14px] text-muted/40 tracking-widest uppercase">
                     {img.label} — design preview placeholder
                   </span>
                 </div>
@@ -204,7 +204,7 @@ export default async function WorkDetailPage({ params }: Props) {
                   {section.items.map((item, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <div className="h-1.5 w-1.5 rounded-full bg-bronze flex-shrink-0 mt-1.5" aria-hidden="true" />
-                      <span className="font-body text-[13px] text-muted leading-relaxed">
+                      <span className="font-body text-[14px] text-muted leading-relaxed">
                         {item}
                       </span>
                     </li>

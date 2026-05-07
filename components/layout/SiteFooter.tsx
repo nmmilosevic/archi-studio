@@ -32,7 +32,7 @@ export function SiteFooter() {
             <div className="space-y-3">
               <a
                 href={`mailto:${BRAND.email}`}
-                className="flex items-center gap-2.5 font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200 group"
+                className="flex items-center gap-2.5 font-body text-[14px] text-inverted/55 hover:text-inverted transition-colors duration-200 group"
                 aria-label={`Email us at ${BRAND.email}`}
               >
                 <Mail className="h-3.5 w-3.5 text-bronze group-hover:text-clay transition-colors" aria-hidden="true" />
@@ -42,7 +42,7 @@ export function SiteFooter() {
                 href={BRAND.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200 group"
+                className="flex items-center gap-2.5 font-body text-[14px] text-inverted/55 hover:text-inverted transition-colors duration-200 group"
                 aria-label={`WhatsApp us at ${BRAND.whatsapp}`}
               >
                 <MessageCircle className="h-3.5 w-3.5 text-bronze group-hover:text-clay transition-colors" aria-hidden="true" />
@@ -53,7 +53,7 @@ export function SiteFooter() {
 
           {/* Col 2: Sitemap */}
           <div className="lg:col-span-2 lg:col-start-7">
-            <h3 className="font-mono-label text-[11px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
+            <h3 className="font-mono-label text-[14px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               {tNav("sitemap")}
             </h3>
             <nav aria-label="Footer navigation">
@@ -69,7 +69,7 @@ export function SiteFooter() {
                   <li key={link.key}>
                     <Link
                       href={`/${locale}${link.href}`}
-                      className="font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200"
+                      className="font-body text-[14px] text-inverted/55 hover:text-inverted transition-colors duration-200"
                     >
                       {tNav(link.key as keyof ReturnType<typeof useTranslations<"footer.nav">>)}
                     </Link>
@@ -81,7 +81,7 @@ export function SiteFooter() {
 
           {/* Col 3: Services */}
           <div className="lg:col-span-3">
-            <h3 className="font-mono-label text-[11px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
+            <h3 className="font-mono-label text-[14px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               Services
             </h3>
             <ul className="space-y-3">
@@ -96,7 +96,7 @@ export function SiteFooter() {
                 <li key={service}>
                   <Link
                     href={`/${locale}/services`}
-                    className="font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200"
+                    className="font-body text-[14px] text-inverted/55 hover:text-inverted transition-colors duration-200"
                   >
                     {service}
                   </Link>
@@ -107,10 +107,10 @@ export function SiteFooter() {
 
           {/* Col 4: Locations */}
           <div className="lg:col-span-3">
-            <h3 className="font-mono-label text-[11px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
+            <h3 className="font-mono-label text-[14px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               Costa del Sol
             </h3>
-            <p className="font-body text-[13px] text-inverted/45 leading-[1.65]">
+            <p className="font-body text-[14px] text-inverted/45 leading-[1.65]">
               {t("locations")}
             </p>
           </div>
@@ -121,25 +121,25 @@ export function SiteFooter() {
       <div className="border-t border-white/8">
         <div className="container-site py-5">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <p className="font-body text-[12px] text-inverted/30">
+            <p className="font-body text-[14px] text-inverted/30">
               {t("copy")}
             </p>
             <div className="flex items-center gap-6">
               <Link
                 href={`/${locale}/legal/privacy`}
-                className="font-body text-[12px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
+                className="font-body text-[14px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
               >
                 {t("legal.privacy")}
               </Link>
               <Link
                 href={`/${locale}/legal/terms`}
-                className="font-body text-[12px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
+                className="font-body text-[14px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
               >
                 {t("legal.terms")}
               </Link>
               <Link
                 href={`/${locale}/legal/cookies`}
-                className="font-body text-[12px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
+                className="font-body text-[14px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
               >
                 {t("legal.cookies")}
               </Link>

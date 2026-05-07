@@ -54,7 +54,7 @@ export function WorkCard({
           <div className="absolute inset-0 bg-[#cfc7ba] group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
             <div className="absolute inset-0 flex items-end p-5">
               <span
-                className="font-mono-label text-[10px] text-muted/50 tracking-widest uppercase"
+                className="font-mono-label text-[14px] text-muted/50 tracking-widest uppercase"
                 aria-hidden="true"
               >
                 {labels[slug] ?? title}
@@ -66,10 +66,10 @@ export function WorkCard({
 
       <div className="pt-5 pb-7 border-b border-charcoal/10">
         <div className="flex items-center justify-between mb-3">
-          <span className="section-label text-[10px] tracking-widest text-bronze">
+          <span className="section-label text-[14px] tracking-widest text-bronze">
             {category}
           </span>
-          <span className="flex items-center gap-1 font-mono-label text-[10px] text-muted/60 tracking-wide">
+          <span className="flex items-center gap-1 font-mono-label text-[14px] text-muted/60 tracking-wide">
             <MapPin className="h-2.5 w-2.5" aria-hidden="true" />
             {location}
           </span>

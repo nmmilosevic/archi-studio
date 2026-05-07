@@ -34,9 +34,9 @@ export function Button({
             variant === "ghost",
         },
         {
-          "text-[11px] px-4 py-2.5 tracking-[0.12em] uppercase": size === "sm",
-          "text-[12px] px-6 py-3.5 tracking-[0.12em] uppercase": size === "md",
-          "text-[12px] px-8 py-4 tracking-[0.12em] uppercase": size === "lg",
+          "text-[14px] px-4 py-2.5 tracking-[0.12em] uppercase": size === "sm",
+          "text-[14px] px-6 py-3.5 tracking-[0.12em] uppercase": size === "md",
+          "text-[14px] px-8 py-4 tracking-[0.12em] uppercase": size === "lg",
         },
         className
       )}

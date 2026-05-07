@@ -85,8 +85,8 @@
   }
 
   .text-hero {
-    font-size: clamp(42px, 12vw, 58px);
-    line-height: 0.92;
+    font-size: clamp(40px, 11vw, 52px);
+    line-height: 0.94;
     letter-spacing: 0;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
     font-weight: 520;
@@ -110,7 +110,7 @@
 
   @media (min-width: 768px) {
     .text-hero {
-      font-size: clamp(56px, 6.4vw, 88px);
+      font-size: clamp(52px, 5.5vw, 78px);
     }
 
     .text-section {
@@ -124,7 +124,7 @@
 
   @media (min-width: 1280px) {
     .text-hero {
-      font-size: clamp(68px, 5.2vw, 98px);
+      font-size: clamp(64px, 4.35vw, 84px);
     }
 
     .text-section {
@@ -134,7 +134,7 @@
 
   .section-label {
     font-family: var(--font-geist-mono), monospace;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -143,7 +143,7 @@
 
   .nav-link {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 450;
     letter-spacing: 0.01em;
     color: var(--color-muted);
@@ -291,7 +291,7 @@
   padding: 0.5rem 1rem;
   background: var(--color-charcoal);
   color: var(--color-inverted);
-  font-size: 13px;
+  font-size: 14px;
   z-index: 9999;
   transition: top 0.2s;
 }

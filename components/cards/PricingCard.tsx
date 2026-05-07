@@ -44,7 +44,7 @@ export function PricingCard({
     >
       {featured && (
         <div className="absolute -top-3 left-8">
-          <span className="inline-block bg-bronze text-inverted font-mono-label text-[10px] tracking-widest uppercase px-3 py-1">
+          <span className="inline-block bg-bronze text-inverted font-mono-label text-[14px] tracking-widest uppercase px-3 py-1">
             Most popular
           </span>
         </div>
@@ -71,7 +71,7 @@ export function PricingCard({
               className="h-3.5 w-3.5 text-bronze flex-shrink-0 mt-0.5"
               aria-hidden="true"
             />
-            <span className="font-body text-[13px] text-muted">{item}</span>
+            <span className="font-body text-[14px] text-muted">{item}</span>
           </li>
         ))}
 
@@ -83,7 +83,7 @@ export function PricingCard({
                   className="h-3.5 w-3.5 text-muted flex-shrink-0 mt-0.5"
                   aria-hidden="true"
                 />
-                <span className="font-body text-[13px] text-muted line-through">
+                <span className="font-body text-[14px] text-muted line-through">
                   {item}
                 </span>
               </li>

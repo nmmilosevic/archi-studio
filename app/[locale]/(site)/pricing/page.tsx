@@ -109,12 +109,12 @@ export default async function PricingPage({ params }: Props) {
                   <div className="font-heading text-[clamp(64px,8vw,112px)] font-medium text-primary leading-none tracking-normal">
                     €1,990
                   </div>
-                  <p className="font-mono-label text-[11px] tracking-widest text-muted/60 uppercase mt-2">
+                  <p className="font-mono-label text-[14px] tracking-widest text-muted/60 uppercase mt-2">
                     Fixed price · Excluding IVA
                   </p>
                 </div>
 
-                <div className="space-y-2 mb-10 text-[13px] text-muted font-body">
+                <div className="space-y-2 mb-10 text-[14px] text-muted font-body">
                   <div className="flex items-center gap-3">
                     <span className="w-px h-4 bg-bronze/40 flex-shrink-0" />
                     50% upfront · 50% before launch
@@ -138,7 +138,7 @@ export default async function PricingPage({ params }: Props) {
             {/* Right — what's in / what's not */}
             <AnimatedText delay={0.15} as="div">
               <div className="border border-charcoal/10 bg-stone p-8 md:p-10">
-                <h3 className="font-mono-label text-[11px] tracking-widest text-muted/60 uppercase mb-6">
+                <h3 className="font-mono-label text-[14px] tracking-widest text-muted/60 uppercase mb-6">
                   Included
                 </h3>
                 <ul className="space-y-3 mb-10">
@@ -157,7 +157,7 @@ export default async function PricingPage({ params }: Props) {
 
                 <div className="h-px bg-charcoal/8 mb-8" />
 
-                <h3 className="font-mono-label text-[11px] tracking-widest text-muted/50 uppercase mb-5">
+                <h3 className="font-mono-label text-[14px] tracking-widest text-muted/50 uppercase mb-5">
                   Not included
                 </h3>
                 <ul className="space-y-3">
@@ -205,7 +205,7 @@ export default async function PricingPage({ params }: Props) {
                     <h3 className="font-heading text-[22px] font-semibold text-primary mb-1">
                       Website Care
                     </h3>
-                    <p className="font-body text-[13px] text-muted">
+                    <p className="font-body text-[14px] text-muted">
                       Monthly, cancel anytime
                     </p>
                   </div>
@@ -213,7 +213,7 @@ export default async function PricingPage({ params }: Props) {
                     <div className="font-heading text-[40px] font-medium text-primary leading-none">
                       €149
                     </div>
-                    <p className="font-mono-label text-[10px] tracking-widest text-muted/50 uppercase mt-1">
+                    <p className="font-mono-label text-[14px] tracking-widest text-muted/50 uppercase mt-1">
                       per month
                     </p>
                   </div>

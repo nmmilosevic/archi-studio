@@ -91,7 +91,7 @@ export default async function ContactPage({ params }: Props) {
                     className="h-3.5 w-3.5 text-bronze"
                     aria-hidden="true"
                   />
-                  <span className="font-mono-label text-[10px] tracking-widest text-bronze uppercase">
+                  <span className="font-mono-label text-[14px] tracking-widest text-bronze uppercase">
                     Response time
                   </span>
                 </div>
@@ -107,11 +107,11 @@ export default async function ContactPage({ params }: Props) {
                     className="h-3.5 w-3.5 text-bronze"
                     aria-hidden="true"
                   />
-                  <span className="font-mono-label text-[10px] tracking-widest text-bronze uppercase">
+                  <span className="font-mono-label text-[14px] tracking-widest text-bronze uppercase">
                     Service area
                   </span>
                 </div>
-                <p className="font-body text-[13px] text-muted leading-relaxed">
+                <p className="font-body text-[14px] text-muted leading-relaxed">
                   {contact.locations}
                 </p>
               </div>
@@ -129,10 +129,10 @@ export default async function ContactPage({ params }: Props) {
                     "If relevant, we offer a free audit before any project discussion",
                   ].map((step, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="font-mono-label text-[10px] text-bronze tracking-widest flex-shrink-0 mt-0.5">
+                      <span className="font-mono-label text-[14px] text-bronze tracking-widest flex-shrink-0 mt-0.5">
                         0{i + 1}
                       </span>
-                      <span className="font-body text-[13px] text-muted leading-snug">
+                      <span className="font-body text-[14px] text-muted leading-snug">
                         {step}
                       </span>
                     </div>

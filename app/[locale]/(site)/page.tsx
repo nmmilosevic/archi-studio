@@ -120,7 +120,7 @@ function BrowserPreview({ variant }: { variant: "before" | "after" }) {
                 Portfolio
               </div>
             </div>
-            <div className="space-y-2 font-mono-label text-[9px] uppercase tracking-widest text-current/55">
+            <div className="space-y-2 font-mono-label text-[14px] uppercase tracking-widest text-current/55">
               <p>Benahavís</p>
               <p>Residential Architecture</p>
               <p>2026</p>
@@ -166,11 +166,13 @@ export default async function HomePage({ params }: Props) {
       <section className="relative h-dvh overflow-hidden bg-stone pt-20 md:pt-24">
         <div className="absolute inset-y-0 right-0 hidden w-[46vw] bg-[#d5cdbf] md:block" aria-hidden="true" />
         <div className="absolute right-[8vw] top-24 hidden h-[58vh] w-[30vw] border border-white/35 bg-white/10 md:block" aria-hidden="true" />
-        <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-8 pb-8 md:grid-cols-12 md:pb-10 xl:pb-12">
-          <div className="md:col-span-8 xl:col-span-7">
-            <h1 className="text-hero mb-5 max-w-[900px] text-primary text-balance md:mb-6">
-              {c.headline}
-            </h1>
+        <Container className="relative z-10 grid h-full grid-cols-1 items-center gap-8 pb-8 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-10 xl:pb-12">
+          <div className="min-w-0">
+            <AnimatedTitle
+              text={c.headline}
+              as="h1"
+              className="text-hero mb-5 max-w-none text-primary text-balance md:mb-6"
+            />
             <AnimatedText className="mb-7 max-w-[590px] text-[16px] leading-[1.65] text-muted md:mb-8 md:text-[18px]" delay={0.18}>
               {c.sub}
             </AnimatedText>
@@ -186,9 +188,9 @@ export default async function HomePage({ params }: Props) {
             </AnimatedText>
           </div>
 
-          <AnimatedText as="div" delay={0.22} className="hidden md:col-span-4 md:block">
+          <AnimatedText as="div" delay={0.22} className="hidden min-w-0 md:block">
             <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
-              <div className="h-[min(58dvh,520px)] overflow-hidden bg-[#bcb5a8]">
+              <div className="h-[min(48dvh,440px)] overflow-hidden bg-[#bcb5a8]">
                 <div className="flex h-full flex-col justify-end p-7">
                   <div className="max-w-[230px] border-l border-white/50 pl-5 text-inverted">
                     <p className="font-heading text-[28px] font-medium leading-[0.95] xl:text-[34px]">
@@ -196,11 +198,6 @@ export default async function HomePage({ params }: Props) {
                     </p>
                   </div>
                 </div>
-              </div>
-              <div className="absolute bottom-5 left-6 w-[62%] border border-charcoal/10 bg-offwhite p-4">
-                <p className="text-[13px] leading-relaxed text-muted">
-                  A live redesign direction sent before the studio commits to a full project.
-                </p>
               </div>
             </div>
           </AnimatedText>
@@ -243,7 +240,7 @@ export default async function HomePage({ params }: Props) {
                 <p className="font-heading text-[76px] font-medium leading-none text-primary md:text-[104px]">
                   €1,990
                 </p>
-                <p className="mt-2 font-mono-label text-[10px] uppercase tracking-widest text-muted/60">
+                <p className="mt-2 font-mono-label text-[14px] uppercase tracking-widest text-muted/60">
                   Excluding IVA · launch support included
                 </p>
               </div>
@@ -275,7 +272,7 @@ export default async function HomePage({ params }: Props) {
                   </div>
                   <div className="md:text-right">
                     <p className="font-heading text-[44px] font-medium leading-none text-primary">€149</p>
-                    <p className="mt-1 font-mono-label text-[10px] uppercase tracking-widest text-muted/60">
+                    <p className="mt-1 font-mono-label text-[14px] uppercase tracking-widest text-muted/60">
                       per month
                     </p>
                   </div>

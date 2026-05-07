@@ -77,23 +77,39 @@ export default async function AuditPage({ params }: Props) {
       />
 
       {/* What I review + What you receive */}
-      <section className="py-16 md:py-24 bg-offwhite" aria-label="Audit details">
+      <section className="py-20 md:py-28 bg-offwhite" aria-label="Audit details">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-charcoal/8">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
             {[audit.what, audit.receive, audit.who, audit.issues].map(
-              (block) => (
-                <div key={block.heading} className="bg-offwhite p-7 md:p-9">
-                  <h2 className="font-heading text-[18px] font-medium text-primary mb-6">
+              (block, blockIndex) => (
+                <div
+                  key={block.heading}
+                  className="group relative min-h-[460px] overflow-hidden border border-charcoal/10 bg-stone p-7 transition-colors duration-500 hover:bg-offwhite md:p-8"
+                >
+                  <div className="absolute right-6 top-5 font-heading text-[72px] font-medium leading-none text-primary/[0.045]">
+                    {String(blockIndex + 1).padStart(2, "0")}
+                  </div>
+
+                  <div className="mb-9 h-28 border border-charcoal/10 bg-[#cfc7ba]">
+                    <div className="flex h-full items-end p-4">
+                      <span className="h-px w-16 bg-primary/35" aria-hidden="true" />
+                    </div>
+                  </div>
+
+                  <h2 className="font-heading text-[24px] font-semibold leading-[1.02] text-primary mb-7">
                     {block.heading}
                   </h2>
-                  <ul className="space-y-3">
+
+                  <ul className="space-y-4">
                     {block.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
-                        <CheckCircle2
-                          className="h-3.5 w-3.5 text-bronze flex-shrink-0 mt-0.5"
-                          aria-hidden="true"
-                        />
-                        <span className="font-body text-[13px] text-muted leading-snug">
+                      <li key={i} className="grid grid-cols-[24px_1fr] items-start gap-3">
+                        <span className="mt-0.5 flex h-6 w-6 items-center justify-center border border-charcoal/15 text-primary/70">
+                          <CheckCircle2
+                            className="h-3.5 w-3.5"
+                            aria-hidden="true"
+                          />
+                        </span>
+                        <span className="font-body text-[15px] text-muted leading-[1.45]">
                           {item}
                         </span>
                       </li>
@@ -135,7 +151,7 @@ export default async function AuditPage({ params }: Props) {
                   &ldquo;The audit gave us a clear picture of what was wrong and
                   why clients were leaving without contacting us.&rdquo;
                 </p>
-                <span className="font-mono-label text-[10px] tracking-widest text-muted/60 uppercase">
+                <span className="font-mono-label text-[14px] tracking-widest text-muted/60 uppercase">
                   Architecture studio, Marbella
                 </span>
               </div>
