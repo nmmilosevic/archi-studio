@@ -1,10 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/sections/PageHero";
 import { WorkCard } from "@/components/cards/WorkCard";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { generateMetadata as genMeta } from "@/lib/seo";
+import { getContent } from "@/lib/getContent";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -25,17 +26,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function WorkPage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale);
+  const content = getContent(locale);
+  const workContent = content.work;
 
   const work = {
-    label: t("work.label"),
-    heading: t("work.heading"),
-    disclaimer: t("work.disclaimer"),
-    items: Array.from({ length: 4 }, (_, i) => ({
-      slug: t(`work.items.${i}.slug`),
-      title: t(`work.items.${i}.title`),
-      category: t(`work.items.${i}.category`),
-      location: t(`work.items.${i}.location`),
+    label: workContent.label,
+    heading: workContent.heading,
+    disclaimer: workContent.disclaimer,
+    items: workContent.items.map((item) => ({
+      slug: item.slug,
+      title: item.title,
+      category: item.category,
+      location: item.location,
     })),
   };
 

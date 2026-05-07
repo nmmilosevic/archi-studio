@@ -1,10 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
 import { BRAND } from "@/lib/constants";
+import { assetPath } from "@/lib/paths";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -138,6 +139,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const c = copy[locale as keyof typeof copy] ?? copy.en;
 
   return (
@@ -150,7 +152,7 @@ export default async function HomePage({ params }: Props) {
       <section className="relative h-dvh overflow-hidden bg-stone pt-20 md:pt-24">
         <div className="absolute inset-y-0 right-0 hidden w-[46vw] md:block" aria-hidden="true">
           <Image
-            src="/images/hero.png"
+            src={assetPath("/images/hero.png")}
             alt=""
             fill
             priority
@@ -207,7 +209,7 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="relative h-[min(48dvh,440px)] overflow-hidden bg-stone">
                   <Image
-                    src="/images/heromock.png"
+                    src={assetPath("/images/heromock.png")}
                     alt="Example architecture studio website redesign"
                     fill
                     priority
@@ -232,8 +234,8 @@ export default async function HomePage({ params }: Props) {
 
           <AnimatedText as="div" delay={0.08}>
             <BeforeAfterSlider
-              beforeSrc="/images/before.png"
-              afterSrc="/images/after.png"
+              beforeSrc={assetPath("/images/before.png")}
+              afterSrc={assetPath("/images/after.png")}
               beforeAlt="Architecture studio website before redesign"
               afterAlt="Architecture studio website after redesign"
             />
@@ -297,7 +299,7 @@ export default async function HomePage({ params }: Props) {
                     </span>
                   </div>
                   <Image
-                    src="/images/redesign-preview.png"
+                    src={assetPath("/images/redesign-preview.png")}
                     alt="Architecture studio website redesign concept — editorial layout with oversized typography and immersive imagery"
                     width={1200}
                     height={900}

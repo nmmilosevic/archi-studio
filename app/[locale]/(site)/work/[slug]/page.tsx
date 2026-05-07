@@ -1,10 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { generateMetadata as genMeta } from "@/lib/seo";
+import { getContent } from "@/lib/getContent";
+import { assetPath } from "@/lib/paths";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -17,13 +19,19 @@ const VALID_SLUGS = [
   "project-page-system",
 ];
 
+export function generateStaticParams() {
+  return ["en", "es", "fr"].flatMap((locale) =>
+    VALID_SLUGS.map((slug) => ({ locale, slug }))
+  );
+}
+
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = await getTranslations({ locale });
+  const content = getContent(locale);
 
   const index = VALID_SLUGS.indexOf(slug);
   if (index === -1) return {};
@@ -31,24 +39,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: `/work/${slug}`,
-    title: `${t(`work.items.${index}.title`)} | Concept Study`,
-    description: t(`work.items.${index}.challenge`),
+    title: `${content.work.items[index].title} | Website Redesign Study`,
+    description: content.work.items[index].challenge,
   });
 }
 
 export default async function WorkDetailPage({ params }: Props) {
   const { locale, slug } = await params;
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale);
+  const content = getContent(locale);
 
   const index = VALID_SLUGS.indexOf(slug);
   if (index === -1) notFound();
 
   const item = {
-    title: t(`work.items.${index}.title`),
-    category: t(`work.items.${index}.category`),
-    location: t(`work.items.${index}.location`),
-    challenge: t(`work.items.${index}.challenge`),
-    what: t(`work.items.${index}.what`),
+    title: content.work.items[index].title,
+    category: content.work.items[index].category,
+    location: content.work.items[index].location,
+    challenge: content.work.items[index].challenge,
+    what: content.work.items[index].what,
     slug,
   };
 
@@ -74,10 +83,10 @@ export default async function WorkDetailPage({ params }: Props) {
   };
 
   const previewImages = {
-    hero: index % 2 === 0 ? "/images/redesign-preview.png" : "/images/heromock.png",
-    large: "/images/after.png",
-    detail: "/images/redesign-preview.png",
-    mobile: "/images/heromock.png",
+    hero: index % 2 === 0 ? assetPath("/images/redesign-preview.png") : assetPath("/images/heromock.png"),
+    large: assetPath("/images/after.png"),
+    detail: assetPath("/images/redesign-preview.png"),
+    mobile: assetPath("/images/heromock.png"),
   };
 
   return (

@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/cards/ServiceCard";
 import { Container } from "@/components/ui/Container";
@@ -9,6 +9,7 @@ import { generateMetadata as genMeta } from "@/lib/seo";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
+import { getContent } from "@/lib/getContent";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -27,18 +28,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale);
+  const serviceContent = getContent(locale).services;
 
   const services = {
-    label: t("services.label"),
-    heading: t("services.heading"),
-    items: Array.from({ length: 6 }, (_, i) => ({
-      number: t(`services.items.${i}.number`),
-      title: t(`services.items.${i}.title`),
-      desc: t(`services.items.${i}.desc`),
-      deliverables: Array.from({ length: 7 }, (_, j) => {
-        try { return t(`services.items.${i}.deliverables.${j}`); } catch { return null; }
-      }).filter(Boolean) as string[],
+    label: serviceContent.label,
+    heading: serviceContent.heading,
+    items: serviceContent.items.map((item) => ({
+      ...item,
+      deliverables: [...item.deliverables],
     })),
   };
 

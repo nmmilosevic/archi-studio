@@ -6,6 +6,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { assetPath } from "@/lib/paths";
 
 interface WorkCardProps {
   slug: string;
@@ -30,21 +31,21 @@ export function WorkCard({
 
   const previews: Record<string, { src: string; label: string; position?: string }> = {
     "villa-architecture-studio": {
-      src: "/images/redesign-preview.png",
+      src: assetPath("/images/redesign-preview.png"),
       label: "Homepage redesign preview",
     },
     "interior-design-marbella": {
-      src: "/images/after.png",
+      src: assetPath("/images/after.png"),
       label: "Editorial website direction",
       position: "top",
     },
     "renovation-studio-estepona": {
-      src: "/images/before.png",
+      src: assetPath("/images/before.png"),
       label: "Before-state website audit",
       position: "top",
     },
     "project-page-system": {
-      src: "/images/heromock.png",
+      src: assetPath("/images/heromock.png"),
       label: "Portfolio system preview",
       position: "top",
     },

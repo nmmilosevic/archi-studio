@@ -1,10 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { generateMetadata as genMeta } from "@/lib/seo";
+import { getContent } from "@/lib/getContent";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { MapPin } from "lucide-react";
@@ -26,20 +27,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SEOPage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale);
+  const content = getContent(locale);
+  const seoContent = content.seo;
 
   const seo = {
-    label: t("seo.label"),
-    heading: t("seo.heading"),
-    sub: t("seo.sub"),
-    cities: Array.from({ length: 8 }, (_, i) => ({
-      name: t(`seo.cities.${i}.name`),
-      desc: t(`seo.cities.${i}.desc`),
-    })),
-    sections: Array.from({ length: 5 }, (_, i) => ({
-      title: t(`seo.sections.${i}.title`),
-      body: t(`seo.sections.${i}.body`),
-    })),
+    ...seoContent,
+    cities: seoContent.cities.map((city) => ({ ...city })),
+    sections: seoContent.sections.map((section) => ({ ...section })),
   };
 
   return (

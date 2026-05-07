@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "@/app/globals.css";
 
@@ -27,6 +27,10 @@ const geistMono = Geist_Mono({
 
 const LOCALES = ["en", "es", "fr"];
 
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://reframestud.io"),
   title: {
@@ -36,7 +40,7 @@ export const metadata: Metadata = {
   description:
     "Architecture website redesigns for architecture and interior design studios on the Costa del Sol.",
   icons: {
-    icon: "/favicon.ico",
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.ico`,
   },
 };
 
@@ -55,7 +59,9 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  setRequestLocale(locale);
+
+  const messages = await getMessages({ locale });
 
   return (
     <html
@@ -72,7 +78,7 @@ export default async function LocaleLayout({
         />
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
       </body>

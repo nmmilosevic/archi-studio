@@ -1,9 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Container } from "@/components/ui/Container";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { BRAND } from "@/lib/constants";
+import { getContent } from "@/lib/getContent";
 import type { Metadata } from "next";
 import { Mail, MessageCircle, MapPin, Clock } from "lucide-react";
 
@@ -24,14 +25,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale);
+  const content = getContent(locale);
+  const contactContent = content.contact;
 
   const contact = {
-    label: t("contact.label"),
-    heading: t("contact.heading"),
-    sub: t("contact.sub"),
-    locations: t("contact.locations"),
-    response: t("contact.response"),
+    label: contactContent.label,
+    heading: contactContent.heading,
+    sub: contactContent.sub,
+    locations: contactContent.locations,
+    response: contactContent.response,
   };
 
   return (

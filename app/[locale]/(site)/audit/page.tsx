@@ -1,10 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/sections/PageHero";
 import { AuditForm } from "@/components/forms/AuditForm";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { generateMetadata as genMeta, faqSchema } from "@/lib/seo";
+import { getContent } from "@/lib/getContent";
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 
@@ -25,40 +26,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AuditPage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
+  setRequestLocale(locale);
+  const content = getContent(locale);
+  const auditContent = content.audit;
 
   const audit = {
-    label: t("audit.label"),
-    heading: t("audit.heading"),
-    sub: t("audit.sub"),
-    what: {
-      heading: t("audit.what.heading"),
-      items: Array.from({ length: 8 }, (_, i) => {
-        try { return t(`audit.what.items.${i}`); } catch { return null; }
-      }).filter(Boolean) as string[],
-    },
-    receive: {
-      heading: t("audit.receive.heading"),
-      items: Array.from({ length: 5 }, (_, i) => {
-        try { return t(`audit.receive.items.${i}`); } catch { return null; }
-      }).filter(Boolean) as string[],
-    },
-    who: {
-      heading: t("audit.who.heading"),
-      items: Array.from({ length: 5 }, (_, i) => {
-        try { return t(`audit.who.items.${i}`); } catch { return null; }
-      }).filter(Boolean) as string[],
-    },
-    issues: {
-      heading: t("audit.issues.heading"),
-      items: Array.from({ length: 7 }, (_, i) => {
-        try { return t(`audit.issues.items.${i}`); } catch { return null; }
-      }).filter(Boolean) as string[],
-    },
-    faq: Array.from({ length: 3 }, (_, i) => ({
-      q: t(`audit.faq.${i}.q`),
-      a: t(`audit.faq.${i}.a`),
-    })),
+    ...auditContent,
+    what: { ...auditContent.what, items: [...auditContent.what.items] },
+    receive: { ...auditContent.receive, items: [...auditContent.receive.items] },
+    who: { ...auditContent.who, items: [...auditContent.who.items] },
+    issues: { ...auditContent.issues, items: [...auditContent.issues.items] },
+    faq: auditContent.faq.map((item) => ({ ...item })),
   };
 
   const jsonLd = faqSchema(audit.faq);
