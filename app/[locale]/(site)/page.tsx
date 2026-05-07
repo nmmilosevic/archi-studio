@@ -163,10 +163,10 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
       />
 
-      <section className="relative min-h-dvh overflow-hidden bg-stone pt-24 md:pt-28">
+      <section className="relative h-[95dvh] overflow-hidden bg-stone pt-24 md:pt-28">
         <div className="absolute inset-y-0 right-0 hidden w-[54vw] bg-[linear-gradient(135deg,#d9cdbb_0%,#b5a995_35%,#292b25_100%)] md:block" aria-hidden="true" />
         <div className="absolute right-[8vw] top-28 hidden h-[68vh] w-[31vw] border border-white/30 bg-white/10 md:block" aria-hidden="true" />
-        <Container className="relative z-10 grid min-h-[calc(100dvh-6rem)] grid-cols-1 items-end gap-12 pb-12 md:grid-cols-[1.06fr_0.94fr] md:pb-16">
+        <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-12 pb-12 md:grid-cols-[1.06fr_0.94fr] md:pb-16">
           <div className="max-w-[760px]">
             <AnimatedText className="section-label mb-8 whitespace-pre-line" as="p">
               {c.label}
