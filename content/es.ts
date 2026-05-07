@@ -166,11 +166,11 @@ const es = {
     ],
   },
   work: {
-    label: "Estudios de concepto",
-    heading: "Dirección y ejecución, demostradas.",
-    disclaimer: "Estos son estudios de concepto creados para mostrar el nivel de dirección y ejecución disponible. El trabajo real con clientes puede añadirse posteriormente.",
+    label: "Estudios de rediseño web",
+    heading: "Arquitectura, replanteada para la pantalla.",
+    disclaimer: "Estudios de rediseño web que muestran cómo los estudios de arquitectura e interiorismo pueden presentar su trabajo con más claridad, confianza y autoridad visual.",
     items: [
-      { slug: "villa-architecture-studio", title: "Estudio de Arquitectura — Benahavís", category: "Web de arquitectura", location: "Benahavís, Costa del Sol", challenge: "Estudio con un sólido portafolio de villas pero con una web obsoleta y saturada de imágenes, sin navegación clara ni diseño móvil.", what: "Rediseño de portada, páginas de proyectos, sección sobre nosotros y reconstrucción mobile-first con layout editorial y estructura multilingüe." },
+      { slug: "villa-architecture-studio", title: "Web de Arquitectura — Benahavís", category: "Rediseño web", location: "Benahavís, Costa del Sol", challenge: "Estudio con un sólido portafolio de villas pero con una web obsoleta que hacía que el trabajo pareciera genérico, comprimido y difícil de juzgar en móvil.", what: "Rediseño de portada, sistema de páginas de proyecto, posicionamiento más claro y presentación mobile-first con jerarquía editorial y estructura multilingüe." },
       { slug: "interior-design-marbella", title: "Estudio de Diseño de Interiores — Marbella", category: "Web de diseño de interiores", location: "Marbella, Costa del Sol", challenge: "Estudio joven produciendo trabajo de interiores de alta calidad pero invisible online. Sin SEO, sin sistema de portafolio, primera impresión débil.", what: "Refinamiento de marca, diseño web, sistema de portafolio, flujo de contacto y configuración de SEO local para Marbella y alrededores." },
       { slug: "renovation-studio-estepona", title: "Estudio de Reformas de Villas — Estepona", category: "Web de reformas", location: "Estepona, Costa del Sol", challenge: "Estudio de reformas que dependía totalmente del boca a boca. Sin presencia digital, sin visibilidad en Google, sin forma de que los clientes internacionales los encontraran.", what: "Estrategia web completa, rediseño de vista previa en Vercel enviado por email frío, configuración multilingüe EN/ES, optimización de Google Business Profile." },
       { slug: "project-page-system", title: "Sistema de Páginas de Portafolio — Sotogrande", category: "Sistema de portafolio", location: "Sotogrande, Costa del Sol", challenge: "Estudio con más de 40 proyectos y sin una forma consistente de presentarlos. Todos los proyectos estaban en una galería plana sin contexto, materiales ni historia.", what: "Plantilla de proyecto compatible con CMS, filtrable por ubicación y tipo, estructura de caso de estudio con secciones antes/después y narrativa de materiales." },
@@ -268,7 +268,7 @@ const es = {
     { q: "¿Ofrecéis webs multilingües?", a: "Sí. Construimos webs en inglés, español y francés. Los idiomas adicionales están disponibles como complemento." },
   ],
   footer: {
-    tagline: "Rediseños web para estudios de arquitectura e interiorismo en la Costa del Sol.",
+    tagline: "Agencia de diseño web especializada en estudios de arquitectura e interiorismo en la Costa del Sol.",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
     email: "hello@reframestud.io",
     whatsapp: "+34 600 000 000",

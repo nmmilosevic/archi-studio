@@ -7,7 +7,9 @@ import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
 import { BRAND } from "@/lib/constants";
 import Link from "next/link";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight, Check, ExternalLink } from "lucide-react";
+import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -17,31 +19,33 @@ const copy = {
   en: {
     label: "Architecture website redesigns\nCosta del Sol",
     headline: "Your studio already looks premium. Your website should too.",
-    sub: "Refined redesigns for architecture and interior design studios across Marbella, Estepona, Sotogrande, Benahavís and Málaga.",
+    sub: "Refined website redesigns for architecture and interior design studios across Marbella, Estepona, Sotogrande, Benahavís and Málaga.",
     primary: "See redesign previews",
     secondary: "Request a redesign review",
-    proof: "I do not start with a pitch. I start with a redesign.",
+    heroMockLabel: "Website redesign preview",
+    proof: "We do not start with a pitch. We start with a website preview.",
     proofBody:
-      "Before talking about a project, I redesign part of your website first, deploy it on Vercel, and send you the live preview. The website you are viewing now exists to prove the level of taste, restraint, and execution behind that approach.",
+      "Before talking about a project, we redesign part of the website first, deploy it on Vercel, and send the live preview. This site exists to prove the level of taste, restraint, and execution behind that approach.",
     beforeTitle: "Most studios do not need more marketing. They need a better first impression.",
     beforeBody:
-      "The preview makes the value visible before a proposal exists: cleaner hierarchy, stronger photography, clearer project storytelling, and a digital presence that feels aligned with the work.",
-    processTitle: "The preview changes the conversation.",
-    processBody:
-      "The work starts where most proposals end: with something visible enough to judge.",
-    processSteps: [
-      "I redesign part of your website",
-      "You review the preview",
-      "I finalize the system",
-      "We launch",
+      "A studio is often judged through its website before anyone sees the work in person. A dated layout, weak mobile experience, or unclear portfolio can lower trust before the first conversation.",
+    redesignLabel: "Preview-led redesign",
+    redesignTitle: "A redesign before the pitch.",
+    redesignBody:
+      "Most proposals ask you to imagine the result. We start with something visible: a focused website preview, deployed privately, so the new direction can be judged before the project begins.",
+    redesignCta: "See preview examples",
+    annotations: [
+      { label: "Live preview", desc: "A private link showing the redesigned direction." },
+      { label: "Clear comparison", desc: "The current website and the new direction become easy to compare." },
+      { label: "Launch-ready system", desc: "If the direction feels right, the preview becomes the base for the final site." },
     ],
     offerTitle: "Full Website Redesign & Launch",
     offerIntro:
-      "One fixed offer for studios whose online presence should carry the same care as their built work.",
+      "One clear price for studios that already have the work, but need a website that presents it properly.",
     careTitle: "Website Care",
     finalTitle: "If your work already carries the quality, the website should not dilute it.",
     finalBody:
-      "Send the current site. I will review the first impression and, when there is a clear opportunity, prepare the direction for a redesign preview.",
+      "Send the current website. We review the first impression and, when there is a clear opportunity, prepare the direction for a redesign preview.",
   },
   es: {
     label: "Rediseños web para arquitectura\nCosta del Sol",
@@ -49,24 +53,26 @@ const copy = {
     sub: "Rediseños refinados para estudios de arquitectura e interiorismo en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
     primary: "Ver previews de rediseño",
     secondary: "Solicitar revisión",
-    proof: "No empiezo con una propuesta. Empiezo con un rediseño.",
+    heroMockLabel: "Preview de rediseño web",
+    proof: "No empezamos con una propuesta. Empezamos con una preview web.",
     proofBody:
       "Antes de hablar de un proyecto, rediseño una parte de tu web, la despliego en Vercel y te envío la vista previa. Esta web existe para demostrar el nivel de gusto, calma y ejecución detrás de ese método.",
     beforeTitle: "La mayoría de los estudios no necesitan más marketing. Necesitan una mejor primera impresión.",
     beforeBody:
       "La preview hace visible el valor antes de la propuesta: mejor jerarquía, fotografía más fuerte, proyectos más claros y una presencia digital alineada con el trabajo.",
-    processTitle: "La preview cambia la conversación.",
-    processBody:
-      "El trabajo empieza donde suelen terminar las propuestas: con algo visible que se puede juzgar.",
-    processSteps: [
-      "Rediseño parte de tu web",
-      "Revisas la preview",
-      "Finalizo el sistema",
-      "Lanzamos",
+    redesignLabel: "Rediseño con preview primero",
+    redesignTitle: "Un rediseño antes del pitch.",
+    redesignBody:
+      "La mayoría de las propuestas te piden que imagines el resultado. Empezamos con algo visible: una preview web enfocada, desplegada de forma privada, para que la nueva dirección pueda juzgarse antes de que el proyecto comience.",
+    redesignCta: "Ver ejemplos de preview",
+    annotations: [
+      { label: "Preview en vivo", desc: "Un enlace privado que muestra la dirección de rediseño." },
+      { label: "Comparación clara", desc: "La web actual y la nueva dirección se pueden comparar fácilmente." },
+      { label: "Sistema listo para lanzar", desc: "Si la dirección convence, la preview se convierte en la base del sitio final." },
     ],
     offerTitle: "Rediseño Web Completo & Lanzamiento",
     offerIntro:
-      "Una oferta fija para estudios cuya presencia online debe tener el mismo cuidado que su obra construida.",
+      "Un precio claro para estudios que ya tienen el trabajo, pero necesitan una web que lo presente correctamente.",
     careTitle: "Website Care",
     finalTitle: "Si tu trabajo ya tiene calidad, la web no debería rebajarla.",
     finalBody:
@@ -78,24 +84,26 @@ const copy = {
     sub: "Refontes raffinées pour studios d'architecture et de design intérieur à Marbella, Estepona, Sotogrande, Benahavís et Málaga.",
     primary: "Voir les previews",
     secondary: "Demander une revue",
-    proof: "Je ne commence pas par un pitch. Je commence par une refonte.",
+    heroMockLabel: "Preview de refonte web",
+    proof: "Nous ne commençons pas par un pitch. Nous commençons par une preview web.",
     proofBody:
       "Avant de parler d'un projet, je refais une partie de votre site, je la déploie sur Vercel et je vous envoie l'aperçu. Ce site existe pour prouver le niveau de goût, de retenue et d'exécution derrière cette approche.",
     beforeTitle: "La plupart des studios n'ont pas besoin de plus de marketing. Ils ont besoin d'une meilleure première impression.",
     beforeBody:
       "La preview rend la valeur visible avant la proposition : hiérarchie plus claire, photographie plus forte, projets mieux racontés et présence digitale alignée avec le travail.",
-    processTitle: "La preview change la conversation.",
-    processBody:
-      "Le travail commence là où les propositions se terminent souvent : avec quelque chose de visible à juger.",
-    processSteps: [
-      "Je refais une partie du site",
-      "Vous révisez la preview",
-      "Je finalise le système",
-      "Nous lançons",
+    redesignLabel: "Refonte guidée par la preview",
+    redesignTitle: "Une refonte avant le pitch.",
+    redesignBody:
+      "La plupart des propositions vous demandent d'imaginer le résultat. Nous commençons par quelque chose de visible : une preview web ciblée, déployée en privé, pour que la nouvelle direction puisse être jugée avant le projet.",
+    redesignCta: "Voir les previews",
+    annotations: [
+      { label: "Preview en direct", desc: "Un lien privé montrant la direction de refonte." },
+      { label: "Comparaison claire", desc: "Le site actuel et la nouvelle direction deviennent faciles à comparer." },
+      { label: "Système prêt au lancement", desc: "Si la direction convient, la preview devient la base du site final." },
     ],
     offerTitle: "Refonte Complète & Lancement",
     offerIntro:
-      "Une offre fixe pour les studios dont la présence en ligne doit porter le même soin que leur travail construit.",
+      "Un prix clair pour les studios qui ont déjà le travail, mais qui ont besoin d'un site capable de le présenter correctement.",
     careTitle: "Website Care",
     finalTitle: "Si votre travail porte déjà la qualité, le site ne doit pas l'affaiblir.",
     finalBody:
@@ -127,58 +135,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-function BrowserPreview({ variant }: { variant: "before" | "after" }) {
-  const isAfter = variant === "after";
-
-  return (
-    <div className={isAfter ? "preview-after" : "preview-before"}>
-      <div className="flex h-8 items-center gap-1.5 border-b border-current/10 px-3">
-        <span className="h-1.5 w-1.5 rounded-full bg-current/25" />
-        <span className="h-1.5 w-1.5 rounded-full bg-current/20" />
-        <span className="h-1.5 w-1.5 rounded-full bg-current/15" />
-      </div>
-      {isAfter ? (
-        <div className="grid h-[300px] grid-cols-[0.78fr_1fr] md:h-[430px]">
-          <div className="flex flex-col justify-between p-5 md:p-8">
-            <div>
-              <div className="mb-8 h-px w-16 bg-current/30" />
-              <div className="font-heading text-[32px] font-medium leading-[0.92] text-current md:text-[52px]">
-                Villa
-                <br />
-                Portfolio
-              </div>
-            </div>
-            <div className="space-y-2 font-mono-label text-[14px] uppercase tracking-widest text-current/55">
-              <p>Benahavís</p>
-              <p>Residential Architecture</p>
-              <p>2026</p>
-            </div>
-          </div>
-          <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-[#cfc7ba]" />
-            <div className="absolute bottom-6 left-6 right-10 h-24 border border-white/35 bg-white/10" />
-          </div>
-        </div>
-      ) : (
-        <div className="h-[300px] p-5 md:h-[430px] md:p-8">
-          <div className="mb-5 h-8 w-40 bg-current/12" />
-          <div className="mb-3 h-4 w-full bg-current/10" />
-          <div className="mb-8 h-4 w-3/4 bg-current/10" />
-          <div className="grid grid-cols-2 gap-3">
-            {Array.from({ length: 6 }, (_, i) => (
-              <div key={i} className="aspect-[4/3] bg-current/10" />
-            ))}
-          </div>
-          <div className="mt-7 grid grid-cols-3 gap-3">
-            <div className="h-7 bg-current/10" />
-            <div className="h-7 bg-current/10" />
-            <div className="h-7 bg-current/10" />
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
@@ -192,13 +148,28 @@ export default async function HomePage({ params }: Props) {
       />
 
       <section className="relative h-dvh overflow-hidden bg-stone pt-20 md:pt-24">
-        <div className="absolute inset-y-0 right-0 hidden w-[46vw] bg-[#d5cdbf] md:block" aria-hidden="true" />
-        <div className="absolute right-[8vw] top-24 hidden h-[58vh] w-[30vw] border border-white/35 bg-white/10 md:block" aria-hidden="true" />
+        <div className="absolute inset-y-0 right-0 hidden w-[46vw] md:block" aria-hidden="true">
+          <Image
+            src="/images/hero.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="46vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-stone via-stone/30 to-transparent" />
+        </div>
         <Container className="relative z-10 grid h-full grid-cols-1 items-center gap-8 pb-8 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-10 xl:pb-12">
           <div className="min-w-0">
-            <AnimatedText as="div" className="mb-6 font-mono-label text-[14px] uppercase leading-[1.6] tracking-[0.12em] text-muted" delay={0.04}>
+            <AnimatedText
+              as="div"
+              className="mb-6 font-mono-label text-[14px] uppercase leading-[1.6] tracking-[0.12em] text-muted"
+              delay={0.04}
+            >
               {c.label.split("\n").map((line) => (
-                <span key={line} className="block">{line}</span>
+                <span key={line} className="block">
+                  {line}
+                </span>
               ))}
             </AnimatedText>
             <AnimatedTitle
@@ -223,18 +194,26 @@ export default async function HomePage({ params }: Props) {
 
           <AnimatedText as="div" delay={0.22} className="hidden min-w-0 md:block">
             <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
-              <div className="h-[min(48dvh,440px)] overflow-hidden bg-[#bcb5a8]">
-                <div className="grid h-full grid-rows-[1fr_auto]">
-                  <div className="relative overflow-hidden bg-[#c9c1b4]">
-                    <div className="absolute left-8 top-8 h-28 w-20 bg-white/15" />
-                    <div className="absolute bottom-10 right-8 h-40 w-28 border border-white/40" />
-                    <div className="absolute inset-x-8 bottom-8 h-px bg-white/45" />
+              <div className="overflow-hidden border border-charcoal/10 bg-charcoal shadow-[0_28px_80px_rgb(17_17_17/0.22)]">
+                <div className="flex h-9 items-center justify-between border-b border-white/10 px-3">
+                  <div className="flex items-center gap-1.5" aria-hidden="true">
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/45" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/18" />
                   </div>
-                  <div className="border-t border-white/25 bg-[#121212] p-7 text-inverted">
-                    <p className="max-w-[260px] font-heading text-[26px] font-medium leading-[0.96] xl:text-[32px]">
-                      A private preview, sent before the pitch.
-                    </p>
-                  </div>
+                  <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/45">
+                    {c.heroMockLabel}
+                  </span>
+                </div>
+                <div className="relative h-[min(48dvh,440px)] overflow-hidden bg-stone">
+                  <Image
+                    src="/images/heromock.png"
+                    alt="Example architecture studio website redesign"
+                    fill
+                    priority
+                    className="object-cover object-top"
+                    sizes="(min-width: 1280px) 540px, 500px"
+                  />
                 </div>
               </div>
             </div>
@@ -245,50 +224,108 @@ export default async function HomePage({ params }: Props) {
       <section id="previews" className="bg-charcoal py-24 text-inverted md:py-36" aria-labelledby="preview-heading">
         <Container>
           <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-            <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-section max-w-[820px] text-inverted" />
+            <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-display max-w-[820px] text-inverted" />
             <AnimatedText className="max-w-[560px] text-[17px] leading-[1.65] text-inverted/62 lg:ml-auto" delay={0.12}>
               {c.beforeBody}
             </AnimatedText>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-7">
-            <AnimatedText as="div" delay={0.08}>
-              <div>
-                <BrowserPreview variant="before" />
-              </div>
-            </AnimatedText>
-            <AnimatedText as="div" delay={0.18}>
-              <div>
-                <BrowserPreview variant="after" />
-              </div>
-            </AnimatedText>
-          </div>
+          <AnimatedText as="div" delay={0.08}>
+            <BeforeAfterSlider
+              beforeSrc="/images/before.png"
+              afterSrc="/images/after.png"
+              beforeAlt="Architecture studio website before redesign"
+              afterAlt="Architecture studio website after redesign"
+            />
+          </AnimatedText>
+
+          {/* Architectural metadata strip */}
+          <AnimatedText as="div" delay={0.28}>
+            <div className="mt-10 flex flex-col justify-between gap-3 border-t border-white/8 pt-5 sm:flex-row sm:items-center">
+              <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/35">
+                CURRENT WEBSITE / REDESIGNED PREVIEW
+              </span>
+              <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/35">
+                WEBSITE PRESENTATION STUDY · COSTA DEL SOL
+              </span>
+            </div>
+          </AnimatedText>
         </Container>
       </section>
 
-      <section className="bg-stone py-20 md:py-28" aria-labelledby="process-heading">
+      <section className="bg-stone py-24 md:py-36" aria-labelledby="redesign-heading">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
             <div>
-              <AnimatedTitle text={c.processTitle} as="h2" id="process-heading" className="text-section max-w-[720px] text-primary" />
-              <AnimatedText className="mt-7 max-w-[460px] text-[17px] leading-[1.65] text-muted" delay={0.1}>
-                {c.processBody}
+              <AnimatedText
+                as="p"
+                className="mb-7 font-mono-label text-[14px] uppercase leading-none tracking-[0.12em] text-muted/60"
+                delay={0.04}
+              >
+                {c.redesignLabel}
+              </AnimatedText>
+              <AnimatedTitle
+                text={c.redesignTitle}
+                as="h2"
+                id="redesign-heading"
+                className="text-section mb-8 max-w-[680px] text-primary"
+              />
+              <AnimatedText
+                className="max-w-[520px] text-[17px] leading-[1.68] text-muted md:text-[18px]"
+                delay={0.1}
+              >
+                {c.redesignBody}
+              </AnimatedText>
+              <AnimatedText as="div" delay={0.18}>
+                <Button asChild variant="outline" size="md" className="mt-10">
+                  <Link href="#previews">{c.redesignCta}</Link>
+                </Button>
               </AnimatedText>
             </div>
-            <div className="grid grid-cols-1 border-t border-charcoal/10 md:grid-cols-2">
-              {c.processSteps.map((step, index) => (
-                <AnimatedText key={step} as="div" delay={0.08 + index * 0.05}>
-                  <div className={`min-h-[210px] border-b border-charcoal/10 py-8 md:px-8 ${index % 2 === 0 ? "md:border-r" : ""}`}>
-                    <p className="mb-10 font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/55">
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="max-w-[270px] font-heading text-[30px] font-medium leading-[0.98] text-primary md:text-[36px]">
-                      {step}
-                    </h3>
+
+            <AnimatedText as="div" delay={0.14}>
+              <div className="lg:pt-4">
+                <div className="overflow-hidden border border-charcoal/10 bg-offwhite">
+                  <div className="flex h-10 items-center justify-between border-b border-charcoal/10 px-4">
+                    <div className="flex items-center gap-1.5" aria-hidden="true">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/25" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/18" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary/12" />
+                    </div>
+                    <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/45">
+                      Private Vercel Preview
+                    </span>
                   </div>
-                </AnimatedText>
-              ))}
-            </div>
+                  <Image
+                    src="/images/redesign-preview.png"
+                    alt="Architecture studio website redesign concept — editorial layout with oversized typography and immersive imagery"
+                    width={1200}
+                    height={900}
+                    className="h-auto w-full"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
+                </div>
+                <div className="mt-8 border-t border-charcoal/10">
+                  {c.annotations.map((item, i) => (
+                    <div
+                      key={item.label}
+                      className="grid grid-cols-[42px_0.78fr_1fr] gap-5 border-b border-charcoal/8 py-5 max-md:grid-cols-[38px_1fr]"
+                    >
+                      <span className="mt-0.5 font-mono-label text-[14px] tracking-[0.12em] text-muted/35">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-primary max-md:col-start-2">
+                        {item.label}
+                      </p>
+                      <p className="font-body text-[14px] leading-relaxed text-muted max-md:col-start-2">
+                        {item.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedText>
+
           </div>
         </Container>
       </section>
@@ -302,7 +339,7 @@ export default async function HomePage({ params }: Props) {
                 {c.offerIntro}
               </AnimatedText>
               <div className="mb-10">
-                <p className="font-heading text-[76px] font-medium leading-none text-primary md:text-[104px]">
+                <p className="font-heading text-[88px] font-medium leading-none text-primary">
                   €1,990
                 </p>
                 <p className="mt-2 font-mono-label text-[14px] uppercase tracking-widest text-muted/60">
@@ -348,14 +385,21 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-stone py-20 md:py-28" aria-label="Costa del Sol locations">
+      <section className="bg-stone py-24 md:py-36 overflow-hidden" aria-label="Costa del Sol locations">
         <Container>
-          <div className="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
-              {studios.map((studio) => (
-                <span key={studio} className="font-heading text-[28px] font-medium leading-none text-primary/75 md:text-[38px]">
-                  {studio}
-                </span>
-              ))}
+          <div className="mb-8">
+            <span className="annotation-meta">Service area · Costa del Sol</span>
+          </div>
+          <div className="flex flex-wrap gap-x-8 gap-y-1">
+            {studios.map((studio) => (
+              <span
+                key={studio}
+                className="font-heading font-medium leading-[0.90] tracking-normal text-primary/40 transition-colors duration-700 hover:text-primary/80 cursor-default"
+                style={{ fontSize: "clamp(36px, 6vw, 80px)" }}
+              >
+                {studio}
+              </span>
+            ))}
           </div>
         </Container>
       </section>

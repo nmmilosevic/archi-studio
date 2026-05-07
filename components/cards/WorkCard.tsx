@@ -5,6 +5,7 @@ import { fadeUp } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface WorkCardProps {
   slug: string;
@@ -27,18 +28,28 @@ export function WorkCard({
 }: WorkCardProps) {
   const reduced = useReducedMotion();
 
-  /*
-    Art direction: Architecture editorial photography — Mediterranean villa atmosphere,
-    warm natural light, stone/linen/wood/glass/concrete surfaces,
-    Architectural Digest aesthetic, muted beige and warm stone tones.
-    Replace placeholder with: project-specific photography.
-  */
-  const labels: Record<string, string> = {
-    "villa-architecture-studio": "Villa architecture — terrace, stone, pool",
-    "interior-design-marbella": "Interior design — warm materials, natural light",
-    "renovation-studio-estepona": "Villa renovation — before/after, coastal",
-    "project-page-system": "Portfolio system — project grid, editorial layout",
+  const previews: Record<string, { src: string; label: string; position?: string }> = {
+    "villa-architecture-studio": {
+      src: "/images/redesign-preview.png",
+      label: "Homepage redesign preview",
+    },
+    "interior-design-marbella": {
+      src: "/images/after.png",
+      label: "Editorial website direction",
+      position: "top",
+    },
+    "renovation-studio-estepona": {
+      src: "/images/before.png",
+      label: "Before-state website audit",
+      position: "top",
+    },
+    "project-page-system": {
+      src: "/images/heromock.png",
+      label: "Portfolio system preview",
+      position: "top",
+    },
   };
+  const preview = previews[slug] ?? previews["villa-architecture-studio"];
 
   const content = (
     <Link
@@ -46,20 +57,33 @@ export function WorkCard({
       className="group block"
       aria-label={`View case study: ${title}`}
     >
-      <div className="overflow-hidden">
-        <div
-          className={`relative overflow-hidden ${tall ? "h-[480px] md:h-[560px]" : "h-[320px] md:h-[400px]"} group-hover:opacity-95 transition-all duration-500`}
-        >
-          {/* Placeholder image */}
-          <div className="absolute inset-0 bg-[#cfc7ba] group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
-            <div className="absolute inset-0 flex items-end p-5">
-              <span
-                className="font-mono-label text-[14px] text-muted/50 tracking-widest uppercase"
-                aria-hidden="true"
-              >
-                {labels[slug] ?? title}
-              </span>
-            </div>
+      <div className="overflow-hidden border border-charcoal/10 bg-charcoal">
+        <div className="flex h-9 items-center justify-between border-b border-white/10 px-3">
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            <span className="h-1.5 w-1.5 rounded-full bg-white/45" />
+            <span className="h-1.5 w-1.5 rounded-full bg-white/28" />
+            <span className="h-1.5 w-1.5 rounded-full bg-white/16" />
+          </div>
+          <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/42">
+            Website redesign study
+          </span>
+        </div>
+        <div className={`relative overflow-hidden bg-stone ${tall ? "h-[480px] md:h-[560px]" : "h-[320px] md:h-[400px]"} transition-all duration-500 group-hover:opacity-95`}>
+          <Image
+            src={preview.src}
+            alt={`${title} website redesign preview`}
+            fill
+            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
+            style={{ objectPosition: preview.position ?? "center" }}
+            sizes="(min-width: 768px) 45vw, 100vw"
+          />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/45 to-transparent p-5">
+            <span
+              className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/72"
+              aria-hidden="true"
+            >
+              {preview.label}
+            </span>
           </div>
         </div>
       </div>

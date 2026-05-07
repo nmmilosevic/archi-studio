@@ -17,9 +17,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/work",
-    title: "Work — Concept Studies for Architecture Studio Websites",
+    title: "Work — Website Redesign Studies for Architecture Studios",
     description:
-      "Concept studies demonstrating the direction and execution available for architecture and interior design studio websites on the Costa del Sol.",
+      "Website redesign studies demonstrating how architecture and interior design studio websites can be repositioned, clarified, and made more credible.",
   });
 }
 
@@ -44,7 +44,7 @@ export default async function WorkPage({ params }: Props) {
       <PageHero
         label={work.label}
         heading={work.heading}
-        subtext={work.disclaimer}
+        subtext="Website redesign studies for architecture and interior design studios. The focus is not the buildings; it is how the work is presented, understood, and trusted online."
       />
 
       <section className="py-16 md:py-24 bg-offwhite" aria-label="Work grid">
@@ -71,19 +71,19 @@ export default async function WorkPage({ params }: Props) {
               className="font-heading text-[32px] md:text-[40px] font-light text-primary mb-4 leading-tight"
               as="p"
             >
-              Ready to start your own project?
+              Make the website easier to believe.
             </AnimatedText>
             <AnimatedText
               className="font-body text-[16px] text-muted leading-relaxed mb-8"
               delay={0.1}
             >
-              Request a free audit of your current website or reach out directly
-              to discuss your studio&apos;s digital presence.
+              Send the current site. We will review the first impression,
+              portfolio clarity, mobile presentation, and the clearest path toward a redesign preview.
             </AnimatedText>
             <AnimatedText delay={0.2} as="div">
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="md">
-                  <Link href={`/${locale}/audit`}>Request a free audit</Link>
+                  <Link href={`/${locale}/audit`}>Request a redesign review</Link>
                 </Button>
                 <Button asChild variant="outline" size="md">
                   <Link href={`/${locale}/contact`}>Get in touch</Link>

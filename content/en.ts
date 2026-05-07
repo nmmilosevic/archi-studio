@@ -166,14 +166,14 @@ const en = {
     ],
   },
   work: {
-    label: "Concept studies",
-    heading: "Direction and execution, demonstrated.",
-    disclaimer: "These are concept studies created to show the level of direction and execution available. Real client work can be added later.",
+    label: "Website redesign studies",
+    heading: "Architecture work, reframed for the screen.",
+    disclaimer: "Website redesign studies showing how architecture and interior design studios can present their work with more clarity, confidence, and visual authority.",
     items: [
-      { slug: "villa-architecture-studio", title: "Architecture Studio — Benahavís", category: "Architecture website", location: "Benahavís, Costa del Sol", challenge: "Studio with strong villa portfolio but an outdated, image-heavy website with no clear navigation or mobile layout.", what: "Homepage redesign, project pages, about section, and mobile-first rebuild with editorial layout and multilingual structure." },
-      { slug: "interior-design-marbella", title: "Interior Design Studio — Marbella", category: "Interior design website", location: "Marbella, Costa del Sol", challenge: "Young studio producing high-quality interior work but invisible online. No SEO, no portfolio system, weak first impression.", what: "Brand refinement, website design, portfolio system, contact flow, and local SEO setup for Marbella and surrounding area." },
-      { slug: "renovation-studio-estepona", title: "Villa Renovation Studio — Estepona", category: "Renovation website", location: "Estepona, Costa del Sol", challenge: "Renovation studio relying entirely on word of mouth. No digital presence, no Google visibility, no way for international clients to find them.", what: "Full website strategy, Vercel preview redesign sent by cold email, multilingual EN/ES setup, Google Business Profile optimization." },
-      { slug: "project-page-system", title: "Portfolio Page System — Sotogrande", category: "Portfolio system", location: "Sotogrande, Costa del Sol", challenge: "Studio with 40+ projects and no consistent way to present them. All projects sat in a flat gallery with no context, materials, or story.", what: "CMS-ready project template, filterable by location and type, case study structure with before/after sections and material storytelling." },
+      { slug: "villa-architecture-studio", title: "Architecture Website — Benahavís", category: "Website redesign", location: "Benahavís, Costa del Sol", challenge: "A studio with a strong villa portfolio but a dated website that made the work feel generic, compressed, and difficult to judge on mobile.", what: "Homepage redesign, project-page system, sharper studio positioning, and mobile-first presentation with editorial hierarchy and multilingual structure." },
+      { slug: "interior-design-marbella", title: "Interior Studio Website — Marbella", category: "Interior design website", location: "Marbella, Costa del Sol", challenge: "An interior design studio with strong visual taste but a website that did not translate atmosphere, material quality, or trust before the first enquiry.", what: "Website art direction, portfolio flow, contact path, and local SEO foundation for Marbella and the surrounding market." },
+      { slug: "renovation-studio-estepona", title: "Renovation Website — Estepona", category: "Website repositioning", location: "Estepona, Costa del Sol", challenge: "A renovation studio relying on referrals, with no website structure strong enough for international clients comparing studios from abroad.", what: "Preview-led redesign direction, clearer service framing, multilingual foundations, and a portfolio structure built for trust before the first call." },
+      { slug: "project-page-system", title: "Portfolio System — Sotogrande", category: "Project storytelling", location: "Sotogrande, Costa del Sol", challenge: "A studio with many projects but no consistent digital format for context, scope, location, materials, photography, or enquiry flow.", what: "Reusable project-page structure, portfolio hierarchy, location-aware metadata, and image-led case study layouts for high-value residential work." },
     ],
   },
   audit: {
@@ -268,7 +268,7 @@ const en = {
     { q: "Do you offer multilingual websites?", a: "Yes. English, Spanish, and French foundations are supported, with additional languages handled as agreed additions." },
   ],
   footer: {
-    tagline: "Architecture website redesigns for studios on the Costa del Sol.",
+    tagline: "A specialist web design agency for architecture and interior design studios on the Costa del Sol.",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
     email: "hello@reframestud.io",
     whatsapp: "+34 600 000 000",

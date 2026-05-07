@@ -12,6 +12,8 @@ interface AnimatedTitleProps {
   id?: string;
 }
 
+const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
 export function AnimatedTitle({
   text,
   className,
@@ -26,21 +28,20 @@ export function AnimatedTitle({
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.09,
+        staggerChildren: 0.14,
         delayChildren: delay,
       },
     },
   };
 
-  const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
-
   const wordVariants = {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 22, filter: "blur(2px)" },
     show: {
       opacity: 1,
       y: 0,
+      filter: "blur(0px)",
       transition: {
-        duration: 0.85,
+        duration: 1.1,
         ease: EASE,
       },
     },
@@ -55,14 +56,14 @@ export function AnimatedTitle({
       variants={containerVariants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-80px" }}
     >
       <Tag className={clsx("flex flex-wrap", className)} id={id}>
         {words.map((word, i) => (
           <motion.span
             key={i}
             variants={wordVariants}
-            className="inline-block mr-[0.25em] last:mr-0"
+            className="inline-block mr-[0.24em] last:mr-0"
           >
             {word}
           </motion.span>

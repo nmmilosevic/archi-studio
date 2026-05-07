@@ -6,6 +6,7 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { ArrowLeft, MapPin, Tag } from "lucide-react";
 
@@ -53,23 +54,30 @@ export default async function WorkDetailPage({ params }: Props) {
 
   const improvements = {
     visual: [
-      "New typographic identity using Geist Sans for headings",
-      "Warm stone-based color palette aligned with Mediterranean context",
-      "Full-bleed imagery with editorial proportions",
-      "Asymmetric layout grid with generous whitespace",
+      "Sharper first-screen hierarchy around the studio's strongest work",
+      "Warm editorial palette that supports photography without overpowering it",
+      "Browser and mobile compositions designed for immediate credibility",
+      "Portfolio pages with stronger rhythm, cropping, and whitespace",
     ],
     ux: [
-      "Mobile-first approach with fluid typography",
-      "Frictionless enquiry path from any page",
-      "Project filtering by location and project type",
-      "Fast loading with optimized image delivery",
+      "Mobile-first presentation for owners opening the site from email or Instagram",
+      "Clear enquiry path without burying the contact point",
+      "Project structure that makes scope, location, and type easier to scan",
+      "Fast-loading image strategy with stable preview dimensions",
     ],
     seo: [
       "Local landing pages targeting city-level searches",
       "Structured data for ProfessionalService schema",
       "Hreflang setup for EN/ES/FR versions",
-      "Google Business Profile optimization",
+      "Image alt structure and metadata around architecture website searches",
     ],
+  };
+
+  const previewImages = {
+    hero: index % 2 === 0 ? "/images/redesign-preview.png" : "/images/heromock.png",
+    large: "/images/after.png",
+    detail: "/images/redesign-preview.png",
+    mobile: "/images/heromock.png",
   };
 
   return (
@@ -115,16 +123,29 @@ export default async function WorkDetailPage({ params }: Props) {
           </div>
 
           {/*
-            Art direction: Cinematic editorial photography, Mediterranean villa,
-            warm stone paving, pool, olive trees, golden hour. Architectural Digest mood.
-            Muted beige and soft bronze. Clean minimal composition.
-            Replace with: project-specific hero photography.
+            Art direction: website redesign preview for an architecture/interior studio.
+            Architecture imagery supports the interface; the product is the website.
           */}
-          <div className="h-[420px] md:h-[560px] bg-[#cfc7ba] relative overflow-hidden">
-            <div className="absolute inset-0 flex items-end p-8">
-              <span className="font-mono-label text-[14px] text-muted/40 tracking-widest uppercase">
-                {item.location} — editorial photography placeholder
+          <div className="relative h-[420px] overflow-hidden border border-charcoal/10 bg-charcoal md:h-[560px]">
+            <div className="flex h-10 items-center justify-between border-b border-white/10 px-4">
+              <div className="flex items-center gap-1.5" aria-hidden="true">
+                <span className="h-1.5 w-1.5 rounded-full bg-white/45" />
+                <span className="h-1.5 w-1.5 rounded-full bg-white/28" />
+                <span className="h-1.5 w-1.5 rounded-full bg-white/16" />
+              </div>
+              <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/45">
+                Website redesign preview
               </span>
+            </div>
+            <div className="relative h-[calc(100%-40px)] overflow-hidden bg-stone">
+              <Image
+                src={previewImages.hero}
+                alt={`${item.title} website redesign preview`}
+                fill
+                className="object-cover object-top"
+                sizes="(min-width: 1024px) 80vw, 100vw"
+                priority
+              />
             </div>
           </div>
         </Container>
@@ -144,7 +165,7 @@ export default async function WorkDetailPage({ params }: Props) {
             </div>
             <div>
               <h2 className="font-heading text-[28px] md:text-[36px] font-light text-primary mb-6 leading-snug">
-                The scope of work
+                The website direction
               </h2>
               <p className="font-body text-[16px] text-muted leading-relaxed">
                 {item.what}
@@ -159,22 +180,27 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
-              { label: "Homepage redesign", size: "lg" },
-              { label: "Project detail page", size: "md" },
-              { label: "Mobile view", size: "md" },
+              { label: "Homepage redesign", size: "lg", src: previewImages.large },
+              { label: "Project detail page", size: "md", src: previewImages.detail },
+              { label: "Mobile presentation", size: "md", src: previewImages.mobile },
             ].map((img) => (
               <div
                 key={img.label}
-                className={`${img.size === "lg" ? "md:col-span-2 h-[360px]" : "h-[280px]"} bg-[#cfc7ba] relative overflow-hidden group`}
+                className={`${img.size === "lg" ? "md:col-span-2 h-[360px]" : "h-[280px]"} relative overflow-hidden border border-charcoal/10 bg-charcoal group`}
                 /*
-                  Art direction: Clean editorial website screenshots with warm stone palette,
-                  Geist Sans headings, generous whitespace, architecture photography.
-                  Replace with: actual design screenshots.
+                  Art direction: interface-led website screenshot. The architecture imagery supports the site preview.
                 */
               >
-                <div className="absolute inset-0 flex items-end p-5">
-                  <span className="font-mono-label text-[14px] text-muted/40 tracking-widest uppercase">
-                    {img.label} — design preview placeholder
+                <Image
+                  src={img.src}
+                  alt={`${img.label} for ${item.title}`}
+                  fill
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
+                  sizes={img.size === "lg" ? "(min-width: 768px) 60vw, 100vw" : "(min-width: 768px) 30vw, 100vw"}
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/55 to-transparent p-5">
+                  <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/72">
+                    {img.label}
                   </span>
                 </div>
               </div>
@@ -187,7 +213,7 @@ export default async function WorkDetailPage({ params }: Props) {
       <section className="py-20 md:py-28 bg-offwhite" aria-labelledby="improvements-heading">
         <Container>
           <h2 id="improvements-heading" className="font-heading text-[28px] md:text-[36px] font-light text-primary mb-14">
-            What changed
+            What changed on the website
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-charcoal/8">
@@ -222,7 +248,7 @@ export default async function WorkDetailPage({ params }: Props) {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
               <AnimatedTitle
-                text="Want this for your studio?"
+                text="Could your website carry the work better?"
                 as="h2"
                 className="text-display text-inverted mb-2"
               />
@@ -230,13 +256,13 @@ export default async function WorkDetailPage({ params }: Props) {
                 className="font-body text-[14px] text-inverted/50"
                 delay={0.1}
               >
-                Start with a free audit and see what your site could become.
+                Start with a redesign review and see where the first impression is falling short.
               </AnimatedText>
             </div>
             <AnimatedText delay={0.2} as="div">
               <div className="flex flex-wrap gap-4">
                 <Button asChild variant="secondary" size="lg">
-                  <Link href={`/${locale}/audit`}>Request a free audit</Link>
+                  <Link href={`/${locale}/audit`}>Request a redesign review</Link>
                 </Button>
                 <Button asChild variant="outline" size="md" className="border-white/20 text-inverted hover:border-bronze hover:text-bronze">
                   <Link href={`/${locale}/work`}>Back to work</Link>

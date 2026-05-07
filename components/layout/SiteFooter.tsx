@@ -14,17 +14,23 @@ export function SiteFooter() {
       aria-label="Site footer"
       role="contentinfo"
     >
-      <div className="container-site py-18 md:py-24">
+      <div className="container-site py-20 md:py-28">
+        <div className="mb-16 border-b border-white/8 pb-14 md:mb-20 md:pb-16">
+          <Link
+            href={`/${locale}`}
+            className="font-heading text-[clamp(56px,12vw,150px)] font-medium leading-[0.86] text-inverted transition-colors duration-300 hover:text-clay focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+            aria-label={`${BRAND.name} — Home`}
+          >
+            {BRAND.name}
+          </Link>
+          <p className="mt-8 max-w-[680px] font-body text-[18px] leading-[1.55] text-inverted/62 md:text-[22px]">
+            Website redesigns for architecture and interior design studios whose digital presence needs to match the quality of the work.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Col 1: Brand */}
           <div className="lg:col-span-4">
-            <Link
-              href={`/${locale}`}
-              className="font-heading text-[22px] font-semibold text-inverted mb-5 block hover:text-clay transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-              aria-label={`${BRAND.name} — Home`}
-            >
-              {BRAND.name}
-            </Link>
             <p className="font-body text-[15px] text-inverted/55 leading-[1.65] mb-8 max-w-[300px]">
               {t("tagline")}
             </p>
@@ -110,6 +116,9 @@ export function SiteFooter() {
             <h3 className="font-mono-label text-[14px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               Costa del Sol
             </h3>
+            <p className="mb-4 font-body text-[14px] leading-[1.65] text-inverted/55">
+              Built for studios working across the coast and for international clients judging the studio from a screen.
+            </p>
             <p className="font-body text-[14px] text-inverted/45 leading-[1.65]">
               {t("locations")}
             </p>
@@ -118,28 +127,33 @@ export function SiteFooter() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/8">
+      <div className="border-t border-white/6">
         <div className="container-site py-5">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <p className="font-body text-[14px] text-inverted/30">
-              {t("copy")}
-            </p>
+            <div className="flex flex-col gap-1.5">
+              <p className="font-body text-[14px] text-inverted/25">
+                {t("copy")}
+              </p>
+              <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/25">
+                36.5099° N · 4.8824° W · COSTA DEL SOL
+              </span>
+            </div>
             <div className="flex items-center gap-6">
               <Link
                 href={`/${locale}/legal/privacy`}
-                className="font-body text-[14px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
+                className="font-body text-[14px] text-inverted/25 hover:text-inverted/55 transition-colors duration-300"
               >
                 {t("legal.privacy")}
               </Link>
               <Link
                 href={`/${locale}/legal/terms`}
-                className="font-body text-[14px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
+                className="font-body text-[14px] text-inverted/25 hover:text-inverted/55 transition-colors duration-300"
               >
                 {t("legal.terms")}
               </Link>
               <Link
                 href={`/${locale}/legal/cookies`}
-                className="font-body text-[14px] text-inverted/30 hover:text-inverted/60 transition-colors duration-200"
+                className="font-body text-[14px] text-inverted/25 hover:text-inverted/55 transition-colors duration-300"
               >
                 {t("legal.cookies")}
               </Link>
