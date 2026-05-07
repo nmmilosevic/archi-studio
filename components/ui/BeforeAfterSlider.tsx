@@ -67,14 +67,22 @@ export function BeforeAfterSlider({
       aria-label="Before and after redesign comparison — drag to reveal"
     >
       {/* After (base layer) */}
-      <Image
-        src={afterSrc}
-        alt={afterAlt}
-        fill
-        className="object-cover"
-        style={{ objectPosition: afterObjectPosition }}
-        sizes="(min-width: 1024px) 80vw, 100vw"
-      />
+      <div className="absolute inset-0">
+        <Image
+          src={afterSrc}
+          alt={afterAlt}
+          fill
+          className="object-cover"
+          style={{ objectPosition: afterObjectPosition }}
+          sizes="(min-width: 1024px) 80vw, 100vw"
+        />
+        <span
+          className="absolute bottom-4 right-4 pointer-events-none bg-black/35 px-3 py-2 font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
+          aria-hidden="true"
+        >
+          Redesigned preview
+        </span>
+      </div>
 
       {/* Before (clipped to handle) */}
       <div
@@ -89,6 +97,12 @@ export function BeforeAfterSlider({
           style={{ objectPosition: beforeObjectPosition }}
           sizes="(min-width: 1024px) 80vw, 100vw"
         />
+        <span
+          className="absolute bottom-4 left-4 pointer-events-none bg-black/35 px-3 py-2 font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
+          aria-hidden="true"
+        >
+          Current website
+        </span>
       </div>
 
       {/* Divider line */}
@@ -109,20 +123,6 @@ export function BeforeAfterSlider({
           </svg>
         </div>
       </div>
-
-      {/* Labels */}
-      <span
-        className="absolute bottom-4 left-4 pointer-events-none bg-black/35 px-3 py-2 font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
-        aria-hidden="true"
-      >
-        Current website
-      </span>
-      <span
-        className="absolute bottom-4 right-4 pointer-events-none bg-black/35 px-3 py-2 font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
-        aria-hidden="true"
-      >
-        Redesigned preview
-      </span>
     </div>
   );
 }
