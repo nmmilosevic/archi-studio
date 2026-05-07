@@ -8,8 +8,8 @@ import { Send, CheckCircle } from "lucide-react";
 
 // TODO: Connect to Resend or Supabase for email delivery
 
-const inputClass = "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[14px] text-primary placeholder:text-muted/50 focus:outline-none focus:border-bronze transition-colors duration-200";
-const labelClass = "font-mono-label text-[14px] tracking-widest uppercase text-muted/70 mb-1.5 block";
+const inputClass = "w-full bg-transparent border-b border-charcoal/15 px-0 py-3.5 font-body text-[16px] leading-[1.45] text-primary placeholder:text-muted/42 focus:outline-none focus:border-bronze transition-colors duration-300";
+const labelClass = "font-mono-label text-[14px] tracking-[0.12em] uppercase text-muted/62 mb-1.5 block";
 
 interface FormData {
   name: string;
@@ -71,7 +71,7 @@ export function AuditForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
+    <form onSubmit={handleSubmit} noValidate className="space-y-7">
       {/* Row 1 */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
@@ -213,7 +213,7 @@ export function AuditForm() {
       </div>
 
       {/* Consent */}
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-3 border-t border-charcoal/10 pt-5">
         <input
           id="audit-consent"
           name="consent"
@@ -221,7 +221,7 @@ export function AuditForm() {
           required
           checked={form.consent}
           onChange={handleChange}
-          className="mt-0.5 h-4 w-4 border border-charcoal/20 accent-bronze cursor-pointer flex-shrink-0"
+          className="mt-0.5 h-5 w-5 border border-charcoal/20 accent-bronze cursor-pointer flex-shrink-0"
         />
         <label
           htmlFor="audit-consent"
@@ -235,7 +235,7 @@ export function AuditForm() {
         type="submit"
         disabled={loading || !form.consent}
         size="lg"
-        className="w-full justify-center gap-2"
+        className="w-full justify-center gap-2 rounded-full"
       >
         {loading ? (
           "Sending..."
