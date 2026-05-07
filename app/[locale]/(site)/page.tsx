@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
-import { MotionCard } from "@/components/motion/MotionCard";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
@@ -26,13 +25,6 @@ const copy = {
     beforeTitle: "Most studios do not need more marketing. They need a better first impression.",
     beforeBody:
       "The preview makes the value visible before a proposal exists: cleaner hierarchy, stronger photography, clearer project storytelling, and a digital presence that feels aligned with the work.",
-    processTitle: "A quieter way to start.",
-    process: [
-      ["01", "I redesign part of your website", "A focused homepage or project-page direction, created before the sales conversation."],
-      ["02", "You review the preview", "You open a private Vercel link and see the direction on desktop and mobile."],
-      ["03", "I finalize the system", "The approved direction becomes a full responsive website with portfolio structure and multilingual-ready foundations."],
-      ["04", "We launch", "The site is deployed, tested, connected, and ready for your studio to use with confidence."],
-    ],
     offerTitle: "Full Website Redesign & Launch",
     offerIntro:
       "One fixed offer for studios that want a refined digital presence without agency theatre.",
@@ -53,13 +45,6 @@ const copy = {
     beforeTitle: "La mayoría de los estudios no necesitan más marketing. Necesitan una mejor primera impresión.",
     beforeBody:
       "La preview hace visible el valor antes de la propuesta: mejor jerarquía, fotografía más fuerte, proyectos más claros y una presencia digital alineada con el trabajo.",
-    processTitle: "Una forma más tranquila de empezar.",
-    process: [
-      ["01", "Rediseño parte de tu web", "Una dirección enfocada para portada o página de proyecto, creada antes de venderte nada."],
-      ["02", "Revisas la preview", "Abres un enlace privado de Vercel y ves la dirección en desktop y móvil."],
-      ["03", "Finalizo el sistema", "La dirección aprobada se convierte en una web responsive con portfolio y base multilingüe."],
-      ["04", "Lanzamos", "La web se despliega, se prueba, se conecta y queda lista para usar con confianza."],
-    ],
     offerTitle: "Rediseño Web Completo & Lanzamiento",
     offerIntro:
       "Una oferta fija para estudios que quieren una presencia digital refinada sin teatro de agencia.",
@@ -80,13 +65,6 @@ const copy = {
     beforeTitle: "La plupart des studios n'ont pas besoin de plus de marketing. Ils ont besoin d'une meilleure première impression.",
     beforeBody:
       "La preview rend la valeur visible avant la proposition : hiérarchie plus claire, photographie plus forte, projets mieux racontés et présence digitale alignée avec le travail.",
-    processTitle: "Une manière plus calme de commencer.",
-    process: [
-      ["01", "Je refais une partie de votre site", "Une direction ciblée pour la page d'accueil ou une page projet, créée avant la conversation commerciale."],
-      ["02", "Vous examinez la preview", "Vous ouvrez un lien privé Vercel et voyez la direction sur desktop et mobile."],
-      ["03", "Je finalise le système", "La direction validée devient un site responsive complet avec portfolio et base multilingue."],
-      ["04", "Nous lançons", "Le site est déployé, testé, connecté et prêt à être utilisé avec confiance."],
-    ],
     offerTitle: "Refonte Complète & Lancement",
     offerIntro:
       "Une offre fixe pour les studios qui veulent une présence digitale raffinée sans théâtre d'agence.",
@@ -277,32 +255,6 @@ export default async function HomePage({ params }: Props) {
                 <BrowserPreview variant="after" />
               </div>
             </AnimatedText>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-stone py-20 md:py-32" aria-labelledby="process-heading">
-        <Container>
-          <div className="mb-14 grid grid-cols-1 gap-8 md:grid-cols-[0.8fr_1.2fr]">
-            <AnimatedText className="section-label" as="p">
-              Method
-            </AnimatedText>
-            <AnimatedTitle text={c.processTitle} as="h2" id="process-heading" className="text-section max-w-[760px] text-primary" />
-          </div>
-          <div className="grid grid-cols-1 gap-px bg-charcoal/10 md:grid-cols-4">
-            {c.process.map(([number, title, desc], i) => (
-              <MotionCard key={number} delay={i * 0.05} className="bg-stone p-7 md:min-h-[310px] md:p-8">
-                <p className="mb-12 font-mono-label text-[11px] uppercase tracking-widest text-bronze">
-                  {number}
-                </p>
-                <h3 className="mb-4 font-heading text-[26px] leading-tight text-primary">
-                  {title}
-                </h3>
-                <p className="text-[14px] leading-relaxed text-muted">
-                  {desc}
-                </p>
-              </MotionCard>
-            ))}
           </div>
         </Container>
       </section>

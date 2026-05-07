@@ -7,7 +7,6 @@ const PAGES = [
   "",
   "/services",
   "/pricing",
-  "/method",
   "/work",
   "/audit",
   "/seo-costa-del-sol",

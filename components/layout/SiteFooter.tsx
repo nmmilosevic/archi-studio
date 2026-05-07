@@ -62,7 +62,6 @@ export function SiteFooter() {
                 {[
                   { key: "services", href: "/services" },
                   { key: "pricing", href: "/pricing" },
-                  { key: "method", href: "/method" },
                   { key: "work", href: "/work" },
                   { key: "audit", href: "/audit" },
                   { key: "seo", href: "/seo-costa-del-sol" },
