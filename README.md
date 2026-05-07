@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# REFRAME
 
-## Getting Started
+Website redesigns for architecture and interior design studios on the Costa del Sol.
 
-First, run the development server:
+REFRAME is a specialist web design studio focused on redesigning the websites of architects and interior designers so their digital presence matches the quality of their work.
+
+## Positioning
+
+This is not an architecture studio or an interior design practice.
+
+REFRAME designs websites for:
+
+- architecture studios
+- interior design studios
+- villa renovation studios
+- project-led design practices on the Costa del Sol
+
+The core offer is simple: a focused website redesign preview first, then a full website redesign and launch when the direction feels right.
+
+## Core Offer
+
+**Full Website Redesign & Launch**  
+**EUR 1,990 fixed**
+
+Includes:
+
+- refined website redesign
+- responsive layouts
+- project portfolio structure
+- mobile optimization
+- multilingual-ready setup
+- technical SEO foundation
+- Vercel deployment
+- launch support
+
+Optional ongoing care:
+
+**Website Care**  
+**EUR 149/month**
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui-compatible components
+- Framer Motion
+- next-intl
+- Vercel-ready deployment
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build
 
-## Learn More
+```bash
+npm run lint
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project Focus
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The website is built around a preview-led redesign model:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- show the current website problem
+- present a stronger redesign direction
+- make portfolio clarity and first impression visible
+- turn the preview into a launch-ready website system
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
