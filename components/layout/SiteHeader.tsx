@@ -53,7 +53,7 @@ export function SiteHeader() {
             {/* Logo */}
             <Link
               href={`/${locale}`}
-              className="font-heading text-[17px] md:text-[19px] font-semibold text-primary tracking-normal flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
+              className="font-heading text-[16px] md:text-[17px] font-medium text-primary tracking-[0.02em] flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label={`${BRAND.name} — Home`}
             >
               {BRAND.name}

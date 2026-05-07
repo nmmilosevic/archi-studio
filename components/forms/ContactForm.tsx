@@ -6,16 +6,17 @@ import { Button } from "@/components/ui/Button";
 import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 
-// TODO: Connect to Resend or Supabase for email delivery
-
-const inputClass = "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[14px] text-primary placeholder:text-muted/50 focus:outline-none focus:border-bronze transition-colors duration-200";
-const labelClass = "font-mono-label text-[14px] tracking-widest uppercase text-muted/70 mb-1.5 block";
+const inputClass =
+  "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[14px] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
+const labelClass =
+  "font-mono-label text-[11px] tracking-[0.14em] uppercase text-muted/60 mb-2 block";
 
 interface FormData {
   name: string;
   email: string;
   studio: string;
   city: string;
+  website: string;
   type: string;
   budget: string;
   message: string;
@@ -28,6 +29,7 @@ export function ContactForm() {
     email: "",
     studio: "",
     city: "",
+    website: "",
     type: "",
     budget: "",
     message: "",
@@ -46,7 +48,6 @@ export function ContactForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    // Simulate delay — replace with actual API call
     await new Promise((resolve) => setTimeout(resolve, 1200));
     setLoading(false);
     setSuccess(true);
@@ -54,9 +55,9 @@ export function ContactForm() {
 
   if (success) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <CheckCircle className="h-10 w-10 text-bronze mb-4" aria-hidden="true" />
-        <p className="font-heading text-[24px] text-primary mb-2">
+      <div className="flex flex-col items-center justify-center py-20 text-center">
+        <CheckCircle className="h-8 w-8 text-bronze mb-5" aria-hidden="true" />
+        <p className="font-heading text-[22px] font-medium text-primary mb-2">
           {t("success")}
         </p>
       </div>
@@ -64,9 +65,9 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      {/* Row 1 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      {/* Row 1: name + email */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-name" className={labelClass}>
             {t("name")} *
@@ -80,7 +81,7 @@ export function ContactForm() {
             value={form.name}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Nicolas Milosevic"
+            placeholder="Nicolas Alonso"
           />
         </div>
         <div>
@@ -101,8 +102,8 @@ export function ContactForm() {
         </div>
       </div>
 
-      {/* Row 2 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      {/* Row 2: studio + city */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-studio" className={labelClass}>
             {t("studio")}
@@ -115,7 +116,7 @@ export function ContactForm() {
             value={form.studio}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Studio Name"
+            placeholder="Studio Alonso"
           />
         </div>
         <div>
@@ -134,8 +135,26 @@ export function ContactForm() {
         </div>
       </div>
 
-      {/* Row 3 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      {/* Row 3: website URL (full width) */}
+      <div>
+        <label htmlFor="contact-website" className={labelClass}>
+          {t("url")} *
+        </label>
+        <input
+          id="contact-website"
+          name="website"
+          type="url"
+          required
+          autoComplete="url"
+          value={form.website}
+          onChange={handleChange}
+          className={inputClass}
+          placeholder="https://studio-alonso.com"
+        />
+      </div>
+
+      {/* Row 4: type + budget */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-type" className={labelClass}>
             {t("type")}
@@ -145,9 +164,9 @@ export function ContactForm() {
             name="type"
             value={form.type}
             onChange={handleChange}
-            className={clsx(inputClass, "cursor-pointer bg-offwhite")}
+            className={clsx(inputClass, "cursor-pointer")}
           >
-            <option value="">Select type</option>
+            <option value="">—</option>
             {(t.raw("typeOptions") as string[]).map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
@@ -164,9 +183,9 @@ export function ContactForm() {
             name="budget"
             value={form.budget}
             onChange={handleChange}
-            className={clsx(inputClass, "cursor-pointer bg-offwhite")}
+            className={clsx(inputClass, "cursor-pointer")}
           >
-            <option value="">Select budget</option>
+            <option value="">—</option>
             {(t.raw("budgetOptions") as string[]).map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
@@ -188,25 +207,30 @@ export function ContactForm() {
           value={form.message}
           onChange={handleChange}
           className={clsx(inputClass, "resize-none")}
-          placeholder="Tell us about your studio, the project, and any timeline..."
+          placeholder={t("messagePlaceholder")}
         />
       </div>
 
-      <Button
-        type="submit"
-        disabled={loading}
-        size="lg"
-        className="w-full justify-center gap-2"
-      >
-        {loading ? (
-          "Sending..."
-        ) : (
-          <>
-            {t("cta")}
-            <Send className="h-3.5 w-3.5" aria-hidden="true" />
-          </>
-        )}
-      </Button>
+      <div className="pt-2">
+        <Button
+          type="submit"
+          disabled={loading}
+          size="lg"
+          className="w-full justify-center gap-2"
+        >
+          {loading ? (
+            "Sending..."
+          ) : (
+            <>
+              {t("cta")}
+              <Send className="h-3.5 w-3.5" aria-hidden="true" />
+            </>
+          )}
+        </Button>
+        <p className="mt-4 font-mono-label text-[11px] tracking-[0.12em] text-muted/45 text-center">
+          {t("microcopy")}
+        </p>
+      </div>
     </form>
   );
 }

@@ -24,19 +24,19 @@ export function Button({
   return (
     <Comp
       className={clsx(
-        "inline-flex min-h-11 items-center justify-center rounded-none font-body font-medium tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+        "inline-flex min-h-11 items-center justify-center rounded-none font-body font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
         {
-          "bg-charcoal text-inverted hover:bg-primary/85": variant === "primary",
-          "bg-bronze text-inverted hover:bg-primary": variant === "secondary",
-          "border border-charcoal/20 text-primary hover:border-primary hover:bg-primary hover:text-inverted bg-transparent":
+          "bg-charcoal text-inverted hover:bg-bronze": variant === "primary",
+          "bg-bronze text-inverted hover:bg-charcoal": variant === "secondary",
+          "border border-charcoal/18 text-primary hover:border-charcoal hover:bg-charcoal hover:text-inverted bg-transparent":
             variant === "outline",
           "text-primary hover:text-bronze underline-offset-4 hover:underline bg-transparent":
             variant === "ghost",
         },
         {
-          "text-[14px] px-4 py-2.5 tracking-[0.12em] uppercase": size === "sm",
-          "text-[14px] px-6 py-3.5 tracking-[0.12em] uppercase": size === "md",
-          "text-[14px] px-8 py-4 tracking-[0.12em] uppercase": size === "lg",
+          "text-[12px] px-4 py-2.5 tracking-[0.14em] uppercase": size === "sm",
+          "text-[12px] px-6 py-3.5 tracking-[0.14em] uppercase": size === "md",
+          "text-[12px] px-8 py-4 tracking-[0.14em] uppercase": size === "lg",
         },
         className
       )}

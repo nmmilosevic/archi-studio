@@ -70,11 +70,10 @@ export default async function LocaleLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap"
+          rel="stylesheet"
         />
       </head>
       <body>

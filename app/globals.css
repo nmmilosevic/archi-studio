@@ -1,21 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: var(--font-geist-sans);
+  --font-heading: 'General Sans', var(--font-geist-sans), system-ui, sans-serif;
   --font-body: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-stone: #F5F1E8;
+  /* ── Core palette ──────────────────────────────────── */
+  --color-stone: #ECE7DF;
   --color-sand: #C6A98B;
-  --color-offwhite: #FBF8F1;
-  --color-charcoal: #111111;
-  --color-graphite: #121212;
-  --color-primary: #111111;
-  --color-muted: #6F6B63;
-  --color-inverted: #F5F1E8;
-  --color-bronze: #8C6A4A;
+  --color-offwhite: #E1DBD0;
+  --color-charcoal: #0A0A0A;
+  --color-graphite: #0A0A0A;
+  --color-primary: #101010;
+  --color-muted: #6F6A63;
+  --color-inverted: #ECE7DF;
+  --color-bronze: #8E745C;
   --color-clay: #C6A98B;
   --color-olive: #A8A29A;
+  --color-border: #C9C2B5;
+
+  /* ── Brand language tokens ─────────────────────────── */
+  --color-limestone: #ECE7DF;
+  --color-warm-paper: #E1DBD0;
+  --color-studio-black: #0A0A0A;
+  --color-bronze-dust: #8E745C;
+  --color-soft-graphite: #6F6A63;
+  --color-warm-concrete: #C6A98B;
 
   --radius: 0px;
 }
@@ -40,9 +50,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-family: var(--font-heading);
     line-height: 0.92;
-    letter-spacing: 0;
+    letter-spacing: -0.01em;
     font-weight: 500;
   }
 
@@ -77,7 +87,7 @@
   }
 
   .font-heading {
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-family: var(--font-heading);
   }
 
   .font-mono-label {
@@ -89,33 +99,33 @@
   .text-hero {
     font-size: clamp(48px, 13vw, 64px);
     line-height: 0.90;
-    letter-spacing: 0;
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-    font-weight: 520;
+    letter-spacing: -0.015em;
+    font-family: var(--font-heading);
+    font-weight: 500;
   }
 
   .text-section {
     font-size: clamp(44px, 12vw, 60px);
     line-height: 0.92;
-    letter-spacing: 0;
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-    font-weight: 520;
+    letter-spacing: -0.01em;
+    font-family: var(--font-heading);
+    font-weight: 500;
   }
 
   .text-display {
     font-size: clamp(32px, 7vw, 52px);
     line-height: 0.95;
-    letter-spacing: 0;
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
-    font-weight: 520;
+    letter-spacing: -0.008em;
+    font-family: var(--font-heading);
+    font-weight: 500;
   }
 
   /* Cinematic — fullscreen editorial moments */
   .text-cinematic {
     font-size: clamp(64px, 14vw, 160px);
-    line-height: 0.88;
-    letter-spacing: 0;
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    line-height: 0.87;
+    letter-spacing: -0.025em;
+    font-family: var(--font-heading);
     font-weight: 500;
   }
 
@@ -147,30 +157,54 @@
 
   .annotation-meta {
     font-family: var(--font-geist-mono), monospace;
-    font-size: 14px;
-    letter-spacing: 0.18em;
+    font-size: 12px;
+    letter-spacing: 0.20em;
     text-transform: uppercase;
     color: var(--color-muted);
-    opacity: 0.55;
     line-height: 1;
   }
 
   .section-label {
     font-family: var(--font-geist-mono), monospace;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.20em;
     text-transform: uppercase;
     color: var(--color-bronze);
+  }
+
+  /* ── Reframe framing mechanic ───────────────────────── */
+
+  .reframe-line {
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .reframe-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-bronze);
+  }
+
+  .editorial-note {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1;
   }
 
   /* ── Nav ─────────────────────────────────────────────── */
 
   .nav-link {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 14px;
-    font-weight: 420;
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
     color: var(--color-muted);
     transition: color 300ms ease;
     position: relative;
@@ -247,7 +281,6 @@
     z-index: 1;
   }
 
-  /* Subtle film grain for image placeholders */
   .film-grain {
     position: relative;
   }
@@ -267,7 +300,7 @@
   .divider-line {
     width: 100%;
     height: 1px;
-    background: rgb(17 17 17 / 0.08);
+    background: var(--color-border);
   }
 
   .bronze-line-left {
@@ -283,15 +316,15 @@
   }
 
   .preview-before {
-    border: 1px solid rgb(245 241 232 / 0.10);
-    background: rgb(245 241 232 / 0.03);
-    color: rgb(245 241 232 / 0.70);
+    border: 1px solid rgb(236 231 223 / 0.10);
+    background: rgb(236 231 223 / 0.03);
+    color: rgb(236 231 223 / 0.70);
     filter: grayscale(1) brightness(0.7);
     opacity: 0.5;
   }
 
   .preview-after {
-    border: 1px solid rgb(245 241 232 / 0.14);
+    border: 1px solid rgb(236 231 223 / 0.14);
     color: var(--color-charcoal);
     background: var(--color-stone);
   }
@@ -334,6 +367,9 @@
   .text-inverted { color: var(--color-inverted); }
   .text-bronze { color: var(--color-bronze); }
   .text-clay { color: var(--color-clay); }
+  .text-border { color: var(--color-border); }
+
+  .border-default { border-color: var(--color-border); }
 }
 
 /* Skip to content */
@@ -361,7 +397,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(111 107 99 / 0.25);
+  background: rgb(111 106 99 / 0.25);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-bronze);

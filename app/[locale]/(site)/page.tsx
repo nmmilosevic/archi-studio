@@ -22,101 +22,101 @@ const copy = {
     headline: "Your studio already looks premium. Your website should too.",
     sub: "Refined website redesigns for architecture and interior design studios across Marbella, Estepona, Sotogrande, Benahavís and Málaga.",
     primary: "See redesign previews",
-    secondary: "Request a redesign review",
-    heroMockLabel: "Website redesign preview",
-    proof: "We do not start with a pitch. We start with a website preview.",
+    secondary: "Request a Reframe Audit",
+    heroMockLabel: "Reframe Preview",
+    proof: "Not a proposal. A Reframe Audit first.",
     proofBody:
-      "Before talking about a project, we redesign part of the website first, deploy it on Vercel, and send the live preview. This site exists to prove the level of taste, restraint, and execution behind that approach.",
-    beforeTitle: "Most studios do not need more marketing. They need a better first impression.",
+      "Before any conversation about a project, we redesign part of the website, deploy it on Vercel, and send the live preview. This site exists to prove the level of taste, restraint, and execution behind that approach.",
+    beforeTitle: "Most studios do not need more marketing. They need a stronger first impression.",
     beforeBody:
-      "A studio is often judged through its website before anyone sees the work in person. A dated layout, weak mobile experience, or unclear portfolio can lower trust before the first conversation.",
-    redesignLabel: "Preview-led redesign",
+      "The Perception Gap — the distance between how a studio's work actually feels and how its website presents it — is the most common obstacle to winning better clients. A dated layout, weak mobile experience, or unclear portfolio creates doubt before the first conversation.",
+    redesignLabel: "Reframe Audit",
     redesignTitle: "A redesign before the pitch.",
     redesignBody:
-      "Most proposals ask you to imagine the result. We start with something visible: a focused website preview, deployed privately, so the new direction can be judged before the project begins.",
+      "Most proposals ask you to imagine the result. The First Impression System starts with something visible: a focused website preview, deployed privately, so the new direction can be judged before the project begins.",
     redesignCta: "See preview examples",
     annotations: [
-      { label: "Live preview", desc: "A private link showing the redesigned direction." },
-      { label: "Clear comparison", desc: "The current website and the new direction become easy to compare." },
-      { label: "Launch-ready system", desc: "If the direction feels right, the preview becomes the base for the final site." },
+      { label: "Reframe Preview", desc: "A private link showing the redesigned direction before any commitment." },
+      { label: "Perception Gap Analysis", desc: "The current website and the new direction become easy to compare side by side." },
+      { label: "First Impression System", desc: "If the direction feels right, the preview becomes the base for the final site." },
     ],
-    offerTitle: "Full Website Redesign & Launch",
+    offerTitle: "Full Reframe & Launch",
     offerIntro:
       "One clear price for studios that already have the work, but need a website that presents it properly.",
-    careTitle: "Website Care",
+    careTitle: "Portfolio Clarity · Ongoing",
     finalTitle: "If your work already carries the quality, the website should not dilute it.",
     finalBody:
-      "Send the current website. We review the first impression and, when there is a clear opportunity, prepare the direction for a redesign preview.",
+      "Send the current website. We identify the Perception Gap and, when there is a clear opportunity, prepare a private Reframe Preview. No long proposal. No abstract pitch.",
   },
   es: {
     label: "Rediseños web para arquitectura\nCosta del Sol",
     headline: "Tu estudio ya parece premium. Tu web también debería.",
     sub: "Rediseños refinados para estudios de arquitectura e interiorismo en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
     primary: "Ver previews de rediseño",
-    secondary: "Solicitar revisión",
-    heroMockLabel: "Preview de rediseño web",
-    proof: "No empezamos con una propuesta. Empezamos con una preview web.",
+    secondary: "Solicitar un Reframe Audit",
+    heroMockLabel: "Reframe Preview",
+    proof: "No una propuesta. Un Reframe Audit primero.",
     proofBody:
       "Antes de hablar de un proyecto, rediseño una parte de tu web, la despliego en Vercel y te envío la vista previa. Esta web existe para demostrar el nivel de gusto, calma y ejecución detrás de ese método.",
     beforeTitle: "La mayoría de los estudios no necesitan más marketing. Necesitan una mejor primera impresión.",
     beforeBody:
-      "La preview hace visible el valor antes de la propuesta: mejor jerarquía, fotografía más fuerte, proyectos más claros y una presencia digital alineada con el trabajo.",
-    redesignLabel: "Rediseño con preview primero",
+      "El Perception Gap — la distancia entre cómo se siente realmente el trabajo de un estudio y cómo lo presenta su web — es el obstáculo más común para atraer mejores clientes.",
+    redesignLabel: "Reframe Audit",
     redesignTitle: "Un rediseño antes del pitch.",
     redesignBody:
-      "La mayoría de las propuestas te piden que imagines el resultado. Empezamos con algo visible: una preview web enfocada, desplegada de forma privada, para que la nueva dirección pueda juzgarse antes de que el proyecto comience.",
+      "La mayoría de las propuestas te piden que imagines el resultado. El First Impression System empieza con algo visible: una preview web enfocada, desplegada de forma privada, para que la nueva dirección pueda juzgarse antes de que el proyecto comience.",
     redesignCta: "Ver ejemplos de preview",
     annotations: [
-      { label: "Preview en vivo", desc: "Un enlace privado que muestra la dirección de rediseño." },
-      { label: "Comparación clara", desc: "La web actual y la nueva dirección se pueden comparar fácilmente." },
-      { label: "Sistema listo para lanzar", desc: "Si la dirección convence, la preview se convierte en la base del sitio final." },
+      { label: "Reframe Preview", desc: "Un enlace privado que muestra la dirección de rediseño antes de cualquier compromiso." },
+      { label: "Perception Gap Analysis", desc: "La web actual y la nueva dirección se pueden comparar fácilmente." },
+      { label: "First Impression System", desc: "Si la dirección convence, la preview se convierte en la base del sitio final." },
     ],
-    offerTitle: "Rediseño Web Completo & Lanzamiento",
+    offerTitle: "Reframe Completo & Lanzamiento",
     offerIntro:
       "Un precio claro para estudios que ya tienen el trabajo, pero necesitan una web que lo presente correctamente.",
-    careTitle: "Website Care",
+    careTitle: "Portfolio Clarity · Continuo",
     finalTitle: "Si tu trabajo ya tiene calidad, la web no debería rebajarla.",
     finalBody:
-      "Envía la web actual. Revisaré la primera impresión y, cuando haya una oportunidad clara, prepararé la dirección para una preview de rediseño.",
+      "Envía la web actual. Identificamos el Perception Gap y, cuando hay una oportunidad clara, preparamos un Reframe Preview privado. Sin propuesta larga. Sin pitch abstracto.",
   },
   fr: {
     label: "Refontes de sites d'architecture\nCosta del Sol",
     headline: "Votre studio paraît déjà premium. Votre site devrait aussi.",
     sub: "Refontes raffinées pour studios d'architecture et de design intérieur à Marbella, Estepona, Sotogrande, Benahavís et Málaga.",
     primary: "Voir les previews",
-    secondary: "Demander une revue",
-    heroMockLabel: "Preview de refonte web",
-    proof: "Nous ne commençons pas par un pitch. Nous commençons par une preview web.",
+    secondary: "Demander un Reframe Audit",
+    heroMockLabel: "Reframe Preview",
+    proof: "Pas une proposition. Un Reframe Audit d'abord.",
     proofBody:
       "Avant de parler d'un projet, je refais une partie de votre site, je la déploie sur Vercel et je vous envoie l'aperçu. Ce site existe pour prouver le niveau de goût, de retenue et d'exécution derrière cette approche.",
     beforeTitle: "La plupart des studios n'ont pas besoin de plus de marketing. Ils ont besoin d'une meilleure première impression.",
     beforeBody:
-      "La preview rend la valeur visible avant la proposition : hiérarchie plus claire, photographie plus forte, projets mieux racontés et présence digitale alignée avec le travail.",
-    redesignLabel: "Refonte guidée par la preview",
+      "Le Perception Gap — l'écart entre ce que le travail d'un studio inspire réellement et ce que son site transmet — est l'obstacle le plus courant à l'acquisition de meilleurs clients.",
+    redesignLabel: "Reframe Audit",
     redesignTitle: "Une refonte avant le pitch.",
     redesignBody:
-      "La plupart des propositions vous demandent d'imaginer le résultat. Nous commençons par quelque chose de visible : une preview web ciblée, déployée en privé, pour que la nouvelle direction puisse être jugée avant le projet.",
+      "La plupart des propositions vous demandent d'imaginer le résultat. Le First Impression System commence par quelque chose de visible : une preview web ciblée, déployée en privé, pour que la nouvelle direction puisse être jugée avant le projet.",
     redesignCta: "Voir les previews",
     annotations: [
-      { label: "Preview en direct", desc: "Un lien privé montrant la direction de refonte." },
-      { label: "Comparaison claire", desc: "Le site actuel et la nouvelle direction deviennent faciles à comparer." },
-      { label: "Système prêt au lancement", desc: "Si la direction convient, la preview devient la base du site final." },
+      { label: "Reframe Preview", desc: "Un lien privé montrant la direction de refonte avant tout engagement." },
+      { label: "Perception Gap Analysis", desc: "Le site actuel et la nouvelle direction deviennent faciles à comparer." },
+      { label: "First Impression System", desc: "Si la direction convient, la preview devient la base du site final." },
     ],
-    offerTitle: "Refonte Complète & Lancement",
+    offerTitle: "Reframe Complet & Lancement",
     offerIntro:
       "Un prix clair pour les studios qui ont déjà le travail, mais qui ont besoin d'un site capable de le présenter correctement.",
-    careTitle: "Website Care",
+    careTitle: "Portfolio Clarity · Continu",
     finalTitle: "Si votre travail porte déjà la qualité, le site ne doit pas l'affaiblir.",
     finalBody:
-      "Envoyez le site actuel. Je réviserai la première impression et, lorsqu'il existe une opportunité claire, je préparerai la direction pour une preview de refonte.",
+      "Envoyez le site actuel. Nous identifions le Perception Gap et, lorsqu'il existe une opportunité claire, préparons un Reframe Preview privé. Pas de longue proposition. Pas de pitch abstrait.",
   },
 } as const;
 
 const includes = [
-  "Refined website redesign",
+  "Reframe Audit & full redesign",
   "Responsive layouts",
-  "Project portfolio structure",
-  "Mobile optimization",
+  "Portfolio Clarity structure",
+  "Mobile-first presentation",
   "Multilingual-ready setup",
   "Technical SEO foundation",
   "Vercel deployment",
@@ -245,10 +245,10 @@ export default async function HomePage({ params }: Props) {
           <AnimatedText as="div" delay={0.28}>
             <div className="mt-10 flex flex-col justify-between gap-3 border-t border-white/8 pt-5 sm:flex-row sm:items-center">
               <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/35">
-                CURRENT WEBSITE / REDESIGNED PREVIEW
+                Perception Gap · Current vs. Reframe Preview
               </span>
               <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/35">
-                WEBSITE PRESENTATION STUDY · COSTA DEL SOL
+                First Impression Study · Costa del Sol
               </span>
             </div>
           </AnimatedText>
@@ -295,7 +295,7 @@ export default async function HomePage({ params }: Props) {
                       <span className="h-1.5 w-1.5 rounded-full bg-primary/12" />
                     </div>
                     <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/45">
-                      Private Vercel Preview
+                      Reframe Preview · Private
                     </span>
                   </div>
                   <Image
