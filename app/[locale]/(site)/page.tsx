@@ -163,18 +163,18 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
       />
 
-      <section className="relative h-[95dvh] overflow-hidden bg-stone pt-24 md:pt-28">
+      <section className="relative h-[95dvh] overflow-hidden bg-stone pt-20 md:pt-24">
         <div className="absolute inset-y-0 right-0 hidden w-[54vw] bg-[linear-gradient(135deg,#d9cdbb_0%,#b5a995_35%,#292b25_100%)] md:block" aria-hidden="true" />
-        <div className="absolute right-[8vw] top-28 hidden h-[68vh] w-[31vw] border border-white/30 bg-white/10 md:block" aria-hidden="true" />
-        <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-12 pb-12 md:grid-cols-[1.06fr_0.94fr] md:pb-16">
-          <div className="max-w-[760px]">
-            <AnimatedText className="section-label mb-8 whitespace-pre-line" as="p">
+        <div className="absolute right-[8vw] top-24 hidden h-[60vh] w-[31vw] border border-white/30 bg-white/10 md:block" aria-hidden="true" />
+        <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-8 pb-8 md:grid-cols-[1.06fr_0.94fr] md:pb-10 xl:pb-12">
+          <div className="max-w-[700px]">
+            <AnimatedText className="section-label mb-5 whitespace-pre-line md:mb-6" as="p">
               {c.label}
             </AnimatedText>
-            <h1 className="text-hero mb-8 max-w-[720px] text-primary text-balance">
+            <h1 className="text-hero mb-5 max-w-[680px] text-primary text-balance md:mb-6">
               {c.headline}
             </h1>
-            <AnimatedText className="mb-10 max-w-[560px] text-[17px] leading-relaxed text-muted md:text-[18px]" delay={0.18}>
+            <AnimatedText className="mb-7 max-w-[530px] text-[15px] leading-relaxed text-muted md:mb-8 md:text-[17px]" delay={0.18}>
               {c.sub}
             </AnimatedText>
             <AnimatedText as="div" delay={0.28}>
@@ -189,18 +189,18 @@ export default async function HomePage({ params }: Props) {
             </AnimatedText>
           </div>
 
-          <AnimatedText as="div" delay={0.22}>
-            <div className="relative ml-auto w-full max-w-[560px] md:pb-12">
-              <div className="aspect-[4/5] overflow-hidden bg-[linear-gradient(150deg,#ece5d8_0%,#c9bca8_42%,#54574c_100%)]">
-                <div className="flex h-full flex-col justify-end p-6 md:p-8">
-                  <div className="max-w-[260px] border-l border-white/50 pl-5 text-inverted">
-                    <p className="font-heading text-[30px] leading-none md:text-[42px]">
+          <AnimatedText as="div" delay={0.22} className="hidden md:block">
+            <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
+              <div className="h-[min(58dvh,520px)] overflow-hidden bg-[linear-gradient(150deg,#ece5d8_0%,#c9bca8_42%,#54574c_100%)]">
+                <div className="flex h-full flex-col justify-end p-7">
+                  <div className="max-w-[230px] border-l border-white/50 pl-5 text-inverted">
+                    <p className="font-heading text-[32px] leading-none xl:text-[38px]">
                       Editorial previews for architecture studios.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-8 left-6 hidden w-[62%] bg-offwhite p-5 shadow-[0_24px_70px_rgba(22,22,22,0.12)] md:block">
+              <div className="absolute bottom-5 left-6 w-[62%] bg-offwhite p-4 shadow-[0_24px_70px_rgba(22,22,22,0.12)]">
                 <p className="font-mono-label text-[10px] uppercase tracking-widest text-bronze">
                   Private Vercel preview
                 </p>

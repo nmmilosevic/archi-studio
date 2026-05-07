@@ -84,8 +84,8 @@
   }
 
   .text-hero {
-    font-size: 4.25rem;
-    line-height: 1.0;
+    font-size: 3.35rem;
+    line-height: 0.98;
     letter-spacing: 0;
     font-family: var(--font-fraunces), serif;
     font-weight: 300;
@@ -109,7 +109,7 @@
 
   @media (min-width: 768px) {
     .text-hero {
-      font-size: 6.5rem;
+      font-size: 5.35rem;
     }
 
     .text-section {
@@ -123,7 +123,7 @@
 
   @media (min-width: 1280px) {
     .text-hero {
-      font-size: 7.5rem;
+      font-size: 6.35rem;
     }
 
     .text-section {
