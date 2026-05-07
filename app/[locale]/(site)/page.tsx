@@ -4,7 +4,6 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { MotionCard } from "@/components/motion/MotionCard";
 import { ServiceCard } from "@/components/cards/ServiceCard";
 import { WorkCard } from "@/components/cards/WorkCard";
-import { PricingCard } from "@/components/cards/PricingCard";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
 import { Button } from "@/components/ui/Button";
@@ -43,12 +42,10 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale });
 
   const hero = {
-    label: t("hero.label"),
     headline: t("hero.headline"),
     sub: t("hero.sub"),
     ctaPrimary: t("hero.ctaPrimary"),
     ctaSecondary: t("hero.ctaSecondary"),
-    proof: t("hero.proof"),
   };
 
   const problem = {
@@ -92,21 +89,6 @@ export default async function HomePage({ params }: Props) {
     })),
   };
 
-  const pricingLabel = t("pricing.label");
-  const pricingHeading = t("pricing.heading");
-  const pricingItems = Array.from({ length: 4 }, (_, i) => ({
-    name: t(`pricing.oneTime.${i}.name`),
-    price: t(`pricing.oneTime.${i}.price`),
-    desc: t(`pricing.oneTime.${i}.desc`),
-    includes: Array.from({ length: 12 }, (_, j) => {
-      try { return t(`pricing.oneTime.${i}.includes.${j}`); } catch { return null; }
-    }).filter(Boolean) as string[],
-    notIncluded: Array.from({ length: 5 }, (_, j) => {
-      try { return t(`pricing.oneTime.${i}.notIncluded.${j}`); } catch { return null; }
-    }).filter(Boolean) as string[],
-    cta: t(`pricing.oneTime.${i}.cta`),
-    featured: i === 2,
-  }));
 
   const work = {
     label: t("work.label"),
@@ -494,42 +476,54 @@ export default async function HomePage({ params }: Props) {
       {/* ========== PRICING TEASER ========== */}
       <section className="py-24 md:py-32 bg-stone" aria-labelledby="pricing-heading">
         <Container>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <AnimatedTitle
-                text={pricingHeading}
+                text="One offer. One price."
                 as="h2"
                 id="pricing-heading"
-                className="text-section text-primary"
+                className="text-section text-primary mb-6"
               />
+              <AnimatedText
+                className="font-body text-[16px] text-muted leading-relaxed mb-10 max-w-[400px]"
+                delay={0.1}
+              >
+                No packages. No tiers. A complete digital presence system for your studio — designed, built, and launched.
+              </AnimatedText>
+              <AnimatedText delay={0.2} as="div">
+                <Button asChild variant="ghost">
+                  <Link href={`/${locale}/pricing`} className="flex items-center gap-2">
+                    Full pricing details <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </Link>
+                </Button>
+              </AnimatedText>
             </div>
-            <AnimatedText delay={0.2} as="div">
-              <Button asChild variant="ghost">
-                <Link href={`/${locale}/pricing`} className="flex items-center gap-2">
-                  Full pricing <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </Link>
-              </Button>
-            </AnimatedText>
-          </div>
 
-          {/* Show Audit Preview + Signature only */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-charcoal/8">
-            {[pricingItems[0], pricingItems[2]].map((item, i) => (
-              <PricingCard
-                key={i}
-                {...item}
-                locale={locale}
-                index={i}
-              />
-            ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <AnimatedText
-              className="font-body text-[13px] text-muted mb-6"
-              delay={0.2}
-            >
-              {t("pricing.vatNote")} {t("pricing.paymentNote")}
+            <AnimatedText delay={0.15} as="div">
+              <div className="border border-charcoal/8 bg-offwhite p-8 md:p-10">
+                <h3 className="font-heading text-[20px] font-medium text-primary mb-1">
+                  FORMA COSTA Website System
+                </h3>
+                <div className="font-heading text-[56px] font-light text-primary leading-none tracking-tight mb-1">
+                  €2,900
+                </div>
+                <p className="font-mono-label text-[11px] tracking-widest text-muted/50 uppercase mb-6">
+                  Fixed price · Excluding IVA
+                </p>
+                <div className="h-px bg-charcoal/8 mb-6" />
+                <ul className="space-y-2.5 mb-8">
+                  {["Custom website design", "Responsive layouts", "Portfolio structure", "Technical SEO", "Vercel deployment", "2 revision rounds"].map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <span className="h-px w-4 bg-bronze/50 flex-shrink-0" />
+                      <span className="font-body text-[14px] text-primary">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-center justify-between text-[12px] font-mono-label tracking-wide text-muted">
+                  <span>50% upfront · 50% before launch</span>
+                  <span>2–4 weeks</span>
+                </div>
+              </div>
             </AnimatedText>
           </div>
         </Container>
