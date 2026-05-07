@@ -56,7 +56,7 @@ const careIncludes = [
 const faq = [
   {
     q: "Is the price fixed or an estimate?",
-    a: "€1,990 is the fixed price for the Full Website Redesign & Launch offer. If your project requires unusual integrations, extensive copywriting, or a larger content system, we agree on that before work starts.",
+    a: "€1,990 is the fixed price for the Full Website Redesign & Launch offer. If the project requires unusual integrations, extensive copywriting, or a larger content system, that scope is agreed before work starts.",
   },
   {
     q: "How do payments work?",
@@ -68,11 +68,11 @@ const faq = [
   },
   {
     q: "How long does the project take?",
-    a: "Typically 2 to 4 weeks depending on scope and how quickly content and feedback are provided. We agree on a timeline before starting.",
+    a: "Typically 2 to 4 weeks depending on scope and how quickly content and feedback are provided. The timeline is agreed before starting.",
   },
   {
     q: "What if I need something not listed?",
-    a: "Send us the details and we will put together a simple written proposal. Most requests — additional languages, extra pages, copywriting — can be handled as an agreed addition to the main project.",
+    a: "Send the details and I will confirm the cleanest scope before work starts. Additional languages, extra pages, and copy refinement can be added without changing the core offer.",
   },
 ];
 
@@ -83,7 +83,7 @@ export default async function PricingPage({ params }: Props) {
     <>
       <PageHero
         heading="One fixed redesign offer."
-        subtext="A complete website redesign and launch for architecture and interior design studios on the Costa del Sol."
+        subtext="A complete website redesign and launch for architecture and interior design studios that need a stronger first impression online."
       />
 
       {/* Main offer */}
@@ -102,7 +102,7 @@ export default async function PricingPage({ params }: Props) {
                 </h2>
 
                 <p className="font-body text-[16px] md:text-[18px] text-muted leading-[1.65] mb-10 max-w-[460px]">
-                  A refined digital presence designed around first impression, project storytelling, portfolio clarity, and calm enquiry flow.
+                  A focused redesign built around first impression, project storytelling, portfolio clarity, and a calm enquiry path.
                 </p>
 
                 <div className="mb-10">
@@ -125,7 +125,7 @@ export default async function PricingPage({ params }: Props) {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="w-px h-4 bg-bronze/40 flex-shrink-0" />
-                    Redesign preview workflow
+                    Preview-first workflow
                   </div>
                 </div>
 
@@ -236,7 +236,7 @@ export default async function PricingPage({ params }: Props) {
                 </ul>
 
                 <Button asChild variant="outline" className="w-full justify-center">
-                  <Link href={`/${locale}/contact`}>Add Website Care</Link>
+                <Link href={`/${locale}/contact`}>Discuss Website Care</Link>
                 </Button>
               </div>
             </AnimatedText>

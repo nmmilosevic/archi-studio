@@ -21,9 +21,9 @@ export function SiteFooter() {
             <Link
               href={`/${locale}`}
               className="font-heading text-[22px] font-semibold text-inverted mb-5 block hover:text-clay transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-              aria-label="FORMA COSTA — Home"
+              aria-label={`${BRAND.name} — Home`}
             >
-              FORMA COSTA
+              {BRAND.name}
             </Link>
             <p className="font-body text-[15px] text-inverted/55 leading-[1.65] mb-8 max-w-[300px]">
               {t("tagline")}
@@ -79,26 +79,26 @@ export function SiteFooter() {
             </nav>
           </div>
 
-          {/* Col 3: Services */}
+          {/* Col 3: Focus */}
           <div className="lg:col-span-3">
             <h3 className="font-mono-label text-[14px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
-              Services
+              Focus
             </h3>
             <ul className="space-y-3">
               {[
-                "Website redesign",
-                "Interior design websites",
-                "Local SEO",
-                "Hosting & maintenance",
-                "Portfolio systems",
-                "Brand refinement",
-              ].map((service) => (
-                <li key={service}>
+                "Redesign previews",
+                "Architecture websites",
+                "Interior design studios",
+                "Portfolio clarity",
+                "Mobile presentation",
+                "Vercel launch",
+              ].map((item) => (
+                <li key={item}>
                   <Link
-                    href={`/${locale}/services`}
+                    href={`/${locale}/work`}
                     className="font-body text-[14px] text-inverted/55 hover:text-inverted transition-colors duration-200"
                   >
-                    {service}
+                    {item}
                   </Link>
                 </li>
               ))}

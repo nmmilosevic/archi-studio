@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for FORMA COSTA digital studio.",
+  description: "Privacy Policy for REFRAME.",
 };
 
 export default function PrivacyPage() {
@@ -27,13 +27,12 @@ export default function PrivacyPage() {
                   1. Who we are
                 </h2>
                 <p>
-                  FORMA COSTA is a freelance digital studio operating on the
-                  Costa del Sol, Spain. We provide website design, local SEO,
-                  and digital services for architecture and interior design
-                  studios.
+                  REFRAME is an independent redesign studio operating on the
+                  Costa del Sol, Spain. It provides architecture website
+                  redesigns for architecture and interior design studios.
                 </p>
                 <p className="mt-3">
-                  Contact: hello@formacosta.com
+                  Contact: hello@reframestud.io
                 </p>
               </section>
 
@@ -76,7 +75,7 @@ export default function PrivacyPage() {
                 <p>
                   Under GDPR and applicable Spanish law, you have the right to
                   access, rectify, or delete your personal data. To exercise
-                  these rights, contact us at hello@formacosta.com.
+                  these rights, contact us at hello@reframestud.io.
                 </p>
               </section>
 

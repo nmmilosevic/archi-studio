@@ -141,7 +141,7 @@ export default async function AuditPage({ params }: Props) {
                 className="font-body text-[15px] text-muted leading-relaxed mb-8"
                 delay={0.1}
               >
-                Fill in the form and we will review your website within 48
+                Fill in the form and I will review your website within 48
                 hours. No sales call required to receive the audit.
               </AnimatedText>
 

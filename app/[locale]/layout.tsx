@@ -28,10 +28,10 @@ const geistMono = Geist_Mono({
 const LOCALES = ["en", "es", "fr"];
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://formacosta.com"),
+  metadataBase: new URL("https://reframestud.io"),
   title: {
-    default: "FORMA COSTA — Architecture Website Redesigns Costa del Sol",
-    template: "%s | FORMA COSTA",
+    default: "REFRAME — Architecture Website Redesigns Costa del Sol",
+    template: "%s | REFRAME",
   },
   description:
     "Architecture website redesigns for architecture and interior design studios on the Costa del Sol.",

@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { clsx } from "clsx";
-import { NAV_LINKS } from "@/lib/constants";
+import { BRAND, NAV_LINKS } from "@/lib/constants";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { Button } from "@/components/ui/Button";
@@ -54,9 +54,9 @@ export function SiteHeader() {
             <Link
               href={`/${locale}`}
               className="font-heading text-[17px] md:text-[19px] font-semibold text-primary tracking-normal flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
-              aria-label="FORMA COSTA — Home"
+              aria-label={`${BRAND.name} — Home`}
             >
-              FORMA COSTA
+              {BRAND.name}
             </Link>
 
             {/* Desktop nav */}

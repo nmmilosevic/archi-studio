@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://formacosta.com/sitemap.xml",
+    sitemap: "https://reframestud.io/sitemap.xml",
   };
 }

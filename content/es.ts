@@ -1,6 +1,6 @@
 const es = {
   nav: {
-    services: "Servicios",
+    services: "Rediseños",
     pricing: "Precios",
     method: "Método",
     work: "Proyectos",
@@ -268,15 +268,15 @@ const es = {
     { q: "¿Ofrecéis webs multilingües?", a: "Sí. Construimos webs en inglés, español y francés. Los idiomas adicionales están disponibles como complemento." },
   ],
   footer: {
-    tagline: "Presencia digital para estudios de arquitectura e interiores en la Costa del Sol.",
+    tagline: "Rediseños web para estudios de arquitectura e interiorismo en la Costa del Sol.",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
-    email: "hello@formacosta.com",
+    email: "hello@reframestud.io",
     whatsapp: "+34 600 000 000",
     legal: { privacy: "Política de privacidad", terms: "Términos", cookies: "Cookies" },
-    copy: "© 2025 FORMA COSTA. Todos los derechos reservados.",
+    copy: "© 2026 REFRAME. Todos los derechos reservados.",
     nav: {
       sitemap: "Mapa del sitio",
-      services: "Servicios",
+      services: "Rediseños",
       pricing: "Precios",
       method: "Método",
       work: "Proyectos",

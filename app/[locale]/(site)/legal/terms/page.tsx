@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms of Service for FORMA COSTA digital studio.",
+  description: "Terms of Service for REFRAME.",
 };
 
 export default function TermsPage() {
@@ -27,9 +27,9 @@ export default function TermsPage() {
                   1. Services
                 </h2>
                 <p>
-                  FORMA COSTA provides website design, local SEO, portfolio
-                  systems, and related digital services for architecture and
-                  interior design studios.
+                  REFRAME provides website redesign, portfolio presentation,
+                  deployment, and related technical services for architecture
+                  and interior design studios.
                 </p>
               </section>
 
@@ -72,7 +72,7 @@ export default function TermsPage() {
                   5. Limitation of liability
                 </h2>
                 <p>
-                  FORMA COSTA is not liable for any indirect, consequential, or
+                  REFRAME is not liable for any indirect, consequential, or
                   incidental damages arising from the use of services or
                   websites delivered.
                 </p>

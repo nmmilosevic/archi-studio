@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://formacosta.com";
+const BASE_URL = "https://reframestud.io";
 
 const localeNames: Record<string, string> = {
   en: "English",
@@ -46,13 +46,13 @@ export function generateMetadata({
       title,
       description,
       url: `${BASE_URL}/${locale}${path}`,
-      siteName: "FORMA COSTA",
+      siteName: "REFRAME",
       images: [
         {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `FORMA COSTA — ${title}`,
+          alt: `REFRAME — ${title}`,
         },
       ],
       locale: localeName,
@@ -71,11 +71,11 @@ export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "FORMA COSTA",
+    name: "REFRAME",
     description:
-      "Premium digital studio for architecture and interior design studios on the Costa del Sol, Spain.",
+      "Architecture website redesigns for architecture and interior design studios on the Costa del Sol, Spain.",
     url: BASE_URL,
-    email: "hello@formacosta.com",
+    email: "hello@reframestud.io",
     telephone: "+34600000000",
     areaServed: [
       "Marbella",
@@ -88,7 +88,7 @@ export function localBusinessSchema() {
       "Casares",
     ],
     serviceType: [
-      "Website Design",
+      "Website Redesign",
       "Architecture Studio Websites",
       "Interior Design Websites",
       "Local SEO",

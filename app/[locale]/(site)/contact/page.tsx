@@ -16,9 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/contact",
-    title: "Contact — FORMA COSTA Digital Studio",
+    title: "Contact — REFRAME",
     description:
-      "Get in touch with FORMA COSTA. Website redesigns, local SEO, and portfolio systems for architecture and interior design studios on the Costa del Sol.",
+      "Request a redesign review from REFRAME. Architecture website redesigns for studios on the Costa del Sol.",
   });
 }
 
@@ -50,7 +50,7 @@ export default async function ContactPage({ params }: Props) {
               {/* Contact details */}
               <div>
                 <h2 className="font-heading text-[20px] font-medium text-primary mb-6">
-                  Get in touch directly
+                  Contact directly
                 </h2>
                 <div className="space-y-4">
                   <a
@@ -119,14 +119,14 @@ export default async function ContactPage({ params }: Props) {
               {/* What to expect */}
               <div className="pt-4 border-t border-charcoal/8">
                 <h3 className="font-heading text-[16px] font-medium text-primary mb-4">
-                  What happens after you contact us
+                  What happens next
                 </h3>
                 <div className="space-y-3">
                   {[
-                    "We review your message and studio details",
-                    "We prepare a brief overview or ask a few focused questions",
-                    "We reply within 24 hours with a clear next step",
-                    "If relevant, we offer a free audit before any project discussion",
+                    "I review the current studio website",
+                    "I look for the clearest first-impression gap",
+                    "I reply within 24 hours with a direct next step",
+                    "If there is a strong opportunity, the preview direction starts there",
                   ].map((step, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <span className="font-mono-label text-[14px] text-bronze tracking-widest flex-shrink-0 mt-0.5">
@@ -144,7 +144,7 @@ export default async function ContactPage({ params }: Props) {
             {/* Right form column */}
             <div className="lg:col-span-3 bg-stone p-8 md:p-12">
               <h2 className="font-heading text-[24px] font-medium text-primary mb-8">
-                Send us a message
+                Send the current site
               </h2>
               <ContactForm />
             </div>

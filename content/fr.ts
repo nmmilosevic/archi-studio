@@ -1,6 +1,6 @@
 const fr = {
   nav: {
-    services: "Services",
+    services: "Refontes",
     pricing: "Tarifs",
     method: "Méthode",
     work: "Réalisations",
@@ -268,15 +268,15 @@ const fr = {
     { q: "Proposez-vous des sites multilingues?", a: "Oui. Nous construisons des sites en anglais, espagnol et français. Des langues supplémentaires sont disponibles en option." },
   ],
   footer: {
-    tagline: "Présence digitale pour les studios d'architecture et d'intérieur sur la Costa del Sol.",
+    tagline: "Refontes de sites pour studios d'architecture et d'intérieur sur la Costa del Sol.",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
-    email: "hello@formacosta.com",
+    email: "hello@reframestud.io",
     whatsapp: "+34 600 000 000",
     legal: { privacy: "Politique de confidentialité", terms: "Conditions", cookies: "Cookies" },
-    copy: "© 2025 FORMA COSTA. Tous droits réservés.",
+    copy: "© 2026 REFRAME. Tous droits réservés.",
     nav: {
       sitemap: "Plan du site",
-      services: "Services",
+      services: "Refontes",
       pricing: "Tarifs",
       method: "Méthode",
       work: "Réalisations",

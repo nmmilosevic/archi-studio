@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://formacosta.com";
+const BASE_URL = "https://reframestud.io";
 const LOCALES = ["en", "es", "fr"];
 
 const PAGES = [

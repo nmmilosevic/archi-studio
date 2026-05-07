@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "Cookie Policy for FORMA COSTA digital studio.",
+  description: "Cookie Policy for REFRAME.",
 };
 
 export default function CookiesPage() {
@@ -72,7 +72,7 @@ export default function CookiesPage() {
                 </h2>
                 <p>
                   For questions about our cookie policy, contact us at
-                  hello@formacosta.com.
+                  hello@reframestud.io.
                 </p>
               </section>
             </div>

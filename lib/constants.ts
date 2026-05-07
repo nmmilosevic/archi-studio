@@ -1,7 +1,7 @@
 export const BRAND = {
-  name: "FORMA COSTA",
+  name: "REFRAME",
   tagline: "Architecture website redesigns for studios on the Costa del Sol.",
-  email: "hello@formacosta.com",
+  email: "hello@reframestud.io",
   whatsapp: "+34 600 000 000",
   whatsappLink: "https://wa.me/34600000000",
 };

@@ -4,6 +4,7 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
+import { BRAND } from "@/lib/constants";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, Check, ExternalLink } from "lucide-react";
@@ -25,9 +26,18 @@ const copy = {
     beforeTitle: "Most studios do not need more marketing. They need a better first impression.",
     beforeBody:
       "The preview makes the value visible before a proposal exists: cleaner hierarchy, stronger photography, clearer project storytelling, and a digital presence that feels aligned with the work.",
+    processTitle: "The preview changes the conversation.",
+    processBody:
+      "The work starts where most proposals end: with something visible enough to judge.",
+    processSteps: [
+      "I redesign part of your website",
+      "You review the preview",
+      "I finalize the system",
+      "We launch",
+    ],
     offerTitle: "Full Website Redesign & Launch",
     offerIntro:
-      "One fixed offer for studios that want a refined digital presence without agency theatre.",
+      "One fixed offer for studios whose online presence should carry the same care as their built work.",
     careTitle: "Website Care",
     finalTitle: "If your work already carries the quality, the website should not dilute it.",
     finalBody:
@@ -45,9 +55,18 @@ const copy = {
     beforeTitle: "La mayoría de los estudios no necesitan más marketing. Necesitan una mejor primera impresión.",
     beforeBody:
       "La preview hace visible el valor antes de la propuesta: mejor jerarquía, fotografía más fuerte, proyectos más claros y una presencia digital alineada con el trabajo.",
+    processTitle: "La preview cambia la conversación.",
+    processBody:
+      "El trabajo empieza donde suelen terminar las propuestas: con algo visible que se puede juzgar.",
+    processSteps: [
+      "Rediseño parte de tu web",
+      "Revisas la preview",
+      "Finalizo el sistema",
+      "Lanzamos",
+    ],
     offerTitle: "Rediseño Web Completo & Lanzamiento",
     offerIntro:
-      "Una oferta fija para estudios que quieren una presencia digital refinada sin teatro de agencia.",
+      "Una oferta fija para estudios cuya presencia online debe tener el mismo cuidado que su obra construida.",
     careTitle: "Website Care",
     finalTitle: "Si tu trabajo ya tiene calidad, la web no debería rebajarla.",
     finalBody:
@@ -65,9 +84,18 @@ const copy = {
     beforeTitle: "La plupart des studios n'ont pas besoin de plus de marketing. Ils ont besoin d'une meilleure première impression.",
     beforeBody:
       "La preview rend la valeur visible avant la proposition : hiérarchie plus claire, photographie plus forte, projets mieux racontés et présence digitale alignée avec le travail.",
+    processTitle: "La preview change la conversation.",
+    processBody:
+      "Le travail commence là où les propositions se terminent souvent : avec quelque chose de visible à juger.",
+    processSteps: [
+      "Je refais une partie du site",
+      "Vous révisez la preview",
+      "Je finalise le système",
+      "Nous lançons",
+    ],
     offerTitle: "Refonte Complète & Lancement",
     offerIntro:
-      "Une offre fixe pour les studios qui veulent une présence digitale raffinée sans théâtre d'agence.",
+      "Une offre fixe pour les studios dont la présence en ligne doit porter le même soin que leur travail construit.",
     careTitle: "Website Care",
     finalTitle: "Si votre travail porte déjà la qualité, le site ne doit pas l'affaiblir.",
     finalBody:
@@ -94,7 +122,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "",
-    title: "Architecture Website Redesigns Costa del Sol — FORMA COSTA",
+    title: "Architecture Website Redesigns Costa del Sol — REFRAME",
     description: t("sub"),
   });
 }
@@ -168,6 +196,11 @@ export default async function HomePage({ params }: Props) {
         <div className="absolute right-[8vw] top-24 hidden h-[58vh] w-[30vw] border border-white/35 bg-white/10 md:block" aria-hidden="true" />
         <Container className="relative z-10 grid h-full grid-cols-1 items-center gap-8 pb-8 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-10 xl:pb-12">
           <div className="min-w-0">
+            <AnimatedText as="div" className="mb-6 font-mono-label text-[14px] uppercase leading-[1.6] tracking-[0.12em] text-muted" delay={0.04}>
+              {c.label.split("\n").map((line) => (
+                <span key={line} className="block">{line}</span>
+              ))}
+            </AnimatedText>
             <AnimatedTitle
               text={c.headline}
               as="h1"
@@ -191,10 +224,15 @@ export default async function HomePage({ params }: Props) {
           <AnimatedText as="div" delay={0.22} className="hidden min-w-0 md:block">
             <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
               <div className="h-[min(48dvh,440px)] overflow-hidden bg-[#bcb5a8]">
-                <div className="flex h-full flex-col justify-end p-7">
-                  <div className="max-w-[230px] border-l border-white/50 pl-5 text-inverted">
-                    <p className="font-heading text-[28px] font-medium leading-[0.95] xl:text-[34px]">
-                      Editorial previews for architecture studios.
+                <div className="grid h-full grid-rows-[1fr_auto]">
+                  <div className="relative overflow-hidden bg-[#c9c1b4]">
+                    <div className="absolute left-8 top-8 h-28 w-20 bg-white/15" />
+                    <div className="absolute bottom-10 right-8 h-40 w-28 border border-white/40" />
+                    <div className="absolute inset-x-8 bottom-8 h-px bg-white/45" />
+                  </div>
+                  <div className="border-t border-white/25 bg-[#121212] p-7 text-inverted">
+                    <p className="max-w-[260px] font-heading text-[26px] font-medium leading-[0.96] xl:text-[32px]">
+                      A private preview, sent before the pitch.
                     </p>
                   </div>
                 </div>
@@ -224,6 +262,33 @@ export default async function HomePage({ params }: Props) {
                 <BrowserPreview variant="after" />
               </div>
             </AnimatedText>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-stone py-20 md:py-28" aria-labelledby="process-heading">
+        <Container>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+            <div>
+              <AnimatedTitle text={c.processTitle} as="h2" id="process-heading" className="text-section max-w-[720px] text-primary" />
+              <AnimatedText className="mt-7 max-w-[460px] text-[17px] leading-[1.65] text-muted" delay={0.1}>
+                {c.processBody}
+              </AnimatedText>
+            </div>
+            <div className="grid grid-cols-1 border-t border-charcoal/10 md:grid-cols-2">
+              {c.processSteps.map((step, index) => (
+                <AnimatedText key={step} as="div" delay={0.08 + index * 0.05}>
+                  <div className={`min-h-[210px] border-b border-charcoal/10 py-8 md:px-8 ${index % 2 === 0 ? "md:border-r" : ""}`}>
+                    <p className="mb-10 font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/55">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="max-w-[270px] font-heading text-[30px] font-medium leading-[0.98] text-primary md:text-[36px]">
+                      {step}
+                    </h3>
+                  </div>
+                </AnimatedText>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
@@ -308,7 +373,7 @@ export default async function HomePage({ params }: Props) {
                   <Link href={`/${locale}/audit`}>Request a redesign review</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white/25 text-inverted hover:border-bronze hover:text-bronze">
-                  <a href="mailto:hello@formacosta.com">
+                  <a href={`mailto:${BRAND.email}`}>
                     Email directly <ExternalLink className="ml-2 h-3.5 w-3.5" aria-hidden="true" />
                   </a>
                 </Button>
