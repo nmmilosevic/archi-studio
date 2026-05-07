@@ -2,29 +2,113 @@ import { getTranslations } from "next-intl/server";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { MotionCard } from "@/components/motion/MotionCard";
-import { ServiceCard } from "@/components/cards/ServiceCard";
-import { WorkCard } from "@/components/cards/WorkCard";
-import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { ProcessTimeline } from "@/components/ui/ProcessTimeline";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { generateMetadata as genMeta, localBusinessSchema, faqSchema } from "@/lib/seo";
+import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  ArrowRight,
-  CheckCircle,
-  Building2,
-  MapPin,
-  Zap,
-  Globe,
-  TrendingUp,
-  Layout,
-} from "lucide-react";
+import { ArrowRight, Check, ExternalLink } from "lucide-react";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
+
+const copy = {
+  en: {
+    label: "Architecture website redesigns\nCosta del Sol",
+    headline: "Your studio already looks premium. Your website should too.",
+    sub: "Refined redesigns for architecture and interior design studios across Marbella, Estepona, Sotogrande, Benahavís and Málaga.",
+    primary: "See redesign previews",
+    secondary: "Request a redesign review",
+    proof: "I do not start with a pitch. I start with a redesign.",
+    proofBody:
+      "Before talking about a project, I redesign part of your website first, deploy it on Vercel, and send you the live preview. The website you are viewing now exists to prove the level of taste, restraint, and execution behind that approach.",
+    beforeTitle: "Most studios do not need more marketing. They need a better first impression.",
+    beforeBody:
+      "The preview makes the value visible before a proposal exists: cleaner hierarchy, stronger photography, clearer project storytelling, and a digital presence that feels aligned with the work.",
+    processTitle: "A quieter way to start.",
+    process: [
+      ["01", "I redesign part of your website", "A focused homepage or project-page direction, created before the sales conversation."],
+      ["02", "You review the preview", "You open a private Vercel link and see the direction on desktop and mobile."],
+      ["03", "I finalize the system", "The approved direction becomes a full responsive website with portfolio structure and multilingual-ready foundations."],
+      ["04", "We launch", "The site is deployed, tested, connected, and ready for your studio to use with confidence."],
+    ],
+    offerTitle: "Full Website Redesign & Launch",
+    offerIntro:
+      "One fixed offer for studios that want a refined digital presence without agency theatre.",
+    careTitle: "Website Care",
+    finalTitle: "If your work already carries the quality, the website should not dilute it.",
+    finalBody:
+      "Send the current site. I will review the first impression and, when there is a clear opportunity, prepare the direction for a redesign preview.",
+  },
+  es: {
+    label: "Rediseños web para arquitectura\nCosta del Sol",
+    headline: "Tu estudio ya parece premium. Tu web también debería.",
+    sub: "Rediseños refinados para estudios de arquitectura e interiorismo en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
+    primary: "Ver previews de rediseño",
+    secondary: "Solicitar revisión",
+    proof: "No empiezo con una propuesta. Empiezo con un rediseño.",
+    proofBody:
+      "Antes de hablar de un proyecto, rediseño una parte de tu web, la despliego en Vercel y te envío la vista previa. Esta web existe para demostrar el nivel de gusto, calma y ejecución detrás de ese método.",
+    beforeTitle: "La mayoría de los estudios no necesitan más marketing. Necesitan una mejor primera impresión.",
+    beforeBody:
+      "La preview hace visible el valor antes de la propuesta: mejor jerarquía, fotografía más fuerte, proyectos más claros y una presencia digital alineada con el trabajo.",
+    processTitle: "Una forma más tranquila de empezar.",
+    process: [
+      ["01", "Rediseño parte de tu web", "Una dirección enfocada para portada o página de proyecto, creada antes de venderte nada."],
+      ["02", "Revisas la preview", "Abres un enlace privado de Vercel y ves la dirección en desktop y móvil."],
+      ["03", "Finalizo el sistema", "La dirección aprobada se convierte en una web responsive con portfolio y base multilingüe."],
+      ["04", "Lanzamos", "La web se despliega, se prueba, se conecta y queda lista para usar con confianza."],
+    ],
+    offerTitle: "Rediseño Web Completo & Lanzamiento",
+    offerIntro:
+      "Una oferta fija para estudios que quieren una presencia digital refinada sin teatro de agencia.",
+    careTitle: "Website Care",
+    finalTitle: "Si tu trabajo ya tiene calidad, la web no debería rebajarla.",
+    finalBody:
+      "Envía la web actual. Revisaré la primera impresión y, cuando haya una oportunidad clara, prepararé la dirección para una preview de rediseño.",
+  },
+  fr: {
+    label: "Refontes de sites d'architecture\nCosta del Sol",
+    headline: "Votre studio paraît déjà premium. Votre site devrait aussi.",
+    sub: "Refontes raffinées pour studios d'architecture et de design intérieur à Marbella, Estepona, Sotogrande, Benahavís et Málaga.",
+    primary: "Voir les previews",
+    secondary: "Demander une revue",
+    proof: "Je ne commence pas par un pitch. Je commence par une refonte.",
+    proofBody:
+      "Avant de parler d'un projet, je refais une partie de votre site, je la déploie sur Vercel et je vous envoie l'aperçu. Ce site existe pour prouver le niveau de goût, de retenue et d'exécution derrière cette approche.",
+    beforeTitle: "La plupart des studios n'ont pas besoin de plus de marketing. Ils ont besoin d'une meilleure première impression.",
+    beforeBody:
+      "La preview rend la valeur visible avant la proposition : hiérarchie plus claire, photographie plus forte, projets mieux racontés et présence digitale alignée avec le travail.",
+    processTitle: "Une manière plus calme de commencer.",
+    process: [
+      ["01", "Je refais une partie de votre site", "Une direction ciblée pour la page d'accueil ou une page projet, créée avant la conversation commerciale."],
+      ["02", "Vous examinez la preview", "Vous ouvrez un lien privé Vercel et voyez la direction sur desktop et mobile."],
+      ["03", "Je finalise le système", "La direction validée devient un site responsive complet avec portfolio et base multilingue."],
+      ["04", "Nous lançons", "Le site est déployé, testé, connecté et prêt à être utilisé avec confiance."],
+    ],
+    offerTitle: "Refonte Complète & Lancement",
+    offerIntro:
+      "Une offre fixe pour les studios qui veulent une présence digitale raffinée sans théâtre d'agence.",
+    careTitle: "Website Care",
+    finalTitle: "Si votre travail porte déjà la qualité, le site ne doit pas l'affaiblir.",
+    finalBody:
+      "Envoyez le site actuel. Je réviserai la première impression et, lorsqu'il existe une opportunité claire, je préparerai la direction pour une preview de refonte.",
+  },
+} as const;
+
+const includes = [
+  "Refined website redesign",
+  "Responsive layouts",
+  "Project portfolio structure",
+  "Mobile optimization",
+  "Multilingual-ready setup",
+  "Technical SEO foundation",
+  "Vercel deployment",
+  "Launch support",
+];
+
+const studios = ["Marbella", "Estepona", "Sotogrande", "Benahavís", "Málaga"];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -32,668 +116,288 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "",
-    title: "FORMA COSTA — Premium Digital Studio for Architecture Studios",
+    title: "Architecture Website Redesigns Costa del Sol — FORMA COSTA",
     description: t("sub"),
   });
 }
 
+function BrowserPreview({ variant }: { variant: "before" | "after" }) {
+  const isAfter = variant === "after";
+
+  return (
+    <div className={isAfter ? "preview-after" : "preview-before"}>
+      <div className="flex h-8 items-center gap-1.5 border-b border-current/10 px-3">
+        <span className="h-1.5 w-1.5 rounded-full bg-current/25" />
+        <span className="h-1.5 w-1.5 rounded-full bg-current/20" />
+        <span className="h-1.5 w-1.5 rounded-full bg-current/15" />
+      </div>
+      {isAfter ? (
+        <div className="grid h-[300px] grid-cols-[0.78fr_1fr] md:h-[430px]">
+          <div className="flex flex-col justify-between p-5 md:p-8">
+            <div>
+              <div className="mb-8 h-px w-16 bg-current/30" />
+              <div className="font-heading text-[34px] leading-[0.95] text-current md:text-[54px]">
+                Villa
+                <br />
+                Portfolio
+              </div>
+            </div>
+            <div className="space-y-2 font-mono-label text-[9px] uppercase tracking-widest text-current/55">
+              <p>Benahavís</p>
+              <p>Residential Architecture</p>
+              <p>2026</p>
+            </div>
+          </div>
+          <div className="relative overflow-hidden">
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,#ded4c4_0%,#9f9b8d_45%,#242722_100%)]" />
+            <div className="absolute bottom-6 left-6 right-10 h-24 border border-white/35 bg-white/10 backdrop-blur-[1px]" />
+          </div>
+        </div>
+      ) : (
+        <div className="h-[300px] p-5 md:h-[430px] md:p-8">
+          <div className="mb-5 h-8 w-40 bg-current/12" />
+          <div className="mb-3 h-4 w-full bg-current/10" />
+          <div className="mb-8 h-4 w-3/4 bg-current/10" />
+          <div className="grid grid-cols-2 gap-3">
+            {Array.from({ length: 6 }, (_, i) => (
+              <div key={i} className="aspect-[4/3] bg-current/10" />
+            ))}
+          </div>
+          <div className="mt-7 grid grid-cols-3 gap-3">
+            <div className="h-7 bg-current/10" />
+            <div className="h-7 bg-current/10" />
+            <div className="h-7 bg-current/10" />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale });
-
-  const hero = {
-    headline: t("hero.headline"),
-    sub: t("hero.sub"),
-    ctaPrimary: t("hero.ctaPrimary"),
-    ctaSecondary: t("hero.ctaSecondary"),
-  };
-
-  const problem = {
-    heading: t("problem.heading"),
-    body: t("problem.body"),
-    cards: Array.from({ length: 6 }, (_, i) => ({
-      title: t(`problem.cards.${i}.title`),
-      desc: t(`problem.cards.${i}.desc`),
-    })),
-  };
-
-  const beforeAfter = {
-    label: t("beforeAfter.label"),
-    heading: t("beforeAfter.heading"),
-    body: t("beforeAfter.body"),
-    cta: t("beforeAfter.cta"),
-    before: t("beforeAfter.before"),
-    after: t("beforeAfter.after"),
-  };
-
-  const services = {
-    label: t("services.label"),
-    heading: t("services.heading"),
-    items: Array.from({ length: 6 }, (_, i) => ({
-      number: t(`services.items.${i}.number`),
-      title: t(`services.items.${i}.title`),
-      desc: t(`services.items.${i}.desc`),
-      deliverables: Array.from({ length: 7 }, (_, j) => {
-        try { return t(`services.items.${i}.deliverables.${j}`); } catch { return null; }
-      }).filter(Boolean) as string[],
-    })),
-  };
-
-  const method = {
-    label: t("method.label"),
-    heading: t("method.heading"),
-    steps: Array.from({ length: 6 }, (_, i) => ({
-      number: t(`method.steps.${i}.number`),
-      title: t(`method.steps.${i}.title`),
-      desc: t(`method.steps.${i}.desc`),
-    })),
-  };
-
-
-  const work = {
-    label: t("work.label"),
-    heading: t("work.heading"),
-    disclaimer: t("work.disclaimer"),
-    items: Array.from({ length: 4 }, (_, i) => ({
-      slug: t(`work.items.${i}.slug`),
-      title: t(`work.items.${i}.title`),
-      category: t(`work.items.${i}.category`),
-      location: t(`work.items.${i}.location`),
-    })),
-  };
-
-  const seo = {
-    label: t("seo.label"),
-    heading: t("seo.heading"),
-    sub: t("seo.sub"),
-  };
-
-  const faqItems = Array.from({ length: 7 }, (_, i) => ({
-    q: t(`faq.${i}.q`),
-    a: t(`faq.${i}.a`),
-  }));
-
-  const jsonLd = [localBusinessSchema(), faqSchema(faqItems)];
+  const c = copy[locale as keyof typeof copy] ?? copy.en;
 
   return (
     <>
-      {/* JSON-LD */}
-      {jsonLd.map((schema, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+      />
 
-      {/* ========== HERO ========== */}
-      <section
-        className="relative min-h-[95svh] flex flex-col justify-end pb-16 md:pb-20 pt-28 overflow-hidden bg-stone"
-        aria-label="Hero section"
-      >
-        {/* Background image grid — top right */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          {/* Large bg placeholder image */}
-          <div className="absolute right-0 top-0 w-full md:w-[56%] h-full">
-            <div className="relative w-full h-full bg-gradient-to-bl from-[#DDD0BF] via-sand to-stone" />
-            {/* Subtle label */}
-            <div className="absolute bottom-8 right-8">
-              <span className="font-mono-label text-[10px] text-muted/30 tracking-widest uppercase">
-                {/* Art direction: Mediterranean villa terrace, warm stone, pool reflection,
-                    golden hour light, olive trees, Cordoba stone paving. Cinematic composition.
-                    Replace with: villa-hero.jpg */}
-                Architecture — Costa del Sol
-              </span>
-            </div>
-          </div>
-          {/* Gradient fade left */}
-          <div className="absolute inset-0 bg-gradient-to-r from-stone via-stone/95 to-transparent" />
-          {/* Subtle top gradient */}
-          <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-stone to-transparent" />
-        </div>
-
-        {/* Content */}
-        <Container className="relative z-10">
-          <div className="max-w-[640px]">
-            {/* Headline */}
-            <h1 className="text-hero text-primary mb-7 text-balance">
-              {hero.headline}
-            </h1>
-
-            {/* Sub */}
-            <AnimatedText
-              className="font-body text-[16px] md:text-[18px] text-muted leading-relaxed mb-10 max-w-[520px]"
-              delay={0.3}
-            >
-              {hero.sub}
+      <section className="relative min-h-dvh overflow-hidden bg-stone pt-24 md:pt-28">
+        <div className="absolute inset-y-0 right-0 hidden w-[54vw] bg-[linear-gradient(135deg,#d9cdbb_0%,#b5a995_35%,#292b25_100%)] md:block" aria-hidden="true" />
+        <div className="absolute right-[8vw] top-28 hidden h-[68vh] w-[31vw] border border-white/30 bg-white/10 md:block" aria-hidden="true" />
+        <Container className="relative z-10 grid min-h-[calc(100dvh-6rem)] grid-cols-1 items-end gap-12 pb-12 md:grid-cols-[1.06fr_0.94fr] md:pb-16">
+          <div className="max-w-[760px]">
+            <AnimatedText className="section-label mb-8 whitespace-pre-line" as="p">
+              {c.label}
             </AnimatedText>
-
-            {/* CTAs */}
-            <AnimatedText delay={0.45} as="div">
-              <div className="flex flex-wrap gap-4 mb-10">
+            <h1 className="text-hero mb-8 max-w-[720px] text-primary text-balance">
+              {c.headline}
+            </h1>
+            <AnimatedText className="mb-10 max-w-[560px] text-[17px] leading-relaxed text-muted md:text-[18px]" delay={0.18}>
+              {c.sub}
+            </AnimatedText>
+            <AnimatedText as="div" delay={0.28}>
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
-                  <Link href={`/${locale}/audit`}>{hero.ctaPrimary}</Link>
+                  <Link href="#previews">{c.primary}</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href={`/${locale}/method`}>{hero.ctaSecondary}</Link>
+                  <Link href={`/${locale}/audit`}>{c.secondary}</Link>
                 </Button>
               </div>
             </AnimatedText>
-
-          </div>
-        </Container>
-
-        {/* Floating audit card */}
-        <div
-          className="absolute bottom-12 right-8 hidden xl:block"
-          aria-hidden="true"
-        >
-          <div className="bg-offwhite border border-charcoal/8 p-5 max-w-[220px] shadow-[0_4px_30px_rgba(22,22,22,0.06)]">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="h-1.5 w-1.5 rounded-full bg-bronze" />
-              <span className="font-mono-label text-[10px] tracking-widest text-bronze uppercase">
-                Free audit
-              </span>
-            </div>
-            <p className="font-heading text-[15px] text-primary leading-snug mb-1">
-              Site review in 48h
-            </p>
-            <p className="font-body text-[12px] text-muted">
-              No commitment required
-            </p>
-          </div>
-        </div>
-
-      </section>
-
-      {/* ========== PROBLEM ========== */}
-      <section className="py-24 md:py-32 bg-offwhite" aria-labelledby="problem-heading">
-        <Container>
-          <div className="max-w-3xl mb-16">
-            <AnimatedTitle
-              text={problem.heading}
-              as="h2"
-              id="problem-heading"
-              className="text-section text-primary mb-6"
-            />
-            <AnimatedText
-              className="font-body text-[16px] md:text-[18px] text-muted leading-relaxed"
-              delay={0.15}
-            >
-              {problem.body}
-            </AnimatedText>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-charcoal/8">
-            {problem.cards.map((card, i) => {
-              const icons = [Layout, Zap, Building2, MapPin, TrendingUp, Globe];
-              const Icon = icons[i];
-              return (
-                <MotionCard
-                  key={i}
-                  className="bg-offwhite p-7 md:p-9 group hover:bg-stone transition-colors duration-300"
-                  delay={i * 0.06}
-                >
-                  <Icon
-                    className="h-5 w-5 text-bronze/60 mb-5 group-hover:text-bronze transition-colors duration-300"
-                    aria-hidden="true"
-                  />
-                  <h3 className="font-heading text-[20px] font-medium text-primary mb-3 leading-tight">
-                    {card.title}
-                  </h3>
-                  <p className="font-body text-[13px] text-muted leading-relaxed">
-                    {card.desc}
-                  </p>
-                </MotionCard>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== BEFORE/AFTER ========== */}
-      <section className="py-24 md:py-32 bg-stone" aria-labelledby="beforeafter-heading">
-        <Container>
-          <div className="max-w-xl mb-12">
-            <AnimatedTitle
-              text={beforeAfter.heading}
-              as="h2"
-              id="beforeafter-heading"
-              className="text-section text-primary mb-5"
-            />
-            <AnimatedText
-              className="font-body text-[16px] text-muted leading-relaxed mb-8"
-              delay={0.15}
-            >
-              {beforeAfter.body}
-            </AnimatedText>
-            <AnimatedText delay={0.25} as="div">
-              <Button asChild variant="outline" size="md">
-                <Link href={`/${locale}/audit`}>{beforeAfter.cta}</Link>
-              </Button>
-            </AnimatedText>
-          </div>
-
-          {/* Before/After cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            {/* Before */}
-            <AnimatedText delay={0.1} as="div">
-              <div className="relative">
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-block bg-charcoal/70 text-inverted font-mono-label text-[10px] tracking-widest uppercase px-3 py-1.5 backdrop-blur-sm">
-                    Before
-                  </span>
-                </div>
-                <div className="h-[320px] md:h-[400px] bg-gradient-to-br from-[#C8C4BC] to-[#B0A898] flex items-end p-6 opacity-60 grayscale">
-                  <p className="font-mono-label text-[10px] text-white/70 tracking-widest uppercase">
-                    {beforeAfter.before}
-                  </p>
-                </div>
-              </div>
-            </AnimatedText>
-
-            {/* After */}
-            <AnimatedText delay={0.2} as="div">
-              <div className="relative">
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-block bg-bronze text-inverted font-mono-label text-[10px] tracking-widest uppercase px-3 py-1.5">
-                    After
-                  </span>
-                </div>
-                <div className="h-[320px] md:h-[400px] bg-gradient-to-br from-sand to-[#D4C9B8] flex items-end p-6">
-                  <p className="font-mono-label text-[10px] text-muted/60 tracking-widest uppercase">
-                    {beforeAfter.after}
-                  </p>
-                </div>
-              </div>
-            </AnimatedText>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== SERVICES ========== */}
-      <section className="py-24 md:py-32 bg-offwhite" aria-labelledby="services-heading">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-            <div className="max-w-xl">
-              <AnimatedTitle
-                text={services.heading}
-                as="h2"
-                id="services-heading"
-                className="text-section text-primary"
-              />
-            </div>
-            <AnimatedText delay={0.2} as="div">
-              <Button asChild variant="ghost">
-                <Link href={`/${locale}/services`} className="flex items-center gap-2">
-                  All services <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </Link>
-              </Button>
-            </AnimatedText>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-charcoal/8">
-            {services.items.map((item, i) => (
-              <ServiceCard key={i} {...item} index={i} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== COLD REDESIGN OFFER ========== */}
-      <section className="py-24 md:py-32 bg-charcoal" aria-labelledby="cold-offer-heading">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <AnimatedTitle
-                text="I do not start with a pitch. I start with proof."
-                as="h2"
-                id="cold-offer-heading"
-                className="text-section text-inverted mb-7"
-              />
-            </div>
-            <div>
-              <AnimatedText
-                className="font-body text-[16px] text-inverted/60 leading-relaxed mb-8"
-                delay={0.15}
-              >
-                Most agencies show you a portfolio and a proposal. I show you
-                your website, redesigned. I pick a studio I want to work with,
-                redesign a key page or section without being asked, deploy it to
-                a private Vercel preview, and send you the link. No invoice. No
-                commitment. Just evidence.
-              </AnimatedText>
-              <AnimatedText
-                className="font-body text-[16px] text-inverted/60 leading-relaxed mb-8"
-                delay={0.22}
-              >
-                If the direction feels right, we talk about turning it into
-                your full website. If it does not, no problem. The preview was
-                the conversation.
-              </AnimatedText>
-              <div className="space-y-3 mb-10">
-                {[
-                  "No pitch decks or agency credentials",
-                  "A live redesign preview you can click through",
-                  "The exact direction we would take your full site",
-                  "A clear next step if you want to continue",
-                ].map((point, i) => (
-                  <AnimatedText key={i} delay={0.3 + i * 0.06} as="div">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle
-                        className="h-4 w-4 text-bronze flex-shrink-0 mt-0.5"
-                        aria-hidden="true"
-                      />
-                      <span className="font-body text-[14px] text-inverted/60">
-                        {point}
-                      </span>
-                    </div>
-                  </AnimatedText>
-                ))}
-              </div>
-              <AnimatedText delay={0.5} as="div">
-                <Button asChild variant="secondary" size="lg">
-                  <Link href={`/${locale}/audit`}>Request a free audit</Link>
-                </Button>
-              </AnimatedText>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== FEATURED WORK ========== */}
-      <section className="py-24 md:py-32 bg-stone" aria-labelledby="work-heading">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
-            <div>
-              <AnimatedTitle
-                text={work.heading}
-                as="h2"
-                id="work-heading"
-                className="text-section text-primary"
-              />
-            </div>
-            <AnimatedText delay={0.2} as="div">
-              <Button asChild variant="ghost">
-                <Link href={`/${locale}/work`} className="flex items-center gap-2">
-                  All studies <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                </Link>
-              </Button>
-            </AnimatedText>
-          </div>
-
-          <AnimatedText
-            className="font-mono-label text-[11px] tracking-widest text-muted/50 uppercase mb-14 max-w-lg"
-            delay={0.1}
-          >
-            {work.disclaimer}
-          </AnimatedText>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-            {work.items.map((item, i) => (
-              <WorkCard
-                key={item.slug}
-                {...item}
-                locale={locale}
-                index={i}
-                tall={i === 0 || i === 3}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== METHOD SNAPSHOT ========== */}
-      <section className="py-24 md:py-32 bg-offwhite" aria-labelledby="method-heading">
-        <Container>
-          <div className="max-w-xl mb-16">
-            <AnimatedTitle
-              text={method.heading}
-              as="h2"
-              id="method-heading"
-              className="text-section text-primary mb-5"
-            />
-            <AnimatedText
-              className="font-body text-[16px] text-muted leading-relaxed"
-              delay={0.15}
-            >
-              Every project follows a clear structure so you know exactly where
-              you are and what comes next.
-            </AnimatedText>
-          </div>
-          <ProcessTimeline steps={method.steps} />
-          <div className="mt-12 pt-12 border-t border-charcoal/8 flex flex-wrap gap-4">
-            <Button asChild size="md">
-              <Link href={`/${locale}/method`}>Full method detail</Link>
-            </Button>
-            <Button asChild variant="outline" size="md">
-              <Link href={`/${locale}/audit`}>Start with an audit</Link>
-            </Button>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== PRICING TEASER ========== */}
-      <section className="py-24 md:py-32 bg-stone" aria-labelledby="pricing-heading">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <AnimatedTitle
-                text="One offer. One price."
-                as="h2"
-                id="pricing-heading"
-                className="text-section text-primary mb-6"
-              />
-              <AnimatedText
-                className="font-body text-[16px] text-muted leading-relaxed mb-10 max-w-[400px]"
-                delay={0.1}
-              >
-                No packages. No tiers. A complete digital presence system for your studio — designed, built, and launched.
-              </AnimatedText>
-              <AnimatedText delay={0.2} as="div">
-                <Button asChild variant="ghost">
-                  <Link href={`/${locale}/pricing`} className="flex items-center gap-2">
-                    Full pricing details <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </Link>
-                </Button>
-              </AnimatedText>
-            </div>
-
-            <AnimatedText delay={0.15} as="div">
-              <div className="border border-charcoal/8 bg-offwhite p-8 md:p-10">
-                <h3 className="font-heading text-[20px] font-medium text-primary mb-1">
-                  FORMA COSTA Website System
-                </h3>
-                <div className="font-heading text-[56px] font-light text-primary leading-none tracking-tight mb-1">
-                  €2,900
-                </div>
-                <p className="font-mono-label text-[11px] tracking-widest text-muted/50 uppercase mb-6">
-                  Fixed price · Excluding IVA
-                </p>
-                <div className="h-px bg-charcoal/8 mb-6" />
-                <ul className="space-y-2.5 mb-8">
-                  {["Custom website design", "Responsive layouts", "Portfolio structure", "Technical SEO", "Vercel deployment", "2 revision rounds"].map((item) => (
-                    <li key={item} className="flex items-center gap-3">
-                      <span className="h-px w-4 bg-bronze/50 flex-shrink-0" />
-                      <span className="font-body text-[14px] text-primary">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-center justify-between text-[12px] font-mono-label tracking-wide text-muted">
-                  <span>50% upfront · 50% before launch</span>
-                  <span>2–4 weeks</span>
-                </div>
-              </div>
-            </AnimatedText>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== SEO SECTION ========== */}
-      <section className="py-24 md:py-32 bg-charcoal" aria-labelledby="seo-heading">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <AnimatedTitle
-                text={seo.heading}
-                as="h2"
-                id="seo-heading"
-                className="text-section text-inverted mb-5"
-              />
-              <AnimatedText
-                className="font-body text-[16px] text-inverted/60 leading-relaxed mb-8"
-                delay={0.15}
-              >
-                {seo.sub}
-              </AnimatedText>
-              <AnimatedText delay={0.25} as="div">
-                <Button asChild variant="secondary" size="md">
-                  <Link href={`/${locale}/seo-costa-del-sol`}>
-                    SEO for architecture studios
-                  </Link>
-                </Button>
-              </AnimatedText>
-            </div>
-
-            {/* Cities strip */}
-            <div aria-label="Cities we serve">
-              <div className="grid grid-cols-2 gap-px bg-white/5">
-                {[
-                  "Marbella",
-                  "Estepona",
-                  "Benahavís",
-                  "Sotogrande",
-                  "Málaga",
-                  "Mijas",
-                  "Fuengirola",
-                  "Casares",
-                ].map((city) => (
-                  <div
-                    key={city}
-                    className="bg-charcoal p-5 group hover:bg-[#1E1E1D] transition-colors duration-300"
-                  >
-                    <span className="font-heading text-[18px] text-inverted/70 group-hover:text-inverted transition-colors duration-300">
-                      {city}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========== TRUST SECTION ========== */}
-      <section className="py-24 md:py-32 bg-offwhite" aria-labelledby="trust-heading">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div>
-              <AnimatedTitle
-                text="Deep niche focus. Personal attention. Clear communication."
-                as="h2"
-                id="trust-heading"
-                className="text-section text-primary mb-5"
-              />
-            </div>
-            <div>
-              <AnimatedText
-                className="font-body text-[16px] text-muted leading-relaxed mb-8"
-                delay={0.1}
-              >
-                FORMA COSTA is a solo studio operating as an autónomo on the
-                Costa del Sol. Every project is handled directly, with no
-                account managers or junior designers between you and the work.
-              </AnimatedText>
-
-              <div className="space-y-5">
-                {[
-                  {
-                    title: "Direct communication",
-                    desc: "You speak with the person doing the work. No intermediaries, no ticket systems, no delays.",
-                  },
-                  {
-                    title: "Architecture niche only",
-                    desc: "Every project is for a studio in the built environment. The understanding of the work, the client, and the region is specific.",
-                  },
-                  {
-                    title: "Costa del Sol specialist",
-                    desc: "Local knowledge of the market, the buyer profile, and the competitive landscape gives the work a precision that generalists cannot match.",
-                  },
-                  {
-                    title: "Transparent process",
-                    desc: "Fixed-price packages, clear deliverables, and no surprise invoices at the end of the project.",
-                  },
-                ].map((trust, i) => (
-                  <MotionCard key={i} delay={i * 0.08} className="bronze-line-left">
-                    <h3 className="font-heading text-[18px] font-medium text-primary mb-1.5">
-                      {trust.title}
-                    </h3>
-                    <p className="font-body text-[14px] text-muted leading-relaxed">
-                      {trust.desc}
+          <AnimatedText as="div" delay={0.22}>
+            <div className="relative ml-auto w-full max-w-[560px] md:pb-12">
+              <div className="aspect-[4/5] overflow-hidden bg-[linear-gradient(150deg,#ece5d8_0%,#c9bca8_42%,#54574c_100%)]">
+                <div className="flex h-full flex-col justify-end p-6 md:p-8">
+                  <div className="max-w-[260px] border-l border-white/50 pl-5 text-inverted">
+                    <p className="font-heading text-[30px] leading-none md:text-[42px]">
+                      Editorial previews for architecture studios.
                     </p>
-                  </MotionCard>
-                ))}
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -bottom-8 left-6 hidden w-[62%] bg-offwhite p-5 shadow-[0_24px_70px_rgba(22,22,22,0.12)] md:block">
+                <p className="font-mono-label text-[10px] uppercase tracking-widest text-bronze">
+                  Private Vercel preview
+                </p>
+                <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                  A live redesign direction sent before the studio commits to a full project.
+                </p>
               </div>
             </div>
-          </div>
+          </AnimatedText>
         </Container>
       </section>
 
-      {/* ========== FAQ ========== */}
-      <section className="py-24 md:py-32 bg-stone" aria-labelledby="faq-heading">
+      <section className="bg-offwhite py-20 md:py-32" aria-labelledby="proof-heading">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24">
+            <AnimatedText className="section-label" as="p">
+              Redesign-first outreach
+            </AnimatedText>
             <div>
-              <AnimatedTitle
-                text="Common questions."
-                as="h2"
-                id="faq-heading"
-                className="text-section text-primary mb-5"
-              />
-              <AnimatedText
-                className="font-body text-[15px] text-muted leading-relaxed"
-                delay={0.15}
-              >
-                Anything not covered here can be sent directly to{" "}
-                <a
-                  href="mailto:hello@formacosta.com"
-                  className="text-bronze hover:text-clay underline underline-offset-2 transition-colors duration-200"
-                >
-                  hello@formacosta.com
-                </a>
+              <AnimatedTitle text={c.proof} as="h2" id="proof-heading" className="text-section mb-7 max-w-[850px] text-primary" />
+              <AnimatedText className="max-w-[680px] text-[17px] leading-relaxed text-muted" delay={0.12}>
+                {c.proofBody}
               </AnimatedText>
             </div>
-            <div className="lg:col-span-2">
-              <FAQAccordion items={faqItems} />
+          </div>
+        </Container>
+      </section>
+
+      <section id="previews" className="bg-charcoal py-20 text-inverted md:py-32" aria-labelledby="preview-heading">
+        <Container>
+          <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-section max-w-[820px] text-inverted" />
+            <AnimatedText className="max-w-[540px] text-[16px] leading-relaxed text-inverted/62 lg:ml-auto" delay={0.12}>
+              {c.beforeBody}
+            </AnimatedText>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-7">
+            <AnimatedText as="div" delay={0.08}>
+              <div>
+                <p className="mb-3 font-mono-label text-[10px] uppercase tracking-widest text-inverted/45">
+                  Before
+                </p>
+                <BrowserPreview variant="before" />
+              </div>
+            </AnimatedText>
+            <AnimatedText as="div" delay={0.18}>
+              <div>
+                <p className="mb-3 font-mono-label text-[10px] uppercase tracking-widest text-bronze">
+                  After preview
+                </p>
+                <BrowserPreview variant="after" />
+              </div>
+            </AnimatedText>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-stone py-20 md:py-32" aria-labelledby="process-heading">
+        <Container>
+          <div className="mb-14 grid grid-cols-1 gap-8 md:grid-cols-[0.8fr_1.2fr]">
+            <AnimatedText className="section-label" as="p">
+              Method
+            </AnimatedText>
+            <AnimatedTitle text={c.processTitle} as="h2" id="process-heading" className="text-section max-w-[760px] text-primary" />
+          </div>
+          <div className="grid grid-cols-1 gap-px bg-charcoal/10 md:grid-cols-4">
+            {c.process.map(([number, title, desc], i) => (
+              <MotionCard key={number} delay={i * 0.05} className="bg-stone p-7 md:min-h-[310px] md:p-8">
+                <p className="mb-12 font-mono-label text-[11px] uppercase tracking-widest text-bronze">
+                  {number}
+                </p>
+                <h3 className="mb-4 font-heading text-[26px] leading-tight text-primary">
+                  {title}
+                </h3>
+                <p className="text-[14px] leading-relaxed text-muted">
+                  {desc}
+                </p>
+              </MotionCard>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-offwhite py-20 md:py-32" aria-labelledby="offer-heading">
+        <Container>
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24">
+            <div>
+              <AnimatedText className="section-label mb-8" as="p">
+                Fixed offer
+              </AnimatedText>
+              <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-7 max-w-[700px] text-primary" />
+              <AnimatedText className="mb-10 max-w-[460px] text-[16px] leading-relaxed text-muted" delay={0.1}>
+                {c.offerIntro}
+              </AnimatedText>
+              <div className="mb-10">
+                <p className="font-heading text-[76px] leading-none text-primary md:text-[104px]">
+                  €1,990
+                </p>
+                <p className="mt-2 font-mono-label text-[10px] uppercase tracking-widest text-muted/60">
+                  Excluding IVA · launch support included
+                </p>
+              </div>
+              <Button asChild size="lg">
+                <Link href={`/${locale}/contact`}>
+                  Request a redesign review <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+
+            <AnimatedText as="div" delay={0.14}>
+              <div className="border-y border-charcoal/10 py-8 md:py-10">
+                <div className="grid grid-cols-1 gap-x-12 gap-y-5 sm:grid-cols-2">
+                  {includes.map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <Check className="mt-1 h-3.5 w-3.5 flex-shrink-0 text-bronze" aria-hidden="true" />
+                      <span className="text-[15px] leading-relaxed text-primary">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-10 flex flex-col justify-between gap-6 border-t border-charcoal/10 pt-8 md:flex-row md:items-end">
+                  <div>
+                    <h3 className="font-heading text-[30px] leading-tight text-primary">
+                      {c.careTitle}
+                    </h3>
+                    <p className="mt-2 max-w-[340px] text-[14px] leading-relaxed text-muted">
+                      Hosting management, technical checks, portfolio updates, analytics review and small content edits.
+                    </p>
+                  </div>
+                  <div className="md:text-right">
+                    <p className="font-heading text-[44px] leading-none text-primary">€149</p>
+                    <p className="mt-1 font-mono-label text-[10px] uppercase tracking-widest text-muted/60">
+                      per month
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedText>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-stone py-20 md:py-28" aria-label="Costa del Sol locations">
+        <Container>
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <AnimatedText className="section-label" as="p">
+              Costa del Sol studios
+            </AnimatedText>
+            <div className="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+              {studios.map((studio) => (
+                <span key={studio} className="font-heading text-[28px] leading-none text-primary/75 md:text-[38px]">
+                  {studio}
+                </span>
+              ))}
             </div>
           </div>
         </Container>
       </section>
 
-      {/* ========== FINAL CTA ========== */}
-      <section className="py-28 md:py-36 bg-charcoal" aria-labelledby="final-cta-heading">
+      <section className="bg-charcoal py-24 text-inverted md:py-36" aria-labelledby="final-heading">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <AnimatedTitle
-              text="Your studio's digital presence, done properly."
-              as="h2"
-              id="final-cta-heading"
-              className="text-section text-inverted mb-7 text-balance"
-            />
-            <AnimatedText
-              className="font-body text-[16px] md:text-[18px] text-inverted/55 leading-relaxed mb-12 max-w-xl mx-auto"
-              delay={0.2}
-            >
-              Start with a free audit. Get a clear picture of where your site
-              stands and what it could become. No commitment required.
+          <div className="mx-auto max-w-[920px] text-center">
+            <AnimatedTitle text={c.finalTitle} as="h2" id="final-heading" className="text-section mb-8 text-inverted" />
+            <AnimatedText className="mx-auto mb-12 max-w-[620px] text-[17px] leading-relaxed text-inverted/60" delay={0.12}>
+              {c.finalBody}
             </AnimatedText>
-            <AnimatedText delay={0.3} as="div">
-              <div className="flex flex-wrap justify-center gap-4">
+            <AnimatedText as="div" delay={0.22}>
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild variant="secondary" size="lg">
-                  <Link href={`/${locale}/audit`}>Request a free audit</Link>
+                  <Link href={`/${locale}/audit`}>Request a redesign review</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-white/20 text-inverted hover:border-bronze hover:text-bronze">
-                  <Link href={`/${locale}/contact`}>Get in touch</Link>
+                <Button asChild variant="outline" size="lg" className="border-white/25 text-inverted hover:border-bronze hover:text-bronze">
+                  <a href="mailto:hello@formacosta.com">
+                    Email directly <ExternalLink className="ml-2 h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
                 </Button>
               </div>
             </AnimatedText>

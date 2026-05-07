@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/method",
-    title: "Method — How FORMA COSTA Builds Architecture Studio Websites",
+    title: "Method — Redesign Previews for Architecture Studios",
     description:
-      "Six clear steps from audit to launch. No surprises, no open-ended timelines. A structured process built for architecture and interior design studios.",
+      "A redesign-first method for architecture and interior design studio websites on the Costa del Sol.",
   });
 }
 
@@ -30,39 +30,30 @@ export default async function MethodPage({ params }: Props) {
 
   const method = {
     label: t("method.label"),
-    heading: t("method.heading"),
-    steps: Array.from({ length: 6 }, (_, i) => ({
+    heading: "The preview comes first.",
+    steps: Array.from({ length: 4 }, (_, i) => ({
       number: t(`method.steps.${i}.number`),
       title: t(`method.steps.${i}.title`),
       desc: t(`method.steps.${i}.desc`),
     })),
   };
 
-  // Expanded step descriptions for the method page
   const expandedSteps = [
     {
       ...method.steps[0],
-      detail: "We review your current website against a detailed checklist: visual credibility, mobile experience, navigation clarity, project presentation quality, contact flow, page speed, and local search visibility. You receive a written summary of what we find before any design work begins.",
+      detail: "I review the current website and redesign a focused part of it: usually the homepage, hero area, or a project page. The goal is to make the first impression visible before a proposal exists.",
     },
     {
       ...method.steps[1],
-      detail: "Based on the audit, we define the pages needed, the visual direction, the content priorities, the SEO targets, and the conversion path. This is where we agree on scope, timeline, and deliverables before committing to design.",
+      detail: "You receive a private Vercel preview and review the direction in the browser. This replaces abstract pitch decks with something concrete: typography, image hierarchy, spacing, motion, and mobile behavior.",
     },
     {
       ...method.steps[2],
-      detail: "We design in components: the typographic system, the color palette, the image layout approach, the navigation, the footer, the project page structure. Each component is reviewed before we move forward. Revision rounds are included.",
+      detail: "If the preview feels aligned with your studio, I turn the direction into a complete website system: responsive layouts, portfolio structure, multilingual-ready setup, technical SEO, and deployment preparation.",
     },
     {
       ...method.steps[3],
-      detail: "We build in Next.js with Tailwind CSS. The codebase is clean, fast, and maintainable. We include technical SEO from the start: proper heading structure, metadata, hreflang for multilingual, structured data, and image optimization.",
-    },
-    {
-      ...method.steps[4],
-      detail: "We connect your domain, configure your DNS, run Lighthouse performance checks, test across devices, review all metadata, submit the sitemap to Google Search Console, and prepare any outreach or launch materials you need.",
-    },
-    {
-      ...method.steps[5],
-      detail: "Optional but recommended. Monthly care plans cover hosting management, content edits, portfolio uploads, SEO improvements, and technical monitoring. You stay focused on architecture while the website stays sharp.",
+      detail: "The site is deployed, tested across devices, connected to the domain, and polished for launch. Optional Website Care keeps the system maintained after it goes live.",
     },
   ];
 
@@ -71,7 +62,7 @@ export default async function MethodPage({ params }: Props) {
       <PageHero
         label={method.label}
         heading={method.heading}
-        subtext="A clear structure that removes uncertainty from the process. You know exactly what happens at each stage, what is expected from you, and what you will have at the end."
+        subtext="A quieter process for studios that want to see the design direction before committing to the full website."
       />
 
       {/* Timeline */}
@@ -87,7 +78,7 @@ export default async function MethodPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <AnimatedTitle
-                text="Structure creates better design."
+                text="Proof creates a better conversation."
                 as="h2"
                 id="why-approach-heading"
                 className="text-section text-primary"
@@ -98,35 +89,32 @@ export default async function MethodPage({ params }: Props) {
                 className="font-body text-[16px] text-muted leading-relaxed"
                 delay={0.1}
               >
-                Most website projects fail because of unclear scope, poor
-                communication, or a design process that starts too early. When
-                the brief is vague, the design drifts. When there is no audit,
-                problems get ignored. When there is no structure, timelines
-                stretch.
+                Architecture studios are visual businesses. A long proposal can
+                explain intention, but a live preview shows taste, hierarchy,
+                pace, and restraint immediately.
               </AnimatedText>
               <AnimatedText
                 className="font-body text-[16px] text-muted leading-relaxed"
                 delay={0.18}
               >
-                This six-step method exists to prevent all of that. The audit
-                creates clarity. The direction phase aligns expectations. The
-                design phase has clear revision points. The build phase delivers
-                something testable. The launch phase is methodical. And the
-                maintain phase keeps the investment working long-term.
+                The redesign-first method is intentionally direct. It gives the
+                studio owner a real page to judge before the project becomes a
+                commitment.
               </AnimatedText>
               <AnimatedText
                 className="font-body text-[16px] text-muted leading-relaxed"
                 delay={0.26}
               >
-                Architecture studios appreciate structure. A good brief produces
-                better architecture. The same principle applies to digital work.
+                From there, the full build becomes clearer: fewer assumptions,
+                sharper decisions, and a website that feels closer to the
+                studio&apos;s actual work.
               </AnimatedText>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-6 pt-4">
                 {[
-                  { figure: "48h", label: "Audit turnaround" },
-                  { figure: "3–5w", label: "Typical build time" },
+                  { figure: "01", label: "Preview first" },
+                  { figure: "2–4w", label: "Typical build" },
                   { figure: "3", label: "Locales supported" },
                 ].map((stat) => (
                   <div key={stat.figure} className="text-center">
@@ -150,7 +138,7 @@ export default async function MethodPage({ params }: Props) {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
               <AnimatedTitle
-                text="Start with a free audit."
+                text="Start with a redesign review."
                 as="h2"
                 className="text-display text-inverted mb-2"
               />
@@ -158,12 +146,12 @@ export default async function MethodPage({ params }: Props) {
                 className="font-body text-[14px] text-inverted/50"
                 delay={0.1}
               >
-                Step one of six. No commitment. Results in 48 hours.
+                Send the current website and I will review the first impression.
               </AnimatedText>
             </div>
             <AnimatedText delay={0.2} as="div">
               <Button asChild variant="secondary" size="lg">
-                <Link href={`/${locale}/audit`}>Request your audit</Link>
+                <Link href={`/${locale}/audit`}>Request your review</Link>
               </Button>
             </AnimatedText>
           </div>

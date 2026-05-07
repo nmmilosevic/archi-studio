@@ -28,6 +28,18 @@ export function PageHero({
     >
       <div className="container-site">
         <div className="max-w-4xl">
+          {label && (
+            <AnimatedText
+              className={clsx(
+                "section-label mb-6",
+                isDark ? "text-bronze" : "text-bronze"
+              )}
+              as="p"
+            >
+              {label}
+            </AnimatedText>
+          )}
+
           <AnimatedTitle
             text={heading}
             as="h1"

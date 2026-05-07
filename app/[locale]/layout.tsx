@@ -32,12 +32,13 @@ const dmMono = DM_Mono({
 const LOCALES = ["en", "es", "fr"];
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://formacosta.com"),
   title: {
-    default: "FORMA COSTA — Premium Digital Studio for Architecture Studios",
+    default: "FORMA COSTA — Architecture Website Redesigns Costa del Sol",
     template: "%s | FORMA COSTA",
   },
   description:
-    "FORMA COSTA creates refined websites, portfolio systems, and local SEO for architecture and interior design studios on the Costa del Sol.",
+    "Architecture website redesigns for architecture and interior design studios on the Costa del Sol.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -64,6 +65,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${cormorant.variable} ${inter.variable} ${dmMono.variable}`}
+      data-scroll-behavior="smooth"
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

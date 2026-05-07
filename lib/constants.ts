@@ -1,6 +1,6 @@
 export const BRAND = {
   name: "FORMA COSTA",
-  tagline: "Digital presence for architecture and interior studios on the Costa del Sol.",
+  tagline: "Architecture website redesigns for studios on the Costa del Sol.",
   email: "hello@formacosta.com",
   whatsapp: "+34 600 000 000",
   whatsappLink: "https://wa.me/34600000000",
@@ -20,12 +20,10 @@ export const CITIES = [
 ];
 
 export const NAV_LINKS = [
-  { key: "services", href: "/services" },
-  { key: "pricing", href: "/pricing" },
   { key: "method", href: "/method" },
   { key: "work", href: "/work" },
+  { key: "pricing", href: "/pricing" },
   { key: "audit", href: "/audit" },
-  { key: "seo", href: "/seo-costa-del-sol" },
   { key: "contact", href: "/contact" },
 ] as const;
 

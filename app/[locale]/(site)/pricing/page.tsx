@@ -18,27 +18,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/pricing",
-    title: "Pricing — FORMA COSTA Website System for Architecture Studios",
+    title: "Pricing — Architecture Website Redesigns Costa del Sol",
     description:
-      "One clear offer. A complete digital presence system for architecture and interior design studios on the Costa del Sol. €2,900.",
+      "One clear offer for architecture and interior design studio website redesigns on the Costa del Sol. Full redesign and launch for €1,990.",
   });
 }
 
 const includes = [
-  "Custom website design",
-  "Responsive layouts — mobile, tablet, desktop",
-  "Homepage",
-  "Service pages",
+  "Refined website redesign",
+  "Responsive layouts",
   "Project portfolio structure",
-  "About page",
-  "Contact page",
-  "Multilingual-ready structure",
+  "Mobile optimization",
+  "Multilingual-ready setup",
   "Technical SEO foundation",
-  "Animation system",
   "Vercel deployment",
-  "Analytics setup",
   "Launch support",
-  "2 revision rounds",
 ];
 
 const notIncluded = [
@@ -47,7 +41,7 @@ const notIncluded = [
   "Copywriting from scratch",
   "Photography",
   "Ecommerce or advanced backend systems",
-  "Unlimited revisions",
+  "Ongoing content publishing",
 ];
 
 const careIncludes = [
@@ -62,7 +56,7 @@ const careIncludes = [
 const faq = [
   {
     q: "Is the price fixed or an estimate?",
-    a: "€2,900 is the fixed price for the FORMA COSTA Website System. If your project requires additional pages, a second language, or specific integrations, we will discuss those before work starts and agree on any additions in writing.",
+    a: "€1,990 is the fixed price for the Full Website Redesign & Launch offer. If your project requires unusual integrations, extensive copywriting, or a larger content system, we agree on that before work starts.",
   },
   {
     q: "How do payments work?",
@@ -88,8 +82,8 @@ export default async function PricingPage({ params }: Props) {
   return (
     <>
       <PageHero
-        heading="One offer. One price. No guesswork."
-        subtext="A complete digital presence system built specifically for architecture and interior design studios on the Costa del Sol."
+        heading="One fixed redesign offer."
+        subtext="A complete website redesign and launch for architecture and interior design studios on the Costa del Sol."
       />
 
       {/* Main offer */}
@@ -104,16 +98,16 @@ export default async function PricingPage({ params }: Props) {
                   id="offer-heading"
                   className="font-heading text-[clamp(28px,4vw,48px)] font-light text-primary leading-tight mb-6"
                 >
-                  FORMA COSTA<br />Website System
+                  Full Website<br />Redesign & Launch
                 </h2>
 
                 <p className="font-body text-[16px] md:text-[17px] text-muted leading-relaxed mb-10 max-w-[420px]">
-                  A complete digital presence designed and built for your studio — from the first impression to the enquiry form. Clean, editorial, and built to last.
+                  A refined digital presence designed around first impression, project storytelling, portfolio clarity, and calm enquiry flow.
                 </p>
 
                 <div className="mb-10">
                   <div className="font-heading text-[clamp(48px,6vw,80px)] font-light text-primary leading-none tracking-tight">
-                    €2,900
+                    €1,990
                   </div>
                   <p className="font-mono-label text-[11px] tracking-widest text-muted/60 uppercase mt-2">
                     Fixed price · Excluding IVA
@@ -131,12 +125,12 @@ export default async function PricingPage({ params }: Props) {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="w-px h-4 bg-bronze/40 flex-shrink-0" />
-                    2 revision rounds included
+                    Redesign preview workflow
                   </div>
                 </div>
 
                 <Button asChild size="lg">
-                  <Link href={`/${locale}/contact`}>Start your project</Link>
+                  <Link href={`/${locale}/contact`}>Request a redesign review</Link>
                 </Button>
               </div>
             </AnimatedText>
@@ -200,7 +194,7 @@ export default async function PricingPage({ params }: Props) {
                 className="font-body text-[16px] text-muted leading-relaxed max-w-[400px]"
                 delay={0.1}
               >
-                Website Care keeps your site fast, updated, and maintained — without you having to think about it. Add it at launch or any time after.
+                Website Care keeps the site fast, updated, and maintained after launch. Add it at launch or any time after.
               </AnimatedText>
             </div>
 
@@ -274,13 +268,13 @@ export default async function PricingPage({ params }: Props) {
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <AnimatedTitle
-              text="Ready to start?"
+              text="Start with the current site."
               as="h2"
               className="font-heading text-[clamp(32px,5vw,64px)] font-light text-inverted"
             />
             <AnimatedText delay={0.1} as="div">
               <Button asChild variant="secondary" size="lg">
-                <Link href={`/${locale}/contact`}>Request a quote</Link>
+                <Link href={`/${locale}/contact`}>Request a redesign review</Link>
               </Button>
             </AnimatedText>
           </div>
