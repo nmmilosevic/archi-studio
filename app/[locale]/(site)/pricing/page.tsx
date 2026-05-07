@@ -138,7 +138,7 @@ export default async function PricingPage({ params }: Props) {
             {/* Right — what's in / what's not */}
             <AnimatedText delay={0.15} as="div">
               <div className="border border-charcoal/10 bg-stone p-8 md:p-10">
-                <h3 className="font-mono-label text-[11px] tracking-widest text-bronze uppercase mb-6">
+                <h3 className="font-mono-label text-[11px] tracking-widest text-muted/60 uppercase mb-6">
                   Included
                 </h3>
                 <ul className="space-y-3 mb-10">

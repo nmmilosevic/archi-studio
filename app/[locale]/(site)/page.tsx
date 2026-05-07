@@ -167,11 +167,8 @@ export default async function HomePage({ params }: Props) {
         <div className="absolute inset-y-0 right-0 hidden w-[46vw] bg-[#d5cdbf] md:block" aria-hidden="true" />
         <div className="absolute right-[8vw] top-24 hidden h-[58vh] w-[30vw] border border-white/35 bg-white/10 md:block" aria-hidden="true" />
         <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-8 pb-8 md:grid-cols-12 md:pb-10 xl:pb-12">
-          <div className="md:col-span-8 xl:col-span-8">
-            <AnimatedText className="section-label mb-5 whitespace-pre-line md:mb-6" as="p">
-              {c.label}
-            </AnimatedText>
-            <h1 className="text-hero mb-5 max-w-[1080px] text-primary text-balance md:mb-6">
+          <div className="md:col-span-8 xl:col-span-7">
+            <h1 className="text-hero mb-5 max-w-[900px] text-primary text-balance md:mb-6">
               {c.headline}
             </h1>
             <AnimatedText className="mb-7 max-w-[590px] text-[16px] leading-[1.65] text-muted md:mb-8 md:text-[18px]" delay={0.18}>
@@ -201,31 +198,12 @@ export default async function HomePage({ params }: Props) {
                 </div>
               </div>
               <div className="absolute bottom-5 left-6 w-[62%] border border-charcoal/10 bg-offwhite p-4">
-                <p className="font-mono-label text-[10px] uppercase tracking-widest text-bronze">
-                  Private Vercel preview
-                </p>
-                <p className="mt-3 text-[13px] leading-relaxed text-muted">
+                <p className="text-[13px] leading-relaxed text-muted">
                   A live redesign direction sent before the studio commits to a full project.
                 </p>
               </div>
             </div>
           </AnimatedText>
-        </Container>
-      </section>
-
-      <section className="bg-offwhite py-24 md:py-36" aria-labelledby="proof-heading">
-        <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24">
-            <AnimatedText className="section-label" as="p">
-              Redesign-first outreach
-            </AnimatedText>
-            <div>
-              <AnimatedTitle text={c.proof} as="h2" id="proof-heading" className="text-section mb-7 max-w-[850px] text-primary" />
-              <AnimatedText className="max-w-[700px] text-[18px] leading-[1.65] text-muted" delay={0.12}>
-                {c.proofBody}
-              </AnimatedText>
-            </div>
-          </div>
         </Container>
       </section>
 
@@ -241,17 +219,11 @@ export default async function HomePage({ params }: Props) {
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:gap-7">
             <AnimatedText as="div" delay={0.08}>
               <div>
-                <p className="mb-3 font-mono-label text-[10px] uppercase tracking-widest text-inverted/45">
-                  Before
-                </p>
                 <BrowserPreview variant="before" />
               </div>
             </AnimatedText>
             <AnimatedText as="div" delay={0.18}>
               <div>
-                <p className="mb-3 font-mono-label text-[10px] uppercase tracking-widest text-bronze">
-                  After preview
-                </p>
                 <BrowserPreview variant="after" />
               </div>
             </AnimatedText>
@@ -263,9 +235,6 @@ export default async function HomePage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24">
             <div>
-              <AnimatedText className="section-label mb-8" as="p">
-                Fixed offer
-              </AnimatedText>
               <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-7 max-w-[700px] text-primary" />
               <AnimatedText className="mb-10 max-w-[460px] text-[16px] leading-relaxed text-muted" delay={0.1}>
                 {c.offerIntro}
@@ -319,17 +288,12 @@ export default async function HomePage({ params }: Props) {
 
       <section className="bg-stone py-20 md:py-28" aria-label="Costa del Sol locations">
         <Container>
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <AnimatedText className="section-label" as="p">
-              Costa del Sol studios
-            </AnimatedText>
-            <div className="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
+          <div className="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
               {studios.map((studio) => (
                 <span key={studio} className="font-heading text-[28px] font-medium leading-none text-primary/75 md:text-[38px]">
                   {studio}
                 </span>
               ))}
-            </div>
           </div>
         </Container>
       </section>
