@@ -14,26 +14,25 @@ export function SiteFooter() {
       aria-label="Site footer"
       role="contentinfo"
     >
-      {/* Main footer */}
-      <div className="container-site py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+      <div className="container-site py-18 md:py-24">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Col 1: Brand */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-4">
             <Link
               href={`/${locale}`}
-              className="font-heading text-[20px] font-medium text-inverted mb-4 block hover:text-clay transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+              className="font-heading text-[22px] font-semibold text-inverted mb-5 block hover:text-clay transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
               aria-label="FORMA COSTA — Home"
             >
               FORMA COSTA
             </Link>
-            <p className="font-body text-[13px] text-inverted/50 leading-relaxed mb-6 max-w-[220px]">
+            <p className="font-body text-[15px] text-inverted/55 leading-[1.65] mb-8 max-w-[300px]">
               {t("tagline")}
             </p>
             {/* Contact */}
             <div className="space-y-3">
               <a
                 href={`mailto:${BRAND.email}`}
-                className="flex items-center gap-2.5 font-body text-[13px] text-inverted/50 hover:text-inverted transition-colors duration-200 group"
+                className="flex items-center gap-2.5 font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200 group"
                 aria-label={`Email us at ${BRAND.email}`}
               >
                 <Mail className="h-3.5 w-3.5 text-bronze group-hover:text-clay transition-colors" aria-hidden="true" />
@@ -43,7 +42,7 @@ export function SiteFooter() {
                 href={BRAND.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 font-body text-[13px] text-inverted/50 hover:text-inverted transition-colors duration-200 group"
+                className="flex items-center gap-2.5 font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200 group"
                 aria-label={`WhatsApp us at ${BRAND.whatsapp}`}
               >
                 <MessageCircle className="h-3.5 w-3.5 text-bronze group-hover:text-clay transition-colors" aria-hidden="true" />
@@ -53,8 +52,8 @@ export function SiteFooter() {
           </div>
 
           {/* Col 2: Sitemap */}
-          <div>
-            <h3 className="font-mono-label text-[10px] tracking-widest uppercase text-inverted/30 mb-5">
+          <div className="lg:col-span-2 lg:col-start-7">
+            <h3 className="font-mono-label text-[11px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               {tNav("sitemap")}
             </h3>
             <nav aria-label="Footer navigation">
@@ -70,7 +69,7 @@ export function SiteFooter() {
                   <li key={link.key}>
                     <Link
                       href={`/${locale}${link.href}`}
-                      className="font-body text-[13px] text-inverted/50 hover:text-inverted transition-colors duration-200"
+                      className="font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200"
                     >
                       {tNav(link.key as keyof ReturnType<typeof useTranslations<"footer.nav">>)}
                     </Link>
@@ -81,8 +80,8 @@ export function SiteFooter() {
           </div>
 
           {/* Col 3: Services */}
-          <div>
-            <h3 className="font-mono-label text-[10px] tracking-widest uppercase text-inverted/30 mb-5">
+          <div className="lg:col-span-3">
+            <h3 className="font-mono-label text-[11px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               Services
             </h3>
             <ul className="space-y-3">
@@ -97,7 +96,7 @@ export function SiteFooter() {
                 <li key={service}>
                   <Link
                     href={`/${locale}/services`}
-                    className="font-body text-[13px] text-inverted/50 hover:text-inverted transition-colors duration-200"
+                    className="font-body text-[13px] text-inverted/55 hover:text-inverted transition-colors duration-200"
                   >
                     {service}
                   </Link>
@@ -107,11 +106,11 @@ export function SiteFooter() {
           </div>
 
           {/* Col 4: Locations */}
-          <div>
-            <h3 className="font-mono-label text-[10px] tracking-widest uppercase text-inverted/30 mb-5">
+          <div className="lg:col-span-3">
+            <h3 className="font-mono-label text-[11px] tracking-[0.12em] uppercase text-inverted/35 mb-5">
               Costa del Sol
             </h3>
-            <p className="font-body text-[13px] text-inverted/40 leading-relaxed">
+            <p className="font-body text-[13px] text-inverted/45 leading-[1.65]">
               {t("locations")}
             </p>
           </div>

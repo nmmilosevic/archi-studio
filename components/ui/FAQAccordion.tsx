@@ -59,7 +59,7 @@ export function FAQAccordion({ items, className, light }: FAQAccordionProps) {
               "overflow-hidden text-[14px] leading-relaxed",
               light ? "text-inverted/60" : "text-muted"
             )}
-            style={{ fontFamily: "var(--font-inter)" }}
+            style={{ fontFamily: "var(--font-geist-sans)" }}
           >
             <div className="pb-5 pr-8">{item.a}</div>
           </Accordion.Content>

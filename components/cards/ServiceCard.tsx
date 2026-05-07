@@ -23,24 +23,24 @@ export function ServiceCard({
   const reduced = useReducedMotion();
 
   const content = (
-    <div className="group p-7 md:p-9 border border-charcoal/8 bg-offwhite hover:border-bronze/30 transition-all duration-500">
+    <div className="group border border-charcoal/10 bg-offwhite p-7 transition-all duration-500 hover:-translate-y-0.5 hover:border-bronze/40 md:p-9">
       {/* Number */}
       <span className="font-mono-label text-[11px] tracking-widest text-bronze mb-6 block">
         {number}
       </span>
 
       {/* Title */}
-      <h3 className="font-heading text-[22px] md:text-[26px] font-medium text-primary mb-4 leading-tight group-hover:text-bronze transition-colors duration-300">
+      <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-primary mb-4 leading-[1.02] group-hover:text-bronze transition-colors duration-300">
         {title}
       </h3>
 
       {/* Description */}
-      <p className="font-body text-[14px] text-muted leading-relaxed mb-6">
+      <p className="font-body text-[15px] text-muted leading-[1.65] mb-6">
         {desc}
       </p>
 
       {/* Divider */}
-      <div className="h-px bg-charcoal/8 mb-6" />
+      <div className="h-px bg-charcoal/10 mb-6" />
 
       {/* Deliverables */}
       <ul className="space-y-2">

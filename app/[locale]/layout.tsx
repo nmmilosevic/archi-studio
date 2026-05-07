@@ -1,33 +1,27 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, DM_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "@/app/globals.css";
 
-const fraunces = Fraunces({
+const geistSans = Geist({
   subsets: ["latin"],
   weight: "variable",
-  variable: "--font-fraunces",
+  variable: "--font-geist-sans",
   display: "swap",
-  fallback: ["Georgia", "Times New Roman", "serif"],
+  fallback: ["Arial", "Helvetica", "sans-serif"],
   adjustFontFallback: true,
   preload: true,
 });
 
-const inter = Inter({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-inter",
+  weight: "variable",
+  variable: "--font-geist-mono",
   display: "swap",
-  preload: true,
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
-  display: "swap",
+  fallback: ["SFMono-Regular", "Consolas", "monospace"],
+  adjustFontFallback: true,
   preload: false,
 });
 
@@ -66,7 +60,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${fraunces.variable} ${inter.variable} ${dmMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
       data-scroll-behavior="smooth"
     >
       <head>

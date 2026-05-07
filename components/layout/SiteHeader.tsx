@@ -43,7 +43,7 @@ export function SiteHeader() {
         className={clsx(
           "fixed top-0 left-0 right-0 z-30 transition-all duration-500",
           scrolled
-            ? "bg-stone/90 backdrop-blur-md border-b border-charcoal/8 py-3"
+            ? "bg-stone/92 backdrop-blur-md border-b border-charcoal/10 py-3"
             : "bg-transparent py-5"
         )}
         role="banner"
@@ -53,7 +53,7 @@ export function SiteHeader() {
             {/* Logo */}
             <Link
               href={`/${locale}`}
-              className="font-heading text-[18px] md:text-[20px] font-medium text-primary tracking-wide flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
+              className="font-heading text-[17px] md:text-[19px] font-semibold text-primary tracking-normal flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label="FORMA COSTA — Home"
             >
               FORMA COSTA

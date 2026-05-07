@@ -51,7 +51,7 @@ export function WorkCard({
           className={`relative overflow-hidden ${tall ? "h-[480px] md:h-[560px]" : "h-[320px] md:h-[400px]"} group-hover:opacity-95 transition-all duration-500`}
         >
           {/* Placeholder image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-sand via-[#DDD0BF] to-[#C5B49E] group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
+          <div className="absolute inset-0 bg-[#cfc7ba] group-hover:scale-[1.03] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]">
             <div className="absolute inset-0 flex items-end p-5">
               <span
                 className="font-mono-label text-[10px] text-muted/50 tracking-widest uppercase"
@@ -76,7 +76,7 @@ export function WorkCard({
         </div>
 
         <div className="flex items-start justify-between gap-4">
-          <h3 className="font-heading text-[22px] md:text-[26px] font-medium text-primary leading-tight group-hover:text-bronze transition-colors duration-300">
+          <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-primary leading-[1.02] group-hover:text-bronze transition-colors duration-300">
             {title}
           </h3>
           <ArrowUpRight

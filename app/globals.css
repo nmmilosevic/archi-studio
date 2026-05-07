@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --font-heading: var(--font-fraunces);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-dm-mono);
+  --font-heading: var(--font-geist-sans);
+  --font-body: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 
-  --color-stone: #F4F0E8;
-  --color-sand: #E7DED0;
-  --color-offwhite: #FAF8F3;
-  --color-charcoal: #161616;
-  --color-graphite: #0F0F0E;
-  --color-primary: #161616;
-  --color-muted: #6E675E;
-  --color-inverted: #F4F0E8;
-  --color-bronze: #9A6B3F;
-  --color-clay: #B7845D;
-  --color-olive: #777568;
+  --color-stone: #F5F1E8;
+  --color-sand: #C6A98B;
+  --color-offwhite: #FBF8F1;
+  --color-charcoal: #111111;
+  --color-graphite: #121212;
+  --color-primary: #111111;
+  --color-muted: #6F6B63;
+  --color-inverted: #F5F1E8;
+  --color-bronze: #8C6A4A;
+  --color-clay: #C6A98B;
+  --color-olive: #A8A29A;
 
   --radius: 2px;
 }
@@ -33,16 +33,17 @@
   body {
     background-color: var(--color-stone);
     color: var(--color-primary);
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-fraunces), serif;
-    line-height: 1.1;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    line-height: 0.95;
     letter-spacing: 0;
+    font-weight: 500;
   }
 
   ::selection {
@@ -76,64 +77,64 @@
   }
 
   .font-heading {
-    font-family: var(--font-fraunces), serif;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
   }
 
   .font-mono-label {
-    font-family: var(--font-dm-mono), monospace;
+    font-family: var(--font-geist-mono), monospace;
   }
 
   .text-hero {
-    font-size: 3.35rem;
-    line-height: 0.98;
+    font-size: clamp(54px, 15vw, 72px);
+    line-height: 0.9;
     letter-spacing: 0;
-    font-family: var(--font-fraunces), serif;
-    font-weight: 300;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-weight: 520;
   }
 
   .text-section {
-    font-size: 3rem;
-    line-height: 1.05;
+    font-size: clamp(44px, 11vw, 64px);
+    line-height: 0.94;
     letter-spacing: 0;
-    font-family: var(--font-fraunces), serif;
-    font-weight: 300;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-weight: 520;
   }
 
   .text-display {
-    font-size: 2.25rem;
-    line-height: 1.15;
+    font-size: clamp(32px, 7vw, 52px);
+    line-height: 0.98;
     letter-spacing: 0;
-    font-family: var(--font-fraunces), serif;
-    font-weight: 300;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-weight: 520;
   }
 
   @media (min-width: 768px) {
     .text-hero {
-      font-size: 5.35rem;
+      font-size: clamp(64px, 9vw, 140px);
     }
 
     .text-section {
-      font-size: 4.75rem;
+      font-size: clamp(44px, 6vw, 96px);
     }
 
     .text-display {
-      font-size: 3.25rem;
+      font-size: clamp(40px, 4.5vw, 72px);
     }
   }
 
   @media (min-width: 1280px) {
     .text-hero {
-      font-size: 6.35rem;
+      font-size: clamp(72px, 8.25vw, 132px);
     }
 
     .text-section {
-      font-size: 5rem;
+      font-size: clamp(56px, 5.8vw, 92px);
     }
   }
 
   .section-label {
-    font-family: var(--font-dm-mono), monospace;
-    font-size: 11px;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -141,9 +142,9 @@
   }
 
   .nav-link {
-    font-family: var(--font-inter), sans-serif;
+    font-family: var(--font-geist-sans), sans-serif;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 450;
     letter-spacing: 0.01em;
     color: var(--color-muted);
     transition: color 200ms ease;
@@ -162,7 +163,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: var(--color-bronze);
+    background: var(--color-primary);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -174,11 +175,11 @@
   }
 
   .card-hover {
-    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 500ms ease;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), opacity 500ms ease;
   }
 
   .card-hover:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 
   .link-underline {
@@ -220,7 +221,7 @@
   .divider-line {
     width: 100%;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-sand), transparent);
+    background: rgb(17 17 17 / 0.1);
   }
 
   .bronze-line-left {
@@ -231,12 +232,12 @@
   .preview-before,
   .preview-after {
     overflow: hidden;
-    border: 1px solid rgb(244 240 232 / 0.14);
-    background: rgb(244 240 232 / 0.04);
+    border: 1px solid rgb(245 241 232 / 0.12);
+    background: rgb(245 241 232 / 0.04);
   }
 
   .preview-before {
-    color: rgb(244 240 232 / 0.82);
+    color: rgb(245 241 232 / 0.82);
     filter: grayscale(1);
     opacity: 0.62;
   }
@@ -244,7 +245,7 @@
   .preview-after {
     color: var(--color-charcoal);
     background: var(--color-offwhite);
-    box-shadow: 0 30px 90px rgb(0 0 0 / 0.24);
+    box-shadow: none;
   }
 }
 

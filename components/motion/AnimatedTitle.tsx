@@ -26,7 +26,7 @@ export function AnimatedTitle({
     hidden: {},
     show: {
       transition: {
-        staggerChildren: 0.07,
+        staggerChildren: 0.09,
         delayChildren: delay,
       },
     },
@@ -35,12 +35,12 @@ export function AnimatedTitle({
   const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
   const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 28 },
     show: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.85,
         ease: EASE,
       },
     },

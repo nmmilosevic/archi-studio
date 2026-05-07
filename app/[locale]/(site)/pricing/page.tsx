@@ -96,17 +96,17 @@ export default async function PricingPage({ params }: Props) {
               <div>
                 <h2
                   id="offer-heading"
-                  className="font-heading text-[clamp(28px,4vw,48px)] font-light text-primary leading-tight mb-6"
+                  className="font-heading text-[clamp(36px,5vw,72px)] font-medium text-primary leading-[0.94] mb-6"
                 >
                   Full Website<br />Redesign & Launch
                 </h2>
 
-                <p className="font-body text-[16px] md:text-[17px] text-muted leading-relaxed mb-10 max-w-[420px]">
+                <p className="font-body text-[16px] md:text-[18px] text-muted leading-[1.65] mb-10 max-w-[460px]">
                   A refined digital presence designed around first impression, project storytelling, portfolio clarity, and calm enquiry flow.
                 </p>
 
                 <div className="mb-10">
-                  <div className="font-heading text-[clamp(48px,6vw,80px)] font-light text-primary leading-none tracking-tight">
+                  <div className="font-heading text-[clamp(64px,8vw,112px)] font-medium text-primary leading-none tracking-normal">
                     €1,990
                   </div>
                   <p className="font-mono-label text-[11px] tracking-widest text-muted/60 uppercase mt-2">
@@ -137,7 +137,7 @@ export default async function PricingPage({ params }: Props) {
 
             {/* Right — what's in / what's not */}
             <AnimatedText delay={0.15} as="div">
-              <div className="border border-charcoal/8 bg-stone p-8 md:p-10">
+              <div className="border border-charcoal/10 bg-stone p-8 md:p-10">
                 <h3 className="font-mono-label text-[11px] tracking-widest text-bronze uppercase mb-6">
                   Included
                 </h3>
@@ -188,10 +188,10 @@ export default async function PricingPage({ params }: Props) {
                 text="Keep it running, always."
                 as="h2"
                 id="care-heading"
-                className="font-heading text-[clamp(28px,4vw,48px)] font-light text-primary mb-5"
+                className="font-heading text-[clamp(44px,6vw,88px)] font-medium text-primary mb-5"
               />
               <AnimatedText
-                className="font-body text-[16px] text-muted leading-relaxed max-w-[400px]"
+                className="font-body text-[17px] text-muted leading-[1.65] max-w-[430px]"
                 delay={0.1}
               >
                 Website Care keeps the site fast, updated, and maintained after launch. Add it at launch or any time after.
@@ -199,10 +199,10 @@ export default async function PricingPage({ params }: Props) {
             </div>
 
             <AnimatedText delay={0.15} as="div">
-              <div className="border border-charcoal/8 bg-offwhite p-8 md:p-10">
+              <div className="border border-charcoal/10 bg-offwhite p-8 md:p-10">
                 <div className="flex items-end justify-between mb-6">
                   <div>
-                    <h3 className="font-heading text-[22px] font-medium text-primary mb-1">
+                    <h3 className="font-heading text-[22px] font-semibold text-primary mb-1">
                       Website Care
                     </h3>
                     <p className="font-body text-[13px] text-muted">
@@ -210,7 +210,7 @@ export default async function PricingPage({ params }: Props) {
                     </p>
                   </div>
                   <div className="text-right">
-                    <div className="font-heading text-[36px] font-light text-primary leading-none">
+                    <div className="font-heading text-[40px] font-medium text-primary leading-none">
                       €149
                     </div>
                     <p className="font-mono-label text-[10px] tracking-widest text-muted/50 uppercase mt-1">
@@ -253,7 +253,7 @@ export default async function PricingPage({ params }: Props) {
                 text="Common questions."
                 as="h2"
                 id="pricing-faq-heading"
-                className="font-heading text-[clamp(24px,3vw,36px)] font-light text-primary"
+                className="font-heading text-[clamp(36px,5vw,72px)] font-medium text-primary"
               />
             </div>
             <div className="lg:col-span-2">
@@ -270,7 +270,7 @@ export default async function PricingPage({ params }: Props) {
             <AnimatedTitle
               text="Start with the current site."
               as="h2"
-              className="font-heading text-[clamp(32px,5vw,64px)] font-light text-inverted"
+              className="font-heading text-[clamp(44px,6vw,88px)] font-medium text-inverted"
             />
             <AnimatedText delay={0.1} as="div">
               <Button asChild variant="secondary" size="lg">

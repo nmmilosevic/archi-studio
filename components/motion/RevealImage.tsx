@@ -43,7 +43,7 @@ export function RevealImage({
       >
         {reduced ? (
           <div className={clsx(
-            "w-full h-full bg-gradient-to-br from-sand to-[#D4C9B8] flex items-end p-4",
+            "w-full h-full bg-[#cfc7ba] flex items-end p-4",
             fill ? "absolute inset-0" : "min-h-[200px]"
           )}>
             <span
@@ -67,7 +67,7 @@ export function RevealImage({
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, ease: EASE }}
               className={clsx(
-                "w-full bg-gradient-to-br from-sand via-[#DDD0BF] to-[#C9BAA6] flex items-end p-4",
+                "w-full bg-[#cfc7ba] flex items-end p-4",
                 fill ? "absolute inset-0 h-full" : "h-full min-h-[200px]"
               )}
             >

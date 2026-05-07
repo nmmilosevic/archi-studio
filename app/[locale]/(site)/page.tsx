@@ -114,7 +114,7 @@ function BrowserPreview({ variant }: { variant: "before" | "after" }) {
           <div className="flex flex-col justify-between p-5 md:p-8">
             <div>
               <div className="mb-8 h-px w-16 bg-current/30" />
-              <div className="font-heading text-[34px] leading-[0.95] text-current md:text-[54px]">
+              <div className="font-heading text-[32px] font-medium leading-[0.92] text-current md:text-[52px]">
                 Villa
                 <br />
                 Portfolio
@@ -127,8 +127,8 @@ function BrowserPreview({ variant }: { variant: "before" | "after" }) {
             </div>
           </div>
           <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,#ded4c4_0%,#9f9b8d_45%,#242722_100%)]" />
-            <div className="absolute bottom-6 left-6 right-10 h-24 border border-white/35 bg-white/10 backdrop-blur-[1px]" />
+            <div className="absolute inset-0 bg-[#cfc7ba]" />
+            <div className="absolute bottom-6 left-6 right-10 h-24 border border-white/35 bg-white/10" />
           </div>
         </div>
       ) : (
@@ -163,18 +163,18 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
       />
 
-      <section className="relative h-[95dvh] overflow-hidden bg-stone pt-20 md:pt-24">
-        <div className="absolute inset-y-0 right-0 hidden w-[54vw] bg-[linear-gradient(135deg,#d9cdbb_0%,#b5a995_35%,#292b25_100%)] md:block" aria-hidden="true" />
-        <div className="absolute right-[8vw] top-24 hidden h-[60vh] w-[31vw] border border-white/30 bg-white/10 md:block" aria-hidden="true" />
-        <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-8 pb-8 md:grid-cols-[1.06fr_0.94fr] md:pb-10 xl:pb-12">
-          <div className="max-w-[700px]">
+      <section className="relative h-dvh overflow-hidden bg-stone pt-20 md:pt-24">
+        <div className="absolute inset-y-0 right-0 hidden w-[46vw] bg-[#d5cdbf] md:block" aria-hidden="true" />
+        <div className="absolute right-[8vw] top-24 hidden h-[58vh] w-[30vw] border border-white/35 bg-white/10 md:block" aria-hidden="true" />
+        <Container className="relative z-10 grid h-full grid-cols-1 items-end gap-8 pb-8 md:grid-cols-12 md:pb-10 xl:pb-12">
+          <div className="md:col-span-8 xl:col-span-8">
             <AnimatedText className="section-label mb-5 whitespace-pre-line md:mb-6" as="p">
               {c.label}
             </AnimatedText>
-            <h1 className="text-hero mb-5 max-w-[680px] text-primary text-balance md:mb-6">
+            <h1 className="text-hero mb-5 max-w-[1080px] text-primary text-balance md:mb-6">
               {c.headline}
             </h1>
-            <AnimatedText className="mb-7 max-w-[530px] text-[15px] leading-relaxed text-muted md:mb-8 md:text-[17px]" delay={0.18}>
+            <AnimatedText className="mb-7 max-w-[590px] text-[16px] leading-[1.65] text-muted md:mb-8 md:text-[18px]" delay={0.18}>
               {c.sub}
             </AnimatedText>
             <AnimatedText as="div" delay={0.28}>
@@ -189,18 +189,18 @@ export default async function HomePage({ params }: Props) {
             </AnimatedText>
           </div>
 
-          <AnimatedText as="div" delay={0.22} className="hidden md:block">
+          <AnimatedText as="div" delay={0.22} className="hidden md:col-span-4 md:block">
             <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
-              <div className="h-[min(58dvh,520px)] overflow-hidden bg-[linear-gradient(150deg,#ece5d8_0%,#c9bca8_42%,#54574c_100%)]">
+              <div className="h-[min(58dvh,520px)] overflow-hidden bg-[#bcb5a8]">
                 <div className="flex h-full flex-col justify-end p-7">
                   <div className="max-w-[230px] border-l border-white/50 pl-5 text-inverted">
-                    <p className="font-heading text-[32px] leading-none xl:text-[38px]">
+                    <p className="font-heading text-[28px] font-medium leading-[0.95] xl:text-[34px]">
                       Editorial previews for architecture studios.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="absolute bottom-5 left-6 w-[62%] bg-offwhite p-4 shadow-[0_24px_70px_rgba(22,22,22,0.12)]">
+              <div className="absolute bottom-5 left-6 w-[62%] border border-charcoal/10 bg-offwhite p-4">
                 <p className="font-mono-label text-[10px] uppercase tracking-widest text-bronze">
                   Private Vercel preview
                 </p>
@@ -213,7 +213,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-20 md:py-32" aria-labelledby="proof-heading">
+      <section className="bg-offwhite py-24 md:py-36" aria-labelledby="proof-heading">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24">
             <AnimatedText className="section-label" as="p">
@@ -221,7 +221,7 @@ export default async function HomePage({ params }: Props) {
             </AnimatedText>
             <div>
               <AnimatedTitle text={c.proof} as="h2" id="proof-heading" className="text-section mb-7 max-w-[850px] text-primary" />
-              <AnimatedText className="max-w-[680px] text-[17px] leading-relaxed text-muted" delay={0.12}>
+              <AnimatedText className="max-w-[700px] text-[18px] leading-[1.65] text-muted" delay={0.12}>
                 {c.proofBody}
               </AnimatedText>
             </div>
@@ -229,11 +229,11 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section id="previews" className="bg-charcoal py-20 text-inverted md:py-32" aria-labelledby="preview-heading">
+      <section id="previews" className="bg-charcoal py-24 text-inverted md:py-36" aria-labelledby="preview-heading">
         <Container>
           <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-section max-w-[820px] text-inverted" />
-            <AnimatedText className="max-w-[540px] text-[16px] leading-relaxed text-inverted/62 lg:ml-auto" delay={0.12}>
+            <AnimatedText className="max-w-[560px] text-[17px] leading-[1.65] text-inverted/62 lg:ml-auto" delay={0.12}>
               {c.beforeBody}
             </AnimatedText>
           </div>
@@ -259,7 +259,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-20 md:py-32" aria-labelledby="offer-heading">
+      <section className="bg-offwhite py-24 md:py-36" aria-labelledby="offer-heading">
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24">
             <div>
@@ -271,7 +271,7 @@ export default async function HomePage({ params }: Props) {
                 {c.offerIntro}
               </AnimatedText>
               <div className="mb-10">
-                <p className="font-heading text-[76px] leading-none text-primary md:text-[104px]">
+                <p className="font-heading text-[76px] font-medium leading-none text-primary md:text-[104px]">
                   €1,990
                 </p>
                 <p className="mt-2 font-mono-label text-[10px] uppercase tracking-widest text-muted/60">
@@ -297,7 +297,7 @@ export default async function HomePage({ params }: Props) {
                 </div>
                 <div className="mt-10 flex flex-col justify-between gap-6 border-t border-charcoal/10 pt-8 md:flex-row md:items-end">
                   <div>
-                    <h3 className="font-heading text-[30px] leading-tight text-primary">
+                    <h3 className="font-heading text-[30px] font-medium leading-tight text-primary">
                       {c.careTitle}
                     </h3>
                     <p className="mt-2 max-w-[340px] text-[14px] leading-relaxed text-muted">
@@ -305,7 +305,7 @@ export default async function HomePage({ params }: Props) {
                     </p>
                   </div>
                   <div className="md:text-right">
-                    <p className="font-heading text-[44px] leading-none text-primary">€149</p>
+                    <p className="font-heading text-[44px] font-medium leading-none text-primary">€149</p>
                     <p className="mt-1 font-mono-label text-[10px] uppercase tracking-widest text-muted/60">
                       per month
                     </p>
@@ -325,7 +325,7 @@ export default async function HomePage({ params }: Props) {
             </AnimatedText>
             <div className="flex flex-wrap gap-x-8 gap-y-4 md:justify-end">
               {studios.map((studio) => (
-                <span key={studio} className="font-heading text-[28px] leading-none text-primary/75 md:text-[38px]">
+                <span key={studio} className="font-heading text-[28px] font-medium leading-none text-primary/75 md:text-[38px]">
                   {studio}
                 </span>
               ))}

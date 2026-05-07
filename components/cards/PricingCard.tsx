@@ -38,8 +38,8 @@ export function PricingCard({
       className={clsx(
         "relative flex flex-col h-full p-7 md:p-9 border transition-all duration-500",
         featured
-          ? "border-bronze bg-offwhite shadow-[0_8px_40px_rgba(154,107,63,0.12)]"
-          : "border-charcoal/8 bg-offwhite hover:border-bronze/30"
+          ? "border-bronze bg-offwhite"
+          : "border-charcoal/10 bg-offwhite hover:border-bronze/40"
       )}
     >
       {featured && (
@@ -52,16 +52,16 @@ export function PricingCard({
 
       {/* Header */}
       <div className="mb-6">
-        <h3 className="font-heading text-[20px] font-medium text-primary mb-1">
+        <h3 className="font-heading text-[22px] font-semibold text-primary mb-1">
           {name}
         </h3>
-        <div className="font-heading text-[36px] font-light text-primary leading-tight mb-3">
+        <div className="font-heading text-[40px] font-medium text-primary leading-tight mb-3">
           {price}
         </div>
-        <p className="font-body text-[13px] text-muted leading-relaxed">{desc}</p>
+        <p className="font-body text-[14px] text-muted leading-[1.65]">{desc}</p>
       </div>
 
-      <div className="h-px bg-charcoal/8 mb-6" />
+      <div className="h-px bg-charcoal/10 mb-6" />
 
       {/* Includes */}
       <ul className="space-y-2.5 flex-1 mb-6">

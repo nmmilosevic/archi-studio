@@ -53,7 +53,7 @@ export default async function WorkDetailPage({ params }: Props) {
 
   const improvements = {
     visual: [
-      "New typographic identity using Fraunces for headings",
+      "New typographic identity using Geist Sans for headings",
       "Warm stone-based color palette aligned with Mediterranean context",
       "Full-bleed imagery with editorial proportions",
       "Asymmetric layout grid with generous whitespace",
@@ -120,7 +120,7 @@ export default async function WorkDetailPage({ params }: Props) {
             Muted beige and soft bronze. Clean minimal composition.
             Replace with: project-specific hero photography.
           */}
-          <div className="h-[420px] md:h-[560px] bg-gradient-to-br from-sand via-[#DDD0BF] to-[#C9BAA6] relative overflow-hidden">
+          <div className="h-[420px] md:h-[560px] bg-[#cfc7ba] relative overflow-hidden">
             <div className="absolute inset-0 flex items-end p-8">
               <span className="font-mono-label text-[10px] text-muted/40 tracking-widest uppercase">
                 {item.location} — editorial photography placeholder
@@ -165,10 +165,10 @@ export default async function WorkDetailPage({ params }: Props) {
             ].map((img) => (
               <div
                 key={img.label}
-                className={`${img.size === "lg" ? "md:col-span-2 h-[360px]" : "h-[280px]"} bg-gradient-to-br from-sand to-[#D4C9B8] relative overflow-hidden group`}
+                className={`${img.size === "lg" ? "md:col-span-2 h-[360px]" : "h-[280px]"} bg-[#cfc7ba] relative overflow-hidden group`}
                 /*
                   Art direction: Clean editorial website screenshots with warm stone palette,
-                  Fraunces headings, generous whitespace, architecture photography.
+                  Geist Sans headings, generous whitespace, architecture photography.
                   Replace with: actual design screenshots.
                 */
               >

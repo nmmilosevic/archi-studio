@@ -26,8 +26,8 @@ export function MotionCard({ children, className, delay = 0 }: MotionCardProps) 
       viewport={{ once: true, margin: "-60px" }}
       transition={{ delay }}
       whileHover={{
-        y: -4,
-        transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+        y: -2,
+        transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
       }}
       className={clsx("cursor-default", className)}
     >

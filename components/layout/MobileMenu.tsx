@@ -42,7 +42,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-charcoal/50 backdrop-blur-sm"
+            className="fixed inset-0 z-40 bg-charcoal/45 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -60,7 +60,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-8 py-6 border-b border-white/8">
-              <span className="font-heading text-[18px] text-inverted font-medium">
+              <span className="font-heading text-[17px] text-inverted font-semibold">
                 FORMA COSTA
               </span>
               <button
@@ -86,7 +86,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <Link
                       href={`/${locale}${link.href}`}
                       onClick={onClose}
-                      className="block py-3.5 font-heading text-[32px] font-light text-inverted/70 hover:text-inverted transition-colors duration-200 leading-none"
+                      className="block py-3.5 font-heading text-[30px] font-medium text-inverted/70 hover:text-inverted transition-colors duration-200 leading-[0.95]"
                     >
                       {t(link.key as keyof ReturnType<typeof useTranslations<"nav">>)}
                     </Link>
