@@ -1,0 +1,83 @@
+import type { Metadata } from "next";
+import { Cormorant_Garamond, Inter, DM_Mono } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import "@/app/globals.css";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-cormorant",
+  display: "swap",
+  preload: true,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-dm-mono",
+  display: "swap",
+  preload: false,
+});
+
+const LOCALES = ["en", "es", "fr"];
+
+export const metadata: Metadata = {
+  title: {
+    default: "FORMA COSTA — Premium Digital Studio for Architecture Studios",
+    template: "%s | FORMA COSTA",
+  },
+  description:
+    "FORMA COSTA creates refined websites, portfolio systems, and local SEO for architecture and interior design studios on the Costa del Sol.",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: LocaleLayoutProps) {
+  const { locale } = await params;
+
+  if (!LOCALES.includes(locale)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+
+  return (
+    <html
+      lang={locale}
+      className={`${cormorant.variable} ${inter.variable} ${dmMono.variable}`}
+    >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
