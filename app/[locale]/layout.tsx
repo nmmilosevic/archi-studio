@@ -8,9 +8,10 @@ import "@/app/globals.css";
 const fraunces = Fraunces({
   subsets: ["latin"],
   weight: "variable",
-  axes: ["SOFT", "WONK", "opsz"],
   variable: "--font-fraunces",
   display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  adjustFontFallback: true,
   preload: true,
 });
 
