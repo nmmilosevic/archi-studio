@@ -16,9 +16,9 @@ const PAGES = [
 
 const WORK_SLUGS = [
   "/work/villa-architecture-studio",
-  "/work/interior-design-marbella",
-  "/work/renovation-studio-estepona",
-  "/work/project-page-system",
+  "/work/casa-noma-marbella",
+  "/work/forma-sur-malaga",
+  "/work/terral-studio-estepona",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

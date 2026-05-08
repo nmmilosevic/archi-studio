@@ -169,11 +169,147 @@ const en = {
     label: "Website redesign studies",
     heading: "Architecture work, reframed for the screen.",
     disclaimer: "Website redesign studies showing how architecture and interior design studios can present their work with more clarity, confidence, and visual authority.",
+    caseStudy: {
+      challenge: "The challenge.",
+      approach: "The approach.",
+      outcome: "The outcome.",
+      diagnosis: "Design diagnosis.",
+      diagnosisSub: "What shifted in the experience — and why it matters.",
+      keyScreens: "Selected views.",
+      result: "Outcomes.",
+    },
     items: [
-      { slug: "villa-architecture-studio", title: "Architecture Website - Benahavís", category: "Architecture studio redesign", location: "Benahavís, Costa del Sol", challenge: "The old website made the studio's work difficult to understand, especially on mobile.", what: "Clearer homepage structure, better project presentation, and easier navigation for new clients." },
-      { slug: "interior-design-marbella", title: "Interior Studio Website - Marbella", category: "Interior design website", location: "Marbella, Costa del Sol", challenge: "The website looked good but did not clearly explain the studio's quality or process.", what: "Stronger project hierarchy, clearer service pages, and a contact flow that is easier to use." },
-      { slug: "renovation-studio-estepona", title: "Renovation Website - Estepona", category: "Architecture studio redesign", location: "Estepona, Costa del Sol", challenge: "The studio depended on referrals and had a weak website for international clients.", what: "Simpler page structure, better mobile readability, and clearer information for clients comparing studios." },
-      { slug: "project-page-system", title: "Portfolio System - Sotogrande", category: "Project presentation system", location: "Sotogrande, Costa del Sol", challenge: "Many projects were online, but visitors could not easily explore them or understand each one.", what: "A project presentation system with clear structure, easier browsing, and stronger portfolio clarity." },
+      {
+        slug: "villa-architecture-studio",
+        title: "Architecture Website - Benahavís",
+        location: "Benahavís, Costa del Sol",
+        cardSummary: "Website redesign, portfolio structure, mobile presentation, and contact flow.",
+        summary: "Website redesign, portfolio structure, mobile presentation, and contact flow.",
+        challenge:
+          "The old website made the studio's work difficult to understand, especially on mobile. Projects lacked hierarchy, images felt disconnected, and the contact flow was not clear enough.",
+        what: "Website redesign, portfolio structure, mobile presentation, and contact flow.",
+        improvement:
+          "We simplified the structure, rebuilt the project presentation, created a stronger editorial layout, and made the mobile experience easier to browse.",
+        before: "The old website made the studio's portfolio difficult to explore and did not reflect the quality of their villas.",
+        after: "We created a refined editorial website with clearer navigation, stronger imagery, and a more premium presentation.",
+        heroDesktop: "/images/project01/P1-thumbnail.png",
+        editorialQuote: "The website needed to feel as considered as the architecture itself.",
+        diagnosisPoints: [
+          { label: "Project hierarchy", detail: "A clearer path from overview to each villa, so work reads as a curated portfolio." },
+          { label: "Mobile browsing", detail: "Touch-friendly rhythm, legible type, and imagery that holds up on small screens." },
+          { label: "Visual identity", detail: "Typography and spacing aligned with a calm, premium studio presence." },
+          { label: "Contact path", detail: "A simpler route from interest to enquiry — fewer distractions, clearer intent." },
+        ],
+        screens: [
+          { label: "Project page", image: "/images/project01/p1-project-detail.png" },
+          { label: "Mobile experience", image: "/images/project01/p1-mobile-view.png" },
+        ],
+        results: [
+          "Clearer portfolio browsing from first scroll to project depth",
+          "Stronger premium positioning next to peer studios",
+          "Better mobile readability where most first visits happen",
+          "An easier inquiry flow once someone is ready to talk",
+        ],
+      },
+      {
+        slug: "casa-noma-marbella",
+        title: "Interior Website - Marbella",
+        location: "Marbella, Costa del Sol",
+        cardSummary:
+          "Website redesign, service clarity, interior portfolio, mobile experience, and CMS setup.",
+        summary:
+          "Website redesign, service clarity, interior portfolio, mobile experience, and CMS setup.",
+        challenge:
+          "The studio had beautiful interior projects, but the website felt too generic. It did not communicate warmth, trust, or the quality of the spaces.",
+        what: "Website redesign, service clarity, interior portfolio, mobile experience, and CMS setup.",
+        improvement:
+          "We created a softer editorial website focused on atmosphere, project storytelling, and simple service discovery.",
+        before:
+          "The old website looked standard and failed to express the studio's calm interior design identity.",
+        after: "We created a warm, elegant website that feels closer to a high-end interior magazine.",
+        heroDesktop: "/images/project02/p2-thumbnail-hero.png",
+        editorialQuote: "Interior work is emotional; the site had to carry that calm confidence.",
+        diagnosisPoints: [
+          { label: "Project hierarchy", detail: "Projects read as stories, not a flat grid — easier to sense craft and scale." },
+          { label: "Mobile browsing", detail: "Softer pacing and imagery-led sections that still perform on a phone." },
+          { label: "Visual identity", detail: "A warmer palette and editorial rhythm closer to a design magazine." },
+          { label: "Contact path", detail: "Services and enquiry feel intentional, not buried below noise." },
+        ],
+        screens: [
+          { label: "Interior project page", image: "/images/project02/P2-project_details.png" },
+          { label: "Mobile experience", image: "/images/project02/P2-mobile.png" },
+        ],
+        results: [
+          "Clearer portfolio browsing with a more emotional first impression",
+          "Stronger premium positioning for high-trust residential clients",
+          "Better mobile readability for on-the-go discovery",
+          "An easier inquiry flow once someone connects with a project",
+        ],
+      },
+      {
+        slug: "forma-sur-malaga",
+        title: "Architecture Website - Málaga",
+        location: "Málaga, Costa del Sol",
+        cardSummary: "Bold website redesign, project archive, visual identity, mobile structure, and CMS.",
+        summary: "Bold website redesign, project archive, visual identity, mobile structure, and CMS.",
+        challenge:
+          "The studio's work had strong architectural character, but the website felt flat and forgettable. The digital identity did not match the boldness of their projects.",
+        what: "Bold website redesign, project archive, visual identity, mobile structure, and CMS.",
+        improvement:
+          "We built a sharper editorial system with stronger typography, better contrast, and a clearer project archive.",
+        before: "The old website felt too neutral and did not make the studio memorable.",
+        after: "We created a stronger visual presence with clearer project browsing and a more confident identity.",
+        heroDesktop: "/images/avant.png",
+        editorialQuote: "Bold projects deserved a digital presence with the same edge.",
+        diagnosisPoints: [
+          { label: "Project hierarchy", detail: "Archive and case studies read with intent — scale, contrast, and order." },
+          { label: "Mobile browsing", detail: "Strong type and spacing that stay legible when the layout compresses." },
+          { label: "Visual identity", detail: "A sharper, more memorable graphic voice aligned with the work." },
+          { label: "Contact path", detail: "Enquiry stays visible without breaking the editorial pace." },
+        ],
+        screens: [
+          { label: "Project archive", image: "/images/redesign-preview.png" },
+          { label: "Mobile experience", image: "/images/heromock.png" },
+        ],
+        results: [
+          "Clearer portfolio browsing through a bolder typographic system",
+          "Stronger premium positioning for memorable first impressions",
+          "Better mobile readability under real browsing conditions",
+          "An easier inquiry flow without diluting the studio voice",
+        ],
+      },
+      {
+        slug: "terral-studio-estepona",
+        title: "Landscape Website - Estepona",
+        location: "Estepona, Costa del Sol",
+        cardSummary: "Website redesign, outdoor portfolio, service presentation, mobile experience, and CMS.",
+        summary: "Website redesign, outdoor portfolio, service presentation, mobile experience, and CMS.",
+        challenge:
+          "The studio's outdoor projects were visual and emotional, but the website felt static. It did not show the lifestyle value of terraces, gardens, and outdoor spaces.",
+        what: "Website redesign, outdoor portfolio, service presentation, mobile experience, and CMS.",
+        improvement:
+          "We created a more immersive website with larger imagery, clear services, and a smoother mobile presentation.",
+        before: "The old website showed projects without atmosphere or strong storytelling.",
+        after: "We created a cinematic portfolio experience focused on outdoor living and Mediterranean lifestyle.",
+        heroDesktop: "/images/apres.png",
+        editorialQuote: "Outdoor living needed atmosphere — not another static gallery.",
+        diagnosisPoints: [
+          { label: "Project hierarchy", detail: "Outdoor work reads as lifestyle chapters, not isolated photos." },
+          { label: "Mobile browsing", detail: "Large imagery and calm pacing that still load and scroll cleanly." },
+          { label: "Visual identity", detail: "A cinematic tone that matches terraces, gardens, and Mediterranean light." },
+          { label: "Contact path", detail: "Services and enquiry feel natural after the narrative builds trust." },
+        ],
+        screens: [
+          { label: "Outdoor project page", image: "/images/redesign-preview.png" },
+          { label: "Mobile experience", image: "/images/heromock.png" },
+        ],
+        results: [
+          "Clearer portfolio browsing with a stronger sense of place",
+          "Stronger premium positioning for lifestyle-led outdoor work",
+          "Better mobile readability for on-site inspiration and sharing",
+          "An easier inquiry flow once the story lands",
+        ],
+      },
     ],
   },
   audit: {

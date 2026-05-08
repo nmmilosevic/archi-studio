@@ -32,8 +32,8 @@ export default async function WorkPage({ params }: Props) {
     items: workContent.items.map((item) => ({
       slug: item.slug,
       title: item.title,
-      category: item.category,
-      result: item.what.split(",")[0] + ".",
+      result: item.cardSummary,
+      previewSrc: item.heroDesktop,
     })),
   };
 

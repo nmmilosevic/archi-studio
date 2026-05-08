@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
     : {}),
   images: {
     remotePatterns: [],
+    /** Larger steps so `sizes` × DPR doesn’t cap at 384px (common retina blur). */
+    imageSizes: [32, 48, 64, 96, 128, 256, 384, 512, 640, 768, 960],
+    qualities: [75, 85, 92],
+    formats: ["image/avif", "image/webp"],
     ...(isGitHubPages ? { unoptimized: true } : {}),
   },
 };

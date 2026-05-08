@@ -16,7 +16,6 @@ interface FormData {
   email: string;
   studio: string;
   website: string;
-  review: boolean;
   message: string;
 }
 
@@ -27,24 +26,15 @@ export function ContactForm() {
     email: "",
     studio: "",
     website: "",
-    review: false,
     message: "",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement
-    >
-  ) {
-    const target = e.target;
-    if (target instanceof HTMLInputElement && target.type === "checkbox") {
-      setForm((prev) => ({ ...prev, [target.name]: target.checked }));
-      return;
-    }
-    setForm((prev) => ({ ...prev, [target.name]: target.value }));
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -153,27 +143,6 @@ export function ContactForm() {
           />
         </div>
       </div>
-
-      <label htmlFor="contact-review" className="flex items-start gap-3 border border-charcoal/16 bg-stone/52 p-4 text-[15px] leading-relaxed text-muted md:p-5">
-        <input
-          id="contact-review"
-          name="review"
-          type="checkbox"
-          checked={form.review}
-          onChange={handleChange}
-          className="peer sr-only"
-        />
-        <span
-          className={clsx(
-            "mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[3px] border border-charcoal/38 bg-offwhite transition-all duration-200",
-            "peer-checked:border-bronze peer-checked:bg-bronze/12"
-          )}
-          aria-hidden="true"
-        >
-          <span className="h-2.5 w-2.5 scale-0 bg-bronze transition-transform duration-200 peer-checked:scale-100" />
-        </span>
-        I would like a review of my current website.
-      </label>
 
       <div>
         <label htmlFor="contact-message" className={labelClass}>

@@ -33,10 +33,14 @@ const copy = {
       "Stronger first impression",
     ],
     beforeBody: "Many architecture studio websites look good but are difficult to understand, slow on mobile, or unclear for new clients.",
-    reviewTitle: "Small website issues can make strong work feel average.",
-    reviewBody: "We look at your positioning, project presentation, mobile experience, navigation, and contact flow, then show you what should change first.",
-    offerTitle: "Simple pricing for architecture studio websites.",
-    offerIntro: "One clear price for strategy, design, and development.",
+    reviewTitle: "Small friction reduces trust.",
+    reviewBody:
+      "Not ready to commit? Send your current site—we’ll show where you lose clarity and trust. Straightforward notes, no hard sell.",
+    offerTitle: "One clear investment for your studio.",
+    offerPriceDetail:
+      "Strategy, custom design, and development. One figure. One timeline. Everything you need to launch a site that reflects the quality of your work.",
+    pricingOneTime: "One-time payment",
+    auditCta: "Request a website review",
   },
   es: {
     headline: "Webs que reflejan la calidad del trabajo.",
@@ -53,13 +57,17 @@ const copy = {
       "Las webs difíciles de actualizar frenan al estudio",
     ],
     beforeBody: "Tus proyectos son detallados, cuidados y de alto nivel. Tu web debería sentirse igual.",
-    reviewTitle: "¿No sabes qué le falta a tu web?",
-    reviewBody: "Envíanos tu web actual y revisaremos dónde pierde claridad, confianza o clientes potenciales.",
+    reviewTitle: "La fricción reduce la confianza.",
+    reviewBody:
+      "¿Aún no quieres empezar? Envíanos tu web y te diremos dónde pierdes claridad y confianza. Notas útiles, sin presión.",
     redesignTitle: "Diseño y desarrollo en un único sistema web claro.",
     redesignBody: "Un sistema claro con las páginas, estructura y presentación que tu estudio necesita.",
     redesignCta: "Empezar mi web",
-    offerTitle: "Precios simples. Propiedad clara.",
-    offerIntro: "Un precio claro para la web, con hosting y actualizaciones opcionales.",
+    offerTitle: "Una inversión clara para tu estudio.",
+    offerPriceDetail:
+      "Estrategia, diseño a medida y desarrollo. Una cifra. Un calendario. Lo esencial para publicar una web a la altura de tu trabajo.",
+    pricingOneTime: "Pago único",
+    auditCta: "Solicitar una revisión",
   },
   fr: {
     headline: "Des sites qui reflètent la qualité du travail.",
@@ -76,13 +84,17 @@ const copy = {
       "Les sites difficiles à mettre à jour ralentissent le studio",
     ],
     beforeBody: "Vos projets sont détaillés, soignés et haut de gamme. Votre site devrait donner la même impression.",
-    reviewTitle: "Vous ne savez pas ce qui manque à votre site?",
-    reviewBody: "Envoyez votre site actuel et nous verrons où il perd en clarté, confiance ou clients potentiels.",
+    reviewTitle: "Les frictions réduisent la confiance.",
+    reviewBody:
+      "Pas prêt à vous lancer ? Envoyez votre site : nous montrerons où vous perdez en clarté et en confiance. Des notes utiles, sans vente agressive.",
     redesignTitle: "Conception et développement dans un système de site clair.",
     redesignBody: "Un système clair avec les pages, la structure et la présentation dont votre studio a besoin.",
     redesignCta: "Commencer le site",
-    offerTitle: "Prix simples. Propriété claire.",
-    offerIntro: "Un prix clair pour le site, avec hébergement et mises à jour optionnels.",
+    offerTitle: "Un investissement clair pour votre studio.",
+    offerPriceDetail:
+      "Stratégie, design sur mesure et développement. Un montant. Un calendrier. L’essentiel pour un site à la hauteur de votre travail.",
+    pricingOneTime: "Paiement unique",
+    auditCta: "Demander une relecture du site",
   },
 } as const;
 
@@ -219,74 +231,66 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <HomeDiagnosisSection
-        locale={locale}
-        title={c.reviewTitle}
-        body={c.reviewBody}
-        cta="Request a website audit"
-      />
-
-      <section id="pricing" className="bg-charcoal py-[clamp(86px,11vw,168px)] text-inverted" aria-labelledby="offer-heading">
+      <section
+        id="pricing"
+        className="border-t border-charcoal/10 bg-stone py-[clamp(86px,11vw,168px)] text-primary"
+        aria-labelledby="offer-heading"
+      >
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
-            <div className="order-2 lg:order-1 lg:pr-2">
-              <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-6 max-w-[620px] text-inverted" />
-              <AnimatedText className="text-support mb-8 max-w-[560px] text-inverted/66" delay={0.1}>
-                {c.offerIntro}
-              </AnimatedText>
-              <p className="font-heading text-[clamp(62px,9vw,122px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
+            <div className="lg:pr-2">
+              <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-6 max-w-[620px] text-primary" />
+              <p className="font-heading text-[clamp(62px,9vw,122px)] font-medium leading-[0.9] tracking-[-0.03em] text-primary">
                 €1,500
               </p>
-              <p className="mt-2 font-body text-[18px] leading-relaxed text-inverted/74">
-                One-time payment
-              </p>
-              <Button asChild size="lg" variant="secondary" className="mt-7 w-full sm:w-auto">
+              <p className="mt-2 font-body text-[18px] leading-relaxed text-muted">{c.pricingOneTime}</p>
+              <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-primary/78">{c.offerPriceDetail}</p>
+              <Button asChild size="lg" className="mt-7 w-full sm:w-auto">
                 <Link href={`/${locale}/contact`}>
-                  Start your website <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  {c.primary} <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
               <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-3 pt-1 sm:grid-cols-2">
                 {pricingIncludes.map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-clay" aria-hidden="true" />
-                    <span className="text-[16px] leading-relaxed text-inverted/84">{item}</span>
+                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-bronze" aria-hidden="true" />
+                    <span className="text-[16px] leading-relaxed text-primary/85">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="relative order-1 hidden lg:order-2 lg:block">
-              <div className="relative aspect-[1/1] w-full overflow-hidden rounded-[14px]">
+            <div className="relative lg:pl-2">
+              <div className="relative aspect-[1/1] w-full">
                 <Image
-                  src={assetPath("/images/pricing-img.png")}
-                  alt="Website preview shown in pricing section"
+                  src={assetPath("/images/mood.png")}
+                  alt="Visual mood for the website offering"
                   fill
                   className="object-contain object-center"
                   sizes="(min-width: 1280px) 520px, (min-width: 1024px) 44vw, 100vw"
                 />
               </div>
-              <div className="pointer-events-none absolute inset-0 rounded-[14px] shadow-[0_34px_80px_rgb(0_0_0/0.42)]" />
             </div>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-3.5 md:grid-cols-2">
             <AnimatedText as="div" delay={0.16}>
-              <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">Hosting package</p>
-                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  €30<span className="ml-1 text-[15px] text-inverted/62">/month</span>
+              <div className="rounded-[12px] border border-charcoal/10 bg-white/55 p-5">
+                <p className="text-[17px] font-medium text-primary">Hosting package</p>
+                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">
+                  €30<span className="ml-1 text-[15px] text-muted">/month</span>
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">
                   Hosting, updates, backups, and small fixes.
                 </p>
               </div>
             </AnimatedText>
             <AnimatedText as="div" delay={0.2}>
-              <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">Content updates</p>
-                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  €120<span className="ml-1 text-[15px] text-inverted/62">/month</span>
+              <div className="rounded-[12px] border border-charcoal/10 bg-white/55 p-5">
+                <p className="text-[17px] font-medium text-primary">Content updates</p>
+                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">
+                  €120<span className="ml-1 text-[15px] text-muted">/month</span>
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">
                   Extra pages and project uploads.
                 </p>
               </div>
@@ -294,6 +298,14 @@ export default async function HomePage({ params }: Props) {
           </div>
         </Container>
       </section>
+
+      <HomeDiagnosisSection
+        locale={locale}
+        title={c.reviewTitle}
+        body={c.reviewBody}
+        cta={c.auditCta}
+        variant="charcoal"
+      />
 
     </>
   );

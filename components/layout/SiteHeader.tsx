@@ -113,17 +113,14 @@ export function SiteHeader() {
               <LanguageSwitcher light={useLightHeaderText} />
             </div>
 
-            {/* Right side */}
-            <div className="hidden lg:flex min-h-11 items-center gap-5">
+            {/* Right side — flush to container right edge (same as page content) */}
+            <div className="hidden lg:flex min-h-11 flex-shrink-0 items-center justify-end py-0.5">
               <div
                 className={clsx(
-                  "h-11 w-[240px] overflow-hidden transition-[opacity,transform] duration-[500ms] ease-linear",
+                  "flex min-h-11 items-center justify-end transition-opacity duration-[500ms] ease-linear",
                   ctaProgress < 0.06 && "pointer-events-none"
                 )}
-                style={{
-                  opacity: ctaProgress,
-                  transform: `translateX(${Math.round((1 - ctaProgress) * 12)}px)`,
-                }}
+                style={{ opacity: ctaProgress }}
               >
                 <Button
                   asChild

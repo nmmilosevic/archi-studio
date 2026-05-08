@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { clsx } from "clsx";
 import { fadeUp } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ArrowUpRight } from "lucide-react";
@@ -8,12 +9,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { assetPath } from "@/lib/paths";
 
+type PreviewConfig = {
+  src: string;
+  position?: string;
+  /** Full frame visible inside the card (uses aspect ratio instead of fixed crop height). */
+  fit?: "cover" | "contain";
+  aspectClass?: string;
+};
+
 interface WorkCardProps {
   slug: string;
   title: string;
-  category: string;
   location?: string;
   result?: string;
+  /** Same asset as case-study hero (`heroDesktop` from work content). */
+  previewSrc: string;
   locale: string;
   index?: number;
   tall?: boolean;
@@ -22,32 +32,30 @@ interface WorkCardProps {
 export function WorkCard({
   slug,
   title,
-  category,
   result = "Clearer presentation, stronger mobile experience, and a calmer path to enquiry.",
+  previewSrc,
   locale,
   index = 0,
   tall = false,
 }: WorkCardProps) {
   const reduced = useReducedMotion();
 
-  const previews: Record<string, { src: string; position?: string }> = {
+  /** Layout only; image URL always matches case-study hero via `previewSrc`. */
+  const layoutBySlug: Record<string, Omit<PreviewConfig, "src">> = {
     "villa-architecture-studio": {
-      src: assetPath("/images/redesign-preview.png"),
+      fit: "contain",
+      aspectClass: "aspect-[3/2]",
     },
-    "interior-design-marbella": {
-      src: assetPath("/images/after.png"),
-      position: "top",
-    },
-    "renovation-studio-estepona": {
-      src: assetPath("/images/before.png"),
-      position: "top",
-    },
-    "project-page-system": {
-      src: assetPath("/images/heromock.png"),
-      position: "top",
-    },
+    "casa-noma-marbella": { position: "top" },
+    "forma-sur-malaga": { position: "top" },
+    "terral-studio-estepona": { position: "top" },
   };
-  const preview = previews[slug] ?? previews["villa-architecture-studio"];
+  const preview: PreviewConfig = {
+    src: assetPath(previewSrc),
+    position: "top",
+    ...layoutBySlug[slug],
+  };
+  const useContain = preview.fit === "contain";
   const imageHeightClass = tall
     ? "h-[360px] sm:h-[430px] md:h-[520px]"
     : "h-[280px] sm:h-[330px] md:h-[400px]";
@@ -59,20 +67,26 @@ export function WorkCard({
       aria-label={`View case study: ${title}`}
     >
       <div className="relative">
-        <div className={`relative overflow-hidden bg-stone ${imageHeightClass}`}>
+        <div
+          className={clsx(
+            "relative w-full overflow-hidden bg-stone",
+            useContain ? preview.aspectClass ?? "aspect-[16/10]" : imageHeightClass
+          )}
+        >
           <Image
             src={preview.src}
             alt={`${title} website redesign preview`}
             fill
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.024]"
-            style={{ objectPosition: preview.position ?? "center" }}
-            sizes="(min-width: 1440px) 420px, (min-width: 1024px) 30vw, (min-width: 768px) 46vw, 100vw"
+            quality={92}
+            className={clsx(
+              "transition-transform duration-500 ease-out group-hover:scale-[1.024]",
+              useContain ? "object-contain object-center" : "object-cover"
+            )}
+            style={useContain ? undefined : { objectPosition: preview.position ?? "center" }}
+            sizes="(min-width: 1440px) 520px, (min-width: 1024px) 38vw, (min-width: 768px) 46vw, 100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/12 via-transparent to-transparent opacity-75 transition-opacity duration-500 group-hover:opacity-95" />
           <div className="pointer-events-none absolute inset-0 shadow-[inset_0_-24px_54px_rgb(0_0_0/0.08)] transition-shadow duration-500 group-hover:shadow-[inset_0_-30px_62px_rgb(0_0_0/0.12)]" />
-          <span className="absolute left-4 top-4 z-10 text-[12px] font-medium tracking-[0.02em] text-[#f3eee7]/72 md:left-5 md:top-5">
-            {category}
-          </span>
         </div>
       </div>
       <div className="pt-6 pb-9 md:pt-7 md:pb-12">

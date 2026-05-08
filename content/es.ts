@@ -169,11 +169,151 @@ const es = {
     label: "Estudios de rediseño web",
     heading: "Arquitectura, replanteada para la pantalla.",
     disclaimer: "Estudios de rediseño web que muestran cómo los estudios de arquitectura e interiorismo pueden presentar su trabajo con más claridad, confianza y autoridad visual.",
+    caseStudy: {
+      challenge: "El reto.",
+      approach: "El enfoque.",
+      outcome: "El resultado.",
+      diagnosis: "Diagnóstico de diseño.",
+      diagnosisSub: "Qué cambió en la experiencia — y por qué importa.",
+      keyScreens: "Vistas seleccionadas.",
+      result: "Resultados.",
+    },
     items: [
-      { slug: "villa-architecture-studio", title: "Web de Arquitectura - Benahavís", category: "Rediseño web", location: "Benahavís, Costa del Sol", challenge: "Estudio con un sólido portafolio de villas pero con una web obsoleta que hacía que el trabajo pareciera genérico, comprimido y difícil de juzgar en móvil.", what: "Rediseño de portada, sistema de páginas de proyecto, posicionamiento más claro y presentación mobile-first con jerarquía editorial y estructura multilingüe." },
-      { slug: "interior-design-marbella", title: "Estudio de Diseño de Interiores - Marbella", category: "Web de diseño de interiores", location: "Marbella, Costa del Sol", challenge: "Estudio joven produciendo trabajo de interiores de alta calidad pero invisible online. Sin SEO, sin sistema de portafolio, primera impresión débil.", what: "Refinamiento de marca, diseño web, sistema de portafolio, flujo de contacto y configuración de SEO local para Marbella y alrededores." },
-      { slug: "renovation-studio-estepona", title: "Estudio de Reformas de Villas - Estepona", category: "Web de reformas", location: "Estepona, Costa del Sol", challenge: "Estudio de reformas que dependía totalmente del boca a boca. Sin presencia digital, sin visibilidad en Google, sin forma de que los clientes internacionales los encontraran.", what: "Estrategia web completa, rediseño de vista previa en Vercel enviado por email frío, configuración multilingüe EN/ES, optimización de Google Business Profile." },
-      { slug: "project-page-system", title: "Sistema de Páginas de Portafolio - Sotogrande", category: "Sistema de portafolio", location: "Sotogrande, Costa del Sol", challenge: "Estudio con más de 40 proyectos y sin una forma consistente de presentarlos. Todos los proyectos estaban en una galería plana sin contexto, materiales ni historia.", what: "Plantilla de proyecto compatible con CMS, filtrable por ubicación y tipo, estructura de caso de estudio con secciones antes/después y narrativa de materiales." },
+      {
+        slug: "villa-architecture-studio",
+        title: "Web de Arquitectura - Benahavís",
+        location: "Benahavís, Costa del Sol",
+        cardSummary: "Rediseño web, estructura de portafolio, presentación móvil y flujo de contacto.",
+        summary: "Rediseño web, estructura de portafolio, presentación móvil y flujo de contacto.",
+        challenge:
+          "La web antigua hacía difícil entender el trabajo del estudio, sobre todo en móvil. Los proyectos no tenían jerarquía, las imágenes parecían desconectadas y el flujo de contacto no era lo suficientemente claro.",
+        what: "Rediseño web, estructura de portafolio, presentación móvil y flujo de contacto.",
+        improvement:
+          "Simplificamos la estructura, reconstruimos la presentación de proyectos, creamos un diseño editorial más sólido y facilitamos la navegación en móvil.",
+        before: "La web antigua hacía difícil explorar el portafolio del estudio y no reflejaba la calidad de sus villas.",
+        after: "Creamos una web editorial más refinada, con navegación más clara, imágenes más potentes y una presentación más premium.",
+        heroDesktop: "/images/project01/P1-thumbnail.png",
+        editorialQuote: "La web debía transmitir la misma consideración que la arquitectura.",
+        diagnosisPoints: [
+          { label: "Jerarquía de proyectos", detail: "Un recorrido más claro desde la visión general hasta cada villa, como un portafolio curado." },
+          { label: "Navegación móvil", detail: "Ritmo táctil, tipografía legible e imágenes que funcionan en pantallas pequeñas." },
+          { label: "Identidad visual", detail: "Tipografía y espaciado alineados con una presencia de estudio sobria y premium." },
+          { label: "Contacto", detail: "Menos fricción desde el interés hasta la consulta — intención más clara." },
+        ],
+        screens: [
+          { label: "Página de proyecto", image: "/images/project01/p1-project-detail.png" },
+          { label: "Experiencia móvil", image: "/images/project01/p1-mobile-view.png" },
+        ],
+        results: [
+          "Portafolio más claro desde el primer scroll hasta la profundidad del proyecto",
+          "Posicionamiento más premium frente a estudios comparables",
+          "Mejor lectura en móvil, donde suele empezar la primera visita",
+          "Consulta más sencilla cuando alguien quiere hablar",
+        ],
+      },
+      {
+        slug: "casa-noma-marbella",
+        title: "Web de interiorismo - Marbella",
+        location: "Marbella, Costa del Sol",
+        cardSummary:
+          "Rediseño web, claridad de servicios, portafolio de interiorismo, experiencia móvil y configuración del CMS.",
+        summary:
+          "Rediseño web, claridad de servicios, portafolio de interiorismo, experiencia móvil y configuración del CMS.",
+        challenge:
+          "El estudio tenía proyectos de interiorismo preciosos, pero la web se sentía demasiado genérica. No transmitía calidez, confianza ni la calidad de los espacios.",
+        what: "Rediseño web, claridad de servicios, portafolio de interiorismo, experiencia móvil y configuración del CMS.",
+        improvement:
+          "Creamos una web editorial más suave, centrada en la atmósfera, la narrativa de proyectos y un descubrimiento de servicios sencillo.",
+        before:
+          "La web antigua parecía estándar y no expresaba la identidad calmada del estudio de interiorismo.",
+        after: "Creamos una web cálida y elegante, más cercana a una revista de interiorismo de alta gama.",
+        heroDesktop: "/images/project02/p2-thumbnail-hero.png",
+        editorialQuote: "El interiorismo es emocional; la web debía transmitir esa calma segura.",
+        diagnosisPoints: [
+          { label: "Jerarquía de proyectos", detail: "Los proyectos se leen como historias, no como una cuadrícula plana." },
+          { label: "Navegación móvil", detail: "Ritmo más suave e imágenes protagonistas sin sacrificar rendimiento en el teléfono." },
+          { label: "Identidad visual", detail: "Paleta y ritmo editorial más cercanos a una revista de diseño." },
+          { label: "Contacto", detail: "Servicios y consulta con intención, sin perderse bajo ruido." },
+        ],
+        screens: [
+          { label: "Página de proyecto de interiorismo", image: "/images/project02/P2-project_details.png" },
+          { label: "Experiencia móvil", image: "/images/project02/P2-mobile.png" },
+        ],
+        results: [
+          "Portafolio más claro con una primera impresión más emocional",
+          "Posicionamiento más premium para clientes residenciales exigentes",
+          "Mejor lectura en móvil para descubrir proyectos sobre la marcha",
+          "Consulta más fácil cuando el visitante conecta con un trabajo",
+        ],
+      },
+      {
+        slug: "forma-sur-malaga",
+        title: "Web de arquitectura - Málaga",
+        location: "Málaga, Costa del Sol",
+        cardSummary:
+          "Rediseño web contundente, archivo de proyectos, identidad visual, estructura móvil y CMS.",
+        summary:
+          "Rediseño web contundente, archivo de proyectos, identidad visual, estructura móvil y CMS.",
+        challenge:
+          "El trabajo del estudio tenía un carácter arquitectónico fuerte, pero la web resultaba plana y olvidable. La identidad digital no estaba a la altura del carácter de sus proyectos.",
+        what: "Rediseño web contundente, archivo de proyectos, identidad visual, estructura móvil y CMS.",
+        improvement:
+          "Construimos un sistema editorial más afilado, con tipografía más marcada, mejor contraste y un archivo de proyectos más claro.",
+        before: "La web antigua era demasiado neutra y no hacía memorable al estudio.",
+        after: "Creamos una presencia visual más fuerte, con navegación de proyectos más clara y una identidad más segura.",
+        heroDesktop: "/images/avant.png",
+        editorialQuote: "Proyectos contundentes merecían una presencia digital con el mismo filo.",
+        diagnosisPoints: [
+          { label: "Jerarquía de proyectos", detail: "Archivo y casos de estudio con escala, contraste y orden." },
+          { label: "Navegación móvil", detail: "Tipografía y márgenes que siguen siendo legibles al comprimir el layout." },
+          { label: "Identidad visual", detail: "Una voz gráfica más nítida y memorable, alineada con el trabajo." },
+          { label: "Contacto", detail: "La consulta permanece visible sin romper el ritmo editorial." },
+        ],
+        screens: [
+          { label: "Archivo de proyectos", image: "/images/redesign-preview.png" },
+          { label: "Experiencia móvil", image: "/images/heromock.png" },
+        ],
+        results: [
+          "Portafolio más claro gracias a un sistema tipográfico más contundente",
+          "Posicionamiento más premium para primeras impresiones memorables",
+          "Mejor lectura en móvil en condiciones reales de uso",
+          "Consulta más fácil sin diluir la voz del estudio",
+        ],
+      },
+      {
+        slug: "terral-studio-estepona",
+        title: "Web de paisajismo - Estepona",
+        location: "Estepona, Costa del Sol",
+        cardSummary:
+          "Rediseño web, portafolio exterior, presentación de servicios, experiencia móvil y CMS.",
+        summary:
+          "Rediseño web, portafolio exterior, presentación de servicios, experiencia móvil y CMS.",
+        challenge:
+          "Los proyectos al aire libre del estudio eran visuales y emotivos, pero la web se sentía estática. No mostraba el valor de estilo de vida de terrazas, jardines y espacios exteriores.",
+        what: "Rediseño web, portafolio exterior, presentación de servicios, experiencia móvil y CMS.",
+        improvement:
+          "Creamos una web más inmersiva, con imágenes más grandes, servicios claros y una presentación móvil más fluida.",
+        before: "La web antigua mostraba proyectos sin atmósfera ni narrativa sólida.",
+        after: "Creamos una experiencia de portafolio cinematográfica centrada en la vida al aire libre y el estilo de vida mediterráneo.",
+        heroDesktop: "/images/apres.png",
+        editorialQuote: "La vida al aire libre pedía atmósfera — no otra galería estática.",
+        diagnosisPoints: [
+          { label: "Jerarquía de proyectos", detail: "El trabajo exterior se lee como capítulos de estilo de vida, no como fotos sueltas." },
+          { label: "Navegación móvil", detail: "Imágenes grandes y ritmo calmado que aún así cargan y se desplazan bien." },
+          { label: "Identidad visual", detail: "Un tono cinematográfico alineado con terrazas, jardines y luz mediterránea." },
+          { label: "Contacto", detail: "Servicios y consulta encajan cuando la narrativa ya genera confianza." },
+        ],
+        screens: [
+          { label: "Página de proyecto exterior", image: "/images/redesign-preview.png" },
+          { label: "Experiencia móvil", image: "/images/heromock.png" },
+        ],
+        results: [
+          "Portafolio más claro con un sentido de lugar más fuerte",
+          "Posicionamiento más premium para proyectos de estilo de vida exterior",
+          "Mejor lectura en móvil para inspiración y compartir sobre el terreno",
+          "Consulta más fácil cuando la historia ya convence",
+        ],
+      },
     ],
   },
   audit: {

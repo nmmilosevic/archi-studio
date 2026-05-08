@@ -99,7 +99,7 @@ export default async function PricingPage({ params }: Props) {
       <section className="bg-charcoal py-[clamp(86px,11vw,168px)] text-inverted" aria-labelledby="main-price-heading">
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
-            <AnimatedText as="div" delay={0.04} className="order-2 lg:order-1 lg:pr-2">
+            <AnimatedText as="div" delay={0.04} className="lg:pr-2">
               <AnimatedTitle
                 text="Simple pricing for architecture studio websites."
                 as="h2"
@@ -124,11 +124,11 @@ export default async function PricingPage({ params }: Props) {
               </div>
             </AnimatedText>
 
-            <div className="relative order-1 hidden rounded-[14px] lg:order-2 lg:block">
+            <div className="relative lg:pl-2">
               <div className="relative aspect-[1/1] w-full overflow-hidden rounded-[12px]">
                 <Image
-                  src={assetPath("/images/pricing-img.png")}
-                  alt="Website preview shown in pricing section"
+                  src={assetPath("/images/mood.png")}
+                  alt="Visual mood for the website offering"
                   fill
                   className="object-contain object-center"
                   sizes="(min-width: 1280px) 520px, (min-width: 1024px) 44vw, 100vw"

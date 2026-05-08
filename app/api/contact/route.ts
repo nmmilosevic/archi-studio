@@ -9,7 +9,6 @@ interface ContactPayload {
   type: string;
   budget: string;
   timeline: string;
-  review: boolean;
   message: string;
 }
 
@@ -41,7 +40,6 @@ export async function POST(request: Request) {
       type: (body.type ?? "").trim(),
       budget: (body.budget ?? "").trim(),
       timeline: (body.timeline ?? "").trim(),
-      review: Boolean(body.review),
       message: (body.message ?? "").trim(),
     };
 
@@ -56,7 +54,6 @@ export async function POST(request: Request) {
       `Type: ${payload.type || "-"}`,
       `Budget: ${payload.budget || "-"}`,
       `Timeline: ${payload.timeline || "-"}`,
-      `Website review requested: ${payload.review ? "Yes" : "No"}`,
       `Message: ${payload.message || "-"}`,
     ].join("\n");
 
@@ -69,7 +66,6 @@ export async function POST(request: Request) {
       <p><strong>Type:</strong> ${escapeHtml(payload.type || "-")}</p>
       <p><strong>Budget:</strong> ${escapeHtml(payload.budget || "-")}</p>
       <p><strong>Timeline:</strong> ${escapeHtml(payload.timeline || "-")}</p>
-      <p><strong>Website review requested:</strong> ${payload.review ? "Yes" : "No"}</p>
       <p><strong>Message:</strong><br/>${escapeHtml(payload.message || "-")}</p>
     `;
 
