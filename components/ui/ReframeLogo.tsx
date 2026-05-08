@@ -15,10 +15,10 @@ export function ReframeLogo({ className, light = false }: ReframeLogoProps) {
       src={assetPath("/ref26.svg")}
       alt=""
       aria-hidden
-      width={113}
-      height={44}
+      width={124}
+      height={48}
       className={clsx(
-        "block h-8 w-[113px] object-contain",
+        "block h-[35px] w-[124px] object-contain",
         light && "invert brightness-0",
         className
       )}

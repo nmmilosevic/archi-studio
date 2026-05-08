@@ -17,6 +17,7 @@ export function SiteHeader() {
   const t = useTranslations("nav");
   const pathname = usePathname();
   const router = useRouter();
+  const homePath = `/${locale}`;
   const contactPath = `/${locale}/contact`;
   const normalizedSegments = pathname.split("/").filter(Boolean);
   const isWorkRoute = normalizedSegments[0] === locale && normalizedSegments[1] === "work";
@@ -55,6 +56,12 @@ export function SiteHeader() {
     router.replace(localizedPath, { scroll: false });
   }
 
+  function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    if (pathname !== homePath) return;
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <>
       <a href="#main-content" className="skip-to-content">
@@ -75,12 +82,13 @@ export function SiteHeader() {
             <div className="hidden lg:flex min-h-11 items-center gap-6">
               {/* Logo */}
               <Link
-                href={`/${locale}#top`}
+                href={homePath}
+                onClick={handleLogoClick}
                 className="inline-flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
                 aria-label={`${BRAND.name} - Home`}
               >
-                <span className="block h-8 w-[101px] overflow-hidden">
-                  <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-8 w-[113px]" />
+                <span className="block h-[35px] w-[111px] overflow-hidden">
+                  <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-[35px] w-[124px]" />
                 </span>
               </Link>
               <nav className="flex h-11 items-center gap-6" aria-label="Primary navigation">
@@ -135,12 +143,13 @@ export function SiteHeader() {
             {/* Mobile direct navigation */}
             <div className="lg:hidden flex min-h-11 w-full items-center justify-between gap-3">
               <Link
-                href={`/${locale}#top`}
+                href={homePath}
+                onClick={handleLogoClick}
                 className="inline-flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
                 aria-label={`${BRAND.name} - Home`}
               >
-                <span className="block h-8 w-[101px] overflow-hidden">
-                  <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-8 w-[113px]" />
+                <span className="block h-[35px] w-[111px] overflow-hidden">
+                  <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-[35px] w-[124px]" />
                 </span>
               </Link>
               <div className="flex items-center gap-3">
@@ -149,9 +158,10 @@ export function SiteHeader() {
                   aria-current={isWorkRoute ? "page" : undefined}
                   className={clsx(
                     "inline-flex h-9 items-center text-[14px] transition-colors",
-                    isWorkRoute && "font-medium",
-                    isWorkPage
-                      ? "text-primary/86 hover:text-primary"
+                    isWorkRoute
+                      ? useLightHeaderText
+                        ? "font-medium text-inverted"
+                        : "font-medium text-primary"
                       : useLightHeaderText
                         ? "text-inverted/80 hover:text-inverted"
                         : "text-primary/86 hover:text-primary"
@@ -164,9 +174,10 @@ export function SiteHeader() {
                   aria-current={isContactPage ? "page" : undefined}
                   className={clsx(
                     "inline-flex h-9 items-center text-[14px] transition-colors",
-                    isContactPage && "font-medium",
-                    isWorkPage
-                      ? "text-primary/86 hover:text-primary"
+                    isContactPage
+                      ? useLightHeaderText
+                        ? "font-medium text-inverted"
+                        : "font-medium text-primary"
                       : useLightHeaderText
                         ? "text-inverted/80 hover:text-inverted"
                         : "text-primary/86 hover:text-primary"

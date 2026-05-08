@@ -2,11 +2,21 @@
 
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { usePathname } from "next/navigation";
+import type { MouseEvent } from "react";
 import { BRAND } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 export function HomepageFooter() {
   const locale = useLocale();
+  const pathname = usePathname();
+  const homePath = `/${locale}`;
+
+  function handleLogoClick(event: MouseEvent<HTMLAnchorElement>) {
+    if (pathname !== homePath) return;
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   return (
     <footer className="bg-[#0f0e0c] pb-12 pt-12 text-inverted md:pb-14 md:pt-14" aria-label="Site footer">
@@ -14,11 +24,12 @@ export function HomepageFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-start">
           <div className="max-w-[360px]">
             <Link
-              href={`/${locale}#top`}
+              href={homePath}
+              onClick={handleLogoClick}
               className="inline-flex items-start"
               aria-label={`${BRAND.name} - Home`}
             >
-              <ReframeLogo light className="h-[38px] w-auto" />
+              <ReframeLogo light className="h-[42px] w-auto" />
             </Link>
             <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">
               A web design studio for architecture and interior design firms.

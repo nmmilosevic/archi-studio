@@ -45,6 +45,17 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     onClose();
   }
 
+  function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    const homePath = `/${locale}`;
+    if (pathname === homePath) {
+      event.preventDefault();
+      onClose();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    onClose();
+  }
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -74,7 +85,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Header */}
             <div className="flex items-center justify-between px-5 pt-7 pb-3 sm:px-7 sm:pt-9">
               <div className="flex items-center">
-                <ReframeLogo light className="h-[34px] w-[120px]" />
+                <Link
+                  href={`/${locale}`}
+                  onClick={handleLogoClick}
+                  aria-label="Go to homepage top"
+                  className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
+                >
+                  <ReframeLogo light className="h-[37px] w-[132px]" />
+                </Link>
               </div>
               <button
                 onClick={onClose}

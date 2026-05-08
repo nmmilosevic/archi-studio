@@ -263,6 +263,11 @@
     font-weight: 500;
   }
 
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
   /* ── Card / hover ────────────────────────────────────── */
 
   .card-hover {
