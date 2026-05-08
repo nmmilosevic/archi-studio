@@ -7,35 +7,18 @@ import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 
 const inputClass =
-  "w-full min-h-12 bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
+  "w-full min-h-12 bg-transparent border border-charcoal/28 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/36 focus:outline-none focus:border-bronze/90 focus:ring-2 focus:ring-bronze/18 transition-all duration-200";
 const labelClass =
-  "mb-2 block font-body text-[14px] text-muted/65";
+  "mb-2 block font-body text-[13px] tracking-[0.01em] text-muted/72";
 
 interface FormData {
   name: string;
   email: string;
   studio: string;
   website: string;
-  type: string;
-  budget: string;
-  timeline: string;
   review: boolean;
   message: string;
 }
-
-const budgetOptions = [
-  "€1,500 website",
-  "€1,500 + hosting",
-  "€1,500 + monthly updates",
-  "Not sure yet",
-];
-
-const timelineOptions = [
-  "As soon as possible",
-  "This month",
-  "1 to 3 months",
-  "Just exploring",
-];
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
@@ -44,18 +27,16 @@ export function ContactForm() {
     email: "",
     studio: "",
     website: "",
-    type: "",
-    budget: "",
-    timeline: "",
     review: false,
     message: "",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(
     e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      HTMLInputElement | HTMLTextAreaElement
     >
   ) {
     const target = e.target;
@@ -68,10 +49,27 @@ export function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setError(null);
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setLoading(false);
-    setSuccess(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send form.");
+      }
+
+      setSuccess(true);
+    } catch {
+      setError("Something went wrong. Please email us directly at reframe.stud@gmail.com.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (success) {
@@ -86,7 +84,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6 md:space-y-7">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5 md:space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className={labelClass}>
@@ -101,7 +99,7 @@ export function ContactForm() {
             value={form.name}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Nicolas Alonso"
+            placeholder=""
           />
         </div>
         <div>
@@ -116,7 +114,7 @@ export function ContactForm() {
             value={form.studio}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Studio Alonso"
+            placeholder=""
           />
         </div>
       </div>
@@ -135,7 +133,7 @@ export function ContactForm() {
             value={form.email}
             onChange={handleChange}
             className={inputClass}
-            placeholder="hello@studio.com"
+            placeholder=""
           />
         </div>
         <div>
@@ -151,81 +149,29 @@ export function ContactForm() {
             value={form.website}
             onChange={handleChange}
             className={inputClass}
-            placeholder="https://studio-alonso.com"
+            placeholder=""
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <label htmlFor="contact-type" className={labelClass}>
-            What do you need?
-          </label>
-          <select
-            id="contact-type"
-            name="type"
-            value={form.type}
-            onChange={handleChange}
-            className={clsx(inputClass, "cursor-pointer")}
-          >
-            <option value="">—</option>
-            {["New website", "Website redesign", "Website review", "Ongoing updates"].map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="contact-budget" className={labelClass}>
-            {t("budget")}
-          </label>
-          <select
-            id="contact-budget"
-            name="budget"
-            value={form.budget}
-            onChange={handleChange}
-            className={clsx(inputClass, "cursor-pointer")}
-          >
-            <option value="">—</option>
-            {budgetOptions.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label htmlFor="contact-timeline" className={labelClass}>
-          Timeline
-        </label>
-        <select
-          id="contact-timeline"
-          name="timeline"
-          value={form.timeline}
-          onChange={handleChange}
-          className={clsx(inputClass, "cursor-pointer")}
-        >
-          <option value="">—</option>
-          {timelineOptions.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <label htmlFor="contact-review" className="flex items-start gap-3 border border-charcoal/10 p-4 text-[15px] leading-relaxed text-muted md:p-5">
+      <label htmlFor="contact-review" className="flex items-start gap-3 border border-charcoal/16 bg-stone/52 p-4 text-[15px] leading-relaxed text-muted md:p-5">
         <input
           id="contact-review"
           name="review"
           type="checkbox"
           checked={form.review}
           onChange={handleChange}
-          className="mt-1 h-4 w-4 rounded border-charcoal/20 text-bronze focus:ring-bronze"
+          className="peer sr-only"
         />
+        <span
+          className={clsx(
+            "mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[3px] border border-charcoal/38 bg-offwhite transition-all duration-200",
+            "peer-checked:border-bronze peer-checked:bg-bronze/12"
+          )}
+          aria-hidden="true"
+        >
+          <span className="h-2.5 w-2.5 scale-0 bg-bronze transition-transform duration-200 peer-checked:scale-100" />
+        </span>
         I would like a review of my current website.
       </label>
 
@@ -236,20 +182,25 @@ export function ContactForm() {
         <textarea
           id="contact-message"
           name="message"
-          rows={5}
+          rows={7}
           value={form.message}
           onChange={handleChange}
           className={clsx(inputClass, "resize-none")}
-          placeholder="Tell us what you need, what feels outdated, or what you want the new website to do."
+          placeholder=""
         />
       </div>
 
       <div className="pt-2">
+        {error && (
+          <p className="mb-4 border border-red-300/40 bg-red-50 px-4 py-3 text-[14px] text-red-700">
+            {error}
+          </p>
+        )}
         <Button
           type="submit"
           disabled={loading}
           size="lg"
-          className="w-full justify-center gap-2"
+          className="w-full min-h-14 justify-center gap-2"
         >
           {loading ? (
             "Sending..."

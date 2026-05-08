@@ -18,6 +18,8 @@ export function SiteHeader() {
   const locale = useLocale();
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const isContactPage = pathname === `/${locale}/contact`;
+  const useLightHeaderText = isContactPage && !scrolled;
 
   useEffect(() => {
     function handleScroll() {
@@ -44,54 +46,56 @@ export function SiteHeader() {
         className={clsx(
           "fixed top-0 left-0 right-0 z-30 transition-all duration-500",
           scrolled
-            ? "bg-stone/92 backdrop-blur-md py-3"
+            ? "bg-stone/90 backdrop-blur-md py-3"
             : "bg-transparent py-4 md:py-5"
         )}
         role="banner"
       >
         <div className="container-site">
-          <div className="flex items-center justify-between gap-8">
+          <div className="flex items-center justify-between gap-8 border-b border-transparent pb-1">
             {/* Logo */}
             <Link
               href={`/${locale}`}
               className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label={`${BRAND.name} — Home`}
             >
-              <ReframeLogo />
+              <ReframeLogo light={useLightHeaderText} className="h-[38px] w-[136px]" />
             </Link>
 
-            {/* Desktop nav */}
-            <nav
-              className="hidden lg:flex items-center gap-7 xl:gap-9"
-              aria-label="Primary navigation"
-            >
-              {NAV_LINKS.map((link) => {
-                const href = `/${locale}${link.href}`;
-                const isActive = pathname === href || pathname.startsWith(`${href}/`);
-                return (
-                  <Link
-                    key={link.key}
-                    href={href}
-                    className="nav-link"
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {t(link.key as keyof ReturnType<typeof useTranslations<"nav">>)}
-                  </Link>
-                );
-              })}
-            </nav>
-
             {/* Right side */}
-            <div className="hidden lg:flex items-center gap-6">
-              <LanguageSwitcher />
-              <Button asChild size="sm">
+            <div className="hidden lg:flex items-center gap-5">
+              <nav className="flex items-center gap-6" aria-label="Primary navigation">
+                {NAV_LINKS.map((link) => {
+                  const href = `/${locale}${link.href}`;
+                  const isActive = pathname === href || pathname.startsWith(`${href}/`);
+                  return (
+                    <Link
+                      key={link.key}
+                      href={href}
+                      className={clsx(
+                        "nav-link",
+                        useLightHeaderText && "text-inverted/75 hover:!text-inverted aria-[current=page]:!text-inverted"
+                      )}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {t(link.key as keyof ReturnType<typeof useTranslations<"nav">>)}
+                    </Link>
+                  );
+                })}
+              </nav>
+              <span className={clsx("h-4 w-px", useLightHeaderText ? "bg-inverted/28" : "bg-charcoal/20")} aria-hidden="true" />
+              <LanguageSwitcher light={useLightHeaderText} />
+              <Button asChild size="sm" className="px-6">
                 <Link href={`/${locale}/contact`}>Start your website</Link>
               </Button>
             </div>
 
             {/* Mobile menu toggle */}
             <button
-              className="lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center text-primary hover:text-bronze transition-colors duration-200 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
+              className={clsx(
+                "lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center transition-colors duration-200 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2",
+                useLightHeaderText ? "text-inverted hover:text-inverted/75" : "text-primary hover:text-bronze"
+              )}
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}

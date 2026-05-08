@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import { ArrowLeft, Check } from "lucide-react";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
@@ -111,16 +110,16 @@ export default async function WorkDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-offwhite section-space" aria-labelledby="context-heading">
+      <section className="bg-offwhite pb-[clamp(56px,7vw,92px)] pt-[clamp(56px,7vw,92px)]" aria-labelledby="context-heading">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <AnimatedTitle
               text="Why it mattered."
               as="h2"
               id="context-heading"
               className="text-display text-primary"
             />
-            <p className="text-support max-w-[680px] text-muted">
+            <p className="max-w-[640px] text-[17px] leading-relaxed text-muted">
               {item.challenge}
             </p>
           </div>
@@ -138,13 +137,13 @@ export default async function WorkDetailPage({ params }: Props) {
             />
           </div>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="border border-charcoal/10 bg-offwhite p-8 md:p-10">
+            <div className="border-l border-charcoal/18 bg-offwhite/70 p-8 md:p-10">
               <h3 className="text-card-title font-heading font-medium text-primary">Before</h3>
               <p className="mt-6 text-[17px] leading-relaxed text-muted">
                 The website did not make the studio’s work easy to understand, trust, or enquire about.
               </p>
             </div>
-            <div className="border border-charcoal/10 bg-charcoal p-8 text-inverted md:p-10">
+            <div className="border-l border-bronze/45 bg-charcoal p-8 text-inverted md:p-10">
               <h3 className="text-card-title font-heading font-medium text-inverted">After</h3>
               <p className="mt-6 text-[17px] leading-relaxed text-inverted/64">
                 A calmer website system with clearer hierarchy, stronger project presentation, and better mobile rhythm.
@@ -166,57 +165,40 @@ export default async function WorkDetailPage({ params }: Props) {
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {systemItems.map((system) => (
-              <div key={system.label}>
-                <div className="relative h-[320px] overflow-hidden bg-stone md:h-[420px]">
+              <div key={system.label} className="group cursor-pointer">
+                <div className="relative h-[320px] overflow-hidden bg-stone transition-shadow duration-200 ease-out group-hover:shadow-[0_24px_48px_rgb(16_12_9/0.12)] md:h-[420px]">
                   <Image
                     src={assetPath(system.image)}
                     alt={`${item.title} ${system.label}`}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-top transition-transform duration-200 ease-out group-hover:scale-[1.02]"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                 </div>
-                <p className="mt-5 text-[18px] text-primary">{system.label}</p>
+                <p className="mt-5 text-[18px] text-primary transition-all duration-200 ease-out group-hover:translate-y-[2px]">{system.label}</p>
               </div>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="bg-stone section-space-tight" aria-labelledby="results-heading">
+      <section className="bg-stone pb-[clamp(68px,8vw,108px)] pt-[clamp(58px,7vw,92px)]" aria-labelledby="results-heading">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.78fr_1.22fr]">
             <AnimatedTitle
               text="Results."
               as="h2"
               id="results-heading"
               className="text-display text-primary"
             />
-            <div className="grid gap-5">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {results.map((result) => (
-                <div key={result} className="flex items-start gap-4 border-t border-charcoal/10 pt-5">
-                  <Check className="mt-1 h-4 w-4 text-bronze" aria-hidden="true" />
-                  <p className="text-[18px] text-primary">{result}</p>
+                <div key={result} className="flex min-h-[76px] items-center gap-3 border border-charcoal/12 bg-offwhite/64 p-4">
+                  <Check className="h-4 w-4 text-bronze" aria-hidden="true" />
+                  <p className="text-[16px] leading-relaxed text-primary">{result}</p>
                 </div>
               ))}
             </div>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-charcoal section-space-tight text-inverted">
-        <Container>
-          <div className="mx-auto max-w-[820px] text-center">
-            <AnimatedTitle
-              text="Want your website to feel like this?"
-              as="h2"
-              className="text-section text-inverted"
-            />
-            <AnimatedText as="div" delay={0.16}>
-              <Button asChild variant="secondary" size="lg" className="mt-10">
-                <Link href={`/${locale}/contact`}>Start your website</Link>
-              </Button>
-            </AnimatedText>
           </div>
         </Container>
       </section>

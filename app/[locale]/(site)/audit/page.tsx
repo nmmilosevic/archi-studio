@@ -92,7 +92,7 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Get a clear review of your architecture website."
+              text="Get a clear audit of your studio website."
               as="h1"
               className="text-page-title max-w-[16ch] text-primary"
             />
@@ -105,7 +105,7 @@ export default async function AuditPage({ params }: Props) {
               </AnimatedText>
               <AnimatedText as="div" delay={0.2}>
                 <Button asChild size="lg" className="mt-10">
-                  <Link href="#audit-form">Request a website review</Link>
+                  <Link href="#audit-form">Request a quick audit</Link>
                 </Button>
               </AnimatedText>
             </div>

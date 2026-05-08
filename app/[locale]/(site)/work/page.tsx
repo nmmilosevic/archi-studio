@@ -3,10 +3,8 @@ import { WorkCard } from "@/components/cards/WorkCard";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
-import { Button } from "@/components/ui/Button";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 interface Props {
@@ -41,16 +39,16 @@ export default async function WorkPage({ params }: Props) {
 
   return (
     <>
-      <section className="bg-stone pt-36 pb-24 md:pt-48 md:pb-36">
+      <section className="bg-stone pt-30 pb-18 md:pt-38 md:pb-24">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
               text="Websites for studios with work worth showing properly."
               as="h1"
               className="text-page-title max-w-[16ch] text-primary"
             />
             <AnimatedText
-              className="text-support max-w-[600px] text-muted lg:ml-auto"
+              className="max-w-[560px] text-[16px] leading-relaxed text-muted lg:ml-auto"
               delay={0.12}
             >
               A clear look at how architecture and interior studios can present their work with more clarity, confidence, and visual quality.
@@ -59,44 +57,19 @@ export default async function WorkPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="section-space bg-offwhite" aria-label="Work grid">
+      <section className="bg-offwhite pb-[clamp(76px,9vw,124px)] pt-[clamp(50px,7vw,90px)]" aria-label="Work grid">
         <Container>
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-x-16 md:gap-y-24">
             {work.items.map((item, i) => (
-              <WorkCard
-                key={item.slug}
-                {...item}
-                locale={locale}
-                index={i}
-                tall={i % 3 === 0}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="section-space-tight bg-stone" aria-labelledby="work-cta-heading">
-        <Container>
-          <div className="max-w-3xl">
-            <AnimatedTitle
-              text="Want your website to feel clearer?"
-              as="h2"
-              id="work-cta-heading"
-              className="text-display text-primary mb-7"
-            />
-            <AnimatedText
-              className="text-support mb-10 max-w-[560px] font-body text-muted"
-              delay={0.1}
-            >
-              Send your current website. We’ll show where the first impression, portfolio, or mobile experience can be improved.
-            </AnimatedText>
-            <AnimatedText delay={0.2} as="div">
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="md">
-                  <Link href={`/${locale}/contact`}>Request a website review</Link>
-                </Button>
+              <div key={item.slug} className={i % 2 === 1 ? "md:pt-16" : ""}>
+                <WorkCard
+                  {...item}
+                  locale={locale}
+                  index={i}
+                  tall={i % 3 === 0}
+                />
               </div>
-            </AnimatedText>
+            ))}
           </div>
         </Container>
       </section>

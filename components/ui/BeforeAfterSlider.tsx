@@ -10,6 +10,8 @@ interface BeforeAfterSliderProps {
   afterAlt?: string;
   beforeObjectPosition?: string;
   afterObjectPosition?: string;
+  annotationLabels?: string[];
+  annotationRevealThreshold?: number;
 }
 
 export function BeforeAfterSlider({
@@ -19,10 +21,22 @@ export function BeforeAfterSlider({
   afterAlt = "After redesign",
   beforeObjectPosition = "top",
   afterObjectPosition = "top",
+  annotationLabels = [],
+  annotationRevealThreshold = 58,
 }: BeforeAfterSliderProps) {
-  const [position, setPosition] = useState(50);
+  const [position, setPosition] = useState(70);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
+  const showAnnotations = position < annotationRevealThreshold;
+  const mobileLabels = annotationLabels.slice(0, 3);
+  const desktopPositions = [
+    "left-[10%] top-[12%]",
+    "right-[8%] top-[16%]",
+    "left-[18%] bottom-[34%]",
+    "right-[6%] bottom-[36%]",
+    "left-[28%] bottom-[14%]",
+    "right-[18%] bottom-[14%]",
+  ];
 
   const update = useCallback((clientX: number) => {
     const el = containerRef.current;
@@ -59,7 +73,7 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden select-none cursor-ew-resize border border-white/10 bg-black/30 shadow-[0_36px_100px_rgb(0_0_0/0.28)]"
+      className="relative overflow-hidden select-none cursor-ew-resize border border-white/10 bg-black/20 shadow-[0_36px_100px_rgb(0_0_0/0.28)]"
       style={{ aspectRatio: "3/2" }}
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
@@ -76,6 +90,44 @@ export function BeforeAfterSlider({
           style={{ objectPosition: afterObjectPosition }}
           sizes="(min-width: 1024px) 80vw, 100vw"
         />
+
+        {annotationLabels.length > 0 && (
+          <>
+            <div className="pointer-events-none absolute inset-0 hidden md:block">
+              {annotationLabels.slice(0, 6).map((label, index) => (
+                <span
+                  key={label}
+                  className={`absolute ${desktopPositions[index]} inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/32 px-3 py-1.5 text-[12px] font-medium leading-none text-white/90 backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    showAnnotations
+                      ? "translate-y-0 scale-100 opacity-100"
+                      : "translate-y-3 scale-95 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${index * 70}ms` }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-bronze/90" />
+                  {label}
+                </span>
+              ))}
+            </div>
+
+            <div className="pointer-events-none absolute inset-x-4 bottom-4 grid justify-items-end gap-2 md:hidden">
+              {mobileLabels.map((label, index) => (
+                <span
+                  key={label}
+                  className={`inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/38 px-3 py-1.5 text-[12px] font-medium leading-none text-white/92 backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    showAnnotations
+                      ? "translate-y-0 scale-100 opacity-100"
+                      : "translate-y-3 scale-95 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${index * 70}ms` }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-bronze/90" />
+                  {label}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       {/* Before (clipped to handle) */}
@@ -95,7 +147,7 @@ export function BeforeAfterSlider({
 
       {/* Divider line */}
       <div
-        className="absolute inset-y-0 w-px bg-white/85 pointer-events-none"
+        className="absolute inset-y-0 w-px bg-white/82 pointer-events-none"
         style={{ left: `${position}%` }}
       />
 

@@ -2,25 +2,26 @@ import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Check } from "lucide-react";
+import Image from "next/image";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { generateMetadata as genMeta } from "@/lib/seo";
+import { assetPath } from "@/lib/paths";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
 
 const mainIncludes = [
+  "Strategy and structure",
   "Custom website design",
-  "Responsive development",
-  "Up to 5 pages",
-  "CMS setup",
-  "Contact form",
+  "Responsive build",
   "Basic SEO setup",
-  "Vercel deployment",
+  "Contact form",
+  "Launch support",
 ];
 
 const faq = [
@@ -81,7 +82,7 @@ export default async function PricingPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Simple pricing for a better studio website."
+              text="Simple pricing. Clear ownership."
               as="h1"
               className="text-page-title max-w-[16ch] text-inverted"
             />
@@ -89,81 +90,76 @@ export default async function PricingPage({ params }: Props) {
               className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
-              One clear website price, with optional hosting and update support.
+              One fixed fee for the complete website system, with optional ongoing support.
             </AnimatedText>
           </div>
         </Container>
       </section>
 
-      <section className="bg-offwhite section-space" aria-labelledby="main-price-heading">
+      <section className="bg-charcoal section-space text-inverted" aria-labelledby="main-price-heading">
         <Container>
-          <div className="mx-auto w-full max-w-[1280px] rounded-[24px] border border-charcoal/14 bg-charcoal p-6 text-inverted shadow-[0_20px_80px_rgb(11_11_11/0.16)] md:p-10 lg:p-12">
-            <div className="grid gap-6 md:gap-8">
-              <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
-                <AnimatedText as="div" delay={0.04} className="lg:pr-4">
-                  <p className="text-[17px] text-inverted/68">Website Design + Development</p>
-                  <h2 id="main-price-heading" className="mt-4 font-heading text-[clamp(66px,10vw,132px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
-                    €1,500
-                  </h2>
-                  <p className="mt-3 text-[18px] leading-relaxed text-inverted/78">
-                    One-time payment
-                  </p>
-                  <p className="text-support mt-6 max-w-[620px] text-inverted/72">
-                    A complete website designed and developed for your studio. You own it once delivered.
-                  </p>
-                  <div className="mt-8">
-                    <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-                      <Link href={`/${locale}/contact`}>Start your website</Link>
-                    </Button>
-                  </div>
-                  <div className="mt-8 border-t border-white/12 pt-7">
-                    <CheckList items={mainIncludes} light />
-                  </div>
-                </AnimatedText>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-center lg:gap-12">
+            <AnimatedText as="div" delay={0.04} className="order-2 lg:order-1 lg:pr-4">
+              <AnimatedTitle
+                text="Simple pricing. Clear ownership."
+                as="h2"
+                className="text-section mb-7 max-w-[700px] text-inverted"
+              />
+              <AnimatedText className="text-support mb-10 max-w-[560px] text-inverted/68" delay={0.1}>
+                One fixed fee for a complete studio website, from strategy and design to launch.
+              </AnimatedText>
+              <h2 id="main-price-heading" className="mt-4 font-heading text-[clamp(66px,10vw,132px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
+                €1,500
+              </h2>
+              <p className="mt-3 text-[18px] leading-relaxed text-inverted/78">
+                One-time payment
+              </p>
+              <div className="mt-8">
+                <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                  <Link href={`/${locale}/contact`}>Start your website</Link>
+                </Button>
+              </div>
+              <div className="mt-8 border-t border-white/12 pt-7">
+                <CheckList items={mainIncludes} light />
+              </div>
+            </AnimatedText>
 
-                <div className="hidden rounded-[14px] border border-white/12 bg-[#efe7de] p-4 text-charcoal lg:block">
-                  <div className="h-full rounded-[10px] border border-charcoal/14 bg-[#f7f2ea] p-3">
-                    <div className="mb-3 h-4 w-20 rounded-full bg-charcoal/12" />
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="h-16 rounded-md bg-charcoal/8" />
-                      <div className="h-16 rounded-md bg-charcoal/6" />
-                      <div className="h-24 rounded-md bg-charcoal/10" />
-                      <div className="h-24 rounded-md bg-charcoal/7" />
-                    </div>
-                  </div>
-                </div>
+            <div className="relative order-1 hidden rounded-[14px] border border-white/14 bg-white/[0.03] p-3 lg:order-2 lg:block">
+              <div className="relative aspect-[10/8] w-full overflow-hidden rounded-[10px]">
+                <Image
+                  src={assetPath("/images/pricing-img.png")}
+                  alt="Website preview shown in pricing section"
+                  fill
+                  className="object-contain"
+                  sizes="(min-width: 1280px) 420px, (min-width: 1024px) 32vw, 100vw"
+                />
               </div>
             </div>
           </div>
-          <AnimatedText as="div" delay={0.12} className="mt-20">
-            <div className="mx-auto w-full max-w-[1280px]">
-              <div className="mb-4">
-                <h3 className="text-card-title font-heading font-medium text-primary">Ownership & Optional Support</h3>
-                <p className="text-support mt-2 max-w-[760px] text-muted">
-                  Your website is fully yours at delivery. Hosting and ongoing updates are available anytime if you want continued support.
+          <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <AnimatedText as="div" delay={0.14}>
+              <div className="rounded-[12px] border border-white/12 bg-white/[0.03] p-5">
+                <p className="text-[18px] font-medium text-inverted">Hosting package</p>
+                <p className="mt-2 font-heading text-[34px] font-medium leading-none text-inverted">
+                  €30<span className="ml-1 text-[15px] text-inverted/62">/month</span>
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/64">
+                  Managed hosting, maintenance, backups, and light support for your live website.
                 </p>
               </div>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <div className="rounded-[14px] border border-charcoal/12 bg-offwhite p-5 md:p-6">
-                  <h3 className="text-card-title font-heading font-medium text-primary">Hosting & Maintenance</h3>
-                  <p className="mt-3 font-heading text-[34px] font-medium leading-none text-primary">
-                    €30<span className="text-[16px] text-muted">/month</span>
-                  </p>
-                  <p className="mt-2 text-[14px] text-muted">Billed yearly.</p>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted">
-                    Optional hosting, domain connection, SSL and basic maintenance.
-                  </p>
-                </div>
-                <div className="rounded-[14px] border border-charcoal/12 bg-offwhite p-5 md:p-6">
-                  <h3 className="text-card-title font-heading font-medium text-primary">Monthly Website Updates</h3>
-                  <p className="mt-3 font-heading text-[34px] font-medium leading-none text-primary">
-                    €120<span className="text-[16px] text-muted">/month</span>
-                  </p>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted">Optional text, image and small layout updates.</p>
-                </div>
+            </AnimatedText>
+            <AnimatedText as="div" delay={0.18}>
+              <div className="rounded-[12px] border border-white/12 bg-white/[0.03] p-5">
+                <p className="text-[18px] font-medium text-inverted">Content updates</p>
+                <p className="mt-2 font-heading text-[34px] font-medium leading-none text-inverted">
+                  €120<span className="ml-1 text-[15px] text-inverted/62">/month</span>
+                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/64">
+                  Ongoing page updates, case study additions, content edits, and monthly refinements.
+                </p>
               </div>
-            </div>
-          </AnimatedText>
+            </AnimatedText>
+          </div>
         </Container>
       </section>
 

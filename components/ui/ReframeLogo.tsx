@@ -12,7 +12,7 @@ interface ReframeLogoProps {
 export function ReframeLogo({ className, light = false }: ReframeLogoProps) {
   return (
     <Image
-      src={assetPath("/ref26.svg")}
+      src={assetPath("/logoreframe-new.svg")}
       alt=""
       aria-hidden
       width={113}

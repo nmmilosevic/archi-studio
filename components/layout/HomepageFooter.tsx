@@ -5,20 +5,20 @@ import { useLocale } from "next-intl";
 import { BRAND } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
-export function SiteFooter() {
+export function HomepageFooter() {
   const locale = useLocale();
 
   return (
     <footer className="bg-[#0f0e0c] pb-12 pt-12 text-inverted md:pb-14 md:pt-14" aria-label="Site footer">
       <div className="container-site">
-        <div className="grid grid-cols-1 gap-10 border-t border-white/10 pt-10 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:items-start">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:items-start">
           <div className="max-w-[360px]">
             <Link
               href={`/${locale}`}
-              className="inline-block"
+              className="inline-flex items-start"
               aria-label={`${BRAND.name} — Home`}
             >
-              <ReframeLogo light className="h-[38px] w-[136px]" />
+              <ReframeLogo light className="h-[38px] w-auto" />
             </Link>
             <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">
               A clear digital presence for architecture and interior studios.
