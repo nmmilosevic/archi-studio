@@ -30,7 +30,7 @@ export function PageHero({
             text={heading}
             as="h1"
             className={clsx(
-              "text-section mb-6 text-balance",
+              "text-hero mb-6 text-balance",
               isDark ? "text-inverted" : "text-primary"
             )}
           />
@@ -38,7 +38,7 @@ export function PageHero({
           {subtext && (
             <AnimatedText
               className={clsx(
-                "font-body text-[16px] md:text-[18px] leading-relaxed max-w-2xl",
+                "text-support font-body max-w-2xl",
                 isDark ? "text-inverted/60" : "text-muted"
               )}
               delay={0.2}

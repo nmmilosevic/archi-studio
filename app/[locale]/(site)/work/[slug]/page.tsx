@@ -85,11 +85,11 @@ export default async function WorkDetailPage({ params }: Props) {
               <AnimatedTitle
                 text={item.title}
                 as="h1"
-                className="text-section max-w-[920px] text-inverted"
+                className="text-hero max-w-[16ch] text-inverted"
               />
             </div>
             <AnimatedText
-              className="max-w-[560px] text-[17px] leading-[1.65] text-inverted/62 lg:ml-auto"
+              className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
               {item.location}. Website redesign, portfolio structure, mobile presentation, and contact flow.

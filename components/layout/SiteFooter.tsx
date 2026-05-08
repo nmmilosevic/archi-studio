@@ -15,9 +15,9 @@ export function SiteFooter() {
   const locale = useLocale();
 
   return (
-    <footer className="bg-charcoal py-20 text-inverted md:py-28" aria-label="Site footer">
+    <footer className="bg-charcoal py-16 text-inverted md:py-20" aria-label="Site footer">
       <div className="container-site">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_auto] md:items-start">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:items-start">
           <div>
             <Link
               href={`/${locale}`}
@@ -26,19 +26,19 @@ export function SiteFooter() {
             >
               <ReframeLogo className="h-10 w-[140px] md:h-12 md:w-[168px]" />
             </Link>
-            <p className="mt-8 max-w-[360px] text-[18px] leading-relaxed text-inverted/58">
+            <p className="mt-6 max-w-[360px] text-[16px] leading-relaxed text-inverted/58">
               Premium websites for architecture studios.
             </p>
           </div>
 
-          <div className="grid gap-8 md:min-w-[360px]">
+          <div className="grid gap-6 md:min-w-[300px]">
             <nav aria-label="Footer navigation">
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-4">
+              <ul className="flex gap-8">
                 {footerLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={`/${locale}${link.href}`}
-                      className="text-[16px] text-inverted/62 transition-colors hover:text-inverted"
+                      className="text-[15px] text-inverted/62 transition-colors hover:text-inverted"
                     >
                       {link.label}
                     </Link>
@@ -49,7 +49,7 @@ export function SiteFooter() {
 
             <a
               href={`mailto:${BRAND.email}`}
-              className="text-[16px] text-inverted/62 transition-colors hover:text-bronze"
+              className="text-[15px] text-inverted/62 transition-colors hover:text-bronze"
             >
               {BRAND.email}
             </a>

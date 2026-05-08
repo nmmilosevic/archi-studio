@@ -42,10 +42,10 @@ export default async function ContactPage({ params }: Props) {
             <AnimatedTitle
               text="Tell us about your studio website."
               as="h1"
-              className="text-section max-w-[920px] text-inverted"
+              className="text-hero max-w-[16ch] text-inverted"
             />
             <AnimatedText
-              className="max-w-[560px] text-[18px] leading-[1.65] text-inverted/62 lg:ml-auto"
+              className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
               Send your current website or project idea. We’ll reply with the best next step.

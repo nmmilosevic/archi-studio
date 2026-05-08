@@ -98,10 +98,10 @@ export default async function PricingPage({ params }: Props) {
             <AnimatedTitle
               text="Simple pricing for a better studio website."
               as="h1"
-              className="text-section max-w-[920px] text-inverted"
+              className="text-hero max-w-[16ch] text-inverted"
             />
             <AnimatedText
-              className="max-w-[560px] text-[18px] leading-[1.65] text-inverted/62 lg:ml-auto"
+              className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
               One clear website price, with optional hosting and update support.
@@ -110,20 +110,20 @@ export default async function PricingPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-44" aria-labelledby="main-price-heading">
+      <section className="bg-offwhite py-32 md:py-48" aria-labelledby="main-price-heading">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
             <AnimatedText as="div" delay={0.04}>
-              <div className="bg-charcoal p-8 text-inverted md:p-12 lg:p-14">
+              <div className="border border-charcoal/10 bg-charcoal p-8 text-inverted md:p-12 lg:p-14">
                 <p className="text-[17px] text-inverted/55">Website Design + Development</p>
-                <h2 id="main-price-heading" className="mt-6 font-heading text-[clamp(48px,7vw,96px)] font-medium leading-none text-inverted">
+                <h2 id="main-price-heading" className="mt-6 font-heading text-[clamp(56px,8vw,104px)] font-medium leading-[0.94] text-inverted">
                   €1,500
                 </h2>
-                <p className="mt-4 text-[18px] leading-relaxed text-inverted/70">
-                  one-time
+                <p className="mt-4 text-[17px] leading-relaxed text-inverted/74">
+                  One-time payment
                 </p>
-                <p className="mt-10 max-w-[480px] text-[17px] leading-[1.65] text-inverted/62">
-                  For studios that want to buy the full website design and build.
+                <p className="text-support mt-10 max-w-[480px] text-inverted/62">
+                  For studios that want one complete website offer with clear ownership from day one.
                 </p>
                 <div className="mt-10">
                   <Button asChild variant="secondary" size="lg">
@@ -137,7 +137,7 @@ export default async function PricingPage({ params }: Props) {
             </AnimatedText>
 
             <AnimatedText as="div" delay={0.12}>
-              <div className="border-y border-charcoal/10 py-10 lg:py-14">
+              <div className="border-y border-charcoal/10 py-10 lg:py-14 lg:mt-8">
                 <CheckList items={mainIncludes} />
               </div>
             </AnimatedText>
@@ -147,7 +147,7 @@ export default async function PricingPage({ params }: Props) {
 
       <section className="bg-stone py-24 md:py-36" aria-labelledby="addons-heading">
         <Container>
-          <div className="mb-14 max-w-[720px]">
+          <div className="mb-12 max-w-[720px]">
             <AnimatedTitle
               text="Optional add-ons."
               as="h2"
@@ -156,37 +156,40 @@ export default async function PricingPage({ params }: Props) {
             />
           </div>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
             <AnimatedText as="div" delay={0.08}>
-              <div className="h-full border border-charcoal/10 bg-offwhite p-8 md:p-10">
-                <h3 className="font-heading text-[34px] font-medium leading-tight text-primary">
+              <div className="h-full border border-charcoal/10 bg-offwhite p-7 md:p-8">
+                <h3 className="font-heading text-[24px] font-medium leading-tight text-primary">
                   Hosting & Maintenance
                 </h3>
-                <p className="mt-7 font-heading text-[64px] font-medium leading-none text-primary">
-                  €30<span className="text-[20px] text-muted">/month</span>
+                <p className="mt-5 font-heading text-[40px] font-medium leading-none text-primary">
+                  €30<span className="text-[17px] text-muted">/month</span>
                 </p>
-                <p className="mt-4 text-[16px] text-muted">Billed yearly.</p>
-                <div className="mt-10">
+                <p className="mt-3 text-[15px] text-muted">Billed yearly.</p>
+                <div className="mt-8">
                   <CheckList items={hostingIncludes} />
                 </div>
               </div>
             </AnimatedText>
 
             <AnimatedText as="div" delay={0.16}>
-              <div className="h-full border border-charcoal/10 bg-offwhite p-8 md:p-10">
-                <h3 className="font-heading text-[34px] font-medium leading-tight text-primary">
+              <div className="h-full border border-charcoal/10 bg-offwhite p-7 md:p-8">
+                <h3 className="font-heading text-[24px] font-medium leading-tight text-primary">
                   Monthly Website Updates
                 </h3>
-                <p className="mt-7 font-heading text-[64px] font-medium leading-none text-primary">
-                  €120<span className="text-[20px] text-muted">/month</span>
+                <p className="mt-5 font-heading text-[40px] font-medium leading-none text-primary">
+                  €120<span className="text-[17px] text-muted">/month</span>
                 </p>
-                <p className="mt-4 text-[16px] text-muted">Optional after launch.</p>
-                <div className="mt-10">
+                <p className="mt-3 text-[15px] text-muted">Optional after launch.</p>
+                <div className="mt-8">
                   <CheckList items={updateIncludes} />
                 </div>
               </div>
             </AnimatedText>
           </div>
+          <p className="text-support mt-10 max-w-[800px] text-muted">
+            You own the website once delivered. Optional hosting and updates are available if needed.
+          </p>
         </Container>
       </section>
 

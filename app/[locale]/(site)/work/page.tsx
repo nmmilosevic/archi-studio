@@ -47,10 +47,10 @@ export default async function WorkPage({ params }: Props) {
             <AnimatedTitle
               text="Websites for studios with work worth showing properly."
               as="h1"
-              className="text-section max-w-[920px] text-primary"
+              className="text-hero max-w-[16ch] text-primary"
             />
             <AnimatedText
-              className="max-w-[600px] text-[18px] leading-[1.65] text-muted lg:ml-auto"
+              className="text-support max-w-[600px] text-muted lg:ml-auto"
               delay={0.12}
             >
               A clear look at how architecture and interior studios can present their work with more clarity, confidence, and visual quality.

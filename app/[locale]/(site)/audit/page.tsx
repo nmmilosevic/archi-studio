@@ -94,11 +94,11 @@ export default async function AuditPage({ params }: Props) {
             <AnimatedTitle
               text="Get a clear review of your architecture website."
               as="h1"
-              className="text-section max-w-[920px] text-primary"
+              className="text-hero max-w-[16ch] text-primary"
             />
             <div className="lg:ml-auto">
               <AnimatedText
-                className="max-w-[600px] text-[18px] leading-[1.65] text-muted"
+                className="text-support max-w-[600px] text-muted"
                 delay={0.12}
               >
                 We review your current website and show where it loses trust, clarity, and potential clients.
