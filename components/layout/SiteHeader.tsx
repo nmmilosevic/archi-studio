@@ -18,6 +18,7 @@ export function SiteHeader() {
   const router = useRouter();
   const contactPath = `/${locale}/contact`;
   const workPath = `/${locale}/work`;
+  const isWorkPage = pathname === workPath;
   const isContactPage = pathname === contactPath || pathname.startsWith(`${contactPath}/`);
   const isWorkDetailPage = pathname.startsWith(`${workPath}/`);
   const useLightHeaderText = (isContactPage || isWorkDetailPage) && !scrolled;
@@ -60,7 +61,9 @@ export function SiteHeader() {
               className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label={`${BRAND.name} - Home`}
             >
-              <ReframeLogo light={useLightHeaderText} className="h-8 w-[113px]" />
+              <span className="block h-8 w-[101px] overflow-hidden">
+                <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-8 w-[113px]" />
+              </span>
             </Link>
 
             {/* Right side */}
@@ -103,7 +106,11 @@ export function SiteHeader() {
                 href={`/${locale}/work`}
                 className={clsx(
                   "text-[14px] transition-colors",
-                  useLightHeaderText ? "text-inverted/80 hover:text-inverted" : "text-primary/86 hover:text-primary"
+                  isWorkPage
+                    ? "text-primary/86 hover:text-primary"
+                    : useLightHeaderText
+                      ? "text-inverted/80 hover:text-inverted"
+                      : "text-primary/86 hover:text-primary"
                 )}
               >
                 {t("work")}
@@ -112,7 +119,11 @@ export function SiteHeader() {
                 href={`/${locale}/contact`}
                 className={clsx(
                   "text-[14px] transition-colors",
-                  useLightHeaderText ? "text-inverted/80 hover:text-inverted" : "text-primary/86 hover:text-primary"
+                  isWorkPage
+                    ? "text-primary/86 hover:text-primary"
+                    : useLightHeaderText
+                      ? "text-inverted/80 hover:text-inverted"
+                      : "text-primary/86 hover:text-primary"
                 )}
               >
                 {t("contact")}

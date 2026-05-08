@@ -118,7 +118,7 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
       />
 
-      <section className="relative min-h-dvh overflow-hidden bg-stone pt-24 md:pt-28">
+      <section className="relative min-h-dvh overflow-hidden bg-stone pt-0 md:pt-28">
         <div className="absolute inset-y-0 right-0 hidden w-[46vw] md:block" aria-hidden="true">
           <Image
             src={assetPath("/images/hero.png")}
@@ -130,7 +130,7 @@ export default async function HomePage({ params }: Props) {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-stone via-stone/30 to-transparent" />
         </div>
-        <Container className="relative z-10 grid min-h-[calc(100dvh-7rem)] grid-cols-1 items-center gap-12 pb-12 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-16">
+        <Container className="relative z-10 grid min-h-dvh grid-cols-1 items-center gap-12 pt-24 pb-12 md:min-h-[calc(100dvh-7rem)] md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-16">
           <div className="min-w-0">
             <AnimatedTitle
               text={c.headline}
