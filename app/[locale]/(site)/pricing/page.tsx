@@ -138,9 +138,6 @@ export default async function PricingPage({ params }: Props) {
 
             <AnimatedText as="div" delay={0.12}>
               <div className="border-y border-charcoal/10 py-10 lg:py-14">
-                <h3 className="mb-10 font-heading text-[36px] font-medium leading-tight text-primary">
-                  Included
-                </h3>
                 <CheckList items={mainIncludes} />
               </div>
             </AnimatedText>

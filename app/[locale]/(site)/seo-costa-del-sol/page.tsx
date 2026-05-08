@@ -40,7 +40,6 @@ export default async function SEOPage({ params }: Props) {
   return (
     <>
       <PageHero
-        label={seo.label}
         heading={seo.heading}
         subtext={seo.sub}
       />
@@ -141,11 +140,6 @@ export default async function SEOPage({ params }: Props) {
                 key={i}
                 className="mb-16 last:mb-0 pb-16 last:pb-0 border-b last:border-0 border-charcoal/8"
               >
-                <AnimatedText delay={0.05} as="div">
-                  <span className="font-body text-[14px] tracking-widest text-bronze uppercase mb-3 block">
-                    0{i + 1}
-                  </span>
-                </AnimatedText>
                 <AnimatedTitle
                   text={section.title}
                   as="h2"

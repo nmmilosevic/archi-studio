@@ -59,7 +59,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             aria-label="Navigation menu"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-8 py-6 border-b border-white/8">
+            <div className="flex items-center justify-between px-8 py-7">
               <span className="font-heading text-[17px] text-inverted font-semibold">
                 {BRAND.name}
               </span>
@@ -96,7 +96,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </nav>
 
             {/* Footer */}
-            <div className="px-8 py-6 border-t border-white/8 space-y-5">
+            <div className="px-8 py-7 space-y-5">
               <Button asChild variant="secondary" className="w-full justify-center">
                 <Link href={`/${locale}/audit`} onClick={onClose}>
                   {t("cta")}

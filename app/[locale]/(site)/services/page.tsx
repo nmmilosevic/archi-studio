@@ -32,7 +32,6 @@ export default async function ServicesPage({ params }: Props) {
   const serviceContent = getContent(locale).services;
 
   const services = {
-    label: serviceContent.label,
     heading: serviceContent.heading,
     items: serviceContent.items.map((item) => ({
       ...item,
@@ -43,7 +42,6 @@ export default async function ServicesPage({ params }: Props) {
   return (
     <>
       <PageHero
-        label={services.label}
         heading={services.heading}
         subtext="From website redesigns to local SEO foundations and portfolio systems, every service is built around how architecture and interior studios actually work and how their clients actually search."
       />

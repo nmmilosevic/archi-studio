@@ -18,13 +18,11 @@ interface Props {
 
 const copy = {
   en: {
-    label: "Websites for architecture studios",
     headline: "Websites that match the quality of your work.",
     sub: "We design and build refined websites for architecture and interior design studios that want a stronger digital presence.",
     primary: "Start your website",
     secondary: "View pricing",
     heroProof: "Custom design. Responsive build. Clear pricing. Fast delivery.",
-    heroMockLabel: "Redesign preview",
     beforeTitle: "Most architecture websites don't match the quality of the work.",
     beforeProblems: [
       "Generic templates weaken your positioning",
@@ -32,91 +30,55 @@ const copy = {
       "Hard-to-update websites slow you down",
     ],
     beforeBody: "Your projects are detailed, considered, and high-end. Your website should feel the same.",
-    redesignLabel: "Included",
     redesignTitle: "A complete website, designed and built for your studio.",
     redesignBody: "A clear website system with the pages, structure, and presentation your studio needs.",
     redesignCta: "Start your website",
-    annotations: [
-      { label: "Discovery", desc: "We understand your studio, projects, positioning, and goals." },
-      { label: "Design", desc: "We create a refined website direction that reflects your work." },
-      { label: "Build", desc: "We develop responsive layouts with a clean structure." },
-      { label: "Launch", desc: "We test, connect everything, and publish the site." },
-    ],
     offerTitle: "Simple pricing. No hidden fees.",
     offerIntro: "One clear website price, with optional hosting and updates.",
-    careTitle: "Optional add-ons",
     finalTitle: "See what your website could look like.",
     finalBody: "Send your current website and we’ll show you what could be improved.",
   },
   es: {
-    label: "Rediseños web para arquitectura\nCosta del Sol",
     headline: "Webs que reflejan la calidad del trabajo.",
-    sub: "Ayudamos a estudios de arquitectura e interiorismo en la Costa del Sol a mejorar su presencia online. Mejor primera impresión, portfolios más claros y webs que atraen mejores clientes.",
-    primary: "Ver ejemplos de rediseño",
-    secondary: "Obtener revisión gratuita",
-    heroProof: "Primera revisión gratuita · Sin compromiso · Respuesta en 48 horas",
-    heroMockLabel: "Preview de rediseño",
+    sub: "Diseñamos y construimos webs refinadas para estudios de arquitectura e interiorismo que quieren una presencia digital más sólida.",
+    primary: "Empezar mi web",
+    secondary: "Ver precios",
+    heroProof: "Diseño a medida. Responsive. Precio claro. Entrega rápida.",
     beforeTitle: "La mayoría de webs de arquitectura no reflejan la calidad del trabajo.",
     beforeProblems: [
-      "Diseños desactualizados que pierden la confianza del visitante en segundos",
-      "Proyectos mostrados como galerías, no como historias curadas",
-      "Mala experiencia móvil al abrirla desde el teléfono",
-      "Sin camino claro desde el interés hasta el contacto",
-      "Plantillas genéricas que no reflejan la calidad real del estudio",
+      "Las plantillas genéricas debilitan el posicionamiento",
+      "Una mala experiencia móvil reduce la confianza",
+      "Las webs difíciles de actualizar frenan al estudio",
     ],
-    beforeBody: "Rediseñamos la web — y te mostramos una preview antes de cualquier contrato.",
-    redesignLabel: "Cómo funciona",
-    redesignTitle: "Primero ves la nueva dirección.",
-    redesignBody:
-      "Antes de cualquier contrato, rediseñamos una sección clave de tu web, la desplegamos como preview privada y te enviamos el enlace. Si convence, esa preview se convierte en la base del sitio final.",
-    redesignCta: "Ver ejemplos de rediseño",
-    annotations: [
-      { label: "Preview en vivo", desc: "Un enlace privado a la web rediseñada — desplegada antes de cualquier contrato." },
-      { label: "Comparación directa", desc: "La web actual y la nueva dirección se comparan de forma sencilla." },
-      { label: "Lista para lanzar", desc: "Si la dirección convence, la preview se convierte en la base del sitio final." },
-    ],
-    offerTitle: "Rediseño Web Completo & Lanzamiento",
-    offerIntro:
-      "Un precio fijo. Un rediseño web completo para estudios que necesitan una presencia online más sólida.",
-    careTitle: "Mantenimiento Web Mensual",
-    finalTitle: "Ve cómo podría ser tu web.",
-    finalBody:
-      "Envía la URL de tu web. La revisamos gratis y te mostramos una versión mejorada — sin ningún compromiso.",
+    beforeBody: "Tus proyectos son detallados, cuidados y de alto nivel. Tu web debería sentirse igual.",
+    redesignTitle: "Una web completa, diseñada y construida para tu estudio.",
+    redesignBody: "Un sistema claro con las páginas, estructura y presentación que tu estudio necesita.",
+    redesignCta: "Empezar mi web",
+    offerTitle: "Precios simples. Sin costes ocultos.",
+    offerIntro: "Un precio claro para la web, con hosting y actualizaciones opcionales.",
+    finalTitle: "Mira en qué podría convertirse tu web.",
+    finalBody: "Envía tu web actual y te mostraremos qué se puede mejorar.",
   },
   fr: {
-    label: "Refontes de sites d'architecture\nCosta del Sol",
     headline: "Des sites qui reflètent la qualité du travail.",
-    sub: "Nous aidons les studios d'architecture et de design intérieur sur la Costa del Sol à améliorer leur présence en ligne. Meilleures premières impressions, portfolios plus clairs, sites qui attirent de meilleurs clients.",
-    primary: "Voir les exemples",
-    secondary: "Obtenir un avis gratuit",
-    heroProof: "Premier avis gratuit · Sans engagement · Réponse sous 48 heures",
-    heroMockLabel: "Aperçu de refonte",
+    sub: "Nous concevons et construisons des sites raffinés pour les studios d’architecture et d’intérieur qui veulent une présence digitale plus solide.",
+    primary: "Commencer le site",
+    secondary: "Voir les prix",
+    heroProof: "Design sur mesure. Responsive. Prix clair. Livraison rapide.",
     beforeTitle: "La plupart des sites d'architecture ne reflètent pas la qualité du travail.",
     beforeProblems: [
-      "Des mises en page dépassées qui font perdre confiance en quelques secondes",
-      "Des projets présentés comme des galeries, pas comme des récits soignés",
-      "Une mauvaise expérience mobile quand on ouvre le site depuis un téléphone",
-      "Pas de chemin clair entre l'intérêt et la prise de contact",
-      "Des templates génériques qui ne reflètent pas la vraie qualité du studio",
+      "Les templates génériques affaiblissent le positionnement",
+      "Une mauvaise expérience mobile réduit la confiance",
+      "Les sites difficiles à mettre à jour ralentissent le studio",
     ],
-    beforeBody: "Nous refondons le site — et vous montrons un aperçu avant tout contrat.",
-    redesignLabel: "Comment ça marche",
-    redesignTitle: "Vous voyez la nouvelle direction en premier.",
-    redesignBody:
-      "Avant tout contrat, nous refondons une section clé de votre site, la déployons en aperçu privé et vous envoyons le lien. Si la direction convient, cet aperçu devient la base du site final.",
-    redesignCta: "Voir les exemples",
-    annotations: [
-      { label: "Aperçu en direct", desc: "Un lien privé vers le site refait — déployé avant tout contrat." },
-      { label: "Comparaison directe", desc: "Le site actuel et la nouvelle direction sont faciles à comparer." },
-      { label: "Prêt au lancement", desc: "Si la direction convient, l'aperçu devient la base du site final." },
-    ],
-    offerTitle: "Refonte Complète & Lancement",
-    offerIntro:
-      "Un prix fixe. Une refonte complète pour les studios qui ont besoin d'une présence en ligne plus solide.",
-    careTitle: "Maintenance Web Mensuelle",
-    finalTitle: "Voyez à quoi pourrait ressembler votre site.",
-    finalBody:
-      "Envoyez l'URL de votre site. Nous l'évaluons gratuitement et vous montrons une meilleure version — sans aucun engagement.",
+    beforeBody: "Vos projets sont détaillés, soignés et haut de gamme. Votre site devrait donner la même impression.",
+    redesignTitle: "Un site complet, conçu et construit pour votre studio.",
+    redesignBody: "Un système clair avec les pages, la structure et la présentation dont votre studio a besoin.",
+    redesignCta: "Commencer le site",
+    offerTitle: "Prix simples. Aucun frais caché.",
+    offerIntro: "Un prix clair pour le site, avec hébergement et mises à jour optionnels.",
+    finalTitle: "Voyez ce que votre site pourrait devenir.",
+    finalBody: "Envoyez votre site actuel et nous vous montrerons ce qui peut être amélioré.",
   },
 } as const;
 
@@ -131,13 +93,7 @@ const includes = [
   "5 pages included",
 ];
 
-const studioCoords = [
-  { name: "Marbella",    coord: "36° 30' N · 4° 53' W" },
-  { name: "Estepona",   coord: "36° 25' N · 5° 08' W" },
-  { name: "Sotogrande", coord: "36° 17' N · 5° 23' W" },
-  { name: "Benahavís",  coord: "36° 31' N · 5° 03' W" },
-  { name: "Málaga",     coord: "36° 43' N · 4° 25' W" },
-];
+const cities = ["Marbella", "Estepona", "Sotogrande", "Benahavís", "Málaga"];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -177,17 +133,6 @@ export default async function HomePage({ params }: Props) {
         </div>
         <Container className="relative z-10 grid min-h-[calc(100dvh-7rem)] grid-cols-1 items-center gap-12 pb-12 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-16">
           <div className="min-w-0">
-            <AnimatedText
-              as="div"
-              className="mb-8 font-body text-[15px] leading-[1.6] text-muted"
-              delay={0.04}
-            >
-              {c.label.split("\n").map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </AnimatedText>
             <AnimatedTitle
               text={c.headline}
               as="h1"
@@ -223,10 +168,6 @@ export default async function HomePage({ params }: Props) {
                   sizes="(min-width: 1280px) 540px, 500px"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-px bg-bronze/40" aria-hidden="true" />
-              </div>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="h-px w-8 bg-bronze/35" aria-hidden="true" />
-                <span className="font-body text-muted/45">{c.heroMockLabel}</span>
               </div>
             </div>
           </AnimatedText>
@@ -266,13 +207,6 @@ export default async function HomePage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
             <div>
-              <AnimatedText
-                as="p"
-                className="mb-7 font-body text-[15px] leading-none text-muted/60"
-                delay={0.04}
-              >
-                {c.redesignLabel}
-              </AnimatedText>
               <AnimatedTitle
                 text={c.redesignTitle}
                 as="h2"
@@ -298,24 +232,6 @@ export default async function HomePage({ params }: Props) {
                       </div>
                     ))}
                   </div>
-                </div>
-                <div className="mt-14 border-t border-charcoal/10">
-                  {c.annotations.map((item, i) => (
-                    <div
-                      key={item.label}
-                      className="grid grid-cols-[42px_0.78fr_1fr] gap-5 border-b border-charcoal/8 py-5 max-md:grid-cols-[38px_1fr]"
-                    >
-                      <span className="mt-0.5 font-body text-[14px] tracking-[0.12em] text-muted/35">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <p className="font-body text-[17px] text-primary max-md:col-start-2">
-                        {item.label}
-                      </p>
-                      <p className="font-body text-[15px] leading-relaxed text-muted max-md:col-start-2">
-                        {item.desc}
-                      </p>
-                    </div>
-                  ))}
                 </div>
               </div>
             </AnimatedText>
@@ -372,19 +288,16 @@ export default async function HomePage({ params }: Props) {
           </div>
 
           <div>
-            {studioCoords.map(({ name, coord }) => (
+            {cities.map((name) => (
               <div
                 key={name}
-                className="group flex items-baseline justify-between border-b border-charcoal/6 py-3.5 md:py-4 cursor-default"
+                className="group flex items-baseline border-b border-charcoal/6 py-4 md:py-5 cursor-default"
               >
                 <span
                   className="font-heading font-medium text-primary/45 group-hover:text-primary/75 transition-colors duration-500 leading-none"
                   style={{ fontSize: "clamp(40px, 6.5vw, 88px)", letterSpacing: "-0.02em" }}
                 >
                   {name}
-                </span>
-                <span className="font-body text-muted/50 group-hover:text-muted/70 transition-colors duration-500 hidden sm:block">
-                  {coord}
                 </span>
               </div>
             ))}

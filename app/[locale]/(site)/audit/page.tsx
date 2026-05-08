@@ -117,7 +117,7 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
             <div>
-              <AnimatedTitle text="What we review." as="h2" id="review-heading" className="text-display text-primary" />
+              <AnimatedTitle text="We look for the gaps that weaken trust." as="h2" id="review-heading" className="text-display text-primary" />
             </div>
             <div className="lg:col-span-2">
               <SimpleList items={reviewPoints} />
@@ -130,13 +130,13 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div>
-              <AnimatedTitle text="What you receive." as="h2" id="receive-heading" className="text-display text-primary" />
+              <AnimatedTitle text="You get a clear written direction." as="h2" id="receive-heading" className="text-display text-primary" />
               <div className="mt-12">
                 <SimpleList items={receive} />
               </div>
             </div>
             <div>
-              <AnimatedTitle text="Who it is for." as="h2" className="text-display text-primary" />
+              <AnimatedTitle text="Built for visual studios and property-led brands." as="h2" className="text-display text-primary" />
               <div className="mt-12">
                 <SimpleList items={who} />
               </div>

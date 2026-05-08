@@ -2,26 +2,26 @@
 
 @theme {
   --font-heading: 'General Sans', var(--font-geist-sans), system-ui, sans-serif;
-  --font-body: var(--font-geist-sans);
+  --font-body: 'General Sans', var(--font-geist-sans), system-ui, sans-serif;
 
   /* ── Core palette ──────────────────────────────────── */
-  --color-stone: #ECE7DF;
+  --color-stone: #F5F1EB;
   --color-sand: #C6A98B;
-  --color-offwhite: #E1DBD0;
-  --color-charcoal: #0A0A0A;
-  --color-graphite: #0A0A0A;
-  --color-primary: #101010;
-  --color-muted: #6F6A63;
-  --color-inverted: #ECE7DF;
+  --color-offwhite: #F5F1EB;
+  --color-charcoal: #0B0B0B;
+  --color-graphite: #0B0B0B;
+  --color-primary: #111111;
+  --color-muted: #6E6A64;
+  --color-inverted: #F5F1EB;
   --color-bronze: #8E745C;
   --color-clay: #C6A98B;
   --color-olive: #A8A29A;
-  --color-border: #C9C2B5;
+  --color-border: #D8D2CA;
 
   /* ── Brand language tokens ─────────────────────────── */
-  --color-limestone: #ECE7DF;
-  --color-warm-paper: #E1DBD0;
-  --color-studio-black: #0A0A0A;
+  --color-limestone: #F5F1EB;
+  --color-warm-paper: #F5F1EB;
+  --color-studio-black: #0B0B0B;
   --color-bronze-dust: #8E745C;
   --color-soft-graphite: #6F6A63;
   --color-warm-concrete: #C6A98B;
@@ -42,7 +42,7 @@
   body {
     background-color: var(--color-stone);
     color: var(--color-primary);
-    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
@@ -172,10 +172,10 @@
   /* ── Nav ─────────────────────────────────────────────── */
 
   .nav-link {
-    font-family: var(--font-geist-sans), sans-serif;
-    font-size: 13px;
+    font-family: var(--font-body);
+    font-size: 15px;
     font-weight: 400;
-    letter-spacing: 0.06em;
+    letter-spacing: 0;
     color: var(--color-muted);
     transition: color 300ms ease;
     position: relative;
@@ -184,24 +184,6 @@
   .nav-link:hover,
   .nav-link[aria-current="page"] {
     color: var(--color-primary);
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--color-primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .nav-link[aria-current="page"]::after,
-  .nav-link:hover::after {
-    transform: scaleX(1);
   }
 
   /* ── Card / hover ────────────────────────────────────── */
@@ -235,48 +217,6 @@
   .link-underline:hover::after {
     transform: scaleX(1);
     transform-origin: left;
-  }
-
-  /* ── Atmosphere ──────────────────────────────────────── */
-
-  .grain-texture {
-    position: relative;
-  }
-
-  .grain-texture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .film-grain {
-    position: relative;
-  }
-
-  .film-grain::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='0.06'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 2;
-    mix-blend-mode: overlay;
-  }
-
-  /* ── Dividers ────────────────────────────────────────── */
-
-  .divider-line {
-    width: 100%;
-    height: 1px;
-    background: var(--color-border);
-  }
-
-  .bronze-line-left {
-    padding-left: 1rem;
-    border-left: 1px solid var(--color-bronze);
   }
 
   /* ── Preview system ──────────────────────────────────── */

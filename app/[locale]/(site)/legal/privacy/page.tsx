@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <PageHero heading="Privacy Policy" label="Legal" />
+      <PageHero heading="Privacy Policy" />
 
       <section className="py-16 bg-offwhite">
         <Container>
           <div className="max-w-2xl prose-custom">
             <div className="inline-flex items-center gap-2 bg-sand/60 border border-bronze/20 px-4 py-2.5 mb-10">
-              <span className="font-body text-[14px] tracking-widest text-muted/70 uppercase">
+              <span className="font-body text-[14px] text-muted/70">
                 Placeholder document. Review with a legal advisor before launch.
               </span>
             </div>

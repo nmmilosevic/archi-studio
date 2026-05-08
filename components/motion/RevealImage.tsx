@@ -13,7 +13,6 @@ interface RevealImageProps {
   className?: string;
   wrapperClassName?: string;
   priority?: boolean;
-  label?: string;
   aspectRatio?: string;
   fill?: boolean;
 }
@@ -24,7 +23,6 @@ export function RevealImage({
   className,
   wrapperClassName,
   priority = false,
-  label,
   aspectRatio = "aspect-[4/3]",
   fill = false,
 }: RevealImageProps) {
@@ -43,16 +41,9 @@ export function RevealImage({
       >
         {reduced ? (
           <div className={clsx(
-            "w-full h-full bg-[#cfc7ba] flex items-end p-4",
+            "w-full h-full bg-[#cfc7ba]",
             fill ? "absolute inset-0" : "min-h-[200px]"
-          )}>
-            <span
-              className="font-body text-[14px] text-muted/70 tracking-widest uppercase leading-snug"
-              aria-hidden="true"
-            >
-              {label ?? alt}
-            </span>
-          </div>
+          )} />
         ) : (
           <motion.div
             initial={{ clipPath: "inset(0 100% 0 0)" }}
@@ -67,17 +58,10 @@ export function RevealImage({
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.9, ease: EASE }}
               className={clsx(
-                "w-full bg-[#cfc7ba] flex items-end p-4",
+                "w-full bg-[#cfc7ba]",
                 fill ? "absolute inset-0 h-full" : "h-full min-h-[200px]"
               )}
-            >
-              <span
-                className="font-body text-[14px] text-muted/60 tracking-widest uppercase leading-snug"
-                aria-hidden="true"
-              >
-                {label ?? alt}
-              </span>
-            </motion.div>
+            />
           </motion.div>
         )}
       </div>
