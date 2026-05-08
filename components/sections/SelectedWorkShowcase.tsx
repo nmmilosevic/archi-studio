@@ -4,62 +4,77 @@ import { useMemo } from "react";
 import Image from "next/image";
 import { clsx } from "clsx";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { assetPath } from "@/lib/paths";
+import mediteraneanImage from "@/public/images/autoscroll/mediteranean.png";
+import organicImage from "@/public/images/autoscroll/organic.png";
+import avantformeImage from "@/public/images/autoscroll/avantforme.png";
+import futuristicImage from "@/public/images/autoscroll/futuristic.png";
+import japanImage from "@/public/images/autoscroll/japan.png";
+import luxuryImage from "@/public/images/autoscroll/luxury.png";
+import modernEcoImage from "@/public/images/autoscroll/modern-eco.png";
+import parisianImage from "@/public/images/autoscroll/parisian.png";
+import darkLuxuryImage from "@/public/images/autoscroll/dark-luxury.png";
 
 interface ShowcaseItem {
   id: string;
   title: string;
-  image: string;
-  sizeClass: string;
+  image: typeof mediteraneanImage;
   offsetClass: string;
-  position?: string;
 }
 
 const items: ShowcaseItem[] = [
   {
-    id: "home-system",
-    title: "Homepage system",
-    image: "/images/hero.png",
-    sizeClass: "w-[320px] md:w-[420px] xl:w-[520px] aspect-[16/10]",
-    offsetClass: "md:mt-0",
+    id: "mediteranean-style",
+    title: "Mediterranean style",
+    image: mediteraneanImage,
+    offsetClass: "mt-0 md:mt-0",
   },
   {
-    id: "project-mobile",
-    title: "Mobile project flow",
-    image: "/images/heromock.png",
-    sizeClass: "w-[190px] md:w-[220px] xl:w-[250px] aspect-[9/16]",
-    offsetClass: "md:mt-10",
-    position: "top",
+    id: "organic-style",
+    title: "Organic style",
+    image: organicImage,
+    offsetClass: "mt-6 md:mt-10",
   },
   {
-    id: "portfolio-direction",
-    title: "Portfolio direction",
-    image: "/images/redesign-preview.png",
-    sizeClass: "w-[300px] md:w-[380px] xl:w-[470px] aspect-[16/10]",
-    offsetClass: "md:mt-4",
+    id: "avantforme-style",
+    title: "Avantforme style",
+    image: avantformeImage,
+    offsetClass: "mt-2 md:mt-4",
   },
   {
-    id: "before-after-detail",
-    title: "Editorial detail",
-    image: "/images/after.png",
-    sizeClass: "w-[280px] md:w-[340px] xl:w-[420px] aspect-[4/3]",
-    offsetClass: "md:mt-14",
-    position: "top",
+    id: "futuristic-style",
+    title: "Futuristic style",
+    image: futuristicImage,
+    offsetClass: "mt-8 md:mt-14",
   },
   {
-    id: "dark-light-concept",
-    title: "Dark-light concept",
-    image: "/images/before.png",
-    sizeClass: "w-[260px] md:w-[320px] xl:w-[390px] aspect-[5/4]",
-    offsetClass: "md:mt-2",
-    position: "top",
+    id: "japan-style",
+    title: "Japan style",
+    image: japanImage,
+    offsetClass: "mt-1 md:mt-2",
   },
   {
-    id: "pricing-composition",
-    title: "Presentation composition",
-    image: "/images/pricing-img.png",
-    sizeClass: "w-[300px] md:w-[380px] xl:w-[460px] aspect-[16/10]",
-    offsetClass: "md:mt-12",
+    id: "luxury-style",
+    title: "Luxury style",
+    image: luxuryImage,
+    offsetClass: "mt-7 md:mt-12",
+  },
+  {
+    id: "modern-eco-style",
+    title: "Modern eco style",
+    image: modernEcoImage,
+    offsetClass: "mt-3 md:mt-5",
+  },
+  {
+    id: "parisian-style",
+    title: "Parisian style",
+    image: parisianImage,
+    offsetClass: "mt-5 md:mt-10",
+  },
+  {
+    id: "dark-luxury-style",
+    title: "Dark luxury style",
+    image: darkLuxuryImage,
+    offsetClass: "mt-2 md:mt-2",
   },
 ];
 
@@ -81,21 +96,11 @@ export function SelectedWorkShowcase() {
         >
           {doubledItems.map((item, index) => (
             <article key={`${item.id}-${index}`} className={clsx("flex-shrink-0", item.offsetClass)}>
-              <div
-                className={clsx(
-                  "relative overflow-hidden bg-stone shadow-[0_12px_30px_rgb(8_8_8/0.09)]",
-                  item.sizeClass
-                )}
-              >
-                <Image
-                  src={assetPath(item.image)}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  style={{ objectPosition: item.position ?? "center" }}
-                  sizes="(min-width: 1440px) 520px, (min-width: 1024px) 36vw, (min-width: 768px) 50vw, 80vw"
-                />
-              </div>
+              <Image
+                src={item.image}
+                alt={item.title}
+                className="h-auto w-auto max-h-[220px] md:max-h-[280px] xl:max-h-[340px] shadow-[0_12px_30px_rgb(8_8_8/0.09)]"
+              />
             </article>
           ))}
         </div>

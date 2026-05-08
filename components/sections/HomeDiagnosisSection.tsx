@@ -75,10 +75,10 @@ export function HomeDiagnosisSection({ locale, title, body, cta }: HomeDiagnosis
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="absolute right-0 top-0 w-[88%] overflow-hidden rounded-[16px] border border-charcoal/12 bg-[#f4eee6] shadow-[0_22px_56px_rgb(22_18_14/0.11)]">
+            <div className="absolute right-0 top-1/2 w-[88%] -translate-y-1/2 overflow-hidden rounded-[16px]">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src={assetPath("/images/after.png")}
+                  src={assetPath("/images/imagesection.png")}
                   alt="Website audit visual composition"
                   fill
                   className="object-cover object-top"

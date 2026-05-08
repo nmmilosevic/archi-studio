@@ -24,7 +24,7 @@ export function BeforeAfterSlider({
   annotationLabels = [],
   annotationRevealThreshold = 58,
 }: BeforeAfterSliderProps) {
-  const [position, setPosition] = useState(70);
+  const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const showAnnotations = position < annotationRevealThreshold;

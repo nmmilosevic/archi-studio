@@ -202,8 +202,8 @@ export default async function HomePage({ params }: Props) {
 
           <AnimatedText as="div" delay={0.08}>
             <BeforeAfterSlider
-              beforeSrc={assetPath("/images/before.png")}
-              afterSrc={assetPath("/images/after.png")}
+              beforeSrc={assetPath("/images/avant1.png")}
+              afterSrc={assetPath("/images/apres.png")}
               beforeAlt="Architecture studio website before redesign"
               afterAlt="Architecture studio website after redesign"
               annotationLabels={[
