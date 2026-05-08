@@ -20,7 +20,7 @@ export function PageHero({
   return (
     <section
       className={clsx(
-        "pt-36 md:pt-44 pb-16 md:pb-20",
+        "pt-32 pb-14 md:pt-44 md:pb-20",
         isDark ? "bg-charcoal" : "bg-stone"
       )}
     >
@@ -30,7 +30,7 @@ export function PageHero({
             text={heading}
             as="h1"
             className={clsx(
-              "text-hero mb-6 text-balance",
+              "text-page-title mb-6 text-balance",
               isDark ? "text-inverted" : "text-primary"
             )}
           />

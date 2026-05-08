@@ -42,7 +42,7 @@ export default async function ContactPage({ params }: Props) {
             <AnimatedTitle
               text="Tell us about your studio website."
               as="h1"
-              className="text-hero max-w-[16ch] text-inverted"
+              className="text-page-title max-w-[16ch] text-inverted"
             />
             <AnimatedText
               className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
@@ -54,11 +54,11 @@ export default async function ContactPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-40" aria-label="Contact form">
+      <section className="bg-offwhite section-space" aria-label="Contact form">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
             <div>
-              <h2 className="font-heading text-[38px] font-medium leading-tight text-primary">
+              <h2 className="text-display font-heading font-medium text-primary">
                 Start with the essentials.
               </h2>
               <div className="mt-12 grid gap-5">

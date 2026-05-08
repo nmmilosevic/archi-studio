@@ -94,7 +94,7 @@ export default async function AuditPage({ params }: Props) {
             <AnimatedTitle
               text="Get a clear review of your architecture website."
               as="h1"
-              className="text-hero max-w-[16ch] text-primary"
+              className="text-page-title max-w-[16ch] text-primary"
             />
             <div className="lg:ml-auto">
               <AnimatedText
@@ -113,7 +113,7 @@ export default async function AuditPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-40" aria-labelledby="review-heading">
+      <section className="bg-offwhite section-space" aria-labelledby="review-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
             <div>
@@ -126,7 +126,7 @@ export default async function AuditPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-stone py-28 md:py-40" aria-labelledby="receive-heading">
+      <section className="bg-stone section-space" aria-labelledby="receive-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div>
@@ -145,7 +145,7 @@ export default async function AuditPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-40" id="audit-form" aria-labelledby="audit-form-heading">
+      <section className="bg-offwhite section-space" id="audit-form" aria-labelledby="audit-form-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr]">
             <div>
@@ -155,7 +155,7 @@ export default async function AuditPage({ params }: Props) {
                 id="audit-form-heading"
                 className="text-display text-primary"
               />
-              <p className="mt-8 max-w-[520px] text-[18px] leading-[1.65] text-muted">
+              <p className="text-support mt-8 max-w-[520px] text-muted">
                 Send your current website. We’ll reply with the clearest issues and the best next step.
               </p>
             </div>

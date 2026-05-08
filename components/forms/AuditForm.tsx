@@ -8,7 +8,7 @@ import { Send, CheckCircle } from "lucide-react";
 
 // TODO: Connect to Resend or Supabase for email delivery
 
-const inputClass = "w-full bg-transparent border-b border-charcoal/15 px-0 py-3.5 font-body text-[16px] leading-[1.45] text-primary placeholder:text-muted/42 focus:outline-none focus:border-bronze transition-colors duration-300";
+const inputClass = "w-full min-h-12 bg-transparent border-b border-charcoal/15 px-0 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/42 focus:outline-none focus:border-bronze transition-colors duration-300";
 const labelClass = "font-body text-[14px] text-muted/65 mb-2 block";
 
 interface FormData {
@@ -71,9 +71,9 @@ export function AuditForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-7">
+    <form onSubmit={handleSubmit} noValidate className="space-y-6 md:space-y-7">
       {/* Row 1 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="audit-name" className={labelClass}>
             {t("name")} *
@@ -125,7 +125,7 @@ export function AuditForm() {
       </div>
 
       {/* Row 3 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="audit-email" className={labelClass}>
             {t("email")} *
@@ -159,7 +159,7 @@ export function AuditForm() {
       </div>
 
       {/* Row 4 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="audit-type" className={labelClass}>
             {t("type")}
@@ -221,7 +221,7 @@ export function AuditForm() {
           required
           checked={form.consent}
           onChange={handleChange}
-          className="mt-0.5 h-5 w-5 border border-charcoal/20 accent-bronze cursor-pointer flex-shrink-0"
+          className="mt-0.5 h-5 w-5 flex-shrink-0 cursor-pointer border border-charcoal/20 accent-bronze"
         />
         <label
           htmlFor="audit-consent"

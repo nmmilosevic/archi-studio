@@ -209,7 +209,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-32 md:py-48" aria-labelledby="work-preview-heading">
+      <section className="bg-offwhite section-space" aria-labelledby="work-preview-heading">
         <Container>
           <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle text={c.workTitle} as="h2" id="work-preview-heading" className="text-section max-w-[860px] text-primary" />
@@ -232,7 +232,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section id="previews" className="bg-charcoal py-32 text-inverted md:py-48" aria-labelledby="preview-heading">
+      <section id="previews" className="bg-charcoal section-space text-inverted" aria-labelledby="preview-heading">
         <Container>
           <div className="mb-[80px] grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-display max-w-[820px] text-inverted" />
@@ -261,7 +261,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section id="website-review" className="bg-stone py-32 md:py-48" aria-labelledby="website-review-heading">
+      <section id="website-review" className="bg-stone section-space" aria-labelledby="website-review-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
             <div>
@@ -298,7 +298,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-32 md:py-48" aria-labelledby="redesign-heading">
+      <section className="bg-offwhite section-space" aria-labelledby="redesign-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
             <div>
@@ -335,63 +335,85 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section id="pricing" className="bg-stone py-36 md:py-52" aria-labelledby="offer-heading">
+      <section id="pricing" className="bg-stone section-space-loose" aria-labelledby="offer-heading">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-            <div>
-              <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-7 max-w-[700px] text-primary" />
-              <AnimatedText className="text-support mb-12 max-w-[500px] text-muted" delay={0.1}>
-                {c.offerIntro}
-              </AnimatedText>
-              <div className="mb-10 border border-charcoal/12 bg-offwhite p-8 md:p-10">
-                <p className="font-body text-[17px] text-muted">Website Design + Development</p>
-                <p className="mt-5 font-heading text-[clamp(56px,8vw,104px)] font-medium leading-[0.94] text-primary">
-                  €1,500
-                </p>
-                <p className="mt-4 font-body text-[17px] leading-relaxed text-muted/78">
-                  One-time payment
-                </p>
-                <Button asChild size="lg" className="mt-8">
-                  <Link href={`/${locale}/contact`}>
-                    Start your website <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </Button>
-                <div className="mt-10 grid gap-3">
-                  {pricingIncludes.map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <Check className="mt-1 h-4 w-4 flex-shrink-0 text-bronze" aria-hidden="true" />
-                      <span className="text-[16px] leading-relaxed text-primary">{item}</span>
-                    </div>
-                  ))}
+          <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-7 max-w-[700px] text-primary" />
+          <AnimatedText className="text-support mb-12 max-w-[520px] text-muted" delay={0.1}>
+            {c.offerIntro}
+          </AnimatedText>
+          <div className="mx-auto w-full max-w-[1280px] rounded-[24px] border border-charcoal/14 bg-charcoal p-6 text-inverted shadow-[0_20px_80px_rgb(11_11_11/0.16)] md:p-10 lg:p-12">
+            <div className="grid gap-6 md:gap-8">
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:gap-10">
+                <div className="lg:pr-4">
+                  <p className="font-body text-[17px] text-inverted/68">Website Design + Development</p>
+                  <p className="mt-4 font-heading text-[clamp(66px,10vw,132px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
+                    €1,500
+                  </p>
+                  <p className="mt-3 font-body text-[18px] leading-relaxed text-inverted/78">
+                    One-time payment
+                  </p>
+                  <p className="text-support mt-6 max-w-[620px] text-inverted/72">
+                    A complete website designed and developed for your studio. You own it once delivered.
+                  </p>
+                  <Button asChild size="lg" variant="secondary" className="mt-8 w-full sm:w-auto">
+                    <Link href={`/${locale}/contact`}>
+                      Start your website <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                  <div className="mt-8 grid gap-3 border-t border-white/12 pt-7">
+                    {pricingIncludes.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <Check className="mt-1 h-4 w-4 flex-shrink-0 text-clay" aria-hidden="true" />
+                        <span className="text-[16px] leading-relaxed text-inverted/84">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <p className="mt-10 border-t border-charcoal/10 pt-6 text-[16px] leading-relaxed text-muted">
-                  You own the website once delivered. Optional hosting and updates are available if needed.
-                </p>
+
+                <div className="hidden rounded-[14px] border border-white/12 bg-[#efe7de] p-4 text-charcoal lg:block">
+                  <div className="h-full rounded-[10px] border border-charcoal/14 bg-[#f7f2ea] p-3">
+                    <div className="mb-3 h-4 w-20 rounded-full bg-charcoal/12" />
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="h-16 rounded-md bg-charcoal/8" />
+                      <div className="h-16 rounded-md bg-charcoal/6" />
+                      <div className="h-24 rounded-md bg-charcoal/10" />
+                      <div className="h-24 rounded-md bg-charcoal/7" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <AnimatedText as="div" delay={0.14}>
-              <div className="grid gap-4 lg:pt-16">
-                <div className="border border-charcoal/10 bg-stone p-7">
-                  <h3 className="font-heading text-[24px] font-medium text-primary">Hosting & Maintenance</h3>
-                  <p className="mt-4 font-heading text-[40px] font-medium leading-none text-primary">€30<span className="text-[17px] text-muted">/month</span></p>
-                  <p className="mt-2 text-[15px] text-muted">Optional. Billed yearly.</p>
+          </div>
+          <AnimatedText as="div" delay={0.14} className="mt-20">
+            <div className="mx-auto w-full max-w-[1280px]">
+              <div className="mb-4">
+                <h3 className="text-card-title font-heading font-medium text-primary">Ownership & Optional Support</h3>
+                <p className="text-support mt-2 max-w-[760px] text-muted">
+                  Your website is fully yours at delivery. Hosting and ongoing updates are available anytime if you want continued support.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div className="rounded-[14px] border border-charcoal/12 bg-offwhite p-5 md:p-6">
+                  <h3 className="text-card-title font-heading font-medium text-primary">Hosting & Maintenance</h3>
+                  <p className="mt-3 font-heading text-[34px] font-medium leading-none text-primary">€30<span className="text-[16px] text-muted">/month</span></p>
+                  <p className="mt-2 text-[14px] text-muted">Billed yearly.</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted">Optional hosting, domain connection, SSL and basic maintenance.</p>
                 </div>
-                <div className="border border-charcoal/10 bg-stone p-7">
-                  <h3 className="font-heading text-[24px] font-medium text-primary">Monthly Website Updates</h3>
-                  <p className="mt-4 font-heading text-[40px] font-medium leading-none text-primary">€120<span className="text-[17px] text-muted">/month</span></p>
-                  <p className="mt-2 text-[15px] text-muted">Optional text, image and small layout updates.</p>
+                <div className="rounded-[14px] border border-charcoal/12 bg-offwhite p-5 md:p-6">
+                  <h3 className="text-card-title font-heading font-medium text-primary">Monthly Website Updates</h3>
+                  <p className="mt-3 font-heading text-[34px] font-medium leading-none text-primary">€120<span className="text-[16px] text-muted">/month</span></p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-muted">Optional text, image and small layout updates.</p>
                 </div>
               </div>
-            </AnimatedText>
-          </div>
+            </div>
+          </AnimatedText>
         </Container>
       </section>
 
-      <section className="bg-charcoal py-28 text-inverted md:py-40" aria-labelledby="final-heading">
+      <section className="bg-charcoal section-space-tight text-inverted" aria-labelledby="final-heading">
         <Container>
           <div className="mx-auto max-w-[920px] text-center">
-            <AnimatedTitle text={c.finalTitle} as="h2" id="final-heading" className="text-section mb-8 text-inverted" />
+            <AnimatedTitle text={c.finalTitle} as="h2" id="final-heading" className="text-section mb-8 mx-auto max-w-[22ch] text-center text-inverted" />
             <AnimatedText className="text-support mx-auto mb-12 max-w-[620px] text-inverted/60" delay={0.12}>
               {c.finalBody}
             </AnimatedText>

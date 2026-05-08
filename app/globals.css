@@ -69,20 +69,26 @@
 
 @layer components {
   .container-site {
-    max-width: 1440px;
+    width: min(100%, 1440px);
     margin-inline: auto;
-    padding-inline: 1.5rem;
+    padding-inline: 20px;
   }
 
   @media (min-width: 768px) {
     .container-site {
-      padding-inline: 3rem;
+      padding-inline: 32px;
     }
   }
 
   @media (min-width: 1024px) {
     .container-site {
-      padding-inline: 5rem;
+      padding-inline: 56px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container-site {
+      padding-inline: 64px;
     }
   }
 
@@ -97,8 +103,8 @@
   /* ── Type scale ─────────────────────────────────────── */
 
   .text-hero {
-    font-size: clamp(46px, 11vw, 66px);
-    line-height: 0.95;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 0.98;
     letter-spacing: -0.02em;
     font-family: var(--font-heading);
     font-weight: 500;
@@ -106,9 +112,19 @@
     max-width: 16ch;
   }
 
-  .text-section {
-    font-size: clamp(34px, 8.5vw, 48px);
+  .text-page-title {
+    font-size: clamp(36px, 4.8vw, 64px);
     line-height: 1;
+    letter-spacing: -0.018em;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-wrap: balance;
+    max-width: 18ch;
+  }
+
+  .text-section {
+    font-size: clamp(30px, 4.2vw, 56px);
+    line-height: 1.02;
     letter-spacing: -0.015em;
     font-family: var(--font-heading);
     font-weight: 500;
@@ -117,7 +133,7 @@
   }
 
   .text-display {
-    font-size: clamp(28px, 6vw, 40px);
+    font-size: clamp(30px, 3.9vw, 56px);
     line-height: 1.04;
     letter-spacing: -0.008em;
     font-family: var(--font-heading);
@@ -127,8 +143,26 @@
   }
 
   .text-support {
-    font-size: clamp(16px, 1.6vw, 18px);
-    line-height: 1.7;
+    font-size: clamp(16px, 1.1vw, 18px);
+    line-height: 1.55;
+  }
+
+  .text-card-title {
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.08;
+    letter-spacing: -0.012em;
+  }
+
+  .section-space {
+    padding-block: clamp(64px, 9vw, 152px);
+  }
+
+  .section-space-tight {
+    padding-block: clamp(64px, 8vw, 120px);
+  }
+
+  .section-space-loose {
+    padding-block: clamp(80px, 10vw, 160px);
   }
 
   /* Cinematic — fullscreen editorial moments */
@@ -142,25 +176,29 @@
 
   @media (min-width: 768px) {
     .text-hero {
-      font-size: clamp(56px, 7vw, 76px);
+      font-size: clamp(52px, 6vw, 72px);
+    }
+
+    .text-page-title {
+      font-size: clamp(44px, 4.8vw, 64px);
     }
 
     .text-section {
-      font-size: clamp(40px, 5vw, 52px);
+      font-size: clamp(38px, 4.4vw, 56px);
     }
 
     .text-display {
-      font-size: clamp(32px, 4.2vw, 44px);
+      font-size: clamp(34px, 3.8vw, 56px);
     }
   }
 
   @media (min-width: 1280px) {
     .text-hero {
-      font-size: clamp(66px, 5.3vw, 80px);
+      font-size: clamp(64px, 5vw, 72px);
     }
 
     .text-section {
-      font-size: clamp(46px, 4.3vw, 56px);
+      font-size: clamp(42px, 3.7vw, 56px);
     }
   }
 

@@ -56,19 +56,19 @@ export function WorkCard({
       aria-label={`View case study: ${title}`}
     >
       <div className="shadow-[0_20px_56px_rgb(10_10_10/0.09)] group-hover:shadow-[0_28px_72px_rgb(10_10_10/0.13)] transition-shadow duration-500">
-        <div className={`relative overflow-hidden bg-stone ${tall ? "h-[480px] md:h-[560px]" : "h-[320px] md:h-[400px]"} transition-opacity duration-500 group-hover:opacity-95`}>
+        <div className={`relative overflow-hidden bg-stone ${tall ? "h-[380px] sm:h-[440px] md:h-[520px]" : "h-[260px] sm:h-[320px] md:h-[400px]"} transition-opacity duration-500 group-hover:opacity-95`}>
           <Image
             src={preview.src}
             alt={`${title} website redesign preview`}
             fill
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.025]"
             style={{ objectPosition: preview.position ?? "center" }}
-            sizes="(min-width: 768px) 45vw, 100vw"
+            sizes="(min-width: 1440px) 420px, (min-width: 1024px) 30vw, (min-width: 768px) 46vw, 100vw"
           />
         </div>
         <div className="h-px bg-bronze/35" aria-hidden="true" />
       </div>
-      <div className="pt-7 pb-8 border-b border-charcoal/10">
+      <div className="border-b border-charcoal/10 pt-6 pb-8 md:pt-7 md:pb-10">
         <div className="mb-5">
           <span className="font-body text-[15px] text-bronze">
             {category}
@@ -76,7 +76,7 @@ export function WorkCard({
         </div>
 
         <div className="flex items-start justify-between gap-4">
-          <h3 className="font-heading text-[22px] md:text-[28px] font-semibold text-primary leading-[1.02] group-hover:text-bronze transition-colors duration-300">
+          <h3 className="text-card-title font-heading font-semibold text-primary group-hover:text-bronze transition-colors duration-300">
             {title}
           </h3>
           <ArrowUpRight
@@ -84,7 +84,7 @@ export function WorkCard({
             aria-hidden="true"
           />
         </div>
-        <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-muted">
+        <p className="text-support mt-5 max-w-[520px] text-muted">
           {result}
         </p>
         <p className="mt-7 text-[15px] font-medium text-primary">

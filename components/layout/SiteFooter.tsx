@@ -15,13 +15,13 @@ export function SiteFooter() {
   const locale = useLocale();
 
   return (
-    <footer className="bg-charcoal py-16 text-inverted md:py-20" aria-label="Site footer">
+    <footer className="bg-charcoal section-space-tight text-inverted" aria-label="Site footer">
       <div className="container-site">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:items-start">
           <div>
             <Link
               href={`/${locale}`}
-              className="inline-block text-inverted transition-colors hover:text-bronze"
+              className="inline-block"
               aria-label={`${BRAND.name} — Home`}
             >
               <ReframeLogo className="h-10 w-[140px] md:h-12 md:w-[168px]" />
@@ -33,12 +33,12 @@ export function SiteFooter() {
 
           <div className="grid gap-6 md:min-w-[300px]">
             <nav aria-label="Footer navigation">
-              <ul className="flex gap-8">
+              <ul className="flex flex-wrap gap-6">
                 {footerLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={`/${locale}${link.href}`}
-                      className="text-[15px] text-inverted/62 transition-colors hover:text-inverted"
+                      className="inline-flex min-h-11 items-center text-[15px] text-inverted/62 transition-colors hover:text-inverted"
                     >
                       {link.label}
                     </Link>

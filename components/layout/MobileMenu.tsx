@@ -60,11 +60,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             aria-label="Navigation menu"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-8 py-7">
-              <ReframeLogo className="text-inverted" />
+            <div className="flex items-center justify-between px-6 py-6 sm:px-8 sm:py-7">
+              <ReframeLogo />
               <button
                 onClick={onClose}
-                className="text-inverted/60 hover:text-inverted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze p-1"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-inverted/60 hover:text-inverted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
@@ -72,7 +72,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
 
             {/* Nav links */}
-            <nav className="flex-1 flex flex-col justify-center px-8 py-8" aria-label="Mobile navigation">
+            <nav className="flex-1 flex flex-col justify-center px-6 py-8 sm:px-8" aria-label="Mobile navigation">
               <ul className="space-y-1">
                 {NAV_LINKS.map((link, i) => (
                   <motion.li
@@ -85,7 +85,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     <Link
                       href={`/${locale}${link.href}`}
                       onClick={onClose}
-                      className="block py-3.5 font-heading text-[30px] font-medium text-inverted/70 hover:text-inverted transition-colors duration-200 leading-[0.95]"
+                      className="block py-3.5 font-heading text-[clamp(28px,8vw,34px)] font-medium text-inverted/70 hover:text-inverted transition-colors duration-200 leading-[0.98]"
                     >
                       {t(link.key as keyof ReturnType<typeof useTranslations<"nav">>)}
                     </Link>
@@ -95,7 +95,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </nav>
 
             {/* Footer */}
-            <div className="px-8 py-7 space-y-5">
+            <div className="space-y-5 px-6 py-6 sm:px-8 sm:py-7">
               <Button asChild variant="secondary" className="w-full justify-center">
                 <Link href={`/${locale}/contact`} onClick={onClose}>
                   Start your website

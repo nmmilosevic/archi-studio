@@ -47,7 +47,7 @@ export default async function ServicesPage({ params }: Props) {
       />
 
       {/* All services */}
-      <section className="py-16 md:py-24 bg-offwhite" aria-label="Services list">
+      <section className="section-space-tight bg-offwhite" aria-label="Services list">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-charcoal/8">
             {services.items.map((item, i) => (
@@ -75,7 +75,7 @@ export default async function ServicesPage({ params }: Props) {
       </section>
 
       {/* How we work */}
-      <section className="py-24 md:py-32 bg-stone" aria-labelledby="how-we-work-heading">
+      <section className="section-space bg-stone" aria-labelledby="how-we-work-heading">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
@@ -122,7 +122,7 @@ export default async function ServicesPage({ params }: Props) {
       </section>
 
       {/* Pricing link */}
-      <section className="py-16 bg-charcoal">
+      <section className="section-space-tight bg-charcoal">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>

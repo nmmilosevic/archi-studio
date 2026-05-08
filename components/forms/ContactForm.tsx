@@ -7,9 +7,9 @@ import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 
 const inputClass =
-  "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[16px] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
+  "w-full min-h-12 bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
 const labelClass =
-  "font-body text-[14px] text-muted/65 mb-2 block";
+  "mb-2 block font-body text-[14px] text-muted/65";
 
 interface FormData {
   name: string;
@@ -86,8 +86,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} noValidate className="space-y-6 md:space-y-7">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className={labelClass}>
             {t("name")} *
@@ -121,7 +121,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-email" className={labelClass}>
             {t("email")} *
@@ -156,7 +156,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-type" className={labelClass}>
             What do you need?
@@ -217,7 +217,7 @@ export function ContactForm() {
         </select>
       </div>
 
-      <label htmlFor="contact-review" className="flex items-start gap-3 border border-charcoal/10 p-4 text-[15px] leading-relaxed text-muted">
+      <label htmlFor="contact-review" className="flex items-start gap-3 border border-charcoal/10 p-4 text-[15px] leading-relaxed text-muted md:p-5">
         <input
           id="contact-review"
           name="review"

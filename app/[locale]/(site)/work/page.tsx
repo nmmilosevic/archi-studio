@@ -47,7 +47,7 @@ export default async function WorkPage({ params }: Props) {
             <AnimatedTitle
               text="Websites for studios with work worth showing properly."
               as="h1"
-              className="text-hero max-w-[16ch] text-primary"
+              className="text-page-title max-w-[16ch] text-primary"
             />
             <AnimatedText
               className="text-support max-w-[600px] text-muted lg:ml-auto"
@@ -59,7 +59,7 @@ export default async function WorkPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="py-20 md:py-32 bg-offwhite" aria-label="Work grid">
+      <section className="section-space bg-offwhite" aria-label="Work grid">
         <Container>
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-x-16 md:gap-y-24">
             {work.items.map((item, i) => (
@@ -75,7 +75,7 @@ export default async function WorkPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="py-28 bg-stone md:py-36" aria-labelledby="work-cta-heading">
+      <section className="section-space-tight bg-stone" aria-labelledby="work-cta-heading">
         <Container>
           <div className="max-w-3xl">
             <AnimatedTitle
@@ -85,7 +85,7 @@ export default async function WorkPage({ params }: Props) {
               className="text-display text-primary mb-7"
             />
             <AnimatedText
-              className="font-body text-[18px] text-muted leading-relaxed mb-10 max-w-[560px]"
+              className="text-support mb-10 max-w-[560px] font-body text-muted"
               delay={0.1}
             >
               Send your current website. We’ll show where the first impression, portfolio, or mobile experience can be improved.

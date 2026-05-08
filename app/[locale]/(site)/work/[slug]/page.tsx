@@ -85,7 +85,7 @@ export default async function WorkDetailPage({ params }: Props) {
               <AnimatedTitle
                 text={item.title}
                 as="h1"
-                className="text-hero max-w-[16ch] text-inverted"
+                className="text-page-title max-w-[16ch] text-inverted"
               />
             </div>
             <AnimatedText
@@ -111,7 +111,7 @@ export default async function WorkDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-40" aria-labelledby="context-heading">
+      <section className="bg-offwhite section-space" aria-labelledby="context-heading">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <AnimatedTitle
@@ -120,14 +120,14 @@ export default async function WorkDetailPage({ params }: Props) {
               id="context-heading"
               className="text-display text-primary"
             />
-            <p className="max-w-[720px] text-[19px] leading-[1.7] text-muted">
+            <p className="text-support max-w-[680px] text-muted">
               {item.challenge}
             </p>
           </div>
         </Container>
       </section>
 
-      <section className="bg-stone py-28 md:py-40" aria-labelledby="before-after-heading">
+      <section className="bg-stone section-space" aria-labelledby="before-after-heading">
         <Container>
           <div className="mb-16 max-w-[760px]">
             <AnimatedTitle
@@ -139,13 +139,13 @@ export default async function WorkDetailPage({ params }: Props) {
           </div>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <div className="border border-charcoal/10 bg-offwhite p-8 md:p-10">
-              <h3 className="font-heading text-[34px] font-medium text-primary">Before</h3>
+              <h3 className="text-card-title font-heading font-medium text-primary">Before</h3>
               <p className="mt-6 text-[17px] leading-relaxed text-muted">
                 The website did not make the studio’s work easy to understand, trust, or enquire about.
               </p>
             </div>
             <div className="border border-charcoal/10 bg-charcoal p-8 text-inverted md:p-10">
-              <h3 className="font-heading text-[34px] font-medium text-inverted">After</h3>
+              <h3 className="text-card-title font-heading font-medium text-inverted">After</h3>
               <p className="mt-6 text-[17px] leading-relaxed text-inverted/64">
                 A calmer website system with clearer hierarchy, stronger project presentation, and better mobile rhythm.
               </p>
@@ -154,7 +154,7 @@ export default async function WorkDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-40" aria-labelledby="system-heading">
+      <section className="bg-offwhite section-space" aria-labelledby="system-heading">
         <Container>
           <div className="mb-16 max-w-[820px]">
             <AnimatedTitle
@@ -183,7 +183,7 @@ export default async function WorkDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-stone py-24 md:py-32" aria-labelledby="results-heading">
+      <section className="bg-stone section-space-tight" aria-labelledby="results-heading">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <AnimatedTitle
@@ -204,7 +204,7 @@ export default async function WorkDetailPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-charcoal py-28 text-inverted md:py-40">
+      <section className="bg-charcoal section-space-tight text-inverted">
         <Container>
           <div className="mx-auto max-w-[820px] text-center">
             <AnimatedTitle

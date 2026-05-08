@@ -45,19 +45,19 @@ export default async function SEOPage({ params }: Props) {
       />
 
       {/* Intro editorial section */}
-      <section className="py-16 md:py-24 bg-offwhite" aria-label="SEO introduction">
+      <section className="section-space-tight bg-offwhite" aria-label="SEO introduction">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <AnimatedText
-                className="font-heading text-[24px] md:text-[30px] font-light text-primary leading-snug mb-6"
+                className="font-heading text-[clamp(24px,2.2vw,32px)] font-light text-primary leading-snug mb-6"
                 as="p"
               >
                 Architecture clients search with location intent. If your studio
                 is not in those results, it does not exist for them.
               </AnimatedText>
               <AnimatedText
-                className="font-body text-[15px] text-muted leading-relaxed mb-5"
+                className="text-support font-body text-muted mb-5"
                 delay={0.1}
               >
                 A British buyer researching architects for their villa
@@ -67,7 +67,7 @@ export default async function SEOPage({ params }: Props) {
                 types &ldquo;villa renovation Estepona&rdquo;.
               </AnimatedText>
               <AnimatedText
-                className="font-body text-[15px] text-muted leading-relaxed"
+                className="text-support font-body text-muted"
                 delay={0.15}
               >
                 These searches happen every day. The studios that appear are not
@@ -98,7 +98,7 @@ export default async function SEOPage({ params }: Props) {
       </section>
 
       {/* City grid */}
-      <section className="py-16 md:py-24 bg-stone" aria-labelledby="cities-heading">
+      <section className="section-space-tight bg-stone" aria-labelledby="cities-heading">
         <Container>
           <h2
             id="cities-heading"
@@ -132,7 +132,7 @@ export default async function SEOPage({ params }: Props) {
       </section>
 
       {/* Editorial SEO sections */}
-      <section className="py-16 md:py-24 bg-offwhite" aria-label="SEO detail sections">
+      <section className="section-space-tight bg-offwhite" aria-label="SEO detail sections">
         <Container>
           <div className="max-w-3xl">
             {seo.sections.map((section, i) => (
@@ -159,7 +159,7 @@ export default async function SEOPage({ params }: Props) {
       </section>
 
       {/* What we deliver */}
-      <section className="py-16 md:py-24 bg-stone" aria-labelledby="seo-deliver-heading">
+      <section className="section-space-tight bg-stone" aria-labelledby="seo-deliver-heading">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
@@ -212,7 +212,7 @@ export default async function SEOPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-charcoal">
+      <section className="section-space-tight bg-charcoal">
         <Container>
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>

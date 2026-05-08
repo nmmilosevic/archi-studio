@@ -24,7 +24,7 @@ export function Button({
   return (
     <Comp
       className={clsx(
-        "inline-flex min-h-11 items-center justify-center rounded-full font-body font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+        "inline-flex w-full sm:w-auto min-h-11 items-center justify-center rounded-full font-body font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
         {
           "bg-charcoal text-inverted hover:bg-bronze": variant === "primary",
           "bg-bronze text-inverted hover:bg-charcoal": variant === "secondary",
@@ -34,9 +34,9 @@ export function Button({
             variant === "ghost",
         },
         {
-          "text-[14px] px-5 py-2.5": size === "sm",
-          "text-[15px] px-7 py-3.5": size === "md",
-          "text-[16px] px-9 py-4": size === "lg",
+          "text-[14px] px-5 py-2.5 min-h-11": size === "sm",
+          "text-[15px] px-7 py-3.5 min-h-12": size === "md",
+          "text-[16px] px-8 py-4 min-h-13 md:px-9": size === "lg",
         },
         className
       )}

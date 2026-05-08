@@ -45,7 +45,7 @@ export function SiteHeader() {
           "fixed top-0 left-0 right-0 z-30 transition-all duration-500",
           scrolled
             ? "bg-stone/92 backdrop-blur-md py-3"
-            : "bg-transparent py-5"
+            : "bg-transparent py-4 md:py-5"
         )}
         role="banner"
       >
@@ -54,7 +54,7 @@ export function SiteHeader() {
             {/* Logo */}
             <Link
               href={`/${locale}`}
-              className="flex-shrink-0 text-white mix-blend-difference focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
+              className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label={`${BRAND.name} — Home`}
             >
               <ReframeLogo />
@@ -91,7 +91,7 @@ export function SiteHeader() {
 
             {/* Mobile menu toggle */}
             <button
-              className="lg:hidden text-primary hover:text-bronze transition-colors duration-200 p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
+              className="lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center text-primary hover:text-bronze transition-colors duration-200 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
