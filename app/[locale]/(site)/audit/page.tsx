@@ -36,7 +36,7 @@ const who = [
 
 const faq = [
   {
-    q: "Is the audit really free?",
+    q: "Is the website review really free?",
     a: "Yes. The first review is free and does not require a project commitment.",
   },
   {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/audit",
-    title: "Website Audit for Architecture Studios — REFRAME",
+    title: "Website Review for Architecture Studios — REFRAME",
     description:
       "Get a clear review of your architecture or interior design studio website.",
   });
@@ -105,7 +105,7 @@ export default async function AuditPage({ params }: Props) {
               </AnimatedText>
               <AnimatedText as="div" delay={0.2}>
                 <Button asChild size="lg" className="mt-10">
-                  <Link href="#audit-form">Request an audit</Link>
+                  <Link href="#audit-form">Request a website review</Link>
                 </Button>
               </AnimatedText>
             </div>

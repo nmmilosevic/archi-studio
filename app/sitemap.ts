@@ -7,11 +7,7 @@ const LOCALES = ["en", "es", "fr"];
 
 const PAGES = [
   "",
-  "/services",
-  "/pricing",
   "/work",
-  "/audit",
-  "/seo-costa-del-sol",
   "/contact",
   "/legal/privacy",
   "/legal/terms",
@@ -34,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${BASE_URL}/${locale}${page}`,
         lastModified: new Date(),
         changeFrequency: page === "" ? "weekly" : "monthly",
-        priority: page === "" ? 1 : page === "/audit" ? 0.9 : 0.7,
+        priority: page === "" ? 1 : 0.7,
       });
     });
   });

@@ -7,8 +7,6 @@ import { Button } from "@/components/ui/Button";
 
 const footerLinks = [
   { label: "Work", href: "/work" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Audit", href: "/audit" },
   { label: "Contact", href: "/contact" },
 ];
 

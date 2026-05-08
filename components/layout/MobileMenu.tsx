@@ -98,8 +98,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Footer */}
             <div className="px-8 py-7 space-y-5">
               <Button asChild variant="secondary" className="w-full justify-center">
-                <Link href={`/${locale}/audit`} onClick={onClose}>
-                  {t("cta")}
+                <Link href={`/${locale}/contact`} onClick={onClose}>
+                  Start your website
                 </Link>
               </Button>
               <div className="flex justify-center">

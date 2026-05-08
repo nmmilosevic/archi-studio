@@ -29,8 +29,7 @@ const results = [
 const systemItems = [
   { label: "Homepage", image: "/images/after.png" },
   { label: "Project page", image: "/images/redesign-preview.png" },
-  { label: "Mobile version", image: "/images/heromock.png" },
-  { label: "Contact flow", image: "/images/before.png" },
+  { label: "Mobile experience", image: "/images/heromock.png" },
 ];
 
 export function generateStaticParams() {
@@ -83,7 +82,6 @@ export default async function WorkDetailPage({ params }: Props) {
 
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
             <div>
-              <p className="mb-6 text-[16px] text-bronze">{item.category}</p>
               <AnimatedTitle
                 text={item.title}
                 as="h1"
@@ -117,7 +115,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <AnimatedTitle
-              text="Context."
+              text="Why it mattered."
               as="h2"
               id="context-heading"
               className="text-display text-primary"
@@ -133,7 +131,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="mb-16 max-w-[760px]">
             <AnimatedTitle
-              text="Before and after."
+              text="What was improved."
               as="h2"
               id="before-after-heading"
               className="text-display text-primary"
@@ -160,7 +158,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="mb-16 max-w-[820px]">
             <AnimatedTitle
-              text="Website system."
+              text="Key screens."
               as="h2"
               id="system-heading"
               className="text-display text-primary"
@@ -216,7 +214,7 @@ export default async function WorkDetailPage({ params }: Props) {
             />
             <AnimatedText as="div" delay={0.16}>
               <Button asChild variant="secondary" size="lg" className="mt-10">
-                <Link href={`/${locale}/audit`}>Request a website review</Link>
+                <Link href={`/${locale}/contact`}>Start your website</Link>
               </Button>
             </AnimatedText>
           </div>

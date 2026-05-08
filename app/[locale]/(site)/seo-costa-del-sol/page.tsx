@@ -225,12 +225,12 @@ export default async function SEOPage({ params }: Props) {
                 className="font-body text-[14px] text-inverted/50"
                 delay={0.1}
               >
-                Start with a free website and SEO audit.
+                Start with a clear website review.
               </AnimatedText>
             </div>
             <AnimatedText delay={0.2} as="div">
               <Button asChild variant="secondary" size="lg">
-                <Link href={`/${locale}/audit`}>Request a free audit</Link>
+                <Link href={`/${locale}/contact`}>Request a website review</Link>
               </Button>
             </AnimatedText>
           </div>

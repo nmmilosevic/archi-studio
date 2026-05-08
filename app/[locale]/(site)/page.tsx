@@ -3,13 +3,14 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { WorkCard } from "@/components/cards/WorkCard";
 import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
-import { BRAND } from "@/lib/constants";
 import { assetPath } from "@/lib/paths";
+import { getContent } from "@/lib/getContent";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowRight, Check, ExternalLink } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 
 interface Props {
@@ -21,79 +22,107 @@ const copy = {
     headline: "Websites that match the quality of your work.",
     sub: "We design and build refined websites for architecture and interior design studios that want a stronger digital presence.",
     primary: "Start your website",
-    secondary: "View pricing",
-    heroProof: "Custom design. Responsive build. Clear pricing. Fast delivery.",
-    beforeTitle: "Most architecture websites don't match the quality of the work.",
+    secondary: "See the work",
+    heroProof: "Custom design. Responsive build. Clear pricing.",
+    workTitle: "Websites for studios with work worth showing properly.",
+    workBody: "A few focused examples of clearer project presentation, stronger mobile rhythm, and a more confident first impression.",
+    beforeTitle: "Your website should feel as considered as your projects.",
     beforeProblems: [
-      "Generic templates weaken your positioning",
-      "Poor mobile experience loses trust",
-      "Hard-to-update websites slow you down",
+      "The work is not presented with enough clarity",
+      "The mobile experience feels weak",
+      "The contact path is not obvious enough",
     ],
-    beforeBody: "Your projects are detailed, considered, and high-end. Your website should feel the same.",
+    beforeBody: "Many studios have beautiful work, but their website makes it harder to trust, understand, or contact them.",
+    reviewTitle: "Not sure what your website is missing?",
+    reviewBody: "Send us your current website and we’ll review where it loses clarity, trust, or potential clients.",
     redesignTitle: "A complete website, designed and built for your studio.",
     redesignBody: "A clear website system with the pages, structure, and presentation your studio needs.",
     redesignCta: "Start your website",
     offerTitle: "Simple pricing. No hidden fees.",
     offerIntro: "One clear website price, with optional hosting and updates.",
-    finalTitle: "See what your website could look like.",
-    finalBody: "Send your current website and we’ll show you what could be improved.",
+    finalTitle: "Ready to make your website feel like your work?",
+    finalBody: "Send your current website or project idea. We’ll reply with the best next step.",
   },
   es: {
     headline: "Webs que reflejan la calidad del trabajo.",
     sub: "Diseñamos y construimos webs refinadas para estudios de arquitectura e interiorismo que quieren una presencia digital más sólida.",
     primary: "Empezar mi web",
-    secondary: "Ver precios",
-    heroProof: "Diseño a medida. Responsive. Precio claro. Entrega rápida.",
-    beforeTitle: "La mayoría de webs de arquitectura no reflejan la calidad del trabajo.",
+    secondary: "Ver trabajos",
+    heroProof: "Diseño a medida. Responsive. Precio claro.",
+    workTitle: "Webs para estudios con trabajo que merece mostrarse bien.",
+    workBody: "Ejemplos enfocados de portfolios más claros, mejor experiencia móvil y una primera impresión más sólida.",
+    beforeTitle: "Tu web debería sentirse tan cuidada como tus proyectos.",
     beforeProblems: [
       "Las plantillas genéricas debilitan el posicionamiento",
       "Una mala experiencia móvil reduce la confianza",
       "Las webs difíciles de actualizar frenan al estudio",
     ],
     beforeBody: "Tus proyectos son detallados, cuidados y de alto nivel. Tu web debería sentirse igual.",
+    reviewTitle: "¿No sabes qué le falta a tu web?",
+    reviewBody: "Envíanos tu web actual y revisaremos dónde pierde claridad, confianza o clientes potenciales.",
     redesignTitle: "Una web completa, diseñada y construida para tu estudio.",
     redesignBody: "Un sistema claro con las páginas, estructura y presentación que tu estudio necesita.",
     redesignCta: "Empezar mi web",
     offerTitle: "Precios simples. Sin costes ocultos.",
     offerIntro: "Un precio claro para la web, con hosting y actualizaciones opcionales.",
-    finalTitle: "Mira en qué podría convertirse tu web.",
-    finalBody: "Envía tu web actual y te mostraremos qué se puede mejorar.",
+    finalTitle: "¿Listo para que tu web se sienta como tu trabajo?",
+    finalBody: "Envía tu web actual o la idea del proyecto. Responderemos con el mejor siguiente paso.",
   },
   fr: {
     headline: "Des sites qui reflètent la qualité du travail.",
     sub: "Nous concevons et construisons des sites raffinés pour les studios d’architecture et d’intérieur qui veulent une présence digitale plus solide.",
     primary: "Commencer le site",
-    secondary: "Voir les prix",
-    heroProof: "Design sur mesure. Responsive. Prix clair. Livraison rapide.",
-    beforeTitle: "La plupart des sites d'architecture ne reflètent pas la qualité du travail.",
+    secondary: "Voir le travail",
+    heroProof: "Design sur mesure. Responsive. Prix clair.",
+    workTitle: "Des sites pour des studios dont le travail mérite d’être bien présenté.",
+    workBody: "Quelques exemples ciblés de portfolios plus clairs, d’une meilleure expérience mobile et d’une première impression plus forte.",
+    beforeTitle: "Votre site devrait être aussi soigné que vos projets.",
     beforeProblems: [
       "Les templates génériques affaiblissent le positionnement",
       "Une mauvaise expérience mobile réduit la confiance",
       "Les sites difficiles à mettre à jour ralentissent le studio",
     ],
     beforeBody: "Vos projets sont détaillés, soignés et haut de gamme. Votre site devrait donner la même impression.",
+    reviewTitle: "Vous ne savez pas ce qui manque à votre site?",
+    reviewBody: "Envoyez votre site actuel et nous verrons où il perd en clarté, confiance ou clients potentiels.",
     redesignTitle: "Un site complet, conçu et construit pour votre studio.",
     redesignBody: "Un système clair avec les pages, la structure et la présentation dont votre studio a besoin.",
     redesignCta: "Commencer le site",
     offerTitle: "Prix simples. Aucun frais caché.",
     offerIntro: "Un prix clair pour le site, avec hébergement et mises à jour optionnels.",
-    finalTitle: "Voyez ce que votre site pourrait devenir.",
-    finalBody: "Envoyez votre site actuel et nous vous montrerons ce qui peut être amélioré.",
+    finalTitle: "Prêt à faire ressentir votre site comme votre travail?",
+    finalBody: "Envoyez votre site actuel ou votre idée de projet. Nous répondrons avec la meilleure prochaine étape.",
   },
 } as const;
 
 const includes = [
   "Custom website design",
   "Responsive development",
-  "Project portfolio pages",
+  "Up to 5 pages",
+  "Project portfolio structure",
   "CMS setup",
   "Contact form",
   "Basic SEO setup",
   "Vercel deployment",
-  "5 pages included",
 ];
 
-const cities = ["Marbella", "Estepona", "Sotogrande", "Benahavís", "Málaga"];
+const pricingIncludes = [
+  "Custom website design",
+  "Responsive development",
+  "Up to 5 pages",
+  "CMS setup",
+  "Contact form",
+  "Basic SEO setup",
+  "Vercel deployment",
+];
+
+const reviewPoints = [
+  "Visual positioning",
+  "Project presentation",
+  "Mobile experience",
+  "Navigation clarity",
+  "Contact flow",
+];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -111,6 +140,12 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const c = copy[locale as keyof typeof copy] ?? copy.en;
+  const workItems = getContent(locale).work.items.slice(0, 3).map((item) => ({
+    slug: item.slug,
+    title: item.title,
+    category: item.category,
+    result: item.what.split(",")[0] + ".",
+  }));
 
   return (
     <>
@@ -147,7 +182,7 @@ export default async function HomePage({ params }: Props) {
                   <Link href={`/${locale}/contact`}>{c.primary}</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href={`/${locale}/pricing`}>{c.secondary}</Link>
+                  <Link href={`/${locale}/work`}>{c.secondary}</Link>
                 </Button>
               </div>
               <p className="mt-6 font-body text-[15px] text-muted/60 leading-relaxed">
@@ -171,6 +206,29 @@ export default async function HomePage({ params }: Props) {
               </div>
             </div>
           </AnimatedText>
+        </Container>
+      </section>
+
+      <section className="bg-offwhite py-28 md:py-44" aria-labelledby="work-preview-heading">
+        <Container>
+          <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <AnimatedTitle text={c.workTitle} as="h2" id="work-preview-heading" className="text-section max-w-[860px] text-primary" />
+            <AnimatedText className="max-w-[560px] text-[17px] leading-[1.65] text-muted lg:ml-auto" delay={0.12}>
+              {c.workBody}
+            </AnimatedText>
+          </div>
+
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-10">
+            {workItems.map((item, i) => (
+              <WorkCard
+                key={item.slug}
+                {...item}
+                locale={locale}
+                index={i}
+                tall={i === 0}
+              />
+            ))}
+          </div>
         </Container>
       </section>
 
@@ -203,7 +261,44 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-stone py-28 md:py-44" aria-labelledby="redesign-heading">
+      <section id="website-review" className="bg-stone py-28 md:py-44" aria-labelledby="website-review-heading">
+        <Container>
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
+            <div>
+              <AnimatedTitle
+                text={c.reviewTitle}
+                as="h2"
+                id="website-review-heading"
+                className="text-section mb-8 max-w-[680px] text-primary"
+              />
+              <AnimatedText
+                className="max-w-[520px] text-[17px] leading-[1.68] text-muted md:text-[18px]"
+                delay={0.1}
+              >
+                {c.reviewBody}
+              </AnimatedText>
+              <AnimatedText as="div" delay={0.18}>
+                <Button asChild size="lg" className="mt-10">
+                  <Link href={`/${locale}/contact`}>Request a website review</Link>
+                </Button>
+              </AnimatedText>
+            </div>
+
+            <AnimatedText as="div" delay={0.14}>
+              <div className="grid gap-5 border-y border-charcoal/10 py-8">
+                {reviewPoints.map((item) => (
+                  <div key={item} className="flex items-start gap-4">
+                    <span className="mt-3 h-px w-8 flex-shrink-0 bg-bronze/45" aria-hidden="true" />
+                    <p className="text-[20px] leading-snug text-primary md:text-[24px]">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedText>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-offwhite py-28 md:py-44" aria-labelledby="redesign-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
             <div>
@@ -240,7 +335,7 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-44" aria-labelledby="offer-heading">
+      <section id="pricing" className="bg-stone py-28 md:py-44" aria-labelledby="offer-heading">
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24">
             <div>
@@ -261,6 +356,14 @@ export default async function HomePage({ params }: Props) {
                   Start your website <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
+              <div className="mt-12 grid gap-3">
+                {pricingIncludes.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check className="mt-1 h-4 w-4 flex-shrink-0 text-bronze" aria-hidden="true" />
+                    <span className="text-[16px] leading-relaxed text-primary">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <AnimatedText as="div" delay={0.14}>
@@ -281,31 +384,6 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-28 md:py-40 overflow-hidden" aria-label="Costa del Sol locations">
-        <Container>
-          <div className="mb-14 max-w-[760px]">
-            <h2 className="text-display text-primary">Built for studios across the Costa del Sol.</h2>
-          </div>
-
-          <div>
-            {cities.map((name) => (
-              <div
-                key={name}
-                className="group flex items-baseline border-b border-charcoal/6 py-4 md:py-5 cursor-default"
-              >
-                <span
-                  className="font-heading font-medium text-primary/45 group-hover:text-primary/75 transition-colors duration-500 leading-none"
-                  style={{ fontSize: "clamp(40px, 6.5vw, 88px)", letterSpacing: "-0.02em" }}
-                >
-                  {name}
-                </span>
-              </div>
-            ))}
-          </div>
-
-        </Container>
-      </section>
-
       <section className="bg-charcoal py-24 text-inverted md:py-36" aria-labelledby="final-heading">
         <Container>
           <div className="mx-auto max-w-[920px] text-center">
@@ -316,12 +394,7 @@ export default async function HomePage({ params }: Props) {
             <AnimatedText as="div" delay={0.22}>
               <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild variant="secondary" size="lg">
-                  <Link href={`/${locale}/audit`}>Request a website review</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="border-white/25 text-inverted hover:border-bronze hover:text-bronze">
-                  <a href={`mailto:${BRAND.email}`}>
-                    Email directly <ExternalLink className="ml-2 h-3.5 w-3.5" aria-hidden="true" />
-                  </a>
+                  <Link href={`/${locale}/contact`}>Start your website</Link>
                 </Button>
               </div>
             </AnimatedText>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { assetPath } from "@/lib/paths";
@@ -12,7 +12,7 @@ interface WorkCardProps {
   slug: string;
   title: string;
   category: string;
-  location: string;
+  location?: string;
   result?: string;
   locale: string;
   index?: number;
@@ -23,7 +23,6 @@ export function WorkCard({
   slug,
   title,
   category,
-  location,
   result = "Clearer presentation, stronger mobile experience, and a calmer path to enquiry.",
   locale,
   index = 0,
@@ -31,24 +30,20 @@ export function WorkCard({
 }: WorkCardProps) {
   const reduced = useReducedMotion();
 
-  const previews: Record<string, { src: string; label: string; position?: string }> = {
+  const previews: Record<string, { src: string; position?: string }> = {
     "villa-architecture-studio": {
       src: assetPath("/images/redesign-preview.png"),
-      label: "Homepage redesign preview",
     },
     "interior-design-marbella": {
       src: assetPath("/images/after.png"),
-      label: "Editorial website direction",
       position: "top",
     },
     "renovation-studio-estepona": {
       src: assetPath("/images/before.png"),
-      label: "Before-state website audit",
       position: "top",
     },
     "project-page-system": {
       src: assetPath("/images/heromock.png"),
-      label: "Portfolio system preview",
       position: "top",
     },
   };
@@ -74,13 +69,9 @@ export function WorkCard({
         <div className="h-px bg-bronze/35" aria-hidden="true" />
       </div>
       <div className="pt-7 pb-8 border-b border-charcoal/10">
-        <div className="mb-5 flex items-center justify-between gap-4">
+        <div className="mb-5">
           <span className="font-body text-[15px] text-bronze">
             {category}
-          </span>
-          <span className="flex items-center gap-1 font-body text-[15px] text-muted/60">
-            <MapPin className="h-2.5 w-2.5" aria-hidden="true" />
-            {location}
           </span>
         </div>
 

@@ -21,8 +21,6 @@ export const CITIES = [
 
 export const NAV_LINKS = [
   { key: "work", href: "/work" },
-  { key: "pricing", href: "/pricing" },
-  { key: "audit", href: "/audit" },
   { key: "contact", href: "/contact" },
 ] as const;
 

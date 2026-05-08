@@ -35,8 +35,7 @@ export default async function WorkPage({ params }: Props) {
       slug: item.slug,
       title: item.title,
       category: item.category,
-      location: item.location,
-      result: item.challenge.split(" but ")[0] + ".",
+      result: item.what.split(",")[0] + ".",
     })),
   };
 
@@ -46,7 +45,7 @@ export default async function WorkPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Selected websites for architecture studios."
+              text="Websites for studios with work worth showing properly."
               as="h1"
               className="text-section max-w-[920px] text-primary"
             />
@@ -54,7 +53,7 @@ export default async function WorkPage({ params }: Props) {
               className="max-w-[600px] text-[18px] leading-[1.65] text-muted lg:ml-auto"
               delay={0.12}
             >
-              A clear look at how we help studios present their work with more clarity, confidence, and visual quality.
+              A clear look at how architecture and interior studios can present their work with more clarity, confidence, and visual quality.
             </AnimatedText>
           </div>
         </Container>
@@ -94,7 +93,7 @@ export default async function WorkPage({ params }: Props) {
             <AnimatedText delay={0.2} as="div">
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="md">
-                  <Link href={`/${locale}/audit`}>Request a website review</Link>
+                  <Link href={`/${locale}/contact`}>Request a website review</Link>
                 </Button>
               </div>
             </AnimatedText>

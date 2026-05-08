@@ -62,12 +62,12 @@ export default async function ServicesPage({ params }: Props) {
                 Not sure which fits?
               </h3>
               <p className="font-body text-[14px] text-muted">
-                Request a free audit and we will tell you exactly what your studio website needs.
+                Request a website review and we will tell you what your studio website needs first.
               </p>
             </div>
             <Button asChild size="md" className="flex-shrink-0">
-              <Link href={`/${locale}/audit`} className="flex items-center gap-2">
-                Request a free audit <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              <Link href={`/${locale}/contact`} className="flex items-center gap-2">
+                Request a website review <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -89,7 +89,7 @@ export default async function ServicesPage({ params }: Props) {
             <div className="space-y-8">
               {[
                 {
-                  title: "Audit first",
+                  title: "Review first",
                   desc: "Every project starts with a review of your current site, positioning, and goals. This shapes the direction and scope before any work begins.",
                 },
                 {
@@ -127,7 +127,7 @@ export default async function ServicesPage({ params }: Props) {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <AnimatedTitle
-                text="See the full pricing breakdown."
+                text="See the simple website price."
                 as="h2"
                 className="text-display text-inverted mb-2"
               />
@@ -140,7 +140,7 @@ export default async function ServicesPage({ params }: Props) {
             </div>
             <AnimatedText delay={0.2} as="div">
               <Button asChild variant="secondary" size="md" className="flex-shrink-0">
-                <Link href={`/${locale}/pricing`} className="flex items-center gap-2">
+                <Link href={`/${locale}/#pricing`} className="flex items-center gap-2">
                   View pricing <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </Button>

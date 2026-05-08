@@ -15,11 +15,11 @@ interface FormData {
   name: string;
   email: string;
   studio: string;
-  city: string;
   website: string;
   type: string;
   budget: string;
   timeline: string;
+  review: boolean;
   message: string;
 }
 
@@ -43,11 +43,11 @@ export function ContactForm() {
     name: "",
     email: "",
     studio: "",
-    city: "",
     website: "",
     type: "",
     budget: "",
     timeline: "",
+    review: false,
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,12 @@ export function ContactForm() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const target = e.target;
+    if (target instanceof HTMLInputElement && target.type === "checkbox") {
+      setForm((prev) => ({ ...prev, [target.name]: target.checked }));
+      return;
+    }
+    setForm((prev) => ({ ...prev, [target.name]: target.value }));
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -82,7 +87,6 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      {/* Row 1: name + email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-name" className={labelClass}>
@@ -101,6 +105,24 @@ export function ContactForm() {
           />
         </div>
         <div>
+          <label htmlFor="contact-studio" className={labelClass}>
+            {t("studio")}
+          </label>
+          <input
+            id="contact-studio"
+            name="studio"
+            type="text"
+            autoComplete="organization"
+            value={form.studio}
+            onChange={handleChange}
+            className={inputClass}
+            placeholder="Studio Alonso"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
           <label htmlFor="contact-email" className={labelClass}>
             {t("email")} *
           </label>
@@ -116,60 +138,24 @@ export function ContactForm() {
             placeholder="hello@studio.com"
           />
         </div>
-      </div>
-
-      {/* Row 2: studio + city */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-studio" className={labelClass}>
-            {t("studio")}
+          <label htmlFor="contact-website" className={labelClass}>
+            {t("url")} *
           </label>
           <input
-            id="contact-studio"
-            name="studio"
-            type="text"
-            autoComplete="organization"
-            value={form.studio}
+            id="contact-website"
+            name="website"
+            type="url"
+            required
+            autoComplete="url"
+            value={form.website}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Studio Alonso"
-          />
-        </div>
-        <div>
-          <label htmlFor="contact-city" className={labelClass}>
-            {t("city")}
-          </label>
-          <input
-            id="contact-city"
-            name="city"
-            type="text"
-            value={form.city}
-            onChange={handleChange}
-            className={inputClass}
-            placeholder="Marbella"
+            placeholder="https://studio-alonso.com"
           />
         </div>
       </div>
 
-      {/* Row 3: website URL (full width) */}
-      <div>
-        <label htmlFor="contact-website" className={labelClass}>
-          {t("url")} *
-        </label>
-        <input
-          id="contact-website"
-          name="website"
-          type="url"
-          required
-          autoComplete="url"
-          value={form.website}
-          onChange={handleChange}
-          className={inputClass}
-          placeholder="https://studio-alonso.com"
-        />
-      </div>
-
-      {/* Row 4: type + budget */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-type" className={labelClass}>
@@ -231,7 +217,18 @@ export function ContactForm() {
         </select>
       </div>
 
-      {/* Message */}
+      <label htmlFor="contact-review" className="flex items-start gap-3 border border-charcoal/10 p-4 text-[15px] leading-relaxed text-muted">
+        <input
+          id="contact-review"
+          name="review"
+          type="checkbox"
+          checked={form.review}
+          onChange={handleChange}
+          className="mt-1 h-4 w-4 rounded border-charcoal/20 text-bronze focus:ring-bronze"
+        />
+        I would like a review of my current website.
+      </label>
+
       <div>
         <label htmlFor="contact-message" className={labelClass}>
           {t("message")}
