@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       message: (body.message ?? "").trim(),
     };
 
-    const subject = `New contact form — ${payload.name}`;
+    const subject = `New contact form - ${payload.name}`;
     const text = [
       "New contact form submission",
       "",

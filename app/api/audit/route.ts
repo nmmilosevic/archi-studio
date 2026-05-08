@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       consent: Boolean(body.consent),
     };
 
-    const subject = `New audit request — ${payload.name}`;
+    const subject = `New audit request - ${payload.name}`;
     const text = [
       "New website audit request",
       "",

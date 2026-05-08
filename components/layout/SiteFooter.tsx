@@ -16,7 +16,7 @@ export function SiteFooter() {
             <Link
               href={`/${locale}`}
               className="inline-block"
-              aria-label={`${BRAND.name} — Home`}
+              aria-label={`${BRAND.name} - Home`}
             >
               <ReframeLogo light className="h-[38px] w-[136px]" />
             </Link>

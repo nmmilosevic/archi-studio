@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/work",
-    title: "Work — Website Redesign Studies for Architecture Studios",
+    title: "Work - Website Redesign Studies for Architecture Studios",
     description:
       "Website redesign studies demonstrating how architecture and interior design studio websites can be repositioned, clarified, and made more credible.",
   });
@@ -59,9 +59,9 @@ export default async function WorkPage({ params }: Props) {
 
       <section className="bg-offwhite pb-[clamp(76px,9vw,124px)] pt-[clamp(50px,7vw,90px)]" aria-label="Work grid">
         <Container>
-          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-x-16 md:gap-y-24">
+          <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-x-14 md:gap-y-20">
             {work.items.map((item, i) => (
-              <div key={item.slug} className={i % 2 === 1 ? "md:pt-16" : ""}>
+              <div key={item.slug} className={i % 2 === 1 ? "md:pt-12" : ""}>
                 <WorkCard
                   {...item}
                   locale={locale}

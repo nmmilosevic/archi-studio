@@ -1,25 +1,26 @@
 "use client";
 
-import { useState, useEffect, startTransition } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { BRAND, NAV_LINKS } from "@/lib/constants";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { MobileMenu } from "./MobileMenu";
 import { Button } from "@/components/ui/Button";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const locale = useLocale();
   const t = useTranslations("nav");
   const pathname = usePathname();
-  const isContactPage = pathname === `/${locale}/contact`;
-  const useLightHeaderText = isContactPage && !scrolled;
+  const router = useRouter();
+  const contactPath = `/${locale}/contact`;
+  const workPath = `/${locale}/work`;
+  const isContactPage = pathname === contactPath || pathname.startsWith(`${contactPath}/`);
+  const isWorkDetailPage = pathname.startsWith(`${workPath}/`);
+  const useLightHeaderText = (isContactPage || isWorkDetailPage) && !scrolled;
 
   useEffect(() => {
     function handleScroll() {
@@ -29,12 +30,12 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on route change
-  useEffect(() => {
-    startTransition(() => {
-      setMenuOpen(false);
-    });
-  }, [pathname]);
+  function handleLocaleChange(newLocale: string) {
+    if (newLocale === locale) return;
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    router.push(segments.join("/"));
+  }
 
   return (
     <>
@@ -57,9 +58,9 @@ export function SiteHeader() {
             <Link
               href={`/${locale}`}
               className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
-              aria-label={`${BRAND.name} — Home`}
+              aria-label={`${BRAND.name} - Home`}
             >
-              <ReframeLogo light={useLightHeaderText} className="h-[38px] w-[136px]" />
+              <ReframeLogo light={useLightHeaderText} className="h-8 w-[113px]" />
             </Link>
 
             {/* Right side */}
@@ -85,29 +86,68 @@ export function SiteHeader() {
               </nav>
               <span className={clsx("h-4 w-px", useLightHeaderText ? "bg-inverted/28" : "bg-charcoal/20")} aria-hidden="true" />
               <LanguageSwitcher light={useLightHeaderText} />
-              <Button asChild size="sm" className="px-6">
+              <Button
+                asChild
+                size="sm"
+                className={clsx(
+                  "px-6 bg-inverted text-primary hover:bg-inverted/90 hover:text-primary"
+                )}
+              >
                 <Link href={`/${locale}/contact`}>Start your website</Link>
               </Button>
             </div>
 
-            {/* Mobile menu toggle */}
-            <button
-              className={clsx(
-                "lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center transition-colors duration-200 p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2",
-                useLightHeaderText ? "text-inverted hover:text-inverted/75" : "text-primary hover:text-bronze"
-              )}
-              onClick={() => setMenuOpen(true)}
-              aria-label="Open navigation menu"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+            {/* Mobile direct navigation */}
+            <div className="lg:hidden flex items-center gap-3">
+              <Link
+                href={`/${locale}/work`}
+                className={clsx(
+                  "text-[14px] transition-colors",
+                  useLightHeaderText ? "text-inverted/80 hover:text-inverted" : "text-primary/86 hover:text-primary"
+                )}
+              >
+                {t("work")}
+              </Link>
+              <Link
+                href={`/${locale}/contact`}
+                className={clsx(
+                  "text-[14px] transition-colors",
+                  useLightHeaderText ? "text-inverted/80 hover:text-inverted" : "text-primary/86 hover:text-primary"
+                )}
+              >
+                {t("contact")}
+              </Link>
+              <div
+                className={clsx(
+                  "relative h-9 w-[58px] border",
+                  useLightHeaderText ? "border-inverted/35" : "border-charcoal/25"
+                )}
+              >
+                <select
+                  value={locale}
+                  onChange={(event) => handleLocaleChange(event.target.value)}
+                  className={clsx(
+                    "absolute inset-0 h-full w-full appearance-none bg-transparent px-2 pr-6 text-[12px] cursor-pointer focus-visible:outline-none",
+                    useLightHeaderText ? "text-inverted" : "text-primary"
+                  )}
+                  aria-label="Select language"
+                >
+                  <option value="en">EN</option>
+                  <option value="es">ES</option>
+                  <option value="fr">FR</option>
+                </select>
+                <span
+                  aria-hidden="true"
+                  className={clsx(
+                    "pointer-events-none absolute right-2 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rotate-45 border-r border-b",
+                    useLightHeaderText ? "border-inverted/75" : "border-primary/70"
+                  )}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </header>
-
-      <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

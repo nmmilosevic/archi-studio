@@ -52,7 +52,7 @@ export function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `REFRAME — ${title}`,
+          alt: `REFRAME - ${title}`,
         },
       ],
       locale: localeName,

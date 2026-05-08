@@ -19,10 +19,10 @@ const VALID_SLUGS = [
 ];
 
 const results = [
-  "Clearer project presentation",
-  "More premium perception",
-  "Better mobile experience",
-  "Easier content management",
+  "Better mobile readability",
+  "Clearer project hierarchy",
+  "Stronger studio presentation",
+  "Easier navigation",
 ];
 
 const systemItems = [
@@ -114,7 +114,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
             <AnimatedTitle
-              text="Why it mattered."
+              text="The problem."
               as="h2"
               id="context-heading"
               className="text-display text-primary"
@@ -130,23 +130,23 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="mb-16 max-w-[760px]">
             <AnimatedTitle
-              text="What was improved."
+              text="The improvement."
               as="h2"
               id="before-after-heading"
               className="text-display text-primary"
             />
           </div>
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="border-l border-charcoal/18 bg-offwhite/70 p-8 md:p-10">
+            <div className="bg-sand/16 p-8 md:p-10">
               <h3 className="text-card-title font-heading font-medium text-primary">Before</h3>
               <p className="mt-6 text-[17px] leading-relaxed text-muted">
-                The website did not make the studio’s work easy to understand, trust, or enquire about.
+                The old website made the studio's work difficult to understand on mobile.
               </p>
             </div>
             <div className="border-l border-bronze/45 bg-charcoal p-8 text-inverted md:p-10">
               <h3 className="text-card-title font-heading font-medium text-inverted">After</h3>
               <p className="mt-6 text-[17px] leading-relaxed text-inverted/64">
-                A calmer website system with clearer hierarchy, stronger project presentation, and better mobile rhythm.
+                We simplified the structure, improved project presentation, and created a clearer navigation system.
               </p>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.78fr_1.22fr]">
             <AnimatedTitle
-              text="Results."
+              text="The result."
               as="h2"
               id="results-heading"
               className="text-display text-primary"

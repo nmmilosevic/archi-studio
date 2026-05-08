@@ -24,7 +24,7 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL("https://reframestud.io"),
   title: {
-    default: "REFRAME — Architecture Website Redesigns Costa del Sol",
+    default: "REFRAME - Architecture Website Redesigns Costa del Sol",
     template: "%s | REFRAME",
   },
   description:

@@ -13,18 +13,17 @@ interface Props {
 }
 
 const reviewPoints = [
-  "Visual positioning",
+  "Positioning - can visitors quickly understand what your studio does?",
   "Project presentation",
   "Mobile experience",
-  "Navigation clarity",
-  "Conversion and contact flow",
+  "Contact flow - is it easy for potential clients to contact you?",
 ];
 
 const receive = [
   "A short written review",
-  "Key issues found",
-  "Concrete improvement suggestions",
-  "Optional redesign direction",
+  "Key problems found first",
+  "Simple improvement suggestions",
+  "Clear next step",
 ];
 
 const who = [
@@ -58,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/audit",
-    title: "Website Review for Architecture Studios — REFRAME",
+    title: "Website Review for Architecture Studios - REFRAME",
     description:
       "Get a clear review of your architecture or interior design studio website.",
   });
@@ -117,7 +116,7 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
             <div>
-              <AnimatedTitle text="We look for the gaps that weaken trust." as="h2" id="review-heading" className="text-display text-primary" />
+              <AnimatedTitle text="We review the problems that affect trust." as="h2" id="review-heading" className="text-display text-primary" />
             </div>
             <div className="lg:col-span-2">
               <SimpleList items={reviewPoints} />
@@ -130,13 +129,13 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div>
-              <AnimatedTitle text="You get a clear written direction." as="h2" id="receive-heading" className="text-display text-primary" />
+              <AnimatedTitle text="You get clear, practical feedback." as="h2" id="receive-heading" className="text-display text-primary" />
               <div className="mt-12">
                 <SimpleList items={receive} />
               </div>
             </div>
             <div>
-              <AnimatedTitle text="Built for visual studios and property-led brands." as="h2" className="text-display text-primary" />
+              <AnimatedTitle text="Best for architecture and interior design studios." as="h2" className="text-display text-primary" />
               <div className="mt-12">
                 <SimpleList items={who} />
               </div>

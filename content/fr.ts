@@ -34,8 +34,8 @@ const fr = {
     heading: "Je ne commence pas par un pitch. Je commence par une preuve.",
     body: "Je refais une partie clé de votre site en premier, je la déploie comme aperçu privé sur Vercel et je vous envoie le lien en direct. Si cela vous convient, nous en faisons votre vrai site.",
     cta: "Montrez-moi à quoi pourrait ressembler mon site",
-    before: "Avant — générique, lent, peu crédible",
-    after: "Après — raffiné, éditorial, clair pour convertir",
+    before: "Avant - générique, lent, peu crédible",
+    after: "Après - raffiné, éditorial, clair pour convertir",
   },
   services: {
     label: "Ce que nous faisons",
@@ -170,16 +170,16 @@ const fr = {
     heading: "L'architecture, recadrée pour l'écran.",
     disclaimer: "Études de refonte web montrant comment les studios d'architecture et d'intérieur peuvent présenter leur travail avec plus de clarté, de confiance et d'autorité visuelle.",
     items: [
-      { slug: "villa-architecture-studio", title: "Site d'Architecture — Benahavís", category: "Refonte web", location: "Benahavís, Costa del Sol", challenge: "Studio avec un solide portfolio de villas mais un site daté qui rendait le travail générique, compressé et difficile à juger sur mobile.", what: "Refonte de la page d'accueil, système de pages projet, positionnement plus net et présentation mobile-first avec hiérarchie éditoriale et structure multilingue." },
-      { slug: "interior-design-marbella", title: "Studio de Design d'Intérieur — Marbella", category: "Site de design d'intérieur", location: "Marbella, Costa del Sol", challenge: "Jeune studio produisant un travail d'intérieur de haute qualité mais invisible en ligne. Pas de SEO, pas de système de portfolio, première impression faible.", what: "Raffinement de marque, design de site, système de portfolio, parcours de contact et configuration SEO local pour Marbella et les environs." },
-      { slug: "renovation-studio-estepona", title: "Studio de Rénovation de Villas — Estepona", category: "Site de rénovation", location: "Estepona, Costa del Sol", challenge: "Studio de rénovation reposant entièrement sur le bouche-à-oreille. Pas de présence digitale, pas de visibilité sur Google, aucun moyen pour les clients internationaux de les trouver.", what: "Stratégie web complète, refonte aperçu Vercel envoyée par email à froid, configuration multilingue EN/ES, optimisation du Google Business Profile." },
-      { slug: "project-page-system", title: "Système de Pages de Portfolio — Sotogrande", category: "Système de portfolio", location: "Sotogrande, Costa del Sol", challenge: "Studio avec plus de 40 projets et aucun moyen cohérent de les présenter. Tous les projets étaient dans une galerie plate sans contexte, matériaux ni histoire.", what: "Modèle de projet compatible CMS, filtrable par localisation et type, structure d'étude de cas avec sections avant/après et narration de matériaux." },
+      { slug: "villa-architecture-studio", title: "Site d'Architecture - Benahavís", category: "Refonte web", location: "Benahavís, Costa del Sol", challenge: "Studio avec un solide portfolio de villas mais un site daté qui rendait le travail générique, compressé et difficile à juger sur mobile.", what: "Refonte de la page d'accueil, système de pages projet, positionnement plus net et présentation mobile-first avec hiérarchie éditoriale et structure multilingue." },
+      { slug: "interior-design-marbella", title: "Studio de Design d'Intérieur - Marbella", category: "Site de design d'intérieur", location: "Marbella, Costa del Sol", challenge: "Jeune studio produisant un travail d'intérieur de haute qualité mais invisible en ligne. Pas de SEO, pas de système de portfolio, première impression faible.", what: "Raffinement de marque, design de site, système de portfolio, parcours de contact et configuration SEO local pour Marbella et les environs." },
+      { slug: "renovation-studio-estepona", title: "Studio de Rénovation de Villas - Estepona", category: "Site de rénovation", location: "Estepona, Costa del Sol", challenge: "Studio de rénovation reposant entièrement sur le bouche-à-oreille. Pas de présence digitale, pas de visibilité sur Google, aucun moyen pour les clients internationaux de les trouver.", what: "Stratégie web complète, refonte aperçu Vercel envoyée par email à froid, configuration multilingue EN/ES, optimisation du Google Business Profile." },
+      { slug: "project-page-system", title: "Système de Pages de Portfolio - Sotogrande", category: "Système de portfolio", location: "Sotogrande, Costa del Sol", challenge: "Studio avec plus de 40 projets et aucun moyen cohérent de les présenter. Tous les projets étaient dans une galerie plate sans contexte, matériaux ni histoire.", what: "Modèle de projet compatible CMS, filtrable par localisation et type, structure d'étude de cas avec sections avant/après et narration de matériaux." },
     ],
   },
   audit: {
     label: "Offre d'audit gratuit",
     heading: "Vous voulez voir ce que votre site de studio pourrait devenir?",
-    sub: "Envoyez votre site actuel. Je réviserai la première impression, l'expérience mobile, la clarté du portfolio, les bases SEO et le parcours de contact — et je vous enverrai un ensemble clair de recommandations.",
+    sub: "Envoyez votre site actuel. Je réviserai la première impression, l'expérience mobile, la clarté du portfolio, les bases SEO et le parcours de contact - et je vous enverrai un ensemble clair de recommandations.",
     what: {
       heading: "Ce que je révise",
       items: ["Première impression et crédibilité visuelle", "Expérience mobile et réactivité", "Clarté du portfolio et narration de projets", "Bases SEO et visibilité dans la recherche locale", "Parcours de demande et chemin de conversion", "Typographie, espacement et qualité d'image", "Bases de la vitesse de page", "Préparation multilingue"],
@@ -245,10 +245,10 @@ const fr = {
     locations: "Au service des studios à Marbella, Estepona, Benahavís, Sotogrande, Málaga, Mijas, Fuengirola, Casares, San Pedro et Nueva Andalucía.",
     response: "Réponse typique dans les 24 heures.",
     steps: [
-      "Je passe en revue le site actuel — première impression, clarté du portfolio, expérience mobile et parcours de contact.",
+      "Je passe en revue le site actuel - première impression, clarté du portfolio, expérience mobile et parcours de contact.",
       "J'identifie l'écart de perception le plus évident entre le travail du studio et sa présence digitale.",
       "S'il existe une opportunité claire, je réponds dans les 24 heures avec une prochaine étape concrète.",
-      "Pour les studios sélectionnés, cette étape peut être un aperçu privé de refonte — déployé et prêt à juger.",
+      "Pour les studios sélectionnés, cette étape peut être un aperçu privé de refonte - déployé et prêt à juger.",
     ],
     form: {
       name: "Votre nom",

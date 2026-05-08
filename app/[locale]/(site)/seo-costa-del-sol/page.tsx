@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/seo-costa-del-sol",
-    title: "Local SEO for Architecture Studios — Costa del Sol",
+    title: "Local SEO for Architecture Studios - Costa del Sol",
     description:
       "How architecture and interior design studios on the Costa del Sol get found by international buyers searching in Marbella, Estepona, Benahavís, Sotogrande, and Málaga.",
   });
@@ -71,15 +71,15 @@ export default async function SEOPage({ params }: Props) {
                 delay={0.15}
               >
                 These searches happen every day. The studios that appear are not
-                necessarily the best — they are the ones that have been found
+                necessarily the best - they are the ones that have been found
                 and trusted by Google for that location and service.
               </AnimatedText>
             </div>
             <div className="space-y-6">
               {[
-                { stat: "Local search", desc: "Accounts for over 46% of all Google searches — and most of these carry high commercial intent." },
+                { stat: "Local search", desc: "Accounts for over 46% of all Google searches - and most of these carry high commercial intent." },
                 { stat: "Multilingual buyers", desc: "British, German, French, and Scandinavian buyers make up the majority of villa and interior design clients on the Costa del Sol." },
-                { stat: "Zero visibility", desc: "Most architecture studios in the region rank for their own name and nothing else — invisible to everyone who has not already heard of them." },
+                { stat: "Zero visibility", desc: "Most architecture studios in the region rank for their own name and nothing else - invisible to everyone who has not already heard of them." },
               ].map((item, i) => (
                 <AnimatedText key={i} delay={i * 0.1} as="div">
                   <div className="p-6 bg-stone border border-charcoal/8">
@@ -179,7 +179,7 @@ export default async function SEOPage({ params }: Props) {
                   },
                   {
                     title: "Project pages as content",
-                    desc: "Each completed project is structured as indexable content with location, scope, materials, and photography — rankable assets, not just gallery entries.",
+                    desc: "Each completed project is structured as indexable content with location, scope, materials, and photography - rankable assets, not just gallery entries.",
                   },
                   {
                     title: "Technical SEO",

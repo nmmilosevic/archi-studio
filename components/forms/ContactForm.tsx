@@ -177,7 +177,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" className={labelClass}>
-          {t("message")}
+          What feels wrong with your current website?
         </label>
         <textarea
           id="contact-message"
@@ -186,7 +186,7 @@ export function ContactForm() {
           value={form.message}
           onChange={handleChange}
           className={clsx(inputClass, "resize-none")}
-          placeholder=""
+          placeholder="What feels outdated, unclear, or difficult to use?"
         />
       </div>
 

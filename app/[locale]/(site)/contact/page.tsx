@@ -14,8 +14,9 @@ interface Props {
 
 const reassurance = [
   { label: "A clearer first impression of your studio", icon: Compass },
-  { label: "Project pages structured to build trust", icon: LayoutPanelTop },
-  { label: "A mobile experience that still feels premium", icon: Smartphone },
+  { label: "Better project presentation", icon: LayoutPanelTop },
+  { label: "A mobile experience that feels premium", icon: Smartphone },
+  { label: "Easier navigation for clients", icon: Compass },
 ];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -23,9 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/contact",
-    title: "Contact — REFRAME",
+    title: "Contact - REFRAME",
     description:
-      "Tell REFRAME about your architecture or interior design studio website.",
+      "Tell us about your architecture studio website or interior design website.",
   });
 }
 
@@ -58,7 +59,7 @@ export default async function ContactPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
             <div className="flex h-full flex-col">
               <h2 className="text-display font-heading font-medium text-primary">
-                The right website should do more than look good.
+                The right website should help clients trust your work.
               </h2>
               <div className="mt-8">
                 <div className="grid gap-1">

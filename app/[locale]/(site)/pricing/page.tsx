@@ -16,10 +16,10 @@ interface Props {
 }
 
 const mainIncludes = [
-  "Strategy and structure",
-  "Custom website design",
-  "Responsive build",
-  "Basic SEO setup",
+  "Website strategy",
+  "Custom design",
+  "Responsive development",
+  "SEO basics",
   "Contact form",
   "Launch support",
 ];
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/pricing",
-    title: "Pricing — Website Design for Architecture Studios",
+    title: "Simple Pricing - Architecture Studio Website Design",
     description:
       "Simple pricing for architecture and interior design studio websites. €1,500 one-time website design and development, with optional hosting and updates.",
   });
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function CheckList({ items, light = false }: { items: string[]; light?: boolean }) {
   return (
-    <ul className="grid gap-4">
+    <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
           <Check
@@ -82,7 +82,7 @@ export default async function PricingPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Simple pricing. Clear ownership."
+              text="Simple pricing for architecture studio websites."
               as="h1"
               className="text-page-title max-w-[16ch] text-inverted"
             />
@@ -90,72 +90,73 @@ export default async function PricingPage({ params }: Props) {
               className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
-              One fixed fee for the complete website system, with optional ongoing support.
+              One clear price for strategy, design, and development.
             </AnimatedText>
           </div>
         </Container>
       </section>
 
-      <section className="bg-charcoal section-space text-inverted" aria-labelledby="main-price-heading">
+      <section className="bg-charcoal py-[clamp(86px,11vw,168px)] text-inverted" aria-labelledby="main-price-heading">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-center lg:gap-12">
-            <AnimatedText as="div" delay={0.04} className="order-2 lg:order-1 lg:pr-4">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
+            <AnimatedText as="div" delay={0.04} className="order-2 lg:order-1 lg:pr-2">
               <AnimatedTitle
-                text="Simple pricing. Clear ownership."
+                text="Simple pricing for architecture studio websites."
                 as="h2"
-                className="text-section mb-7 max-w-[700px] text-inverted"
+                className="text-section mb-6 max-w-[620px] text-inverted"
               />
-              <AnimatedText className="text-support mb-10 max-w-[560px] text-inverted/68" delay={0.1}>
-                One fixed fee for a complete studio website, from strategy and design to launch.
+              <AnimatedText className="text-support mb-8 max-w-[560px] text-inverted/66" delay={0.1}>
+                One clear price for strategy, design, and development.
               </AnimatedText>
-              <h2 id="main-price-heading" className="mt-4 font-heading text-[clamp(66px,10vw,132px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
+              <h2 id="main-price-heading" className="font-heading text-[clamp(62px,9vw,122px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
                 €1,500
               </h2>
-              <p className="mt-3 text-[18px] leading-relaxed text-inverted/78">
+              <p className="mt-2 text-[18px] leading-relaxed text-inverted/74">
                 One-time payment
               </p>
-              <div className="mt-8">
+              <div className="mt-7">
                 <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
                   <Link href={`/${locale}/contact`}>Start your website</Link>
                 </Button>
               </div>
-              <div className="mt-8 border-t border-white/12 pt-7">
+              <div className="mt-8 pt-1">
                 <CheckList items={mainIncludes} light />
               </div>
             </AnimatedText>
 
-            <div className="relative order-1 hidden rounded-[14px] border border-white/14 bg-white/[0.03] p-3 lg:order-2 lg:block">
-              <div className="relative aspect-[10/8] w-full overflow-hidden rounded-[10px]">
+            <div className="relative order-1 hidden rounded-[14px] lg:order-2 lg:block">
+              <div className="relative aspect-[1/1] w-full overflow-hidden rounded-[12px]">
                 <Image
                   src={assetPath("/images/pricing-img.png")}
                   alt="Website preview shown in pricing section"
                   fill
-                  className="object-contain"
-                  sizes="(min-width: 1280px) 420px, (min-width: 1024px) 32vw, 100vw"
+                  className="object-contain object-center"
+                  sizes="(min-width: 1280px) 520px, (min-width: 1024px) 44vw, 100vw"
                 />
               </div>
+              <div className="pointer-events-none absolute inset-0 rounded-[12px] shadow-[0_34px_80px_rgb(0_0_0/0.42)]" />
             </div>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-3.5 md:grid-cols-2">
             <AnimatedText as="div" delay={0.14}>
-              <div className="rounded-[12px] border border-white/12 bg-white/[0.03] p-5">
-                <p className="text-[18px] font-medium text-inverted">Hosting package</p>
-                <p className="mt-2 font-heading text-[34px] font-medium leading-none text-inverted">
+              <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
+                <p className="text-[17px] font-medium text-inverted/92">Hosting package</p>
+                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
                   €30<span className="ml-1 text-[15px] text-inverted/62">/month</span>
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/64">
-                  Managed hosting, maintenance, backups, and light support for your live website.
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">
+                  Hosting, updates, backups, and small fixes.
                 </p>
               </div>
             </AnimatedText>
             <AnimatedText as="div" delay={0.18}>
-              <div className="rounded-[12px] border border-white/12 bg-white/[0.03] p-5">
-                <p className="text-[18px] font-medium text-inverted">Content updates</p>
-                <p className="mt-2 font-heading text-[34px] font-medium leading-none text-inverted">
+              <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
+                <p className="text-[17px] font-medium text-inverted/92">Content updates</p>
+                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
                   €120<span className="ml-1 text-[15px] text-inverted/62">/month</span>
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/64">
-                  Ongoing page updates, case study additions, content edits, and monthly refinements.
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">
+                  Extra pages and project uploads.
                 </p>
               </div>
             </AnimatedText>

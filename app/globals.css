@@ -165,7 +165,7 @@
     padding-block: clamp(80px, 10vw, 160px);
   }
 
-  /* Cinematic — fullscreen editorial moments */
+  /* Cinematic - fullscreen editorial moments */
   .text-cinematic {
     font-size: clamp(64px, 14vw, 160px);
     line-height: 0.87;
@@ -372,6 +372,14 @@
 
 .skip-to-content:focus {
   top: 1rem;
+}
+
+/* Mobile section rhythm: keep hero untouched */
+@media (max-width: 767px) {
+  main#main-content > section:not(:first-of-type) {
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+  }
 }
 
 /* Scrollbar */

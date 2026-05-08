@@ -4,10 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { clsx } from "clsx";
 import { NAV_LINKS } from "@/lib/constants";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-import { Button } from "@/components/ui/Button";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -17,13 +18,13 @@ interface MobileMenuProps {
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
+  hidden: { opacity: 0, y: 14 },
   show: (i: number) => ({
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
-      duration: 0.4,
-      delay: 0.1 + i * 0.07,
+      duration: 0.38,
+      delay: 0.08 + i * 0.06,
       ease: EASE,
     },
   }),
@@ -32,6 +33,17 @@ const itemVariants = {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const locale = useLocale();
   const t = useTranslations("nav");
+  const pathname = usePathname();
+  const router = useRouter();
+  const reduced = useReducedMotion();
+
+  function handleLocaleChange(newLocale: string) {
+    if (newLocale === locale) return;
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    router.push(segments.join("/"));
+    onClose();
+  }
 
   return (
     <AnimatePresence>
@@ -50,21 +62,23 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
           {/* Menu panel */}
           <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-charcoal flex flex-col"
+            initial={reduced ? false : { opacity: 0, y: 10 }}
+            animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, y: 8 }}
+            transition={{ duration: reduced ? 0.15 : 0.42, ease: EASE }}
+            className="fixed inset-0 z-50 flex flex-col bg-charcoal text-inverted"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-6 sm:px-8 sm:py-7">
-              <ReframeLogo light />
+            <div className="flex items-center justify-between px-5 pt-7 pb-3 sm:px-7 sm:pt-9">
+              <div className="flex items-center">
+                <ReframeLogo light className="h-[34px] w-[120px]" />
+              </div>
               <button
                 onClick={onClose}
-                className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-inverted/60 hover:text-inverted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-inverted/68 transition-colors duration-200 hover:text-inverted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
@@ -72,22 +86,46 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
 
             {/* Nav links */}
-            <nav className="flex-1 flex flex-col justify-center px-6 py-8 sm:px-8" aria-label="Mobile navigation">
-              <ul className="space-y-1">
+            <nav className="flex-1 px-5 pt-8 pb-6 sm:px-7 sm:pt-10" aria-label="Mobile navigation">
+              <ul className="space-y-4">
                 {NAV_LINKS.map((link, i) => (
                   <motion.li
                     key={link.key}
                     custom={i}
                     variants={itemVariants}
-                    initial="hidden"
+                    initial={reduced ? false : "hidden"}
                     animate="show"
                   >
                     <Link
                       href={`/${locale}${link.href}`}
                       onClick={onClose}
-                      className="block py-3.5 font-heading text-[clamp(28px,8vw,34px)] font-medium text-inverted/70 hover:text-inverted transition-colors duration-200 leading-[0.98]"
+                      aria-current={
+                        pathname === `/${locale}${link.href}` ||
+                        pathname.startsWith(`/${locale}${link.href}/`)
+                          ? "page"
+                          : undefined
+                      }
+                      className={clsx("group inline-flex items-end gap-3 py-1")}
                     >
-                      {t(link.key as keyof ReturnType<typeof useTranslations<"nav">>)}
+                      <span
+                        className={clsx(
+                          "font-heading text-[clamp(38px,10vw,56px)] leading-[0.9] tracking-[-0.015em] transition-colors duration-300",
+                          pathname === `/${locale}${link.href}` || pathname.startsWith(`/${locale}${link.href}/`)
+                            ? "text-inverted"
+                            : "text-inverted/74 group-hover:text-inverted"
+                        )}
+                      >
+                        {t(link.key as keyof ReturnType<typeof useTranslations<"nav">>)}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className={clsx(
+                          "mb-[0.34rem] h-px w-10 bg-bronze/65 transition-all duration-300",
+                          pathname === `/${locale}${link.href}` || pathname.startsWith(`/${locale}${link.href}/`)
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
+                        )}
+                      />
                     </Link>
                   </motion.li>
                 ))}
@@ -95,14 +133,28 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </nav>
 
             {/* Footer */}
-            <div className="space-y-5 px-6 py-6 sm:px-8 sm:py-7">
-              <Button asChild variant="secondary" className="w-full justify-center">
-                <Link href={`/${locale}/contact`} onClick={onClose}>
-                  Start your website
+            <div className="px-5 pb-6 sm:px-7 sm:pb-7">
+              <div className="flex items-center justify-between gap-4">
+                <Link
+                  href={`/${locale}/contact`}
+                  onClick={onClose}
+                  className="text-[14px] text-inverted/74 transition-colors hover:text-inverted"
+                >
+                  Contact
                 </Link>
-              </Button>
-              <div className="flex justify-center">
-                <LanguageSwitcher light />
+                <label className="flex items-center gap-2 text-[12px] text-inverted/62">
+                  <span>Language</span>
+                  <select
+                    value={locale}
+                    onChange={(event) => handleLocaleChange(event.target.value)}
+                    className="min-h-10 rounded-full border border-inverted/25 bg-transparent px-3 text-[13px] text-inverted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+                    aria-label="Select language"
+                  >
+                    <option value="en" className="bg-charcoal text-inverted">EN</option>
+                    <option value="es" className="bg-charcoal text-inverted">ES</option>
+                    <option value="fr" className="bg-charcoal text-inverted">FR</option>
+                  </select>
+                </label>
               </div>
             </div>
           </motion.div>

@@ -34,8 +34,8 @@ const es = {
     heading: "No empiezo con una propuesta. Empiezo con una prueba.",
     body: "Rediseño una parte clave de tu web primero, la despliego como vista previa privada en Vercel y te envío el enlace en vivo. Si te convence, lo convertimos en tu web real.",
     cta: "Muéstrame cómo podría quedar mi web",
-    before: "Antes — genérica, lenta, poco convincente",
-    after: "Después — refinada, editorial, clara para convertir",
+    before: "Antes - genérica, lenta, poco convincente",
+    after: "Después - refinada, editorial, clara para convertir",
   },
   services: {
     label: "Lo que hacemos",
@@ -170,10 +170,10 @@ const es = {
     heading: "Arquitectura, replanteada para la pantalla.",
     disclaimer: "Estudios de rediseño web que muestran cómo los estudios de arquitectura e interiorismo pueden presentar su trabajo con más claridad, confianza y autoridad visual.",
     items: [
-      { slug: "villa-architecture-studio", title: "Web de Arquitectura — Benahavís", category: "Rediseño web", location: "Benahavís, Costa del Sol", challenge: "Estudio con un sólido portafolio de villas pero con una web obsoleta que hacía que el trabajo pareciera genérico, comprimido y difícil de juzgar en móvil.", what: "Rediseño de portada, sistema de páginas de proyecto, posicionamiento más claro y presentación mobile-first con jerarquía editorial y estructura multilingüe." },
-      { slug: "interior-design-marbella", title: "Estudio de Diseño de Interiores — Marbella", category: "Web de diseño de interiores", location: "Marbella, Costa del Sol", challenge: "Estudio joven produciendo trabajo de interiores de alta calidad pero invisible online. Sin SEO, sin sistema de portafolio, primera impresión débil.", what: "Refinamiento de marca, diseño web, sistema de portafolio, flujo de contacto y configuración de SEO local para Marbella y alrededores." },
-      { slug: "renovation-studio-estepona", title: "Estudio de Reformas de Villas — Estepona", category: "Web de reformas", location: "Estepona, Costa del Sol", challenge: "Estudio de reformas que dependía totalmente del boca a boca. Sin presencia digital, sin visibilidad en Google, sin forma de que los clientes internacionales los encontraran.", what: "Estrategia web completa, rediseño de vista previa en Vercel enviado por email frío, configuración multilingüe EN/ES, optimización de Google Business Profile." },
-      { slug: "project-page-system", title: "Sistema de Páginas de Portafolio — Sotogrande", category: "Sistema de portafolio", location: "Sotogrande, Costa del Sol", challenge: "Estudio con más de 40 proyectos y sin una forma consistente de presentarlos. Todos los proyectos estaban en una galería plana sin contexto, materiales ni historia.", what: "Plantilla de proyecto compatible con CMS, filtrable por ubicación y tipo, estructura de caso de estudio con secciones antes/después y narrativa de materiales." },
+      { slug: "villa-architecture-studio", title: "Web de Arquitectura - Benahavís", category: "Rediseño web", location: "Benahavís, Costa del Sol", challenge: "Estudio con un sólido portafolio de villas pero con una web obsoleta que hacía que el trabajo pareciera genérico, comprimido y difícil de juzgar en móvil.", what: "Rediseño de portada, sistema de páginas de proyecto, posicionamiento más claro y presentación mobile-first con jerarquía editorial y estructura multilingüe." },
+      { slug: "interior-design-marbella", title: "Estudio de Diseño de Interiores - Marbella", category: "Web de diseño de interiores", location: "Marbella, Costa del Sol", challenge: "Estudio joven produciendo trabajo de interiores de alta calidad pero invisible online. Sin SEO, sin sistema de portafolio, primera impresión débil.", what: "Refinamiento de marca, diseño web, sistema de portafolio, flujo de contacto y configuración de SEO local para Marbella y alrededores." },
+      { slug: "renovation-studio-estepona", title: "Estudio de Reformas de Villas - Estepona", category: "Web de reformas", location: "Estepona, Costa del Sol", challenge: "Estudio de reformas que dependía totalmente del boca a boca. Sin presencia digital, sin visibilidad en Google, sin forma de que los clientes internacionales los encontraran.", what: "Estrategia web completa, rediseño de vista previa en Vercel enviado por email frío, configuración multilingüe EN/ES, optimización de Google Business Profile." },
+      { slug: "project-page-system", title: "Sistema de Páginas de Portafolio - Sotogrande", category: "Sistema de portafolio", location: "Sotogrande, Costa del Sol", challenge: "Estudio con más de 40 proyectos y sin una forma consistente de presentarlos. Todos los proyectos estaban en una galería plana sin contexto, materiales ni historia.", what: "Plantilla de proyecto compatible con CMS, filtrable por ubicación y tipo, estructura de caso de estudio con secciones antes/después y narrativa de materiales." },
     ],
   },
   audit: {
@@ -245,10 +245,10 @@ const es = {
     locations: "Atendemos a estudios en Marbella, Estepona, Benahavís, Sotogrande, Málaga, Mijas, Fuengirola, Casares, San Pedro y Nueva Andalucía.",
     response: "Respuesta habitual en 24 horas.",
     steps: [
-      "Reviso la web actual — primera impresión, claridad del portafolio, experiencia móvil y ruta de contacto.",
+      "Reviso la web actual - primera impresión, claridad del portafolio, experiencia móvil y ruta de contacto.",
       "Identifico la brecha de percepción más clara entre el trabajo del estudio y su presencia digital.",
       "Si hay una oportunidad clara, respondo en 24 horas con un siguiente paso concreto.",
-      "Para estudios seleccionados, ese siguiente paso puede ser una preview privada de rediseño — lista para juzgar.",
+      "Para estudios seleccionados, ese siguiente paso puede ser una preview privada de rediseño - lista para juzgar.",
     ],
     form: {
       name: "Tu nombre",

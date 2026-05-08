@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return genMeta({
     locale,
     path: "/services",
-    title: "Services — Website Design & SEO for Architecture Studios",
+    title: "Services - Website Design & SEO for Architecture Studios",
     description:
       "Website redesign, interior design studio websites, local SEO, portfolio systems, hosting, and brand refinement for studios on the Costa del Sol.",
   });

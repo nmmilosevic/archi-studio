@@ -78,7 +78,7 @@ export function BeforeAfterSlider({
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
       role="img"
-      aria-label="Before and after redesign comparison — drag to reveal"
+      aria-label="Before and after redesign comparison - drag to reveal"
     >
       {/* After (base layer) */}
       <div className="absolute inset-0">
