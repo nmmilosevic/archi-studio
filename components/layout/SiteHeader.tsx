@@ -43,7 +43,7 @@ export function SiteHeader() {
         className={clsx(
           "fixed top-0 left-0 right-0 z-30 transition-all duration-500",
           scrolled
-            ? "bg-stone/92 backdrop-blur-md border-b border-charcoal/10 py-3"
+            ? "bg-stone/92 backdrop-blur-md py-3"
             : "bg-transparent py-5"
         )}
         role="banner"
@@ -84,7 +84,7 @@ export function SiteHeader() {
             <div className="hidden lg:flex items-center gap-6">
               <LanguageSwitcher />
               <Button asChild size="sm">
-                <Link href={`/${locale}/audit`}>{t("cta")}</Link>
+                <Link href={`/${locale}/contact`}>Start your website</Link>
               </Button>
             </div>
 

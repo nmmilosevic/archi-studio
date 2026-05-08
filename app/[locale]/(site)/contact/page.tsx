@@ -1,17 +1,23 @@
 import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { Mail } from "lucide-react";
+import { AnimatedText } from "@/components/motion/AnimatedText";
+import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Container } from "@/components/ui/Container";
-import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
-import { AnimatedText } from "@/components/motion/AnimatedText";
-import { generateMetadata as genMeta } from "@/lib/seo";
 import { BRAND } from "@/lib/constants";
-import { getContent } from "@/lib/getContent";
-import type { Metadata } from "next";
-import { Mail, MessageCircle } from "lucide-react";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
+
+const reassurance = [
+  "Clear pricing",
+  "Fast delivery",
+  "Architecture-focused design",
+  "Optional hosting and updates",
+];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -20,182 +26,62 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/contact",
     title: "Contact — REFRAME",
     description:
-      "Send the current studio website. REFRAME reviews the first impression and, if there is a clear opportunity, prepares a private redesign preview.",
+      "Tell REFRAME about your architecture or interior design studio website.",
   });
 }
 
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const content = getContent(locale);
-  const c = content.contact;
 
   return (
     <>
-      {/* ── Hero ──────────────────────────────────────────────────── */}
-      <section className="bg-charcoal pt-36 pb-20 md:pt-44 md:pb-28">
+      <section className="bg-charcoal pt-36 pb-24 text-inverted md:pt-48 md:pb-36">
         <Container>
-          <div className="max-w-[860px]">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text={c.heading}
+              text="Tell us about your studio website."
               as="h1"
-              className="text-section text-inverted mb-7"
+              className="text-section max-w-[920px] text-inverted"
             />
             <AnimatedText
-              className="max-w-[560px] text-[17px] md:text-[18px] leading-[1.68] text-inverted/60"
-              delay={0.18}
+              className="max-w-[560px] text-[18px] leading-[1.65] text-inverted/62 lg:ml-auto"
+              delay={0.12}
             >
-              {c.sub}
+              Send your current website or project idea. We’ll reply with the best next step.
             </AnimatedText>
           </div>
         </Container>
       </section>
 
-      {/* ── Body ──────────────────────────────────────────────────── */}
-      <section className="bg-offwhite py-20 md:py-28" aria-label="Contact">
+      <section className="bg-offwhite py-28 md:py-40" aria-label="Contact form">
         <Container>
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
-
-            {/* Left — editorial content */}
-            <AnimatedText as="div" delay={0.06}>
-              <div className="space-y-14">
-
-                {/* What happens next */}
-                <div>
-                  <p className="font-body mb-8" style={{ opacity: 0.45 }}>
-                    What happens next
+          <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
+            <div>
+              <h2 className="font-heading text-[38px] font-medium leading-tight text-primary">
+                Start with the essentials.
+              </h2>
+              <div className="mt-12 grid gap-5">
+                {reassurance.map((item) => (
+                  <p key={item} className="border-t border-charcoal/10 pt-5 text-[18px] text-primary">
+                    {item}
                   </p>
-                  <div>
-                    {(c.steps as readonly string[]).map((step, i) => (
-                      <div
-                        key={i}
-                        className="grid grid-cols-[36px_1fr] gap-4 py-6 border-b border-charcoal/8 first:border-t first:border-charcoal/8"
-                      >
-                        <span className="font-body text-[11px] tracking-[0.14em] text-bronze pt-[3px]">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <p className="font-body text-[15px] leading-[1.72] text-muted">
-                          {step}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                ))}
+              </div>
+              <a
+                href={`mailto:${BRAND.email}`}
+                className="mt-12 inline-flex items-center gap-3 text-[16px] text-muted transition-colors hover:text-bronze"
+              >
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                {BRAND.email}
+              </a>
+            </div>
 
-                {/* Contact links */}
-                <div className="space-y-3">
-                  <a
-                    href={`mailto:${BRAND.email}`}
-                    className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-                    aria-label={`Email: ${BRAND.email}`}
-                  >
-                    <Mail className="h-3.5 w-3.5 text-bronze flex-shrink-0" aria-hidden="true" />
-                    <span className="font-body text-[14px] text-muted group-hover:text-bronze transition-colors duration-200">
-                      {BRAND.email}
-                    </span>
-                  </a>
-                  <a
-                    href={BRAND.whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-                    aria-label={`WhatsApp: ${BRAND.whatsapp}`}
-                  >
-                    <MessageCircle className="h-3.5 w-3.5 text-bronze flex-shrink-0" aria-hidden="true" />
-                    <span className="font-body text-[14px] text-muted group-hover:text-bronze transition-colors duration-200">
-                      {BRAND.whatsapp}
-                    </span>
-                  </a>
-                </div>
-
-                {/* Location + response */}
-                <div className="space-y-2">
-                  <p className="font-body" style={{ opacity: 0.4 }}>
-                    {c.response}
-                  </p>
-                  <p className="font-body" style={{ opacity: 0.3 }}>
-                    {c.locations}
-                  </p>
-                </div>
-
+            <AnimatedText as="div" delay={0.12}>
+              <div className="border border-charcoal/10 bg-stone p-6 md:p-10">
+                <ContactForm />
               </div>
             </AnimatedText>
-
-            {/* Right — visual card + form */}
-            <AnimatedText as="div" delay={0.14}>
-              <div>
-
-                {/* Visual: mini site comparison */}
-                <div className="mb-8 grid grid-cols-2 gap-3" aria-hidden="true">
-                  {/* Current site mockup */}
-                  <div className="overflow-hidden border border-charcoal/10 opacity-50 grayscale">
-                    <div className="flex h-7 items-center gap-1.5 border-b border-charcoal/10 px-3">
-                      <span className="h-1.5 w-1.5 rounded-full bg-charcoal/25" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-charcoal/18" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-charcoal/12" />
-                    </div>
-                    <div className="bg-stone p-4 space-y-2.5">
-                      <div className="h-2 bg-charcoal/20 w-1/2 rounded-none" />
-                      <div className="h-1.5 bg-charcoal/12 w-full" />
-                      <div className="h-1.5 bg-charcoal/10 w-4/5" />
-                      <div className="mt-3 grid grid-cols-2 gap-1.5">
-                        <div className="aspect-[4/3] bg-charcoal/10" />
-                        <div className="aspect-[4/3] bg-charcoal/10" />
-                        <div className="aspect-[4/3] bg-charcoal/8" />
-                        <div className="aspect-[4/3] bg-charcoal/8" />
-                      </div>
-                    </div>
-                    <div className="border-t border-charcoal/8 px-3 py-2">
-                      <span className="font-body text-[9px] tracking-[0.16em] uppercase text-muted/50">
-                        Current site
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Reframed preview mockup */}
-                  <div className="overflow-hidden border border-bronze/20">
-                    <div className="flex h-7 items-center justify-between gap-1.5 border-b border-charcoal/80 bg-charcoal px-3">
-                      <div className="flex gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/12" />
-                      </div>
-                      <span className="font-body text-[8px] tracking-widest uppercase text-white/30">
-                        preview
-                      </span>
-                    </div>
-                    <div className="bg-stone p-4 space-y-3">
-                      <div className="h-px bg-bronze/40 w-8" />
-                      <div className="font-heading text-[13px] font-medium leading-[0.92] text-primary">
-                        Studio<br />Alonso
-                      </div>
-                      <div className="h-1.5 bg-charcoal/12 w-3/4" />
-                      <div className="mt-2 aspect-[16/9] bg-sand/35" />
-                    </div>
-                    <div className="border-t border-charcoal/10 bg-stone px-3 py-2">
-                      <span className="font-body text-[9px] tracking-[0.16em] uppercase text-bronze/70">
-                        Private preview
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Form card */}
-                <div className="bg-stone px-8 py-10 md:px-10 md:py-12">
-                  <div className="mb-8">
-                    <h2 className="font-heading text-[26px] font-medium leading-tight text-primary mb-3">
-                      Send your website for a free review.
-                    </h2>
-                    <p className="font-body text-[14px] leading-relaxed text-muted max-w-[400px]">
-                      Share the URL and briefly describe what feels wrong. We will review the first impression, portfolio clarity, and mobile experience — and reply with a clear recommendation.
-                    </p>
-                  </div>
-                  <ContactForm />
-                </div>
-
-              </div>
-            </AnimatedText>
-
           </div>
         </Container>
       </section>

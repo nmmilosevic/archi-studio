@@ -1,5 +1,4 @@
 import { setRequestLocale } from "next-intl/server";
-import { PageHero } from "@/components/sections/PageHero";
 import { WorkCard } from "@/components/cards/WorkCard";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
@@ -32,28 +31,38 @@ export default async function WorkPage({ params }: Props) {
   const workContent = content.work;
 
   const work = {
-    label: workContent.label,
-    heading: workContent.heading,
-    disclaimer: workContent.disclaimer,
     items: workContent.items.map((item) => ({
       slug: item.slug,
       title: item.title,
       category: item.category,
       location: item.location,
+      result: item.challenge.split(" but ")[0] + ".",
     })),
   };
 
   return (
     <>
-      <PageHero
-        label={work.label}
-        heading={work.heading}
-        subtext="Website redesigns for architecture and interior design studios. Each project focuses on first impression, portfolio clarity, and mobile experience — making the work easier to understand and trust online."
-      />
-
-      <section className="py-16 md:py-24 bg-offwhite" aria-label="Work grid">
+      <section className="bg-stone pt-36 pb-24 md:pt-48 md:pb-36">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+            <AnimatedTitle
+              text="Selected websites for architecture studios."
+              as="h1"
+              className="text-section max-w-[920px] text-primary"
+            />
+            <AnimatedText
+              className="max-w-[600px] text-[18px] leading-[1.65] text-muted lg:ml-auto"
+              delay={0.12}
+            >
+              A clear look at how we help studios present their work with more clarity, confidence, and visual quality.
+            </AnimatedText>
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 md:py-32 bg-offwhite" aria-label="Work grid">
+        <Container>
+          <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-x-16 md:gap-y-24">
             {work.items.map((item, i) => (
               <WorkCard
                 key={item.slug}
@@ -67,34 +76,27 @@ export default async function WorkPage({ params }: Props) {
         </Container>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-stone" aria-labelledby="work-cta-heading">
+      <section className="py-28 bg-stone md:py-36" aria-labelledby="work-cta-heading">
         <Container>
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <AnimatedTitle
-              text="Websites that match the quality of the work."
+              text="Want your website to feel clearer?"
               as="h2"
               id="work-cta-heading"
-              className="text-display text-primary mb-5"
+              className="text-display text-primary mb-7"
             />
             <AnimatedText
-              className="font-body text-[16px] text-muted leading-relaxed mb-8 max-w-[500px]"
+              className="font-body text-[18px] text-muted leading-relaxed mb-10 max-w-[560px]"
               delay={0.1}
             >
-              Send your website URL for a free review. We look at first impression, portfolio clarity, and mobile experience — and show you what a better version looks like.
+              Send your current website. We’ll show where the first impression, portfolio, or mobile experience can be improved.
             </AnimatedText>
             <AnimatedText delay={0.2} as="div">
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="md">
-                  <Link href={`/${locale}/audit`}>Get a free website review</Link>
-                </Button>
-                <Button asChild variant="outline" size="md">
-                  <Link href={`/${locale}/contact`}>Get in touch</Link>
+                  <Link href={`/${locale}/audit`}>Request a website review</Link>
                 </Button>
               </div>
-              <p className="mt-4 font-body text-[13px] text-muted/45">
-                Free review · No commitment · Response within 48 hours
-              </p>
             </AnimatedText>
           </div>
         </Container>

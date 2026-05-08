@@ -7,9 +7,9 @@ import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 
 const inputClass =
-  "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[14px] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
+  "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[16px] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
 const labelClass =
-  "font-body text-[11px] tracking-[0.14em] uppercase text-muted/60 mb-2 block";
+  "font-body text-[14px] text-muted/65 mb-2 block";
 
 interface FormData {
   name: string;
@@ -19,8 +19,23 @@ interface FormData {
   website: string;
   type: string;
   budget: string;
+  timeline: string;
   message: string;
 }
+
+const budgetOptions = [
+  "€1,500 website",
+  "€1,500 + hosting",
+  "€1,500 + monthly updates",
+  "Not sure yet",
+];
+
+const timelineOptions = [
+  "As soon as possible",
+  "This month",
+  "1 to 3 months",
+  "Just exploring",
+];
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
@@ -32,6 +47,7 @@ export function ContactForm() {
     website: "",
     type: "",
     budget: "",
+    timeline: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
@@ -65,7 +81,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5">
+    <form onSubmit={handleSubmit} noValidate className="space-y-6">
       {/* Row 1: name + email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
@@ -157,7 +173,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-type" className={labelClass}>
-            {t("type")}
+            What do you need?
           </label>
           <select
             id="contact-type"
@@ -167,7 +183,7 @@ export function ContactForm() {
             className={clsx(inputClass, "cursor-pointer")}
           >
             <option value="">—</option>
-            {(t.raw("typeOptions") as string[]).map((opt) => (
+            {["New website", "Website redesign", "Website review", "Ongoing updates"].map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>
@@ -186,13 +202,33 @@ export function ContactForm() {
             className={clsx(inputClass, "cursor-pointer")}
           >
             <option value="">—</option>
-            {(t.raw("budgetOptions") as string[]).map((opt) => (
+            {budgetOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>
             ))}
           </select>
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="contact-timeline" className={labelClass}>
+          Timeline
+        </label>
+        <select
+          id="contact-timeline"
+          name="timeline"
+          value={form.timeline}
+          onChange={handleChange}
+          className={clsx(inputClass, "cursor-pointer")}
+        >
+          <option value="">—</option>
+          {timelineOptions.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Message */}
@@ -207,7 +243,7 @@ export function ContactForm() {
           value={form.message}
           onChange={handleChange}
           className={clsx(inputClass, "resize-none")}
-          placeholder={t("messagePlaceholder")}
+          placeholder="Tell us what you need, what feels outdated, or what you want the new website to do."
         />
       </div>
 
@@ -227,9 +263,6 @@ export function ContactForm() {
             </>
           )}
         </Button>
-        <p className="mt-4 font-body text-[11px] tracking-[0.12em] text-muted/45 text-center">
-          {t("microcopy")}
-        </p>
       </div>
     </form>
   );

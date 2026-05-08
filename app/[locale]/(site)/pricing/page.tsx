@@ -1,70 +1,90 @@
 import { setRequestLocale } from "next-intl/server";
-import { Container } from "@/components/ui/Container";
-import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
-import { AnimatedText } from "@/components/motion/AnimatedText";
-import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { Button } from "@/components/ui/Button";
-import { generateMetadata as genMeta } from "@/lib/seo";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
+import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
+import { AnimatedText } from "@/components/motion/AnimatedText";
+import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { FAQAccordion } from "@/components/ui/FAQAccordion";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
+
+const mainIncludes = [
+  "Custom website design",
+  "Responsive development",
+  "Up to 5 pages",
+  "CMS setup",
+  "Contact form",
+  "Basic SEO setup",
+  "Vercel deployment",
+];
+
+const hostingIncludes = [
+  "Hosting setup",
+  "Domain connection",
+  "SSL",
+  "Monitoring",
+  "Basic maintenance",
+];
+
+const updateIncludes = [
+  "Text updates",
+  "Image updates",
+  "Small layout changes",
+  "Priority support",
+];
+
+const faq = [
+  {
+    q: "Is hosting required?",
+    a: "No. You can host the site yourself if you prefer.",
+  },
+  {
+    q: "Are updates included?",
+    a: "Small launch fixes are included. Ongoing updates are available for €120/month.",
+  },
+  {
+    q: "How long does it take?",
+    a: "Most websites can be launched in 2 to 4 weeks depending on content and feedback.",
+  },
+  {
+    q: "Do I own the website?",
+    a: "Yes. The €1,500 price gives you the full website design and build.",
+  },
+];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return genMeta({
     locale,
     path: "/pricing",
-    title: "Pricing — Architecture Website Redesigns Costa del Sol",
+    title: "Pricing — Website Design for Architecture Studios",
     description:
-      "One clear offer for architecture and interior design studio website redesigns on the Costa del Sol. Full redesign and launch for €1,990.",
+      "Simple pricing for architecture and interior design studio websites. €1,500 one-time website design and development, with optional hosting and updates.",
   });
 }
 
-const includes = [
-  "Reframe Audit & full redesign",
-  "Responsive, mobile-first layouts",
-  "Portfolio Clarity structure",
-  "Multilingual-ready setup",
-  "Technical SEO foundation",
-  "Vercel deployment",
-  "Preview-first workflow",
-  "Launch support",
-];
-
-const careIncludes = [
-  "Hosting management on Vercel",
-  "Portfolio uploads and updates",
-  "Technical fixes and monitoring",
-  "Analytics review",
-  "Small content edits",
-  "Monthly availability",
-];
-
-const faq = [
-  {
-    q: "Is the price fixed or an estimate?",
-    a: "€1,990 is the fixed price for the Full Reframe & Launch offer. If the project requires unusual integrations, extensive copywriting, or a larger content system, that scope is agreed before work starts.",
-  },
-  {
-    q: "How do payments work?",
-    a: "50% at project start, 50% before launch. Monthly Portfolio Care is billed on the first of each month and can be cancelled with 30 days notice.",
-  },
-  {
-    q: "Is IVA included?",
-    a: "No. All prices are shown excluding IVA. The applicable rate will be detailed in the invoice.",
-  },
-  {
-    q: "How long does the project take?",
-    a: "Typically 2 to 4 weeks depending on scope and how quickly content and feedback are provided. The timeline is agreed before starting.",
-  },
-  {
-    q: "What if I need something not listed?",
-    a: "Send the details and the scope is confirmed before work starts. Additional languages, extra pages, and copy refinement can be added without changing the core offer.",
-  },
-];
+function CheckList({ items, light = false }: { items: string[]; light?: boolean }) {
+  return (
+    <ul className="grid gap-4">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <Check
+            className={light ? "mt-1 h-4 w-4 flex-shrink-0 text-clay" : "mt-1 h-4 w-4 flex-shrink-0 text-bronze"}
+            aria-hidden="true"
+          />
+          <span className={light ? "text-[16px] leading-relaxed text-inverted/72" : "text-[16px] leading-relaxed text-primary"}>
+            {item}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default async function PricingPage({ params }: Props) {
   const { locale } = await params;
@@ -72,280 +92,117 @@ export default async function PricingPage({ params }: Props) {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="bg-charcoal pt-36 md:pt-44 pb-20 md:pb-28">
+      <section className="bg-charcoal pt-36 pb-24 text-inverted md:pt-48 md:pb-36">
         <Container>
-          <div className="max-w-[860px]">
-            <AnimatedText
-              as="p"
-              className="font-body text-inverted/30 mb-7"
-              delay={0.04}
-            >
-              Pricing · One fixed offer
-            </AnimatedText>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="One offer. One price."
+              text="Simple pricing for a better studio website."
               as="h1"
-              className="text-section text-inverted mb-7"
+              className="text-section max-w-[920px] text-inverted"
             />
             <AnimatedText
-              className="max-w-[520px] text-[17px] md:text-[18px] leading-[1.68] text-inverted/55"
-              delay={0.18}
+              className="max-w-[560px] text-[18px] leading-[1.65] text-inverted/62 lg:ml-auto"
+              delay={0.12}
             >
-              A complete website redesign and launch for architecture and interior design studios that need a stronger first impression online. No packages. No tiers.
+              One clear website price, with optional hosting and update support.
             </AnimatedText>
           </div>
         </Container>
       </section>
 
-      {/* ── At a glance ───────────────────────────────────── */}
-      <section className="bg-stone border-b border-charcoal/8" aria-label="Services overview">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-charcoal/8">
-          {/* Free review */}
-          <div className="container-site py-10 md:py-12">
-            <p className="font-body text-muted/45 mb-5">Free</p>
-            <h3 className="font-heading text-[22px] font-medium text-primary mb-3 leading-tight">
-              Website Review
-            </h3>
-            <p className="font-body text-[14px] text-muted leading-relaxed mb-8">
-              A free expert review of your studio&apos;s website with written recommendations on what to fix first.
-            </p>
-            <div className="flex items-center justify-between border-t border-charcoal/8 pt-5">
-              <span className="font-body text-muted/40">48h turnaround</span>
-              <Link
-                href={`/${locale}/audit`}
-                className="font-body text-muted/55 hover:text-primary transition-colors"
-              >
-                Request →
-              </Link>
-            </div>
-          </div>
-
-          {/* Full Reframe */}
-          <div className="bg-charcoal py-10 md:py-12 px-6 md:px-20 lg:px-[5rem]">
-            <p className="font-body text-bronze mb-5">€1,990</p>
-            <h3 className="font-heading text-[22px] font-medium text-inverted mb-3 leading-tight">
-              Full Reframe
-            </h3>
-            <p className="font-body text-[14px] text-inverted/55 leading-relaxed mb-8">
-              Complete website redesign and launch. Built around your portfolio, your studio, and your clients.
-            </p>
-            <div className="flex items-center justify-between border-t border-white/10 pt-5">
-              <span className="font-body text-inverted/30">2 to 4 weeks</span>
-              <Link
-                href={`/${locale}/contact`}
-                className="font-body text-inverted/55 hover:text-inverted transition-colors"
-              >
-                Get started →
-              </Link>
-            </div>
-          </div>
-
-          {/* Portfolio Care */}
-          <div className="container-site py-10 md:py-12">
-            <p className="font-body text-muted/45 mb-5">€149 / month</p>
-            <h3 className="font-heading text-[22px] font-medium text-primary mb-3 leading-tight">
-              Portfolio Care
-            </h3>
-            <p className="font-body text-[14px] text-muted leading-relaxed mb-8">
-              Hosting, updates, portfolio uploads, and monthly maintenance after launch.
-            </p>
-            <div className="flex items-center justify-between border-t border-charcoal/8 pt-5">
-              <span className="font-body text-muted/40">Cancel anytime</span>
-              <Link
-                href={`/${locale}/contact`}
-                className="font-body text-muted/55 hover:text-primary transition-colors"
-              >
-                Discuss →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Offer 01: Full Reframe & Launch ───────────────── */}
-      <section className="py-24 md:py-36 bg-offwhite" aria-labelledby="offer-heading">
+      <section className="bg-offwhite py-28 md:py-44" aria-labelledby="main-price-heading">
         <Container>
-          <div className="flex items-center gap-5 mb-14 md:mb-16 pb-5 border-b border-charcoal/8">
-            <span className="font-body text-muted/35">01</span>
-            <span className="font-body text-muted/35">Full Reframe & Launch</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-            {/* Left — price + description */}
-            <AnimatedText delay={0.05} as="div">
-              <h2
-                id="offer-heading"
-                className="text-section text-primary mb-8"
-                style={{ maxWidth: "500px" }}
-              >
-                Full Reframe<br />& Launch
-              </h2>
-
-              <p className="font-body text-[16px] md:text-[17px] text-muted leading-[1.68] mb-12 max-w-[420px]">
-                A focused redesign built around first impression, portfolio clarity, and a calm path to enquiry. Architecture work judged through a screen deserves presentation that matches the quality of the work itself.
-              </p>
-
-              <div className="mb-10">
-                <div
-                  className="font-heading font-medium text-primary leading-none"
-                  style={{ fontSize: "clamp(72px,9vw,120px)", letterSpacing: "-0.025em" }}
-                >
-                  €1,990
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+            <AnimatedText as="div" delay={0.04}>
+              <div className="bg-charcoal p-8 text-inverted md:p-12 lg:p-14">
+                <p className="text-[17px] text-inverted/55">Website Design + Development</p>
+                <h2 id="main-price-heading" className="mt-6 font-heading text-[clamp(48px,7vw,96px)] font-medium leading-none text-inverted">
+                  €1,500
+                </h2>
+                <p className="mt-4 text-[18px] leading-relaxed text-inverted/70">
+                  one-time
+                </p>
+                <p className="mt-10 max-w-[480px] text-[17px] leading-[1.65] text-inverted/62">
+                  For studios that want to buy the full website design and build.
+                </p>
+                <div className="mt-10">
+                  <Button asChild variant="secondary" size="lg">
+                    <Link href={`/${locale}/contact`}>Start your website</Link>
+                  </Button>
                 </div>
-                <p className="font-body text-muted/45 mt-3">
-                  Fixed price · Excluding IVA
+                <p className="mt-8 border-t border-white/10 pt-6 text-[16px] leading-relaxed text-inverted/55">
+                  You pay €1,500 once to own the website design and build.
                 </p>
               </div>
+            </AnimatedText>
 
-              <div className="space-y-3 mb-12">
-                {[
-                  "50% at project start · 50% before launch",
-                  "Typically 2 to 4 weeks",
-                  "Reframe Preview–first workflow",
-                ].map((term) => (
-                  <div key={term} className="flex items-center gap-3.5">
-                    <span className="h-px w-5 bg-bronze/50 flex-shrink-0" />
-                    <span className="font-body text-[13px] text-muted">{term}</span>
-                  </div>
-                ))}
+            <AnimatedText as="div" delay={0.12}>
+              <div className="border-y border-charcoal/10 py-10 lg:py-14">
+                <h3 className="mb-10 font-heading text-[36px] font-medium leading-tight text-primary">
+                  Included
+                </h3>
+                <CheckList items={mainIncludes} />
               </div>
-
-              <Button asChild size="lg">
-                <Link href={`/${locale}/contact`}>Request a Reframe Audit</Link>
-              </Button>
             </AnimatedText>
-
-            {/* Right — deliverables */}
-            <AnimatedText delay={0.15} as="div">
-              <p className="font-body text-muted/40 mb-8">What it covers</p>
-              <ul>
-                {includes.map((item, i) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-5 py-4 border-b border-charcoal/8 first:border-t first:border-charcoal/8"
-                  >
-                    <span className="font-body text-muted/30 pt-0.5 flex-shrink-0">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-body text-[14px] text-primary leading-snug">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="font-body text-[13px] text-muted/45 leading-relaxed mt-8 italic">
-                Not included: branding strategy, logo design, copywriting from scratch, photography, ecommerce, or advanced backend systems. If needed, scope is agreed before work starts.
-              </p>
-            </AnimatedText>
-
           </div>
         </Container>
       </section>
 
-      {/* ── Offer 02: Portfolio Care ───────────────────────── */}
-      <section className="py-24 md:py-32 bg-stone" aria-labelledby="care-heading">
+      <section className="bg-stone py-24 md:py-36" aria-labelledby="addons-heading">
         <Container>
-          <div className="flex items-center gap-5 mb-14 md:mb-16 pb-5 border-b border-charcoal/8">
-            <span className="font-body text-muted/35">02</span>
-            <span className="font-body text-muted/35">Portfolio Clarity · Ongoing</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-
-            <div>
-              <AnimatedTitle
-                text="Keep it running, always."
-                as="h2"
-                id="care-heading"
-                className="text-section text-primary mb-8"
-              />
-              <AnimatedText
-                className="font-body text-[16px] md:text-[17px] text-muted leading-[1.68] max-w-[400px] mb-12"
-                delay={0.1}
-              >
-                Portfolio Care keeps the site fast, updated, and maintained after launch. The work keeps moving — the website should too.
-              </AnimatedText>
-
-              <AnimatedText delay={0.15} as="div">
-                <div className="mb-10">
-                  <div
-                    className="font-heading font-medium text-primary leading-none"
-                    style={{ fontSize: "clamp(56px,7vw,96px)", letterSpacing: "-0.025em" }}
-                  >
-                    €149
-                  </div>
-                  <p className="font-body text-muted/45 mt-3">
-                    Per month · Cancel anytime
-                  </p>
-                </div>
-
-                <Button asChild variant="outline" size="lg">
-                  <Link href={`/${locale}/contact`}>Discuss Portfolio Care</Link>
-                </Button>
-              </AnimatedText>
-            </div>
-
-            <AnimatedText delay={0.2} as="div">
-              <p className="font-body text-muted/40 mb-8">What it covers</p>
-              <ul>
-                {careIncludes.map((item, i) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-5 py-4 border-b border-charcoal/8 first:border-t first:border-charcoal/8"
-                  >
-                    <span className="font-body text-muted/30 pt-0.5 flex-shrink-0">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-body text-[14px] text-primary leading-snug">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="font-body text-[13px] text-muted/45 leading-relaxed mt-8 italic">
-                Can be added at launch or at any point after. No minimum contract period.
-              </p>
-            </AnimatedText>
-
-          </div>
-        </Container>
-      </section>
-
-      {/* ── FAQ ───────────────────────────────────────────── */}
-      <section className="py-20 md:py-28 bg-offwhite" aria-labelledby="pricing-faq-heading">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            <div>
-              <AnimatedTitle
-                text="Common questions."
-                as="h2"
-                id="pricing-faq-heading"
-                className="text-display text-primary"
-              />
-            </div>
-            <div className="lg:col-span-2">
-              <FAQAccordion items={faq} />
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ── CTA ───────────────────────────────────────────── */}
-      <section className="py-20 bg-charcoal" aria-label="Start with a Reframe Audit">
-        <Container>
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div className="mb-14 max-w-[720px]">
             <AnimatedTitle
-              text="Start with the current site."
+              text="Optional add-ons."
               as="h2"
-              className="text-section text-inverted"
+              id="addons-heading"
+              className="text-display text-primary"
             />
-            <AnimatedText delay={0.1} as="div" className="flex-shrink-0">
-              <Button asChild variant="secondary" size="lg">
-                <Link href={`/${locale}/contact`}>Request a Reframe Audit</Link>
-              </Button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <AnimatedText as="div" delay={0.08}>
+              <div className="h-full border border-charcoal/10 bg-offwhite p-8 md:p-10">
+                <h3 className="font-heading text-[34px] font-medium leading-tight text-primary">
+                  Hosting & Maintenance
+                </h3>
+                <p className="mt-7 font-heading text-[64px] font-medium leading-none text-primary">
+                  €30<span className="text-[20px] text-muted">/month</span>
+                </p>
+                <p className="mt-4 text-[16px] text-muted">Billed yearly.</p>
+                <div className="mt-10">
+                  <CheckList items={hostingIncludes} />
+                </div>
+              </div>
             </AnimatedText>
+
+            <AnimatedText as="div" delay={0.16}>
+              <div className="h-full border border-charcoal/10 bg-offwhite p-8 md:p-10">
+                <h3 className="font-heading text-[34px] font-medium leading-tight text-primary">
+                  Monthly Website Updates
+                </h3>
+                <p className="mt-7 font-heading text-[64px] font-medium leading-none text-primary">
+                  €120<span className="text-[20px] text-muted">/month</span>
+                </p>
+                <p className="mt-4 text-[16px] text-muted">Optional after launch.</p>
+                <div className="mt-10">
+                  <CheckList items={updateIncludes} />
+                </div>
+              </div>
+            </AnimatedText>
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-offwhite py-24 md:py-32" aria-labelledby="pricing-faq-heading">
+        <Container>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+            <AnimatedTitle
+              text="Questions."
+              as="h2"
+              id="pricing-faq-heading"
+              className="text-display text-primary"
+            />
+            <FAQAccordion items={faq} />
           </div>
         </Container>
       </section>

@@ -18,39 +18,35 @@ interface Props {
 
 const copy = {
   en: {
-    label: "Architecture website redesigns\nCosta del Sol",
-    headline: "Websites that match the quality of the work.",
-    sub: "We help architecture and interior design studios across Costa del Sol improve their online presence. Better first impressions, clearer portfolios, and websites that win better clients.",
-    primary: "See redesign examples",
-    secondary: "Get a free website review",
-    heroProof: "Free first review · No commitment · Response within 48 hours",
+    label: "Websites for architecture studios",
+    headline: "Websites that match the quality of your work.",
+    sub: "We design and build refined websites for architecture and interior design studios that want a stronger digital presence.",
+    primary: "Start your website",
+    secondary: "View pricing",
+    heroProof: "Custom design. Responsive build. Clear pricing. Fast delivery.",
     heroMockLabel: "Redesign preview",
     beforeTitle: "Most architecture websites don't match the quality of the work.",
     beforeProblems: [
-      "Outdated layouts that lose visitor trust within seconds",
-      "Projects shown as image grids, not as curated stories",
-      "Poor mobile experience when opened from a phone",
-      "No clear path from interest to enquiry",
-      "Generic templates that don't reflect the studio's real quality",
+      "Generic templates weaken your positioning",
+      "Poor mobile experience loses trust",
+      "Hard-to-update websites slow you down",
     ],
-    beforeBody: "We redesign the website — and show you a live preview before any contract.",
-    redesignLabel: "How it works",
-    redesignTitle: "You see the new direction first.",
-    redesignBody:
-      "Before any contract, we redesign a key section of your website, deploy it as a private live preview, and send you the link. If it feels right, the preview becomes the foundation for the full website.",
-    redesignCta: "See redesign examples",
+    beforeBody: "Your projects are detailed, considered, and high-end. Your website should feel the same.",
+    redesignLabel: "Included",
+    redesignTitle: "A complete website, designed and built for your studio.",
+    redesignBody: "A clear website system with the pages, structure, and presentation your studio needs.",
+    redesignCta: "Start your website",
     annotations: [
-      { label: "Live preview", desc: "A private link to the redesigned website — deployed before any contract." },
-      { label: "Side-by-side comparison", desc: "The current website and the new direction are easy to compare directly." },
-      { label: "Launch-ready", desc: "If the direction feels right, the preview becomes the base for the final website." },
+      { label: "Discovery", desc: "We understand your studio, projects, positioning, and goals." },
+      { label: "Design", desc: "We create a refined website direction that reflects your work." },
+      { label: "Build", desc: "We develop responsive layouts with a clean structure." },
+      { label: "Launch", desc: "We test, connect everything, and publish the site." },
     ],
-    offerTitle: "Full Website Redesign & Launch",
-    offerIntro:
-      "One fixed price. A complete website redesign for studios that need a stronger online presence.",
-    careTitle: "Monthly Website Care",
+    offerTitle: "Simple pricing. No hidden fees.",
+    offerIntro: "One clear website price, with optional hosting and updates.",
+    careTitle: "Optional add-ons",
     finalTitle: "See what your website could look like.",
-    finalBody:
-      "Send your website URL. We review it for free and show you a better version — before any commitment.",
+    finalBody: "Send your current website and we’ll show you what could be improved.",
   },
   es: {
     label: "Rediseños web para arquitectura\nCosta del Sol",
@@ -125,14 +121,14 @@ const copy = {
 } as const;
 
 const includes = [
-  "Reframe Audit & full redesign",
-  "Responsive layouts",
-  "Portfolio Clarity structure",
-  "Mobile-first presentation",
-  "Multilingual-ready setup",
-  "Technical SEO foundation",
+  "Custom website design",
+  "Responsive development",
+  "Project portfolio pages",
+  "CMS setup",
+  "Contact form",
+  "Basic SEO setup",
   "Vercel deployment",
-  "Launch support",
+  "5 pages included",
 ];
 
 const studioCoords = [
@@ -167,7 +163,7 @@ export default async function HomePage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
       />
 
-      <section className="relative h-dvh overflow-hidden bg-stone pt-20 md:pt-24">
+      <section className="relative min-h-dvh overflow-hidden bg-stone pt-24 md:pt-28">
         <div className="absolute inset-y-0 right-0 hidden w-[46vw] md:block" aria-hidden="true">
           <Image
             src={assetPath("/images/hero.png")}
@@ -179,11 +175,11 @@ export default async function HomePage({ params }: Props) {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-stone via-stone/30 to-transparent" />
         </div>
-        <Container className="relative z-10 grid h-full grid-cols-1 items-center gap-8 pb-8 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-10 xl:pb-12">
+        <Container className="relative z-10 grid min-h-[calc(100dvh-7rem)] grid-cols-1 items-center gap-12 pb-12 md:grid-cols-[minmax(0,7fr)_minmax(0,3fr)] md:pb-16">
           <div className="min-w-0">
             <AnimatedText
               as="div"
-              className="mb-6 font-body text-[14px] uppercase leading-[1.6] tracking-[0.12em] text-muted"
+              className="mb-8 font-body text-[15px] leading-[1.6] text-muted"
               delay={0.04}
             >
               {c.label.split("\n").map((line) => (
@@ -203,13 +199,13 @@ export default async function HomePage({ params }: Props) {
             <AnimatedText as="div" delay={0.28}>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
-                  <Link href="#previews">{c.primary}</Link>
+                  <Link href={`/${locale}/contact`}>{c.primary}</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link href={`/${locale}/audit`}>{c.secondary}</Link>
+                  <Link href={`/${locale}/pricing`}>{c.secondary}</Link>
                 </Button>
               </div>
-              <p className="mt-5 font-body text-[13px] text-muted/50 leading-relaxed">
+              <p className="mt-6 font-body text-[15px] text-muted/60 leading-relaxed">
                 {c.heroProof}
               </p>
             </AnimatedText>
@@ -237,12 +233,13 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section id="previews" className="bg-charcoal py-24 text-inverted md:py-36" aria-labelledby="preview-heading">
+      <section id="previews" className="bg-charcoal py-28 text-inverted md:py-44" aria-labelledby="preview-heading">
         <Container>
-          <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <div className="mb-[80px] grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-display max-w-[820px] text-inverted" />
             <AnimatedText as="div" className="max-w-[560px] lg:ml-auto" delay={0.12}>
-              <ul className="space-y-3 mb-7">
+              <p className="mb-8 font-body text-[18px] leading-[1.65] text-inverted/62">{c.beforeBody}</p>
+              <ul className="space-y-4">
                 {(c.beforeProblems as readonly string[]).map((problem) => (
                   <li key={problem} className="flex items-start gap-3">
                     <span className="mt-2.5 h-px w-4 bg-bronze/55 flex-shrink-0" />
@@ -250,28 +247,8 @@ export default async function HomePage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-              <p className="font-body text-[14px] leading-[1.6] text-inverted/38">{c.beforeBody}</p>
             </AnimatedText>
           </div>
-
-          {/* Perception diagnostic */}
-          <AnimatedText as="div" delay={0.22}>
-            <div className="mt-10 mb-10 border-t border-white/8 pt-6">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-5">
-                {[
-                  { label: "First Impression", note: "Impact in the first 3 seconds" },
-                  { label: "Portfolio Clarity", note: "Whether work quality is legible" },
-                  { label: "Mobile Rhythm", note: "Phone-screen experience" },
-                  { label: "Digital Credibility", note: "Studio trust signals" },
-                ].map(({ label, note }) => (
-                  <div key={label}>
-                    <p className="font-body text-bronze/65 mb-1.5">{label}</p>
-                    <p className="font-body text-[12px] text-inverted/30 leading-snug">{note}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimatedText>
 
           <AnimatedText as="div" delay={0.08}>
             <BeforeAfterSlider
@@ -282,27 +259,16 @@ export default async function HomePage({ params }: Props) {
             />
           </AnimatedText>
 
-          {/* Architectural metadata strip */}
-          <AnimatedText as="div" delay={0.28}>
-            <div className="mt-10 flex flex-col justify-between gap-3 border-t border-white/8 pt-5 sm:flex-row sm:items-center">
-              <span className="font-body text-[14px] uppercase tracking-[0.12em] text-inverted/35">
-                Perception Gap · Current vs. Reframe Preview
-              </span>
-              <span className="font-body text-[14px] uppercase tracking-[0.12em] text-inverted/35">
-                First Impression Study · Costa del Sol
-              </span>
-            </div>
-          </AnimatedText>
         </Container>
       </section>
 
-      <section className="bg-stone py-24 md:py-36" aria-labelledby="redesign-heading">
+      <section className="bg-stone py-28 md:py-44" aria-labelledby="redesign-heading">
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-24 lg:items-center">
             <div>
               <AnimatedText
                 as="p"
-                className="mb-7 font-body text-[14px] uppercase leading-none tracking-[0.12em] text-muted/60"
+                className="mb-7 font-body text-[15px] leading-none text-muted/60"
                 delay={0.04}
               >
                 {c.redesignLabel}
@@ -319,36 +285,21 @@ export default async function HomePage({ params }: Props) {
               >
                 {c.redesignBody}
               </AnimatedText>
-              <AnimatedText as="div" delay={0.18}>
-                <Button asChild variant="outline" size="md" className="mt-10">
-                  <Link href="#previews">{c.redesignCta}</Link>
-                </Button>
-              </AnimatedText>
             </div>
 
             <AnimatedText as="div" delay={0.14}>
               <div className="lg:pt-4">
                 <div className="overflow-hidden border border-charcoal/10 bg-offwhite">
-                  <div className="flex h-10 items-center justify-between border-b border-charcoal/10 px-4">
-                    <div className="flex items-center gap-1.5" aria-hidden="true">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary/25" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary/18" />
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary/12" />
-                    </div>
-                    <span className="font-body text-[14px] uppercase tracking-[0.12em] text-muted/45">
-                      Reframe Preview · Private
-                    </span>
+                  <div className="grid grid-cols-1 gap-x-12 gap-y-5 p-8 sm:grid-cols-2 md:p-10">
+                    {includes.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <Check className="mt-1 h-4 w-4 flex-shrink-0 text-bronze" aria-hidden="true" />
+                        <span className="text-[16px] leading-relaxed text-primary">{item}</span>
+                      </div>
+                    ))}
                   </div>
-                  <Image
-                    src={assetPath("/images/redesign-preview.png")}
-                    alt="Architecture studio website redesign concept — editorial layout with oversized typography and immersive imagery"
-                    width={1200}
-                    height={900}
-                    className="h-auto w-full"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
                 </div>
-                <div className="mt-8 border-t border-charcoal/10">
+                <div className="mt-14 border-t border-charcoal/10">
                   {c.annotations.map((item, i) => (
                     <div
                       key={item.label}
@@ -357,10 +308,10 @@ export default async function HomePage({ params }: Props) {
                       <span className="mt-0.5 font-body text-[14px] tracking-[0.12em] text-muted/35">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <p className="font-body text-[14px] uppercase tracking-[0.12em] text-primary max-md:col-start-2">
+                      <p className="font-body text-[17px] text-primary max-md:col-start-2">
                         {item.label}
                       </p>
-                      <p className="font-body text-[14px] leading-relaxed text-muted max-md:col-start-2">
+                      <p className="font-body text-[15px] leading-relaxed text-muted max-md:col-start-2">
                         {item.desc}
                       </p>
                     </div>
@@ -373,54 +324,40 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-24 md:py-36" aria-labelledby="offer-heading">
+      <section className="bg-offwhite py-28 md:py-44" aria-labelledby="offer-heading">
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24">
             <div>
               <AnimatedTitle text={c.offerTitle} as="h2" id="offer-heading" className="text-section mb-7 max-w-[700px] text-primary" />
-              <AnimatedText className="mb-10 max-w-[460px] text-[16px] leading-relaxed text-muted" delay={0.1}>
+              <AnimatedText className="mb-12 max-w-[460px] text-[17px] leading-relaxed text-muted" delay={0.1}>
                 {c.offerIntro}
               </AnimatedText>
               <div className="mb-10">
                 <p className="font-heading text-[88px] font-medium leading-none text-primary">
-                  €1,990
+                  €1,500
                 </p>
-                <p className="mt-2 font-body text-[14px] uppercase tracking-widest text-muted/60">
-                  Excluding IVA · launch support included
+                <p className="mt-4 font-body text-[16px] text-muted/70">
+                  One-time website design and build.
                 </p>
               </div>
               <Button asChild size="lg">
                 <Link href={`/${locale}/contact`}>
-                  Request a redesign review <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  Start your website <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
 
             <AnimatedText as="div" delay={0.14}>
-              <div className="border-y border-charcoal/10 py-8 md:py-10">
-                <div className="grid grid-cols-1 gap-x-12 gap-y-5 sm:grid-cols-2">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <Check className="mt-1 h-3.5 w-3.5 flex-shrink-0 text-bronze" aria-hidden="true" />
-                      <span className="text-[15px] leading-relaxed text-primary">{item}</span>
-                    </div>
-                  ))}
+              <div className="grid gap-5">
+                <div className="border border-charcoal/10 p-8">
+                  <h3 className="font-heading text-[28px] font-medium text-primary">Hosting & Maintenance</h3>
+                  <p className="mt-5 font-heading text-[52px] font-medium leading-none text-primary">€30<span className="text-[18px] text-muted">/month</span></p>
+                  <p className="mt-3 text-[15px] text-muted">Optional. Billed yearly.</p>
                 </div>
-                <div className="mt-10 flex flex-col justify-between gap-6 border-t border-charcoal/10 pt-8 md:flex-row md:items-end">
-                  <div>
-                    <h3 className="font-heading text-[30px] font-medium leading-tight text-primary">
-                      {c.careTitle}
-                    </h3>
-                    <p className="mt-2 max-w-[340px] text-[14px] leading-relaxed text-muted">
-                      Hosting management, technical checks, portfolio updates, analytics review and small content edits.
-                    </p>
-                  </div>
-                  <div className="md:text-right">
-                    <p className="font-heading text-[44px] font-medium leading-none text-primary">€149</p>
-                    <p className="mt-1 font-body text-[14px] uppercase tracking-widest text-muted/60">
-                      per month
-                    </p>
-                  </div>
+                <div className="border border-charcoal/10 p-8">
+                  <h3 className="font-heading text-[28px] font-medium text-primary">Monthly Website Updates</h3>
+                  <p className="mt-5 font-heading text-[52px] font-medium leading-none text-primary">€120<span className="text-[18px] text-muted">/month</span></p>
+                  <p className="mt-3 text-[15px] text-muted">Optional text, image and small layout updates.</p>
                 </div>
               </div>
             </AnimatedText>
@@ -428,11 +365,10 @@ export default async function HomePage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="bg-offwhite py-20 md:py-28 overflow-hidden" aria-label="Costa del Sol locations">
+      <section className="bg-offwhite py-28 md:py-40 overflow-hidden" aria-label="Costa del Sol locations">
         <Container>
-          <div className="flex items-center justify-between pb-5 mb-12 md:mb-14 border-b border-charcoal/8">
-            <span className="font-body text-muted/45">Selected territory</span>
-            <span className="font-body text-muted/30 hidden sm:block">36° N · Costa del Sol · Spain</span>
+          <div className="mb-14 max-w-[760px]">
+            <h2 className="text-display text-primary">Built for studios across the Costa del Sol.</h2>
           </div>
 
           <div>
@@ -442,21 +378,18 @@ export default async function HomePage({ params }: Props) {
                 className="group flex items-baseline justify-between border-b border-charcoal/6 py-3.5 md:py-4 cursor-default"
               >
                 <span
-                  className="font-heading font-medium text-primary/14 group-hover:text-primary/60 transition-colors duration-500 leading-none"
+                  className="font-heading font-medium text-primary/45 group-hover:text-primary/75 transition-colors duration-500 leading-none"
                   style={{ fontSize: "clamp(40px, 6.5vw, 88px)", letterSpacing: "-0.02em" }}
                 >
                   {name}
                 </span>
-                <span className="font-body text-muted/30 group-hover:text-muted/55 transition-colors duration-500 hidden sm:block">
+                <span className="font-body text-muted/50 group-hover:text-muted/70 transition-colors duration-500 hidden sm:block">
                   {coord}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="flex items-center justify-between pt-5 border-t border-charcoal/6 mt-1">
-            <span className="font-body text-muted/30">Architecture & Interior Design Studios</span>
-          </div>
         </Container>
       </section>
 
@@ -470,7 +403,7 @@ export default async function HomePage({ params }: Props) {
             <AnimatedText as="div" delay={0.22}>
               <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Button asChild variant="secondary" size="lg">
-                  <Link href={`/${locale}/audit`}>Get a free website review</Link>
+                  <Link href={`/${locale}/audit`}>Request a website review</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-white/25 text-inverted hover:border-bronze hover:text-bronze">
                   <a href={`mailto:${BRAND.email}`}>
@@ -478,9 +411,6 @@ export default async function HomePage({ params }: Props) {
                   </a>
                 </Button>
               </div>
-              <p className="mt-5 font-body text-[13px] text-inverted/35 text-center leading-relaxed">
-                Free review · No commitment · Response within 48 hours
-              </p>
             </AnimatedText>
           </div>
         </Container>

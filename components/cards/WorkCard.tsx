@@ -13,6 +13,7 @@ interface WorkCardProps {
   title: string;
   category: string;
   location: string;
+  result?: string;
   locale: string;
   index?: number;
   tall?: boolean;
@@ -23,6 +24,7 @@ export function WorkCard({
   title,
   category,
   location,
+  result = "Clearer presentation, stronger mobile experience, and a calmer path to enquiry.",
   locale,
   index = 0,
   tall = false,
@@ -71,16 +73,12 @@ export function WorkCard({
         </div>
         <div className="h-px bg-bronze/35" aria-hidden="true" />
       </div>
-      <p className="mt-3 font-body text-[10px] tracking-[0.18em] uppercase text-muted/40">
-        {preview.label}
-      </p>
-
-      <div className="pt-5 pb-7 border-b border-charcoal/10">
-        <div className="flex items-center justify-between mb-3">
-          <span className="font-body text-[14px] tracking-widest text-bronze">
+      <div className="pt-7 pb-8 border-b border-charcoal/10">
+        <div className="mb-5 flex items-center justify-between gap-4">
+          <span className="font-body text-[15px] text-bronze">
             {category}
           </span>
-          <span className="flex items-center gap-1 font-body text-[14px] text-muted/60 tracking-wide">
+          <span className="flex items-center gap-1 font-body text-[15px] text-muted/60">
             <MapPin className="h-2.5 w-2.5" aria-hidden="true" />
             {location}
           </span>
@@ -95,6 +93,12 @@ export function WorkCard({
             aria-hidden="true"
           />
         </div>
+        <p className="mt-5 max-w-[520px] text-[16px] leading-relaxed text-muted">
+          {result}
+        </p>
+        <p className="mt-7 text-[15px] font-medium text-primary">
+          View project
+        </p>
       </div>
     </Link>
   );
