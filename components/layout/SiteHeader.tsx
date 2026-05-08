@@ -56,7 +56,21 @@ export function SiteHeader() {
     router.replace(localizedPath, { scroll: false });
   }
 
+  /** Desktop: scroll to top only when already on home. Mobile (<lg): always go home and scroll to top. */
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
+    const isMobileNav =
+      typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches;
+
+    if (isMobileNav) {
+      event.preventDefault();
+      if (pathname !== homePath) {
+        router.push(homePath);
+        return;
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     if (pathname !== homePath) return;
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });

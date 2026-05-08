@@ -2,17 +2,9 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
-import { clsx } from "clsx";
 import { X } from "lucide-react";
 import { assetPath } from "@/lib/paths";
-import {
-  workScreenFrameLayoutClass,
-  workScreenIsWideMobileComposition,
-  workScreenThumbObjectClass,
-  workScreenThumbnailAspectClass,
-} from "@/lib/workScreenAspect";
 import { Container } from "@/components/ui/Container";
-import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 
 export type CaseStudyScreen = {
   label: string;
@@ -21,12 +13,15 @@ export type CaseStudyScreen = {
 
 type Props = {
   title: string;
+  /** Accessible name for the section (not shown visually). */
   heading: string;
-  headingId: string;
   screens: ReadonlyArray<CaseStudyScreen>;
 };
 
-export function CaseStudyScreens({ title, heading, headingId, screens }: Props) {
+/** Shared frame: equal aspect and height for both columns. */
+const TILE_ASPECT = "aspect-[3/2]";
+
+export function CaseStudyScreens({ title, heading, screens }: Props) {
   const labelId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
@@ -62,118 +57,43 @@ export function CaseStudyScreens({ title, heading, headingId, screens }: Props) 
   };
 
   return (
-    <section className="bg-offwhite section-space" aria-labelledby={headingId}>
+    <section
+      className="border-t border-charcoal/[0.05] bg-offwhite pb-[clamp(56px,9vw,100px)] pt-[clamp(40px,6vw,72px)]"
+      aria-label={heading}
+    >
       <Container>
-        <div className="mb-12 max-w-[720px] md:mb-16">
-          <AnimatedTitle text={heading} as="h2" id={headingId} className="text-display text-primary" />
-        </div>
-      </Container>
-
-      {s1 && s2 && (
-        <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 lg:gap-y-16">
-            <div className="lg:col-span-7">
+        {s1 && s2 && (
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-6 lg:gap-8">
+            {[s1, s2].map((s, i) => (
               <button
+                key={`${s.image}-${i}`}
                 type="button"
-                className="group w-full cursor-zoom-in text-left"
-                onClick={(e) => openAt(0, e)}
+                className="group block w-full cursor-zoom-in text-left"
+                onClick={(e) => openAt(i, e)}
                 aria-haspopup="dialog"
-                aria-expanded={openIndex === 0}
-                aria-controls={openIndex === 0 ? labelId : undefined}
+                aria-expanded={openIndex === i}
+                aria-controls={openIndex === i ? labelId : undefined}
               >
                 <div
-                  className={clsx(
-                    "relative w-full overflow-hidden bg-stone shadow-[0_20px_48px_rgb(16_12_9/0.08)] transition-shadow duration-300 group-hover:shadow-[0_28px_56px_rgb(16_12_9/0.12)]",
-                    workScreenFrameLayoutClass(s1.image),
-                    workScreenThumbnailAspectClass(s1.image)
-                  )}
+                  className={`relative w-full overflow-hidden bg-stone shadow-[0_16px_48px_rgb(16_12_9/0.07)] transition-shadow duration-300 group-hover:shadow-[0_22px_56px_rgb(16_12_9/0.1)] ${TILE_ASPECT}`}
                 >
                   <Image
-                    src={assetPath(s1.image)}
-                    alt={`${title} ${s1.label}`}
+                    src={assetPath(s.image)}
+                    alt={`${title} — ${s.label}`}
                     fill
                     quality={92}
-                    className={clsx(
-                      "pointer-events-none transition-transform duration-300 ease-out group-hover:scale-[1.012]",
-                      workScreenThumbObjectClass(s1.image)
-                    )}
-                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.02]"
+                    sizes="(min-width: 1024px) 46vw, 100vw"
                   />
                 </div>
-                <p className="mt-5 text-[17px] text-primary">{s1.label}</p>
+                <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.2em] text-primary/50 md:mt-3.5">
+                  {s.label}
+                </p>
               </button>
-            </div>
-
-            <div
-              className={clsx(
-                "flex flex-col justify-end",
-                workScreenIsWideMobileComposition(s2.image)
-                  ? "lg:col-span-5 lg:col-start-8"
-                  : "lg:col-span-4 lg:col-start-9"
-              )}
-            >
-              <button
-                type="button"
-                className="group w-full cursor-zoom-in text-left"
-                onClick={(e) => openAt(1, e)}
-                aria-haspopup="dialog"
-                aria-expanded={openIndex === 1}
-                aria-controls={openIndex === 1 ? labelId : undefined}
-              >
-                {workScreenIsWideMobileComposition(s2.image) ? (
-                  <div
-                    className={clsx(
-                      "relative w-full overflow-hidden bg-stone shadow-[0_20px_48px_rgb(16_12_9/0.1)] transition-shadow duration-300 group-hover:shadow-[0_28px_56px_rgb(16_12_9/0.14)]",
-                      workScreenFrameLayoutClass(s2.image),
-                      workScreenThumbnailAspectClass(s2.image)
-                    )}
-                  >
-                    <Image
-                      src={assetPath(s2.image)}
-                      alt={`${title} ${s2.label}`}
-                      fill
-                      quality={92}
-                      className={clsx(
-                        "pointer-events-none transition-transform duration-300 ease-out group-hover:scale-[1.012]",
-                        workScreenThumbObjectClass(s2.image)
-                      )}
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative mx-auto flex max-w-[320px] justify-center gap-3 sm:max-w-[360px] lg:mx-0 lg:max-w-none">
-                    <div className="relative z-10 w-[46%] max-w-[150px] -rotate-[2deg] overflow-hidden shadow-[0_20px_40px_rgb(0_0_0/0.18)] sm:max-w-[170px]">
-                      <div className="relative aspect-[853/1844] w-full sm:aspect-[2/3]">
-                        <Image
-                          src={assetPath(s2.image)}
-                          alt=""
-                          fill
-                          quality={92}
-                          className="object-cover object-top"
-                          sizes="(min-width: 1024px) 220px, (min-width: 640px) 28vw, 42vw"
-                        />
-                      </div>
-                    </div>
-                    <div className="relative z-0 w-[46%] max-w-[150px] translate-y-6 rotate-[3deg] overflow-hidden shadow-[0_24px_48px_rgb(0_0_0/0.22)] sm:max-w-[170px] lg:translate-y-10">
-                      <div className="relative aspect-[853/1844] w-full sm:aspect-[2/3]">
-                        <Image
-                          src={assetPath(s2.image)}
-                          alt={`${title} ${s2.label}`}
-                          fill
-                          quality={92}
-                          className="object-cover object-top"
-                          sizes="(min-width: 1024px) 220px, (min-width: 640px) 28vw, 42vw"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <p className="mt-8 text-[17px] text-primary lg:mt-10">{s2.label}</p>
-              </button>
-            </div>
+            ))}
           </div>
-        </Container>
-      )}
+        )}
+      </Container>
 
       {active && (
         <div

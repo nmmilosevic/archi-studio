@@ -6,6 +6,8 @@
 
   /* ── Core palette ──────────────────────────────────── */
   --color-stone: #F5F1EB;
+  /** Slightly deeper warm beige for editorial bands (case study, etc.) */
+  --color-stone-deep: #E7E0D5;
   --color-sand: #C6A98B;
   --color-offwhite: #F5F1EB;
   --color-charcoal: #0B0B0B;
@@ -349,6 +351,7 @@
   }
 
   .bg-stone { background-color: var(--color-stone); }
+  .bg-stone-deep { background-color: var(--color-stone-deep); }
   .bg-sand { background-color: var(--color-sand); }
   .bg-offwhite { background-color: var(--color-offwhite); }
   .bg-charcoal { background-color: var(--color-charcoal); }

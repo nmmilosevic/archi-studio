@@ -170,13 +170,14 @@ const fr = {
     heading: "L'architecture, recadrée pour l'écran.",
     disclaimer: "Études de refonte web montrant comment les studios d'architecture et d'intérieur peuvent présenter leur travail avec plus de clarté, de confiance et d'autorité visuelle.",
     caseStudy: {
-      challenge: "Le défi.",
-      approach: "La démarche.",
-      outcome: "Le résultat.",
-      diagnosis: "Diagnostic design.",
-      diagnosisSub: "Ce qui a changé dans l'expérience — et pourquoi c'est décisif.",
       keyScreens: "Vues choisies.",
-      result: "Retombées.",
+      whatChangedHeading: "Ce qui a changé",
+      whatChangedThemes: [
+        "Structure du portfolio",
+        "Lecture sur mobile",
+        "Positionnement du studio",
+        "Parcours de prise de contact",
+      ] as const,
     },
     items: [
       {
@@ -187,28 +188,28 @@ const fr = {
         summary: "Refonte du site, structure du portfolio, présentation mobile et parcours de contact.",
         challenge:
           "L'ancien site rendait le travail du studio difficile à comprendre, surtout sur mobile. Les projets manquaient de hiérarchie, les images semblaient déconnectées et le parcours de contact n'était pas assez clair.",
-        what: "Refonte du site, structure du portfolio, présentation mobile et parcours de contact.",
-        improvement:
-          "Nous avons simplifié la structure, reconstruit la présentation des projets, créé une mise en page éditoriale plus forte et rendu l'expérience mobile plus fluide.",
-        before: "L'ancien site rendait le portfolio du studio difficile à explorer et ne reflétait pas la qualité de ses villas.",
-        after: "Nous avons créé un site éditorial plus raffiné, avec une navigation plus claire, des visuels plus forts et une présentation plus premium.",
-        heroDesktop: "/images/project01/P1-thumbnail.png",
-        editorialQuote: "Le site devait être aussi pensé que l'architecture elle-même.",
-        diagnosisPoints: [
-          { label: "Hiérarchie des projets", detail: "Un parcours plus clair de la vue d'ensemble à chaque villa, comme un portfolio curé." },
-          { label: "Navigation mobile", detail: "Rythme tactile, typographie lisible et images qui tiennent sur petit écran." },
-          { label: "Identité visuelle", detail: "Typographie et espacement alignés sur une présence de studio sobre et premium." },
-          { label: "Contact", detail: "Moins de friction de l'intérêt à la prise de contact — intention plus nette." },
-        ],
+        heroDesktop: "/images/project01/p01-project.png",
+        whatChanged: [
+          {
+            body: "Un parcours plus clair de la vue d'ensemble à chaque villa : le travail se lit comme un portfolio curé, pas comme une galerie plate.",
+            contrast: { before: "Hiérarchie dispersée", after: "Séquence intentionnelle" },
+          },
+          {
+            body: "Rythme tactile, typographie lisible et images qui gardent leur autorité sur petit écran.",
+            contrast: { before: "Difficile sur mobile", after: "Flux calme et lisible" },
+          },
+          {
+            body: "Typographie et espacement alignés sur une présence sobre et premium — le numérique reflète la qualité de réalisation.",
+            contrast: { before: "Ton générique", after: "Contenance de studio" },
+          },
+          {
+            body: "Moins de friction de l'intérêt à la prise de contact — moins de distractions, intention plus nette quand on veut parler.",
+            contrast: { before: "Contact enfoui", after: "Étape suivante évidente" },
+          },
+        ] as const,
         screens: [
-          { label: "Page projet", image: "/images/project01/p1-project-detail.png" },
-          { label: "Expérience mobile", image: "/images/project01/p1-mobile-view.png" },
-        ],
-        results: [
-          "Portfolio plus lisible du premier scroll à la profondeur du projet",
-          "Positionnement plus premium face aux studios comparables",
-          "Meilleure lisibilité mobile, où commence souvent la première visite",
-          "Prise de contact plus simple lorsque le visiteur est prêt à échanger",
+          { label: "Page projet", image: "/images/project01/p01-hero.png" },
+          { label: "Expérience mobile", image: "/images/project01/p01-mobileview.png" },
         ],
       },
       {
@@ -221,29 +222,28 @@ const fr = {
           "Refonte du site, clarté des services, portfolio intérieur, expérience mobile et mise en place CMS.",
         challenge:
           "Le studio avait de beaux projets d'intérieur, mais le site paraissait trop générique. Il ne communiquait ni chaleur, ni confiance, ni la qualité des espaces.",
-        what: "Refonte du site, clarté des services, portfolio intérieur, expérience mobile et mise en place CMS.",
-        improvement:
-          "Nous avons créé un site éditorial plus doux, centré sur l'atmosphère, la narration des projets et une découverte des services simple.",
-        before:
-          "L'ancien site paraissait standard et ne traduisait pas l'identité calme du studio en design d'intérieur.",
-        after: "Nous avons créé un site chaleureux et élégant, proche d'un magazine d'intérieur haut de gamme.",
-        heroDesktop: "/images/project02/p2-thumbnail-hero.png",
-        editorialQuote: "L'intérieur est émotionnel ; le site devait porter cette confiance calme.",
-        diagnosisPoints: [
-          { label: "Hiérarchie des projets", detail: "Les projets se lisent comme des récits, pas comme une grille plate." },
-          { label: "Navigation mobile", detail: "Rythme plus doux et images fortes sans sacrifier la performance sur téléphone." },
-          { label: "Identité visuelle", detail: "Palette et rythme éditorial plus proches d'un magazine design." },
-          { label: "Contact", detail: "Services et prise de contact avec intention, sans se perdre dans le bruit." },
-        ],
+        heroDesktop: "/images/project02/p02-hero.png",
+        whatChanged: [
+          {
+            body: "Les projets se lisent comme des récits, pas comme une grille plate — on perçoit le geste, l'échelle, l'atmosphère.",
+            contrast: { before: "Grille anonyme", after: "Chapitres éditoriaux" },
+          },
+          {
+            body: "Rythme plus doux et images fortes qui restent légères et rapides sur téléphone.",
+            contrast: { before: "Mobile étouffant", after: "Air et clarté" },
+          },
+          {
+            body: "Palette et rythme plus proches d'un magazine design : la confiance vient du ton, pas du discours.",
+            contrast: { before: "Gabarit froid", after: "Élégance habitée" },
+          },
+          {
+            body: "Services et prise de contact avec intention : visibles quand il faut, sans rivaliser avec le travail.",
+            contrast: { before: "Parcours caché", after: "Clarté tranquille" },
+          },
+        ] as const,
         screens: [
-          { label: "Page projet intérieur", image: "/images/project02/P2-project_details.png" },
-          { label: "Expérience mobile", image: "/images/project02/P2-mobile.png" },
-        ],
-        results: [
-          "Portfolio plus clair avec une première impression plus émotionnelle",
-          "Positionnement plus premium pour des clients résidentiels exigeants",
-          "Meilleure lisibilité mobile pour découvrir les projets en déplacement",
-          "Prise de contact plus simple lorsque le visiteur accroche à un projet",
+          { label: "Page projet intérieur", image: "/images/project02/p02-project.png" },
+          { label: "Expérience mobile", image: "/images/project02/p02-mobileview.png" },
         ],
       },
       {
@@ -256,28 +256,28 @@ const fr = {
           "Refonte audacieuse, archive de projets, identité visuelle, structure mobile et CMS.",
         challenge:
           "Le travail du studio avait une forte personnalité architecturale, mais le site paraissait plat et oubliable. L'identité digitale ne reflétait pas l'audace des projets.",
-        what: "Refonte audacieuse, archive de projets, identité visuelle, structure mobile et CMS.",
-        improvement:
-          "Nous avons construit un système éditorial plus tranché, avec une typographie plus affirmée, un meilleur contraste et une archive de projets plus lisible.",
-        before: "L'ancien site était trop neutre et ne rendait pas le studio mémorable.",
-        after: "Nous avons créé une présence visuelle plus forte, avec une navigation projet plus claire et une identité plus assurée.",
-        heroDesktop: "/images/avant.png",
-        editorialQuote: "Des projets audacieux méritaient une présence digitale avec le même tranchant.",
-        diagnosisPoints: [
-          { label: "Hiérarchie des projets", detail: "Archive et études de cas avec échelle, contraste et ordre." },
-          { label: "Navigation mobile", detail: "Typographie et marges qui restent lisibles lorsque la mise en page se compresse." },
-          { label: "Identité visuelle", detail: "Une voix graphique plus nette et mémorable, alignée sur le travail." },
-          { label: "Contact", detail: "La prise de contact reste visible sans casser le rythme éditorial." },
-        ],
+        heroDesktop: "/images/project03/p03-hero.png",
+        whatChanged: [
+          {
+            body: "Archive et études de cas avec échelle, contraste et ordre à la hauteur du travail.",
+            contrast: { before: "Listing plat", after: "Séquence assurée" },
+          },
+          {
+            body: "Typographie et marges qui restent lisibles quand la mise en page se réduit à une colonne.",
+            contrast: { before: "Petit texte fragile", after: "Rythme architectural" },
+          },
+          {
+            body: "Une voix graphique plus nette et mémorable, alignée sur les bâtiments — sans bruit superflu.",
+            contrast: { before: "Enveloppe oubliable", after: "Présence distincte" },
+          },
+          {
+            body: "La prise de contact reste à portée sans casser le rythme éditorial ni diluer le ton du studio.",
+            contrast: { before: "Interruptions commerciales", after: "Invitation alignée" },
+          },
+        ] as const,
         screens: [
-          { label: "Archive de projets", image: "/images/redesign-preview.png" },
-          { label: "Expérience mobile", image: "/images/heromock.png" },
-        ],
-        results: [
-          "Portfolio plus clair grâce à un système typographique plus affirmé",
-          "Positionnement plus premium pour des premières impressions marquantes",
-          "Meilleure lisibilité mobile dans des conditions d'usage réelles",
-          "Prise de contact plus simple sans diluer la voix du studio",
+          { label: "Archive de projets", image: "/images/project03/p03-project.png" },
+          { label: "Expérience mobile", image: "/images/project03/p03-mobileview.png" },
         ],
       },
       {
@@ -290,28 +290,28 @@ const fr = {
           "Refonte du site, portfolio outdoor, présentation des services, expérience mobile et CMS.",
         challenge:
           "Les projets outdoor du studio étaient visuels et émotionnels, mais le site paraissait statique. Il ne montrait pas la valeur lifestyle des terrasses, jardins et espaces extérieurs.",
-        what: "Refonte du site, portfolio outdoor, présentation des services, expérience mobile et CMS.",
-        improvement:
-          "Nous avons créé un site plus immersif, avec des images plus grandes, des services clairs et une présentation mobile plus fluide.",
-        before: "L'ancien site présentait les projets sans atmosphère ni récit fort.",
-        after: "Nous avons créé une expérience portfolio plus cinématographique, centrée sur l'outdoor living et le lifestyle méditerranéen.",
-        heroDesktop: "/images/apres.png",
-        editorialQuote: "Le outdoor living appelait de l'atmosphère — pas une autre galerie figée.",
-        diagnosisPoints: [
-          { label: "Hiérarchie des projets", detail: "Le travail extérieur se lit comme des chapitres lifestyle, pas comme des photos isolées." },
-          { label: "Navigation mobile", detail: "Grandes images et rythme calme qui restent fluides au chargement et au scroll." },
-          { label: "Identité visuelle", detail: "Un ton cinématographique aligné sur terrasses, jardins et lumière méditerranéenne." },
-          { label: "Contact", detail: "Services et prise de contact suivent naturellement, une fois le récit établi." },
-        ],
+        heroDesktop: "/images/project04/p04-hero.png",
+        whatChanged: [
+          {
+            body: "Le travail extérieur se lit comme des chapitres lifestyle : terrasses, jardins et lumière en séquence, pas des photos isolées.",
+            contrast: { before: "Galerie figée", after: "Lieu et rythme" },
+          },
+          {
+            body: "Grandes images et scroll calme qui restent performants quand on partage depuis le terrain.",
+            contrast: { before: "Lourd et hésitant", after: "Immersion fluide" },
+          },
+          {
+            body: "Un ton cinématographique aligné sur la vie méditerranéenne de plein air, sans cliché resort.",
+            contrast: { before: "Resort générique", after: "Luxe ancré" },
+          },
+          {
+            body: "Services et prise de contact suivent le récit — la confiance se construit avant de demander l'action.",
+            contrast: { before: "Pression précoce", after: "Demande tardive, naturelle" },
+          },
+        ] as const,
         screens: [
-          { label: "Page projet outdoor", image: "/images/redesign-preview.png" },
-          { label: "Expérience mobile", image: "/images/heromock.png" },
-        ],
-        results: [
-          "Portfolio plus clair avec un sens du lieu plus fort",
-          "Positionnement plus premium pour un outdoor lifestyle haut de gamme",
-          "Meilleure lisibilité mobile pour l'inspiration et le partage sur le terrain",
-          "Prise de contact plus simple lorsque le récit convainc",
+          { label: "Page projet outdoor", image: "/images/project04/p04-project.png" },
+          { label: "Expérience mobile", image: "/images/project04/p04-mobileview.png" },
         ],
       },
     ],

@@ -3,15 +3,18 @@
  * key-screen tiles don’t crop (especially tall mobile frames).
  */
 const ASPECT_BY_IMAGE: Record<string, string> = {
-  "images/project01/P1-thumbnail.png": "aspect-[3/2]",
-  "images/project01/p1-homepage.png": "aspect-[3/2]",
-  "images/project01/p1-project-detail.png": "aspect-[1402/1122]",
-  "images/project01/p1-mobile-view.png": "aspect-[3/2]",
-  "images/project01/p1-mobile.png": "aspect-[853/1844]",
-  "images/project01/p1-preview.png": "aspect-[3/2]",
-  "images/project02/p2-thumbnail-hero.png": "aspect-[3/2]",
-  "images/project02/P2-project_details.png": "aspect-[1024/1536]",
-  "images/project02/P2-mobile.png": "aspect-[3/2]",
+  "images/project01/p01-hero.png": "aspect-[3/2]",
+  "images/project01/p01-project.png": "aspect-[3/2]",
+  "images/project01/p01-mobileview.png": "aspect-[3/2]",
+  "images/project02/p02-hero.png": "aspect-[3/2]",
+  "images/project02/p02-project.png": "aspect-[3/2]",
+  "images/project02/p02-mobileview.png": "aspect-[3/2]",
+  "images/project03/p03-hero.png": "aspect-[3/2]",
+  "images/project03/p03-project.png": "aspect-[3/2]",
+  "images/project03/p03-mobileview.png": "aspect-[3/2]",
+  "images/project04/p04-hero.png": "aspect-[1491/1055]",
+  "images/project04/p04-project.png": "aspect-[1491/1055]",
+  "images/project04/p04-mobileview.png": "aspect-[3/2]",
   "images/heromock.png": "aspect-[2/3]",
   "images/after.png": "aspect-[1121/1379]",
   "images/before.png": "aspect-[1122/1402]",
@@ -26,9 +29,17 @@ const ASPECT_BY_IMAGE: Record<string, string> = {
  * fill the frame edge-to-edge and anchor to the top (no letterboxing).
  */
 const PROJECT_PAGE_THUMB_KEYS = new Set<string>([
-  "images/project01/p1-project-detail.png",
-  "images/project02/P2-project_details.png",
-  "images/redesign-preview.png",
+  "images/project01/p01-project.png",
+  "images/project02/p02-project.png",
+  "images/project03/p03-project.png",
+  "images/project04/p04-project.png",
+]);
+
+const MOBILEVIEW_THUMB_KEYS = new Set<string>([
+  "images/project01/p01-mobileview.png",
+  "images/project02/p02-mobileview.png",
+  "images/project03/p03-mobileview.png",
+  "images/project04/p04-mobileview.png",
 ]);
 
 function parseAspectFraction(aspectClass: string): { width: number; height: number } {
@@ -54,9 +65,6 @@ export function caseStudyHeroAspectClass(heroSrc: string): string {
  */
 export function workScreenThumbnailAspectClass(imagePath: string): string {
   const key = imagePath.replace(/^\/+/, "");
-  if (key === "images/project01/p1-mobile.png") {
-    return "aspect-[853/922]";
-  }
   if (key === "images/heromock.png") {
     return "aspect-[4/3]";
   }
@@ -66,7 +74,7 @@ export function workScreenThumbnailAspectClass(imagePath: string): string {
 /** object-fit for key-screen thumbnails (mobile tiles are cropped to the shorter frame). */
 export function workScreenThumbObjectClass(imagePath: string): string {
   const key = imagePath.replace(/^\/+/, "");
-  if (key === "images/project01/p1-mobile.png" || key === "images/heromock.png") {
+  if (key === "images/heromock.png" || MOBILEVIEW_THUMB_KEYS.has(key)) {
     return "object-cover object-top";
   }
   if (PROJECT_PAGE_THUMB_KEYS.has(key)) {
@@ -80,7 +88,7 @@ export function workScreenThumbObjectClass(imagePath: string): string {
  */
 export function workScreenIsWideMobileComposition(imagePath: string): boolean {
   const key = imagePath.replace(/^\/+/, "");
-  return key === "images/project01/p1-mobile-view.png" || key === "images/project02/P2-mobile.png";
+  return MOBILEVIEW_THUMB_KEYS.has(key);
 }
 
 /**

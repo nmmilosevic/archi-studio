@@ -62,12 +62,7 @@ export default async function WorkPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-x-14 md:gap-y-20">
             {work.items.map((item, i) => (
               <div key={item.slug} className={i % 2 === 1 ? "md:pt-12" : ""}>
-                <WorkCard
-                  {...item}
-                  locale={locale}
-                  index={i}
-                  tall={i % 3 === 0}
-                />
+                <WorkCard {...item} locale={locale} index={i} />
               </div>
             ))}
           </div>

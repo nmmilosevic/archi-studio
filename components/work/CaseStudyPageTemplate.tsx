@@ -1,9 +1,6 @@
-import { CaseStudyDiagnosis } from "@/components/work/CaseStudyDiagnosis";
-import { CaseStudyEditorialBreak } from "@/components/work/CaseStudyEditorialBreak";
 import { CaseStudyHero } from "@/components/work/CaseStudyHero";
-import { CaseStudyOverview } from "@/components/work/CaseStudyOverview";
-import { CaseStudyResults } from "@/components/work/CaseStudyResults";
 import { CaseStudyScreens } from "@/components/work/CaseStudyScreens";
+import { CaseStudyWhatChanged } from "@/components/work/CaseStudyWhatChanged";
 import type en from "@/content/en";
 import type es from "@/content/es";
 import type fr from "@/content/fr";
@@ -39,35 +36,18 @@ export function CaseStudyPageTemplate({ locale, item, labels }: Props) {
         desktopImageAlt={`${item.title} — desktop website preview`}
       />
 
-      <CaseStudyOverview
-        headingId="overview-heading"
-        labels={{
-          challenge: labels.challenge,
-          approach: labels.approach,
-          outcome: labels.outcome,
-        }}
-        challenge={item.challenge}
-        approach={item.improvement}
-        outcome={item.after}
-      />
-
-      <CaseStudyDiagnosis
-        headingId="diagnosis-heading"
-        heading={labels.diagnosis}
-        sub={labels.diagnosisSub}
-        points={item.diagnosisPoints}
-      />
-
-      <CaseStudyEditorialBreak quote={item.editorialQuote} />
-
       <CaseStudyScreens
         title={item.title}
         heading={labels.keyScreens}
-        headingId="screens-heading"
         screens={item.screens}
       />
 
-      <CaseStudyResults headingId="results-heading" heading={labels.result} outcomes={item.results} />
+      <CaseStudyWhatChanged
+        headingId="what-changed-heading"
+        sectionHeading={labels.whatChangedHeading}
+        themes={labels.whatChangedThemes}
+        items={item.whatChanged}
+      />
     </>
   );
 }
