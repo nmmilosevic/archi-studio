@@ -236,7 +236,7 @@ export default async function WorkDetailPage({ params }: Props) {
           <div className="mb-10">
             <Link
               href={`/${locale}/work`}
-              className="inline-flex items-center gap-2 editorial-note text-inverted/30 hover:text-bronze transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+              className="inline-flex items-center gap-2 font-body text-inverted/30 hover:text-bronze transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
             >
               <ArrowLeft className="h-3 w-3" aria-hidden="true" />
               All work
@@ -245,13 +245,13 @@ export default async function WorkDetailPage({ params }: Props) {
 
           {/* Metadata row */}
           <div className="flex items-center gap-3 mb-8">
-            <span className="editorial-note text-bronze">
+            <span className="font-body text-bronze">
               {item.category}
             </span>
-            <span className="editorial-note text-inverted/20" aria-hidden="true">
+            <span className="font-body text-inverted/20" aria-hidden="true">
               ·
             </span>
-            <span className="editorial-note text-inverted/40">
+            <span className="font-body text-inverted/40">
               {item.location}
             </span>
           </div>
@@ -273,7 +273,7 @@ export default async function WorkDetailPage({ params }: Props) {
           </p>
 
           {/* Concept disclaimer */}
-          <p className="editorial-note text-inverted/22 mb-14">
+          <p className="font-body text-inverted/22 mb-14">
             Concept study — direction and execution demonstrated
           </p>
         </Container>
@@ -292,7 +292,7 @@ export default async function WorkDetailPage({ params }: Props) {
           </div>
           <div className="h-px bg-bronze/35 mx-6 md:mx-12 lg:mx-20" aria-hidden="true" />
           <div className="px-6 md:px-12 lg:px-20 pt-3 pb-0 bg-charcoal">
-            <p className="editorial-note text-inverted/25">
+            <p className="font-body text-inverted/25">
               Homepage redesign preview
             </p>
           </div>
@@ -313,7 +313,7 @@ export default async function WorkDetailPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             {/* Left: index + label */}
             <div className="lg:col-span-4">
-              <p className="editorial-note text-bronze/60 mb-5">01</p>
+              <p className="font-body text-bronze/60 mb-5">01</p>
               <h2
                 id="context-heading"
                 className="font-heading text-[clamp(28px,4vw,44px)] font-medium text-primary leading-[0.95]"
@@ -354,7 +354,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 key={i}
                 className="flex items-start gap-5 py-5 border-b border-border"
               >
-                <span className="editorial-note text-bronze/50 mt-0.5 shrink-0 w-6">
+                <span className="font-body text-bronze/50 mt-0.5 shrink-0 w-6">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <p className="font-body text-[15px] text-primary leading-snug pl-4 border-l border-bronze/30">
@@ -375,7 +375,7 @@ export default async function WorkDetailPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             {/* Left: heading + what copy */}
             <div className="lg:col-span-5">
-              <p className="editorial-note text-bronze/60 mb-5">03</p>
+              <p className="font-body text-bronze/60 mb-5">03</p>
               <h2
                 id="strategy-heading"
                 className="font-heading text-[clamp(28px,4vw,44px)] font-medium text-primary leading-[0.95] mb-7"
@@ -395,7 +395,7 @@ export default async function WorkDetailPage({ params }: Props) {
                     key={i}
                     className="grid grid-cols-[24px_1fr] gap-5 py-6 border-b border-border"
                   >
-                    <span className="editorial-note text-bronze/50 mt-0.5">
+                    <span className="font-body text-bronze/50 mt-0.5">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <div>
@@ -423,7 +423,7 @@ export default async function WorkDetailPage({ params }: Props) {
           {/* Section header */}
           <div className="flex items-end justify-between mb-12">
             <div>
-              <p className="editorial-note text-bronze/60 mb-4">04</p>
+              <p className="font-body text-bronze/60 mb-4">04</p>
               <h2
                 id="design-heading"
                 className="font-heading text-[clamp(28px,4vw,44px)] font-medium text-primary leading-[0.95]"
@@ -447,7 +447,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 />
               </div>
               <div className="h-px bg-bronze/30 mt-0" aria-hidden="true" />
-              <p className="mt-2.5 editorial-note text-muted/40">
+              <p className="mt-2.5 font-body text-muted/40">
                 Homepage redesign
               </p>
             </div>
@@ -464,7 +464,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 />
               </div>
               <div className="h-px bg-bronze/30 mt-0" aria-hidden="true" />
-              <p className="mt-2.5 editorial-note text-muted/40">
+              <p className="mt-2.5 font-body text-muted/40">
                 Project page detail
               </p>
             </div>
@@ -483,7 +483,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 />
               </div>
               <div className="h-px bg-bronze/30" aria-hidden="true" />
-              <p className="mt-2.5 editorial-note text-muted/40">
+              <p className="mt-2.5 font-body text-muted/40">
                 Mobile layout
               </p>
             </div>
@@ -498,7 +498,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 />
               </div>
               <div className="h-px bg-bronze/30" aria-hidden="true" />
-              <p className="mt-2.5 editorial-note text-muted/40">
+              <p className="mt-2.5 font-body text-muted/40">
                 Before audit
               </p>
             </div>
@@ -515,7 +515,7 @@ export default async function WorkDetailPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             {/* Left: UX copy */}
             <div className="lg:col-span-5">
-              <p className="editorial-note text-bronze/60 mb-5">05</p>
+              <p className="font-body text-bronze/60 mb-5">05</p>
               <h2
                 id="ux-heading"
                 className="font-heading text-[clamp(28px,4vw,44px)] font-medium text-primary leading-[0.95] mb-8"
@@ -568,7 +568,7 @@ export default async function WorkDetailPage({ params }: Props) {
                 </div>
 
                 {/* Annotation */}
-                <p className="editorial-note text-bronze/60 mt-3">
+                <p className="font-body text-bronze/60 mt-3">
                   Desktop + mobile composition
                 </p>
               </div>
@@ -585,7 +585,7 @@ export default async function WorkDetailPage({ params }: Props) {
         <Container>
           {/* Section header */}
           <div className="mb-14">
-            <p className="editorial-note text-bronze/60 mb-5">06</p>
+            <p className="font-body text-bronze/60 mb-5">06</p>
             <h2
               id="changes-heading"
               className="font-heading text-[clamp(28px,4vw,44px)] font-medium text-primary leading-[0.95]"
@@ -611,7 +611,7 @@ export default async function WorkDetailPage({ params }: Props) {
               },
             ].map((category, ci) => (
               <div key={ci} className="bg-stone p-8 md:p-10">
-                <p className="editorial-note text-bronze mb-6">
+                <p className="font-body text-bronze mb-6">
                   {String(ci + 1).padStart(2, "0")} — {category.label}
                 </p>
                 <ul className="space-y-0">
@@ -664,7 +664,7 @@ export default async function WorkDetailPage({ params }: Props) {
               </div>
             </AnimatedText>
 
-            <p className="editorial-note text-inverted/22">
+            <p className="font-body text-inverted/22">
               Free review · No commitment · Response within 48 hours
             </p>
           </div>

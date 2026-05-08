@@ -9,7 +9,7 @@ import { Send, CheckCircle } from "lucide-react";
 const inputClass =
   "w-full bg-transparent border border-charcoal/15 px-4 py-3.5 font-body text-[14px] text-primary placeholder:text-muted/45 focus:outline-none focus:border-bronze transition-colors duration-200";
 const labelClass =
-  "font-mono-label text-[11px] tracking-[0.14em] uppercase text-muted/60 mb-2 block";
+  "font-body text-[11px] tracking-[0.14em] uppercase text-muted/60 mb-2 block";
 
 interface FormData {
   name: string;
@@ -227,7 +227,7 @@ export function ContactForm() {
             </>
           )}
         </Button>
-        <p className="mt-4 font-mono-label text-[11px] tracking-[0.12em] text-muted/45 text-center">
+        <p className="mt-4 font-body text-[11px] tracking-[0.12em] text-muted/45 text-center">
           {t("microcopy")}
         </p>
       </div>

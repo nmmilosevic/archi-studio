@@ -183,7 +183,7 @@ export default async function HomePage({ params }: Props) {
           <div className="min-w-0">
             <AnimatedText
               as="div"
-              className="mb-6 font-mono-label text-[14px] uppercase leading-[1.6] tracking-[0.12em] text-muted"
+              className="mb-6 font-body text-[14px] uppercase leading-[1.6] tracking-[0.12em] text-muted"
               delay={0.04}
             >
               {c.label.split("\n").map((line) => (
@@ -230,7 +230,7 @@ export default async function HomePage({ params }: Props) {
               </div>
               <div className="mt-3 flex items-center justify-between">
                 <span className="h-px w-8 bg-bronze/35" aria-hidden="true" />
-                <span className="editorial-note text-muted/45">{c.heroMockLabel}</span>
+                <span className="font-body text-muted/45">{c.heroMockLabel}</span>
               </div>
             </div>
           </AnimatedText>
@@ -265,7 +265,7 @@ export default async function HomePage({ params }: Props) {
                   { label: "Digital Credibility", note: "Studio trust signals" },
                 ].map(({ label, note }) => (
                   <div key={label}>
-                    <p className="editorial-note text-bronze/65 mb-1.5">{label}</p>
+                    <p className="font-body text-bronze/65 mb-1.5">{label}</p>
                     <p className="font-body text-[12px] text-inverted/30 leading-snug">{note}</p>
                   </div>
                 ))}
@@ -285,10 +285,10 @@ export default async function HomePage({ params }: Props) {
           {/* Architectural metadata strip */}
           <AnimatedText as="div" delay={0.28}>
             <div className="mt-10 flex flex-col justify-between gap-3 border-t border-white/8 pt-5 sm:flex-row sm:items-center">
-              <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/35">
+              <span className="font-body text-[14px] uppercase tracking-[0.12em] text-inverted/35">
                 Perception Gap · Current vs. Reframe Preview
               </span>
-              <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/35">
+              <span className="font-body text-[14px] uppercase tracking-[0.12em] text-inverted/35">
                 First Impression Study · Costa del Sol
               </span>
             </div>
@@ -302,7 +302,7 @@ export default async function HomePage({ params }: Props) {
             <div>
               <AnimatedText
                 as="p"
-                className="mb-7 font-mono-label text-[14px] uppercase leading-none tracking-[0.12em] text-muted/60"
+                className="mb-7 font-body text-[14px] uppercase leading-none tracking-[0.12em] text-muted/60"
                 delay={0.04}
               >
                 {c.redesignLabel}
@@ -335,7 +335,7 @@ export default async function HomePage({ params }: Props) {
                       <span className="h-1.5 w-1.5 rounded-full bg-primary/18" />
                       <span className="h-1.5 w-1.5 rounded-full bg-primary/12" />
                     </div>
-                    <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/45">
+                    <span className="font-body text-[14px] uppercase tracking-[0.12em] text-muted/45">
                       Reframe Preview · Private
                     </span>
                   </div>
@@ -354,10 +354,10 @@ export default async function HomePage({ params }: Props) {
                       key={item.label}
                       className="grid grid-cols-[42px_0.78fr_1fr] gap-5 border-b border-charcoal/8 py-5 max-md:grid-cols-[38px_1fr]"
                     >
-                      <span className="mt-0.5 font-mono-label text-[14px] tracking-[0.12em] text-muted/35">
+                      <span className="mt-0.5 font-body text-[14px] tracking-[0.12em] text-muted/35">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <p className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-primary max-md:col-start-2">
+                      <p className="font-body text-[14px] uppercase tracking-[0.12em] text-primary max-md:col-start-2">
                         {item.label}
                       </p>
                       <p className="font-body text-[14px] leading-relaxed text-muted max-md:col-start-2">
@@ -385,7 +385,7 @@ export default async function HomePage({ params }: Props) {
                 <p className="font-heading text-[88px] font-medium leading-none text-primary">
                   €1,990
                 </p>
-                <p className="mt-2 font-mono-label text-[14px] uppercase tracking-widest text-muted/60">
+                <p className="mt-2 font-body text-[14px] uppercase tracking-widest text-muted/60">
                   Excluding IVA · launch support included
                 </p>
               </div>
@@ -417,7 +417,7 @@ export default async function HomePage({ params }: Props) {
                   </div>
                   <div className="md:text-right">
                     <p className="font-heading text-[44px] font-medium leading-none text-primary">€149</p>
-                    <p className="mt-1 font-mono-label text-[14px] uppercase tracking-widest text-muted/60">
+                    <p className="mt-1 font-body text-[14px] uppercase tracking-widest text-muted/60">
                       per month
                     </p>
                   </div>
@@ -431,8 +431,8 @@ export default async function HomePage({ params }: Props) {
       <section className="bg-offwhite py-20 md:py-28 overflow-hidden" aria-label="Costa del Sol locations">
         <Container>
           <div className="flex items-center justify-between pb-5 mb-12 md:mb-14 border-b border-charcoal/8">
-            <span className="editorial-note text-muted/45">Selected territory</span>
-            <span className="editorial-note text-muted/30 hidden sm:block">36° N · Costa del Sol · Spain</span>
+            <span className="font-body text-muted/45">Selected territory</span>
+            <span className="font-body text-muted/30 hidden sm:block">36° N · Costa del Sol · Spain</span>
           </div>
 
           <div>
@@ -447,7 +447,7 @@ export default async function HomePage({ params }: Props) {
                 >
                   {name}
                 </span>
-                <span className="editorial-note text-muted/30 group-hover:text-muted/55 transition-colors duration-500 hidden sm:block">
+                <span className="font-body text-muted/30 group-hover:text-muted/55 transition-colors duration-500 hidden sm:block">
                   {coord}
                 </span>
               </div>
@@ -455,7 +455,7 @@ export default async function HomePage({ params }: Props) {
           </div>
 
           <div className="flex items-center justify-between pt-5 border-t border-charcoal/6 mt-1">
-            <span className="editorial-note text-muted/30">Architecture & Interior Design Studios</span>
+            <span className="font-body text-muted/30">Architecture & Interior Design Studios</span>
           </div>
         </Container>
       </section>

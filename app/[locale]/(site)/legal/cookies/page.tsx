@@ -16,7 +16,7 @@ export default function CookiesPage() {
         <Container>
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-sand/60 border border-bronze/20 px-4 py-2.5 mb-10">
-              <span className="font-mono-label text-[14px] tracking-widest text-muted/70 uppercase">
+              <span className="font-body text-[14px] tracking-widest text-muted/70 uppercase">
                 Placeholder document. Review with a legal advisor before launch.
               </span>
             </div>

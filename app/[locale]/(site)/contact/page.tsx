@@ -62,7 +62,7 @@ export default async function ContactPage({ params }: Props) {
 
                 {/* What happens next */}
                 <div>
-                  <p className="annotation-meta mb-8" style={{ opacity: 0.45 }}>
+                  <p className="font-body mb-8" style={{ opacity: 0.45 }}>
                     What happens next
                   </p>
                   <div>
@@ -71,7 +71,7 @@ export default async function ContactPage({ params }: Props) {
                         key={i}
                         className="grid grid-cols-[36px_1fr] gap-4 py-6 border-b border-charcoal/8 first:border-t first:border-charcoal/8"
                       >
-                        <span className="font-mono-label text-[11px] tracking-[0.14em] text-bronze pt-[3px]">
+                        <span className="font-body text-[11px] tracking-[0.14em] text-bronze pt-[3px]">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <p className="font-body text-[15px] leading-[1.72] text-muted">
@@ -110,10 +110,10 @@ export default async function ContactPage({ params }: Props) {
 
                 {/* Location + response */}
                 <div className="space-y-2">
-                  <p className="annotation-meta" style={{ opacity: 0.4 }}>
+                  <p className="font-body" style={{ opacity: 0.4 }}>
                     {c.response}
                   </p>
-                  <p className="annotation-meta" style={{ opacity: 0.3 }}>
+                  <p className="font-body" style={{ opacity: 0.3 }}>
                     {c.locations}
                   </p>
                 </div>
@@ -146,7 +146,7 @@ export default async function ContactPage({ params }: Props) {
                       </div>
                     </div>
                     <div className="border-t border-charcoal/8 px-3 py-2">
-                      <span className="font-mono-label text-[9px] tracking-[0.16em] uppercase text-muted/50">
+                      <span className="font-body text-[9px] tracking-[0.16em] uppercase text-muted/50">
                         Current site
                       </span>
                     </div>
@@ -160,7 +160,7 @@ export default async function ContactPage({ params }: Props) {
                         <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
                         <span className="h-1.5 w-1.5 rounded-full bg-white/12" />
                       </div>
-                      <span className="font-mono-label text-[8px] tracking-widest uppercase text-white/30">
+                      <span className="font-body text-[8px] tracking-widest uppercase text-white/30">
                         preview
                       </span>
                     </div>
@@ -173,7 +173,7 @@ export default async function ContactPage({ params }: Props) {
                       <div className="mt-2 aspect-[16/9] bg-sand/35" />
                     </div>
                     <div className="border-t border-charcoal/10 bg-stone px-3 py-2">
-                      <span className="font-mono-label text-[9px] tracking-[0.16em] uppercase text-bronze/70">
+                      <span className="font-body text-[9px] tracking-[0.16em] uppercase text-bronze/70">
                         Private preview
                       </span>
                     </div>

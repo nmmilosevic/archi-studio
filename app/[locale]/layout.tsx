@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -13,16 +13,6 @@ const geistSans = Geist({
   fallback: ["Arial", "Helvetica", "sans-serif"],
   adjustFontFallback: true,
   preload: true,
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  weight: "variable",
-  variable: "--font-geist-mono",
-  display: "swap",
-  fallback: ["SFMono-Regular", "Consolas", "monospace"],
-  adjustFontFallback: true,
-  preload: false,
 });
 
 const LOCALES = ["en", "es", "fr"];
@@ -66,7 +56,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={geistSans.variable}
       data-scroll-behavior="smooth"
     >
       <head>

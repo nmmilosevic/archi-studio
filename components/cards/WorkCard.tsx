@@ -71,16 +71,16 @@ export function WorkCard({
         </div>
         <div className="h-px bg-bronze/35" aria-hidden="true" />
       </div>
-      <p className="mt-3 font-mono-label text-[10px] tracking-[0.18em] uppercase text-muted/40">
+      <p className="mt-3 font-body text-[10px] tracking-[0.18em] uppercase text-muted/40">
         {preview.label}
       </p>
 
       <div className="pt-5 pb-7 border-b border-charcoal/10">
         <div className="flex items-center justify-between mb-3">
-          <span className="section-label text-[14px] tracking-widest text-bronze">
+          <span className="font-body text-[14px] tracking-widest text-bronze">
             {category}
           </span>
-          <span className="flex items-center gap-1 font-mono-label text-[14px] text-muted/60 tracking-wide">
+          <span className="flex items-center gap-1 font-body text-[14px] text-muted/60 tracking-wide">
             <MapPin className="h-2.5 w-2.5" aria-hidden="true" />
             {location}
           </span>

@@ -44,7 +44,7 @@ export function PricingCard({
     >
       {featured && (
         <div className="absolute -top-3 left-8">
-          <span className="inline-block bg-bronze text-inverted font-mono-label text-[14px] tracking-widest uppercase px-3 py-1">
+          <span className="inline-block bg-bronze text-inverted font-body text-[14px] tracking-widest uppercase px-3 py-1">
             Most popular
           </span>
         </div>

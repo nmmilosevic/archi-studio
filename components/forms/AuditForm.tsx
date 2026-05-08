@@ -9,7 +9,7 @@ import { Send, CheckCircle } from "lucide-react";
 // TODO: Connect to Resend or Supabase for email delivery
 
 const inputClass = "w-full bg-transparent border-b border-charcoal/15 px-0 py-3.5 font-body text-[16px] leading-[1.45] text-primary placeholder:text-muted/42 focus:outline-none focus:border-bronze transition-colors duration-300";
-const labelClass = "font-mono-label text-[14px] tracking-[0.12em] uppercase text-muted/62 mb-1.5 block";
+const labelClass = "font-body text-[14px] tracking-[0.12em] uppercase text-muted/62 mb-1.5 block";
 
 interface FormData {
   name: string;

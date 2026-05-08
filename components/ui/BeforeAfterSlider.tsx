@@ -77,7 +77,7 @@ export function BeforeAfterSlider({
           sizes="(min-width: 1024px) 80vw, 100vw"
         />
         <span
-          className="absolute bottom-4 right-4 pointer-events-none bg-black/35 px-3 py-2 font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
+          className="absolute bottom-4 right-4 pointer-events-none bg-black/35 px-3 py-2 font-body text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
           aria-hidden="true"
         >
           Redesigned preview
@@ -98,7 +98,7 @@ export function BeforeAfterSlider({
           sizes="(min-width: 1024px) 80vw, 100vw"
         />
         <span
-          className="absolute bottom-4 left-4 pointer-events-none bg-black/35 px-3 py-2 font-mono-label text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
+          className="absolute bottom-4 left-4 pointer-events-none bg-black/35 px-3 py-2 font-body text-[14px] uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm"
           aria-hidden="true"
         >
           Current website

@@ -32,7 +32,7 @@ export function PageHero({
             <AnimatedText
               as="p"
               className={clsx(
-                "editorial-note mb-7",
+                "font-body mb-7",
                 isDark ? "text-inverted/30" : "text-muted/50"
               )}
               delay={0.04}

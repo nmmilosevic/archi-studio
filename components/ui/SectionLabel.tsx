@@ -10,7 +10,7 @@ export function SectionLabel({ children, className, light }: SectionLabelProps) 
   return (
     <div
       className={clsx(
-        "section-label flex items-center gap-3",
+        "font-body flex items-center gap-3",
         light ? "text-[#C4B49F]" : "text-bronze",
         className
       )}

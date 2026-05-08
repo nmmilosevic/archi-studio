@@ -25,7 +25,7 @@ export function ServiceCard({
   const content = (
     <div className="group border border-charcoal/10 bg-offwhite p-7 transition-all duration-500 hover:-translate-y-0.5 hover:border-bronze/40 md:p-9">
       {/* Number */}
-      <span className="font-mono-label text-[14px] tracking-widest text-bronze mb-6 block">
+      <span className="font-body text-[14px] tracking-widest text-bronze mb-6 block">
         {number}
       </span>
 

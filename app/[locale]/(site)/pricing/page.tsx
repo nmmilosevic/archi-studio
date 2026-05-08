@@ -78,7 +78,7 @@ export default async function PricingPage({ params }: Props) {
           <div className="max-w-[860px]">
             <AnimatedText
               as="p"
-              className="editorial-note text-inverted/30 mb-7"
+              className="font-body text-inverted/30 mb-7"
               delay={0.04}
             >
               Pricing · One fixed offer
@@ -103,18 +103,18 @@ export default async function PricingPage({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-charcoal/8">
           {/* Free review */}
           <div className="container-site py-10 md:py-12">
-            <p className="editorial-note text-muted/45 mb-5">Free</p>
+            <p className="font-body text-muted/45 mb-5">Free</p>
             <h3 className="font-heading text-[22px] font-medium text-primary mb-3 leading-tight">
               Website Review
             </h3>
             <p className="font-body text-[14px] text-muted leading-relaxed mb-8">
-              A free expert review of your studio's website with written recommendations on what to fix first.
+              A free expert review of your studio&apos;s website with written recommendations on what to fix first.
             </p>
             <div className="flex items-center justify-between border-t border-charcoal/8 pt-5">
-              <span className="editorial-note text-muted/40">48h turnaround</span>
+              <span className="font-body text-muted/40">48h turnaround</span>
               <Link
                 href={`/${locale}/audit`}
-                className="editorial-note text-muted/55 hover:text-primary transition-colors"
+                className="font-body text-muted/55 hover:text-primary transition-colors"
               >
                 Request →
               </Link>
@@ -123,7 +123,7 @@ export default async function PricingPage({ params }: Props) {
 
           {/* Full Reframe */}
           <div className="bg-charcoal py-10 md:py-12 px-6 md:px-20 lg:px-[5rem]">
-            <p className="editorial-note text-bronze mb-5">€1,990</p>
+            <p className="font-body text-bronze mb-5">€1,990</p>
             <h3 className="font-heading text-[22px] font-medium text-inverted mb-3 leading-tight">
               Full Reframe
             </h3>
@@ -131,10 +131,10 @@ export default async function PricingPage({ params }: Props) {
               Complete website redesign and launch. Built around your portfolio, your studio, and your clients.
             </p>
             <div className="flex items-center justify-between border-t border-white/10 pt-5">
-              <span className="editorial-note text-inverted/30">2 to 4 weeks</span>
+              <span className="font-body text-inverted/30">2 to 4 weeks</span>
               <Link
                 href={`/${locale}/contact`}
-                className="editorial-note text-inverted/55 hover:text-inverted transition-colors"
+                className="font-body text-inverted/55 hover:text-inverted transition-colors"
               >
                 Get started →
               </Link>
@@ -143,7 +143,7 @@ export default async function PricingPage({ params }: Props) {
 
           {/* Portfolio Care */}
           <div className="container-site py-10 md:py-12">
-            <p className="editorial-note text-muted/45 mb-5">€149 / month</p>
+            <p className="font-body text-muted/45 mb-5">€149 / month</p>
             <h3 className="font-heading text-[22px] font-medium text-primary mb-3 leading-tight">
               Portfolio Care
             </h3>
@@ -151,10 +151,10 @@ export default async function PricingPage({ params }: Props) {
               Hosting, updates, portfolio uploads, and monthly maintenance after launch.
             </p>
             <div className="flex items-center justify-between border-t border-charcoal/8 pt-5">
-              <span className="editorial-note text-muted/40">Cancel anytime</span>
+              <span className="font-body text-muted/40">Cancel anytime</span>
               <Link
                 href={`/${locale}/contact`}
-                className="editorial-note text-muted/55 hover:text-primary transition-colors"
+                className="font-body text-muted/55 hover:text-primary transition-colors"
               >
                 Discuss →
               </Link>
@@ -167,8 +167,8 @@ export default async function PricingPage({ params }: Props) {
       <section className="py-24 md:py-36 bg-offwhite" aria-labelledby="offer-heading">
         <Container>
           <div className="flex items-center gap-5 mb-14 md:mb-16 pb-5 border-b border-charcoal/8">
-            <span className="editorial-note text-muted/35">01</span>
-            <span className="editorial-note text-muted/35">Full Reframe & Launch</span>
+            <span className="font-body text-muted/35">01</span>
+            <span className="font-body text-muted/35">Full Reframe & Launch</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -194,7 +194,7 @@ export default async function PricingPage({ params }: Props) {
                 >
                   €1,990
                 </div>
-                <p className="editorial-note text-muted/45 mt-3">
+                <p className="font-body text-muted/45 mt-3">
                   Fixed price · Excluding IVA
                 </p>
               </div>
@@ -219,14 +219,14 @@ export default async function PricingPage({ params }: Props) {
 
             {/* Right — deliverables */}
             <AnimatedText delay={0.15} as="div">
-              <p className="editorial-note text-muted/40 mb-8">What it covers</p>
+              <p className="font-body text-muted/40 mb-8">What it covers</p>
               <ul>
                 {includes.map((item, i) => (
                   <li
                     key={item}
                     className="flex items-start gap-5 py-4 border-b border-charcoal/8 first:border-t first:border-charcoal/8"
                   >
-                    <span className="editorial-note text-muted/30 pt-0.5 flex-shrink-0">
+                    <span className="font-body text-muted/30 pt-0.5 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="font-body text-[14px] text-primary leading-snug">
@@ -248,8 +248,8 @@ export default async function PricingPage({ params }: Props) {
       <section className="py-24 md:py-32 bg-stone" aria-labelledby="care-heading">
         <Container>
           <div className="flex items-center gap-5 mb-14 md:mb-16 pb-5 border-b border-charcoal/8">
-            <span className="editorial-note text-muted/35">02</span>
-            <span className="editorial-note text-muted/35">Portfolio Clarity · Ongoing</span>
+            <span className="font-body text-muted/35">02</span>
+            <span className="font-body text-muted/35">Portfolio Clarity · Ongoing</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
@@ -276,7 +276,7 @@ export default async function PricingPage({ params }: Props) {
                   >
                     €149
                   </div>
-                  <p className="editorial-note text-muted/45 mt-3">
+                  <p className="font-body text-muted/45 mt-3">
                     Per month · Cancel anytime
                   </p>
                 </div>
@@ -288,14 +288,14 @@ export default async function PricingPage({ params }: Props) {
             </div>
 
             <AnimatedText delay={0.2} as="div">
-              <p className="editorial-note text-muted/40 mb-8">What it covers</p>
+              <p className="font-body text-muted/40 mb-8">What it covers</p>
               <ul>
                 {careIncludes.map((item, i) => (
                   <li
                     key={item}
                     className="flex items-start gap-5 py-4 border-b border-charcoal/8 first:border-t first:border-charcoal/8"
                   >
-                    <span className="editorial-note text-muted/30 pt-0.5 flex-shrink-0">
+                    <span className="font-body text-muted/30 pt-0.5 flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="font-body text-[14px] text-primary leading-snug">

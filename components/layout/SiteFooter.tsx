@@ -41,13 +41,13 @@ export function SiteFooter() {
 
           {/* LEFT: location + contact + philosophy */}
           <div className="lg:col-span-4">
-            <p className="editorial-note text-inverted/25 mb-5">
+            <p className="font-body text-inverted/25 mb-5">
               Based in
             </p>
             <p className="font-body text-[14px] text-inverted/50">
               Costa del Sol, Spain
             </p>
-            <p className="editorial-note text-inverted/18 mt-1.5 mb-8">
+            <p className="font-body text-inverted/18 mt-1.5 mb-8">
               36.5099° N · 4.8824° W
             </p>
 
@@ -85,7 +85,7 @@ export function SiteFooter() {
 
           {/* CENTER: sitemap navigation */}
           <div className="lg:col-span-3 lg:col-start-6">
-            <p className="editorial-note text-inverted/25 mb-6">
+            <p className="font-body text-inverted/25 mb-6">
               Navigate
             </p>
             <nav aria-label="Footer navigation">
@@ -110,14 +110,14 @@ export function SiteFooter() {
                 ))}
               </ul>
             </nav>
-            <p className="editorial-note text-inverted/18 mt-8">
+            <p className="font-body text-inverted/18 mt-8">
               Website Redesigns · Costa del Sol
             </p>
           </div>
 
           {/* RIGHT: start a project CTA */}
           <div className="lg:col-span-4 lg:col-start-9">
-            <p className="editorial-note text-bronze mb-5">
+            <p className="font-body text-bronze mb-5">
               Start a project
             </p>
             <h2 className="font-heading text-[22px] font-medium text-inverted leading-tight mb-5">
@@ -128,7 +128,7 @@ export function SiteFooter() {
                 Request a free review
               </Link>
             </Button>
-            <p className="editorial-note text-inverted/25 mt-4">
+            <p className="font-body text-inverted/25 mt-4">
               Free · No commitment · 48h response
             </p>
             <a

@@ -47,7 +47,7 @@ export function RevealImage({
             fill ? "absolute inset-0" : "min-h-[200px]"
           )}>
             <span
-              className="font-mono-label text-[14px] text-muted/70 tracking-widest uppercase leading-snug"
+              className="font-body text-[14px] text-muted/70 tracking-widest uppercase leading-snug"
               aria-hidden="true"
             >
               {label ?? alt}
@@ -72,7 +72,7 @@ export function RevealImage({
               )}
             >
               <span
-                className="font-mono-label text-[14px] text-muted/60 tracking-widest uppercase leading-snug"
+                className="font-body text-[14px] text-muted/60 tracking-widest uppercase leading-snug"
                 aria-hidden="true"
               >
                 {label ?? alt}

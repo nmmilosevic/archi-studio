@@ -42,7 +42,7 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
             <div className="flex-shrink-0 w-[72px] flex items-start justify-center pt-1">
               <div className="relative">
                 <span
-                  className="font-mono-label text-[14px] tracking-widest text-bronze block text-center"
+                  className="font-body text-[14px] tracking-widest text-bronze block text-center"
                   aria-hidden="true"
                 >
                   {step.number}

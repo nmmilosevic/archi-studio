@@ -210,7 +210,7 @@ export default async function AuditPage({ params }: Props) {
             <div>
               <AnimatedText
                 as="p"
-                className="mb-7 font-mono-label text-[14px] uppercase leading-[1.55] tracking-[0.12em] text-muted/65"
+                className="mb-7 font-body text-[14px] uppercase leading-[1.55] tracking-[0.12em] text-muted/65"
                 delay={0.04}
               >
                 {audit.label}
@@ -253,7 +253,7 @@ export default async function AuditPage({ params }: Props) {
                     <span className="h-1.5 w-1.5 rounded-full bg-charcoal/30" />
                     <span className="h-1.5 w-1.5 rounded-full bg-charcoal/18" />
                   </div>
-                  <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/60">
+                  <span className="font-body text-[14px] uppercase tracking-[0.12em] text-muted/60">
                     website review
                   </span>
                 </div>
@@ -269,7 +269,7 @@ export default async function AuditPage({ params }: Props) {
                     />
                     <div className="absolute inset-0 bg-charcoal/28" />
                     <div className="absolute left-6 top-6 max-w-[220px] border border-white/25 bg-charcoal/70 px-4 py-3 text-inverted backdrop-blur-sm">
-                      <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-inverted/55">
+                      <span className="font-body text-[14px] uppercase tracking-[0.12em] text-inverted/55">
                         Current signal
                       </span>
                       <p className="mt-3 text-[16px] leading-[1.45] text-inverted/82">
@@ -281,7 +281,7 @@ export default async function AuditPage({ params }: Props) {
                   <div className="relative overflow-hidden bg-offwhite p-6 md:p-8">
                     <div className="mb-8 grid grid-cols-[1fr_88px] gap-4">
                       <div>
-                        <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/60">
+                        <span className="font-body text-[14px] uppercase tracking-[0.12em] text-muted/60">
                           perception map
                         </span>
                         <div className="mt-6 space-y-3">
@@ -307,7 +307,7 @@ export default async function AuditPage({ params }: Props) {
                     <div className="mt-7 grid grid-cols-2 gap-x-7 gap-y-5">
                       {audit.annotations.slice(0, 4).map(([title, body], index) => (
                         <div key={title} className="border-t border-charcoal/10 pt-4">
-                          <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-bronze">
+                          <span className="font-body text-[14px] uppercase tracking-[0.12em] text-bronze">
                             {String(index + 1).padStart(2, "0")} {title}
                           </span>
                           <p className="mt-3 text-[14px] leading-[1.5] text-muted">
@@ -324,7 +324,7 @@ export default async function AuditPage({ params }: Props) {
             <div>
               <AnimatedText
                 as="p"
-                className="mb-7 font-mono-label text-[14px] uppercase leading-none tracking-[0.12em] text-inverted/45"
+                className="mb-7 font-body text-[14px] uppercase leading-none tracking-[0.12em] text-inverted/45"
                 delay={0.08}
               >
                 {audit.visualLabel}
@@ -344,7 +344,7 @@ export default async function AuditPage({ params }: Props) {
                 <div className="mt-10 space-y-4">
                   {audit.annotations.map(([title, body]) => (
                     <div key={title} className="grid grid-cols-[minmax(130px,0.36fr)_1fr] gap-5 border-t border-white/10 pt-4">
-                      <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-clay/75">
+                      <span className="font-body text-[14px] uppercase tracking-[0.12em] text-clay/75">
                         {title}
                       </span>
                       <p className="text-[15px] leading-[1.55] text-inverted/58">
@@ -381,7 +381,7 @@ export default async function AuditPage({ params }: Props) {
                     key={point}
                     className="group grid min-h-[112px] grid-cols-[56px_1fr] items-start gap-5 border-b border-charcoal/10 py-6 md:pr-8"
                   >
-                    <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/45">
+                    <span className="font-body text-[14px] uppercase tracking-[0.12em] text-muted/45">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span className="text-[22px] font-medium leading-[1.08] text-primary transition-colors duration-300 group-hover:text-bronze">
@@ -414,7 +414,7 @@ export default async function AuditPage({ params }: Props) {
 
               <AnimatedText as="div" delay={0.18}>
                 <div className="mt-12 border-t border-charcoal/10 pt-6">
-                  <span className="font-mono-label text-[14px] uppercase tracking-[0.12em] text-muted/55">
+                  <span className="font-body text-[14px] uppercase tracking-[0.12em] text-muted/55">
                     Costa del Sol studios
                   </span>
                   <p className="mt-4 max-w-[460px] text-[15px] leading-[1.65] text-muted">

@@ -40,7 +40,7 @@ export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
             aria-label={`Switch to ${loc.label}`}
             aria-current={locale === loc.code ? "true" : undefined}
             className={clsx(
-              "font-mono-label text-[14px] tracking-widest uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 cursor-pointer",
+              "font-body text-[14px] tracking-widest uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 cursor-pointer",
               locale === loc.code
                 ? light
                   ? "text-inverted font-medium"
