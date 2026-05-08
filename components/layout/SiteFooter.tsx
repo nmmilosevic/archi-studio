@@ -14,7 +14,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 border-t border-white/10 pt-10 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:items-start">
           <div className="max-w-[360px]">
             <Link
-              href={`/${locale}`}
+              href={`/${locale}#top`}
               className="inline-block"
               aria-label={`${BRAND.name} - Home`}
             >

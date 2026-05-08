@@ -14,7 +14,7 @@ export function HomepageFooter() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-start">
           <div className="max-w-[360px]">
             <Link
-              href={`/${locale}`}
+              href={`/${locale}#top`}
               className="inline-flex items-start"
               aria-label={`${BRAND.name} - Home`}
             >

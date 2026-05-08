@@ -60,7 +60,7 @@ export function SiteHeader() {
           <div className="flex items-center justify-between gap-8 border-b border-transparent pb-1">
             {/* Logo */}
             <Link
-              href={`/${locale}`}
+              href={`/${locale}#top`}
               className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label={`${BRAND.name} - Home`}
             >
@@ -107,8 +107,10 @@ export function SiteHeader() {
             <div className="lg:hidden flex items-center gap-3">
               <Link
                 href={`/${locale}/work`}
+                aria-current={isWorkRoute ? "page" : undefined}
                 className={clsx(
                   "text-[14px] transition-colors",
+                  isWorkRoute && "font-medium",
                   isWorkPage
                     ? "text-primary/86 hover:text-primary"
                     : useLightHeaderText
@@ -120,8 +122,10 @@ export function SiteHeader() {
               </Link>
               <Link
                 href={`/${locale}/contact`}
+                aria-current={isContactPage ? "page" : undefined}
                 className={clsx(
                   "text-[14px] transition-colors",
+                  isContactPage && "font-medium",
                   isWorkPage
                     ? "text-primary/86 hover:text-primary"
                     : useLightHeaderText

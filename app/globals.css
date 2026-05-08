@@ -250,14 +250,14 @@
     color: var(--color-primary);
   }
 
-  .nav-link:hover::after,
-  .nav-link[aria-current="page"]::after {
+  .nav-link:hover::after {
     transform: scaleX(1);
     transform-origin: left;
   }
 
   .nav-link[aria-current="page"] {
     color: var(--color-primary);
+    font-weight: 500;
   }
 
   /* ── Card / hover ────────────────────────────────────── */
