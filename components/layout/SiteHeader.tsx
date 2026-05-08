@@ -17,10 +17,13 @@ export function SiteHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const contactPath = `/${locale}/contact`;
-  const workPath = `/${locale}/work`;
-  const isWorkPage = pathname === workPath;
-  const isContactPage = pathname === contactPath || pathname.startsWith(`${contactPath}/`);
-  const isWorkDetailPage = pathname.startsWith(`${workPath}/`);
+  const normalizedSegments = pathname.split("/").filter(Boolean);
+  const isWorkRoute = normalizedSegments[0] === locale && normalizedSegments[1] === "work";
+  const isWorkPage = isWorkRoute && normalizedSegments.length === 2;
+  const isWorkDetailPage = isWorkRoute && normalizedSegments.length > 2;
+  const isContactPage =
+    (normalizedSegments[0] === locale && normalizedSegments[1] === "contact" && normalizedSegments.length === 2) ||
+    pathname.startsWith(`${contactPath}/`);
   const useLightHeaderText = (isContactPage || isWorkDetailPage) && !scrolled;
 
   useEffect(() => {
