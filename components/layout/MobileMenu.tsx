@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { BRAND, NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
+import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -60,9 +61,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-8 py-7">
-              <span className="font-heading text-[17px] text-inverted font-semibold">
-                {BRAND.name}
-              </span>
+              <ReframeLogo className="text-inverted" />
               <button
                 onClick={onClose}
                 className="text-inverted/60 hover:text-inverted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze p-1"

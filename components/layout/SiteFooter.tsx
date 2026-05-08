@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import { BRAND } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
+import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 const footerLinks = [
   { label: "Work", href: "/work" },
@@ -20,10 +21,10 @@ export function SiteFooter() {
           <div>
             <Link
               href={`/${locale}`}
-              className="font-heading text-[clamp(44px,7vw,96px)] font-medium leading-none text-inverted transition-colors hover:text-bronze"
+              className="inline-block text-inverted transition-colors hover:text-bronze"
               aria-label={`${BRAND.name} — Home`}
             >
-              {BRAND.name}
+              <ReframeLogo className="h-10 w-[140px] md:h-12 md:w-[168px]" />
             </Link>
             <p className="mt-8 max-w-[360px] text-[18px] leading-relaxed text-inverted/58">
               Premium websites for architecture studios.

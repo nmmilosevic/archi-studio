@@ -10,6 +10,7 @@ import { BRAND, NAV_LINKS } from "@/lib/constants";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { Button } from "@/components/ui/Button";
+import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,10 +54,10 @@ export function SiteHeader() {
             {/* Logo */}
             <Link
               href={`/${locale}`}
-              className="font-heading text-[17px] md:text-[18px] font-medium text-primary flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
+              className="flex-shrink-0 text-white mix-blend-difference focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
               aria-label={`${BRAND.name} — Home`}
             >
-              {BRAND.name}
+              <ReframeLogo />
             </Link>
 
             {/* Desktop nav */}
