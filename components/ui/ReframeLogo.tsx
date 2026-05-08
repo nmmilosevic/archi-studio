@@ -6,17 +6,22 @@ import { assetPath } from "@/lib/paths";
 
 interface ReframeLogoProps {
   className?: string;
+  light?: boolean;
 }
 
-export function ReframeLogo({ className }: ReframeLogoProps) {
+export function ReframeLogo({ className, light = false }: ReframeLogoProps) {
   return (
     <Image
-      src={assetPath("/logoreframe-20260508.png")}
+      src={assetPath("/ref26.svg")}
       alt=""
       aria-hidden
-      width={98}
-      height={28}
-      className={clsx("block h-7 w-[98px] object-contain", className)}
+      width={113}
+      height={44}
+      className={clsx(
+        "block h-8 w-[113px] object-contain",
+        light && "invert brightness-0",
+        className
+      )}
       priority
     />
   );

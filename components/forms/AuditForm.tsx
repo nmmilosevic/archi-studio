@@ -38,6 +38,7 @@ export function AuditForm() {
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -53,10 +54,27 @@ export function AuditForm() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.consent) return;
+    setError(null);
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    setLoading(false);
-    setSuccess(true);
+    try {
+      const response = await fetch("/api/audit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send form.");
+      }
+
+      setSuccess(true);
+    } catch {
+      setError("Something went wrong. Please email us directly at reframe.stud@gmail.com.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (success) {
@@ -230,6 +248,12 @@ export function AuditForm() {
           {t("consent")}
         </label>
       </div>
+
+      {error && (
+        <p className="border border-red-300/40 bg-red-50 px-4 py-3 text-[14px] text-red-700">
+          {error}
+        </p>
+      )}
 
       <Button
         type="submit"

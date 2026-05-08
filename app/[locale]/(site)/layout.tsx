@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
+import { HomepageFooter } from "@/components/layout/HomepageFooter";
 import { PageTransition } from "@/components/motion/PageTransition";
+import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 import { setRequestLocale } from "next-intl/server";
 
 interface SiteLayoutProps {
@@ -20,7 +21,8 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
           {children}
         </main>
       </PageTransition>
-      <SiteFooter />
+      <FinalCtaSection locale={locale} />
+      <HomepageFooter />
     </>
   );
 }

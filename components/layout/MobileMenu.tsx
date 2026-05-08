@@ -61,7 +61,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-6 sm:px-8 sm:py-7">
-              <ReframeLogo />
+              <ReframeLogo light />
               <button
                 onClick={onClose}
                 className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-inverted/60 hover:text-inverted transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
