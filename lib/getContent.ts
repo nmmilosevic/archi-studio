@@ -5,5 +5,5 @@ import fr from "@/content/fr";
 const content = { en, es, fr };
 
 export function getContent(locale: string) {
-  return content[locale as keyof typeof content] ?? en;
+  return content[locale as keyof typeof content] ?? es;
 }
