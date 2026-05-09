@@ -1,6 +1,15 @@
 "use client";
 
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type Dispatch,
+  type PointerEvent,
+  type SetStateAction,
+} from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import { assetPath } from "@/lib/paths";
@@ -21,17 +30,89 @@ type Props = {
 /** Shared frame: equal aspect and height for both columns. */
 const TILE_ASPECT = "aspect-[3/2]";
 
+const SWIPE_THRESHOLD_PX = 56;
+
+function useMobileLightboxSwipe(
+  openIndex: number | null,
+  previewCount: number,
+  close: () => void,
+  setOpenIndex: Dispatch<SetStateAction<number | null>>
+) {
+  const swipeStartRef = useRef<{ x: number; y: number; pointerId: number } | null>(null);
+
+  const isMobileSwipeTarget = useCallback(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(max-width: 767px)").matches;
+  }, []);
+
+  const handlePointerDown = useCallback(
+    (e: PointerEvent<HTMLDivElement>) => {
+      if (openIndex === null || !isMobileSwipeTarget()) return;
+      if (e.pointerType === "mouse") return;
+      swipeStartRef.current = { x: e.clientX, y: e.clientY, pointerId: e.pointerId };
+      e.currentTarget.setPointerCapture(e.pointerId);
+    },
+    [openIndex, isMobileSwipeTarget]
+  );
+
+  const endSwipe = useCallback((e: PointerEvent<HTMLDivElement>) => {
+    const start = swipeStartRef.current;
+    if (!start || start.pointerId !== e.pointerId) return;
+    swipeStartRef.current = null;
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      /* already released */
+    }
+
+    if (!isMobileSwipeTarget() || e.pointerType === "mouse") return;
+
+    const dx = e.clientX - start.x;
+    const dy = e.clientY - start.y;
+
+    if (Math.abs(dy) >= Math.abs(dx) && dy > SWIPE_THRESHOLD_PX) {
+      close();
+      return;
+    }
+    if (
+      previewCount > 1 &&
+      Math.abs(dx) > Math.abs(dy) &&
+      Math.abs(dx) > SWIPE_THRESHOLD_PX
+    ) {
+      setOpenIndex((i) => {
+        if (i === null) return null;
+        return dx < 0 ? (i + 1) % previewCount : (i - 1 + previewCount) % previewCount;
+      });
+    }
+  }, [close, isMobileSwipeTarget, previewCount, setOpenIndex]);
+
+  const handlePointerCancel = useCallback((e: PointerEvent<HTMLDivElement>) => {
+    if (swipeStartRef.current?.pointerId === e.pointerId) swipeStartRef.current = null;
+  }, []);
+
+  return { handlePointerDown, handlePointerUp: endSwipe, handlePointerCancel };
+}
+
 export function CaseStudyScreens({ title, heading, screens }: Props) {
   const labelId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  const previewScreenCount = Math.min(2, screens.length);
+
   const close = useCallback(() => {
     const trigger = openerRef.current;
     setOpenIndex(null);
     queueMicrotask(() => trigger?.focus());
   }, []);
+
+  const { handlePointerDown, handlePointerUp, handlePointerCancel } = useMobileLightboxSwipe(
+    openIndex,
+    previewScreenCount,
+    close,
+    setOpenIndex
+  );
 
   useEffect(() => {
     if (openIndex === null) return;
@@ -120,15 +201,21 @@ export function CaseStudyScreens({ title, heading, screens }: Props) {
                 <X className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
               </button>
             </div>
-            <div className="relative h-[min(86vh,1120px)] w-full min-h-[200px] min-w-0">
+            <div
+              className="relative h-[min(86vh,1120px)] w-full min-h-[200px] min-w-0 touch-none md:touch-auto"
+              onPointerDown={handlePointerDown}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerCancel}
+            >
               <Image
                 src={assetPath(active.image)}
                 alt={`${title} ${active.label}`}
                 fill
                 quality={92}
-                className="object-contain object-center"
+                className="pointer-events-none object-contain object-center select-none"
                 sizes="100vw"
                 priority
+                draggable={false}
               />
             </div>
             <p id={labelId} className="mt-4 text-center text-[15px] text-inverted/72">

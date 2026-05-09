@@ -75,7 +75,7 @@ export function localBusinessSchema() {
     description:
       "Architecture website redesigns for architecture and interior design studios on the Costa del Sol, Spain.",
     url: BASE_URL,
-    email: "hello@reframestud.io",
+    email: "hello@reframestudio.es",
     telephone: "+34600000000",
     areaServed: [
       "Marbella",

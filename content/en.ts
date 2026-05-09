@@ -432,7 +432,7 @@ const en = {
   footer: {
     tagline: "A web design studio for architecture and interior design firms.",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
-    email: "hello@reframestud.io",
+    email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
     legal: { privacy: "Privacy Policy", terms: "Terms", cookies: "Cookies" },
     copy: "© 2026 REFRAME. All rights reserved.",

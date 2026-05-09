@@ -415,7 +415,7 @@ const fr = {
   footer: {
     tagline: "Agence de design web spécialisée pour les studios d'architecture et d'intérieur sur la Costa del Sol.",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
-    email: "hello@reframestud.io",
+    email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
     legal: { privacy: "Politique de confidentialité", terms: "Conditions", cookies: "Cookies" },
     copy: "© 2026 REFRAME. Tous droits réservés.",

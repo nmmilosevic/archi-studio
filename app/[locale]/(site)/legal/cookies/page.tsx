@@ -72,7 +72,7 @@ export default function CookiesPage() {
                 </h2>
                 <p>
                   For questions about our cookie policy, contact us at
-                  hello@reframestud.io.
+                  hello@reframestudio.es.
                 </p>
               </section>
             </div>

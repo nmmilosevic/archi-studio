@@ -71,7 +71,7 @@ export function AuditForm() {
 
       setSuccess(true);
     } catch {
-      setError("Something went wrong. Please email us directly at reframe.stud@gmail.com.");
+      setError("Something went wrong. Please email us directly at hello@reframestudio.es.");
     } finally {
       setLoading(false);
     }

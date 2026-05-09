@@ -1,7 +1,7 @@
 export const BRAND = {
   name: "REFRAME",
   tagline: "Architecture website redesigns for studios on the Costa del Sol.",
-  email: "hello@reframestud.io",
+  email: "hello@reframestudio.es",
   instagram: "@reframe.stud",
   instagramLink: "https://instagram.com/reframe.stud",
   whatsapp: "+34 600 000 000",

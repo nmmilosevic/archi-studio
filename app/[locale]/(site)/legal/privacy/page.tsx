@@ -32,7 +32,7 @@ export default function PrivacyPage() {
                   redesigns for architecture and interior design studios.
                 </p>
                 <p className="mt-3">
-                  Contact: hello@reframestud.io
+                  Contact: hello@reframestudio.es
                 </p>
               </section>
 
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
                 <p>
                   Under GDPR and applicable Spanish law, you have the right to
                   access, rectify, or delete your personal data. To exercise
-                  these rights, contact us at hello@reframestud.io.
+                  these rights, contact us at hello@reframestudio.es.
                 </p>
               </section>
 

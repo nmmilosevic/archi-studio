@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const DEFAULT_TO = "reframe.stud@gmail.com";
+const DEFAULT_TO = "hello@reframestudio.es";
 
 function getSmtpConfig() {
   const host = process.env.SMTP_HOST ?? "smtp.gmail.com";
