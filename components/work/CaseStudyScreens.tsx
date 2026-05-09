@@ -178,18 +178,20 @@ export function CaseStudyScreens({ title, heading, screens }: Props) {
 
       {active && (
         <div
-          className="pointer-events-none fixed inset-0 z-[70] flex items-center justify-center px-3 py-4 sm:px-5 sm:py-8"
+          className="fixed inset-0 z-[70] flex cursor-default items-center justify-center px-3 py-4 sm:px-5 sm:py-8"
           role="dialog"
           aria-modal="true"
           aria-labelledby={labelId}
+          onClick={close}
         >
-          <button
-            type="button"
-            className="pointer-events-auto absolute inset-0 bg-charcoal/88 backdrop-blur-[2px]"
-            aria-label="Close preview"
-            onClick={close}
+          <div
+            className="pointer-events-none absolute inset-0 bg-charcoal/88 backdrop-blur-[2px]"
+            aria-hidden
           />
-          <div className="pointer-events-auto relative z-10 flex min-h-0 w-full max-w-none flex-col">
+          <div
+            className="relative z-10 flex min-h-0 w-full max-w-none cursor-auto flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="mb-3 flex shrink-0 justify-end">
               <button
                 ref={closeRef}
