@@ -7,8 +7,8 @@ import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
 
 const LOCALES = [
-  { code: "en", label: "EN" },
   { code: "es", label: "ES" },
+  { code: "en", label: "EN" },
   { code: "fr", label: "FR" },
 ] as const;
 
