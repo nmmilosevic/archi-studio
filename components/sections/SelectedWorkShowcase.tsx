@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { clsx } from "clsx";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -78,20 +78,91 @@ const items: ShowcaseItem[] = [
   },
 ];
 
+const AUTO_PAUSE_MS = 3200;
+/** ~same perceived pace as the former 90s marquee over half the duplicated track */
+const AUTO_SCROLL_PX_PER_SEC = 42;
+
 export function SelectedWorkShowcase() {
   const reduced = useReducedMotion();
   const doubledItems = useMemo(() => [...items, ...items], []);
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  /** Last scrollLeft we applied in the auto-scroll loop (async `scroll` events must not look like “user”). */
+  const lastAutoScrollLeftRef = useRef(0);
+  const pauseUntilRef = useRef(0);
+
+  function pauseAutoScroll() {
+    pauseUntilRef.current = Date.now() + AUTO_PAUSE_MS;
+  }
+
+  useEffect(() => {
+    if (reduced) return;
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const left = el.scrollLeft;
+      const expected = lastAutoScrollLeftRef.current;
+      if (Math.abs(left - expected) <= 2) return;
+      pauseAutoScroll();
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+
+    let rafId = 0;
+    let lastTs = 0;
+
+    const tick = (ts: number) => {
+      if (!lastTs) lastTs = ts;
+      const dt = Math.min(0.05, (ts - lastTs) / 1000);
+      lastTs = ts;
+
+      if (Date.now() < pauseUntilRef.current) {
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      const half = el.scrollWidth / 2;
+      if (half > 0) {
+        let next = el.scrollLeft + AUTO_SCROLL_PX_PER_SEC * dt;
+        if (next >= half) next -= half;
+        lastAutoScrollLeftRef.current = next;
+        el.scrollLeft = next;
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    lastAutoScrollLeftRef.current = el.scrollLeft;
+    rafId = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(rafId);
+      el.removeEventListener("scroll", onScroll);
+    };
+  }, [reduced]);
 
   return (
     <div className="showcaseRoot relative">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[var(--color-offwhite)] to-transparent md:w-28" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[var(--color-offwhite)] to-transparent md:w-28" />
 
-      <div className="overflow-hidden" aria-label="Selected work moving showcase">
+      <div
+        ref={scrollerRef}
+        className="overflow-x-auto overflow-y-hidden overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar]:w-0"
+        aria-label="Selected work moving showcase"
+        onPointerDown={reduced ? undefined : pauseAutoScroll}
+        onWheel={
+          reduced
+            ? undefined
+            : (e) => {
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 0.5) {
+                  pauseAutoScroll();
+                }
+              }
+        }
+      >
         <div
           className={clsx(
-            "showcaseTrack flex w-max items-start gap-6 px-1 py-3 md:gap-8 md:py-6",
-            !reduced && "showcaseTrackAnimate"
+            "showcaseTrack flex w-max items-start gap-6 px-1 py-3 md:gap-8 md:py-6"
           )}
         >
           {doubledItems.map((item, index) => (
@@ -99,29 +170,13 @@ export function SelectedWorkShowcase() {
               <Image
                 src={item.image}
                 alt={item.title}
-                className="h-auto w-auto max-h-[220px] md:max-h-[280px] xl:max-h-[340px] shadow-[0_12px_30px_rgb(8_8_8/0.09)]"
+                draggable={false}
+                className="h-auto w-auto max-h-[220px] select-none md:max-h-[280px] xl:max-h-[340px] shadow-[0_12px_30px_rgb(8_8_8/0.09)]"
               />
             </article>
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .showcaseTrackAnimate {
-          animation: showcaseMarquee 90s linear infinite;
-          will-change: transform;
-          transform: translate3d(0, 0, 0);
-        }
-
-        @keyframes showcaseMarquee {
-          from {
-            transform: translate3d(0, 0, 0);
-          }
-          to {
-            transform: translate3d(-50%, 0, 0);
-          }
-        }
-      `}</style>
     </div>
   );
 }
