@@ -4,18 +4,23 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./lib/i18n.ts");
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const repoBasePath = "/archi-studio";
+/** Root (`""`) for custom domains or user/org Pages. `/repo` only for project Pages at github.io/repo. */
+const githubPagesBasePath = process.env.GITHUB_PAGES_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
   env: {
-    NEXT_PUBLIC_BASE_PATH: isGitHubPages ? repoBasePath : "",
+    NEXT_PUBLIC_BASE_PATH: isGitHubPages ? githubPagesBasePath : "",
   },
   ...(isGitHubPages
     ? {
         output: "export" as const,
         trailingSlash: true,
-        basePath: repoBasePath,
-        assetPrefix: repoBasePath,
+        ...(githubPagesBasePath
+          ? {
+              basePath: githubPagesBasePath,
+              assetPrefix: githubPagesBasePath,
+            }
+          : {}),
       }
     : {}),
   images: {

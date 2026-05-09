@@ -35,6 +35,9 @@ jobs:
         run: npm ci
 
       - name: Build static site
+        env:
+          # Empty = site at domain root (e.g. custom domain). Use /archi-studio only for https://<user>.github.io/archi-studio/
+          GITHUB_PAGES_BASE_PATH: ""
         run: GITHUB_PAGES=true npm run build
 
       - name: Disable Jekyll
