@@ -1,6 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { Mail, MessageCircle, Compass, LayoutPanelTop, Smartphone, AtSign } from "lucide-react";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -11,13 +10,6 @@ import { generateMetadata as genMeta } from "@/lib/seo";
 interface Props {
   params: Promise<{ locale: string }>;
 }
-
-const reassurance = [
-  { label: "A clearer first impression of your studio", icon: Compass },
-  { label: "Better project presentation", icon: LayoutPanelTop },
-  { label: "A mobile experience that feels premium", icon: Smartphone },
-  { label: "Easier navigation for clients", icon: Compass },
-];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -48,99 +40,45 @@ export default async function ContactPage({ params }: Props) {
               className="max-w-[540px] text-[16px] leading-relaxed text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
-              Send your current website or project idea. We’ll reply with the best next step.
+              Send your current website or project idea. We’ll reply with the clearest next step.
             </AnimatedText>
           </div>
         </Container>
       </section>
 
-      <section className="bg-offwhite pb-[clamp(70px,9vw,120px)] pt-[clamp(54px,7vw,96px)]" aria-label="Contact form">
+      <section
+        id="contact-form"
+        className="bg-offwhite pb-[clamp(70px,9vw,120px)] pt-[clamp(54px,7vw,96px)]"
+        aria-label="Contact form"
+      >
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
-            <div className="flex h-full flex-col">
-              <h2 className="text-display font-heading font-medium text-primary">
+            <div className="flex h-full flex-col lg:justify-center lg:pr-4">
+              <h2 className="max-w-[14ch] font-heading text-[clamp(30px,3.25vw,45px)] font-medium leading-[1.08] tracking-[-0.025em] text-primary">
                 The right website should help clients trust your work.
               </h2>
-              <div className="mt-8">
-                <div className="grid gap-1">
-                  {reassurance.map(({ label, icon: Icon }) => (
-                    <div
-                      key={label}
-                      className="flex items-center gap-3 border-b border-charcoal/10 py-3 last:border-b-0"
-                    >
-                      <span className="inline-flex h-9 w-9 items-center justify-center text-bronze/95" aria-hidden="true">
-                        <Icon className="h-7 w-7 flex-shrink-0" strokeWidth={1} />
-                      </span>
-                      <p className="text-[17px] leading-relaxed text-primary/92">{label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-10 hidden gap-2 lg:mt-auto lg:grid lg:pt-8">
-                <a
-                  href={`mailto:${BRAND.email}`}
-                  className="group inline-flex items-center gap-3 text-[17px] leading-relaxed text-primary/92 transition-colors hover:text-bronze"
-                >
-                  <Mail className="h-7 w-7 text-bronze/95" strokeWidth={1} aria-hidden="true" />
-                  {BRAND.email}
-                </a>
-                <a
-                  href={BRAND.instagramLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group inline-flex items-center gap-3 text-[17px] leading-relaxed text-primary/92 transition-colors hover:text-bronze"
-                >
-                  <AtSign className="h-7 w-7 text-bronze/95" strokeWidth={1} aria-hidden="true" />
-                  {BRAND.instagram}
-                </a>
-                <a
-                  href={BRAND.whatsappLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group inline-flex items-center gap-3 text-[17px] leading-relaxed text-primary/92 transition-colors hover:text-bronze"
-                >
-                  <MessageCircle className="h-7 w-7 text-bronze/95" strokeWidth={1} aria-hidden="true" />
-                  {BRAND.whatsapp}
-                </a>
-              </div>
+              <p className="mt-7 max-w-[46ch] text-[16px] leading-relaxed text-primary/70">
+                We help architecture and interior studios present their work with more clarity, trust, and consistency across desktop and mobile.
+              </p>
+              <a
+                href={`mailto:${BRAND.email}`}
+                className="mt-8 inline-flex w-fit text-[15px] leading-relaxed text-primary/62 transition-colors hover:text-bronze"
+              >
+                {BRAND.email}
+              </a>
             </div>
 
             <AnimatedText as="div" delay={0.12}>
-              <div className="border border-charcoal/20 bg-stone/72 p-5 md:p-8">
-                <ContactForm />
+              <div className="lg:pl-4">
+                <div className="border border-charcoal/12 bg-stone/72 p-5 md:p-8">
+                  <ContactForm />
+                </div>
               </div>
             </AnimatedText>
-
-            <div className="mt-2 grid gap-2 lg:hidden">
-              <a
-                href={`mailto:${BRAND.email}`}
-                className="group inline-flex items-center gap-3 text-[17px] leading-relaxed text-primary/92 transition-colors hover:text-bronze"
-              >
-                <Mail className="h-7 w-7 text-bronze/95" strokeWidth={1} aria-hidden="true" />
-                {BRAND.email}
-              </a>
-              <a
-                href={BRAND.instagramLink}
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-3 text-[17px] leading-relaxed text-primary/92 transition-colors hover:text-bronze"
-              >
-                <AtSign className="h-7 w-7 text-bronze/95" strokeWidth={1} aria-hidden="true" />
-                {BRAND.instagram}
-              </a>
-              <a
-                href={BRAND.whatsappLink}
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-3 text-[17px] leading-relaxed text-primary/92 transition-colors hover:text-bronze"
-              >
-                <MessageCircle className="h-7 w-7 text-bronze/95" strokeWidth={1} aria-hidden="true" />
-                {BRAND.whatsapp}
-              </a>
-            </div>
           </div>
         </Container>
       </section>
+
     </>
   );
 }

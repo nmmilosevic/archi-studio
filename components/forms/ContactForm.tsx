@@ -7,9 +7,9 @@ import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 
 const inputClass =
-  "w-full min-h-12 bg-transparent border border-charcoal/28 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/36 focus:outline-none focus:border-bronze/90 focus:ring-2 focus:ring-bronze/18 transition-all duration-200";
+  "w-full min-h-12 border border-charcoal/16 bg-offwhite/92 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/36 focus:border-bronze/55 focus:outline-none transition-colors duration-250";
 const labelClass =
-  "mb-2 block font-body text-[13px] tracking-[0.01em] text-muted/72";
+  "mb-2 block font-body text-[12px] tracking-[0.01em] text-primary/52";
 
 interface FormData {
   name: string;
@@ -74,8 +74,8 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5 md:space-y-6">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} noValidate className="space-y-6 md:space-y-7">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className={labelClass}>
             {t("name")} *
@@ -109,7 +109,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-email" className={labelClass}>
             {t("email")} *
@@ -151,17 +151,20 @@ export function ContactForm() {
         <textarea
           id="contact-message"
           name="message"
-          rows={7}
+          rows={8}
           value={form.message}
           onChange={handleChange}
-          className={clsx(inputClass, "resize-none")}
+          className={clsx(
+            inputClass,
+            "min-h-[210px] resize-none py-4 leading-[1.7]"
+          )}
           placeholder="What feels outdated, unclear, or difficult to use?"
         />
       </div>
 
-      <div className="pt-2">
+      <div className="pt-3">
         {error && (
-          <p className="mb-4 border border-red-300/40 bg-red-50 px-4 py-3 text-[14px] text-red-700">
+          <p className="mb-4 border border-red-300/32 bg-red-50/65 px-4 py-3 text-[14px] text-red-700">
             {error}
           </p>
         )}
@@ -169,14 +172,15 @@ export function ContactForm() {
           type="submit"
           disabled={loading}
           size="lg"
-          className="w-full min-h-14 justify-center gap-2"
+          variant="primary"
+          className="group w-full min-h-14 justify-center gap-2 sm:w-auto sm:px-9"
         >
           {loading ? (
             "Sending..."
           ) : (
             <>
               {t("cta")}
-              <Send className="h-3.5 w-3.5" aria-hidden="true" />
+              <Send className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
             </>
           )}
         </Button>

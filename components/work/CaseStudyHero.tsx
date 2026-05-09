@@ -36,11 +36,15 @@ export function CaseStudyHero({
           Work
         </Link>
 
-        <AnimatedTitle text={title} as="h1" className="text-page-title max-w-[18ch] text-inverted" />
-        <p className="mt-5 text-[15px] text-inverted/48">{location}</p>
-        <AnimatedText className="text-support mt-6 max-w-[720px] text-inverted/62 md:mt-8" delay={0.08}>
-          {summary}
-        </AnimatedText>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end lg:gap-12">
+          <div>
+            <AnimatedTitle text={title} as="h1" className="text-page-title max-w-[18ch] text-inverted" />
+            <p className="mt-5 text-[15px] text-inverted/48">{location}</p>
+          </div>
+          <AnimatedText className="text-support max-w-[720px] text-inverted/62 lg:ml-auto" delay={0.08}>
+            {summary}
+          </AnimatedText>
+        </div>
       </Container>
 
       <div className="relative mt-8 w-full min-w-0 md:mt-10">

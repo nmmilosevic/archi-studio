@@ -182,7 +182,7 @@ const es = {
     items: [
       {
         slug: "villa-architecture-studio",
-        title: "Web de Arquitectura - Benahavís",
+        title: "Web de Arquitectura",
         location: "Benahavís, Costa del Sol",
         cardSummary: "Rediseño web, estructura de portafolio, presentación móvil y flujo de contacto.",
         summary: "Rediseño web, estructura de portafolio, presentación móvil y flujo de contacto.",
@@ -192,19 +192,15 @@ const es = {
         whatChanged: [
           {
             body: "Un recorrido más claro desde la visión general hasta cada villa: el trabajo se lee como un portafolio curado, no como una galería plana.",
-            contrast: { before: "Jerarquía dispersa", after: "Secuencia intencionada" },
           },
           {
             body: "Ritmo táctil, tipografía legible e imágenes que mantienen autoridad también en pantallas pequeñas.",
-            contrast: { before: "Difícil en móvil", after: "Flujo calmado y legible" },
           },
           {
             body: "Tipografía y espaciado alineados con una presencia sobria y premium: el digital refleja la calidad de obra.",
-            contrast: { before: "Tono genérico", after: "Contención de estudio" },
           },
           {
             body: "Menos fricción del interés a la consulta: menos distracciones e intención clara cuando alguien quiere hablar.",
-            contrast: { before: "Contacto escondido", after: "Siguiente paso obvio" },
           },
         ] as const,
         screens: [
@@ -214,7 +210,7 @@ const es = {
       },
       {
         slug: "casa-noma-marbella",
-        title: "Web de interiorismo - Marbella",
+        title: "Web de Interiorismo",
         location: "Marbella, Costa del Sol",
         cardSummary:
           "Rediseño web, claridad de servicios, portafolio de interiorismo, experiencia móvil y configuración del CMS.",
@@ -227,19 +223,15 @@ const es = {
         whatChanged: [
           {
             body: "Los proyectos se leen como historias, no como una cuadrícula plana: se percibe oficio, escala y atmósfera.",
-            contrast: { before: "Cuadrícula anónima", after: "Capítulos editoriales" },
           },
           {
             body: "Ritmo más suave e imágenes protagonistas que siguen siendo ligeras y rápidas en el teléfono.",
-            contrast: { before: "Móvil agobiado", after: "Aire y claridad" },
           },
           {
             body: "Paleta y ritmo más cercanos a una revista de diseño: la confianza llega por el tono, no por el discurso.",
-            contrast: { before: "Plantilla fría", after: "Elegancia vivida" },
           },
           {
             body: "Servicios y consulta con intención: visibles cuando importan, sin competir con el trabajo.",
-            contrast: { before: "Ruta escondida", after: "Claridad tranquila" },
           },
         ] as const,
         screens: [
@@ -249,7 +241,7 @@ const es = {
       },
       {
         slug: "forma-sur-malaga",
-        title: "Web de arquitectura - Málaga",
+        title: "Web de Arquitectura",
         location: "Málaga, Costa del Sol",
         cardSummary:
           "Rediseño web contundente, archivo de proyectos, identidad visual, estructura móvil y CMS.",
@@ -261,19 +253,15 @@ const es = {
         whatChanged: [
           {
             body: "Archivo y casos de estudio con escala, contraste y orden acordes con la obra.",
-            contrast: { before: "Listado plano", after: "Secuencia segura" },
           },
           {
             body: "Tipografía y márgenes que siguen siendo legibles cuando el layout se comprime a una columna.",
-            contrast: { before: "Tipo débil en móvil", after: "Ritmo arquitectónico" },
           },
           {
             body: "Una voz gráfica más nítida y memorable, alineada con los edificios—sin recurrir al ruido.",
-            contrast: { before: "Envoltorio olvidable", after: "Presencia distintiva" },
           },
           {
             body: "La consulta sigue al alcance sin romper el ritmo editorial ni diluir el tono del estudio.",
-            contrast: { before: "Interrupciones comerciales", after: "Invitación alineada" },
           },
         ] as const,
         screens: [
@@ -283,7 +271,7 @@ const es = {
       },
       {
         slug: "terral-studio-estepona",
-        title: "Web de paisajismo - Estepona",
+        title: "Web de paisajismo",
         location: "Estepona, Costa del Sol",
         cardSummary:
           "Rediseño web, portafolio exterior, presentación de servicios, experiencia móvil y CMS.",
@@ -295,19 +283,15 @@ const es = {
         whatChanged: [
           {
             body: "El trabajo exterior se lee como capítulos de estilo de vida: terrazas, jardines y luz en secuencia, no fotos aisladas.",
-            contrast: { before: "Galería estática", after: "Lugar y ritmo" },
           },
           {
             body: "Imágenes grandes y scroll calmado que siguen cargando y funcionando cuando se comparte desde obra.",
-            contrast: { before: "Pesado y titubeante", after: "Inmersión fluida" },
           },
           {
             body: "Un tono cinematográfico alineado con la vida mediterránea al aire libre, sin caer en el tópico vacacional.",
-            contrast: { before: "Resort genérico", after: "Lujo arraigado" },
           },
           {
             body: "Servicios y consulta siguen a la narrativa: la confianza se construye antes de pedir la acción.",
-            contrast: { before: "Presión temprana", after: "Petición natural, tardía" },
           },
         ] as const,
         screens: [

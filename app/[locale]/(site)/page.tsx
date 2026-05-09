@@ -201,11 +201,11 @@ export default async function HomePage({ params }: Props) {
             <AnimatedTitle text={c.beforeTitle} as="h2" id="preview-heading" className="text-display max-w-[820px] text-inverted" />
             <AnimatedText as="div" className="max-w-[560px] lg:ml-auto" delay={0.12}>
               <p className="text-support mb-8 font-body text-inverted/62">{c.beforeBody}</p>
-              <ul className="space-y-4">
+              <ul className="max-w-[500px] space-y-4.5">
                 {(c.beforeProblems as readonly string[]).map((problem) => (
                   <li key={problem} className="flex items-start gap-3">
-                    <span className="mt-2.5 h-px w-4 bg-bronze/55 flex-shrink-0" />
-                    <span className="font-body text-[16px] leading-[1.6] text-inverted/65">{problem}</span>
+                    <span className="mt-[0.9rem] h-px w-3 bg-bronze/48 flex-shrink-0" aria-hidden="true" />
+                    <span className="font-body text-[16px] leading-[1.65] text-inverted/68">{problem}</span>
                   </li>
                 ))}
               </ul>

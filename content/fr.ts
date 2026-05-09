@@ -182,7 +182,7 @@ const fr = {
     items: [
       {
         slug: "villa-architecture-studio",
-        title: "Site d'Architecture - Benahavís",
+        title: "Site d'Architecture",
         location: "Benahavís, Costa del Sol",
         cardSummary: "Refonte du site, structure du portfolio, présentation mobile et parcours de contact.",
         summary: "Refonte du site, structure du portfolio, présentation mobile et parcours de contact.",
@@ -192,19 +192,15 @@ const fr = {
         whatChanged: [
           {
             body: "Un parcours plus clair de la vue d'ensemble à chaque villa : le travail se lit comme un portfolio curé, pas comme une galerie plate.",
-            contrast: { before: "Hiérarchie dispersée", after: "Séquence intentionnelle" },
           },
           {
             body: "Rythme tactile, typographie lisible et images qui gardent leur autorité sur petit écran.",
-            contrast: { before: "Difficile sur mobile", after: "Flux calme et lisible" },
           },
           {
             body: "Typographie et espacement alignés sur une présence sobre et premium — le numérique reflète la qualité de réalisation.",
-            contrast: { before: "Ton générique", after: "Contenance de studio" },
           },
           {
             body: "Moins de friction de l'intérêt à la prise de contact — moins de distractions, intention plus nette quand on veut parler.",
-            contrast: { before: "Contact enfoui", after: "Étape suivante évidente" },
           },
         ] as const,
         screens: [
@@ -214,7 +210,7 @@ const fr = {
       },
       {
         slug: "casa-noma-marbella",
-        title: "Site d'intérieur - Marbella",
+        title: "Site d'Intérieur",
         location: "Marbella, Costa del Sol",
         cardSummary:
           "Refonte du site, clarté des services, portfolio intérieur, expérience mobile et mise en place CMS.",
@@ -226,19 +222,15 @@ const fr = {
         whatChanged: [
           {
             body: "Les projets se lisent comme des récits, pas comme une grille plate — on perçoit le geste, l'échelle, l'atmosphère.",
-            contrast: { before: "Grille anonyme", after: "Chapitres éditoriaux" },
           },
           {
             body: "Rythme plus doux et images fortes qui restent légères et rapides sur téléphone.",
-            contrast: { before: "Mobile étouffant", after: "Air et clarté" },
           },
           {
             body: "Palette et rythme plus proches d'un magazine design : la confiance vient du ton, pas du discours.",
-            contrast: { before: "Gabarit froid", after: "Élégance habitée" },
           },
           {
             body: "Services et prise de contact avec intention : visibles quand il faut, sans rivaliser avec le travail.",
-            contrast: { before: "Parcours caché", after: "Clarté tranquille" },
           },
         ] as const,
         screens: [
@@ -248,7 +240,7 @@ const fr = {
       },
       {
         slug: "forma-sur-malaga",
-        title: "Site d'architecture - Málaga",
+        title: "Site d'Architecture",
         location: "Málaga, Costa del Sol",
         cardSummary:
           "Refonte audacieuse, archive de projets, identité visuelle, structure mobile et CMS.",
@@ -260,19 +252,15 @@ const fr = {
         whatChanged: [
           {
             body: "Archive et études de cas avec échelle, contraste et ordre à la hauteur du travail.",
-            contrast: { before: "Listing plat", after: "Séquence assurée" },
           },
           {
             body: "Typographie et marges qui restent lisibles quand la mise en page se réduit à une colonne.",
-            contrast: { before: "Petit texte fragile", after: "Rythme architectural" },
           },
           {
             body: "Une voix graphique plus nette et mémorable, alignée sur les bâtiments — sans bruit superflu.",
-            contrast: { before: "Enveloppe oubliable", after: "Présence distincte" },
           },
           {
             body: "La prise de contact reste à portée sans casser le rythme éditorial ni diluer le ton du studio.",
-            contrast: { before: "Interruptions commerciales", after: "Invitation alignée" },
           },
         ] as const,
         screens: [
@@ -282,7 +270,7 @@ const fr = {
       },
       {
         slug: "terral-studio-estepona",
-        title: "Site paysager - Estepona",
+        title: "Site paysager",
         location: "Estepona, Costa del Sol",
         cardSummary:
           "Refonte du site, portfolio outdoor, présentation des services, expérience mobile et CMS.",
@@ -294,19 +282,15 @@ const fr = {
         whatChanged: [
           {
             body: "Le travail extérieur se lit comme des chapitres lifestyle : terrasses, jardins et lumière en séquence, pas des photos isolées.",
-            contrast: { before: "Galerie figée", after: "Lieu et rythme" },
           },
           {
             body: "Grandes images et scroll calme qui restent performants quand on partage depuis le terrain.",
-            contrast: { before: "Lourd et hésitant", after: "Immersion fluide" },
           },
           {
             body: "Un ton cinématographique aligné sur la vie méditerranéenne de plein air, sans cliché resort.",
-            contrast: { before: "Resort générique", after: "Luxe ancré" },
           },
           {
             body: "Services et prise de contact suivent le récit — la confiance se construit avant de demander l'action.",
-            contrast: { before: "Pression précoce", after: "Demande tardive, naturelle" },
           },
         ] as const,
         screens: [

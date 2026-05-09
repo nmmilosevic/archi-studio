@@ -266,8 +266,8 @@
   }
 
   .nav-link[aria-current="page"]::after {
-    transform: scaleX(1);
-    transform-origin: left;
+    transform: scaleX(0);
+    transform-origin: right;
   }
 
   /* ── Card / hover ────────────────────────────────────── */
