@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import { GlobalJsonLd } from "@/components/seo/GlobalJsonLd";
+import { SITE_URL } from "@/lib/site";
 import "@/app/globals.css";
 
 const GTM_ID =
@@ -28,13 +30,25 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://reframestud.io"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "REFRAME - Architecture Website Redesigns Costa del Sol",
+    default: "REFRAME — Architecture & interior design studio websites",
     template: "%s | REFRAME",
   },
   description:
-    "Architecture website redesigns for architecture and interior design studios on the Costa del Sol.",
+    "Premium website redesigns and digital positioning for architecture and interior design studios on the Costa del Sol.",
+  applicationName: "REFRAME",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
     icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.ico`,
   },
@@ -100,6 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {/* End Google Tag Manager (noscript) */}
           </>
         ) : null}
+        <GlobalJsonLd />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>

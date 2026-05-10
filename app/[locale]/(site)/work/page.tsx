@@ -3,7 +3,7 @@ import { WorkCard } from "@/components/cards/WorkCard";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import type { Metadata } from "next";
 
@@ -11,14 +11,34 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
+const WORK_INDEX_KW: Record<string, string[]> = {
+  en: [
+    "architecture website case studies",
+    "interior design portfolio web",
+    "website redesign examples",
+    "Costa del Sol studios",
+  ],
+  es: [
+    "casos estudio web arquitectura",
+    "portfolio interiorismo",
+    "rediseño web ejemplos",
+  ],
+  fr: [
+    "études de cas site architecture",
+    "portfolio design intérieur",
+    "refonte web",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return genMeta({
+  return buildPageMetadata({
     locale,
     path: "/work",
-    title: "Work - Website Redesign Studies for Architecture Studios",
+    title: "Selected work — website redesign studies",
     description:
-      "Website redesign studies demonstrating how architecture and interior design studio websites can be repositioned, clarified, and made more credible.",
+      "Website redesign studies for architecture and interior design studios—clearer portfolios, stronger positioning, and more credible digital presentation.",
+    keywords: WORK_INDEX_KW[locale] ?? WORK_INDEX_KW.en,
   });
 }
 

@@ -3,7 +3,7 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { generateMetadata as genMeta, localBusinessSchema } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { assetPath } from "@/lib/paths";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -98,6 +98,39 @@ const copy = {
   },
 } as const;
 
+const HOME_TITLE: Record<string, string> = {
+  en: "Architecture & interior design studio websites — Costa del Sol",
+  es: "Webs para estudios de arquitectura e interiorismo — Costa del Sol",
+  fr: "Sites web pour studios d’architecture et d’intérieur — Costa del Sol",
+};
+
+const HOME_KEYWORDS: Record<string, string[]> = {
+  en: [
+    "architecture website design",
+    "interior design studio website",
+    "website redesign",
+    "Marbella",
+    "Estepona",
+    "Costa del Sol",
+    "portfolio website",
+  ],
+  es: [
+    "diseño web arquitectura",
+    "web estudio interiorismo",
+    "rediseño web",
+    "Marbella",
+    "Costa del Sol",
+    "portfolio arquitectura",
+  ],
+  fr: [
+    "site web architecture",
+    "studio design intérieur",
+    "refonte site web",
+    "Marbella",
+    "Costa del Sol",
+  ],
+};
+
 const pricingIncludes = [
   "Website strategy",
   "Custom design",
@@ -110,11 +143,14 @@ const pricingIncludes = [
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "hero" });
-  return genMeta({
+  const title = HOME_TITLE[locale] ?? HOME_TITLE.en;
+  const keywords = HOME_KEYWORDS[locale] ?? HOME_KEYWORDS.en;
+  return buildPageMetadata({
     locale,
     path: "",
-    title: "Architecture Studio Website Design - Costa del Sol - REFRAME",
+    title,
     description: t("sub"),
+    keywords,
   });
 }
 
@@ -125,11 +161,6 @@ export default async function HomePage({ params }: Props) {
   const c = copy[locale as keyof typeof copy] ?? copy.en;
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
-      />
-
       <section id="top" className="relative min-h-dvh overflow-hidden bg-stone pt-20 md:pt-28">
         <div className="absolute inset-y-0 right-0 hidden w-[46vw] md:block" aria-hidden="true">
           <Image
@@ -137,6 +168,7 @@ export default async function HomePage({ params }: Props) {
             alt=""
             fill
             priority
+            fetchPriority="high"
             className="object-cover object-center"
             sizes="46vw"
           />
@@ -172,6 +204,7 @@ export default async function HomePage({ params }: Props) {
                   alt="Example architecture studio website redesign"
                   fill
                   priority
+                  fetchPriority="high"
                   className="object-cover object-top"
                   sizes="(min-width: 1280px) 540px, 500px"
                 />
@@ -266,6 +299,7 @@ export default async function HomePage({ params }: Props) {
                   src={assetPath("/images/mood.png")}
                   alt="Visual mood for the website offering"
                   fill
+                  loading="lazy"
                   className="object-contain object-center"
                   sizes="(min-width: 1280px) 520px, (min-width: 1024px) 44vw, 100vw"
                 />

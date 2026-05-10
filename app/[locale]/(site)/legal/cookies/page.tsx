@@ -1,13 +1,19 @@
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
+import { buildCookiesMetadata } from "@/lib/legal-metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Cookie Policy",
-  description: "Cookie Policy for REFRAME.",
-};
+interface Props {
+  params: Promise<{ locale: string }>;
+}
 
-export default function CookiesPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return buildCookiesMetadata(locale);
+}
+
+export default async function CookiesPage({ params }: Props) {
+  await params;
   return (
     <>
       <PageHero heading="Cookie Policy" />

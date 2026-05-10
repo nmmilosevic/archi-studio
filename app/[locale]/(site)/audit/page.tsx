@@ -6,7 +6,7 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { generateMetadata as genMeta, faqSchema } from "@/lib/seo";
+import { buildPageMetadata, faqSchema } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -52,14 +52,31 @@ const faq = [
   },
 ];
 
+const AUDIT_KW: Record<string, string[]> = {
+  en: [
+    "free website review",
+    "architecture studio audit",
+    "UX review interior design site",
+  ],
+  es: [
+    "revisión web gratuita",
+    "auditoría web arquitectura",
+  ],
+  fr: [
+    "audit site web gratuit",
+    "revue site architecture",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return genMeta({
+  return buildPageMetadata({
     locale,
     path: "/audit",
-    title: "Website Review for Architecture Studios - REFRAME",
+    title: "Website review for architecture & interior studios",
     description:
-      "Get a clear review of your architecture or interior design studio website.",
+      "A focused review of your studio website—first impression, mobile UX, portfolio clarity, and contact flow—with practical next steps.",
+    keywords: AUDIT_KW[locale] ?? AUDIT_KW.en,
   });
 }
 

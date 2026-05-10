@@ -171,6 +171,8 @@ export function SelectedWorkShowcase() {
                 src={item.image}
                 alt={item.title}
                 draggable={false}
+                loading="lazy"
+                sizes="(max-width: 768px) 40vw, (max-width: 1280px) 280px, 340px"
                 className="h-auto w-auto max-h-[220px] select-none md:max-h-[280px] xl:max-h-[340px] shadow-[0_12px_30px_rgb(8_8_8/0.09)]"
               />
             </article>

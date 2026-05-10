@@ -1,13 +1,19 @@
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
+import { buildPrivacyMetadata } from "@/lib/legal-metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy for REFRAME.",
-};
+interface Props {
+  params: Promise<{ locale: string }>;
+}
 
-export default function PrivacyPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return buildPrivacyMetadata(locale);
+}
+
+export default async function PrivacyPage({ params }: Props) {
+  await params;
   return (
     <>
       <PageHero heading="Privacy Policy" />

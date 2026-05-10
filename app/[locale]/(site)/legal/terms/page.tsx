@@ -1,13 +1,19 @@
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
+import { buildTermsMetadata } from "@/lib/legal-metadata";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "Terms of Service for REFRAME.",
-};
+interface Props {
+  params: Promise<{ locale: string }>;
+}
 
-export default function TermsPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return buildTermsMetadata(locale);
+}
+
+export default async function TermsPage({ params }: Props) {
+  await params;
   return (
     <>
       <PageHero heading="Terms of Service" />

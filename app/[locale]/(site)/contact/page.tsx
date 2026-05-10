@@ -5,20 +5,44 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Container } from "@/components/ui/Container";
 import { BRAND } from "@/lib/constants";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
 
+const CONTACT_KW: Record<string, string[]> = {
+  en: [
+    "contact",
+    "architecture website enquiry",
+    "interior design studio website",
+    "REFRAME",
+    "Costa del Sol",
+  ],
+  es: [
+    "contacto",
+    "presupuesto web arquitectura",
+    "estudio interiorismo web",
+    "REFRAME",
+  ],
+  fr: [
+    "contact",
+    "devis site architecture",
+    "studio design intérieur",
+    "REFRAME",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return genMeta({
+  const keywords = CONTACT_KW[locale] ?? CONTACT_KW.en;
+  return buildPageMetadata({
     locale,
     path: "/contact",
-    title: "Contact - REFRAME",
+    title: "Contact",
     description:
-      "Tell us about your architecture studio website or interior design website.",
+      "Start a conversation about your architecture or interior design studio website—strategy, redesign scope, and next steps.",
+    keywords,
   });
 }
 

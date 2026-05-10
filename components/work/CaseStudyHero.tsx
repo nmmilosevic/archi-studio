@@ -59,6 +59,7 @@ export function CaseStudyHero({
             alt={desktopImageAlt}
             fill
             priority
+            fetchPriority="high"
             quality={92}
             className="object-cover object-center"
             sizes="100vw"

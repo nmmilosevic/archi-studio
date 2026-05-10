@@ -8,7 +8,7 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { assetPath } from "@/lib/paths";
 
 interface Props {
@@ -43,14 +43,33 @@ const faq = [
   },
 ];
 
+const PRICING_KW: Record<string, string[]> = {
+  en: [
+    "architecture website price",
+    "interior design website cost",
+    "€1500 website",
+    "studio website package",
+  ],
+  es: [
+    "precio web arquitectura",
+    "presupuesto página estudio",
+    "diseño web Costa del Sol",
+  ],
+  fr: [
+    "tarif site architecture",
+    "prix site studio design",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return genMeta({
+  return buildPageMetadata({
     locale,
     path: "/pricing",
-    title: "Simple Pricing - Architecture Studio Website Design",
+    title: "Pricing — transparent website design for studios",
     description:
-      "Simple pricing for architecture and interior design studio websites. €1,500 one-time website design and development, with optional hosting and updates.",
+      "Clear pricing for architecture and interior design studio websites: €1,500 one-time design and build, with optional hosting (€30/mo) and content care (€120/mo).",
+    keywords: PRICING_KW[locale] ?? PRICING_KW.en,
   });
 }
 
@@ -130,6 +149,7 @@ export default async function PricingPage({ params }: Props) {
                   src={assetPath("/images/mood.png")}
                   alt="Visual mood for the website offering"
                   fill
+                  loading="lazy"
                   className="object-contain object-center"
                   sizes="(min-width: 1280px) 520px, (min-width: 1024px) 44vw, 100vw"
                 />

@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
@@ -15,14 +15,35 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
+const SERVICES_KW: Record<string, string[]> = {
+  en: [
+    "architecture website services",
+    "interior design web design",
+    "local SEO Costa del Sol",
+    "portfolio CMS",
+    "website hosting studios",
+  ],
+  es: [
+    "servicios web arquitectura",
+    "diseño web interiorismo",
+    "SEO local Costa del Sol",
+  ],
+  fr: [
+    "services site architecture",
+    "SEO local Costa del Sol",
+    "portfolio sur mesure",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return genMeta({
+  return buildPageMetadata({
     locale,
     path: "/services",
-    title: "Services - Website Design & SEO for Architecture Studios",
+    title: "Services — web design, SEO & portfolio systems",
     description:
-      "Website redesign, interior design studio websites, local SEO, portfolio systems, hosting, and brand refinement for studios on the Costa del Sol.",
+      "Website redesign, interior design studio sites, local SEO, portfolio systems, hosting, and brand refinement for studios on the Costa del Sol.",
+    keywords: SERVICES_KW[locale] ?? SERVICES_KW.en,
   });
 }
 

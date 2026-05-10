@@ -1,105 +1,106 @@
 import type { Metadata } from "next";
+import { BRAND } from "@/lib/constants";
+import { DEFAULT_LOCALE, SEO_LOCALES, SITE_URL } from "@/lib/site";
 
-const BASE_URL = "https://reframestud.io";
-
-const localeNames: Record<string, string> = {
-  en: "English",
-  es: "Spanish",
-  fr: "French",
+const OG_LOCALE: Record<string, string> = {
+  es: "es_ES",
+  en: "en_US",
+  fr: "fr_FR",
 };
 
-export function generateAlternates(
+/** Absolute URL for a locale path. Uses trailing slashes (GitHub Pages + Next `trailingSlash`). */
+export function absoluteLocaleUrl(locale: string, pathname: string): string {
+  const trimmed = pathname.trim();
+  if (!trimmed || trimmed === "/") {
+    return `${SITE_URL}/${locale}/`;
+  }
+  const path = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return `${SITE_URL}/${locale}${path.endsWith("/") ? path : `${path}/`}`;
+}
+
+export function buildAlternates(
   locale: string,
   path: string
-): Metadata["alternates"] {
-  const locales = ["en", "es", "fr"];
+): NonNullable<Metadata["alternates"]> {
   const languages: Record<string, string> = {};
-  locales.forEach((l) => {
-    languages[l] = `${BASE_URL}/${l}${path}`;
-  });
-  languages["x-default"] = `${BASE_URL}/en${path}`;
+  for (const loc of SEO_LOCALES) {
+    languages[loc] = absoluteLocaleUrl(loc, path);
+  }
+  languages["x-default"] = absoluteLocaleUrl(DEFAULT_LOCALE, path);
   return {
-    canonical: `${BASE_URL}/${locale}${path}`,
+    canonical: absoluteLocaleUrl(locale, path),
     languages,
   };
 }
 
-export function generateMetadata({
-  locale,
-  path,
-  title,
-  description,
-  ogImage = "/og-image.png",
-}: {
+export type PageSeoInput = {
   locale: string;
   path: string;
   title: string;
   description: string;
+  keywords?: string[];
   ogImage?: string;
-}): Metadata {
-  const localeName = localeNames[locale] ?? "English";
+  robots?: Metadata["robots"];
+};
+
+function resolveOgImageUrl(ogImage: string): string {
+  if (ogImage.startsWith("https://") || ogImage.startsWith("http://")) {
+    return ogImage;
+  }
+  const path = ogImage.startsWith("/") ? ogImage : `/${ogImage}`;
+  return `${SITE_URL}${path}`;
+}
+
+export function buildPageMetadata({
+  locale,
+  path,
+  title,
+  description,
+  keywords,
+  ogImage = "/og-image.png",
+  robots = { index: true, follow: true },
+}: PageSeoInput): Metadata {
+  const alternates = buildAlternates(locale, path);
+  const canonical = alternates.canonical as string;
+  const imageUrl = resolveOgImageUrl(ogImage);
+  const ogLocale = OG_LOCALE[locale] ?? OG_LOCALE.en;
+  const alternateLocale = SEO_LOCALES.filter((l) => l !== locale).map(
+    (l) => OG_LOCALE[l] ?? l
+  );
+
   return {
     title,
     description,
-    alternates: generateAlternates(locale, path),
+    ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
+    alternates,
+    robots,
     openGraph: {
       title,
       description,
-      url: `${BASE_URL}/${locale}${path}`,
-      siteName: "REFRAME",
+      url: canonical,
+      siteName: BRAND.name,
+      locale: ogLocale,
+      alternateLocale,
+      type: "website",
       images: [
         {
-          url: ogImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `REFRAME - ${title}`,
+          alt: `${BRAND.name} — ${title}`,
         },
       ],
-      locale: localeName,
-      type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
+      images: [imageUrl],
     },
   };
 }
 
-export function localBusinessSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "REFRAME",
-    description:
-      "Architecture website redesigns for architecture and interior design studios on the Costa del Sol, Spain.",
-    url: BASE_URL,
-    email: "hello@reframestudio.es",
-    telephone: "+34600000000",
-    areaServed: [
-      "Marbella",
-      "Estepona",
-      "Benahavís",
-      "Sotogrande",
-      "Málaga",
-      "Mijas",
-      "Fuengirola",
-      "Casares",
-    ],
-    serviceType: [
-      "Website Redesign",
-      "Architecture Studio Websites",
-      "Interior Design Websites",
-      "Local SEO",
-      "Portfolio Systems",
-    ],
-  };
-}
-
-export function faqSchema(
-  items: Array<{ q: string; a: string }>
-) {
+export function faqSchema(items: Array<{ q: string; a: string }>) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -14,14 +14,33 @@ interface Props {
   params: Promise<{ locale: string }>;
 }
 
+const SEO_PAGE_KW: Record<string, string[]> = {
+  en: [
+    "local SEO architecture studio",
+    "Marbella interior design SEO",
+    "Costa del Sol Google visibility",
+    "multilingual hreflang",
+  ],
+  es: [
+    "SEO local arquitectura",
+    "posicionamiento Marbella",
+    "Costa del Sol estudios",
+  ],
+  fr: [
+    "SEO local architecture",
+    "référencement Costa del Sol",
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  return genMeta({
+  return buildPageMetadata({
     locale,
     path: "/seo-costa-del-sol",
-    title: "Local SEO for Architecture Studios - Costa del Sol",
+    title: "Local SEO for architecture & interior studios — Costa del Sol",
     description:
-      "How architecture and interior design studios on the Costa del Sol get found by international buyers searching in Marbella, Estepona, Benahavís, Sotogrande, and Málaga.",
+      "How studios get found by high-intent clients across Marbella, Estepona, Benahavís, Sotogrande, and Málaga—local landing pages, GBP, technical SEO, and multilingual structure.",
+    keywords: SEO_PAGE_KW[locale] ?? SEO_PAGE_KW.en,
   });
 }
 

@@ -2,7 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CaseStudyPageTemplate } from "@/components/work/CaseStudyPageTemplate";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { buildPageMetadata } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import en from "@/content/en";
 
@@ -25,11 +25,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (index === -1) return {};
 
-  return genMeta({
+  const item = content.work.items[index];
+  return buildPageMetadata({
     locale,
     path: `/work/${slug}`,
-    title: `${content.work.items[index].title} | Website Case Study`,
-    description: content.work.items[index].challenge,
+    title: `${item.title} — website case study`,
+    description: item.challenge,
+    keywords: [
+      item.title,
+      "architecture website",
+      "interior design website",
+      "website redesign",
+      item.location,
+    ],
   });
 }
 
