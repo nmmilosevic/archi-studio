@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import type { MouseEvent } from "react";
 import { BRAND } from "@/lib/constants";
@@ -9,6 +9,7 @@ import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 export function HomepageFooter() {
   const locale = useLocale();
+  const tFooter = useTranslations("footer");
   const pathname = usePathname();
   const router = useRouter();
   const homePath = `/${locale}`;
@@ -46,9 +47,7 @@ export function HomepageFooter() {
             >
               <ReframeLogo light className="h-[42px] w-auto" />
             </Link>
-            <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">
-              A web design studio for architecture and interior design firms.
-            </p>
+            <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">{tFooter("tagline")}</p>
           </div>
 
           <div className="grid gap-3 md:justify-self-end">

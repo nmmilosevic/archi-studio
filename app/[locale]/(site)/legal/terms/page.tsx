@@ -44,7 +44,7 @@ export default async function TermsPage({ params }: Props) {
                   2. Payment terms
                 </h2>
                 <p>
-                  For one-time projects above €790: 50% due at project start,
+                  For one-time projects above 790€: 50% due at project start,
                   50% due before delivery. Website review work is confirmed before any paid implementation.
                   Monthly care plans are billed monthly at the start of each
                   billing period.

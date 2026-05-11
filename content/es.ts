@@ -18,7 +18,7 @@ const es = {
     proof: "Diseñado para estudios en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
   },
   problem: {
-    heading: "La mayoría de los estudios pierden clientes antes de la primera llamada.",
+    heading: "La mayoría de los estudios pierden la confianza antes de la primera llamada.",
     body: "La arquitectura y el diseño de interiores son negocios visuales. Cuando una web parece obsoleta, lenta, genérica o difícil de navegar, la calidad del estudio se juzga antes de que el visitante vea el trabajo correctamente.",
     cards: [
       { title: "Primera impresión anticuada", desc: "Los visitantes juzgan al estudio en menos de tres segundos. Un desajuste visual entre el trabajo real y la web erosiona la confianza al instante." },
@@ -87,21 +87,21 @@ const es = {
       { number: "02", title: "Revisas la preview", desc: "Abres un enlace privado de Vercel y ves la dirección en desktop y móvil." },
       { number: "03", title: "Finalizo el sistema", desc: "La dirección aprobada se convierte en una web responsive con portfolio y base multilingüe." },
       { number: "04", title: "Lanzamos", desc: "La web se despliega, se prueba, se conecta y queda lista para usar con confianza." },
-      { number: "05", title: "Lanzamiento", desc: "Conectamos el dominio, comprobamos el rendimiento, revisamos el móvil, pulimos los metadatos y preparamos la web para su difusión." },
+      { number: "05", title: "Lanzamiento", desc: "Conectamos el dominio, comprobamos el rendimiento, revisamos el móvil, pulimos los metadatos y preparamos la web para su difusión o el descubrimiento orgánico." },
       { number: "06", title: "Mantenimiento", desc: "Alojamiento opcional, actualizaciones, publicación de portafolio, mejoras SEO y atención mensual." },
     ],
   },
   pricing: {
     label: "Precios",
-    heading: "Precios transparentes. Sin sorpresas.",
+    heading: "Precios transparentes. Sin cifras aproximadas.",
     sub: "Precios de partida. El presupuesto final depende del número de páginas, idiomas, alcance del CMS y disponibilidad de contenido.",
     vatNote: "Precios sin IVA cuando corresponda.",
-    paymentNote: "50% al inicio, 50% antes del lanzamiento para proyectos superiores a €790. Los planes mensuales se facturan mensualmente.",
+    paymentNote: "50% al inicio, 50% antes del lanzamiento para proyectos superiores a 790€. Los planes mensuales se facturan mensualmente.",
     cta: "Solicitar presupuesto",
     oneTime: [
       {
         name: "Vista previa de auditoría",
-        price: "€190",
+        price: "190€",
         desc: "Producto de entrada para quienes quieren una evaluación profesional antes de comprometerse.",
         includes: ["Auditoría web", "Revisión de UX de portada", "Revisión móvil", "Notas de dirección visual", "Análisis rápido de SEO", "5 recomendaciones prioritarias", "Captura de pantalla de rediseño opcional"],
         notIncluded: ["Construcción completa del sitio", "Redacción de textos", "Implementación"],
@@ -110,7 +110,7 @@ const es = {
       },
       {
         name: "Actualización de estudio",
-        price: "Desde €790",
+        price: "Desde 790€",
         desc: "Mejora de entrada asequible para estudios con una web obsoleta que necesitan una presencia más limpia rápidamente.",
         includes: ["1 a 3 páginas", "Dirección visual refinada", "Diseño responsivo", "Estructura básica de textos", "CTA de contacto", "Optimización de rendimiento", "Despliegue en Vercel", "Configuración básica de SEO", "1 idioma"],
         notIncluded: [] as string[],
@@ -119,7 +119,7 @@ const es = {
       },
       {
         name: "Web Signature",
-        price: "Desde €1.900",
+        price: "Desde 1.900€",
         desc: "Oferta principal para estudios consolidados que necesitan una presencia digital seria.",
         includes: ["5 a 7 páginas", "Sistema de diseño personalizado", "Multilingüe opcional", "Estructura de portafolio de proyectos", "Páginas de servicios", "Página sobre nosotros", "Página de contacto", "SEO técnico", "Configuración de analítica", "Despliegue en Vercel", "2 rondas de revisión"],
         notIncluded: [] as string[],
@@ -128,7 +128,7 @@ const es = {
       },
       {
         name: "Estudio Editorial",
-        price: "Desde €3.500",
+        price: "Desde 3.500€",
         desc: "Oferta premium para estudios que venden villas, reformas, interiores y proyectos internacionales.",
         includes: ["Estrategia web completa", "Dirección artística personalizada", "Multilingüe EN/ES/FR", "CMS de portafolio", "Landing pages SEO local", "Animaciones avanzadas", "Plantillas de caso de estudio", "Estrategia de conversión", "Analítica", "Soporte de lanzamiento", "3 rondas de revisión"],
         notIncluded: [] as string[],
@@ -139,30 +139,30 @@ const es = {
     recurring: [
       {
         name: "Cuidado de alojamiento",
-        price: "€49/mes",
+        price: "49€/mes",
         desc: "Alojamiento básico y tranquilidad técnica.",
         includes: ["Gestión de alojamiento Vercel", "Revisiones técnicas", "Monitoreo de disponibilidad", "Pequeña actualización mensual", "Revisión mensual de copias de seguridad"],
       },
       {
         name: "Cuidado de estudio",
-        price: "€149/mes",
+        price: "149€/mes",
         desc: "Alojamiento más soporte regular de contenido.",
         includes: ["Todo en Cuidado de alojamiento", "2 ediciones de contenido al mes", "Soporte para subir portafolio", "Revisión de analítica", "Revisiones de SEO"],
       },
       {
         name: "Cuidado de crecimiento",
-        price: "€390/mes",
+        price: "390€/mes",
         desc: "Soporte continuo completo con crecimiento activo de SEO.",
         includes: ["Todo en Cuidado de estudio", "Mejoras de SEO local", "Una nueva página o artículo SEO al mes", "Revisión de Search Console", "Mejoras de conversión", "Informe mensual de recomendaciones"],
       },
     ],
     addons: [
-      { name: "Idioma adicional", price: "Desde €250" },
-      { name: "Página adicional", price: "Desde €180" },
-      { name: "Subida de página de proyecto", price: "Desde €90/proyecto" },
-      { name: "Google Business Profile", price: "Desde €190" },
-      { name: "Página SEO de ciudad", price: "Desde €250/página" },
-      { name: "Refinamiento de textos", price: "Desde €350" },
+      { name: "Idioma adicional", price: "Desde 250€" },
+      { name: "Página adicional", price: "Desde 180€" },
+      { name: "Subida de página de proyecto", price: "Desde 90€/proyecto" },
+      { name: "Google Business Profile", price: "Desde 190€" },
+      { name: "Página SEO de ciudad", price: "Desde 250€/página" },
+      { name: "Refinamiento de textos", price: "Desde 350€" },
     ],
   },
   work: {
@@ -219,7 +219,6 @@ const es = {
         challenge:
           "El estudio tenía proyectos de interiorismo preciosos, pero la web se sentía demasiado genérica. No transmitía calidez, confianza ni la calidad de los espacios.",
         heroDesktop: "/images/project02/p02-hero.png",
-        editorialQuote: "El interiorismo es emocional; la web debía transmitir esa calma segura.",
         whatChanged: [
           {
             body: "Los proyectos se leen como historias, no como una cuadrícula plana: se percibe oficio, escala y atmósfera.",
@@ -334,6 +333,11 @@ const es = {
       consent: "Acepto ser contactado sobre mi solicitud de revisión web.",
       cta: "Solicitar revisión web",
       success: "Gracias. Revisaré tu web y me pondré en contacto en un plazo de 48 horas.",
+      selectType: "Seleccionar tipo",
+      selectLanguage: "Seleccionar idioma",
+      sending: "Enviando…",
+      urlPlaceholder: "https://tu-estudio.com",
+      improvePlaceholder: "Describe los problemas y objetivos principales…",
     },
     faq: [
       { q: "¿La revisión web es realmente gratuita?", a: "La primera revisión y las recomendaciones escritas están incluidas. Si quieres un rediseño completo o la implementación, eso pasa a ser un proyecto de pago." },
@@ -392,9 +396,9 @@ const es = {
       budget: "Rango de presupuesto",
       budgetOptions: [
         "Aún no lo sé",
-        "Menos de €1.000",
-        "Alrededor de €1.990 rediseño fijo",
-        "€2.000 a €4.000",
+        "Menos de 1.000€",
+        "Alrededor de 1.990€ rediseño fijo",
+        "2.000€ a 4.000€",
         "Solo atención mensual",
       ],
       message: "¿Qué sientes que no funciona en la web actual?",
@@ -410,7 +414,7 @@ const es = {
     { q: "¿Tengo que proporcionar los textos?", a: "Podemos trabajar con tus textos existentes o refinarlos. La redacción desde cero está disponible como complemento." },
     { q: "¿Qué pasa si no tengo fotografía profesional?", a: "Diseñamos con las fotografías que tienes y aconsejamos sobre qué tipo de imágenes fortalecerían el estudio. La fotografía profesional no es necesaria para el lanzamiento." },
     { q: "¿Es gratuito el rediseño de vista previa en Vercel?", a: "Los rediseños de vista previa que creo como parte de mi proceso de contacto frío son internos. Si recibiste un enlace de vista previa y quieres discutir cómo convertirlo en tu web real, la conversación empieza ahí." },
-    { q: "¿Podéis gestionar la web de forma continua?", a: "Sí. Los planes de Cuidado de Alojamiento, Cuidado de Estudio y Cuidado de Crecimiento ofrecen soporte continuo a precios mensuales desde €49." },
+    { q: "¿Podéis gestionar la web de forma continua?", a: "Sí. Los planes de Cuidado de Alojamiento, Cuidado de Estudio y Cuidado de Crecimiento ofrecen soporte continuo a precios mensuales desde 49€." },
     { q: "¿Ofrecéis webs multilingües?", a: "Sí. Construimos webs en inglés, español y francés. Los idiomas adicionales están disponibles como complemento." },
   ],
   footer: {
@@ -430,6 +434,171 @@ const es = {
       seo: "SEO",
       contact: "Contacto",
     },
+  },
+  pageMeta: {
+    pricing: {
+      title: "Precios — paquetes web transparentes para estudios",
+      description:
+        "Precios de partida para estudios de arquitectura e interiorismo: vista previa de auditoría, actualización de estudio, web signature y estudio editorial — con mantenimiento opcional desde 49€/mes.",
+    },
+    audit: {
+      title: "Revisión web gratuita para estudios de arquitectura e interiorismo",
+      description:
+        "Envía tu web actual para una revisión enfocada: primera impresión, UX móvil, claridad del portafolio, bases SEO y flujo de contacto — con próximos pasos claros.",
+    },
+    seoCostaDelSol: {
+      title: "SEO local para estudios de arquitectura e interiorismo — Costa del Sol",
+      description:
+        "Cómo aparecer ante clientes con alta intención en Marbella, Estepona, Benahavís, Sotogrande y Málaga: páginas locales, Google Business Profile, SEO técnico y estructura multilingüe.",
+    },
+  },
+  home: {
+    workTitle: "Webs para estudios con trabajo que merece mostrarse bien.",
+    workBody:
+      "Ejemplos enfocados: portfolios más claros, mejor lectura en móvil y primera impresión más sólida — sin plantillas genéricas.",
+    beforeTitle: "Tu web debería sentirse tan cuidada como tus proyectos.",
+    beforeProblems: [
+      "Las plantillas genéricas debilitan el posicionamiento",
+      "Una mala experiencia móvil reduce la confianza",
+      "Las webs difíciles de actualizar frenan al estudio",
+    ],
+    beforeBody:
+      "Tus proyectos son detallados, cuidados y de alto nivel. Tu web debería transmitir lo mismo.",
+    beforeAfterLabels: [
+      "Primera impresión más clara",
+      "Mejor presentación de proyectos",
+      "Navegación más fácil",
+      "Mejor experiencia móvil",
+    ],
+    reviewTitle: "La fricción reduce la confianza.",
+    reviewBody:
+      "¿Aún no quieres empezar? Envíanos tu web y te diremos dónde pierdes claridad y confianza. Notas útiles, sin presión.",
+    offerTitle: "Una inversión clara para tu estudio.",
+    offerPriceDetail:
+      "Estrategia, diseño a medida y desarrollo. Una cifra. Un calendario. Lo esencial para publicar una web a la altura de tu trabajo.",
+    offerPaymentLabel: "Pago único",
+    showcaseLabels: [
+      "Estilo mediterráneo",
+      "Estilo orgánico",
+      "Estilo avantforme",
+      "Estilo futurista",
+      "Estilo japonés",
+      "Estilo lujo",
+      "Estilo eco moderno",
+      "Estilo parisino",
+      "Estilo lujo oscuro",
+    ],
+    diagnosisPoints: [
+      {
+        title: "Posicionamiento",
+        description:
+          "El valor de tu estudio debe entenderse en segundos, no adivinarse tras mucho scroll.",
+      },
+      {
+        title: "Presentación de proyectos",
+        description:
+          "Los casos necesitan más jerarquía para que cada proyecto se sienta intencional y premium.",
+      },
+      {
+        title: "Flujo de contacto",
+        description:
+          "De la primera impresión a la consulta, cada paso debe reducir fricción y generar confianza.",
+      },
+    ],
+    diagnosisFloatCards: [
+      {
+        title: "Posicionamiento",
+        description: "Aclara por lo que tu estudio es conocido.",
+      },
+      {
+        title: "Presentación de proyectos",
+        description: "Mejora la jerarquía y el ritmo de lectura.",
+      },
+      {
+        title: "Flujo de contacto",
+        description: "Menos fricción del interés a la consulta.",
+      },
+    ],
+    heroMockAlt: "Ejemplo de rediseño web para estudio de arquitectura",
+    moodImageAlt: "Ambiente visual para la oferta web",
+    diagnosisImageAlt: "Composición visual para la revisión web",
+    beforeAfterBeforeAlt: "Web de estudio de arquitectura antes del rediseño",
+    beforeAfterAfterAlt: "Web de estudio de arquitectura después del rediseño",
+  },
+  seoPage: {
+    introLead:
+      "Los clientes de arquitectura buscan con intención de ubicación. Si tu estudio no está en esos resultados, para ellos no existe.",
+    introP1:
+      "Un comprador británico que investiga arquitectos para renovar su villa escribe «estudio de arquitectura Marbella». Una pareja francesa que se muda a Sotogrande busca «diseñador de interiores Sotogrande». Un inversor noruego escribe «reforma villa Estepona».",
+    introP2:
+      "Estas búsquedas ocurren cada día. Los estudios que aparecen no son necesariamente los mejores: son los que Google ha aprendido a asociar a ese lugar y servicio.",
+    stats: [
+      {
+        stat: "Búsqueda local",
+        desc: "Supone una parte muy relevante de las búsquedas en Google — y muchas tienen alta intención comercial.",
+      },
+      {
+        stat: "Compradores multilingües",
+        desc: "Compradores británicos, alemanes, franceses y escandinavos son el núcleo de la demanda de villas e interiorismo en la Costa del Sol.",
+      },
+      {
+        stat: "Poca visibilidad",
+        desc: "Muchos estudios solo posicionan por su nombre — invisibles para quien aún no los conoce.",
+      },
+    ],
+    citiesHeading: "Estudios de arquitectura en la Costa del Sol",
+    practiceHeading: "Cómo se ve el SEO local en la práctica",
+    practiceItems: [
+      {
+        title: "Landing pages locales",
+        desc: "Una página dedicada por ciudad: Marbella, Estepona, Benahavís, Sotogrande. Cada una apunta a las búsquedas de ese mercado.",
+      },
+      {
+        title: "Páginas de proyecto como contenido",
+        desc: "Cada proyecto se estructura como contenido indexable: ubicación, alcance, materiales y fotografía — activo SEO, no solo galería.",
+      },
+      {
+        title: "SEO técnico",
+        desc: "Velocidad, Core Web Vitals, URLs limpias, canónicas, datos estructurados e imágenes optimizadas en todo el sitio.",
+      },
+      {
+        title: "Hreflang multilingüe",
+        desc: "Cobertura correcta de idioma y región para que EN, ES y FR lleguen al público adecuado en los resultados.",
+      },
+      {
+        title: "Google Business Profile",
+        desc: "Configuración y optimización: categoría, descripción, servicios, fotos y datos NAP coherentes.",
+      },
+    ],
+    ctaHeading: "¿Quieres que tu estudio aparezca en estas búsquedas?",
+    ctaSub: "Empieza con una revisión web clara.",
+    ctaLabel: "Solicitar revisión web",
+  },
+  pricingPage: {
+    faqHeading: "Preguntas.",
+    faq: [
+      {
+        q: "¿Es obligatorio el alojamiento?",
+        a: "No. Puedes alojar en otro sitio. Nuestros planes de cuidado de alojamiento en Vercel empiezan en 49€/mes si quieres que lo gestionemos.",
+      },
+      {
+        q: "¿Las actualizaciones tras el lanzamiento están incluidas?",
+        a: "Las correcciones de lanzamiento del alcance acordado sí. Contenido y SEO continuos van con cuidado de estudio y cuidado de crecimiento.",
+      },
+      {
+        q: "¿Cuánto tarda un rediseño?",
+        a: "Una actualización de estudio suele tardar 1–2 semanas. Una web signature 3–5 semanas. Un estudio editorial 6–10 semanas según alcance y contenido.",
+      },
+      {
+        q: "¿El sitio es mío?",
+        a: "Sí. Tras el pago del alcance acordado, el sitio y el contenido que te entregamos son tuyos.",
+      },
+    ],
+  },
+  auditPage: {
+    formHeading: "¿No sabes si tu web está trabajando lo suficiente?",
+    formSub: "Envía tu web actual. Responderemos con los problemas más claros y el mejor siguiente paso.",
+    scrollCta: "Solicitar una auditoría rápida",
   },
 } as const;
 

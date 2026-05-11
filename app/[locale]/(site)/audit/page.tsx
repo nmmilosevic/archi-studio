@@ -7,75 +7,26 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { buildPageMetadata, faqSchema } from "@/lib/seo";
+import { getContent } from "@/lib/getContent";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
 
-const reviewPoints = [
-  "Positioning - can visitors quickly understand what your studio does?",
-  "Project presentation",
-  "Mobile experience",
-  "Contact flow - is it easy for potential clients to contact you?",
-];
-
-const receive = [
-  "A short written review",
-  "Key problems found first",
-  "Simple improvement suggestions",
-  "Clear next step",
-];
-
-const who = [
-  "Architecture studios",
-  "Interior design studios",
-  "Real estate developers",
-  "Hospitality brands",
-];
-
-const faq = [
-  {
-    q: "Is the website review really free?",
-    a: "Yes. The first review is free and does not require a project commitment.",
-  },
-  {
-    q: "What will I receive?",
-    a: "A short written review with the clearest issues and practical improvement suggestions.",
-  },
-  {
-    q: "Do I need to commit to a project?",
-    a: "No. If the website needs deeper work, we can discuss the €1,500 website design and build.",
-  },
-  {
-    q: "How long does it take?",
-    a: "Most reviews are sent within 48 hours.",
-  },
-];
-
 const AUDIT_KW: Record<string, string[]> = {
-  en: [
-    "free website review",
-    "architecture studio audit",
-    "UX review interior design site",
-  ],
-  es: [
-    "revisión web gratuita",
-    "auditoría web arquitectura",
-  ],
-  fr: [
-    "audit site web gratuit",
-    "revue site architecture",
-  ],
+  en: ["free website review", "architecture studio audit", "UX review interior design site"],
+  es: ["revisión web gratuita", "auditoría web arquitectura"],
+  fr: ["audit site web gratuit", "revue site architecture"],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const content = getContent(locale);
   return buildPageMetadata({
     locale,
     path: "/audit",
-    title: "Website review for architecture & interior studios",
-    description:
-      "A focused review of your studio website—first impression, mobile UX, portfolio clarity, and contact flow—with practical next steps.",
+    title: content.pageMeta.audit.title,
+    description: content.pageMeta.audit.description,
     keywords: AUDIT_KW[locale] ?? AUDIT_KW.en,
   });
 }
@@ -95,33 +46,26 @@ function SimpleList({ items }: { items: string[] }) {
 export default async function AuditPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const jsonLd = faqSchema(faq);
+  const content = getContent(locale);
+  const audit = content.audit;
+  const faqItems = [...audit.faq];
+  const jsonLd = faqSchema(faqItems);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="bg-stone pt-36 pb-24 md:pt-48 md:pb-36">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-            <AnimatedTitle
-              text="Get a clear audit of your studio website."
-              as="h1"
-              className="text-page-title max-w-[16ch] text-primary"
-            />
+            <AnimatedTitle text={audit.heading} as="h1" className="text-page-title max-w-[18ch] text-primary" />
             <div className="lg:ml-auto">
-              <AnimatedText
-                className="text-support max-w-[600px] text-muted"
-                delay={0.12}
-              >
-                We review your current website and show where it loses trust, clarity, and potential clients.
+              <AnimatedText className="text-support max-w-[600px] text-muted" delay={0.12}>
+                {audit.sub}
               </AnimatedText>
               <AnimatedText as="div" delay={0.2}>
                 <Button asChild size="lg" className="mt-10">
-                  <Link href="#audit-form">Request a quick audit</Link>
+                  <Link href="#audit-form">{content.auditPage.scrollCta}</Link>
                 </Button>
               </AnimatedText>
             </div>
@@ -133,10 +77,15 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-3">
             <div>
-              <AnimatedTitle text="We review the problems that affect trust." as="h2" id="review-heading" className="text-display text-primary" />
+              <AnimatedTitle
+                text={audit.what.heading}
+                as="h2"
+                id="review-heading"
+                className="text-display text-primary"
+              />
             </div>
             <div className="lg:col-span-2">
-              <SimpleList items={reviewPoints} />
+              <SimpleList items={[...audit.what.items]} />
             </div>
           </div>
         </Container>
@@ -146,15 +95,20 @@ export default async function AuditPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div>
-              <AnimatedTitle text="You get clear, practical feedback." as="h2" id="receive-heading" className="text-display text-primary" />
+              <AnimatedTitle
+                text={audit.receive.heading}
+                as="h2"
+                id="receive-heading"
+                className="text-display text-primary"
+              />
               <div className="mt-12">
-                <SimpleList items={receive} />
+                <SimpleList items={[...audit.receive.items]} />
               </div>
             </div>
             <div>
-              <AnimatedTitle text="Best for architecture and interior design studios." as="h2" className="text-display text-primary" />
+              <AnimatedTitle text={audit.who.heading} as="h2" className="text-display text-primary" />
               <div className="mt-12">
-                <SimpleList items={who} />
+                <SimpleList items={[...audit.who.items]} />
               </div>
             </div>
           </div>
@@ -166,14 +120,12 @@ export default async function AuditPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-[0.82fr_1.18fr]">
             <div>
               <AnimatedTitle
-                text="Not sure if your website is working hard enough?"
+                text={content.auditPage.formHeading}
                 as="h2"
                 id="audit-form-heading"
                 className="text-display text-primary"
               />
-              <p className="text-support mt-8 max-w-[520px] text-muted">
-                Send your current website. We’ll reply with the clearest issues and the best next step.
-              </p>
+              <p className="text-support mt-8 max-w-[520px] text-muted">{content.auditPage.formSub}</p>
             </div>
             <div className="border border-charcoal/10 bg-stone p-6 md:p-10">
               <AuditForm />

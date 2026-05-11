@@ -96,12 +96,12 @@ const fr = {
     heading: "Tarifs transparents. Pas d'approximations.",
     sub: "Prix de départ. Le devis final dépend du nombre de pages, des langues, de la portée du CMS et de la disponibilité du contenu.",
     vatNote: "Prix indiqués hors TVA le cas échéant.",
-    paymentNote: "50% à l'avance, 50% avant le lancement pour les projets supérieurs à €790. Les plans mensuels sont facturés mensuellement.",
+    paymentNote: "50% à l'avance, 50% avant le lancement pour les projets supérieurs à 790€. Les plans mensuels sont facturés mensuellement.",
     cta: "Demander un devis",
     oneTime: [
       {
         name: "Aperçu d'audit",
-        price: "€190",
+        price: "190€",
         desc: "Produit d'entrée pour ceux qui souhaitent une évaluation professionnelle avant de s'engager.",
         includes: ["Audit de site", "Révision UX de la page d'accueil", "Révision mobile", "Notes de direction visuelle", "Analyse rapide SEO", "5 recommandations prioritaires", "Capture d'écran de refonte optionnelle"],
         notIncluded: ["Construction complète du site", "Rédaction de contenu", "Implémentation"],
@@ -110,7 +110,7 @@ const fr = {
       },
       {
         name: "Actualisation studio",
-        price: "À partir de €790",
+        price: "À partir de 790€",
         desc: "Amélioration d'entrée abordable pour les studios avec un site obsolète qui ont besoin d'une présence plus propre rapidement.",
         includes: ["1 à 3 pages", "Direction visuelle raffinée", "Design responsive", "Structure de texte de base", "CTA de contact", "Optimisation des performances", "Déploiement Vercel", "Configuration SEO de base", "1 langue"],
         notIncluded: [] as string[],
@@ -119,7 +119,7 @@ const fr = {
       },
       {
         name: "Site Signature",
-        price: "À partir de €1.900",
+        price: "À partir de 1.900€",
         desc: "Offre principale pour les studios établis qui ont besoin d'une présence digitale sérieuse.",
         includes: ["5 à 7 pages", "Système de design personnalisé", "Multilingue optionnel", "Structure de portfolio de projets", "Pages de services", "Page à propos", "Page de contact", "SEO technique", "Configuration analytique", "Déploiement Vercel", "2 tours de révision"],
         notIncluded: [] as string[],
@@ -128,7 +128,7 @@ const fr = {
       },
       {
         name: "Studio Éditorial",
-        price: "À partir de €3.500",
+        price: "À partir de 3.500€",
         desc: "Offre premium pour les studios vendant des villas, rénovations, intérieurs et projets internationaux.",
         includes: ["Stratégie web complète", "Direction artistique personnalisée", "Multilingue EN/ES/FR", "CMS de portfolio", "Pages d'atterrissage SEO local", "Animations avancées", "Modèles d'études de cas", "Stratégie de conversion", "Analytique", "Support au lancement", "3 tours de révision"],
         notIncluded: [] as string[],
@@ -139,30 +139,30 @@ const fr = {
     recurring: [
       {
         name: "Soin hébergement",
-        price: "€49/mois",
+        price: "49€/mois",
         desc: "Hébergement de base et tranquillité technique.",
         includes: ["Gestion d'hébergement Vercel", "Vérifications techniques", "Surveillance de disponibilité", "Petite mise à jour mensuelle", "Vérification mensuelle des sauvegardes"],
       },
       {
         name: "Soin studio",
-        price: "€149/mois",
+        price: "149€/mois",
         desc: "Hébergement plus support de contenu régulier.",
         includes: ["Tout dans Soin hébergement", "2 modifications de contenu par mois", "Support pour télécharger le portfolio", "Révision analytique", "Vérifications SEO"],
       },
       {
         name: "Soin croissance",
-        price: "€390/mois",
+        price: "390€/mois",
         desc: "Support continu complet avec croissance SEO active.",
         includes: ["Tout dans Soin studio", "Améliorations SEO local", "Une nouvelle page ou article SEO par mois", "Révision Search Console", "Améliorations de conversion", "Rapport de recommandations mensuel"],
       },
     ],
     addons: [
-      { name: "Langue supplémentaire", price: "À partir de €250" },
-      { name: "Page supplémentaire", price: "À partir de €180" },
-      { name: "Téléchargement de page de projet", price: "À partir de €90/projet" },
-      { name: "Google Business Profile", price: "À partir de €190" },
-      { name: "Page SEO de ville", price: "À partir de €250/page" },
-      { name: "Raffinement de la rédaction", price: "À partir de €350" },
+      { name: "Langue supplémentaire", price: "À partir de 250€" },
+      { name: "Page supplémentaire", price: "À partir de 180€" },
+      { name: "Téléchargement de page de projet", price: "À partir de 90€/projet" },
+      { name: "Google Business Profile", price: "À partir de 190€" },
+      { name: "Page SEO de ville", price: "À partir de 250€/page" },
+      { name: "Raffinement de la rédaction", price: "À partir de 350€" },
     ],
   },
   work: {
@@ -333,6 +333,11 @@ const fr = {
       consent: "J'accepte d'être contacté(e) au sujet de ma demande de revue de site.",
       cta: "Demander une revue du site",
       success: "Merci. Je réviserai votre site et vous contacterai dans les 48 heures.",
+      selectType: "Choisir un type",
+      selectLanguage: "Choisir une langue",
+      sending: "Envoi en cours…",
+      urlPlaceholder: "https://votre-studio.com",
+      improvePlaceholder: "Décrivez les problèmes ou objectifs principaux…",
     },
     faq: [
       { q: "La revue du site est-elle vraiment gratuite?", a: "La première revue et les recommandations écrites sont incluses. Si vous souhaitez une refonte complète ou une implémentation, cela devient un projet payant." },
@@ -391,9 +396,9 @@ const fr = {
       budget: "Fourchette de budget",
       budgetOptions: [
         "Pas encore décidé",
-        "Moins de €1.000",
-        "Environ €1.990 refonte fixe",
-        "€2.000 à €4.000",
+        "Moins de 1.000€",
+        "Environ 1.990€ refonte fixe",
+        "2.000€ à 4.000€",
         "Soin mensuel uniquement",
       ],
       message: "Qu'est-ce qui ne fonctionne pas sur le site actuel ?",
@@ -409,7 +414,7 @@ const fr = {
     { q: "Dois-je fournir les textes?", a: "Nous pouvons travailler avec vos textes existants ou les raffiner. La rédaction depuis zéro est disponible en option complémentaire." },
     { q: "Et si je n'ai pas de photographie professionnelle?", a: "Nous concevons avec les photos que vous avez et conseillons sur le type d'images qui renforcerait le studio. La photographie professionnelle n'est pas nécessaire pour le lancement." },
     { q: "L'aperçu de refonte Vercel est-il gratuit?", a: "Les aperçus de refonte que je crée dans le cadre de mon processus de prospection à froid sont internes. Si vous avez reçu un lien d'aperçu et souhaitez discuter de le transformer en votre vrai site, la conversation commence là." },
-    { q: "Pouvez-vous gérer le site en continu?", a: "Oui. Les plans Soin Hébergement, Soin Studio et Soin Croissance offrent un support continu à des tarifs mensuels à partir de €49." },
+    { q: "Pouvez-vous gérer le site en continu?", a: "Oui. Les plans Soin Hébergement, Soin Studio et Soin Croissance offrent un support continu à des tarifs mensuels à partir de 49€." },
     { q: "Proposez-vous des sites multilingues?", a: "Oui. Nous construisons des sites en anglais, espagnol et français. Des langues supplémentaires sont disponibles en option." },
   ],
   footer: {
@@ -429,6 +434,171 @@ const fr = {
       seo: "SEO",
       contact: "Contact",
     },
+  },
+  pageMeta: {
+    pricing: {
+      title: "Tarifs — offres web transparentes pour studios",
+      description:
+        "Prix de départ pour studios d'architecture et d'intérieur : aperçu d'audit, actualisation studio, site signature et offre éditoriale — avec maintenance optionnelle dès 49€/mois.",
+    },
+    audit: {
+      title: "Revue de site gratuite pour studios d'architecture et d'intérieur",
+      description:
+        "Envoyez votre site actuel pour une revue ciblée : première impression, mobile, clarté du portfolio, bases SEO et parcours de contact — avec des prochaines étapes claires.",
+    },
+    seoCostaDelSol: {
+      title: "SEO local pour studios d'architecture et d'intérieur — Costa del Sol",
+      description:
+        "Comment être trouvé par des clients à forte intention à Marbella, Estepona, Benahavís, Sotogrande et Málaga : pages locales, Google Business Profile, SEO technique et structure multilingue.",
+    },
+  },
+  home: {
+    workTitle: "Des directions de site pour studios dont le travail mérite d'être bien présenté.",
+    workBody:
+      "Exemples ciblés : portfolios plus clairs, meilleure lecture mobile et première impression plus forte — sans templates génériques.",
+    beforeTitle: "Votre site devrait être aussi soigné que vos projets.",
+    beforeProblems: [
+      "Les templates génériques affaiblissent le positionnement",
+      "Une mauvaise expérience mobile réduit la confiance",
+      "Les sites difficiles à mettre à jour ralentissent le studio",
+    ],
+    beforeBody:
+      "Vos projets sont détaillés et haut de gamme. Votre présence digitale devrait donner la même impression.",
+    beforeAfterLabels: [
+      "Première impression plus claire",
+      "Meilleure présentation des projets",
+      "Navigation plus simple",
+      "Meilleure expérience mobile",
+    ],
+    reviewTitle: "Les frictions réduisent la confiance.",
+    reviewBody:
+      "Pas prêt à vous lancer ? Envoyez votre site : nous montrerons où vous perdez en clarté et en confiance. Des notes utiles, sans vente agressive.",
+    offerTitle: "Un investissement clair pour votre studio.",
+    offerPriceDetail:
+      "Stratégie, design sur mesure et développement. Un montant. Un calendrier. L'essentiel pour un site à la hauteur de votre travail.",
+    offerPaymentLabel: "Paiement unique",
+    showcaseLabels: [
+      "Style méditerranéen",
+      "Style organique",
+      "Style avantforme",
+      "Style futuriste",
+      "Style japonais",
+      "Style luxe",
+      "Style éco moderne",
+      "Style parisien",
+      "Style luxe sombre",
+    ],
+    diagnosisPoints: [
+      {
+        title: "Positionnement",
+        description:
+          "La valeur de votre studio doit se comprendre en quelques secondes, pas après un long défilement.",
+      },
+      {
+        title: "Présentation des projets",
+        description:
+          "Les études de cas ont besoin d'une hiérarchie plus claire pour que chaque projet paraisse intentionnel et premium.",
+      },
+      {
+        title: "Parcours de contact",
+        description:
+          "De la première impression à la prise de contact, chaque étape doit réduire les frictions et renforcer la confiance.",
+      },
+    ],
+    diagnosisFloatCards: [
+      {
+        title: "Positionnement",
+        description: "Clarifiez ce pour quoi votre studio est reconnu.",
+      },
+      {
+        title: "Présentation des projets",
+        description: "Améliorez la hiérarchie et le rythme de lecture.",
+      },
+      {
+        title: "Parcours de contact",
+        description: "Réduisez les frictions de l'intérêt à la prise de contact.",
+      },
+    ],
+    heroMockAlt: "Exemple de refonte de site pour studio d'architecture",
+    moodImageAlt: "Ambiance visuelle pour l'offre site web",
+    diagnosisImageAlt: "Composition visuelle pour la revue de site",
+    beforeAfterBeforeAlt: "Site de studio d'architecture avant refonte",
+    beforeAfterAfterAlt: "Site de studio d'architecture après refonte",
+  },
+  seoPage: {
+    introLead:
+      "Les clients d'architecture cherchent avec une intention de lieu. Si votre studio n'apparaît pas dans ces résultats, il n'existe pas pour eux.",
+    introP1:
+      "Un acheteur britannique qui cherche un architecte pour rénover sa villa tape « studio d'architecture Marbella ». Un couple français qui s'installe à Sotogrande cherche « décorateur d'intérieur Sotogrande ». Un investisseur norvégien tape « rénovation villa Estepona ».",
+    introP2:
+      "Ces recherches ont lieu chaque jour. Les studios visibles ne sont pas forcément les meilleurs — ce sont ceux que Google a appris à associer à ce lieu et ce service.",
+    stats: [
+      {
+        stat: "Recherche locale",
+        desc: "Une part importante des recherches Google — et beaucoup portent une forte intention commerciale.",
+      },
+      {
+        stat: "Acheteurs multilingues",
+        desc: "Acheteurs britanniques, allemands, français et scandinaves : le cœur de la demande villas et intérieurs sur la Costa del Sol.",
+      },
+      {
+        stat: "Faible visibilité",
+        desc: "Beaucoup de studios ne se positionnent que sur leur nom — invisibles pour ceux qui ne les connaissent pas encore.",
+      },
+    ],
+    citiesHeading: "Studios d'architecture sur la Costa del Sol",
+    practiceHeading: "À quoi ressemble le SEO local en pratique",
+    practiceItems: [
+      {
+        title: "Pages d'atterrissage locales",
+        desc: "Une page dédiée pour chaque ville desservie : Marbella, Estepona, Benahavís, Sotogrande. Chaque page cible les recherches de ce marché.",
+      },
+      {
+        title: "Pages projet comme contenu",
+        desc: "Chaque projet livré est structuré comme du contenu indexable : lieu, portée, matériaux, photo — un actif SEO, pas seulement une image de galerie.",
+      },
+      {
+        title: "SEO technique",
+        desc: "Vitesse, Core Web Vitals, URLs propres, balises canoniques, données structurées et images optimisées sur tout le site.",
+      },
+      {
+        title: "Hreflang multilingue",
+        desc: "Ciblage langue et région correct pour que les pages EN, ES et FR atteignent le bon public dans les résultats.",
+      },
+      {
+        title: "Google Business Profile",
+        desc: "Configuration et optimisation : catégorie, description, services, photos et données NAP cohérentes.",
+      },
+    ],
+    ctaHeading: "Vous voulez que votre studio apparaisse dans ces recherches ?",
+    ctaSub: "Commencez par une revue de site claire.",
+    ctaLabel: "Demander une revue du site",
+  },
+  pricingPage: {
+    faqHeading: "Questions.",
+    faq: [
+      {
+        q: "L'hébergement est-il obligatoire ?",
+        a: "Non. Vous pouvez héberger ailleurs. Nos formules Soin hébergement sur Vercel commencent à 49€/mois si vous souhaitez que nous gérions l'infrastructure.",
+      },
+      {
+        q: "Les mises à jour après le lancement sont-elles incluses ?",
+        a: "Les corrections de lancement incluses dans le périmètre convenu le sont. Le contenu et le SEO continus passent par Soin studio et Soin croissance.",
+      },
+      {
+        q: "Combien de temps prend une refonte ?",
+        a: "Une actualisation studio prend en général 1 à 2 semaines. Un site signature prend 3 à 5 semaines. Un studio éditorial prend 6 à 10 semaines selon le périmètre et le contenu.",
+      },
+      {
+        q: "Est-ce que je possède le site ?",
+        a: "Oui. Après règlement du périmètre convenu, le site et le contenu livré pour vous vous appartiennent.",
+      },
+    ],
+  },
+  auditPage: {
+    formHeading: "Vous ne savez pas si votre site travaille assez pour vous ?",
+    formSub: "Envoyez votre site actuel. Nous répondrons avec les problèmes les plus clairs et la meilleure prochaine étape.",
+    scrollCta: "Demander un audit rapide",
   },
 } as const;
 

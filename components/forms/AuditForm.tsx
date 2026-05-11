@@ -105,7 +105,6 @@ export function AuditForm() {
             value={form.name}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Your full name"
           />
         </div>
         <div>
@@ -120,7 +119,6 @@ export function AuditForm() {
             value={form.studio}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Studio name"
           />
         </div>
       </div>
@@ -138,7 +136,7 @@ export function AuditForm() {
           value={form.url}
           onChange={handleChange}
           className={inputClass}
-          placeholder="https://your-studio-website.com"
+          placeholder={t("urlPlaceholder")}
         />
       </div>
 
@@ -157,7 +155,6 @@ export function AuditForm() {
             value={form.email}
             onChange={handleChange}
             className={inputClass}
-            placeholder="hello@studio.com"
           />
         </div>
         <div>
@@ -171,7 +168,6 @@ export function AuditForm() {
             value={form.city}
             onChange={handleChange}
             className={inputClass}
-            placeholder="Marbella"
           />
         </div>
       </div>
@@ -189,7 +185,7 @@ export function AuditForm() {
             onChange={handleChange}
             className={clsx(inputClass, "cursor-pointer bg-offwhite")}
           >
-            <option value="">Select type</option>
+            <option value="">{t("selectType")}</option>
             {(t.raw("typeOptions") as string[]).map((opt) => (
               <option key={opt} value={opt}>{opt}</option>
             ))}
@@ -206,7 +202,7 @@ export function AuditForm() {
             onChange={handleChange}
             className={clsx(inputClass, "cursor-pointer bg-offwhite")}
           >
-            <option value="">Select language</option>
+            <option value="">{t("selectLanguage")}</option>
             <option value="en">English</option>
             <option value="es">Español</option>
             <option value="fr">Français</option>
@@ -226,7 +222,7 @@ export function AuditForm() {
           value={form.improve}
           onChange={handleChange}
           className={clsx(inputClass, "resize-none")}
-          placeholder="Describe the main issues or goals..."
+          placeholder={t("improvePlaceholder")}
         />
       </div>
 
@@ -262,7 +258,7 @@ export function AuditForm() {
         className="w-full justify-center gap-2 rounded-full"
       >
         {loading ? (
-          "Sending..."
+          t("sending")
         ) : (
           <>
             {t("cta")}

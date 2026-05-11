@@ -9,66 +9,36 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { buildPageMetadata } from "@/lib/seo";
+import { getContent } from "@/lib/getContent";
 import { assetPath } from "@/lib/paths";
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
 
-const mainIncludes = [
-  "Website strategy",
-  "Custom design",
-  "Responsive development",
-  "SEO basics",
-  "Contact form",
-  "Launch support",
-];
-
-const faq = [
-  {
-    q: "Is hosting required?",
-    a: "No. You can host the site yourself if you prefer.",
-  },
-  {
-    q: "Are updates included?",
-    a: "Small launch fixes are included. Ongoing updates are available for €120/month.",
-  },
-  {
-    q: "How long does it take?",
-    a: "Most websites can be launched in 2 to 4 weeks depending on content and feedback.",
-  },
-  {
-    q: "Do I own the website?",
-    a: "Yes. The €1,500 price gives you the full website design and build.",
-  },
-];
-
 const PRICING_KW: Record<string, string[]> = {
   en: [
     "architecture website price",
     "interior design website cost",
-    "€1500 website",
     "studio website package",
+    "Marbella web design",
   ],
   es: [
     "precio web arquitectura",
     "presupuesto página estudio",
     "diseño web Costa del Sol",
   ],
-  fr: [
-    "tarif site architecture",
-    "prix site studio design",
-  ],
+  fr: ["tarif site architecture", "prix site studio design"],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const content = getContent(locale);
   return buildPageMetadata({
     locale,
     path: "/pricing",
-    title: "Pricing — transparent website design for studios",
-    description:
-      "Clear pricing for architecture and interior design studio websites: €1,500 one-time design and build, with optional hosting (€30/mo) and content care (€120/mo).",
+    title: content.pageMeta.pricing.title,
+    description: content.pageMeta.pricing.description,
     keywords: PRICING_KW[locale] ?? PRICING_KW.en,
   });
 }
@@ -79,10 +49,16 @@ function CheckList({ items, light = false }: { items: string[]; light?: boolean 
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
           <Check
-            className={light ? "mt-1 h-4 w-4 flex-shrink-0 text-clay" : "mt-1 h-4 w-4 flex-shrink-0 text-bronze"}
+            className={
+              light ? "mt-1 h-4 w-4 flex-shrink-0 text-clay" : "mt-1 h-4 w-4 flex-shrink-0 text-bronze"
+            }
             aria-hidden="true"
           />
-          <span className={light ? "text-[16px] leading-relaxed text-inverted/72" : "text-[16px] leading-relaxed text-primary"}>
+          <span
+            className={
+              light ? "text-[16px] leading-relaxed text-inverted/72" : "text-[16px] leading-relaxed text-primary"
+            }
+          >
             {item}
           </span>
         </li>
@@ -94,6 +70,10 @@ function CheckList({ items, light = false }: { items: string[]; light?: boolean 
 export default async function PricingPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const content = getContent(locale);
+  const featured = content.pricing.oneTime.find((p) => p.featured)!;
+  const [hostingCare, studioCare] = content.pricing.recurring;
+  const home = content.home;
 
   return (
     <>
@@ -101,15 +81,15 @@ export default async function PricingPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Simple pricing for architecture studio websites."
+              text={content.pricing.heading}
               as="h1"
-              className="text-page-title max-w-[16ch] text-inverted"
+              className="text-page-title max-w-[20ch] text-inverted"
             />
             <AnimatedText
               className="text-support max-w-[560px] text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
-              One clear price for strategy, design, and development.
+              {content.pricing.sub}
             </AnimatedText>
           </div>
         </Container>
@@ -120,26 +100,27 @@ export default async function PricingPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
             <AnimatedText as="div" delay={0.04} className="lg:pr-2">
               <AnimatedTitle
-                text="Simple pricing for architecture studio websites."
+                text={featured.name}
                 as="h2"
                 className="text-section mb-6 max-w-[620px] text-inverted"
               />
               <AnimatedText className="text-support mb-8 max-w-[560px] text-inverted/66" delay={0.1}>
-                One clear price for strategy, design, and development.
+                {featured.desc}
               </AnimatedText>
-              <h2 id="main-price-heading" className="font-heading text-[clamp(62px,9vw,122px)] font-medium leading-[0.9] tracking-[-0.03em] text-inverted">
-                €1,500
+              <h2
+                id="main-price-heading"
+                className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-inverted"
+              >
+                {featured.price}
               </h2>
-              <p className="mt-2 text-[18px] leading-relaxed text-inverted/74">
-                One-time payment
-              </p>
+              <p className="mt-2 text-[18px] leading-relaxed text-inverted/74">{home.offerPaymentLabel}</p>
               <div className="mt-7">
                 <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-                  <Link href={`/${locale}/contact`}>Start your website</Link>
+                  <Link href={`/${locale}/contact`}>{content.nav.cta}</Link>
                 </Button>
               </div>
               <div className="mt-8 pt-1">
-                <CheckList items={mainIncludes} light />
+                <CheckList items={[...featured.includes]} light />
               </div>
             </AnimatedText>
 
@@ -147,7 +128,7 @@ export default async function PricingPage({ params }: Props) {
               <div className="relative aspect-[1/1] w-full overflow-hidden rounded-[12px]">
                 <Image
                   src={assetPath("/images/mood.png")}
-                  alt="Visual mood for the website offering"
+                  alt={home.moodImageAlt}
                   fill
                   loading="lazy"
                   className="object-contain object-center"
@@ -160,24 +141,20 @@ export default async function PricingPage({ params }: Props) {
           <div className="mt-12 grid grid-cols-1 gap-3.5 md:grid-cols-2">
             <AnimatedText as="div" delay={0.14}>
               <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">Hosting package</p>
+                <p className="text-[17px] font-medium text-inverted/92">{hostingCare.name}</p>
                 <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  €30<span className="ml-1 text-[15px] text-inverted/62">/month</span>
+                  {hostingCare.price}
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">
-                  Hosting, updates, backups, and small fixes.
-                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{hostingCare.desc}</p>
               </div>
             </AnimatedText>
             <AnimatedText as="div" delay={0.18}>
               <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">Content updates</p>
+                <p className="text-[17px] font-medium text-inverted/92">{studioCare.name}</p>
                 <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  €120<span className="ml-1 text-[15px] text-inverted/62">/month</span>
+                  {studioCare.price}
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">
-                  Extra pages and project uploads.
-                </p>
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{studioCare.desc}</p>
               </div>
             </AnimatedText>
           </div>
@@ -188,12 +165,12 @@ export default async function PricingPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr]">
             <AnimatedTitle
-              text="Questions."
+              text={content.pricingPage.faqHeading}
               as="h2"
               id="pricing-faq-heading"
               className="text-display text-primary"
             />
-            <FAQAccordion items={faq} />
+            <FAQAccordion items={[...content.pricingPage.faq]} />
           </div>
         </Container>
       </section>

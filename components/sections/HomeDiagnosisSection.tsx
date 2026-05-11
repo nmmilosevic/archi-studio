@@ -10,31 +10,33 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { assetPath } from "@/lib/paths";
 
+export type DiagnosisPoint = {
+  title: string;
+  description: string;
+};
+
 interface HomeDiagnosisSectionProps {
   locale: string;
   title: string;
   body: string;
   cta: string;
+  points: readonly DiagnosisPoint[];
+  floatCards: readonly DiagnosisPoint[];
+  imageAlt: string;
   /** Warm beige (default) or charcoal for dark band. Layout unchanged. */
   variant?: "warm" | "charcoal";
 }
 
-const diagnosisPoints = [
-  {
-    title: "Positioning",
-    description: "Your studio value should be understood in seconds, not guessed after scrolling.",
-  },
-  {
-    title: "Project presentation",
-    description: "Case studies need clearer hierarchy so each project feels intentional and premium.",
-  },
-  {
-    title: "Contact flow",
-    description: "From first impression to enquiry, each step should reduce friction and build trust.",
-  },
-] as const;
-
-export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm" }: HomeDiagnosisSectionProps) {
+export function HomeDiagnosisSection({
+  locale,
+  title,
+  body,
+  cta,
+  points,
+  floatCards,
+  imageAlt,
+  variant = "warm",
+}: HomeDiagnosisSectionProps) {
   const isCharcoal = variant === "charcoal";
 
   return (
@@ -79,7 +81,7 @@ export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm
             </AnimatedText>
 
             <div className="mt-10 space-y-5">
-              {diagnosisPoints.map((point, index) => (
+              {points.map((point, index) => (
                 <AnimatedText key={point.title} as="div" delay={0.24 + index * 0.06}>
                   <div
                     className={clsx(
@@ -110,7 +112,7 @@ export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm
               <div className="relative aspect-[4/3]">
                 <Image
                   src={assetPath("/images/imagesection.png")}
-                  alt="Website audit visual composition"
+                  alt={imageAlt}
                   fill
                   className="object-cover object-top"
                   sizes="(min-width: 1024px) 44vw, 100vw"
@@ -118,6 +120,7 @@ export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm
               </div>
             </div>
 
+            {floatCards[0] ? (
             <div
               className={clsx(
                 "absolute left-0 top-[16%] w-[68%] rounded-[14px] p-4 shadow-[0_18px_44px_rgb(20_16_12/0.1)]",
@@ -126,11 +129,15 @@ export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm
                   : "border border-charcoal/14 bg-offwhite/95"
               )}
             >
-              <p className={clsx("text-[13px] font-medium", isCharcoal ? "text-inverted" : "text-primary")}>Positioning</p>
+              <p className={clsx("text-[13px] font-medium", isCharcoal ? "text-inverted" : "text-primary")}>
+                {floatCards[0].title}
+              </p>
               <p className={clsx("mt-1 text-[13px] leading-relaxed", isCharcoal ? "text-inverted/65" : "text-muted")}>
-                Clarify what your studio is known for.
+                {floatCards[0].description}
               </p>
             </div>
+            ) : null}
+            {floatCards[1] ? (
             <div
               className={clsx(
                 "absolute left-[9%] top-[47%] w-[66%] rounded-[14px] p-4 shadow-[0_18px_44px_rgb(20_16_12/0.1)]",
@@ -140,12 +147,14 @@ export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm
               )}
             >
               <p className={clsx("text-[13px] font-medium", isCharcoal ? "text-inverted" : "text-primary")}>
-                Project presentation
+                {floatCards[1].title}
               </p>
               <p className={clsx("mt-1 text-[13px] leading-relaxed", isCharcoal ? "text-inverted/65" : "text-muted")}>
-                Improve hierarchy and reading rhythm.
+                {floatCards[1].description}
               </p>
             </div>
+            ) : null}
+            {floatCards[2] ? (
             <div
               className={clsx(
                 "absolute right-[6%] bottom-[4%] w-[62%] rounded-[14px] p-4 shadow-[0_18px_44px_rgb(20_16_12/0.1)]",
@@ -154,11 +163,14 @@ export function HomeDiagnosisSection({ locale, title, body, cta, variant = "warm
                   : "border border-charcoal/14 bg-offwhite/95"
               )}
             >
-              <p className={clsx("text-[13px] font-medium", isCharcoal ? "text-inverted" : "text-primary")}>Contact flow</p>
+              <p className={clsx("text-[13px] font-medium", isCharcoal ? "text-inverted" : "text-primary")}>
+                {floatCards[2].title}
+              </p>
               <p className={clsx("mt-1 text-[13px] leading-relaxed", isCharcoal ? "text-inverted/65" : "text-muted")}>
-                Reduce friction from interest to enquiry.
+                {floatCards[2].description}
               </p>
             </div>
+            ) : null}
           </motion.div>
         </div>
       </Container>
