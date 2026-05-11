@@ -439,7 +439,7 @@ const es = {
     pricing: {
       title: "Precios — paquetes web transparentes para estudios",
       description:
-        "Precios de partida para estudios de arquitectura e interiorismo: vista previa de auditoría, actualización de estudio, web signature y estudio editorial — con mantenimiento opcional desde 49€/mes.",
+        "Precios claros para webs de estudios de arquitectura e interiorismo: 1.500€ diseño y desarrollo en pago único, con alojamiento opcional (30€/mes) y cuidado de contenido (120€/mes).",
     },
     audit: {
       title: "Revisión web gratuita para estudios de arquitectura e interiorismo",
@@ -477,6 +477,27 @@ const es = {
     offerPriceDetail:
       "Estrategia, diseño a medida y desarrollo. Una cifra. Un calendario. Lo esencial para publicar una web a la altura de tu trabajo.",
     offerPaymentLabel: "Pago único",
+    simpleMarketingOffer: {
+      price: "1.500€",
+      includes: [
+        "Estrategia web",
+        "Diseño a medida",
+        "Desarrollo responsive",
+        "Bases SEO",
+        "Formulario de contacto",
+        "Soporte de lanzamiento",
+      ],
+      hostingCard: {
+        title: "Paquete de alojamiento",
+        price: "30€/mes",
+        desc: "Alojamiento, actualizaciones, copias de seguridad y pequeñas correcciones.",
+      },
+      contentCard: {
+        title: "Actualizaciones de contenido",
+        price: "120€/mes",
+        desc: "Páginas extra y subida de proyectos.",
+      },
+    },
     showcaseLabels: [
       "Estilo mediterráneo",
       "Estilo orgánico",
@@ -579,19 +600,19 @@ const es = {
     faq: [
       {
         q: "¿Es obligatorio el alojamiento?",
-        a: "No. Puedes alojar en otro sitio. Nuestros planes de cuidado de alojamiento en Vercel empiezan en 49€/mes si quieres que lo gestionemos.",
+        a: "No. Puedes alojar la web por tu cuenta si lo prefieres.",
       },
       {
-        q: "¿Las actualizaciones tras el lanzamiento están incluidas?",
-        a: "Las correcciones de lanzamiento del alcance acordado sí. Contenido y SEO continuos van con cuidado de estudio y cuidado de crecimiento.",
+        q: "¿Las actualizaciones están incluidas?",
+        a: "Las correcciones pequeñas del lanzamiento están incluidas. Las actualizaciones continuas están disponibles por 120€/mes.",
       },
       {
-        q: "¿Cuánto tarda un rediseño?",
-        a: "Una actualización de estudio suele tardar 1–2 semanas. Una web signature 3–5 semanas. Un estudio editorial 6–10 semanas según alcance y contenido.",
+        q: "¿Cuánto tarda?",
+        a: "La mayoría de webs pueden publicarse en 2 a 4 semanas según contenido y feedback.",
       },
       {
         q: "¿El sitio es mío?",
-        a: "Sí. Tras el pago del alcance acordado, el sitio y el contenido que te entregamos son tuyos.",
+        a: "Sí. El precio de 1.500€ incluye el diseño y la construcción completos del sitio.",
       },
     ],
   },

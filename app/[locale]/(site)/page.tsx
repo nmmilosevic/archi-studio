@@ -71,8 +71,7 @@ export default async function HomePage({ params }: Props) {
   const content = getContent(locale);
   const hero = content.hero;
   const home = content.home;
-  const featured = content.pricing.oneTime.find((p) => p.featured)!;
-  const [hostingCare, studioCare] = content.pricing.recurring;
+  const offer = home.simpleMarketingOffer;
 
   return (
     <>
@@ -202,7 +201,7 @@ export default async function HomePage({ params }: Props) {
                 className="text-section mb-6 max-w-[620px] text-primary"
               />
               <p className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-primary">
-                {featured.price}
+                {offer.price}
               </p>
               <p className="mt-2 font-body text-[18px] leading-relaxed text-muted">{home.offerPaymentLabel}</p>
               <p className="mt-4 max-w-[560px] text-[15px] leading-relaxed text-primary/78">{home.offerPriceDetail}</p>
@@ -212,7 +211,7 @@ export default async function HomePage({ params }: Props) {
                 </Link>
               </Button>
               <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-3 pt-1 sm:grid-cols-2">
-                {featured.includes.map((item) => (
+                {offer.includes.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <Check className="mt-1 h-4 w-4 flex-shrink-0 text-bronze" aria-hidden="true" />
                     <span className="text-[16px] leading-relaxed text-primary/85">{item}</span>
@@ -237,16 +236,16 @@ export default async function HomePage({ params }: Props) {
           <div className="mt-12 grid grid-cols-1 gap-3.5 md:grid-cols-2">
             <AnimatedText as="div" delay={0.16}>
               <div className="rounded-[12px] border border-charcoal/10 bg-white/55 p-5">
-                <p className="text-[17px] font-medium text-primary">{hostingCare.name}</p>
-                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">{hostingCare.price}</p>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{hostingCare.desc}</p>
+                <p className="text-[17px] font-medium text-primary">{offer.hostingCard.title}</p>
+                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">{offer.hostingCard.price}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{offer.hostingCard.desc}</p>
               </div>
             </AnimatedText>
             <AnimatedText as="div" delay={0.2}>
               <div className="rounded-[12px] border border-charcoal/10 bg-white/55 p-5">
-                <p className="text-[17px] font-medium text-primary">{studioCare.name}</p>
-                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">{studioCare.price}</p>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{studioCare.desc}</p>
+                <p className="text-[17px] font-medium text-primary">{offer.contentCard.title}</p>
+                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">{offer.contentCard.price}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-muted">{offer.contentCard.desc}</p>
               </div>
             </AnimatedText>
           </div>

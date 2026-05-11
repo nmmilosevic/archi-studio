@@ -439,7 +439,7 @@ const en = {
     pricing: {
       title: "Pricing — transparent website packages for studios",
       description:
-        "Starting prices for architecture and interior studio websites: audit preview, studio refresh, signature site, and editorial builds — plus optional monthly care from 49€.",
+        "Clear pricing for architecture and interior design studio websites: 1,500€ one-time design and build, with optional hosting (30€/mo) and content care (120€/mo).",
     },
     audit: {
       title: "Free website review for architecture & interior studios",
@@ -477,6 +477,27 @@ const en = {
     offerPriceDetail:
       "Strategy, custom design, and development. One figure. One timeline. What you need to launch a site that reflects the quality of your work.",
     offerPaymentLabel: "One-time payment",
+    simpleMarketingOffer: {
+      price: "1,500€",
+      includes: [
+        "Website strategy",
+        "Custom design",
+        "Responsive development",
+        "SEO basics",
+        "Contact form",
+        "Launch support",
+      ],
+      hostingCard: {
+        title: "Hosting package",
+        price: "30€/month",
+        desc: "Hosting, updates, backups, and small fixes.",
+      },
+      contentCard: {
+        title: "Content updates",
+        price: "120€/month",
+        desc: "Extra pages and project uploads.",
+      },
+    },
     showcaseLabels: [
       "Mediterranean style",
       "Organic style",
@@ -579,19 +600,19 @@ const en = {
     faq: [
       {
         q: "Is hosting required?",
-        a: "No. You can host elsewhere. Our Hosting care plans on Vercel start at 49€/month if you want us to manage it.",
+        a: "No. You can host the site yourself if you prefer.",
       },
       {
-        q: "Are updates included after launch?",
-        a: "Launch fixes are included in the agreed scope. Ongoing content and SEO work is available through Studio care and Growth care.",
+        q: "Are updates included?",
+        a: "Small launch fixes are included. Ongoing updates are available for 120€/month.",
       },
       {
-        q: "How long does a redesign take?",
-        a: "A studio refresh typically takes 1–2 weeks. A signature site takes 3–5 weeks. An editorial studio build takes 6–10 weeks, depending on scope and content readiness.",
+        q: "How long does it take?",
+        a: "Most websites can be launched in 2 to 4 weeks depending on content and feedback.",
       },
       {
         q: "Do I own the website?",
-        a: "Yes. After payment for the agreed scope, the site and content we deliver for you are yours.",
+        a: "Yes. The 1,500€ price gives you the full website design and build.",
       },
     ],
   },

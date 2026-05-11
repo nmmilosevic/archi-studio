@@ -71,9 +71,8 @@ export default async function PricingPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const content = getContent(locale);
-  const featured = content.pricing.oneTime.find((p) => p.featured)!;
-  const [hostingCare, studioCare] = content.pricing.recurring;
   const home = content.home;
+  const offer = home.simpleMarketingOffer;
 
   return (
     <>
@@ -100,18 +99,18 @@ export default async function PricingPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
             <AnimatedText as="div" delay={0.04} className="lg:pr-2">
               <AnimatedTitle
-                text={featured.name}
+                text={home.offerTitle}
                 as="h2"
                 className="text-section mb-6 max-w-[620px] text-inverted"
               />
               <AnimatedText className="text-support mb-8 max-w-[560px] text-inverted/66" delay={0.1}>
-                {featured.desc}
+                {home.offerPriceDetail}
               </AnimatedText>
               <h2
                 id="main-price-heading"
                 className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-inverted"
               >
-                {featured.price}
+                {offer.price}
               </h2>
               <p className="mt-2 text-[18px] leading-relaxed text-inverted/74">{home.offerPaymentLabel}</p>
               <div className="mt-7">
@@ -120,7 +119,7 @@ export default async function PricingPage({ params }: Props) {
                 </Button>
               </div>
               <div className="mt-8 pt-1">
-                <CheckList items={[...featured.includes]} light />
+                <CheckList items={[...offer.includes]} light />
               </div>
             </AnimatedText>
 
@@ -141,20 +140,20 @@ export default async function PricingPage({ params }: Props) {
           <div className="mt-12 grid grid-cols-1 gap-3.5 md:grid-cols-2">
             <AnimatedText as="div" delay={0.14}>
               <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">{hostingCare.name}</p>
+                <p className="text-[17px] font-medium text-inverted/92">{offer.hostingCard.title}</p>
                 <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  {hostingCare.price}
+                  {offer.hostingCard.price}
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{hostingCare.desc}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{offer.hostingCard.desc}</p>
               </div>
             </AnimatedText>
             <AnimatedText as="div" delay={0.18}>
               <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">{studioCare.name}</p>
+                <p className="text-[17px] font-medium text-inverted/92">{offer.contentCard.title}</p>
                 <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  {studioCare.price}
+                  {offer.contentCard.price}
                 </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{studioCare.desc}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{offer.contentCard.desc}</p>
               </div>
             </AnimatedText>
           </div>

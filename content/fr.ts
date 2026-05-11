@@ -439,7 +439,7 @@ const fr = {
     pricing: {
       title: "Tarifs — offres web transparentes pour studios",
       description:
-        "Prix de départ pour studios d'architecture et d'intérieur : aperçu d'audit, actualisation studio, site signature et offre éditoriale — avec maintenance optionnelle dès 49€/mois.",
+        "Tarifs clairs pour sites de studios d'architecture et d'intérieur : 1 500€ conception et développement en une fois, avec hébergement optionnel (30€/mois) et suivi contenu (120€/mois).",
     },
     audit: {
       title: "Revue de site gratuite pour studios d'architecture et d'intérieur",
@@ -477,6 +477,27 @@ const fr = {
     offerPriceDetail:
       "Stratégie, design sur mesure et développement. Un montant. Un calendrier. L'essentiel pour un site à la hauteur de votre travail.",
     offerPaymentLabel: "Paiement unique",
+    simpleMarketingOffer: {
+      price: "1 500€",
+      includes: [
+        "Stratégie site web",
+        "Design sur mesure",
+        "Développement responsive",
+        "Bases SEO",
+        "Formulaire de contact",
+        "Support au lancement",
+      ],
+      hostingCard: {
+        title: "Forfait hébergement",
+        price: "30€/mois",
+        desc: "Hébergement, mises à jour, sauvegardes et petites corrections.",
+      },
+      contentCard: {
+        title: "Mises à jour de contenu",
+        price: "120€/mois",
+        desc: "Pages supplémentaires et ajout de projets.",
+      },
+    },
     showcaseLabels: [
       "Style méditerranéen",
       "Style organique",
@@ -579,19 +600,19 @@ const fr = {
     faq: [
       {
         q: "L'hébergement est-il obligatoire ?",
-        a: "Non. Vous pouvez héberger ailleurs. Nos formules Soin hébergement sur Vercel commencent à 49€/mois si vous souhaitez que nous gérions l'infrastructure.",
+        a: "Non. Vous pouvez héberger le site vous-même si vous préférez.",
       },
       {
-        q: "Les mises à jour après le lancement sont-elles incluses ?",
-        a: "Les corrections de lancement incluses dans le périmètre convenu le sont. Le contenu et le SEO continus passent par Soin studio et Soin croissance.",
+        q: "Les mises à jour sont-elles incluses ?",
+        a: "Les petites corrections de lancement sont incluses. Les mises à jour régulières sont disponibles à partir de 120€/mois.",
       },
       {
-        q: "Combien de temps prend une refonte ?",
-        a: "Une actualisation studio prend en général 1 à 2 semaines. Un site signature prend 3 à 5 semaines. Un studio éditorial prend 6 à 10 semaines selon le périmètre et le contenu.",
+        q: "Combien de temps cela prend-il ?",
+        a: "La plupart des sites peuvent être mis en ligne en 2 à 4 semaines selon le contenu et les retours.",
       },
       {
         q: "Est-ce que je possède le site ?",
-        a: "Oui. Après règlement du périmètre convenu, le site et le contenu livré pour vous vous appartiennent.",
+        a: "Oui. Le tarif à 1 500€ couvre la conception et la réalisation complètes du site.",
       },
     ],
   },
