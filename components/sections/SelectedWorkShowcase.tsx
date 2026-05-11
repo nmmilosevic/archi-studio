@@ -16,75 +16,83 @@ import darkLuxuryImage from "@/public/images/autoscroll/dark-luxury.png";
 
 interface ShowcaseItem {
   id: string;
-  title: string;
   image: typeof mediteraneanImage;
   offsetClass: string;
 }
 
-const items: ShowcaseItem[] = [
+const baseItems: ShowcaseItem[] = [
   {
     id: "mediteranean-style",
-    title: "Mediterranean style",
     image: mediteraneanImage,
     offsetClass: "mt-0 md:mt-0",
   },
   {
     id: "organic-style",
-    title: "Organic style",
     image: organicImage,
     offsetClass: "mt-6 md:mt-10",
   },
   {
     id: "avantforme-style",
-    title: "Avantforme style",
     image: avantformeImage,
     offsetClass: "mt-2 md:mt-4",
   },
   {
     id: "futuristic-style",
-    title: "Futuristic style",
     image: futuristicImage,
     offsetClass: "mt-8 md:mt-14",
   },
   {
     id: "japan-style",
-    title: "Japan style",
     image: japanImage,
     offsetClass: "mt-1 md:mt-2",
   },
   {
     id: "luxury-style",
-    title: "Luxury style",
     image: luxuryImage,
     offsetClass: "mt-7 md:mt-12",
   },
   {
     id: "modern-eco-style",
-    title: "Modern eco style",
     image: modernEcoImage,
     offsetClass: "mt-3 md:mt-5",
   },
   {
     id: "parisian-style",
-    title: "Parisian style",
     image: parisianImage,
     offsetClass: "mt-5 md:mt-10",
   },
   {
     id: "dark-luxury-style",
-    title: "Dark luxury style",
     image: darkLuxuryImage,
     offsetClass: "mt-2 md:mt-2",
   },
 ];
 
+type Props = {
+  /** One label per showcase card, same order as the image strip. */
+  styleLabels: readonly string[];
+};
+
+function buildItems(labels: readonly string[]) {
+  if (labels.length !== baseItems.length) {
+    throw new Error(
+      `SelectedWorkShowcase: expected ${baseItems.length} style labels, got ${labels.length}`
+    );
+  }
+  return baseItems.map((item, i) => ({
+    ...item,
+    title: labels[i] ?? "",
+  }));
+}
+
 const AUTO_PAUSE_MS = 3200;
 /** ~same perceived pace as the former 90s marquee over half the duplicated track */
 const AUTO_SCROLL_PX_PER_SEC = 42;
 
-export function SelectedWorkShowcase() {
+export function SelectedWorkShowcase({ styleLabels }: Props) {
   const reduced = useReducedMotion();
-  const doubledItems = useMemo(() => [...items, ...items], []);
+  const items = useMemo(() => buildItems(styleLabels), [styleLabels]);
+  const doubledItems = useMemo(() => [...items, ...items], [items]);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   /** Last scrollLeft we applied in the auto-scroll loop (async `scroll` events must not look like “user”). */
   const lastAutoScrollLeftRef = useRef(0);
