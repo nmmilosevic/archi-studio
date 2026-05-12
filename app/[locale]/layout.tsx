@@ -50,10 +50,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.svg`, type: "image/svg+xml" },
-      { url: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/favicon.ico` },
-    ],
+    icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icon.svg?v=5`,
+    shortcut: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icon.svg?v=5`,
+    apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icon.svg?v=5`,
   },
 };
 
@@ -100,6 +99,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <link
           href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap"
           rel="stylesheet"
+        />
+        <link rel="icon" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icon.svg?v=5`} />
+        <link
+          rel="shortcut icon"
+          href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/icon.svg?v=5`}
         />
       </head>
       <body>

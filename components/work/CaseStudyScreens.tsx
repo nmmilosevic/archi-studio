@@ -185,11 +185,11 @@ export function CaseStudyScreens({ title, heading, screens }: Props) {
           onClick={close}
         >
           <div
-            className="pointer-events-none absolute inset-0 bg-charcoal/88 backdrop-blur-[2px]"
+            className="absolute inset-0 bg-charcoal/88 backdrop-blur-[2px]"
             aria-hidden
           />
           <div
-            className="relative z-10 flex min-h-0 w-full max-w-none cursor-auto flex-col"
+            className="relative z-10 flex min-h-0 w-auto max-w-[96vw] cursor-auto flex-col pointer-events-none"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-3 flex shrink-0 justify-end">
@@ -197,14 +197,14 @@ export function CaseStudyScreens({ title, heading, screens }: Props) {
                 ref={closeRef}
                 type="button"
                 onClick={close}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-inverted/20 bg-charcoal/90 text-inverted shadow-[0_8px_24px_rgb(0_0_0/0.35)] transition-colors hover:bg-inverted/12 hover:text-bronze"
+                className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-inverted/20 bg-charcoal/90 text-inverted shadow-[0_8px_24px_rgb(0_0_0/0.35)] transition-colors hover:bg-inverted/12 hover:text-bronze"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
               </button>
             </div>
             <div
-              className="relative h-[min(86vh,1120px)] w-full min-h-[200px] min-w-0 touch-none md:touch-auto"
+              className="pointer-events-auto relative h-[min(86vh,1120px)] w-[min(96vw,1700px)] min-h-[200px] min-w-0 touch-none md:touch-auto"
               onPointerDown={handlePointerDown}
               onPointerUp={handlePointerUp}
               onPointerCancel={handlePointerCancel}
@@ -214,10 +214,11 @@ export function CaseStudyScreens({ title, heading, screens }: Props) {
                 alt={`${title} ${active.label}`}
                 fill
                 quality={92}
-                className="pointer-events-none object-contain object-center select-none"
+                className="pointer-events-auto object-contain object-center select-none"
                 sizes="100vw"
                 priority
                 draggable={false}
+                onClick={(e) => e.stopPropagation()}
               />
             </div>
             <p id={labelId} className="mt-4 text-center text-[15px] text-inverted/72">
