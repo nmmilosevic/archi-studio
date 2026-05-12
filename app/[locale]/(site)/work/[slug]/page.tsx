@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CaseStudyPageTemplate } from "@/components/work/CaseStudyPageTemplate";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import en from "@/content/en";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 const VALID_SLUGS: readonly string[] = en.work.items.map((item) => item.slug);
 
@@ -87,6 +89,16 @@ export default async function WorkDetailPage({ params }: Props) {
 
   const item = content.work.items[index];
   const labels = content.work.caseStudy;
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: absoluteLocaleUrl(locale, "") },
+    { name: "Projects", url: absoluteLocaleUrl(locale, "/work") },
+    { name: item.title, url: absoluteLocaleUrl(locale, `/work/${slug}`) },
+  ]);
 
-  return <CaseStudyPageTemplate locale={locale} item={item} labels={labels} />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <CaseStudyPageTemplate locale={locale} item={item} labels={labels} />
+    </>
+  );
 }

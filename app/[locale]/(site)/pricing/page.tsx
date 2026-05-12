@@ -9,8 +9,10 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import { assetPath } from "@/lib/paths";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -73,9 +75,14 @@ export default async function PricingPage({ params }: Props) {
   const content = getContent(locale);
   const home = content.home;
   const offer = home.simpleMarketingOffer;
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: absoluteLocaleUrl(locale, "") },
+    { name: "Pricing", url: absoluteLocaleUrl(locale, "/pricing") },
+  ]);
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <section className="bg-charcoal pt-36 pb-24 text-inverted md:pt-48 md:pb-36">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">

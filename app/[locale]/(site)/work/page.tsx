@@ -4,8 +4,10 @@ import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import type { Metadata } from "next";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -47,6 +49,10 @@ export default async function WorkPage({ params }: Props) {
   setRequestLocale(locale);
   const content = getContent(locale);
   const workContent = content.work;
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: absoluteLocaleUrl(locale, "") },
+    { name: "Projects", url: absoluteLocaleUrl(locale, "/work") },
+  ]);
 
   const work = {
     items: workContent.items.map((item) => ({
@@ -59,6 +65,7 @@ export default async function WorkPage({ params }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <section className="bg-stone pt-30 pb-18 md:pt-38 md:pb-24">
         <Container>
           <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">

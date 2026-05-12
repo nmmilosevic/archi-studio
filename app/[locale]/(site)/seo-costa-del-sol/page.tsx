@@ -5,10 +5,12 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { MapPin } from "lucide-react";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -38,6 +40,10 @@ export default async function SEOPage({ params }: Props) {
   const content = getContent(locale);
   const seoContent = content.seo;
   const seoPage = content.seoPage;
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: absoluteLocaleUrl(locale, "") },
+    { name: "SEO", url: absoluteLocaleUrl(locale, "/seo-costa-del-sol") },
+  ]);
 
   const seo = {
     ...seoContent,
@@ -47,6 +53,7 @@ export default async function SEOPage({ params }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <PageHero heading={seo.heading} subtext={seo.sub} />
 
       <section className="section-space-tight bg-offwhite" aria-label="SEO introduction">

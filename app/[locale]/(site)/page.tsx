@@ -271,20 +271,14 @@ export default async function HomePage({ params }: Props) {
         variant="charcoal"
       />
 
-      <section className="bg-offwhite pb-16" aria-labelledby="studio-seo-topics">
-        <Container>
-          <div className="max-w-4xl border-t border-charcoal/10 pt-10">
-            <h2 id="studio-seo-topics" className="font-heading text-[24px] font-medium text-primary">
-              Website foundations for architecture and interior studios
-            </h2>
-            <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-muted">
-              We design architecture website systems and interior design studio websites that stay editorial while remaining easy to update. Each build focuses on mobile-first project presentation, clear enquiry paths, and CMS structures teams can manage without friction.
-            </p>
-            <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-muted">
-              From Costa del Sol studios in Marbella and Estepona to international-facing firms, our approach combines portfolio storytelling, technical SEO, and performance so premium work is discoverable and trusted on search.
-            </p>
-          </div>
-        </Container>
+      <section className="sr-only" aria-labelledby="studio-seo-topics">
+        <h2 id="studio-seo-topics">Architecture and interior website expertise</h2>
+        <p>
+          Reframe Studio designs premium architecture website design systems and interior design studio websites with editorial direction, mobile-first UX, and scalable portfolio systems for architects.
+        </p>
+        <p>
+          We work with studios in Marbella, Malaga, Estepona, and across the Costa del Sol in Spain, combining performance, technical SEO, and calm premium presentation.
+        </p>
       </section>
     </>
   );

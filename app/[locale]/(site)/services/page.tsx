@@ -6,10 +6,12 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { buildPageMetadata } from "@/lib/seo";
+import { absoluteLocaleUrl } from "@/lib/seo";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { getContent } from "@/lib/getContent";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -51,6 +53,10 @@ export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const serviceContent = getContent(locale).services;
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: absoluteLocaleUrl(locale, "") },
+    { name: "Services", url: absoluteLocaleUrl(locale, "/services") },
+  ]);
 
   const services = {
     heading: serviceContent.heading,
@@ -62,6 +68,7 @@ export default async function ServicesPage({ params }: Props) {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <PageHero
         heading={services.heading}
         subtext="From website redesigns to local SEO foundations and portfolio systems, every service is built around how architecture and interior studios actually work and how their clients actually search."

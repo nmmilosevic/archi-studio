@@ -7,7 +7,9 @@ import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { buildPageMetadata, faqSchema } from "@/lib/seo";
+import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
+import { breadcrumbSchema } from "@/lib/structured-data";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -50,10 +52,15 @@ export default async function AuditPage({ params }: Props) {
   const audit = content.audit;
   const faqItems = [...audit.faq];
   const jsonLd = faqSchema(faqItems);
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: absoluteLocaleUrl(locale, "") },
+    { name: "Audit", url: absoluteLocaleUrl(locale, "/audit") },
+  ]);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
 
       <section className="bg-stone pt-36 pb-24 md:pt-48 md:pb-36">
         <Container>

@@ -78,6 +78,46 @@ export function getGlobalStructuredData() {
         serviceType: services,
         parentOrganization: { "@id": ORG_ID },
       },
+      {
+        "@type": "LocalBusiness",
+        "@id": `${SITE_URL}/#local-business`,
+        name: "Reframe Studio",
+        url: SITE_URL,
+        image: `${SITE_URL}/images/hero.png`,
+        logo: `${SITE_URL}/ref26.svg`,
+        description:
+          "Web design studio for architecture and interior design practices in Marbella, Malaga, Estepona, and across the Costa del Sol.",
+        email: BRAND.email,
+        telephone: "+34600000000",
+        areaServed: [
+          { "@type": "City", name: "Marbella" },
+          { "@type": "City", name: "Malaga" },
+          { "@type": "City", name: "Estepona" },
+          { "@type": "AdministrativeArea", name: "Costa del Sol" },
+          { "@type": "Country", name: "Spain" },
+        ],
+        sameAs: [BRAND.instagramLink, "https://www.linkedin.com/company/reframe-studio"],
+        makesOffer: services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: service,
+          },
+        })),
+      },
     ],
+  };
+}
+
+export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
   };
 }
