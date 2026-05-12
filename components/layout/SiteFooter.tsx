@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { BRAND } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
@@ -10,27 +10,14 @@ import { ReframeLogo } from "@/components/ui/ReframeLogo";
 export function SiteFooter() {
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const homePath = `/${locale}`;
 
-  /** Desktop: scroll to top only when already on home. Mobile: always go home, or smooth-scroll if already there. */
+  /** Logo behavior: if on home, smooth-scroll to top; otherwise navigate to home. */
   function handleLogoClick(event: MouseEvent<HTMLAnchorElement>) {
-    const isMobile =
-      typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches;
-
-    if (isMobile) {
+    if (pathname === homePath) {
       event.preventDefault();
-      if (pathname !== homePath) {
-        router.push(homePath);
-        return;
-      }
       window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
     }
-
-    if (pathname !== homePath) return;
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (

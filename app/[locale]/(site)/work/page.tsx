@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildPageMetadata({
     locale,
     path: "/work",
-    title: "Selected work — website redesign studies",
+    title: "Projects | Reframe Studio",
     description:
       "Website redesign studies for architecture and interior design studios—clearer portfolios, stronger positioning, and more credible digital presentation.",
     keywords: WORK_INDEX_KW[locale] ?? WORK_INDEX_KW.en,

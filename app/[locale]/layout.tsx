@@ -32,12 +32,12 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "REFRAME — Architecture & interior design studio websites",
-    template: "%s | REFRAME",
+    default: "Reframe Studio | Architecture & Interior Studio Websites",
+    template: "%s",
   },
   description:
-    "Premium website redesigns and digital positioning for architecture and interior design studios on the Costa del Sol.",
-  applicationName: "REFRAME",
+    "Premium websites for architecture and interior design studios. Editorial design, fast performance, mobile-first UX, and scalable project systems crafted for modern studios.",
+  applicationName: "Reframe Studio",
   robots: {
     index: true,
     follow: true,

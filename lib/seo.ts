@@ -38,8 +38,13 @@ export type PageSeoInput = {
   path: string;
   title: string;
   description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
   keywords?: string[];
   ogImage?: string;
+  twitterImage?: string;
   robots?: Metadata["robots"];
 };
 
@@ -51,32 +56,48 @@ function resolveOgImageUrl(ogImage: string): string {
   return `${SITE_URL}${path}`;
 }
 
+function withBrandSuffix(value: string): string {
+  if (/reframe studio/i.test(value)) return value;
+  return `${value} | Reframe Studio`;
+}
+
 export function buildPageMetadata({
   locale,
   path,
   title,
   description,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
   keywords,
-  ogImage = "/og-image.png",
+  ogImage = "/images/hero.png",
+  twitterImage,
   robots = { index: true, follow: true },
 }: PageSeoInput): Metadata {
   const alternates = buildAlternates(locale, path);
   const canonical = alternates.canonical as string;
   const imageUrl = resolveOgImageUrl(ogImage);
+  const twitterImageUrl = resolveOgImageUrl(twitterImage ?? ogImage);
+  const resolvedTitle = withBrandSuffix(title);
+  const resolvedOgTitle = withBrandSuffix(ogTitle ?? title);
+  const resolvedOgDescription = ogDescription ?? description;
+  const resolvedTwitterTitle = withBrandSuffix(twitterTitle ?? resolvedOgTitle);
+  const resolvedTwitterDescription = twitterDescription ?? resolvedOgDescription;
   const ogLocale = OG_LOCALE[locale] ?? OG_LOCALE.en;
   const alternateLocale = SEO_LOCALES.filter((l) => l !== locale).map(
     (l) => OG_LOCALE[l] ?? l
   );
 
   return {
-    title,
+    title: resolvedTitle,
     description,
     ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
     alternates,
     robots,
     openGraph: {
-      title,
-      description,
+      title: resolvedOgTitle,
+      description: resolvedOgDescription,
       url: canonical,
       siteName: BRAND.name,
       locale: ogLocale,
@@ -93,9 +114,9 @@ export function buildPageMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      images: [imageUrl],
+      title: resolvedTwitterTitle,
+      description: resolvedTwitterDescription,
+      images: [twitterImageUrl],
     },
   };
 }

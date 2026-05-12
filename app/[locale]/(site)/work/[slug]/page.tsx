@@ -18,6 +18,35 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>;
 }
 
+const PROJECT_SEO: Record<
+  string,
+  {
+    title: string;
+    description: string;
+  }
+> = {
+  "villa-architecture-studio": {
+    title: "Aurea Studio Website Concept | Reframe Studio",
+    description:
+      "Contemporary website concept for an architecture studio. Bold editorial direction, structured project UX, and a calm premium atmosphere designed for immersive villa case studies.",
+  },
+  "casa-noma-marbella": {
+    title: "Casa Noma Website Redesign | Reframe Studio",
+    description:
+      "Minimal Mediterranean website concept for a luxury interior design studio. Warm editorial layouts, refined typography, and immersive project presentation with a smooth mobile-first UX rhythm.",
+  },
+  "forma-sur-malaga": {
+    title: "Forma Sur Website Identity | Reframe Studio",
+    description:
+      "Expressive website direction for an architecture studio in Malaga. High-contrast visual language, clear project navigation UX, and a confident urban atmosphere for portfolio storytelling.",
+  },
+  "terral-studio-estepona": {
+    title: "Terral Studio Portfolio System | Reframe Studio",
+    description:
+      "Portfolio-led website system for a landscape and outdoor design studio. Mediterranean visual direction, image-first UX flow, and an atmospheric presentation tuned for mobile exploration.",
+  },
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const content = getContent(locale);
@@ -26,11 +55,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (index === -1) return {};
 
   const item = content.work.items[index];
+  const seo = PROJECT_SEO[slug];
   return buildPageMetadata({
     locale,
     path: `/work/${slug}`,
-    title: `${item.title} — website case study`,
-    description: item.challenge,
+    title: seo?.title ?? `${item.title} | Reframe Studio`,
+    description: seo?.description ?? item.challenge,
+    ogTitle: seo?.title ?? `${item.title} | Reframe Studio`,
+    ogDescription: seo?.description ?? item.challenge,
+    twitterTitle: seo?.title ?? `${item.title} | Reframe Studio`,
+    twitterDescription: seo?.description ?? item.challenge,
+    ogImage: item.heroDesktop,
+    twitterImage: item.heroDesktop,
     keywords: [
       item.title,
       "architecture website",

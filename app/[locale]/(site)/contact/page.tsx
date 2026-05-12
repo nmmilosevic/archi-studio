@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildPageMetadata({
     locale,
     path: "/contact",
-    title: "Contact",
+    title: "Contact | Reframe Studio",
     description:
       "Start a conversation about your architecture or interior design studio website—strategy, redesign scope, and next steps.",
     keywords,

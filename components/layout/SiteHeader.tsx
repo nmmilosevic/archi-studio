@@ -56,24 +56,12 @@ export function SiteHeader() {
     router.replace(localizedPath, { scroll: false });
   }
 
-  /** Desktop: scroll to top only when already on home. Mobile (<lg): always go home and scroll to top. */
+  /** Logo behavior: if on home, smooth-scroll to top; otherwise navigate to home. */
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
-    const isMobileNav =
-      typeof window !== "undefined" && window.matchMedia("(max-width: 1023px)").matches;
-
-    if (isMobileNav) {
+    if (pathname === homePath) {
       event.preventDefault();
-      if (pathname !== homePath) {
-        router.push(homePath);
-        return;
-      }
       window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
     }
-
-    if (pathname !== homePath) return;
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
