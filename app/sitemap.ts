@@ -58,7 +58,14 @@ function hreflangAlternates(path: string): Record<string, string> {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [...STATIC_PATHS, ...WORK_PATHS];
-  const entries: MetadataRoute.Sitemap = [];
+  const entries: MetadataRoute.Sitemap = [
+    {
+      url: "https://reframestudio.es/",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+  ];
 
   for (const path of paths) {
     for (const locale of SEO_LOCALES) {

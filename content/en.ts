@@ -420,7 +420,7 @@ const en = {
   footer: {
     tagline: "Web design agency specializing in architecture and interior design studios on the Costa del Sol.",
     brandEntity:
-      "Reframe Studio (ReframeStudio) creates premium websites for architecture and interior design studios.",
+      "REFRAME is a web design studio for architecture and interior design firms, creating refined websites, portfolio systems, and presentation concepts.",
     homeAria: "Home",
     footerNavAria: "Key pages",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",

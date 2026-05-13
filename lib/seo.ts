@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BRAND, STUDIO_SEO } from "@/lib/constants";
+import { PREFERRED_SEO_DESCRIPTION, STUDIO_SEO, STUDIO_SEO_ALIASES } from "@/lib/constants";
 import { DEFAULT_LOCALE, SEO_LOCALES, SITE_URL } from "@/lib/site";
 
 const OG_LOCALE: Record<string, string> = {
@@ -46,6 +46,7 @@ export type PageSeoInput = {
   ogImage?: string;
   twitterImage?: string;
   robots?: Metadata["robots"];
+  canonical?: string;
 };
 
 function resolveOgImageUrl(ogImage: string): string {
@@ -57,8 +58,15 @@ function resolveOgImageUrl(ogImage: string): string {
 }
 
 function withBrandSuffix(value: string): string {
-  if (/reframe studio|reframestudio/i.test(value)) return value;
+  if (/reframe studio|reframestudio|reframe/i.test(value)) return value;
   return `${value} | ${STUDIO_SEO.name}`;
+}
+
+function withBrandDescription(description: string): string {
+  const normalized = description.trim();
+  if (!normalized) return PREFERRED_SEO_DESCRIPTION;
+  if (normalized.includes(PREFERRED_SEO_DESCRIPTION)) return normalized;
+  return `${PREFERRED_SEO_DESCRIPTION} ${normalized}`;
 }
 
 export function buildPageMetadata({
@@ -74,14 +82,20 @@ export function buildPageMetadata({
   ogImage = "/images/hero.png",
   twitterImage,
   robots = { index: true, follow: true },
+  canonical,
 }: PageSeoInput): Metadata {
   const alternates = buildAlternates(locale, path);
-  const canonical = alternates.canonical as string;
+  const canonicalUrl = canonical ?? (alternates.canonical as string);
+  const resolvedAlternates = {
+    ...alternates,
+    canonical: canonicalUrl,
+  };
   const imageUrl = resolveOgImageUrl(ogImage);
   const twitterImageUrl = resolveOgImageUrl(twitterImage ?? ogImage);
   const resolvedTitle = withBrandSuffix(title);
+  const resolvedDescription = withBrandDescription(description);
   const resolvedOgTitle = withBrandSuffix(ogTitle ?? title);
-  const resolvedOgDescription = ogDescription ?? description;
+  const resolvedOgDescription = withBrandDescription(ogDescription ?? resolvedDescription);
   const resolvedTwitterTitle = withBrandSuffix(twitterTitle ?? resolvedOgTitle);
   const resolvedTwitterDescription = twitterDescription ?? resolvedOgDescription;
   const ogLocale = OG_LOCALE[locale] ?? OG_LOCALE.en;
@@ -91,14 +105,16 @@ export function buildPageMetadata({
 
   return {
     title: resolvedTitle,
-    description,
-    ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
-    alternates,
+    description: resolvedDescription,
+    ...(keywords?.length
+      ? { keywords: [...STUDIO_SEO_ALIASES, ...keywords].join(", ") }
+      : { keywords: STUDIO_SEO_ALIASES.join(", ") }),
+    alternates: resolvedAlternates,
     robots,
     openGraph: {
       title: resolvedOgTitle,
       description: resolvedOgDescription,
-      url: canonical,
+      url: canonicalUrl,
       siteName: STUDIO_SEO.name,
       locale: ogLocale,
       alternateLocale,

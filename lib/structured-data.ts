@@ -1,31 +1,25 @@
-import { BRAND, STUDIO_SEO } from "@/lib/constants";
+import {
+  BRAND,
+  PREFERRED_SEO_DESCRIPTION,
+  STUDIO_SEO_ALIASES,
+} from "@/lib/constants";
 import { SITE_URL } from "@/lib/site";
 
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
-const CORE_SERVICE_TYPES = [
-  "Architecture Website Design",
-  "Interior Design Website Design",
-  "Luxury Studio Web Design",
-] as const;
+const CORE_SERVICE_TYPES = ["Architecture Website Design", "Interior Design Website Design"] as const;
 
-const EXTENDED_SERVICES = [
-  "Architecture web design studio",
-  "Architecture website agency",
-  "Luxury architecture websites",
-  "Interior design web design",
-  "Web design Spain",
-  "Marbella web design",
-  "Costa del Sol web design",
-  "Portfolio systems for architects",
-  "Mobile-first project presentation",
-  "CMS setup for architecture studios",
-  "Technical SEO and local SEO",
+const KNOWS_ABOUT = [
+  "architecture websites",
+  "interior design websites",
+  "portfolio websites",
+  "web design",
+  "branding presentation systems",
 ] as const;
 
 export function getGlobalStructuredData() {
-  const orgDescription = `${STUDIO_SEO.name} (${STUDIO_SEO.alternateName}) is a premium architecture web design studio based in Spain, crafting luxury architecture websites and interior design studio websites for practices across Marbella, the Costa del Sol, and nationwide.`;
+  const orgDescription = PREFERRED_SEO_DESCRIPTION;
 
   return {
     "@context": "https://schema.org",
@@ -33,10 +27,10 @@ export function getGlobalStructuredData() {
       {
         "@type": "Organization",
         "@id": ORG_ID,
-        name: STUDIO_SEO.name,
-        alternateName: [STUDIO_SEO.alternateName, BRAND.name],
-        legalName: STUDIO_SEO.name,
-        url: SITE_URL,
+        name: "REFRAME Studio",
+        alternateName: [...STUDIO_SEO_ALIASES],
+        legalName: "REFRAME Studio",
+        url: "https://reframestudio.es",
         description: orgDescription,
         email: BRAND.email,
         areaServed: [
@@ -44,7 +38,7 @@ export function getGlobalStructuredData() {
           { "@type": "AdministrativeArea", name: "Costa del Sol" },
           { "@type": "City", name: "Marbella" },
           { "@type": "City", name: "Málaga" },
-          { "@type": "City", name: "Estepona" },
+          { "@type": "Place", name: "Europe" },
         ],
         logo: {
           "@type": "ImageObject",
@@ -55,7 +49,7 @@ export function getGlobalStructuredData() {
           "https://www.linkedin.com/company/reframe-studio",
         ],
         serviceType: [...CORE_SERVICE_TYPES],
-        knowsAbout: [...EXTENDED_SERVICES],
+        knowsAbout: [...KNOWS_ABOUT],
         makesOffer: CORE_SERVICE_TYPES.map((name) => ({
           "@type": "Offer",
           itemOffered: {
@@ -70,8 +64,8 @@ export function getGlobalStructuredData() {
         "@type": "WebSite",
         "@id": WEBSITE_ID,
         url: `${SITE_URL}/`,
-        name: STUDIO_SEO.name,
-        alternateName: STUDIO_SEO.alternateName,
+        name: "REFRAME Studio",
+        alternateName: STUDIO_SEO_ALIASES[0],
         description: orgDescription,
         inLanguage: ["es-ES", "en-US", "fr-FR"],
         publisher: { "@id": ORG_ID },
@@ -79,10 +73,9 @@ export function getGlobalStructuredData() {
       {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#professional-service`,
-        name: STUDIO_SEO.name,
-        alternateName: STUDIO_SEO.alternateName,
-        description:
-          "Website redesign and digital presence for architecture and interior design studios in Spain — editorial web design, performance, and scalable portfolio systems.",
+        name: "REFRAME Studio",
+        alternateName: STUDIO_SEO_ALIASES[0],
+        description: orgDescription,
         url: SITE_URL,
         email: BRAND.email,
         telephone: "+34600000000",
@@ -91,35 +84,30 @@ export function getGlobalStructuredData() {
           { "@type": "Country", name: "Spain" },
           { "@type": "AdministrativeArea", name: "Costa del Sol" },
           { "@type": "City", name: "Marbella" },
-          { "@type": "City", name: "Estepona" },
-          { "@type": "City", name: "Benahavís" },
-          { "@type": "City", name: "Sotogrande" },
           { "@type": "City", name: "Málaga" },
-          { "@type": "City", name: "Mijas" },
-          { "@type": "City", name: "Fuengirola" },
-          { "@type": "City", name: "Casares" },
+          { "@type": "Place", name: "Europe" },
         ],
-        serviceType: [...CORE_SERVICE_TYPES, ...EXTENDED_SERVICES],
+        serviceType: [...CORE_SERVICE_TYPES],
+        knowsAbout: [...KNOWS_ABOUT],
         parentOrganization: { "@id": ORG_ID },
       },
       {
         "@type": "LocalBusiness",
         "@id": `${SITE_URL}/#local-business`,
-        name: STUDIO_SEO.name,
-        alternateName: STUDIO_SEO.alternateName,
+        name: "REFRAME Studio",
+        alternateName: STUDIO_SEO_ALIASES[0],
         url: SITE_URL,
         image: `${SITE_URL}/images/hero.png`,
         logo: `${SITE_URL}/ref26.svg`,
-        description:
-          "Reframe Studio (ReframeStudio) — web design for architecture and interior design studios in Marbella, Málaga, Estepona, and across the Costa del Sol, Spain.",
+        description: orgDescription,
         email: BRAND.email,
         telephone: "+34600000000",
         areaServed: [
           { "@type": "City", name: "Marbella" },
           { "@type": "City", name: "Malaga" },
-          { "@type": "City", name: "Estepona" },
           { "@type": "AdministrativeArea", name: "Costa del Sol" },
           { "@type": "Country", name: "Spain" },
+          { "@type": "Place", name: "Europe" },
         ],
         sameAs: [BRAND.instagramLink, "https://www.linkedin.com/company/reframe-studio"],
         parentOrganization: { "@id": ORG_ID },

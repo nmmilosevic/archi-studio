@@ -1,8 +1,18 @@
 /** Public-facing studio name for SEO, schema.org, and metadata (logo wordmark may differ). */
 export const STUDIO_SEO = {
-  name: "Reframe Studio",
-  alternateName: "ReframeStudio",
+  name: "REFRAME Studio",
+  alternateName: "reframestudio",
 } as const;
+
+export const STUDIO_SEO_ALIASES = [
+  "reframestudio",
+  "reframe studio",
+  "Reframe Studio",
+  "REFRAME",
+] as const;
+
+export const PREFERRED_SEO_DESCRIPTION =
+  "REFRAME is a web design studio for architecture and interior design firms, creating refined websites, portfolio systems, and presentation concepts.";
 
 export const BRAND = {
   name: "REFRAME",
