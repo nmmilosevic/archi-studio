@@ -21,7 +21,6 @@ export function SiteHeader() {
   const contactPath = `/${locale}/contact`;
   const normalizedSegments = pathname.split("/").filter(Boolean);
   const isWorkRoute = normalizedSegments[0] === locale && normalizedSegments[1] === "work";
-  const isWorkPage = isWorkRoute && normalizedSegments.length === 2;
   const isWorkDetailPage = isWorkRoute && normalizedSegments.length > 2;
   const isContactPage =
     (normalizedSegments[0] === locale && normalizedSegments[1] === "contact" && normalizedSegments.length === 2) ||
@@ -40,12 +39,15 @@ export function SiteHeader() {
 
   useEffect(() => {
     window.addEventListener("scroll", updateScrollState, { passive: true });
-    updateScrollState();
-    return () => window.removeEventListener("scroll", updateScrollState);
+    const rafId = window.requestAnimationFrame(updateScrollState);
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", updateScrollState);
+    };
   }, [updateScrollState]);
 
   useEffect(() => {
-    updateScrollState();
     const rafId = window.requestAnimationFrame(updateScrollState);
     return () => window.cancelAnimationFrame(rafId);
   }, [pathname, updateScrollState]);

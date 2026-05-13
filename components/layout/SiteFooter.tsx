@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
+import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 import { BRAND, STUDIO_SEO } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
@@ -59,6 +60,7 @@ export function SiteFooter() {
             >
               {BRAND.email}
             </a>
+            <CookieSettingsButton className="text-left text-[15px] text-inverted/62 transition-colors hover:text-bronze md:text-right" />
           </div>
         </div>
       </div>

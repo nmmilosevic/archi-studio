@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
+import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 import { BRAND, STUDIO_SEO } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
@@ -54,6 +55,7 @@ export function HomepageFooter() {
               <Link href={`/${locale}/contact`} className="transition-colors hover:text-bronze">
                 {tFooter("nav.contact")}
               </Link>
+              <CookieSettingsButton className="transition-colors hover:text-bronze" />
             </nav>
           </div>
 
