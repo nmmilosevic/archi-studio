@@ -17,9 +17,31 @@ interface Props {
 }
 
 const SEO_PAGE_KW: Record<string, string[]> = {
-  en: ["local SEO architecture studio", "Marbella interior design SEO", "Costa del Sol Google visibility", "multilingual hreflang"],
-  es: ["SEO local arquitectura", "posicionamiento Marbella", "Costa del Sol estudios"],
-  fr: ["SEO local architecture", "référencement Costa del Sol"],
+  en: [
+    "Reframe Studio",
+    "ReframeStudio",
+    "local SEO architecture studio",
+    "Marbella web design",
+    "Costa del Sol web design",
+    "web design Spain",
+    "multilingual hreflang",
+  ],
+  es: [
+    "Reframe Studio",
+    "ReframeStudio",
+    "SEO local arquitectura",
+    "diseño web Marbella",
+    "Costa del Sol",
+    "diseño web España",
+  ],
+  fr: [
+    "Reframe Studio",
+    "ReframeStudio",
+    "SEO local architecture",
+    "design web Marbella",
+    "référencement Costa del Sol",
+    "design web Espagne",
+  ],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

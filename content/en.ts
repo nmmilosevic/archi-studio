@@ -419,6 +419,10 @@ const en = {
   ],
   footer: {
     tagline: "Web design agency specializing in architecture and interior design studios on the Costa del Sol.",
+    brandEntity:
+      "Reframe Studio (ReframeStudio) creates premium websites for architecture and interior design studios.",
+    homeAria: "Home",
+    footerNavAria: "Key pages",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
     email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
@@ -439,17 +443,17 @@ const en = {
     pricing: {
       title: "Pricing — transparent website packages for studios",
       description:
-        "Clear pricing for architecture and interior design studio websites: 1,500€ one-time design and build, with optional hosting (30€/mo) and content care (120€/mo).",
+        "Reframe Studio (ReframeStudio) — clear pricing for luxury architecture websites and interior design studio sites in Spain: 1,500€ design and build, optional hosting (30€/mo) and content care (120€/mo).",
     },
     audit: {
       title: "Free website review for architecture & interior studios",
       description:
-        "Send your current site for a focused review of first impression, mobile UX, portfolio clarity, SEO basics, and contact flow — with clear next steps.",
+        "Reframe Studio reviews your architecture or interior design website — first impression, mobile UX, portfolio clarity, SEO basics, and contact flow — with practical next steps.",
     },
     seoCostaDelSol: {
       title: "Local SEO for architecture & interior studios — Costa del Sol",
       description:
-        "How studios get found by high-intent clients across Marbella, Estepona, Benahavís, Sotogrande, and Málaga: local pages, Google Business Profile, technical SEO, and multilingual structure.",
+        "Reframe Studio — local SEO and web design Spain: how architecture and interior studios get found in Marbella, Estepona, Benahavís, Sotogrande, and Málaga (pages, GBP, technical SEO, hreflang).",
     },
   },
   home: {

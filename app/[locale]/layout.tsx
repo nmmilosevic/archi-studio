@@ -5,6 +5,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { GlobalJsonLd } from "@/components/seo/GlobalJsonLd";
+import { STUDIO_SEO } from "@/lib/constants";
 import { SITE_URL } from "@/lib/site";
 import "@/app/globals.css";
 
@@ -32,12 +33,22 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Reframe Studio | Architecture & Interior Studio Websites",
+    default: `${STUDIO_SEO.name} | Architecture & interior studio websites — Spain`,
     template: "%s",
   },
-  description:
-    "Premium websites for architecture and interior design studios. Editorial design, fast performance, mobile-first UX, and scalable project systems crafted for modern studios.",
-  applicationName: "Reframe Studio",
+  description: `${STUDIO_SEO.name} (${STUDIO_SEO.alternateName}) is a premium architecture web design studio in Spain — luxury architecture websites, interior design web design, and editorial sites for studios in Marbella and the Costa del Sol.`,
+  applicationName: STUDIO_SEO.name,
+  keywords: [
+    STUDIO_SEO.name,
+    STUDIO_SEO.alternateName,
+    "architecture web design studio",
+    "architecture website agency",
+    "interior design web design",
+    "luxury architecture websites",
+    "web design Spain",
+    "Marbella web design",
+    "Costa del Sol web design",
+  ],
   robots: {
     index: true,
     follow: true,

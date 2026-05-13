@@ -15,23 +15,31 @@ interface Props {
 
 const CONTACT_KW: Record<string, string[]> = {
   en: [
+    "Reframe Studio",
+    "ReframeStudio",
     "contact",
-    "architecture website enquiry",
-    "interior design studio website",
-    "REFRAME",
+    "architecture website agency",
+    "interior design web design",
+    "Marbella web design",
     "Costa del Sol",
   ],
   es: [
+    "Reframe Studio",
+    "ReframeStudio",
     "contacto",
-    "presupuesto web arquitectura",
-    "estudio interiorismo web",
-    "REFRAME",
+    "agencia web arquitectura",
+    "diseño web interiorismo",
+    "diseño web Marbella",
+    "Costa del Sol",
   ],
   fr: [
+    "Reframe Studio",
+    "ReframeStudio",
     "contact",
-    "devis site architecture",
-    "studio design intérieur",
-    "REFRAME",
+    "agence site architecture",
+    "design web intérieur",
+    "design web Marbella",
+    "Costa del Sol",
   ],
 };
 
@@ -43,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/contact",
     title: "Contact | Reframe Studio",
     description:
-      "Start a conversation about your architecture or interior design studio website—strategy, redesign scope, and next steps.",
+      "Contact Reframe Studio (ReframeStudio) — architecture web design studio in Spain for luxury architecture websites, interior design web design, Marbella and Costa del Sol projects.",
     keywords,
   });
 }

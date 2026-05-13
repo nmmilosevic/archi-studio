@@ -4,6 +4,7 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { buildPageMetadata } from "@/lib/seo";
+import { STUDIO_SEO } from "@/lib/constants";
 import { getContent } from "@/lib/getContent";
 import { assetPath } from "@/lib/paths";
 import Link from "next/link";
@@ -19,35 +20,51 @@ interface Props {
 }
 
 const HOME_TITLE: Record<string, string> = {
-  en: "Reframe Studio® | Websites for Architecture & Interior Studios",
-  es: "Reframe Studio® | Websites for Architecture & Interior Studios",
-  fr: "Reframe Studio® | Websites for Architecture & Interior Studios",
+  en: `${STUDIO_SEO.name}® | Architecture web design studio — Spain`,
+  es: `${STUDIO_SEO.name}® | Estudio web arquitectura — España`,
+  fr: `${STUDIO_SEO.name}® | Studio web architecture — Espagne`,
 };
 
 const HOME_KEYWORDS: Record<string, string[]> = {
   en: [
+    STUDIO_SEO.name,
+    STUDIO_SEO.alternateName,
+    "architecture web design studio",
+    "architecture website agency",
+    "luxury architecture websites",
+    "interior design web design",
+    "web design Spain",
+    "Marbella web design",
+    "Costa del Sol web design",
     "architecture website design",
     "interior design studio website",
     "website redesign",
-    "Marbella",
-    "Estepona",
-    "Costa del Sol",
     "portfolio website",
   ],
   es: [
+    STUDIO_SEO.name,
+    STUDIO_SEO.alternateName,
     "diseño web arquitectura",
-    "web estudio interiorismo",
-    "rediseño web",
-    "Marbella",
+    "agencia web arquitectura",
+    "web lujo arquitectura",
+    "diseño web interiorismo",
+    "diseño web España",
+    "diseño web Marbella",
     "Costa del Sol",
+    "rediseño web",
     "portfolio arquitectura",
   ],
   fr: [
+    STUDIO_SEO.name,
+    STUDIO_SEO.alternateName,
     "site web architecture",
-    "studio design intérieur",
-    "refonte site web",
-    "Marbella",
+    "agence site architecture",
+    "site architecture luxe",
+    "design web intérieur",
+    "design web Espagne",
+    "design web Marbella",
     "Costa del Sol",
+    "refonte site web",
   ],
 };
 
@@ -59,14 +76,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     path: "",
     title,
-    description:
-      "Premium websites for architecture and interior design studios. Editorial design, fast performance, mobile-first UX, and scalable project systems crafted for modern studios.",
-    ogTitle: "Reframe Studio® | Websites for Architecture & Interior Studios",
-    ogDescription:
-      "Premium websites for architecture and interior design studios. Editorial design, fast performance, mobile-first UX, and scalable project systems crafted for modern studios.",
-    twitterTitle: "Reframe Studio® | Websites for Architecture & Interior Studios",
-    twitterDescription:
-      "Premium websites for architecture and interior design studios. Editorial design, fast performance, mobile-first UX, and scalable project systems crafted for modern studios.",
+    description: `${STUDIO_SEO.name} (${STUDIO_SEO.alternateName}) is a premium architecture web design studio in Spain — luxury architecture websites and interior design web design with editorial craft, performance, and mobile-first UX for studios in Marbella and the Costa del Sol.`,
+    ogTitle: title,
+    ogDescription: `${STUDIO_SEO.name} (${STUDIO_SEO.alternateName}) — architecture website agency for luxury architecture websites and interior design studios. Web design Spain: Marbella, Costa del Sol, nationwide.`,
+    twitterTitle: title,
+    twitterDescription: `${STUDIO_SEO.name} (${STUDIO_SEO.alternateName}) — premium architecture web design studio in Spain. Luxury sites for architecture & interior design practices.`,
     ogImage: "/images/hero.png",
     twitterImage: "/images/hero.png",
     keywords,
@@ -274,10 +288,10 @@ export default async function HomePage({ params }: Props) {
       <section className="sr-only" aria-labelledby="studio-seo-topics">
         <h2 id="studio-seo-topics">Architecture and interior website expertise</h2>
         <p>
-          Reframe Studio designs premium architecture website design systems and interior design studio websites with editorial direction, mobile-first UX, and scalable portfolio systems for architects.
+          {STUDIO_SEO.name} ({STUDIO_SEO.alternateName}) creates premium websites for architecture and interior design studios — architecture web design studio and architecture website agency work with editorial systems, mobile-first UX, and scalable portfolios.
         </p>
         <p>
-          We work with studios in Marbella, Malaga, Estepona, and across the Costa del Sol in Spain, combining performance, technical SEO, and calm premium presentation.
+          Luxury architecture websites and interior design web design for studios in Marbella, Málaga, Estepona, and the Costa del Sol; web design Spain with technical SEO and calm, editorial presentation.
         </p>
       </section>
     </>

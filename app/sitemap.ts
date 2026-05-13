@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import en from "@/content/en";
 import { absoluteLocaleUrl } from "@/lib/seo";
-import { SEO_LOCALES } from "@/lib/site";
+import { DEFAULT_LOCALE, SEO_LOCALES } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -47,6 +47,15 @@ function changeFreq(
   return "monthly";
 }
 
+function hreflangAlternates(path: string): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const loc of SEO_LOCALES) {
+    languages[loc] = absoluteLocaleUrl(loc, path);
+  }
+  languages["x-default"] = absoluteLocaleUrl(DEFAULT_LOCALE, path);
+  return languages;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [...STATIC_PATHS, ...WORK_PATHS];
   const entries: MetadataRoute.Sitemap = [];
@@ -58,6 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: changeFreq(path),
         priority: priorityFor(path),
+        alternates: { languages: hreflangAlternates(path) },
       });
     }
   }

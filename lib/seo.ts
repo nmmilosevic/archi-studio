@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BRAND } from "@/lib/constants";
+import { BRAND, STUDIO_SEO } from "@/lib/constants";
 import { DEFAULT_LOCALE, SEO_LOCALES, SITE_URL } from "@/lib/site";
 
 const OG_LOCALE: Record<string, string> = {
@@ -57,8 +57,8 @@ function resolveOgImageUrl(ogImage: string): string {
 }
 
 function withBrandSuffix(value: string): string {
-  if (/reframe studio/i.test(value)) return value;
-  return `${value} | Reframe Studio`;
+  if (/reframe studio|reframestudio/i.test(value)) return value;
+  return `${value} | ${STUDIO_SEO.name}`;
 }
 
 export function buildPageMetadata({
@@ -99,7 +99,7 @@ export function buildPageMetadata({
       title: resolvedOgTitle,
       description: resolvedOgDescription,
       url: canonical,
-      siteName: BRAND.name,
+      siteName: STUDIO_SEO.name,
       locale: ogLocale,
       alternateLocale,
       type: "website",
@@ -108,7 +108,7 @@ export function buildPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${BRAND.name} — ${title}`,
+          alt: `${STUDIO_SEO.name} — ${title}`,
         },
       ],
     },

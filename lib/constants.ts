@@ -1,3 +1,9 @@
+/** Public-facing studio name for SEO, schema.org, and metadata (logo wordmark may differ). */
+export const STUDIO_SEO = {
+  name: "Reframe Studio",
+  alternateName: "ReframeStudio",
+} as const;
+
 export const BRAND = {
   name: "REFRAME",
   tagline: "Architecture website redesigns for studios on the Costa del Sol.",

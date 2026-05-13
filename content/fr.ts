@@ -419,6 +419,10 @@ const fr = {
   ],
   footer: {
     tagline: "Agence de design web spécialisée pour les studios d'architecture et d'intérieur sur la Costa del Sol.",
+    brandEntity:
+      "Reframe Studio (ReframeStudio) conçoit des sites premium pour studios d'architecture et de design d'intérieur.",
+    homeAria: "Accueil",
+    footerNavAria: "Pages clés",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
     email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
@@ -439,17 +443,17 @@ const fr = {
     pricing: {
       title: "Tarifs — offres web transparentes pour studios",
       description:
-        "Tarifs clairs pour sites de studios d'architecture et d'intérieur : 1 500€ conception et développement en une fois, avec hébergement optionnel (30€/mois) et suivi contenu (120€/mois).",
+        "Reframe Studio (ReframeStudio) — tarifs clairs pour sites d'architecture et d'intérieur en Espagne : 1 500€ conception et développement, hébergement optionnel (30€/mois) et suivi contenu (120€/mois).",
     },
     audit: {
       title: "Revue de site gratuite pour studios d'architecture et d'intérieur",
       description:
-        "Envoyez votre site actuel pour une revue ciblée : première impression, mobile, clarté du portfolio, bases SEO et parcours de contact — avec des prochaines étapes claires.",
+        "Reframe Studio analyse votre site architecture ou intérieur : première impression, mobile, portfolio, bases SEO et contact — avec des prochaines étapes claires.",
     },
     seoCostaDelSol: {
       title: "SEO local pour studios d'architecture et d'intérieur — Costa del Sol",
       description:
-        "Comment être trouvé par des clients à forte intention à Marbella, Estepona, Benahavís, Sotogrande et Málaga : pages locales, Google Business Profile, SEO technique et structure multilingue.",
+        "Reframe Studio — SEO local et design web Espagne : visibilité des studios d'architecture et d'intérieur à Marbella, Estepona, Benahavís, Sotogrande et Málaga (pages, GBP, technique, hreflang).",
     },
   },
   home: {

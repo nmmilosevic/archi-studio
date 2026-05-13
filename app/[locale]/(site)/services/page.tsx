@@ -19,19 +19,32 @@ interface Props {
 
 const SERVICES_KW: Record<string, string[]> = {
   en: [
-    "architecture website services",
+    "Reframe Studio",
+    "ReframeStudio",
+    "architecture web design studio",
+    "architecture website agency",
+    "luxury architecture websites",
     "interior design web design",
+    "web design Spain",
     "local SEO Costa del Sol",
     "portfolio CMS",
     "website hosting studios",
   ],
   es: [
+    "Reframe Studio",
+    "ReframeStudio",
+    "estudio diseño web arquitectura",
     "servicios web arquitectura",
     "diseño web interiorismo",
+    "diseño web España",
     "SEO local Costa del Sol",
   ],
   fr: [
+    "Reframe Studio",
+    "ReframeStudio",
+    "studio design web architecture",
     "services site architecture",
+    "design web Espagne",
     "SEO local Costa del Sol",
     "portfolio sur mesure",
   ],
@@ -44,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/services",
     title: "Website Design for Architecture Studios | Reframe Studio",
     description:
-      "Website redesign, interior design studio sites, local SEO, portfolio systems, hosting, and brand refinement for studios on the Costa del Sol.",
+      "Reframe Studio (ReframeStudio) — architecture website agency services: luxury architecture websites, interior design web design, local SEO, portfolios, hosting, and brand refinement in Spain and the Costa del Sol.",
     keywords: SERVICES_KW[locale] ?? SERVICES_KW.en,
   });
 }

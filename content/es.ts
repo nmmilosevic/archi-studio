@@ -419,6 +419,10 @@ const es = {
   ],
   footer: {
     tagline: "Agencia de diseño web especializada en estudios de arquitectura e interiorismo en la Costa del Sol.",
+    brandEntity:
+      "Reframe Studio (ReframeStudio) crea webs premium para estudios de arquitectura e interiorismo.",
+    homeAria: "Inicio",
+    footerNavAria: "Enlaces principales",
     locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
     email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
@@ -439,17 +443,17 @@ const es = {
     pricing: {
       title: "Precios — paquetes web transparentes para estudios",
       description:
-        "Precios claros para webs de estudios de arquitectura e interiorismo: 1.500€ diseño y desarrollo en pago único, con alojamiento opcional (30€/mes) y cuidado de contenido (120€/mes).",
+        "Reframe Studio (ReframeStudio) — precios claros para webs de arquitectura e interiorismo en España: 1.500€ diseño y desarrollo, alojamiento opcional (30€/mes) y cuidado de contenido (120€/mes).",
     },
     audit: {
       title: "Revisión web gratuita para estudios de arquitectura e interiorismo",
       description:
-        "Envía tu web actual para una revisión enfocada: primera impresión, UX móvil, claridad del portafolio, bases SEO y flujo de contacto — con próximos pasos claros.",
+        "Reframe Studio revisa tu web de arquitectura o interiorismo: primera impresión, UX móvil, portfolio, bases SEO y contacto — con próximos pasos claros.",
     },
     seoCostaDelSol: {
       title: "SEO local para estudios de arquitectura e interiorismo — Costa del Sol",
       description:
-        "Cómo aparecer ante clientes con alta intención en Marbella, Estepona, Benahavís, Sotogrande y Málaga: páginas locales, Google Business Profile, SEO técnico y estructura multilingüe.",
+        "Reframe Studio — SEO local y diseño web España: cómo posicionar estudios de arquitectura e interiorismo en Marbella, Estepona, Benahavís, Sotogrande y Málaga (páginas, GBP, técnico, hreflang).",
     },
   },
   home: {
