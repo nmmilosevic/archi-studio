@@ -19,34 +19,29 @@ interface Props {
 
 const SERVICES_KW: Record<string, string[]> = {
   en: [
-    "Reframe Studio",
-    "ReframeStudio",
-    "architecture web design studio",
-    "architecture website agency",
-    "luxury architecture websites",
-    "interior design web design",
-    "web design Spain",
-    "local SEO Costa del Sol",
-    "portfolio CMS",
-    "website hosting studios",
+    "architecture website design",
+    "architecture web design",
+    "architecture studio website",
+    "interior design studio website",
+    "landscape architecture website",
+    "architecture portfolio website",
+    "website redesign for architecture studios",
   ],
   es: [
-    "Reframe Studio",
-    "ReframeStudio",
-    "estudio diseño web arquitectura",
-    "servicios web arquitectura",
-    "diseño web interiorismo",
-    "diseño web España",
-    "SEO local Costa del Sol",
+    "diseño web arquitectura",
+    "web estudio arquitectura",
+    "web estudio interiorismo",
+    "web paisajismo",
+    "portfolio arquitectura",
+    "rediseño web arquitectura",
   ],
   fr: [
-    "Reframe Studio",
-    "ReframeStudio",
-    "studio design web architecture",
-    "services site architecture",
-    "design web Espagne",
-    "SEO local Costa del Sol",
-    "portfolio sur mesure",
+    "site web architecture",
+    "site studio architecture",
+    "site studio design intérieur",
+    "site architecture paysagère",
+    "portfolio architecture",
+    "refonte site architecture",
   ],
 };
 
@@ -57,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/services",
     title: "Website Design for Architecture Studios | Reframe Studio",
     description:
-      "Reframe Studio (ReframeStudio) — architecture website agency services: luxury architecture websites, interior design web design, local SEO, portfolios, hosting, and brand refinement in Spain and the Costa del Sol.",
+      "Specialist website design for architecture, interior design, and landscape studios: portfolio systems, website redesigns, search visibility foundations, hosting, and digital brand refinement.",
     keywords: SERVICES_KW[locale] ?? SERVICES_KW.en,
   });
 }
@@ -84,7 +79,7 @@ export default async function ServicesPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <PageHero
         heading={services.heading}
-        subtext="From website redesigns to local SEO foundations and portfolio systems, every service is built around how architecture and interior studios actually work and how their clients actually search."
+        subtext="From website redesigns to portfolio systems and search visibility foundations, every service is built around how architecture and design studios present work, earn trust, and attract better enquiries."
       />
 
       {/* All services */}

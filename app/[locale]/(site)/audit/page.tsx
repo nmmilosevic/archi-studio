@@ -17,15 +17,14 @@ interface Props {
 
 const AUDIT_KW: Record<string, string[]> = {
   en: [
-    "Reframe Studio",
-    "ReframeStudio",
-    "free website review",
+    "website review for architecture studios",
     "architecture studio audit",
-    "architecture website agency",
-    "UX review interior design site",
+    "architecture website redesign audit",
+    "interior design website review",
+    "portfolio website audit",
   ],
-  es: ["Reframe Studio", "ReframeStudio", "revisión web gratuita", "auditoría web arquitectura"],
-  fr: ["Reframe Studio", "ReframeStudio", "audit site web gratuit", "revue site architecture"],
+  es: ["revisión web arquitectura", "auditoría web arquitectura", "rediseño web arquitectura"],
+  fr: ["audit site architecture", "revue site architecture", "refonte site architecture"],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

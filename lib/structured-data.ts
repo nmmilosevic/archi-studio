@@ -8,13 +8,19 @@ import { SITE_URL } from "@/lib/site";
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
-const CORE_SERVICE_TYPES = ["Architecture Website Design", "Interior Design Website Design"] as const;
+const CORE_SERVICE_TYPES = [
+  "Architecture Website Design",
+  "Interior Design Website Design",
+  "Landscape Architecture Website Design",
+] as const;
 
 const KNOWS_ABOUT = [
   "architecture websites",
   "interior design websites",
+  "landscape architecture websites",
   "portfolio websites",
-  "web design",
+  "architecture portfolio websites",
+  "architecture website redesign",
   "branding presentation systems",
 ] as const;
 
@@ -35,10 +41,8 @@ export function getGlobalStructuredData() {
         email: BRAND.email,
         areaServed: [
           { "@type": "Country", name: "Spain" },
-          { "@type": "AdministrativeArea", name: "Costa del Sol" },
-          { "@type": "City", name: "Marbella" },
-          { "@type": "City", name: "Málaga" },
           { "@type": "Place", name: "Europe" },
+          { "@type": "Place", name: "International" },
         ],
         logo: {
           "@type": "ImageObject",
@@ -82,34 +86,11 @@ export function getGlobalStructuredData() {
         image: `${SITE_URL}/images/hero.png`,
         areaServed: [
           { "@type": "Country", name: "Spain" },
-          { "@type": "AdministrativeArea", name: "Costa del Sol" },
-          { "@type": "City", name: "Marbella" },
-          { "@type": "City", name: "Málaga" },
           { "@type": "Place", name: "Europe" },
+          { "@type": "Place", name: "International" },
         ],
         serviceType: [...CORE_SERVICE_TYPES],
         knowsAbout: [...KNOWS_ABOUT],
-        parentOrganization: { "@id": ORG_ID },
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": `${SITE_URL}/#local-business`,
-        name: "REFRAME Studio",
-        alternateName: STUDIO_SEO_ALIASES[0],
-        url: SITE_URL,
-        image: `${SITE_URL}/images/hero.png`,
-        logo: `${SITE_URL}/ref26.svg`,
-        description: orgDescription,
-        email: BRAND.email,
-        telephone: "+34600000000",
-        areaServed: [
-          { "@type": "City", name: "Marbella" },
-          { "@type": "City", name: "Malaga" },
-          { "@type": "AdministrativeArea", name: "Costa del Sol" },
-          { "@type": "Country", name: "Spain" },
-          { "@type": "Place", name: "Europe" },
-        ],
-        sameAs: [BRAND.instagramLink, "https://www.linkedin.com/company/reframe-studio"],
         parentOrganization: { "@id": ORG_ID },
       },
     ],

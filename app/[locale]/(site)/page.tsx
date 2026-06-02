@@ -21,46 +21,36 @@ interface Props {
 }
 
 const HOME_TITLE: Record<string, string> = {
-  en: "REFRAME Studio | Architecture & Interior Design Website Design",
-  es: "REFRAME Studio | Architecture & Interior Design Website Design",
-  fr: "REFRAME Studio | Architecture & Interior Design Website Design",
+  en: "Architecture Website Design for Design Studios | Reframe Studio",
+  es: "Diseño web para estudios de arquitectura | Reframe Studio",
+  fr: "Sites web pour studios d'architecture | Reframe Studio",
 };
 
 const HOME_KEYWORDS: Record<string, string[]> = {
   en: [
-    "Reframe Studio",
-    "reframestudio",
     "architecture web design studio",
     "architecture website design",
-    "interior design website design",
-    "web design studio for architects",
-    "Marbella web design",
-    "Costa del Sol web design",
+    "architecture studio website",
+    "interior design website",
+    "landscape architecture website",
+    "architecture portfolio website",
+    "architecture website redesign",
   ],
   es: [
-    "Reframe Studio",
-    "reframestudio",
     "diseño web arquitectura",
-    "agencia web arquitectura",
-    "web lujo arquitectura",
-    "diseño web interiorismo",
-    "diseño web España",
-    "diseño web Marbella",
-    "Costa del Sol",
-    "rediseño web",
+    "web para estudio de arquitectura",
+    "web interiorismo",
+    "web paisajismo",
     "portfolio arquitectura",
+    "rediseño web arquitectura",
   ],
   fr: [
-    "Reframe Studio",
-    "reframestudio",
     "site web architecture",
-    "agence site architecture",
-    "site architecture luxe",
-    "design web intérieur",
-    "design web Espagne",
-    "design web Marbella",
-    "Costa del Sol",
-    "refonte site web",
+    "site studio architecture",
+    "site design intérieur",
+    "site architecture paysagère",
+    "portfolio architecture",
+    "refonte site architecture",
   ],
 };
 
@@ -281,19 +271,6 @@ export default async function HomePage({ params }: Props) {
         imageAlt={home.diagnosisImageAlt}
         variant="charcoal"
       />
-
-      <section className="sr-only" aria-labelledby="studio-seo-topics">
-        <h2 id="studio-seo-topics">Architecture and interior website expertise</h2>
-        <p>
-          REFRAME Studio, also referenced as reframestudio, reframe studio, and
-          REFRAME, designs architecture website design and interior design website
-          design systems.
-        </p>
-        <p>
-          Web design studio for architects in Marbella and across the Costa del Sol,
-          with refined portfolio systems and presentation concepts.
-        </p>
-      </section>
     </>
   );
 }

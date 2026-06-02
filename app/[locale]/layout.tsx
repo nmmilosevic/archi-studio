@@ -8,7 +8,6 @@ import { GlobalJsonLd } from "@/components/seo/GlobalJsonLd";
 import {
   PREFERRED_SEO_DESCRIPTION,
   STUDIO_SEO,
-  STUDIO_SEO_ALIASES,
 } from "@/lib/constants";
 import { SITE_URL } from "@/lib/site";
 import "@/app/globals.css";
@@ -38,12 +37,13 @@ export const metadata: Metadata = {
   description: PREFERRED_SEO_DESCRIPTION,
   applicationName: STUDIO_SEO.name,
   keywords: [
-    ...STUDIO_SEO_ALIASES,
     "architecture website design",
-    "interior design website design",
-    "web design studio for architects",
-    "Marbella web design",
-    "Costa del Sol web design",
+    "architecture studio website",
+    "interior design website",
+    "interior design studio website",
+    "landscape architecture website",
+    "architecture portfolio website",
+    "architecture website redesign",
   ],
   robots: {
     index: true,

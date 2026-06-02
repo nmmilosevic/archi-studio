@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PREFERRED_SEO_DESCRIPTION, STUDIO_SEO, STUDIO_SEO_ALIASES } from "@/lib/constants";
+import { PREFERRED_SEO_DESCRIPTION, STUDIO_SEO } from "@/lib/constants";
 import { DEFAULT_LOCALE, SEO_LOCALES, SITE_URL } from "@/lib/site";
 
 const OG_LOCALE: Record<string, string> = {
@@ -58,15 +58,14 @@ function resolveOgImageUrl(ogImage: string): string {
 }
 
 function withBrandSuffix(value: string): string {
-  if (/reframe studio|reframestudio|reframe/i.test(value)) return value;
+  if (/reframe studio|reframe/i.test(value)) return value;
   return `${value} | ${STUDIO_SEO.name}`;
 }
 
 function withBrandDescription(description: string): string {
   const normalized = description.trim();
   if (!normalized) return PREFERRED_SEO_DESCRIPTION;
-  if (normalized.includes(PREFERRED_SEO_DESCRIPTION)) return normalized;
-  return `${PREFERRED_SEO_DESCRIPTION} ${normalized}`;
+  return normalized;
 }
 
 export function buildPageMetadata({
@@ -106,9 +105,7 @@ export function buildPageMetadata({
   return {
     title: resolvedTitle,
     description: resolvedDescription,
-    ...(keywords?.length
-      ? { keywords: [...STUDIO_SEO_ALIASES, ...keywords].join(", ") }
-      : { keywords: STUDIO_SEO_ALIASES.join(", ") }),
+    ...(keywords?.length ? { keywords: keywords.join(", ") } : {}),
     alternates: resolvedAlternates,
     robots,
     openGraph: {

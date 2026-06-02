@@ -12,7 +12,7 @@ const STATIC_PATHS = [
   "/services",
   "/pricing",
   "/audit",
-  "/seo-costa-del-sol",
+  "/search-visibility",
   "/legal/privacy",
   "/legal/terms",
   "/legal/cookies",
@@ -31,7 +31,7 @@ function priorityFor(path: string): number {
       "/services",
       "/pricing",
       "/audit",
-      "/seo-costa-del-sol",
+      "/search-visibility",
     ].includes(path)
   ) {
     return 0.9;

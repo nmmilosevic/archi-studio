@@ -38,10 +38,10 @@ export function SiteFooter() {
               <ReframeLogo light className="h-[42px] w-[150px]" />
             </Link>
             <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">
-              A clear digital presence for architecture and interior studios.
+              A clear digital presence for architecture, interior design, and landscape studios.
             </p>
             <p className="mt-3 max-w-[420px] text-[13px] leading-relaxed text-inverted/45">
-              Reframe Studio (ReframeStudio) creates premium websites for architecture and interior design studios.
+              Specialist website design for studios that need stronger portfolios, sharper positioning, and better search visibility.
             </p>
           </div>
 
@@ -50,6 +50,7 @@ export function SiteFooter() {
             <Link href={`/${locale}/services`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Services</Link>
             <Link href={`/${locale}/pricing`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Pricing</Link>
             <Link href={`/${locale}/audit`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Audit</Link>
+            <Link href={`/${locale}/search-visibility`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Search visibility</Link>
             <Link href={`/${locale}/contact`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Contact</Link>
           </div>
 

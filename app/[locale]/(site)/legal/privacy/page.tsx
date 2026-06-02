@@ -33,9 +33,9 @@ export default async function PrivacyPage({ params }: Props) {
                   1. Who we are
                 </h2>
                 <p>
-                  REFRAME is an independent redesign studio operating on the
-                  Costa del Sol, Spain. It provides architecture website
-                  redesigns for architecture and interior design studios.
+                  REFRAME is an independent web design studio based in Spain. It
+                  provides website redesigns for architecture, interior design,
+                  and landscape studios.
                 </p>
                 <p className="mt-3">
                   Contact: hello@reframestudio.es
@@ -49,7 +49,7 @@ export default async function PrivacyPage({ params }: Props) {
                 <p>
                   We collect personal data only when you submit a form on this
                   website. This includes your name, email address, studio name,
-                  city, website URL, and any message you provide.
+                  location, website URL, and any message you provide.
                 </p>
               </section>
 

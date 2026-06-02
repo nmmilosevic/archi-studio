@@ -5,17 +5,17 @@ const fr = {
     method: "Méthode",
     work: "Réalisations",
     audit: "Audit",
-    seo: "SEO",
+    seo: "Visibilité",
     contact: "Contact",
     cta: "Commencer le site",
   },
   hero: {
-    label: "Refontes de sites d'architecture",
+    label: "Sites pour studios d'architecture et de design",
     headline: "Votre studio paraît déjà premium. Votre site devrait aussi.",
-    sub: "Refontes raffinées pour studios d'architecture et de design intérieur à Marbella, Estepona, Sotogrande, Benahavís et Málaga.",
+    sub: "Design de sites pour studios d'architecture, de design intérieur et de paysage qui ont besoin d'un portfolio plus fort, d'un positionnement plus clair et d'une expérience digitale à la hauteur de leur travail.",
     ctaPrimary: "Voir les previews",
     ctaSecondary: "Demander une revue",
-    proof: "Conçu pour les studios à Marbella, Estepona, Sotogrande, Benahavís et Málaga.",
+    proof: "Conçu pour les studios d'architecture, de design intérieur et de paysage.",
   },
   problem: {
     heading: "La plupart des studios perdent la confiance avant le premier appel.",
@@ -25,7 +25,7 @@ const fr = {
       { title: "Narration de projets faible", desc: "Les projets méritent plus qu'une grille de galerie. Chaque réalisation devrait communiquer la portée, les matériaux, le défi et le résultat." },
       { title: "Mauvaise expérience mobile", desc: "La plupart des demandes commencent sur un téléphone. Un site de studio qui s'effondre sur mobile envoie immédiatement le mauvais signal." },
       { title: "Pas de chemin de contact clair", desc: "Si trouver le formulaire de contact demande un effort, la plupart des visiteurs partent. Le chemin de l'intérêt au contact doit être sans friction." },
-      { title: "Mauvais SEO local", desc: "Les studios à Marbella et Estepona sont invisibles pour des recherches comme 'studio d'architecture Marbella' ou 'design d'intérieur Costa del Sol'." },
+      { title: "Visibilité de recherche faible", desc: "Un bon site de studio d'architecture doit être facile à comprendre, solide techniquement et structuré autour des services et projets que les clients recherchent." },
       { title: "Peu de confiance pour les clients internationaux", desc: "Une présence multilingue, un design raffiné et des textes professionnels rassurent les acheteurs internationaux qui cherchent un studio fiable." },
     ],
   },
@@ -55,9 +55,9 @@ const fr = {
       },
       {
         number: "03",
-        title: "Fondation SEO local",
-        desc: "Structure technique et de contenu pour aider les studios à apparaître dans les recherches autour de Marbella, Estepona, Sotogrande, Málaga et la Costa del Sol.",
-        deliverables: ["Métadonnées SEO", "Pages d'atterrissage locales", "Données structurées", "Maillage interne", "Structure alt des images", "Optimisation des performances"],
+        title: "Fondation de visibilité",
+        desc: "Structure technique et éditoriale pour aider les moteurs de recherche à comprendre vos services, types de projets, positionnement et pages de portfolio.",
+        deliverables: ["Métadonnées SEO", "Structure de pages orientée recherche", "Données structurées", "Maillage interne", "Structure alt des images", "Optimisation des performances"],
       },
       {
         number: "04",
@@ -130,7 +130,7 @@ const fr = {
         name: "Studio Éditorial",
         price: "À partir de 3.500€",
         desc: "Offre premium pour les studios vendant des villas, rénovations, intérieurs et projets internationaux.",
-        includes: ["Stratégie web complète", "Direction artistique personnalisée", "Multilingue EN/ES/FR", "CMS de portfolio", "Pages d'atterrissage SEO local", "Animations avancées", "Modèles d'études de cas", "Stratégie de conversion", "Analytique", "Support au lancement", "3 tours de révision"],
+        includes: ["Stratégie web complète", "Direction artistique personnalisée", "Multilingue EN/ES/FR", "CMS de portfolio", "Structure de visibilité en recherche", "Animations avancées", "Modèles d'études de cas", "Stratégie de conversion", "Analytique", "Support au lancement", "3 tours de révision"],
         notIncluded: [] as string[],
         cta: "Demander un devis",
         featured: false,
@@ -153,7 +153,7 @@ const fr = {
         name: "Soin croissance",
         price: "390€/mois",
         desc: "Support continu complet avec croissance SEO active.",
-        includes: ["Tout dans Soin studio", "Améliorations SEO local", "Une nouvelle page ou article SEO par mois", "Révision Search Console", "Améliorations de conversion", "Rapport de recommandations mensuel"],
+        includes: ["Tout dans Soin studio", "Améliorations de visibilité en recherche", "Une nouvelle page projet ou insight par mois", "Révision Search Console", "Améliorations de conversion", "Rapport de recommandations mensuel"],
       },
     ],
     addons: [
@@ -161,7 +161,7 @@ const fr = {
       { name: "Page supplémentaire", price: "À partir de 180€" },
       { name: "Téléchargement de page de projet", price: "À partir de 90€/projet" },
       { name: "Google Business Profile", price: "À partir de 190€" },
-      { name: "Page SEO de ville", price: "À partir de 250€/page" },
+      { name: "Page d'étude de cas", price: "À partir de 250€/page" },
       { name: "Raffinement de la rédaction", price: "À partir de 350€" },
     ],
   },
@@ -306,7 +306,7 @@ const fr = {
     sub: "Envoyez votre site actuel. Je réviserai la première impression, l'expérience mobile, la clarté du portfolio, les bases SEO et le parcours de contact - et je vous enverrai un ensemble clair de recommandations.",
     what: {
       heading: "Ce que je révise",
-      items: ["Première impression et crédibilité visuelle", "Expérience mobile et réactivité", "Clarté du portfolio et narration de projets", "Bases SEO et visibilité dans la recherche locale", "Parcours de demande et chemin de conversion", "Typographie, espacement et qualité d'image", "Bases de la vitesse de page", "Préparation multilingue"],
+      items: ["Première impression et crédibilité visuelle", "Expérience mobile et réactivité", "Clarté du portfolio et narration de projets", "Bases SEO et visibilité en recherche", "Parcours de demande et chemin de conversion", "Typographie, espacement et qualité d'image", "Bases de la vitesse de page", "Préparation multilingue"],
     },
     receive: {
       heading: "Ce que vous recevez",
@@ -314,18 +314,18 @@ const fr = {
     },
     who: {
       heading: "Pour qui c'est",
-      items: ["Studios d'architecture sur la Costa del Sol", "Studios de design d'intérieur à Marbella ou Estepona", "Studios préparant un relancement", "Studios avec des sites obsolètes qui perdent la confiance", "Studios ciblant des clients internationaux"],
+      items: ["Studios d'architecture", "Studios de design intérieur", "Studios de paysage", "Studios préparant une relance", "Studios avec des sites obsolètes qui perdent la confiance", "Studios ciblant des clients internationaux"],
     },
     issues: {
       heading: "Problèmes courants que je trouve",
-      items: ["Page d'accueil sans hiérarchie claire", "Galerie sans contexte de projet", "Pas de mise en page optimisée pour mobile", "Zéro structure SEO local", "Typographie générique ou obsolète", "Chemin de contact manquant ou formulaire enfoui", "Pas de version multilingue pour les clients internationaux"],
+      items: ["Page d'accueil sans hiérarchie claire", "Galerie sans contexte de projet", "Pas de mise en page optimisée pour mobile", "Structure de recherche faible", "Typographie générique ou obsolète", "Chemin de contact manquant ou formulaire enfoui", "Pas de version multilingue pour les clients internationaux"],
     },
     form: {
       name: "Votre nom",
       studio: "Nom du studio",
       url: "URL du site actuel",
       email: "Adresse email",
-      city: "Ville",
+      city: "Localisation",
       type: "Type de studio",
       typeOptions: ["Architecture", "Design d'intérieur", "Immobilier", "Autre"],
       improve: "Qu'est-ce que vous souhaitez le plus améliorer?",
@@ -346,32 +346,32 @@ const fr = {
     ],
   },
   seo: {
-    label: "SEO local pour studios",
-    heading: "Votre studio mérite d'être trouvé sur la Costa del Sol.",
-    sub: "L'architecture et le design d'intérieur sont des métiers très locaux. Les clients internationaux cherchent avec une intention de localisation. Le SEO local fait la différence entre être trouvé et être invisible.",
+    label: "Visibilité en recherche pour studios",
+    heading: "Votre travail devrait être facile à trouver et plus facile à comprendre.",
+    sub: "La visibilité commence par un site clair : services précis, pages projet structurées, métadonnées solides, maillage interne et pages rapides qui soutiennent la découverte organique.",
     cities: [
-      { name: "Marbella", desc: "L'un des marchés de luxe les plus compétitifs d'Espagne. Les studios ici ont besoin d'une forte autorité locale, d'une optimisation Google Business et d'un contenu multilingue pour capter les acheteurs internationaux de villas." },
-      { name: "Estepona", desc: "Un marché en croissance pour la rénovation et la nouvelle construction architecturale. Les studios à Estepona bénéficient d'un contenu ciblé autour du boom immobilier local." },
-      { name: "Benahavís", desc: "Foyer de certains des développements de villas les plus exclusifs d'Europe. Les studios d'architecture ici ont besoin de sites qui correspondent au standard premium du marché." },
-      { name: "Sotogrande", desc: "Marché résidentiel et équestre haut de gamme avec une forte base d'acheteurs internationaux. La visibilité dans les recherches locales pour les anglophones et francophones est essentielle." },
-      { name: "Málaga", desc: "Le hub régional avec une demande croissante de services de design d'intérieur et d'architecture. La proximité de l'aéroport en fait un point d'entrée clé pour les projets internationaux." },
-      { name: "Mijas", desc: "Populaire parmi les acheteurs nordiques et britanniques. Les studios servant Mijas devraient optimiser pour la recherche multilingue et la visibilité sur Google Maps." },
-      { name: "Fuengirola", desc: "Marché résidentiel dense avec un secteur actif de rénovation immobilière. Opportunité SEO rentable pour les petits studios." },
-      { name: "Casares", desc: "Marché rural boutique avec des projets de villas de prestige. Le positionnement de niche et le SEO local peuvent créer une solide autorité organique." },
+      { name: "Architecture", desc: "Les pages de service et de projet doivent clarifier typologie, portée, processus et qualité construite pour les clients qui comparent les studios." },
+      { name: "Design intérieur", desc: "Les sites de design intérieur ont besoin d'une séquence visuelle forte, d'un langage matière, d'une clarté de service et de signaux de confiance." },
+      { name: "Paysage", desc: "Les sites de paysage gagnent en force quand ils expliquent extérieur, plantation, climat, entretien et valeur à long terme." },
+      { name: "Portfolio", desc: "Un portfolio d'architecture doit transformer les projets en études de cas structurées et indexables, pas en galerie déconnectée." },
+      { name: "Refonte", desc: "Une refonte de site d'architecture doit améliorer perception, lecture mobile, vitesse, métadonnées et chemin vers la prise de contact." },
+      { name: "Multilingue", desc: "Les studios internationaux ont besoin de structure linguistique, hreflang, métadonnées traduites et textes naturels dans chaque marché." },
+      { name: "SEO technique", desc: "URLs propres, données structurées, optimisation d'images, maillage interne et Core Web Vitals aident les moteurs à bien lire le site." },
+      { name: "Perception de marque", desc: "Le trafic ne compte que si le site rend le studio crédible, spécialiste et soigneusement présenté." },
     ],
     sections: [
-      { title: "Pourquoi le SEO local est important pour les studios d'architecture", body: "Des recherches comme 'studio d'architecture Marbella' ou 'site de design d'intérieur Estepona' ont une forte intention d'achat. Ces recherches viennent de promoteurs immobiliers, propriétaires de villas et acheteurs internationaux prêts à engager. Sans structure SEO local, votre studio est invisible exactement pour les clients que vous souhaitez." },
-      { title: "Les pages de projets comme actifs SEO", body: "Chaque projet terminé est un contenu indexable. Une page de projet bien structurée avec localisation, portée, matériaux et photographie peut se positionner pour des recherches longue traîne et stimuler la découverte par des acheteurs et investisseurs immobiliers." },
-      { title: "SEO multilingue", body: "Les acheteurs britanniques, allemands, français et scandinaves sont actifs sur le marché de la Costa del Sol. Un site multilingue avec une structure hreflang correcte donne à votre studio une visibilité dans des groupes linguistiques que vos concurrents ignorent probablement." },
-      { title: "Google Business Profile", body: "Un Google Business Profile entièrement optimisé positionne votre studio sur Google Maps et dans les résultats de recherche locale. C'est souvent le premier point de contact pour la découverte locale et nécessite des données cohérentes de nom, d'adresse et de catégorie." },
-      { title: "SEO technique", body: "La vitesse du site, les Core Web Vitals, une structure d'URL propre, les données structurées et le maillage interne affectent tous la façon dont Google voit et classe votre site. Nous nous occupons de la fondation technique pour que le contenu puisse faire son travail." },
+      { title: "Pourquoi la visibilité compte pour les studios d'architecture", body: "Les clients cherchent par discipline, type de projet, style, service et localisation. Le site doit offrir assez de structure pour que les moteurs comprennent ce que fait le studio sans devenir une liste de mots-clés." },
+      { title: "Les pages projet comme actifs SEO", body: "Chaque projet livré est un contenu indexable. Une page bien structurée avec portée, typologie, matériaux, intention de design et photographie peut soutenir les recherches longue traîne et améliorer l'expérience portfolio." },
+      { title: "SEO multilingue", body: "Les studios actifs sur plusieurs marchés ont besoin de versions linguistiques correctes techniquement et bien écrites. Hreflang, métadonnées traduites et formulation naturelle aident chaque page à atteindre le bon public." },
+      { title: "Pages de service avec substance", body: "Le design web pour l'architecture, les sites de design intérieur et les sites de paysage ont besoin de pages qui expliquent expertise, processus et adéquation sans répéter un langage d'agence générique." },
+      { title: "SEO technique", body: "Vitesse, Core Web Vitals, URLs propres, données structurées, images optimisées et maillage interne affectent la lecture et le classement du site. La base technique doit soutenir le portfolio." },
     ],
   },
   contact: {
     label: "Revue de refonte web",
     heading: "Envoyez le site actuel.",
     sub: "S'il existe un écart clair de première impression, la prochaine étape peut être un aperçu privé de refonte. Pas de longue proposition. Pas de pitch abstrait.",
-    locations: "Au service des studios à Marbella, Estepona, Benahavís, Sotogrande, Málaga, Mijas, Fuengirola, Casares, San Pedro et Nueva Andalucía.",
+    locations: "Basé en Espagne. Nous travaillons avec des studios d'architecture, de design intérieur et de paysage à l'international.",
     response: "Réponse typique dans les 24 heures.",
     steps: [
       "Je passe en revue le site actuel - première impression, clarté du portfolio, expérience mobile et parcours de contact.",
@@ -383,7 +383,7 @@ const fr = {
       name: "Votre nom",
       email: "Adresse email",
       studio: "Nom du studio",
-      city: "Ville",
+      city: "Localisation",
       url: "URL du site actuel",
       type: "Type de studio",
       typeOptions: [
@@ -409,7 +409,7 @@ const fr = {
     },
   },
   faq: [
-    { q: "Travaillez-vous avec des studios en dehors de la Costa del Sol?", a: "Notre focus est la Costa del Sol, mais nous sommes heureux de recevoir des demandes de studios ailleurs en Espagne ou de studios internationaux servant des clients espagnols." },
+    { q: "Travaillez-vous avec des studios hors d'Espagne?", a: "Oui. Reframe Studio est basé en Espagne et travaille avec des studios d'architecture, de design intérieur et de paysage en Espagne et à l'international." },
     { q: "Combien de temps prend une refonte de site?", a: "Une Actualisation Studio prend 1 à 2 semaines. Un Site Signature prend 3 à 5 semaines. Un projet de Studio Éditorial prend 6 à 10 semaines selon la portée et la disponibilité du contenu." },
     { q: "Dois-je fournir les textes?", a: "Nous pouvons travailler avec vos textes existants ou les raffiner. La rédaction depuis zéro est disponible en option complémentaire." },
     { q: "Et si je n'ai pas de photographie professionnelle?", a: "Nous concevons avec les photos que vous avez et conseillons sur le type d'images qui renforcerait le studio. La photographie professionnelle n'est pas nécessaire pour le lancement." },
@@ -418,12 +418,12 @@ const fr = {
     { q: "Proposez-vous des sites multilingues?", a: "Oui. Nous construisons des sites en anglais, espagnol et français. Des langues supplémentaires sont disponibles en option." },
   ],
   footer: {
-    tagline: "Agence de design web spécialisée pour les studios d'architecture et d'intérieur sur la Costa del Sol.",
+    tagline: "Studio de design web spécialisé pour les studios d'architecture, de design intérieur et de paysage.",
     brandEntity:
       "REFRAME is a web design studio for architecture and interior design firms, creating refined websites, portfolio systems, and presentation concepts.",
     homeAria: "Accueil",
     footerNavAria: "Pages clés",
-    locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
+    locations: "Basé en Espagne · Travail international",
     email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
     legal: { privacy: "Politique de confidentialité", terms: "Conditions", cookies: "Cookies" },
@@ -443,17 +443,17 @@ const fr = {
     pricing: {
       title: "Tarifs — offres web transparentes pour studios",
       description:
-        "Reframe Studio (ReframeStudio) — tarifs clairs pour sites d'architecture et d'intérieur en Espagne : 1 500€ conception et développement, hébergement optionnel (30€/mois) et suivi contenu (120€/mois).",
+        "Tarifs clairs pour sites de studios d'architecture, de design intérieur et de paysage : stratégie, design sur mesure, développement responsive, bases SEO, lancement et plans de suivi optionnels.",
     },
     audit: {
       title: "Revue de site gratuite pour studios d'architecture et d'intérieur",
       description:
         "Reframe Studio analyse votre site architecture ou intérieur : première impression, mobile, portfolio, bases SEO et contact — avec des prochaines étapes claires.",
     },
-    seoCostaDelSol: {
-      title: "SEO local pour studios d'architecture et d'intérieur — Costa del Sol",
+    searchVisibility: {
+      title: "Visibilité en recherche pour studios d'architecture et d'intérieur",
       description:
-        "Reframe Studio — SEO local et design web Espagne : visibilité des studios d'architecture et d'intérieur à Marbella, Estepona, Benahavís, Sotogrande et Málaga (pages, GBP, technique, hreflang).",
+        "Visibilité en recherche pour sites d'architecture, de design intérieur et de paysage : pages projet, structure de services, SEO technique, métadonnées image, maillage interne et hreflang.",
     },
   },
   home: {
@@ -552,31 +552,31 @@ const fr = {
   },
   seoPage: {
     introLead:
-      "Les clients d'architecture cherchent avec une intention de lieu. Si votre studio n'apparaît pas dans ces résultats, il n'existe pas pour eux.",
+      "Les clients d'architecture cherchent par discipline, type de projet, service, localisation et crédibilité. Votre site doit répondre clairement à ces signaux.",
     introP1:
-      "Un acheteur britannique qui cherche un architecte pour rénover sa villa tape « studio d'architecture Marbella ». Un couple français qui s'installe à Sotogrande cherche « décorateur d'intérieur Sotogrande ». Un investisseur norvégien tape « rénovation villa Estepona ».",
+      "Un bon site d'architecture fait plus que paraître raffiné. Il donne à chaque projet un titre clair, une portée, un contexte de service, une structure d'image et un chemin vers la page suivante.",
     introP2:
-      "Ces recherches ont lieu chaque jour. Les studios visibles ne sont pas forcément les meilleurs — ce sont ceux que Google a appris à associer à ce lieu et ce service.",
+      "Les moteurs récompensent la clarté. Les visiteurs aussi. La même structure qui aide Google à comprendre votre travail aide les clients à comparer votre studio avec confiance.",
     stats: [
       {
-        stat: "Recherche locale",
-        desc: "Une part importante des recherches Google — et beaucoup portent une forte intention commerciale.",
+        stat: "Intention projet",
+        desc: "Les clients cherchent souvent par types de projets, services, matériaux, localisations et spécialisation du studio.",
       },
       {
-        stat: "Acheteurs multilingues",
-        desc: "Acheteurs britanniques, allemands, français et scandinaves : le cœur de la demande villas et intérieurs sur la Costa del Sol.",
+        stat: "Marchés multilingues",
+        desc: "Les studios internationaux ont besoin d'une structure linguistique correcte techniquement et écrite pour les personnes.",
       },
       {
         stat: "Faible visibilité",
         desc: "Beaucoup de studios ne se positionnent que sur leur nom — invisibles pour ceux qui ne les connaissent pas encore.",
       },
     ],
-    citiesHeading: "Studios d'architecture sur la Costa del Sol",
-    practiceHeading: "À quoi ressemble le SEO local en pratique",
+    citiesHeading: "Fondations de recherche pour studios de design",
+    practiceHeading: "À quoi ressemble la visibilité en recherche en pratique",
     practiceItems: [
       {
-        title: "Pages d'atterrissage locales",
-        desc: "Une page dédiée pour chaque ville desservie : Marbella, Estepona, Benahavís, Sotogrande. Chaque page cible les recherches de ce marché.",
+        title: "Pages de service",
+        desc: "Des pages claires pour le design web d'architecture, les sites de design intérieur, les sites de paysage et les refontes, écrites d'abord pour les personnes.",
       },
       {
         title: "Pages projet comme contenu",
@@ -595,7 +595,7 @@ const fr = {
         desc: "Configuration et optimisation : catégorie, description, services, photos et données NAP cohérentes.",
       },
     ],
-    ctaHeading: "Vous voulez que votre studio apparaisse dans ces recherches ?",
+    ctaHeading: "Vous voulez rendre le site de votre studio plus clair en recherche ?",
     ctaSub: "Commencez par une revue de site claire.",
     ctaLabel: "Demander une revue du site",
   },

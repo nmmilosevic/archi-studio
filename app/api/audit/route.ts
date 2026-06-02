@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       `Email: ${payload.email}`,
       `Studio: ${payload.studio || "-"}`,
       `Website URL: ${payload.url}`,
-      `City: ${payload.city || "-"}`,
+      `Location: ${payload.city || "-"}`,
       `Studio type: ${payload.type || "-"}`,
       `Preferred language: ${payload.language || "-"}`,
       `Needs improvement: ${payload.improve || "-"}`,
@@ -66,7 +66,7 @@ export async function POST(request: Request) {
       <p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>
       <p><strong>Studio:</strong> ${escapeHtml(payload.studio || "-")}</p>
       <p><strong>Website URL:</strong> ${escapeHtml(payload.url)}</p>
-      <p><strong>City:</strong> ${escapeHtml(payload.city || "-")}</p>
+      <p><strong>Location:</strong> ${escapeHtml(payload.city || "-")}</p>
       <p><strong>Studio type:</strong> ${escapeHtml(payload.type || "-")}</p>
       <p><strong>Preferred language:</strong> ${escapeHtml(payload.language || "-")}</p>
       <p><strong>Needs improvement:</strong><br/>${escapeHtml(payload.improve || "-")}</p>

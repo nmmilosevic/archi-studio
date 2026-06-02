@@ -5,17 +5,17 @@ const es = {
     method: "Método",
     work: "Proyectos",
     audit: "Auditoría",
-    seo: "SEO",
+    seo: "Visibilidad",
     contact: "Contacto",
     cta: "Empezar mi web",
   },
   hero: {
-    label: "Rediseños web para arquitectura",
+    label: "Webs para estudios de arquitectura y diseño",
     headline: "Tu estudio ya parece premium. Tu web también debería.",
-    sub: "Rediseños refinados para estudios de arquitectura e interiorismo en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
+    sub: "Diseño web para estudios de arquitectura, interiorismo y paisajismo que necesitan mejor presentación de portfolio, posicionamiento más claro y una experiencia digital a la altura de su trabajo.",
     ctaPrimary: "Ver previews de rediseño",
     ctaSecondary: "Solicitar revisión",
-    proof: "Diseñado para estudios en Marbella, Estepona, Sotogrande, Benahavís y Málaga.",
+    proof: "Diseñado para estudios de arquitectura, interiorismo y paisajismo.",
   },
   problem: {
     heading: "La mayoría de los estudios pierden la confianza antes de la primera llamada.",
@@ -25,7 +25,7 @@ const es = {
       { title: "Narrativa de proyectos débil", desc: "Los proyectos merecen más que una galería de imágenes. Cada trabajo debería comunicar alcance, materiales, reto y resultado." },
       { title: "Mala experiencia móvil", desc: "La mayoría de las consultas comienzan en un teléfono. Una web que no funciona bien en móvil envía el mensaje equivocado de inmediato." },
       { title: "Sin ruta de contacto clara", desc: "Si encontrar el formulario de contacto requiere esfuerzo, la mayoría de los visitantes se van. El camino del interés al contacto debe ser directo." },
-      { title: "Mal SEO local", desc: "Los estudios en Marbella y Estepona son invisibles para búsquedas como 'estudio de arquitectura Marbella' o 'diseño de interiores Costa del Sol'." },
+      { title: "Visibilidad de búsqueda débil", desc: "Una buena web de arquitectura debe ser fácil de entender, sólida técnicamente y estructurada alrededor de los servicios y proyectos que buscan los clientes." },
       { title: "Poca confianza para clientes internacionales", desc: "Una presencia multilingüe, un diseño refinado y textos profesionales tranquilizan a los compradores internacionales que buscan un estudio de confianza." },
     ],
   },
@@ -55,9 +55,9 @@ const es = {
       },
       {
         number: "03",
-        title: "Fundamentos de SEO local",
-        desc: "Estructura técnica y de contenido para que tu estudio aparezca en búsquedas alrededor de Marbella, Estepona, Sotogrande, Málaga y la Costa del Sol.",
-        deliverables: ["Metadatos SEO", "Landing pages locales", "Datos estructurados", "Enlazado interno", "Estructura de alt en imágenes", "Optimización de rendimiento"],
+        title: "Fundamentos de visibilidad",
+        desc: "Estructura técnica y de contenido para que los buscadores entiendan tus servicios, tipos de proyecto, posicionamiento y páginas de portfolio.",
+        deliverables: ["Metadatos SEO", "Estructura de páginas orientada a búsqueda", "Datos estructurados", "Enlazado interno", "Estructura de alt en imágenes", "Optimización de rendimiento"],
       },
       {
         number: "04",
@@ -130,7 +130,7 @@ const es = {
         name: "Estudio Editorial",
         price: "Desde 3.500€",
         desc: "Oferta premium para estudios que venden villas, reformas, interiores y proyectos internacionales.",
-        includes: ["Estrategia web completa", "Dirección artística personalizada", "Multilingüe EN/ES/FR", "CMS de portafolio", "Landing pages SEO local", "Animaciones avanzadas", "Plantillas de caso de estudio", "Estrategia de conversión", "Analítica", "Soporte de lanzamiento", "3 rondas de revisión"],
+        includes: ["Estrategia web completa", "Dirección artística personalizada", "Multilingüe EN/ES/FR", "CMS de portafolio", "Estructura de visibilidad en búsqueda", "Animaciones avanzadas", "Plantillas de caso de estudio", "Estrategia de conversión", "Analítica", "Soporte de lanzamiento", "3 rondas de revisión"],
         notIncluded: [] as string[],
         cta: "Solicitar presupuesto",
         featured: false,
@@ -153,7 +153,7 @@ const es = {
         name: "Cuidado de crecimiento",
         price: "390€/mes",
         desc: "Soporte continuo completo con crecimiento activo de SEO.",
-        includes: ["Todo en Cuidado de estudio", "Mejoras de SEO local", "Una nueva página o artículo SEO al mes", "Revisión de Search Console", "Mejoras de conversión", "Informe mensual de recomendaciones"],
+        includes: ["Todo en Cuidado de estudio", "Mejoras de visibilidad en búsqueda", "Una nueva página de proyecto o insight al mes", "Revisión de Search Console", "Mejoras de conversión", "Informe mensual de recomendaciones"],
       },
     ],
     addons: [
@@ -161,7 +161,7 @@ const es = {
       { name: "Página adicional", price: "Desde 180€" },
       { name: "Subida de página de proyecto", price: "Desde 90€/proyecto" },
       { name: "Google Business Profile", price: "Desde 190€" },
-      { name: "Página SEO de ciudad", price: "Desde 250€/página" },
+      { name: "Página de caso de estudio", price: "Desde 250€/página" },
       { name: "Refinamiento de textos", price: "Desde 350€" },
     ],
   },
@@ -306,7 +306,7 @@ const es = {
     sub: "Envíame tu web actual. Revisaré la primera impresión, la experiencia móvil, la claridad del portafolio, los fundamentos SEO y el flujo de contacto, y te enviaré un conjunto claro de recomendaciones.",
     what: {
       heading: "Qué reviso",
-      items: ["Primera impresión y credibilidad visual", "Experiencia móvil y responsividad", "Claridad del portafolio y narrativa de proyectos", "Fundamentos SEO y visibilidad en búsqueda local", "Flujo de consulta y camino de conversión", "Tipografía, espaciado y calidad de imagen", "Fundamentos de velocidad de carga", "Preparación multilingüe"],
+      items: ["Primera impresión y credibilidad visual", "Experiencia móvil y responsividad", "Claridad del portafolio y narrativa de proyectos", "Fundamentos SEO y visibilidad en búsqueda", "Flujo de consulta y camino de conversión", "Tipografía, espaciado y calidad de imagen", "Fundamentos de velocidad de carga", "Preparación multilingüe"],
     },
     receive: {
       heading: "Qué recibes",
@@ -314,18 +314,18 @@ const es = {
     },
     who: {
       heading: "Para quién es esto",
-      items: ["Estudios de arquitectura en la Costa del Sol", "Estudios de diseño de interiores en Marbella o Estepona", "Estudios preparando un relanzamiento", "Estudios con webs obsoletas que están perdiendo confianza", "Estudios que apuntan a clientes internacionales"],
+      items: ["Estudios de arquitectura", "Estudios de interiorismo", "Estudios de paisajismo", "Estudios preparando un relanzamiento", "Estudios con webs obsoletas que están perdiendo confianza", "Estudios que apuntan a clientes internacionales"],
     },
     issues: {
       heading: "Problemas habituales que encuentro",
-      items: ["Portada sin jerarquía clara", "Galería sin contexto de proyectos", "Sin layout optimizado para móvil", "Cero estructura de SEO local", "Tipografía genérica u obsoleta", "Ruta de contacto inexistente o formulario oculto", "Sin versión multilingüe para clientes internacionales"],
+      items: ["Portada sin jerarquía clara", "Galería sin contexto de proyectos", "Sin layout optimizado para móvil", "Estructura de búsqueda débil", "Tipografía genérica u obsoleta", "Ruta de contacto inexistente o formulario oculto", "Sin versión multilingüe para clientes internacionales"],
     },
     form: {
       name: "Tu nombre",
       studio: "Nombre del estudio",
       url: "URL de la web actual",
       email: "Dirección de email",
-      city: "Ciudad",
+      city: "Ubicación",
       type: "Tipo de estudio",
       typeOptions: ["Arquitectura", "Diseño de interiores", "Inmobiliaria", "Otro"],
       improve: "¿Qué es lo que más quieres mejorar?",
@@ -346,32 +346,32 @@ const es = {
     ],
   },
   seo: {
-    label: "SEO local para estudios",
-    heading: "Tu estudio merece ser encontrado en la Costa del Sol.",
-    sub: "La arquitectura y el diseño de interiores son negocios muy locales. Los clientes internacionales buscan con intención de ubicación. El SEO local marca la diferencia entre ser encontrado y ser invisible.",
+    label: "Visibilidad en búsqueda para estudios",
+    heading: "Tu trabajo debería ser fácil de encontrar y más fácil de entender.",
+    sub: "La visibilidad empieza con una web de estudio clara: servicios precisos, páginas de proyecto estructuradas, metadatos sólidos, enlaces internos y páginas rápidas que apoyan el descubrimiento orgánico.",
     cities: [
-      { name: "Marbella", desc: "Uno de los mercados de lujo más competitivos de España. Los estudios aquí necesitan fuerte autoridad local, optimización de Google Business y contenido multilingüe para captar compradores internacionales de villas." },
-      { name: "Estepona", desc: "Un mercado en crecimiento tanto para reformas como para arquitectura de obra nueva. Los estudios en Estepona se benefician del contenido orientado al boom inmobiliario local." },
-      { name: "Benahavís", desc: "Hogar de algunos de los desarrollos de villas más exclusivos de Europa. Los estudios de arquitectura aquí necesitan webs que estén a la altura del estándar premium del mercado." },
-      { name: "Sotogrande", desc: "Mercado residencial y ecuestre de alta gama con una fuerte base de compradores internacionales. La visibilidad en búsqueda local para anglófonos y francófonos es fundamental." },
-      { name: "Málaga", desc: "El hub regional con creciente demanda de servicios de diseño de interiores y arquitectura. La proximidad al aeropuerto lo convierte en un punto de entrada clave para proyectos internacionales." },
-      { name: "Mijas", desc: "Popular entre compradores nórdicos y británicos. Los estudios que sirven a Mijas deben optimizar para búsquedas multilingües y visibilidad en Google Maps." },
-      { name: "Fuengirola", desc: "Mercado residencial denso con sector activo de reforma de propiedades. Oportunidad SEO rentable para estudios más pequeños." },
-      { name: "Casares", desc: "Mercado rural boutique con proyectos de villas de prestigio. El posicionamiento de nicho y el SEO local pueden crear una sólida autoridad orgánica." },
+      { name: "Arquitectura", desc: "Las páginas de servicio y proyecto deben aclarar tipología, alcance, proceso y calidad construida para clientes que comparan estudios." },
+      { name: "Interiorismo", desc: "Las webs de interiorismo necesitan secuencia visual, lenguaje material, claridad de servicios y señales de confianza antes de la primera consulta." },
+      { name: "Paisajismo", desc: "Las webs de paisajismo se fortalecen cuando explican exterior, plantación, clima, mantenimiento y valor a largo plazo." },
+      { name: "Portfolio", desc: "Un portfolio de arquitectura debe convertir los proyectos en casos de estudio estructurados e indexables, no en una galería desconectada." },
+      { name: "Rediseño", desc: "Un rediseño web de arquitectura debe mejorar percepción, lectura móvil, velocidad, metadatos y el paso del interés a la consulta." },
+      { name: "Multilingüe", desc: "Los estudios internacionales necesitan estructura de idioma, hreflang, metadatos traducidos y textos naturales en cada mercado." },
+      { name: "SEO técnico", desc: "URLs limpias, datos estructurados, optimización de imágenes, enlaces internos y Core Web Vitals ayudan a leer bien la web." },
+      { name: "Percepción de marca", desc: "El tráfico solo importa si la web hace que el estudio se perciba creíble, especialista y cuidado." },
     ],
     sections: [
-      { title: "Por qué el SEO local importa para los estudios de arquitectura", body: "Búsquedas como 'estudio de arquitectura Marbella' o 'web de diseño de interiores Estepona' tienen una alta intención de compra. Provienen de promotores inmobiliarios, propietarios de villas y compradores internacionales que están listos para contratar. Sin estructura de SEO local, tu estudio es invisible exactamente para los clientes que quieres." },
-      { title: "Las páginas de proyectos como activos SEO", body: "Cada proyecto terminado es un contenido indexable. Una página de proyecto bien estructurada con ubicación, alcance, materiales y fotografía puede posicionarse para búsquedas de long-tail e impulsar el descubrimiento por parte de compradores e inversores inmobiliarios." },
-      { title: "SEO multilingüe", body: "Los compradores británicos, alemanes, franceses y escandinavos son activos en el mercado de la Costa del Sol. Una web multilingüe con una estructura hreflang correcta da a tu estudio visibilidad en grupos de idiomas que tus competidores probablemente no tienen en cuenta." },
-      { title: "Google Business Profile", body: "Un Google Business Profile completamente optimizado posiciona tu estudio en Google Maps y en los resultados de búsqueda local. Suele ser el primer punto de contacto para el descubrimiento local y requiere datos consistentes de nombre, dirección y categoría." },
-      { title: "SEO técnico", body: "La velocidad del sitio, los Core Web Vitals, la estructura de URLs limpia, los datos estructurados y el enlazado interno afectan a cómo Google ve y posiciona tu web. Nosotros nos encargamos de la base técnica para que el contenido pueda hacer su trabajo." },
+      { title: "Por qué importa la visibilidad para estudios de arquitectura", body: "Los clientes buscan por disciplina, tipo de proyecto, estilo, servicio y ubicación. La web necesita estructura suficiente para que los buscadores entiendan qué hace el estudio sin convertir la página en una lista de palabras clave." },
+      { title: "Las páginas de proyectos como activos SEO", body: "Cada proyecto terminado es contenido indexable. Una página bien estructurada con alcance, tipología, materiales, intención de diseño y fotografía puede apoyar búsquedas de long-tail y mejorar la experiencia de portfolio." },
+      { title: "SEO multilingüe", body: "Los estudios que trabajan en varios mercados necesitan versiones de idioma correctas técnicamente y bien escritas. Hreflang, metadatos traducidos y lenguaje natural ayudan a llegar al público adecuado." },
+      { title: "Páginas de servicio con sustancia", body: "El diseño web para arquitectura, las webs de interiorismo y las webs de paisajismo necesitan páginas que expliquen expertise, proceso y encaje sin repetir lenguaje genérico de agencia." },
+      { title: "SEO técnico", body: "Velocidad, Core Web Vitals, URLs limpias, datos estructurados, imágenes optimizadas y enlaces internos afectan a cómo Google lee y posiciona la web. La base técnica debe apoyar el portfolio." },
     ],
   },
   contact: {
     label: "Revisión de rediseño web",
     heading: "Envía la web actual.",
     sub: "Si hay una brecha clara en la primera impresión, el siguiente paso puede ser una preview privada de rediseño. Sin propuesta larga. Sin pitch abstracto.",
-    locations: "Atendemos a estudios en Marbella, Estepona, Benahavís, Sotogrande, Málaga, Mijas, Fuengirola, Casares, San Pedro y Nueva Andalucía.",
+    locations: "Con base en España. Trabajamos con estudios de arquitectura, interiorismo y paisajismo a nivel internacional.",
     response: "Respuesta habitual en 24 horas.",
     steps: [
       "Reviso la web actual - primera impresión, claridad del portafolio, experiencia móvil y ruta de contacto.",
@@ -383,7 +383,7 @@ const es = {
       name: "Tu nombre",
       email: "Dirección de email",
       studio: "Nombre del estudio",
-      city: "Ciudad",
+      city: "Ubicación",
       url: "URL de la web actual",
       type: "Tipo de estudio",
       typeOptions: [
@@ -409,7 +409,7 @@ const es = {
     },
   },
   faq: [
-    { q: "¿Trabajáis con estudios fuera de la Costa del Sol?", a: "Nuestro foco es la Costa del Sol, pero estamos encantados de recibir consultas de estudios de otras partes de España o de estudios internacionales que trabajan con clientes españoles." },
+    { q: "¿Trabajáis con estudios fuera de España?", a: "Sí. Reframe Studio tiene base en España y trabaja con estudios de arquitectura, interiorismo y paisajismo en España e internacionalmente." },
     { q: "¿Cuánto tarda un rediseño web?", a: "Una Actualización de Estudio tarda de 1 a 2 semanas. Una Web Signature tarda de 3 a 5 semanas. Un proyecto de Estudio Editorial tarda de 6 a 10 semanas según el alcance y la disponibilidad del contenido." },
     { q: "¿Tengo que proporcionar los textos?", a: "Podemos trabajar con tus textos existentes o refinarlos. La redacción desde cero está disponible como complemento." },
     { q: "¿Qué pasa si no tengo fotografía profesional?", a: "Diseñamos con las fotografías que tienes y aconsejamos sobre qué tipo de imágenes fortalecerían el estudio. La fotografía profesional no es necesaria para el lanzamiento." },
@@ -418,12 +418,12 @@ const es = {
     { q: "¿Ofrecéis webs multilingües?", a: "Sí. Construimos webs en inglés, español y francés. Los idiomas adicionales están disponibles como complemento." },
   ],
   footer: {
-    tagline: "Agencia de diseño web especializada en estudios de arquitectura e interiorismo en la Costa del Sol.",
+    tagline: "Estudio de diseño web especializado en estudios de arquitectura, interiorismo y paisajismo.",
     brandEntity:
       "REFRAME is a web design studio for architecture and interior design firms, creating refined websites, portfolio systems, and presentation concepts.",
     homeAria: "Inicio",
     footerNavAria: "Enlaces principales",
-    locations: "Marbella · Estepona · Benahavís · Sotogrande · Málaga · Mijas · Fuengirola · Casares · San Pedro · Nueva Andalucía",
+    locations: "Con base en España · Trabajo internacional",
     email: "hello@reframestudio.es",
     whatsapp: "+34 600 000 000",
     legal: { privacy: "Política de privacidad", terms: "Términos", cookies: "Cookies" },
@@ -443,17 +443,17 @@ const es = {
     pricing: {
       title: "Precios — paquetes web transparentes para estudios",
       description:
-        "Reframe Studio (ReframeStudio) — precios claros para webs de arquitectura e interiorismo en España: 1.500€ diseño y desarrollo, alojamiento opcional (30€/mes) y cuidado de contenido (120€/mes).",
+        "Precios claros para webs de estudios de arquitectura, interiorismo y paisajismo: estrategia, diseño a medida, desarrollo responsive, bases SEO, soporte de lanzamiento y planes de cuidado opcionales.",
     },
     audit: {
       title: "Revisión web gratuita para estudios de arquitectura e interiorismo",
       description:
         "Reframe Studio revisa tu web de arquitectura o interiorismo: primera impresión, UX móvil, portfolio, bases SEO y contacto — con próximos pasos claros.",
     },
-    seoCostaDelSol: {
-      title: "SEO local para estudios de arquitectura e interiorismo — Costa del Sol",
+    searchVisibility: {
+      title: "Visibilidad en búsqueda para estudios de arquitectura e interiorismo",
       description:
-        "Reframe Studio — SEO local y diseño web España: cómo posicionar estudios de arquitectura e interiorismo en Marbella, Estepona, Benahavís, Sotogrande y Málaga (páginas, GBP, técnico, hreflang).",
+        "Visibilidad en búsqueda para webs de arquitectura, interiorismo y paisajismo: páginas de proyecto, estructura de servicios, SEO técnico, metadatos de imagen, enlazado interno y hreflang.",
     },
   },
   home: {
@@ -552,31 +552,31 @@ const es = {
   },
   seoPage: {
     introLead:
-      "Los clientes de arquitectura buscan con intención de ubicación. Si tu estudio no está en esos resultados, para ellos no existe.",
+      "Los clientes de arquitectura buscan por disciplina, tipo de proyecto, servicio, ubicación y credibilidad. Tu web debe responder a esas señales con claridad.",
     introP1:
-      "Un comprador británico que investiga arquitectos para renovar su villa escribe «estudio de arquitectura Marbella». Una pareja francesa que se muda a Sotogrande busca «diseñador de interiores Sotogrande». Un inversor noruego escribe «reforma villa Estepona».",
+      "Una buena web de arquitectura hace más que verse refinada. Da a cada proyecto un título claro, alcance, contexto de servicio, estructura de imagen y ruta hacia la siguiente página relevante.",
     introP2:
-      "Estas búsquedas ocurren cada día. Los estudios que aparecen no son necesariamente los mejores: son los que Google ha aprendido a asociar a ese lugar y servicio.",
+      "Los buscadores premian la claridad. Los visitantes también. La misma estructura que ayuda a Google a entender tu trabajo ayuda a los clientes a comparar tu estudio con confianza.",
     stats: [
       {
-        stat: "Búsqueda local",
-        desc: "Supone una parte muy relevante de las búsquedas en Google — y muchas tienen alta intención comercial.",
+        stat: "Intención de proyecto",
+        desc: "Los clientes suelen buscar por tipos de proyecto, servicios, materiales, ubicaciones y especialización del estudio.",
       },
       {
-        stat: "Compradores multilingües",
-        desc: "Compradores británicos, alemanes, franceses y escandinavos son el núcleo de la demanda de villas e interiorismo en la Costa del Sol.",
+        stat: "Mercados multilingües",
+        desc: "Los estudios internacionales necesitan estructura de idioma correcta técnicamente y escrita para personas.",
       },
       {
         stat: "Poca visibilidad",
         desc: "Muchos estudios solo posicionan por su nombre — invisibles para quien aún no los conoce.",
       },
     ],
-    citiesHeading: "Estudios de arquitectura en la Costa del Sol",
-    practiceHeading: "Cómo se ve el SEO local en la práctica",
+    citiesHeading: "Fundamentos de búsqueda para estudios de diseño",
+    practiceHeading: "Cómo se ve la visibilidad en búsqueda en la práctica",
     practiceItems: [
       {
-        title: "Landing pages locales",
-        desc: "Una página dedicada por ciudad: Marbella, Estepona, Benahavís, Sotogrande. Cada una apunta a las búsquedas de ese mercado.",
+        title: "Páginas de servicio",
+        desc: "Páginas claras para diseño web de arquitectura, webs de interiorismo, webs de paisajismo y rediseño web, escritas primero para personas.",
       },
       {
         title: "Páginas de proyecto como contenido",
@@ -595,7 +595,7 @@ const es = {
         desc: "Configuración y optimización: categoría, descripción, servicios, fotos y datos NAP coherentes.",
       },
     ],
-    ctaHeading: "¿Quieres que tu estudio aparezca en estas búsquedas?",
+    ctaHeading: "¿Quieres que la web de tu estudio sea más clara en búsqueda?",
     ctaSub: "Empieza con una revisión web clara.",
     ctaLabel: "Solicitar revisión web",
   },

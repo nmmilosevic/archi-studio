@@ -15,26 +15,20 @@ interface Props {
 
 const WORK_INDEX_KW: Record<string, string[]> = {
   en: [
-    "Reframe Studio",
-    "ReframeStudio",
     "architecture studio websites",
-    "luxury architecture websites",
+    "architecture portfolio website",
     "architecture website case studies",
-    "interior design portfolio web",
-    "website redesign examples",
-    "Costa del Sol studios",
+    "interior design portfolio website",
+    "landscape architecture website",
+    "architecture website redesign examples",
   ],
   es: [
-    "Reframe Studio",
-    "ReframeStudio",
     "webs estudio arquitectura",
     "casos estudio web arquitectura",
     "portfolio interiorismo",
     "rediseño web ejemplos",
   ],
   fr: [
-    "Reframe Studio",
-    "ReframeStudio",
     "sites studio architecture",
     "études de cas site architecture",
     "portfolio design intérieur",
@@ -49,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: "/work",
     title: "Projects | Reframe Studio",
     description:
-      "Reframe Studio (ReframeStudio) — architecture studio websites and luxury architecture website case studies: clearer portfolios, stronger positioning, and credible digital presentation for interior and architecture practices in Spain.",
+      "Architecture, interior design, and landscape website case studies showing clearer portfolios, stronger positioning, and more credible digital presentation for design-led studios.",
     keywords: WORK_INDEX_KW[locale] ?? WORK_INDEX_KW.en,
   });
 }

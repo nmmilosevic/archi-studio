@@ -20,29 +20,23 @@ interface Props {
 
 const PRICING_KW: Record<string, string[]> = {
   en: [
-    "Reframe Studio",
-    "ReframeStudio",
-    "luxury architecture websites",
     "architecture website price",
     "interior design website cost",
     "studio website package",
-    "Marbella web design",
-    "web design Spain",
+    "architecture website redesign",
+    "architecture portfolio website",
   ],
   es: [
-    "Reframe Studio",
-    "ReframeStudio",
     "precio web arquitectura",
-    "presupuesto página estudio",
-    "diseño web Costa del Sol",
-    "diseño web España",
+    "presupuesto web estudio arquitectura",
+    "rediseño web arquitectura",
+    "portfolio arquitectura",
   ],
   fr: [
-    "Reframe Studio",
-    "ReframeStudio",
     "tarif site architecture",
     "prix site studio design",
-    "design web Espagne",
+    "refonte site architecture",
+    "portfolio architecture",
   ],
 };
 

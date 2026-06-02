@@ -15,38 +15,32 @@ const privacy: Record<
   en: {
     title: "Privacy policy",
     description:
-      "How Reframe Studio (ReframeStudio) collects, uses, and stores personal data when you use reframestudio.es or enquire about architecture and interior design web services.",
+      "How Reframe Studio collects, uses, and stores personal data when you use reframestudio.es or enquire about architecture, interior design, and landscape studio web services.",
     keywords: [
       "Reframe Studio privacy",
-      "ReframeStudio",
       "architecture website studio",
       "data protection Spain",
       "GDPR",
-      "Costa del Sol",
     ],
   },
   es: {
     title: "Política de privacidad",
     description:
-      "Información sobre el tratamiento de datos al usar la web de Reframe Studio (ReframeStudio) y solicitar servicios digitales para estudios de arquitectura.",
+      "Información sobre el tratamiento de datos al usar la web de Reframe Studio y solicitar servicios digitales para estudios de arquitectura, interiorismo y paisajismo.",
     keywords: [
       "privacidad Reframe Studio",
-      "ReframeStudio",
       "estudio web arquitectura",
       "protección de datos",
-      "Costa del Sol",
     ],
   },
   fr: {
     title: "Politique de confidentialité",
     description:
-      "Modalités de traitement des données lors de l’utilisation du site Reframe Studio (ReframeStudio) et des demandes liées aux sites de studios d’architecture.",
+      "Modalités de traitement des données lors de l’utilisation du site Reframe Studio et des demandes liées aux sites de studios d’architecture, de design intérieur et de paysage.",
     keywords: [
       "confidentialité Reframe Studio",
-      "ReframeStudio",
       "site web architecture",
       "données personnelles",
-      "Costa del Sol",
     ],
   },
 };
@@ -58,10 +52,9 @@ const terms: Record<
   en: {
     title: "Terms of service",
     description:
-      "Terms governing use of Reframe Studio’s website (reframestudio.es) and engagement for website redesign services for architecture and interior design studios.",
+      "Terms governing use of Reframe Studio’s website and engagement for website redesign services for architecture, interior design, and landscape studios.",
     keywords: [
       "Reframe Studio terms",
-      "ReframeStudio",
       "website services agreement",
       "architecture studio web design",
     ],
@@ -69,10 +62,9 @@ const terms: Record<
   es: {
     title: "Términos del servicio",
     description:
-      "Condiciones de uso del sitio de Reframe Studio (ReframeStudio) y de los servicios de diseño web para estudios de arquitectura e interiorismo.",
+      "Condiciones de uso del sitio de Reframe Studio y de los servicios de diseño web para estudios de arquitectura, interiorismo y paisajismo.",
     keywords: [
       "términos Reframe Studio",
-      "ReframeStudio",
       "contrato servicios web",
       "diseño web arquitectura",
     ],
@@ -80,12 +72,11 @@ const terms: Record<
   fr: {
     title: "Conditions d’utilisation",
     description:
-      "Conditions d’utilisation du site Reframe Studio (ReframeStudio) et des prestations de conception web pour studios d’architecture et de design d’intérieur.",
+      "Conditions d’utilisation du site Reframe Studio et des prestations de conception web pour studios d’architecture, de design intérieur et de paysage.",
     keywords: [
       "conditions Reframe Studio",
-      "ReframeStudio",
       "services site web",
-      "architecture Costa del Sol",
+      "site architecture",
     ],
   },
 };
@@ -97,10 +88,9 @@ const cookies: Record<
   en: {
     title: "Cookie policy",
     description:
-      "How Reframe Studio (ReframeStudio) uses cookies on this architecture and interior design studio marketing website.",
+      "How Reframe Studio uses cookies on this architecture, interior design, and landscape studio website.",
     keywords: [
       "Reframe Studio cookies",
-      "ReframeStudio",
       "cookie policy",
       "analytics consent",
       "architecture website",
@@ -109,10 +99,9 @@ const cookies: Record<
   es: {
     title: "Política de cookies",
     description:
-      "Uso de cookies en el sitio de Reframe Studio (ReframeStudio), estudio de diseño web para arquitectura.",
+      "Uso de cookies en el sitio de Reframe Studio para estudios de arquitectura, interiorismo y paisajismo.",
     keywords: [
       "cookies Reframe Studio",
-      "ReframeStudio",
       "política cookies",
       "privacidad web",
     ],
@@ -120,10 +109,9 @@ const cookies: Record<
   fr: {
     title: "Politique relative aux cookies",
     description:
-      "Cookies et traceurs sur le site Reframe Studio (ReframeStudio), studio de sites pour l’architecture.",
+      "Cookies et traceurs sur le site Reframe Studio pour studios d’architecture, de design intérieur et de paysage.",
     keywords: [
       "cookies Reframe Studio",
-      "ReframeStudio",
       "politique cookies",
       "site architecture",
     ],
