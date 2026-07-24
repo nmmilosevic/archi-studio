@@ -483,6 +483,7 @@ const en = {
     offerPaymentLabel: "One-time payment",
     simpleMarketingOffer: {
       price: "1,500€",
+      addonsTitle: "Optional add-ons",
       includes: [
         "Website strategy",
         "Custom design",

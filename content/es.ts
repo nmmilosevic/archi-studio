@@ -483,6 +483,7 @@ const es = {
     offerPaymentLabel: "Pago único",
     simpleMarketingOffer: {
       price: "1.500€",
+      addonsTitle: "Complementos opcionales",
       includes: [
         "Estrategia web",
         "Diseño a medida",
