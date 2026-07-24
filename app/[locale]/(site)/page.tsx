@@ -206,7 +206,7 @@ export default async function HomePage({ params }: Props) {
                 text={home.offerTitle}
                 as="h2"
                 id="pricing"
-                className="text-section mb-6 max-w-[620px] scroll-mt-[46vh] text-primary md:scroll-mt-[42vh]"
+                className="text-section mb-6 max-w-[620px] scroll-mt-[25vh] text-primary md:scroll-mt-[13vh]"
               />
               <p className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-primary">
                 {offer.price}
