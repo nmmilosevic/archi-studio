@@ -15,6 +15,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { HomeDiagnosisSection } from "@/components/sections/HomeDiagnosisSection";
 import { SelectedWorkShowcase } from "@/components/sections/SelectedWorkShowcase";
+import { CenteredHashAnchor } from "@/components/navigation/CenteredHashAnchor";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -197,16 +198,16 @@ export default async function HomePage({ params }: Props) {
 
       <section
         className="border-t border-charcoal/10 bg-stone py-[clamp(86px,11vw,168px)] text-primary"
-        aria-labelledby="pricing"
+        aria-labelledby="pricing-heading"
       >
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
-            <div className="lg:pr-2">
+            <CenteredHashAnchor id="pricing" className="lg:pr-2">
               <AnimatedTitle
                 text={home.offerTitle}
                 as="h2"
-                id="pricing"
-                className="text-section mb-6 max-w-[620px] scroll-mt-[25vh] text-primary md:scroll-mt-[13vh]"
+                id="pricing-heading"
+                className="text-section mb-6 max-w-[620px] text-primary"
               />
               <p className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-primary">
                 {offer.price}
@@ -226,7 +227,7 @@ export default async function HomePage({ params }: Props) {
                   </div>
                 ))}
               </div>
-            </div>
+            </CenteredHashAnchor>
 
             <div className="relative lg:pl-2">
               <div className="relative aspect-[1/1] w-full">
