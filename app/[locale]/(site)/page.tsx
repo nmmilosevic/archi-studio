@@ -196,9 +196,8 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       <section
-        id="pricing"
         className="border-t border-charcoal/10 bg-stone py-[clamp(86px,11vw,168px)] text-primary"
-        aria-labelledby="offer-heading"
+        aria-labelledby="pricing"
       >
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
@@ -206,8 +205,8 @@ export default async function HomePage({ params }: Props) {
               <AnimatedTitle
                 text={home.offerTitle}
                 as="h2"
-                id="offer-heading"
-                className="text-section mb-6 max-w-[620px] text-primary"
+                id="pricing"
+                className="text-section mb-6 max-w-[620px] scroll-mt-[46vh] text-primary md:scroll-mt-[42vh]"
               />
               <p className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-primary">
                 {offer.price}
