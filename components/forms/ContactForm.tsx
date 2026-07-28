@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
+import { getPageCopy } from "@/lib/page-copy";
 
 const inputClass =
   "w-full min-h-12 border border-charcoal/16 bg-offwhite/92 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/36 focus:border-bronze/55 focus:outline-none transition-colors duration-250";
@@ -20,7 +21,9 @@ interface FormData {
 }
 
 export function ContactForm() {
+  const locale = useLocale();
   const t = useTranslations("contact.form");
+  const pageCopy = getPageCopy(locale).contact;
   const [form, setForm] = useState<FormData>({
     name: "",
     email: "",
@@ -56,7 +59,7 @@ export function ContactForm() {
 
       setSuccess(true);
     } catch {
-      setError("Something went wrong. Please email us directly at hello@reframestudio.es.");
+      setError(pageCopy.error);
     } finally {
       setLoading(false);
     }
@@ -146,7 +149,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="contact-message" className={labelClass}>
-          What feels wrong with your current website?
+          {t("message")}
         </label>
         <textarea
           id="contact-message"
@@ -158,7 +161,7 @@ export function ContactForm() {
             inputClass,
             "min-h-[210px] resize-none py-4 leading-[1.7]"
           )}
-          placeholder="What feels outdated, unclear, or difficult to use?"
+          placeholder={t("messagePlaceholder")}
         />
       </div>
 
@@ -176,7 +179,7 @@ export function ContactForm() {
           className="group w-full min-h-14 justify-center gap-2 sm:w-auto sm:px-9"
         >
           {loading ? (
-            "Sending..."
+            pageCopy.sending
           ) : (
             <>
               {t("cta")}

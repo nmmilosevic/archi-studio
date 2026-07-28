@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
+import { getPageCopy } from "@/lib/page-copy";
 
 // TODO: Connect to Resend or Supabase for email delivery
 
@@ -24,7 +25,9 @@ interface FormData {
 }
 
 export function AuditForm() {
+  const locale = useLocale();
   const t = useTranslations("audit.form");
+  const pageCopy = getPageCopy(locale).audit;
   const [form, setForm] = useState<FormData>({
     name: "",
     studio: "",
@@ -71,7 +74,7 @@ export function AuditForm() {
 
       setSuccess(true);
     } catch {
-      setError("Something went wrong. Please email us directly at hello@reframestudio.es.");
+      setError(pageCopy.error);
     } finally {
       setLoading(false);
     }

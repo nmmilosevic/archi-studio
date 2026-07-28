@@ -8,6 +8,7 @@ import { BRAND } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteLocaleUrl } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structured-data";
+import { getPageCopy } from "@/lib/page-copy";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -38,12 +39,12 @@ const CONTACT_KW: Record<string, string[]> = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const keywords = CONTACT_KW[locale] ?? CONTACT_KW.en;
+  const copy = getPageCopy(locale).metadata;
   return buildPageMetadata({
     locale,
     path: "/contact",
-    title: "Contact | Reframe Studio",
-    description:
-      "Contact Reframe Studio about an architecture website, interior design studio website, landscape architecture website, portfolio redesign, or search visibility review.",
+    title: copy.contactTitle,
+    description: copy.contactDescription,
     keywords,
   });
 }
@@ -51,6 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const pageCopy = getPageCopy(locale).contact;
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: absoluteLocaleUrl(locale, "") },
     { name: "Contact", url: absoluteLocaleUrl(locale, "/contact") },
@@ -63,7 +65,7 @@ export default async function ContactPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Tell us about your studio website."
+              text={pageCopy.heading}
               as="h1"
               className="text-page-title max-w-[16ch] text-inverted"
             />
@@ -71,7 +73,7 @@ export default async function ContactPage({ params }: Props) {
               className="max-w-[540px] text-[16px] leading-relaxed text-inverted/62 lg:ml-auto"
               delay={0.12}
             >
-              Send your current website or project idea. We’ll reply with the clearest next step.
+              {pageCopy.sub}
             </AnimatedText>
           </div>
         </Container>
@@ -80,16 +82,16 @@ export default async function ContactPage({ params }: Props) {
       <section
         id="contact-form"
         className="bg-offwhite pb-[clamp(70px,9vw,120px)] pt-[clamp(54px,7vw,96px)]"
-        aria-label="Contact form"
+        aria-label={pageCopy.formAria}
       >
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
             <div className="flex h-full flex-col lg:justify-center lg:pr-4">
               <h2 className="max-w-[14ch] font-heading text-[clamp(30px,3.25vw,45px)] font-medium leading-[1.08] tracking-[-0.025em] text-primary">
-                The right website should help clients trust your work.
+                {pageCopy.trustHeading}
               </h2>
               <p className="mt-7 max-w-[46ch] text-[16px] leading-relaxed text-primary/70">
-                We help architecture and interior studios present their work with more clarity, trust, and consistency across desktop and mobile.
+                {pageCopy.trustBody}
               </p>
               <a
                 href={`mailto:${BRAND.email}`}

@@ -2,9 +2,11 @@
 
 import { useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
+import { getLocalizedHref } from "@/lib/locale-navigation";
+import { getPageCopy } from "@/lib/page-copy";
 
 const LOCALES = [
   { code: "es", label: "ES" },
@@ -18,19 +20,12 @@ interface LanguageSwitcherProps {
 
 export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
   const locale = useLocale();
-  const router = useRouter();
+  const copy = getPageCopy(locale).navigation;
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeLocale = LOCALES.find((loc) => loc.code === locale) ?? LOCALES[0];
   const otherLocales = LOCALES.filter((loc) => loc.code !== locale);
-
-  function handleSwitch(newLocale: string) {
-    if (newLocale === locale) return;
-    const localizedPath = pathname.replace(/^\/[^/]+(?=\/|$)/, `/${newLocale}`) || `/${newLocale}`;
-    router.replace(localizedPath, { scroll: false });
-    setOpen(false);
-  }
 
   function clearCloseTimer() {
     if (closeTimerRef.current) {
@@ -56,13 +51,13 @@ export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
     <div
       className="relative"
       role="navigation"
-      aria-label="Language switcher"
+      aria-label={copy.languageSwitcher}
       onMouseEnter={openMenu}
       onMouseLeave={closeMenuWithDelay}
     >
       <button
         type="button"
-        aria-label="Select language"
+        aria-label={copy.selectLanguage}
         aria-expanded={open}
         className={clsx(
           "inline-flex min-h-9 items-center gap-1.5 px-3 font-body text-[13px] transition-colors duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 cursor-pointer",
@@ -94,16 +89,19 @@ export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
         <ul className="py-1">
           {otherLocales.map((loc) => (
             <li key={loc.code}>
-              <button
-                type="button"
-                onClick={() => handleSwitch(loc.code)}
+              <a
+                href={getLocalizedHref(pathname, loc.code)}
+                hrefLang={loc.code}
+                lang={loc.code}
+                aria-label={`${copy.selectLanguage}: ${loc.label}`}
+                onClick={() => setOpen(false)}
                 className={clsx(
                   "block w-full px-3 py-2 text-left text-[13px] transition-colors duration-200 ease-out cursor-pointer",
                   light ? "text-primary hover:bg-charcoal/8" : "text-primary hover:bg-charcoal/6"
                 )}
               >
                 {loc.label}
-              </button>
+              </a>
             </li>
           ))}
         </ul>

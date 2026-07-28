@@ -1,0 +1,242 @@
+import { isLocale } from "@/lib/locale-navigation";
+
+const PAGE_COPY = {
+  en: {
+    navigation: {
+      skipToContent: "Skip to content",
+      home: "Home",
+      primary: "Primary navigation",
+      mobile: "Mobile navigation",
+      menu: "Navigation menu",
+      closeMenu: "Close menu",
+      language: "Language",
+      languageSwitcher: "Language switcher",
+      selectLanguage: "Select language",
+    },
+    services: {
+      sub: "From website redesigns to portfolio systems and search visibility foundations, every service is built around how architecture and design studios present work, earn trust, and attract better enquiries.",
+      listAria: "Services list",
+      reviewTitle: "Not sure which service fits?",
+      reviewBody: "Request a website review and we will tell you what your studio website needs first.",
+      reviewCta: "Request a website review",
+      processTitle: "Every engagement follows the same structure.",
+      processItems: [
+        {
+          title: "Review first",
+          desc: "Every project starts with a review of your current site, positioning, and goals. This shapes the direction and scope before any work begins.",
+        },
+        {
+          title: "Fixed deliverables",
+          desc: "Each package has a defined scope, so you know what you are getting before you sign.",
+        },
+        {
+          title: "Direct involvement",
+          desc: "You work directly with the designer and developer. Faster revisions and cleaner decisions, with no account-manager handoffs.",
+        },
+        {
+          title: "Launch ready",
+          desc: "Every project includes performance optimization, technical SEO setup, analytics configuration, and domain connection.",
+        },
+      ],
+      pricingTitle: "See the simple website price.",
+      pricingBody: "All packages, recurring plans, and add-ons with starting prices.",
+      pricingCta: "View pricing",
+    },
+    work: {
+      heading: "Websites for studios with work worth showing properly.",
+      sub: "A clear look at how architecture and interior studios can present their work with more clarity, confidence, and visual quality.",
+      gridAria: "Work grid",
+      viewCaseStudy: "View case study",
+      closePreview: "Close preview",
+      desktopPreview: "desktop website preview",
+    },
+    contact: {
+      heading: "Tell us about your studio website.",
+      sub: "Send your current website or project idea. We’ll reply with the clearest next step.",
+      trustHeading: "The right website should help clients trust your work.",
+      trustBody: "We help architecture and interior studios present their work with more clarity, trust, and consistency across desktop and mobile.",
+      formAria: "Contact form",
+      sending: "Sending…",
+      error: "Something went wrong. Please email us directly at hello@reframestudio.es.",
+    },
+    audit: {
+      error: "Something went wrong. Please email us directly at hello@reframestudio.es.",
+    },
+    homeSeo: {
+      heading: "Architecture and interior website expertise",
+      body: "REFRAME Studio designs website systems for architecture and interior design practices.",
+      location: "Web design for architects in Marbella and across the Costa del Sol, with refined portfolio systems and presentation concepts.",
+    },
+    footerBrandEntity: "REFRAME is a web design studio for architecture and interior design firms, creating refined websites, portfolio systems, and presentation concepts.",
+    metadata: {
+      homeTitle: "REFRAME Studio | Architecture & Interior Design Website Design",
+      homeDescription: "Website design and redesign for architecture and interior design studios, with refined portfolios, multilingual structure, and clear enquiry journeys.",
+      servicesTitle: "Website design services for architecture studios",
+      servicesDescription: "Website redesign, portfolio systems, search visibility, hosting, and brand refinement for architecture, interior design, and landscape studios.",
+      workTitle: "Architecture and interior studio website projects",
+      workDescription: "Website redesign studies for architecture and interior design studios, with clearer portfolios, stronger positioning, and refined mobile presentation.",
+      contactTitle: "Contact REFRAME Studio",
+      contactDescription: "Tell REFRAME Studio about your architecture or interior design website and receive a clear recommendation for the next step.",
+    },
+  },
+  es: {
+    navigation: {
+      skipToContent: "Saltar al contenido",
+      home: "Inicio",
+      primary: "Navegación principal",
+      mobile: "Navegación móvil",
+      menu: "Menú de navegación",
+      closeMenu: "Cerrar menú",
+      language: "Idioma",
+      languageSwitcher: "Selector de idioma",
+      selectLanguage: "Seleccionar idioma",
+    },
+    services: {
+      sub: "Desde rediseños web y sistemas de portafolio hasta bases de visibilidad en buscadores, cada servicio se adapta a cómo los estudios de arquitectura y diseño presentan su trabajo, generan confianza y atraen mejores consultas.",
+      listAria: "Lista de servicios",
+      reviewTitle: "¿No sabes qué servicio encaja?",
+      reviewBody: "Solicita una revisión web y te diremos qué necesita primero la web de tu estudio.",
+      reviewCta: "Solicitar una revisión web",
+      processTitle: "Todos los proyectos siguen la misma estructura.",
+      processItems: [
+        {
+          title: "Primero, la revisión",
+          desc: "Cada proyecto empieza con una revisión de tu web actual, tu posicionamiento y tus objetivos. Así definimos la dirección y el alcance antes de comenzar.",
+        },
+        {
+          title: "Entregables definidos",
+          desc: "Cada paquete tiene un alcance claro, para que sepas qué recibirás antes de firmar.",
+        },
+        {
+          title: "Implicación directa",
+          desc: "Trabajas directamente con quien diseña y desarrolla. Revisiones más rápidas y decisiones más claras, sin intermediarios.",
+        },
+        {
+          title: "Lista para publicar",
+          desc: "Cada proyecto incluye optimización de rendimiento, SEO técnico, configuración de analítica y conexión del dominio.",
+        },
+      ],
+      pricingTitle: "Consulta el precio de la web.",
+      pricingBody: "Paquetes, planes recurrentes y complementos con precios de partida.",
+      pricingCta: "Ver precios",
+    },
+    work: {
+      heading: "Webs para estudios con trabajo que merece mostrarse bien.",
+      sub: "Una mirada clara a cómo los estudios de arquitectura e interiorismo pueden presentar su trabajo con más claridad, confianza y calidad visual.",
+      gridAria: "Galería de proyectos",
+      viewCaseStudy: "Ver caso de estudio",
+      closePreview: "Cerrar vista previa",
+      desktopPreview: "vista previa de la web en ordenador",
+    },
+    contact: {
+      heading: "Cuéntanos sobre la web de tu estudio.",
+      sub: "Envíanos tu web actual o la idea de tu proyecto. Te responderemos con el siguiente paso más claro.",
+      trustHeading: "La web adecuada debe ayudar a que los clientes confíen en tu trabajo.",
+      trustBody: "Ayudamos a estudios de arquitectura e interiorismo a presentar su trabajo con más claridad, confianza y coherencia en ordenador y móvil.",
+      formAria: "Formulario de contacto",
+      sending: "Enviando…",
+      error: "Algo ha salido mal. Escríbenos directamente a hello@reframestudio.es.",
+    },
+    audit: {
+      error: "Algo ha salido mal. Escríbenos directamente a hello@reframestudio.es.",
+    },
+    homeSeo: {
+      heading: "Experiencia web para arquitectura e interiorismo",
+      body: "REFRAME Studio diseña sistemas web para estudios de arquitectura e interiorismo.",
+      location: "Diseño web para arquitectos en Marbella y la Costa del Sol, con sistemas de portafolio refinados y conceptos de presentación.",
+    },
+    footerBrandEntity: "REFRAME es un estudio de diseño web para firmas de arquitectura e interiorismo que crea webs refinadas, sistemas de portafolio y conceptos de presentación.",
+    metadata: {
+      homeTitle: "REFRAME Studio | Diseño web para arquitectura e interiorismo",
+      homeDescription: "Diseño y rediseño web para estudios de arquitectura e interiorismo, con portafolios refinados, estructura multilingüe y rutas de contacto claras.",
+      servicesTitle: "Servicios de diseño web para estudios de arquitectura",
+      servicesDescription: "Rediseño web, sistemas de portafolio, visibilidad en buscadores, alojamiento y refinamiento de marca para estudios de arquitectura, interiorismo y paisajismo.",
+      workTitle: "Proyectos web para estudios de arquitectura e interiorismo",
+      workDescription: "Estudios de rediseño web con portafolios más claros, mejor posicionamiento y una presentación móvil refinada.",
+      contactTitle: "Contacta con REFRAME Studio",
+      contactDescription: "Cuéntanos sobre la web de tu estudio de arquitectura o interiorismo y recibe una recomendación clara para el siguiente paso.",
+    },
+  },
+  fr: {
+    navigation: {
+      skipToContent: "Aller au contenu",
+      home: "Accueil",
+      primary: "Navigation principale",
+      mobile: "Navigation mobile",
+      menu: "Menu de navigation",
+      closeMenu: "Fermer le menu",
+      language: "Langue",
+      languageSwitcher: "Sélecteur de langue",
+      selectLanguage: "Choisir une langue",
+    },
+    services: {
+      sub: "De la refonte de site aux systèmes de portfolio et aux bases de visibilité dans les moteurs de recherche, chaque service s’adapte à la façon dont les studios d’architecture et de design présentent leur travail, inspirent confiance et attirent de meilleures demandes.",
+      listAria: "Liste des services",
+      reviewTitle: "Vous ne savez pas quel service choisir ?",
+      reviewBody: "Demandez une revue de site et nous vous dirons ce dont le site de votre studio a besoin en premier.",
+      reviewCta: "Demander une revue de site",
+      processTitle: "Chaque mission suit la même structure.",
+      processItems: [
+        {
+          title: "La revue d’abord",
+          desc: "Chaque projet commence par une revue de votre site actuel, de votre positionnement et de vos objectifs. Elle définit la direction et le périmètre avant le début du travail.",
+        },
+        {
+          title: "Livrables définis",
+          desc: "Chaque offre possède un périmètre clair, afin que vous sachiez ce que vous recevrez avant de signer.",
+        },
+        {
+          title: "Implication directe",
+          desc: "Vous travaillez directement avec la personne qui conçoit et développe. Des révisions plus rapides et des décisions plus nettes, sans intermédiaire.",
+        },
+        {
+          title: "Prêt à publier",
+          desc: "Chaque projet inclut l’optimisation des performances, le SEO technique, la configuration des statistiques et la connexion du domaine.",
+        },
+      ],
+      pricingTitle: "Découvrez le prix du site.",
+      pricingBody: "Toutes les offres, formules récurrentes et options avec leurs prix de départ.",
+      pricingCta: "Voir les tarifs",
+    },
+    work: {
+      heading: "Des sites pour les studios dont le travail mérite d’être bien présenté.",
+      sub: "Un regard clair sur la façon dont les studios d’architecture et d’intérieur peuvent présenter leur travail avec plus de clarté, de confiance et de qualité visuelle.",
+      gridAria: "Galerie de projets",
+      viewCaseStudy: "Voir l’étude de cas",
+      closePreview: "Fermer l’aperçu",
+      desktopPreview: "aperçu du site sur ordinateur",
+    },
+    contact: {
+      heading: "Parlez-nous du site de votre studio.",
+      sub: "Envoyez-nous votre site actuel ou votre idée de projet. Nous vous répondrons avec la prochaine étape la plus claire.",
+      trustHeading: "Le bon site doit aider les clients à faire confiance à votre travail.",
+      trustBody: "Nous aidons les studios d’architecture et d’intérieur à présenter leur travail avec plus de clarté, de confiance et de cohérence sur ordinateur et mobile.",
+      formAria: "Formulaire de contact",
+      sending: "Envoi en cours…",
+      error: "Une erreur est survenue. Écrivez-nous directement à hello@reframestudio.es.",
+    },
+    audit: {
+      error: "Une erreur est survenue. Écrivez-nous directement à hello@reframestudio.es.",
+    },
+    homeSeo: {
+      heading: "Expertise web pour architecture et design d’intérieur",
+      body: "REFRAME Studio conçoit des systèmes web pour les studios d’architecture et d’intérieur.",
+      location: "Design web pour architectes à Marbella et sur la Costa del Sol, avec systèmes de portfolio raffinés et concepts de présentation.",
+    },
+    footerBrandEntity: "REFRAME est un studio de design web pour les agences d’architecture et d’intérieur, créant des sites raffinés, des systèmes de portfolio et des concepts de présentation.",
+    metadata: {
+      homeTitle: "REFRAME Studio | Design web pour architecture et intérieur",
+      homeDescription: "Conception et refonte de sites pour studios d’architecture et d’intérieur, avec portfolios raffinés, structure multilingue et parcours de contact clairs.",
+      servicesTitle: "Services web pour studios d’architecture",
+      servicesDescription: "Refonte de site, systèmes de portfolio, visibilité dans les moteurs de recherche, hébergement et raffinement de marque pour studios d’architecture, d’intérieur et de paysage.",
+      workTitle: "Projets web pour studios d’architecture et d’intérieur",
+      workDescription: "Études de refonte web avec portfolios plus clairs, positionnement plus fort et présentation mobile raffinée.",
+      contactTitle: "Contacter REFRAME Studio",
+      contactDescription: "Parlez-nous du site de votre studio d’architecture ou d’intérieur et recevez une recommandation claire pour la prochaine étape.",
+    },
+  },
+} as const;
+
+export function getPageCopy(locale: string) {
+  return PAGE_COPY[isLocale(locale) ? locale : "es"];
+}

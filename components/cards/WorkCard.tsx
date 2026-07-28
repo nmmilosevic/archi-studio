@@ -19,6 +19,7 @@ interface WorkCardProps {
   previewSrc: string;
   locale: string;
   index?: number;
+  viewLabel?: string;
 }
 
 export function WorkCard({
@@ -28,6 +29,7 @@ export function WorkCard({
   previewSrc,
   locale,
   index = 0,
+  viewLabel = "View case study",
 }: WorkCardProps) {
   const reduced = useReducedMotion();
   const previewSrcResolved = assetPath(previewSrc);
@@ -37,7 +39,7 @@ export function WorkCard({
     <Link
       href={`/${locale}/work/${slug}`}
       className="group block cursor-pointer"
-      aria-label={`View case study: ${title}`}
+      aria-label={`${viewLabel}: ${title}`}
     >
       <div className="relative">
         <div

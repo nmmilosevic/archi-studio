@@ -54,6 +54,66 @@ export const COOKIE_CONSENT_COPY = {
       },
     },
   },
+  es: {
+    bannerTitle: "Cookies y analítica",
+    bannerText:
+      "Usamos cookies esenciales para que la web funcione correctamente y cookies analíticas opcionales para entender cómo se utiliza.",
+    acceptAll: "Aceptar todas",
+    rejectAll: "Rechazar todas",
+    preferences: "Preferencias",
+    settings: "Configurar cookies",
+    modalTitle: "Preferencias de cookies",
+    modalIntro:
+      "Elige qué cookies quieres permitir. Las cookies necesarias permanecen activas para mantener el funcionamiento de la web.",
+    save: "Guardar preferencias",
+    close: "Cerrar preferencias de cookies",
+    categories: {
+      necessary: {
+        title: "Cookies necesarias",
+        description: "Imprescindibles para el funcionamiento básico de la web.",
+      },
+      analytics: {
+        title: "Cookies analíticas",
+        description:
+          "Nos ayudan a entender el tráfico y mejorar la experiencia de la web.",
+      },
+      marketing: {
+        title: "Cookies de marketing",
+        description:
+          "Reservadas para futuras herramientas de publicidad y seguimiento de campañas.",
+      },
+    },
+  },
+  fr: {
+    bannerTitle: "Cookies et statistiques",
+    bannerText:
+      "Nous utilisons des cookies essentiels au bon fonctionnement du site et des cookies statistiques facultatifs pour comprendre son utilisation.",
+    acceptAll: "Tout accepter",
+    rejectAll: "Tout refuser",
+    preferences: "Préférences",
+    settings: "Paramètres des cookies",
+    modalTitle: "Préférences de cookies",
+    modalIntro:
+      "Choisissez les cookies que vous souhaitez autoriser. Les cookies nécessaires restent actifs pour assurer le fonctionnement du site.",
+    save: "Enregistrer les préférences",
+    close: "Fermer les préférences de cookies",
+    categories: {
+      necessary: {
+        title: "Cookies nécessaires",
+        description: "Indispensables au fonctionnement principal du site.",
+      },
+      analytics: {
+        title: "Cookies statistiques",
+        description:
+          "Ils nous aident à comprendre le trafic et à améliorer l’expérience du site.",
+      },
+      marketing: {
+        title: "Cookies marketing",
+        description:
+          "Réservés à de futurs outils publicitaires et de suivi de campagnes.",
+      },
+    },
+  },
 } as const;
 
 export type CookieConsentLocale = keyof typeof COOKIE_CONSENT_COPY;
