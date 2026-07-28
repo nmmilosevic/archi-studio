@@ -483,7 +483,7 @@ const es = {
     offerPaymentLabel: "Pago único",
     simpleMarketingOffer: {
       price: "1.500€",
-      addonsTitle: "Complementos opcionales",
+      addonsTitle: "Diseño más allá de tu web.",
       includes: [
         "Estrategia web",
         "Diseño a medida",
@@ -492,16 +492,25 @@ const es = {
         "Formulario de contacto",
         "Soporte de lanzamiento",
       ],
-      hostingCard: {
-        title: "Paquete de alojamiento",
-        price: "30€/mes",
-        desc: "Alojamiento, actualizaciones, copias de seguridad y pequeñas correcciones.",
-      },
-      contentCard: {
-        title: "Actualizaciones de contenido",
-        price: "120€/mes",
-        desc: "Páginas extra y subida de proyectos.",
-      },
+      addonCards: [
+        {
+          title: "Marca e impresión",
+          desc: "Folletos, portfolios en PDF, tarjetas y papelería, plantillas de presentación, documentos para concursos, señalética y material de marketing impreso.",
+          prices: ["Presupuesto según el alcance"],
+          cta: "Solicitar presupuesto",
+        },
+        {
+          title: "Marketing digital",
+          desc: "Diseño para redes sociales, plantillas de Instagram, visuales de campaña, newsletters, landing pages, anuncios digitales y creación de contenido.",
+          prices: ["Presupuesto según el alcance"],
+          cta: "Solicitar presupuesto",
+        },
+        {
+          title: "Mantenimiento web",
+          desc: "Alojamiento, copias de seguridad, actualizaciones de seguridad, pequeños ajustes, edición de contenidos y subida de proyectos.",
+          prices: ["Alojamiento desde 30€/mes", "Actualizaciones de contenido desde 120€/mes"],
+        },
+      ],
     },
     showcaseLabels: [
       "Estilo mediterráneo",

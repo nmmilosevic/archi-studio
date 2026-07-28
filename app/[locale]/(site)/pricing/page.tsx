@@ -8,6 +8,7 @@ import { AnimatedText } from "@/components/motion/AnimatedText";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
+import { PricingBeyondWebsite } from "@/components/sections/PricingBeyondWebsite";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
@@ -151,26 +152,13 @@ export default async function PricingPage({ params }: Props) {
               <div className="pointer-events-none absolute inset-0 rounded-[12px] shadow-[0_34px_80px_rgb(0_0_0/0.42)]" />
             </div>
           </div>
-          <div className="mt-12 grid grid-cols-1 gap-3.5 md:grid-cols-2">
-            <AnimatedText as="div" delay={0.14}>
-              <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">{offer.hostingCard.title}</p>
-                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  {offer.hostingCard.price}
-                </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{offer.hostingCard.desc}</p>
-              </div>
-            </AnimatedText>
-            <AnimatedText as="div" delay={0.18}>
-              <div className="rounded-[12px] border border-white/10 bg-white/[0.02] p-5">
-                <p className="text-[17px] font-medium text-inverted/92">{offer.contentCard.title}</p>
-                <p className="mt-2 font-heading text-[32px] font-medium leading-none text-inverted/95">
-                  {offer.contentCard.price}
-                </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-inverted/62">{offer.contentCard.desc}</p>
-              </div>
-            </AnimatedText>
-          </div>
+          <PricingBeyondWebsite
+            title={offer.addonsTitle}
+            cards={offer.addonCards}
+            contactHref={`/${locale}/contact`}
+            headingId="design-beyond-pricing-heading"
+            variant="dark"
+          />
         </Container>
       </section>
 

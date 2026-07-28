@@ -483,7 +483,7 @@ const en = {
     offerPaymentLabel: "One-time payment",
     simpleMarketingOffer: {
       price: "1,500€",
-      addonsTitle: "Optional add-ons",
+      addonsTitle: "Design beyond your website.",
       includes: [
         "Website strategy",
         "Custom design",
@@ -492,16 +492,25 @@ const en = {
         "Contact form",
         "Launch support",
       ],
-      hostingCard: {
-        title: "Hosting package",
-        price: "30€/month",
-        desc: "Hosting, updates, backups, and small fixes.",
-      },
-      contentCard: {
-        title: "Content updates",
-        price: "120€/month",
-        desc: "Extra pages and project uploads.",
-      },
+      addonCards: [
+        {
+          title: "Brand & Print",
+          desc: "Brochures, portfolio PDFs, business cards and stationery, presentation templates, competition documents, signage, and printed marketing materials.",
+          prices: ["Quoted based on scope"],
+          cta: "Request a quote",
+        },
+        {
+          title: "Digital Marketing",
+          desc: "Social media design, Instagram templates, campaign visuals, newsletters, landing pages, digital ads, and content creation.",
+          prices: ["Quoted based on scope"],
+          cta: "Request a quote",
+        },
+        {
+          title: "Website Care",
+          desc: "Hosting, backups, security updates, small fixes, content edits, and project uploads.",
+          prices: ["Hosting from 30€/month", "Content updates from 120€/month"],
+        },
+      ],
     },
     showcaseLabels: [
       "Mediterranean style",

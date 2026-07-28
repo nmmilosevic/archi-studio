@@ -15,6 +15,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
 import { HomeDiagnosisSection } from "@/components/sections/HomeDiagnosisSection";
 import { SelectedWorkShowcase } from "@/components/sections/SelectedWorkShowcase";
+import { PricingBeyondWebsite } from "@/components/sections/PricingBeyondWebsite";
 import { CenteredHashAnchor } from "@/components/navigation/CenteredHashAnchor";
 
 interface Props {
@@ -242,32 +243,12 @@ export default async function HomePage({ params }: Props) {
               </div>
             </div>
           </div>
-          <div className="mt-12" aria-labelledby="optional-addons-heading">
-            <AnimatedText as="div" delay={0.12}>
-              <h3
-                id="optional-addons-heading"
-                className="mb-5 font-heading text-[clamp(24px,2.4vw,32px)] font-medium leading-tight tracking-[-0.012em] text-primary"
-              >
-                {offer.addonsTitle}
-              </h3>
-            </AnimatedText>
-            <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-              <AnimatedText as="div" delay={0.16}>
-                <div className="rounded-[12px] border border-charcoal/10 bg-white/55 p-5">
-                  <p className="text-[17px] font-medium text-primary">{offer.hostingCard.title}</p>
-                  <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">{offer.hostingCard.price}</p>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{offer.hostingCard.desc}</p>
-                </div>
-              </AnimatedText>
-              <AnimatedText as="div" delay={0.2}>
-                <div className="rounded-[12px] border border-charcoal/10 bg-white/55 p-5">
-                  <p className="text-[17px] font-medium text-primary">{offer.contentCard.title}</p>
-                  <p className="mt-2 font-heading text-[32px] font-medium leading-none text-primary">{offer.contentCard.price}</p>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{offer.contentCard.desc}</p>
-                </div>
-              </AnimatedText>
-            </div>
-          </div>
+          <PricingBeyondWebsite
+            title={offer.addonsTitle}
+            cards={offer.addonCards}
+            contactHref={`/${locale}/contact`}
+            headingId="design-beyond-heading"
+          />
         </Container>
       </section>
 

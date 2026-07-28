@@ -483,7 +483,7 @@ const fr = {
     offerPaymentLabel: "Paiement unique",
     simpleMarketingOffer: {
       price: "1 500€",
-      addonsTitle: "Options supplémentaires",
+      addonsTitle: "Le design au-delà de votre site web.",
       includes: [
         "Stratégie site web",
         "Design sur mesure",
@@ -492,16 +492,25 @@ const fr = {
         "Formulaire de contact",
         "Support au lancement",
       ],
-      hostingCard: {
-        title: "Forfait hébergement",
-        price: "30€/mois",
-        desc: "Hébergement, mises à jour, sauvegardes et petites corrections.",
-      },
-      contentCard: {
-        title: "Mises à jour de contenu",
-        price: "120€/mois",
-        desc: "Pages supplémentaires et ajout de projets.",
-      },
+      addonCards: [
+        {
+          title: "Identité & impression",
+          desc: "Brochures, portfolios PDF, cartes de visite et papeterie, modèles de présentation, dossiers de concours, signalétique et supports marketing imprimés.",
+          prices: ["Devis selon le périmètre"],
+          cta: "Demander un devis",
+        },
+        {
+          title: "Marketing digital",
+          desc: "Design pour les réseaux sociaux, modèles Instagram, visuels de campagne, newsletters, landing pages, publicités digitales et création de contenu.",
+          prices: ["Devis selon le périmètre"],
+          cta: "Demander un devis",
+        },
+        {
+          title: "Maintenance du site",
+          desc: "Hébergement, sauvegardes, mises à jour de sécurité, petites corrections, modifications de contenu et ajout de projets.",
+          prices: ["Hébergement à partir de 30€/mois", "Mises à jour de contenu à partir de 120€/mois"],
+        },
+      ],
     },
     showcaseLabels: [
       "Style méditerranéen",
