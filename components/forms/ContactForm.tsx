@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 import { getPageCopy } from "@/lib/page-copy";
+import { submitForm } from "@/lib/form-submit";
 
 const inputClass =
   "w-full min-h-12 border border-charcoal/16 bg-offwhite/92 px-4 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/36 focus:border-bronze/55 focus:outline-none transition-colors duration-250";
@@ -45,17 +46,16 @@ export function ContactForm() {
     setError(null);
     setLoading(true);
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      await submitForm({
+        subject: `New contact form - ${form.name}`,
+        fields: {
+          Name: form.name,
+          Email: form.email,
+          Studio: form.studio,
+          Website: form.website,
+          Message: form.message,
         },
-        body: JSON.stringify(form),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to send form.");
-      }
 
       setSuccess(true);
     } catch {

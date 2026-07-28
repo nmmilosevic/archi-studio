@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { clsx } from "clsx";
 import { Send, CheckCircle } from "lucide-react";
 import { getPageCopy } from "@/lib/page-copy";
-
-// TODO: Connect to Resend or Supabase for email delivery
+import { submitForm } from "@/lib/form-submit";
 
 const inputClass = "w-full min-h-12 bg-transparent border-b border-charcoal/15 px-0 py-3.5 font-body text-[16px] leading-[1.5] text-primary placeholder:text-muted/42 focus:outline-none focus:border-bronze transition-colors duration-300";
 const labelClass = "font-body text-[14px] text-muted/65 mb-2 block";
@@ -60,17 +59,20 @@ export function AuditForm() {
     setError(null);
     setLoading(true);
     try {
-      const response = await fetch("/api/audit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      await submitForm({
+        subject: `New website audit request - ${form.name}`,
+        fields: {
+          Name: form.name,
+          Email: form.email,
+          Studio: form.studio,
+          "Website URL": form.url,
+          Location: form.city,
+          "Studio type": form.type,
+          "Preferred language": form.language,
+          "Needs improvement": form.improve,
+          Consent: form.consent,
         },
-        body: JSON.stringify(form),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to send form.");
-      }
 
       setSuccess(true);
     } catch {
