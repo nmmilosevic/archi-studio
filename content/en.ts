@@ -479,7 +479,7 @@ const en = {
       "Not ready to start? Send your current site — we’ll show where you lose clarity and trust. Useful notes, no hard sell.",
     offerTitle: "One clear investment for your studio.",
     offerPriceDetail:
-      "Strategy, custom design, and development. One figure. One timeline. What you need to launch a site that reflects the quality of your work.",
+      "The redesign shown in the link we sent you is the design included in this package. We will build it as a complete, responsive website and launch it on your domain. Any design changes, extra pages, features, or content are quoted separately.",
     offerPaymentLabel: "One-time payment",
     simpleMarketingOffer: {
       price: "1,500€",
