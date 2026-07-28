@@ -479,7 +479,7 @@ const es = {
       "¿Aún no quieres empezar? Envíanos tu web y te diremos dónde pierdes claridad y confianza. Notas útiles, sin presión.",
     offerTitle: "Una inversión clara para tu estudio.",
     offerPriceDetail:
-      "El rediseño que aparece en el enlace que te enviamos es el diseño incluido en este paquete. Lo desarrollaremos como una web completa y responsive y la publicaremos en tu dominio. Cualquier cambio de diseño, página adicional, funcionalidad o contenido se presupuesta por separado.",
+      "Esta oferta incluye el desarrollo del diseño presentado. Para cualquier cambio o añadido, te enviaremos un presupuesto adicional.",
     offerPaymentLabel: "Pago único",
     simpleMarketingOffer: {
       price: "1.500€",

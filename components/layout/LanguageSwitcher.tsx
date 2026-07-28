@@ -5,7 +5,10 @@ import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
-import { getLocalizedHref } from "@/lib/locale-navigation";
+import {
+  getLocalizedHref,
+  navigateToLocale,
+} from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
 
 const LOCALES = [
@@ -94,7 +97,11 @@ export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
                 hrefLang={loc.code}
                 lang={loc.code}
                 aria-label={`${copy.selectLanguage}: ${loc.label}`}
-                onClick={() => setOpen(false)}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setOpen(false);
+                  navigateToLocale(pathname, loc.code);
+                }}
                 className={clsx(
                   "block w-full px-3 py-2 text-left text-[13px] transition-colors duration-200 ease-out cursor-pointer",
                   light ? "text-primary hover:bg-charcoal/8" : "text-primary hover:bg-charcoal/6"

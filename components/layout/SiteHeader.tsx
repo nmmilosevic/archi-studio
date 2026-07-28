@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { BRAND, NAV_LINKS } from "@/lib/constants";
 import type { Locale } from "@/lib/constants";
-import { getLocalizedHref } from "@/lib/locale-navigation";
+import { navigateToLocale } from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
@@ -57,10 +57,7 @@ export function SiteHeader() {
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
-    const localizedPath = getLocalizedHref(pathname, newLocale as Locale);
-    window.location.assign(
-      `${localizedPath}${window.location.search}${window.location.hash}`
-    );
+    navigateToLocale(pathname, newLocale as Locale);
   }
 
   /** Logo behavior: if on home, smooth-scroll to top; otherwise navigate to home. */

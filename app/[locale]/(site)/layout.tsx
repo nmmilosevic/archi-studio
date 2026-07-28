@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { HomepageFooter } from "@/components/layout/HomepageFooter";
 import { PageTransition } from "@/components/motion/PageTransition";
+import { LocaleScrollRestorer } from "@/components/navigation/LocaleScrollRestorer";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 import { setRequestLocale } from "next-intl/server";
 
@@ -15,6 +16,7 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
 
   return (
     <>
+      <LocaleScrollRestorer />
       <SiteHeader />
       <PageTransition>
         <main id="main-content" tabIndex={-1}>

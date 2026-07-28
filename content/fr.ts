@@ -479,7 +479,7 @@ const fr = {
       "Pas prêt à vous lancer ? Envoyez votre site : nous montrerons où vous perdez en clarté et en confiance. Des notes utiles, sans vente agressive.",
     offerTitle: "Un investissement clair pour votre studio.",
     offerPriceDetail:
-      "La refonte présentée dans le lien que nous vous avons envoyé est le design inclus dans cette offre. Nous la développerons sous la forme d’un site complet et responsive, puis la mettrons en ligne sur votre domaine. Toute modification du design, page supplémentaire, fonctionnalité ou contenu fera l’objet d’un devis séparé.",
+      "Cette offre comprend le développement du design présenté. Pour toute modification ou ajout, nous vous proposerons un devis complémentaire.",
     offerPaymentLabel: "Paiement unique",
     simpleMarketingOffer: {
       price: "1 500€",

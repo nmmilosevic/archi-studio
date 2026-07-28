@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { NAV_LINKS, type Locale } from "@/lib/constants";
-import { getLocalizedHref } from "@/lib/locale-navigation";
+import { navigateToLocale } from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -41,11 +41,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
-    const localizedPath = getLocalizedHref(pathname, newLocale as Locale);
     onClose();
-    window.location.assign(
-      `${localizedPath}${window.location.search}${window.location.hash}`
-    );
+    navigateToLocale(pathname, newLocale as Locale);
   }
 
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
