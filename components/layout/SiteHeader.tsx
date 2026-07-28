@@ -3,11 +3,11 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { BRAND, NAV_LINKS } from "@/lib/constants";
 import type { Locale } from "@/lib/constants";
-import { navigateToLocale } from "@/lib/locale-navigation";
+import { getLocalizedPathname } from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
@@ -20,6 +20,7 @@ export function SiteHeader() {
   const t = useTranslations("nav");
   const navigationCopy = getPageCopy(locale).navigation;
   const pathname = usePathname();
+  const router = useRouter();
   const homePath = `/${locale}`;
   const contactPath = `/${locale}/contact`;
   const normalizedSegments = pathname.split("/").filter(Boolean);
@@ -57,7 +58,9 @@ export function SiteHeader() {
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
-    navigateToLocale(pathname, newLocale as Locale);
+    router.replace(getLocalizedPathname(pathname, newLocale as Locale), {
+      scroll: false,
+    });
   }
 
   /** Logo behavior: if on home, smooth-scroll to top; otherwise navigate to home. */

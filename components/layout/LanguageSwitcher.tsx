@@ -1,14 +1,12 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { useLocale } from "next-intl";
 import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
-import {
-  getLocalizedHref,
-  navigateToLocale,
-} from "@/lib/locale-navigation";
+import { getLocalizedPathname } from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
 
 const LOCALES = [
@@ -92,15 +90,15 @@ export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
         <ul className="py-1">
           {otherLocales.map((loc) => (
             <li key={loc.code}>
-              <a
-                href={getLocalizedHref(pathname, loc.code)}
+              <Link
+                href={getLocalizedPathname(pathname, loc.code)}
                 hrefLang={loc.code}
                 lang={loc.code}
+                replace
+                scroll={false}
                 aria-label={`${copy.selectLanguage}: ${loc.label}`}
-                onClick={(event) => {
-                  event.preventDefault();
+                onClick={() => {
                   setOpen(false);
-                  navigateToLocale(pathname, loc.code);
                 }}
                 className={clsx(
                   "block w-full px-3 py-2 text-left text-[13px] transition-colors duration-200 ease-out cursor-pointer",
@@ -108,7 +106,7 @@ export function LanguageSwitcher({ light }: LanguageSwitcherProps) {
                 )}
               >
                 {loc.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

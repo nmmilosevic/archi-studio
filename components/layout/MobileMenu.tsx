@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { clsx } from "clsx";
 import { NAV_LINKS, type Locale } from "@/lib/constants";
-import { navigateToLocale } from "@/lib/locale-navigation";
+import { getLocalizedPathname } from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -37,12 +37,15 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const t = useTranslations("nav");
   const navigationCopy = getPageCopy(locale).navigation;
   const pathname = usePathname();
+  const router = useRouter();
   const reduced = useReducedMotion();
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
     onClose();
-    navigateToLocale(pathname, newLocale as Locale);
+    router.replace(getLocalizedPathname(pathname, newLocale as Locale), {
+      scroll: false,
+    });
   }
 
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
