@@ -24,6 +24,7 @@ type Props = {
   title: string;
   /** Accessible name for the section (not shown visually). */
   heading: string;
+  closeLabel: string;
   screens: ReadonlyArray<CaseStudyScreen>;
 };
 
@@ -93,7 +94,7 @@ function useMobileLightboxSwipe(
   return { handlePointerDown, handlePointerUp: endSwipe, handlePointerCancel };
 }
 
-export function CaseStudyScreens({ title, heading, screens }: Props) {
+export function CaseStudyScreens({ title, heading, closeLabel, screens }: Props) {
   const labelId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
@@ -198,7 +199,7 @@ export function CaseStudyScreens({ title, heading, screens }: Props) {
                 type="button"
                 onClick={close}
                 className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-inverted/20 bg-charcoal/90 text-inverted shadow-[0_8px_24px_rgb(0_0_0/0.35)] transition-colors hover:bg-inverted/12 hover:text-bronze"
-                aria-label="Close"
+                aria-label={closeLabel}
               >
                 <X className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
               </button>

@@ -479,7 +479,7 @@ const es = {
       "¿Aún no quieres empezar? Envíanos tu web y te diremos dónde pierdes claridad y confianza. Notas útiles, sin presión.",
     offerTitle: "Una inversión clara para tu estudio.",
     offerPriceDetail:
-      "Estrategia, diseño a medida y desarrollo. Una cifra. Un calendario. Lo esencial para publicar una web a la altura de tu trabajo.",
+      "El rediseño que aparece en el enlace que te enviamos es el diseño incluido en este paquete. Lo desarrollaremos como una web completa y responsive y la publicaremos en tu dominio. Cualquier cambio de diseño, página adicional, funcionalidad o contenido se presupuesta por separado.",
     offerPaymentLabel: "Pago único",
     simpleMarketingOffer: {
       price: "1.500€",

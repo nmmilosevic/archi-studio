@@ -4,6 +4,7 @@ import { CaseStudyWhatChanged } from "@/components/work/CaseStudyWhatChanged";
 import type en from "@/content/en";
 import type es from "@/content/es";
 import type fr from "@/content/fr";
+import { getPageCopy } from "@/lib/page-copy";
 
 export type CaseStudyWorkItem =
   | (typeof en.work.items)[number]
@@ -25,6 +26,8 @@ type Props = {
  * Single layout for every `/work/[slug]` case study. Edit here to change all detail pages.
  */
 export function CaseStudyPageTemplate({ locale, item, labels }: Props) {
+  const workCopy = getPageCopy(locale).work;
+
   return (
     <>
       <CaseStudyHero
@@ -33,12 +36,13 @@ export function CaseStudyPageTemplate({ locale, item, labels }: Props) {
         location={item.location}
         summary={item.summary}
         heroDesktop={item.heroDesktop}
-        desktopImageAlt={`${item.title} — desktop website preview`}
+        desktopImageAlt={`${item.title}: ${workCopy.desktopPreview}`}
       />
 
       <CaseStudyScreens
         title={item.title}
         heading={labels.keyScreens}
+        closeLabel={workCopy.closePreview}
         screens={item.screens}
       />
 

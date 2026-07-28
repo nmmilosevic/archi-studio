@@ -5,12 +5,14 @@ import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
+import { getPageCopy } from "@/lib/page-copy";
 import { BRAND, STUDIO_SEO } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 export function HomepageFooter() {
   const locale = useLocale();
   const tFooter = useTranslations("footer");
+  const pageCopy = getPageCopy(locale);
   const pathname = usePathname();
   const homePath = `/${locale}`;
 
@@ -40,7 +42,7 @@ export function HomepageFooter() {
             </Link>
             <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">{tFooter("tagline")}</p>
             <p className="mt-3 max-w-[420px] text-[13px] leading-relaxed text-inverted/45">
-              {tFooter("brandEntity")}
+            {pageCopy.footerBrandEntity}
             </p>
             <nav
               className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-inverted/52"

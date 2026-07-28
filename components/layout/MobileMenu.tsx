@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, type Locale } from "@/lib/constants";
+import { getLocalizedHref } from "@/lib/locale-navigation";
+import { getPageCopy } from "@/lib/page-copy";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -33,16 +35,17 @@ const itemVariants = {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const locale = useLocale();
   const t = useTranslations("nav");
+  const navigationCopy = getPageCopy(locale).navigation;
   const pathname = usePathname();
-  const router = useRouter();
   const reduced = useReducedMotion();
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
-    const segments = pathname.split("/");
-    segments[1] = newLocale;
-    router.push(segments.join("/"));
+    const localizedPath = getLocalizedHref(pathname, newLocale as Locale);
     onClose();
+    window.location.assign(
+      `${localizedPath}${window.location.search}${window.location.hash}`
+    );
   }
 
   function handleLogoClick(event: React.MouseEvent<HTMLAnchorElement>) {
@@ -80,7 +83,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             className="fixed inset-0 z-50 flex flex-col bg-charcoal text-inverted"
             role="dialog"
             aria-modal="true"
-            aria-label="Navigation menu"
+            aria-label={navigationCopy.menu}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-5 pt-7 pb-3 sm:px-7 sm:pt-9">
@@ -88,7 +91,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <Link
                   href={`/${locale}`}
                   onClick={handleLogoClick}
-                  aria-label="Go to homepage top"
+                  aria-label={navigationCopy.home}
                   className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal"
                 >
                   <ReframeLogo light className="h-[37px] w-[132px]" />
@@ -97,14 +100,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <button
                 onClick={onClose}
                 className="inline-flex min-h-11 min-w-11 items-center justify-center p-2 text-inverted/68 transition-colors duration-200 hover:text-inverted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-                aria-label="Close menu"
+                aria-label={navigationCopy.closeMenu}
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Nav links */}
-            <nav className="flex-1 px-5 pt-8 pb-6 sm:px-7 sm:pt-10" aria-label="Mobile navigation">
+            <nav className="flex-1 px-5 pt-8 pb-6 sm:px-7 sm:pt-10" aria-label={navigationCopy.mobile}>
               <ul className="space-y-4">
                 {NAV_LINKS.map((link, i) => (
                   <motion.li
@@ -158,15 +161,15 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   onClick={onClose}
                   className="text-[14px] text-inverted/74 transition-colors hover:text-inverted"
                 >
-                  Contact
+                  {t("contact")}
                 </Link>
                 <label className="flex items-center gap-2 text-[12px] text-inverted/62">
-                  <span>Language</span>
+                  <span>{navigationCopy.language}</span>
                   <select
                     value={locale}
                     onChange={(event) => handleLocaleChange(event.target.value)}
                     className="min-h-10 rounded-full border border-inverted/25 bg-transparent px-3 text-[13px] text-inverted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-                    aria-label="Select language"
+                    aria-label={navigationCopy.selectLanguage}
                   >
                     <option value="en" className="bg-charcoal text-inverted">EN</option>
                     <option value="es" className="bg-charcoal text-inverted">ES</option>

@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { getContent } from "@/lib/getContent";
 import { breadcrumbSchema } from "@/lib/structured-data";
+import { getPageCopy } from "@/lib/page-copy";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -47,12 +48,12 @@ const SERVICES_KW: Record<string, string[]> = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const copy = getPageCopy(locale).metadata;
   return buildPageMetadata({
     locale,
     path: "/services",
-    title: "Website Design for Architecture Studios | Reframe Studio",
-    description:
-      "Specialist website design for architecture, interior design, and landscape studios: portfolio systems, website redesigns, search visibility foundations, hosting, and digital brand refinement.",
+    title: copy.servicesTitle,
+    description: copy.servicesDescription,
     keywords: SERVICES_KW[locale] ?? SERVICES_KW.en,
   });
 }
@@ -61,6 +62,7 @@ export default async function ServicesPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const serviceContent = getContent(locale).services;
+  const pageCopy = getPageCopy(locale).services;
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: absoluteLocaleUrl(locale, "") },
     { name: "Services", url: absoluteLocaleUrl(locale, "/services") },
@@ -79,11 +81,11 @@ export default async function ServicesPage({ params }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
       <PageHero
         heading={services.heading}
-        subtext="From website redesigns to portfolio systems and search visibility foundations, every service is built around how architecture and design studios present work, earn trust, and attract better enquiries."
+        subtext={pageCopy.sub}
       />
 
       {/* All services */}
-      <section className="section-space-tight bg-offwhite" aria-label="Services list">
+      <section className="section-space-tight bg-offwhite" aria-label={pageCopy.listAria}>
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-charcoal/8">
             {services.items.map((item, i) => (
@@ -95,15 +97,15 @@ export default async function ServicesPage({ params }: Props) {
           <div className="mt-16 py-12 border-y border-charcoal/8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <h3 className="font-heading text-[24px] font-medium text-primary mb-2">
-                Not sure which fits?
+                {pageCopy.reviewTitle}
               </h3>
               <p className="font-body text-[14px] text-muted">
-                Request a website review and we will tell you what your studio website needs first.
+                {pageCopy.reviewBody}
               </p>
             </div>
             <Button asChild size="md" className="flex-shrink-0">
               <Link href={`/${locale}/contact`} className="flex items-center gap-2">
-                Request a website review <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                {pageCopy.reviewCta} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -116,31 +118,14 @@ export default async function ServicesPage({ params }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
               <AnimatedTitle
-                text="Every engagement follows the same structure."
+                text={pageCopy.processTitle}
                 as="h2"
                 id="how-we-work-heading"
                 className="text-section text-primary"
               />
             </div>
             <div className="space-y-8">
-              {[
-                {
-                  title: "Review first",
-                  desc: "Every project starts with a review of your current site, positioning, and goals. This shapes the direction and scope before any work begins.",
-                },
-                {
-                  title: "Fixed deliverables",
-                  desc: "No open-ended retainers disguised as projects. Each package has a defined scope so you know what you are getting before you sign.",
-                },
-                {
-                  title: "Direct involvement",
-                  desc: "You work directly with the designer and developer. No account managers. No handoff delays. Faster revisions and cleaner decisions.",
-                },
-                {
-                  title: "Launch ready",
-                  desc: "Every project ships with performance optimization, technical SEO setup, analytics configuration, and domain connection included.",
-                },
-              ].map((item, i) => (
+              {pageCopy.processItems.map((item, i) => (
                 <AnimatedText key={i} delay={i * 0.1} as="div">
                   <div className="border-l border-bronze pl-5">
                     <h3 className="font-heading text-[18px] font-medium text-primary mb-2">
@@ -163,7 +148,7 @@ export default async function ServicesPage({ params }: Props) {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
               <AnimatedTitle
-                text="See the simple website price."
+                text={pageCopy.pricingTitle}
                 as="h2"
                 className="text-display text-inverted mb-2"
               />
@@ -171,13 +156,13 @@ export default async function ServicesPage({ params }: Props) {
                 className="font-body text-[14px] text-inverted/50"
                 delay={0.1}
               >
-                All packages, recurring plans, and add-ons with starting prices.
+                {pageCopy.pricingBody}
               </AnimatedText>
             </div>
             <AnimatedText delay={0.2} as="div">
               <Button asChild variant="secondary" size="md" className="flex-shrink-0">
                 <Link href={`/${locale}/#pricing`} className="flex items-center gap-2">
-                  View pricing <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  {pageCopy.pricingCta} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </Button>
             </AnimatedText>

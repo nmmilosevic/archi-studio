@@ -3,9 +3,12 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { BRAND, NAV_LINKS } from "@/lib/constants";
+import type { Locale } from "@/lib/constants";
+import { getLocalizedHref } from "@/lib/locale-navigation";
+import { getPageCopy } from "@/lib/page-copy";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Button } from "@/components/ui/Button";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
@@ -15,8 +18,8 @@ export function SiteHeader() {
   const [ctaScrollProgress, setCtaScrollProgress] = useState(0);
   const locale = useLocale();
   const t = useTranslations("nav");
+  const navigationCopy = getPageCopy(locale).navigation;
   const pathname = usePathname();
-  const router = useRouter();
   const homePath = `/${locale}`;
   const contactPath = `/${locale}/contact`;
   const normalizedSegments = pathname.split("/").filter(Boolean);
@@ -54,8 +57,10 @@ export function SiteHeader() {
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
-    const localizedPath = pathname.replace(/^\/[^/]+(?=\/|$)/, `/${newLocale}`) || `/${newLocale}`;
-    router.replace(localizedPath, { scroll: false });
+    const localizedPath = getLocalizedHref(pathname, newLocale as Locale);
+    window.location.assign(
+      `${localizedPath}${window.location.search}${window.location.hash}`
+    );
   }
 
   /** Logo behavior: if on home, smooth-scroll to top; otherwise navigate to home. */
@@ -69,7 +74,7 @@ export function SiteHeader() {
   return (
     <>
       <a href="#main-content" className="skip-to-content">
-        Skip to content
+        {navigationCopy.skipToContent}
       </a>
 
       <header
@@ -89,13 +94,13 @@ export function SiteHeader() {
                 href={homePath}
                 onClick={handleLogoClick}
                 className="inline-flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
-                aria-label={`${BRAND.name} - Home`}
+                aria-label={`${BRAND.name} - ${navigationCopy.home}`}
               >
                 <span className="block h-[35px] w-[111px] overflow-hidden">
                   <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-[35px] w-[124px]" />
                 </span>
               </Link>
-              <nav className="flex h-11 items-center gap-6" aria-label="Primary navigation">
+              <nav className="flex h-11 items-center gap-6" aria-label={navigationCopy.primary}>
                 {NAV_LINKS.map((link) => {
                   const href = `/${locale}${link.href}`;
                   const isActive = pathname === href || pathname.startsWith(`${href}/`);
@@ -136,7 +141,7 @@ export function SiteHeader() {
                       : "!bg-charcoal !text-inverted hover:!bg-charcoal hover:!text-inverted"
                   )}
                 >
-                  <Link href={`/${locale}/contact`}>Start your website</Link>
+                  <Link href={`/${locale}/contact`}>{t("cta")}</Link>
                 </Button>
               </div>
             </div>
@@ -147,7 +152,7 @@ export function SiteHeader() {
                 href={homePath}
                 onClick={handleLogoClick}
                 className="inline-flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2"
-                aria-label={`${BRAND.name} - Home`}
+                aria-label={`${BRAND.name} - ${navigationCopy.home}`}
               >
                 <span className="block h-[35px] w-[111px] overflow-hidden">
                   <ReframeLogo light={useLightHeaderText} className="-ml-[6px] h-[35px] w-[124px]" />
@@ -199,7 +204,7 @@ export function SiteHeader() {
                       "absolute inset-0 h-full w-full appearance-none bg-transparent px-2 pr-6 text-[12px] cursor-pointer focus-visible:outline-none",
                       useLightHeaderText ? "text-inverted" : "text-primary"
                     )}
-                    aria-label="Select language"
+                    aria-label={navigationCopy.selectLanguage}
                   >
                     <option value="en">EN</option>
                     <option value="es">ES</option>

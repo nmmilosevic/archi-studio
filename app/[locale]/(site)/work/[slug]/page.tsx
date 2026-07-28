@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (index === -1) return {};
 
   const item = content.work.items[index];
-  const seo = PROJECT_SEO[slug];
+  const seo = locale === "en" ? PROJECT_SEO[slug] : undefined;
   return buildPageMetadata({
     locale,
     path: `/work/${slug}`,

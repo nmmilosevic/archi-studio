@@ -8,6 +8,7 @@ import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import type { Metadata } from "next";
 import { breadcrumbSchema } from "@/lib/structured-data";
+import { getPageCopy } from "@/lib/page-copy";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -38,12 +39,12 @@ const WORK_INDEX_KW: Record<string, string[]> = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const copy = getPageCopy(locale).metadata;
   return buildPageMetadata({
     locale,
     path: "/work",
-    title: "Projects | Reframe Studio",
-    description:
-      "Architecture, interior design, and landscape website case studies showing clearer portfolios, stronger positioning, and more credible digital presentation for design-led studios.",
+    title: copy.workTitle,
+    description: copy.workDescription,
     keywords: WORK_INDEX_KW[locale] ?? WORK_INDEX_KW.en,
   });
 }
@@ -53,6 +54,7 @@ export default async function WorkPage({ params }: Props) {
   setRequestLocale(locale);
   const content = getContent(locale);
   const workContent = content.work;
+  const pageCopy = getPageCopy(locale).work;
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: absoluteLocaleUrl(locale, "") },
     { name: "Projects", url: absoluteLocaleUrl(locale, "/work") },
@@ -74,7 +76,7 @@ export default async function WorkPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <AnimatedTitle
-              text="Websites for studios with work worth showing properly."
+              text={pageCopy.heading}
               as="h1"
               className="text-page-title max-w-[16ch] text-primary"
             />
@@ -82,18 +84,18 @@ export default async function WorkPage({ params }: Props) {
               className="max-w-[560px] text-[16px] leading-relaxed text-muted lg:ml-auto"
               delay={0.12}
             >
-              A clear look at how architecture and interior studios can present their work with more clarity, confidence, and visual quality.
+              {pageCopy.sub}
             </AnimatedText>
           </div>
         </Container>
       </section>
 
-      <section className="bg-offwhite pb-[clamp(76px,9vw,124px)] pt-[clamp(50px,7vw,90px)]" aria-label="Work grid">
+      <section className="bg-offwhite pb-[clamp(76px,9vw,124px)] pt-[clamp(50px,7vw,90px)]" aria-label={pageCopy.gridAria}>
         <Container>
           <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-x-14 md:gap-y-20">
             {work.items.map((item, i) => (
               <div key={item.slug} className={i % 2 === 1 ? "md:pt-12" : ""}>
-                <WorkCard {...item} locale={locale} index={i} />
+                <WorkCard {...item} locale={locale} index={i} viewLabel={pageCopy.viewCaseStudy} />
               </div>
             ))}
           </div>

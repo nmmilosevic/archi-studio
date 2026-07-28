@@ -1,15 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import type { MouseEvent } from "react";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 import { BRAND, STUDIO_SEO } from "@/lib/constants";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
+import { getPageCopy } from "@/lib/page-copy";
 
 export function SiteFooter() {
   const locale = useLocale();
+  const tFooter = useTranslations("footer");
+  const pageCopy = getPageCopy(locale);
   const pathname = usePathname();
   const homePath = `/${locale}`;
 
@@ -33,25 +36,24 @@ export function SiteFooter() {
               href={homePath}
               onClick={handleLogoClick}
               className="inline-block"
-              aria-label={`${STUDIO_SEO.name} — home`}
+              aria-label={`${STUDIO_SEO.name} — ${tFooter("homeAria")}`}
             >
               <ReframeLogo light className="h-[42px] w-[150px]" />
             </Link>
             <p className="mt-4 text-[15px] leading-relaxed text-inverted/56">
-              A clear digital presence for architecture, interior design, and landscape studios.
+              {tFooter("tagline")}
             </p>
             <p className="mt-3 max-w-[420px] text-[13px] leading-relaxed text-inverted/45">
-              Specialist website design for studios that need stronger portfolios, sharper positioning, and better search visibility.
+              {pageCopy.footerBrandEntity}
             </p>
           </div>
 
           <div className="grid gap-3">
-            <Link href={`/${locale}/work`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Work</Link>
-            <Link href={`/${locale}/services`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Services</Link>
-            <Link href={`/${locale}/pricing`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Pricing</Link>
-            <Link href={`/${locale}/audit`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Audit</Link>
-            <Link href={`/${locale}/search-visibility`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Search visibility</Link>
-            <Link href={`/${locale}/contact`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">Contact</Link>
+            <Link href={`/${locale}/work`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.work")}</Link>
+            <Link href={`/${locale}/services`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.services")}</Link>
+            <Link href={`/${locale}/pricing`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.pricing")}</Link>
+            <Link href={`/${locale}/audit`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.audit")}</Link>
+            <Link href={`/${locale}/contact`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.contact")}</Link>
           </div>
 
           <div className="grid gap-3 md:justify-self-end">
