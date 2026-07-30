@@ -56,7 +56,7 @@ const fr = {
       {
         number: "03",
         title: "Fondation de visibilité",
-        desc: "Structure technique et éditoriale pour aider les moteurs de recherche à comprendre vos services, types de projets, positionnement et pages de portfolio.",
+        desc: "La visibilité organique est la capacité d'apparaître dans les recherches non payantes liées à vos services, projets et localisations. Nous la construisons par la structure du contenu, les métadonnées, le maillage interne et une base technique claire.",
         deliverables: ["Métadonnées SEO", "Structure de pages orientée recherche", "Données structurées", "Maillage interne", "Structure alt des images", "Optimisation des performances"],
       },
       {
@@ -69,7 +69,7 @@ const fr = {
         number: "05",
         title: "Systèmes de portfolio",
         desc: "Une structure propre pour publier des projets de manière cohérente, incluant les images, la localisation, le type de service, les matériaux, la portée et l'histoire.",
-        deliverables: ["Modèle de contenu compatible CMS", "Modèles de projets", "Filtres par localisation et type", "Structure d'étude de cas", "Mise en page centrée sur l'image"],
+        deliverables: ["Modèle pour CMS, le système de gestion de contenu", "Modèles de projets", "Filtres par localisation et type", "Structure d'étude de cas", "Mise en page centrée sur l'image"],
       },
       {
         number: "06",
@@ -94,7 +94,7 @@ const fr = {
   pricing: {
     label: "Tarifs",
     heading: "Tarifs transparents. Pas d'approximations.",
-    sub: "Prix de départ. Le devis final dépend du nombre de pages, des langues, de la portée du CMS et de la disponibilité du contenu.",
+    sub: "L'offre principale coûte 1 500€. Le devis évolue quand le projet ajoute des pages, des langues, un système de gestion de contenu ou de nouveaux textes.",
     vatNote: "Prix indiqués hors TVA le cas échéant.",
     paymentNote: "50% à l'avance, 50% avant le lancement pour les projets supérieurs à 790€. Les plans mensuels sont facturés mensuellement.",
     cta: "Demander un devis",
@@ -172,6 +172,9 @@ const fr = {
     caseStudy: {
       keyScreens: "Vues choisies.",
       whatChangedHeading: "Ce qui a changé",
+      typeLabel: "Étude conceptuelle de refonte",
+      publishedLabel: "Publié le 7 mai 2026",
+      updatedLabel: "Mis à jour le 30 juillet 2026",
       whatChangedThemes: [
         "Structure du portfolio",
         "Lecture sur mobile",
@@ -348,7 +351,7 @@ const fr = {
   seo: {
     label: "Visibilité en recherche pour studios",
     heading: "Votre travail devrait être facile à trouver et plus facile à comprendre.",
-    sub: "La visibilité commence par un site clair : services précis, pages projet structurées, métadonnées solides, maillage interne et pages rapides qui soutiennent la découverte organique.",
+    sub: "La visibilité organique est la capacité d'un site à apparaître dans les recherches non payantes. Pour un studio d'architecture, elle dépend de services précis, de projets indexables, de métadonnées descriptives, du maillage interne et de pages rapides.",
     cities: [
       { name: "Architecture", desc: "Les pages de service et de projet doivent clarifier typologie, portée, processus et qualité construite pour les clients qui comparent les studios." },
       { name: "Design intérieur", desc: "Les sites de design intérieur ont besoin d'une séquence visuelle forte, d'un langage matière, d'une clarté de service et de signaux de confiance." },
@@ -356,15 +359,15 @@ const fr = {
       { name: "Portfolio", desc: "Un portfolio d'architecture doit transformer les projets en études de cas structurées et indexables, pas en galerie déconnectée." },
       { name: "Refonte", desc: "Une refonte de site d'architecture doit améliorer perception, lecture mobile, vitesse, métadonnées et chemin vers la prise de contact." },
       { name: "Multilingue", desc: "Les studios internationaux ont besoin de structure linguistique, hreflang, métadonnées traduites et textes naturels dans chaque marché." },
-      { name: "SEO technique", desc: "URLs propres, données structurées, optimisation d'images, maillage interne et Core Web Vitals aident les moteurs à bien lire le site." },
+      { name: "SEO technique", desc: "Le SEO technique regroupe les décisions qui permettent aux moteurs d'explorer, d'interpréter et d'indexer un site : URLs propres, données structurées, images optimisées, maillage interne et Core Web Vitals." },
       { name: "Perception de marque", desc: "Le trafic ne compte que si le site rend le studio crédible, spécialiste et soigneusement présenté." },
     ],
     sections: [
-      { title: "Pourquoi la visibilité compte pour les studios d'architecture", body: "Les clients cherchent par discipline, type de projet, style, service et localisation. Le site doit offrir assez de structure pour que les moteurs comprennent ce que fait le studio sans devenir une liste de mots-clés." },
-      { title: "Les pages projet comme actifs SEO", body: "Chaque projet livré est un contenu indexable. Une page bien structurée avec portée, typologie, matériaux, intention de design et photographie peut soutenir les recherches longue traîne et améliorer l'expérience portfolio." },
-      { title: "SEO multilingue", body: "Les studios actifs sur plusieurs marchés ont besoin de versions linguistiques correctes techniquement et bien écrites. Hreflang, métadonnées traduites et formulation naturelle aident chaque page à atteindre le bon public." },
+      { title: "Pourquoi la visibilité compte pour les studios d'architecture", body: "Les clients cherchent par discipline, type de projet, style, service et localisation. Une architecture de l'information claire relie chaque page à ces besoins sans transformer le contenu en liste de mots-clés." },
+      { title: "Les pages projet comme actifs SEO", body: "Chaque projet livré est un contenu indexable. Une page avec portée, typologie, matériaux, intention de design et photographie répond à des recherches précises et transforme le portfolio en information utile, pas seulement en galerie." },
+      { title: "SEO multilingue", body: "L'attribut hreflang indique aux moteurs la langue et la région de chaque version d'une page. Hreflang, métadonnées traduites et textes naturels permettent aux pages françaises, espagnoles et anglaises d'atteindre le bon public." },
       { title: "Pages de service avec substance", body: "Le design web pour l'architecture, les sites de design intérieur et les sites de paysage ont besoin de pages qui expliquent expertise, processus et adéquation sans répéter un langage d'agence générique." },
-      { title: "SEO technique", body: "Vitesse, Core Web Vitals, URLs propres, données structurées, images optimisées et maillage interne affectent la lecture et le classement du site. La base technique doit soutenir le portfolio." },
+      { title: "SEO technique", body: "Le SEO technique facilite l'exploration, l'interprétation et l'indexation d'un site. Il couvre la vitesse, les Core Web Vitals, les URLs propres, les données structurées, les images optimisées, les canoniques cohérentes et le maillage interne." },
     ],
   },
   contact: {
@@ -425,7 +428,6 @@ const fr = {
     footerNavAria: "Pages clés",
     locations: "Basé en Espagne · Travail international",
     email: "hello@reframestudio.es",
-    whatsapp: "+34 600 000 000",
     legal: { privacy: "Politique de confidentialité", terms: "Conditions", cookies: "Cookies" },
     copy: "© 2026 REFRAME. Tous droits réservés.",
     nav: {
@@ -441,19 +443,19 @@ const fr = {
   },
   pageMeta: {
     pricing: {
-      title: "Tarifs : offres web transparentes pour studios",
+      title: "Tarifs web pour studios d'architecture",
       description:
-        "Tarifs clairs pour sites de studios d'architecture, de design intérieur et de paysage : stratégie, design sur mesure, développement responsive, bases SEO, lancement et plans de suivi optionnels.",
+        "Sites pour studios dès 1 500€ : stratégie, design sur mesure, développement responsive, bases SEO, formulaire et accompagnement au lancement.",
     },
     audit: {
-      title: "Revue de site gratuite pour studios d'architecture et d'intérieur",
+      title: "Revue de site pour studios de design",
       description:
-        "Reframe Studio analyse votre site d'architecture ou d'intérieur : première impression, mobile, portfolio, bases SEO et contact, avec des prochaines étapes claires.",
+        "Revue de la première impression, du mobile, du portfolio, des bases SEO et du parcours de contact, avec des prochaines étapes claires.",
     },
     searchVisibility: {
-      title: "Visibilité en recherche pour studios d'architecture et d'intérieur",
+      title: "SEO pour studios d'architecture",
       description:
-        "Visibilité en recherche pour sites d'architecture, de design intérieur et de paysage : pages projet, structure de services, SEO technique, métadonnées image, maillage interne et hreflang.",
+        "SEO pour studios d'architecture : services clairs, projets indexables, métadonnées, maillage interne, données structurées et hreflang.",
     },
   },
   home: {
@@ -545,23 +547,23 @@ const fr = {
   },
   seoPage: {
     introLead:
-      "Les clients d'architecture cherchent par discipline, type de projet, service, localisation et crédibilité. Votre site doit répondre clairement à ces signaux.",
+      "Le SEO pour studios d'architecture relie services, projets et localisations aux recherches de clients qui ne connaissent pas encore le nom du studio.",
     introP1:
-      "Un bon site d'architecture fait plus que paraître raffiné. Il donne à chaque projet un titre clair, une portée, un contexte de service, une structure d'image et un chemin vers la page suivante.",
+      "L'optimisation pour les moteurs de recherche, ou SEO, organise le contenu et la base technique pour qu'un site puisse être exploré, interprété et indexé. Chaque projet a besoin d'un titre clair, d'une portée, d'une typologie, d'une localisation, d'images décrites et de liens vers les services associés.",
     introP2:
-      "Les moteurs récompensent la clarté. Les visiteurs aussi. La même structure qui aide Google à comprendre votre travail aide les clients à comparer votre studio avec confiance.",
+      "Google Search Central recommande des titres et descriptions propres à chaque page, un HTML sémantique et des données structurées qui représentent le contenu visible. Cette même clarté aide les clients à comparer expérience, portée et adéquation.",
     stats: [
       {
-        stat: "Intention projet",
-        desc: "Les clients cherchent souvent par types de projets, services, matériaux, localisations et spécialisation du studio.",
+        stat: "Requêtes précises",
+        desc: "Les pages doivent répondre à des combinaisons concrètes de typologie, service, matériau, localisation et spécialisation.",
       },
       {
         stat: "Marchés multilingues",
         desc: "Les studios internationaux ont besoin d'une structure linguistique correcte techniquement et écrite pour les personnes.",
       },
       {
-        stat: "Faible visibilité",
-        desc: "Beaucoup de studios ne se positionnent que sur leur nom, ce qui les rend invisibles pour ceux qui ne les connaissent pas encore.",
+        stat: "Découverte sans marque",
+        desc: "Les pages de service et de projet permettent de découvrir REFRAME Studio en cherchant une solution plutôt qu'un nom de marque.",
       },
     ],
     citiesHeading: "Fondations de recherche pour studios de design",
@@ -573,19 +575,38 @@ const fr = {
       },
       {
         title: "Pages projet comme contenu",
-        desc: "Chaque projet livré est structuré comme du contenu indexable : lieu, portée, matériaux et photo. Il devient un actif SEO, pas seulement une image de galerie.",
+        desc: "Chaque projet devient un contenu indexable avec lieu, portée, matériaux et photographie. Le résultat est une étude de cas utile plutôt qu'une galerie sans contexte.",
       },
       {
         title: "SEO technique",
-        desc: "Vitesse, Core Web Vitals, URLs propres, balises canoniques, données structurées et images optimisées sur tout le site.",
+        desc: "Le SEO technique couvre vitesse, Core Web Vitals, URLs propres, canoniques, données structurées, exploration et images optimisées.",
       },
       {
         title: "Hreflang multilingue",
-        desc: "Ciblage langue et région correct pour que les pages EN, ES et FR atteignent le bon public dans les résultats.",
+        desc: "Hreflang identifie la langue et la région de chaque URL afin que les pages françaises, espagnoles et anglaises atteignent le bon public.",
       },
       {
         title: "Google Business Profile",
-        desc: "Configuration et optimisation : catégorie, description, services, photos et données NAP cohérentes.",
+        desc: "Catégorie, description, services, photos et données NAP cohérentes. NAP signifie nom, adresse et téléphone.",
+      },
+    ],
+    editorialByline: "Publié par REFRAME Studio",
+    editorialUpdated: "Mis à jour le 30 juillet 2026",
+    sourcesHeading: "Sources et critères techniques",
+    sourcesIntro:
+      "Ce guide s'appuie sur la documentation officielle de Google Search Central consultée le 30 juillet 2026.",
+    sources: [
+      {
+        label: "Guide SEO pour les développeurs web",
+        href: "https://developers.google.com/search/docs/fundamentals/get-started-developers",
+      },
+      {
+        label: "URLs canoniques et versions multilingues",
+        href: "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      },
+      {
+        label: "Introduction aux données structurées",
+        href: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
       },
     ],
     ctaHeading: "Vous voulez rendre le site de votre studio plus clair en recherche ?",
@@ -605,7 +626,7 @@ const fr = {
       },
       {
         q: "Combien de temps cela prend-il ?",
-        a: "La plupart des sites peuvent être mis en ligne en 2 à 4 semaines selon le contenu et les retours.",
+        a: "Le délai standard est de 2 à 4 semaines après réception du contenu et validation du périmètre. Les langues supplémentaires, une migration importante du portfolio ou des cycles de révision additionnels prolongent le calendrier.",
       },
       {
         q: "Est-ce que je possède le site ?",

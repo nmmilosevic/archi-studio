@@ -27,7 +27,7 @@ export function SiteFooter() {
   return (
     <footer
       className="bg-[#0f0e0c] pb-12 pt-12 text-inverted md:pb-14 md:pt-14"
-      aria-label={`${STUDIO_SEO.name} — site footer`}
+      aria-label={`${STUDIO_SEO.name}: site footer`}
     >
       <div className="container-site">
         <div className="grid grid-cols-1 gap-10 border-t border-white/10 pt-10 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:items-start">
@@ -36,7 +36,7 @@ export function SiteFooter() {
               href={homePath}
               onClick={handleLogoClick}
               className="inline-block"
-              aria-label={`${STUDIO_SEO.name} — ${tFooter("homeAria")}`}
+              aria-label={`${STUDIO_SEO.name}: ${tFooter("homeAria")}`}
             >
               <ReframeLogo light className="h-[42px] w-[150px]" />
             </Link>
@@ -49,11 +49,11 @@ export function SiteFooter() {
           </div>
 
           <div className="grid gap-3">
-            <Link href={`/${locale}/work`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.work")}</Link>
-            <Link href={`/${locale}/services`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.services")}</Link>
-            <Link href={`/${locale}/pricing`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.pricing")}</Link>
-            <Link href={`/${locale}/audit`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.audit")}</Link>
-            <Link href={`/${locale}/contact`} className="text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.contact")}</Link>
+            <Link href={`/${locale}/work`} className="link-underline w-fit text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.work")}</Link>
+            <Link href={`/${locale}/services`} className="link-underline w-fit text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.services")}</Link>
+            <Link href={`/${locale}/pricing`} className="link-underline w-fit text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.pricing")}</Link>
+            <Link href={`/${locale}/audit`} className="link-underline w-fit text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.audit")}</Link>
+            <Link href={`/${locale}/contact`} className="link-underline w-fit text-[15px] text-inverted/70 transition-colors hover:text-bronze">{tFooter("nav.contact")}</Link>
           </div>
 
           <div className="grid gap-3 md:justify-self-end">

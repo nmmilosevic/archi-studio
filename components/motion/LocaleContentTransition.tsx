@@ -1,14 +1,13 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { motionDuration, motionEase } from "@/lib/motion";
 
 interface LocaleContentTransitionProps {
   children: React.ReactNode;
   locale: string;
 }
-
-const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 export function LocaleContentTransition({
   children,
@@ -19,19 +18,20 @@ export function LocaleContentTransition({
   return (
     <div className="relative">
       <AnimatePresence initial={false} mode="popLayout">
-        <motion.div
+        <m.div
           key={locale}
           initial={reducedMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={reducedMotion ? { opacity: 1 } : { opacity: 0 }}
           transition={{
-            duration: reducedMotion ? 0 : 0.22,
-            ease: EASE_OUT,
+            type: "tween",
+            duration: reducedMotion ? 0 : motionDuration.standard,
+            ease: motionEase.opacity,
           }}
           className="w-full"
         >
           {children}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </div>
   );

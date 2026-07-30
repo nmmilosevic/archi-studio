@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { WorkCard } from "@/components/cards/WorkCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
@@ -71,7 +72,7 @@ export default async function WorkPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={breadcrumbs} />
       <section className="bg-stone pt-30 pb-18 md:pt-38 md:pb-24">
         <Container>
           <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
@@ -92,6 +93,11 @@ export default async function WorkPage({ params }: Props) {
 
       <section className="bg-offwhite pb-[clamp(76px,9vw,124px)] pt-[clamp(50px,7vw,90px)]" aria-label={pageCopy.gridAria}>
         <Container>
+          <AnimatedTitle
+            text={pageCopy.projectsHeading}
+            as="h2"
+            className="mb-12 max-w-[22ch] font-heading text-[clamp(24px,3vw,38px)] font-light leading-tight text-primary md:mb-16"
+          />
           <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-x-14 md:gap-y-20">
             {work.items.map((item, i) => (
               <div key={item.slug} className={i % 2 === 1 ? "md:pt-12" : ""}>

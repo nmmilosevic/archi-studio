@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { clsx } from "clsx";
-import { fadeUp } from "@/lib/motion";
+import { motionViewport, uiReveal } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -53,7 +53,7 @@ export function WorkCard({
             alt={`${title} website redesign preview`}
             fill
             quality={92}
-            className="object-contain object-center transition-transform duration-500 ease-out group-hover:scale-[1.024]"
+            className="motion-media object-contain object-center"
             sizes="(min-width: 1440px) 520px, (min-width: 1024px) 38vw, (min-width: 768px) 46vw, 100vw"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/12 via-transparent to-transparent opacity-75 transition-opacity duration-500 group-hover:opacity-95" />
@@ -66,7 +66,7 @@ export function WorkCard({
             {title}
           </h3>
           <ArrowUpRight
-            className="mt-1 h-5 w-5 flex-shrink-0 text-muted/35 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-bronze"
+            className="motion-icon mt-1 h-5 w-5 flex-shrink-0 text-muted/35 group-hover:text-bronze"
             aria-hidden="true"
           />
         </div>
@@ -85,14 +85,14 @@ export function WorkCard({
   }
 
   return (
-    <motion.div
-      variants={fadeUp}
+    <m.div
+      variants={uiReveal}
+      custom={index * 0.08}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay: index * 0.1 }}
+      viewport={motionViewport}
     >
       {content}
-    </motion.div>
+    </m.div>
   );
 }

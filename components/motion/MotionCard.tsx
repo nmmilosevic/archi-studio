@@ -1,9 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { fadeUp } from "@/lib/motion";
 import { clsx } from "clsx";
+import { m } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import {
+  motionDistance,
+  motionEase,
+  motionViewport,
+  uiReveal,
+} from "@/lib/motion";
 
 interface MotionCardProps {
   children: React.ReactNode;
@@ -19,19 +24,19 @@ export function MotionCard({ children, className, delay = 0 }: MotionCardProps) 
   }
 
   return (
-    <motion.div
-      variants={fadeUp}
+    <m.div
+      variants={uiReveal}
+      custom={delay}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay }}
+      viewport={motionViewport}
       whileHover={{
-        y: -2,
-        transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+        y: -motionDistance.control,
+        transition: { type: "tween", duration: 0.3, ease: motionEase.out },
       }}
       className={clsx("cursor-default", className)}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

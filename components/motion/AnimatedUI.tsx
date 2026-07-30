@@ -1,27 +1,25 @@
 "use client";
 
 import { m } from "framer-motion";
-import { motionViewport, textReveal } from "@/lib/motion";
+import { motionViewport, uiReveal } from "@/lib/motion";
 
-interface AnimatedTextProps {
+interface AnimatedUIProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  duration?: number;
-  as?: "p" | "div" | "span";
+  as?: "div" | "span" | "li";
 }
 
-export function AnimatedText({
+export function AnimatedUI({
   children,
   className,
   delay = 0,
-  duration = 1.0,
-  as: Tag = "p",
-}: AnimatedTextProps) {
+  as: Tag = "div",
+}: AnimatedUIProps) {
   return (
     <m.div
-      variants={textReveal}
-      custom={{ delay, duration }}
+      variants={uiReveal}
+      custom={delay}
       initial="hidden"
       whileInView="show"
       viewport={motionViewport}

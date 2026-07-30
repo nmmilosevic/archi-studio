@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { fadeUp } from "@/lib/motion";
+import { m } from "framer-motion";
+import { motionViewport, uiReveal } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Check, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -36,7 +36,7 @@ export function PricingCard({
   const content = (
     <div
       className={clsx(
-        "relative flex flex-col h-full p-7 md:p-9 border transition-all duration-500",
+        "motion-surface relative flex h-full flex-col border p-7 md:p-9",
         featured
           ? "border-bronze bg-offwhite"
           : "border-charcoal/10 bg-offwhite hover:border-bronze/40"
@@ -108,15 +108,15 @@ export function PricingCard({
   }
 
   return (
-    <motion.div
-      variants={fadeUp}
+    <m.div
+      variants={uiReveal}
+      custom={index * 0.08}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay: index * 0.08 }}
+      viewport={motionViewport}
       className="h-full"
     >
       {content}
-    </motion.div>
+    </m.div>
   );
 }

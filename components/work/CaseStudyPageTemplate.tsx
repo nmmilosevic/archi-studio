@@ -37,6 +37,9 @@ export function CaseStudyPageTemplate({ locale, item, labels }: Props) {
         summary={item.summary}
         heroDesktop={item.heroDesktop}
         desktopImageAlt={`${item.title}: ${workCopy.desktopPreview}`}
+        typeLabel={labels.typeLabel}
+        publishedLabel={labels.publishedLabel}
+        updatedLabel={labels.updatedLabel}
       />
 
       <CaseStudyScreens

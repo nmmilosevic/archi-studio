@@ -1,8 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { clsx } from "clsx";
+import { Fragment, memo, useMemo } from "react";
+import { m } from "framer-motion";
+import {
+  motionViewport,
+  titleContainer,
+  titleWord,
+} from "@/lib/motion";
 
 interface AnimatedTitleProps {
   text: string;
@@ -12,63 +16,40 @@ interface AnimatedTitleProps {
   id?: string;
 }
 
-const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-export function AnimatedTitle({
+export const AnimatedTitle = memo(function AnimatedTitle({
   text,
   className,
   as: Tag = "h2",
   delay = 0,
   id,
 }: AnimatedTitleProps) {
-  const reduced = useReducedMotion();
-  const words = text.split(" ");
-
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.14,
-        delayChildren: delay,
-      },
-    },
-  };
-
-  const wordVariants = {
-    hidden: { opacity: 0, y: 22, filter: "blur(2px)" },
-    show: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 1.1,
-        ease: EASE,
-      },
-    },
-  };
-
-  if (reduced) {
-    return <Tag className={className} id={id}>{text}</Tag>;
-  }
+  const words = useMemo(() => text.trim().split(/\s+/), [text]);
+  const isPageTitle = Tag === "h1";
 
   return (
-    <motion.div
-      variants={containerVariants}
+    <m.div
+      variants={titleContainer}
+      custom={delay}
       initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      animate={isPageTitle ? "show" : undefined}
+      whileInView={isPageTitle ? undefined : "show"}
+      viewport={isPageTitle ? undefined : motionViewport}
     >
-      <Tag className={clsx("flex flex-wrap", className)} id={id}>
-        {words.map((word, i) => (
-          <motion.span
-            key={i}
-            variants={wordVariants}
-            className="inline-block mr-[0.24em] last:mr-0"
-          >
-            {word}
-          </motion.span>
+      <Tag className={className} id={id} aria-label={text}>
+        {words.map((word, index) => (
+          <Fragment key={`${word}-${index}`}>
+            <span
+              className="-mb-[0.08em] inline-block overflow-hidden pb-[0.08em] align-bottom"
+              aria-hidden="true"
+            >
+              <m.span variants={titleWord} className="inline-block">
+                {word}
+              </m.span>
+            </span>
+            {index < words.length - 1 ? " " : null}
+          </Fragment>
         ))}
       </Tag>
-    </motion.div>
+    </m.div>
   );
-}
+});

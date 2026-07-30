@@ -97,7 +97,7 @@ export function BeforeAfterSlider({
               {annotationLabels.slice(0, 6).map((label, index) => (
                 <span
                   key={label}
-                  className={`absolute ${desktopPositions[index]} inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/32 px-3 py-1.5 text-[12px] font-medium leading-none text-white/90 backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`absolute ${desktopPositions[index]} inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/32 px-3 py-1.5 text-[12px] font-medium leading-none text-white/90 backdrop-blur-sm transition-all duration-700 ease-smooth ${
                     showAnnotations
                       ? "translate-y-0 scale-100 opacity-100"
                       : "translate-y-3 scale-95 opacity-0"
@@ -114,7 +114,7 @@ export function BeforeAfterSlider({
               {mobileLabels.map((label, index) => (
                 <span
                   key={label}
-                  className={`inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/38 px-3 py-1.5 text-[12px] font-medium leading-none text-white/92 backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`inline-flex items-center gap-2 rounded-full border border-white/18 bg-black/38 px-3 py-1.5 text-[12px] font-medium leading-none text-white/92 backdrop-blur-sm transition-all duration-700 ease-smooth ${
                     showAnnotations
                       ? "translate-y-0 scale-100 opacity-100"
                       : "translate-y-3 scale-95 opacity-0"

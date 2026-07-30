@@ -1,6 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
+import {
+  m,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
@@ -15,7 +21,8 @@ import { ReframeLogo } from "@/components/ui/ReframeLogo";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
-  const [ctaScrollProgress, setCtaScrollProgress] = useState(0);
+  const { scrollY } = useScroll();
+  const homeCtaOpacity = useTransform(scrollY, [0, 340], [0, 1]);
   const locale = useLocale();
   const t = useTranslations("nav");
   const navigationCopy = getPageCopy(locale).navigation;
@@ -31,30 +38,11 @@ export function SiteHeader() {
     pathname.startsWith(`${contactPath}/`);
   const useLightHeaderText = (isContactPage || isWorkDetailPage) && !scrolled;
   const isHomePage = normalizedSegments.length === 1 && normalizedSegments[0] === locale;
-  const ctaProgress = isHomePage ? ctaScrollProgress : scrolled ? 1 : 0;
 
-  const updateScrollState = useCallback(() => {
-    const y = window.scrollY;
-    setScrolled(y > 20);
-    // Home navbar CTA appears progressively with scroll.
-    const progress = Math.min(Math.max(y / 340, 0), 1);
-    setCtaScrollProgress(progress);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    const rafId = window.requestAnimationFrame(updateScrollState);
-
-    return () => {
-      window.cancelAnimationFrame(rafId);
-      window.removeEventListener("scroll", updateScrollState);
-    };
-  }, [updateScrollState]);
-
-  useEffect(() => {
-    const rafId = window.requestAnimationFrame(updateScrollState);
-    return () => window.cancelAnimationFrame(rafId);
-  }, [pathname, updateScrollState]);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const nextScrolled = latest > 20;
+    setScrolled((current) => current === nextScrolled ? current : nextScrolled);
+  });
 
   function handleLocaleChange(newLocale: string) {
     if (newLocale === locale) return;
@@ -77,12 +65,12 @@ export function SiteHeader() {
         {navigationCopy.skipToContent}
       </a>
 
-      <header
+      <m.header
         className={clsx(
-          "fixed top-0 left-0 right-0 z-30 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-30 py-4 transition-[background-color,backdrop-filter] duration-500 ease-smooth [view-transition-name:site-header] md:py-5",
           scrolled
-            ? "bg-[rgb(245_241_235/0.9)] backdrop-blur-md py-3"
-            : "bg-transparent py-4 md:py-5"
+            ? "bg-[rgb(245_241_235/0.9)] backdrop-blur-md"
+            : "bg-transparent"
         )}
         role="banner"
       >
@@ -122,20 +110,20 @@ export function SiteHeader() {
               <LanguageSwitcher light={useLightHeaderText} />
             </div>
 
-            {/* Right side — flush to container right edge (same as page content) */}
+            {/* Right side: flush to container right edge (same as page content) */}
             <div className="hidden lg:flex min-h-11 flex-shrink-0 items-center justify-end py-0.5">
-              <div
+              <m.div
                 className={clsx(
                   "flex min-h-11 items-center justify-end transition-opacity duration-[500ms] ease-linear",
-                  ctaProgress < 0.06 && "pointer-events-none"
+                  !scrolled && "pointer-events-none"
                 )}
-                style={{ opacity: ctaProgress }}
+                style={{ opacity: isHomePage ? homeCtaOpacity : scrolled ? 1 : 0 }}
               >
                 <Button
                   asChild
                   size="sm"
                   className={clsx(
-                    "px-6 whitespace-nowrap hover:-translate-y-0.5",
+                    "px-6 whitespace-nowrap",
                     isContactPage && !scrolled
                       ? "!bg-inverted !text-primary hover:!bg-inverted hover:!text-primary"
                       : "!bg-charcoal !text-inverted hover:!bg-charcoal hover:!text-inverted"
@@ -143,7 +131,7 @@ export function SiteHeader() {
                 >
                   <Link href={`/${locale}/contact`}>{t("cta")}</Link>
                 </Button>
-              </div>
+              </m.div>
             </div>
 
             {/* Mobile direct navigation */}
@@ -222,7 +210,7 @@ export function SiteHeader() {
             </div>
           </div>
         </div>
-      </header>
+      </m.header>
     </>
   );
 }

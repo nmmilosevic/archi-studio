@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { fadeUp, stagger } from "@/lib/motion";
+import { m } from "framer-motion";
+import { motionViewport, stagger, uiReveal } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 interface Step {
@@ -17,18 +17,18 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
   const reduced = useReducedMotion();
 
   return (
-    <motion.div
+    <m.div
       variants={reduced ? undefined : stagger}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={motionViewport}
       className="relative"
     >
       <div className="space-y-0">
         {steps.map((step, index) => (
-          <motion.div
+          <m.div
             key={`${step.title}-${index}`}
-            variants={reduced ? undefined : fadeUp}
+            variants={reduced ? undefined : uiReveal}
             className="relative py-8 border-b border-charcoal/8 last:border-0 group"
           >
             <div className="flex-1 min-w-0">
@@ -40,9 +40,9 @@ export function ProcessTimeline({ steps }: ProcessTimelineProps) {
               </p>
             </div>
 
-          </motion.div>
+          </m.div>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   );
 }

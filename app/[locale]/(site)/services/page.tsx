@@ -1,9 +1,11 @@
 import { setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/cards/ServiceCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
 import { Button } from "@/components/ui/Button";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteLocaleUrl } from "@/lib/seo";
@@ -78,7 +80,7 @@ export default async function ServicesPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={breadcrumbs} />
       <PageHero
         heading={services.heading}
         subtext={pageCopy.sub}
@@ -126,7 +128,7 @@ export default async function ServicesPage({ params }: Props) {
             </div>
             <div className="space-y-8">
               {pageCopy.processItems.map((item, i) => (
-                <AnimatedText key={i} delay={i * 0.1} as="div">
+                <AnimatedUI key={i} delay={i * 0.1}>
                   <div className="border-l border-bronze pl-5">
                     <h3 className="font-heading text-[18px] font-medium text-primary mb-2">
                       {item.title}
@@ -135,7 +137,7 @@ export default async function ServicesPage({ params }: Props) {
                       {item.desc}
                     </p>
                   </div>
-                </AnimatedText>
+                </AnimatedUI>
               ))}
             </div>
           </div>
@@ -159,13 +161,13 @@ export default async function ServicesPage({ params }: Props) {
                 {pageCopy.pricingBody}
               </AnimatedText>
             </div>
-            <AnimatedText delay={0.2} as="div">
+            <AnimatedUI delay={0.2}>
               <Button asChild variant="secondary" size="md" className="flex-shrink-0">
                 <Link href={`/${locale}/#pricing`} className="flex items-center gap-2">
                   {pageCopy.pricingCta} <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </Link>
               </Button>
-            </AnimatedText>
+            </AnimatedUI>
           </div>
         </Container>
       </section>

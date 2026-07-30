@@ -27,7 +27,7 @@ export function HomepageFooter() {
   return (
     <footer
       className="bg-[#0f0e0c] pb-12 pt-12 text-inverted md:pb-14 md:pt-14"
-      aria-label={`${STUDIO_SEO.name} — site footer`}
+      aria-label={`${STUDIO_SEO.name}: site footer`}
     >
       <div className="container-site">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1.2fr_0.8fr] md:items-start">
@@ -36,7 +36,7 @@ export function HomepageFooter() {
               href={homePath}
               onClick={handleLogoClick}
               className="inline-flex items-start"
-              aria-label={`${STUDIO_SEO.name} — ${tFooter("homeAria")}`}
+              aria-label={`${STUDIO_SEO.name}: ${tFooter("homeAria")}`}
             >
               <ReframeLogo light className="h-[42px] w-auto" />
             </Link>
@@ -48,13 +48,13 @@ export function HomepageFooter() {
               className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[14px] text-inverted/52"
               aria-label={tFooter("footerNavAria")}
             >
-              <Link href={`/${locale}/work`} className="transition-colors hover:text-bronze">
+              <Link href={`/${locale}/work`} className="link-underline transition-colors hover:text-bronze">
                 {tFooter("nav.work")}
               </Link>
-              <Link href={`/${locale}/services`} className="transition-colors hover:text-bronze">
+              <Link href={`/${locale}/services`} className="link-underline transition-colors hover:text-bronze">
                 {tFooter("nav.services")}
               </Link>
-              <Link href={`/${locale}/contact`} className="transition-colors hover:text-bronze">
+              <Link href={`/${locale}/contact`} className="link-underline transition-colors hover:text-bronze">
                 {tFooter("nav.contact")}
               </Link>
               <CookieSettingsButton className="transition-colors hover:text-bronze" />

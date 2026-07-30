@@ -1,0 +1,83 @@
+{
+  "domain": "https://reframestudio.es",
+  "generatedAt": "2026-07-30",
+  "implementation": [
+    {
+      "scope": "all localized pages",
+      "source": "lib/structured-data.ts",
+      "types": [
+        "Organization",
+        "WebSite",
+        "Service"
+      ],
+      "identity": "https://reframestudio.es/#organization",
+      "status": "implemented"
+    },
+    {
+      "scope": "/es/pricing/, /en/pricing/, /fr/pricing/",
+      "source": "app/[locale]/(site)/pricing/page.tsx",
+      "types": [
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "contentMatch": "Questions and answers are generated from the visible pricing FAQ.",
+      "status": "implemented"
+    },
+    {
+      "scope": "/es/audit/, /en/audit/, /fr/audit/",
+      "source": "app/[locale]/(site)/audit/page.tsx",
+      "types": [
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "contentMatch": "Questions and answers are generated from the visible website review FAQ.",
+      "status": "implemented"
+    },
+    {
+      "scope": "/es/search-visibility/, /en/search-visibility/, /fr/search-visibility/",
+      "source": "app/[locale]/(site)/search-visibility/page.tsx",
+      "types": [
+        "BreadcrumbList",
+        "Article"
+      ],
+      "author": {
+        "@type": "Organization",
+        "@id": "https://reframestudio.es/#organization",
+        "name": "REFRAME Studio"
+      },
+      "datePublished": "2026-05-07",
+      "dateModified": "2026-07-30",
+      "status": "implemented"
+    },
+    {
+      "scope": "all localized case study pages",
+      "source": "app/[locale]/(site)/work/[slug]/page.tsx",
+      "types": [
+        "BreadcrumbList",
+        "Article"
+      ],
+      "author": {
+        "@type": "Organization",
+        "@id": "https://reframestudio.es/#organization",
+        "name": "REFRAME Studio"
+      },
+      "datePublished": "2026-05-07",
+      "dateModified": "2026-07-30",
+      "status": "implemented"
+    },
+    {
+      "scope": "services, work index, and contact pages",
+      "source": "app/[locale]/(site)",
+      "types": [
+        "BreadcrumbList"
+      ],
+      "status": "implemented"
+    }
+  ],
+  "validation": {
+    "serialization": "JSON is escaped before insertion into the HTML document.",
+    "contentPolicy": "Structured data describes visible content and verified business information only.",
+    "personSchema": "Not added because no verified individual author identity was supplied."
+  }
+}
+

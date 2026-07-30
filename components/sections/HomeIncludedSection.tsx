@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useScroll, useTransform } from "framer-motion";
 import {
   FolderKanban,
   LayoutTemplate,
@@ -12,9 +9,10 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
+import { RevealMedia } from "@/components/motion/RevealMedia";
 import { Container } from "@/components/ui/Container";
 import { assetPath } from "@/lib/paths";
 
@@ -39,16 +37,8 @@ const services: IncludedServiceItem[] = [
 ];
 
 export function HomeIncludedSection({ title, body }: HomeIncludedSectionProps) {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const mockupY = useTransform(scrollYProgress, [0, 1], [34, -20]);
-
   return (
-    <section ref={sectionRef} className="bg-offwhite section-space" aria-labelledby="redesign-heading">
+    <section className="bg-offwhite section-space" aria-labelledby="redesign-heading">
       <Container>
         <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <AnimatedTitle
@@ -62,8 +52,10 @@ export function HomeIncludedSection({ title, body }: HomeIncludedSectionProps) {
           </AnimatedText>
         </div>
 
-        <motion.div style={{ y: mockupY }} className="relative">
-          <div className="relative mx-auto max-w-[980px] overflow-hidden rounded-[20px] border border-charcoal/10 bg-[#f6f1e9] p-0 shadow-[0_28px_70px_rgb(24_20_16/0.08)]">
+        <div className="relative">
+          <RevealMedia
+            className="relative mx-auto max-w-[980px] rounded-[20px] border border-charcoal/10 bg-[#f6f1e9] p-0 shadow-[0_28px_70px_rgb(24_20_16/0.08)]"
+          >
             <div className="relative aspect-[16/9] overflow-hidden rounded-[14px]">
               <Image
                 src={assetPath("/images/pricing-img.png")}
@@ -74,7 +66,7 @@ export function HomeIncludedSection({ title, body }: HomeIncludedSectionProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/12 via-transparent to-transparent" />
             </div>
-          </div>
+          </RevealMedia>
 
           <div className="mx-auto mt-10 max-w-[980px]">
             <div className="grid grid-cols-1 gap-x-14 gap-y-5 md:grid-cols-2 md:gap-y-7">
@@ -82,7 +74,7 @@ export function HomeIncludedSection({ title, body }: HomeIncludedSectionProps) {
                 const ServiceIcon = service.icon;
 
                 return (
-                  <AnimatedText key={service.label} as="div" delay={0.06 + index * 0.04}>
+                  <AnimatedUI key={service.label} delay={0.06 + index * 0.04}>
                     <div className="group flex items-center gap-3.5 border-b border-charcoal/10 pb-4">
                       <span className="inline-flex items-center justify-center text-bronze/95" aria-hidden="true">
                         <ServiceIcon size={32} strokeWidth={1} />
@@ -91,12 +83,12 @@ export function HomeIncludedSection({ title, body }: HomeIncludedSectionProps) {
                         {service.label}
                       </span>
                     </div>
-                  </AnimatedText>
+                  </AnimatedUI>
                 );
               })}
             </div>
           </div>
-        </motion.div>
+        </div>
       </Container>
     </section>
   );

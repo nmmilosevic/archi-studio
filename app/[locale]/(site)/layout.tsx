@@ -1,6 +1,5 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { HomepageFooter } from "@/components/layout/HomepageFooter";
-import { LocaleContentTransition } from "@/components/motion/LocaleContentTransition";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 import { setRequestLocale } from "next-intl/server";
@@ -17,15 +16,11 @@ export default async function SiteLayout({ children, params }: SiteLayoutProps) 
   return (
     <>
       <SiteHeader />
-      <PageTransition>
-        <LocaleContentTransition locale={locale}>
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-          <FinalCtaSection locale={locale} />
-          <HomepageFooter />
-        </LocaleContentTransition>
-      </PageTransition>
+      <main id="main-content" tabIndex={-1}>
+        <PageTransition>{children}</PageTransition>
+      </main>
+      <FinalCtaSection locale={locale} />
+      <HomepageFooter />
     </>
   );
 }

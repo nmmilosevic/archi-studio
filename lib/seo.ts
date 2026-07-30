@@ -121,7 +121,7 @@ export function buildPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${STUDIO_SEO.name} — ${title}`,
+          alt: `${STUDIO_SEO.name}: ${title}`,
         },
       ],
     },

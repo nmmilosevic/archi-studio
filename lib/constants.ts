@@ -18,8 +18,6 @@ export const BRAND = {
   email: "hello@reframestudio.es",
   instagram: "@reframe.stud",
   instagramLink: "https://instagram.com/reframe.stud",
-  whatsapp: "+34 600 000 000",
-  whatsappLink: "https://wa.me/34600000000",
 };
 
 export const CITIES = [

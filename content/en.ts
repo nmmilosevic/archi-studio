@@ -56,7 +56,7 @@ const en = {
       {
         number: "03",
         title: "Search visibility foundation",
-        desc: "Technical and content structure that helps search engines understand your services, project types, studio positioning, and portfolio pages.",
+        desc: "Organic visibility is the ability to appear in unpaid searches related to your services, projects, and locations. We build it through content structure, metadata, internal links, and a clear technical foundation.",
         deliverables: ["SEO metadata", "Search-focused page structure", "Structured data", "Internal linking", "Image alt structure", "Performance optimization"],
       },
       {
@@ -69,7 +69,7 @@ const en = {
         number: "05",
         title: "Portfolio systems",
         desc: "A clean structure to publish projects consistently, including images, location, service type, materials, scope, and story.",
-        deliverables: ["CMS-ready content model", "Project templates", "Filters by location and type", "Case study structure", "Image-first layout"],
+        deliverables: ["Content model for a CMS, or content management system", "Project templates", "Filters by location and type", "Case study structure", "Image-first layout"],
       },
       {
         number: "06",
@@ -94,7 +94,7 @@ const en = {
   pricing: {
     label: "Pricing",
     heading: "Transparent pricing. No guesswork.",
-    sub: "Starting prices. Final quote depends on number of pages, languages, CMS scope, and content readiness.",
+    sub: "The main website package costs 1,500€. The quote changes when the project adds pages, languages, a content management system, or new content.",
     vatNote: "Prices shown excluding VAT when applicable.",
     paymentNote: "50% upfront, 50% before launch for projects above 790€. Monthly plans billed monthly.",
     cta: "Request a quote",
@@ -172,6 +172,9 @@ const en = {
     caseStudy: {
       keyScreens: "Selected views.",
       whatChangedHeading: "What changed",
+      typeLabel: "Conceptual redesign study",
+      publishedLabel: "Published 7 May 2026",
+      updatedLabel: "Updated 30 July 2026",
       whatChangedThemes: [
         "Portfolio structure",
         "Mobile readability",
@@ -348,7 +351,7 @@ const en = {
   seo: {
     label: "Search visibility for studios",
     heading: "Your work should be easy to find and easier to understand.",
-    sub: "Search visibility starts with a clear architecture studio website: precise services, structured project pages, strong metadata, internal links, and fast pages that support organic discovery.",
+    sub: "Organic visibility is a website's ability to appear in unpaid search results. For an architecture studio, it depends on precise services, indexable projects, descriptive metadata, internal links, and fast pages.",
     cities: [
       { name: "Architecture", desc: "Service pages and project pages should make typology, scope, process, and built quality clear for clients comparing architecture studios." },
       { name: "Interior design", desc: "Interior design websites need strong image sequencing, material language, service clarity, and trust signals before the first consultation." },
@@ -356,15 +359,15 @@ const en = {
       { name: "Portfolio", desc: "An architecture portfolio website should turn completed work into structured, indexable case studies instead of a disconnected image gallery." },
       { name: "Redesign", desc: "An architecture website redesign should improve perception, mobile reading, speed, metadata, and the path from project interest to enquiry." },
       { name: "Multilingual", desc: "Studios working internationally need language structure, hreflang, translated metadata, and copy that still sounds natural in each market." },
-      { name: "Technical SEO", desc: "Clean URLs, structured data, image optimization, internal links, and Core Web Vitals help search engines read the site properly." },
+      { name: "Technical SEO", desc: "Technical SEO covers the decisions that let search engines crawl, interpret, and index a site: clean URLs, structured data, optimized images, internal links, and Core Web Vitals." },
       { name: "Brand perception", desc: "Search traffic only matters if the website makes the studio feel credible, specialist, and considered once visitors arrive." },
     ],
     sections: [
-      { title: "Why search visibility matters for architecture studios", body: "Clients often search by discipline, project type, style, service, and location. The website needs enough structure for search engines to understand what the studio does without turning the page into a list of keywords." },
-      { title: "Project pages as SEO assets", body: "Each completed project is a piece of indexable content. A well-structured project page with scope, typology, materials, design intent, and photography can support long-tail discovery while improving the portfolio experience." },
-      { title: "Multilingual SEO", body: "Studios working across markets need language versions that are technically correct and well written. Hreflang, translated metadata, and natural local phrasing help each language page reach the right audience." },
+      { title: "Why search visibility matters for architecture studios", body: "Clients search by discipline, project type, style, service, and location. A clear information architecture connects each page to those needs without turning the content into a list of keywords." },
+      { title: "Project pages as SEO assets", body: "Every completed project is indexable content. A page with scope, typology, materials, design intent, and photography answers specific searches and turns the portfolio into useful information, not just a gallery." },
+      { title: "Multilingual SEO", body: "The hreflang attribute tells search engines the language and region of each page version. Hreflang, translated metadata, and natural copy help English, Spanish, and French pages reach the right audience." },
       { title: "Service pages with substance", body: "Architecture web design, interior design websites, and landscape architecture websites need service pages that explain the studio's expertise, process, and fit rather than repeating generic agency language." },
-      { title: "Technical SEO", body: "Site speed, Core Web Vitals, clean URL structure, structured data, optimized images, and internal linking all affect how Google reads and ranks the site. The technical foundation should support the portfolio, not distract from it." },
+      { title: "Technical SEO", body: "Technical SEO makes a website easier to crawl, interpret, and index. It includes speed, Core Web Vitals, clean URLs, structured data, optimized images, coherent canonicals, and internal links." },
     ],
   },
   contact: {
@@ -425,7 +428,6 @@ const en = {
     footerNavAria: "Key pages",
     locations: "Based in Spain · Working internationally",
     email: "hello@reframestudio.es",
-    whatsapp: "+34 600 000 000",
     legal: { privacy: "Privacy Policy", terms: "Terms", cookies: "Cookies" },
     copy: "© 2026 REFRAME. All rights reserved.",
     nav: {
@@ -441,19 +443,19 @@ const en = {
   },
   pageMeta: {
     pricing: {
-      title: "Pricing: transparent website packages for studios",
+      title: "Architecture studio website pricing",
       description:
-        "Clear website design pricing for architecture studios, interior design studios, and landscape practices: strategy, custom design, responsive development, SEO basics, launch support, and optional care plans.",
+        "Studio websites from 1,500€ with strategy, custom design, responsive development, SEO foundations, contact form, and launch support.",
     },
     audit: {
-      title: "Free website review for architecture & interior studios",
+      title: "Free website review for design studios",
       description:
-        "Reframe Studio reviews your architecture or interior design website across first impression, mobile UX, portfolio clarity, SEO basics, and contact flow, with practical next steps.",
+        "A focused review of first impression, mobile UX, portfolio clarity, SEO foundations, and contact flow, with practical next steps.",
     },
     searchVisibility: {
-      title: "Search visibility for architecture & interior studios",
+      title: "SEO for architecture studios",
       description:
-        "Search visibility for architecture, interior design, and landscape studio websites: project pages, service structure, technical SEO, image metadata, internal linking, and hreflang.",
+        "SEO for architecture studios: clear services, indexable projects, metadata, internal links, structured data, and multilingual hreflang.",
     },
   },
   home: {
@@ -545,23 +547,23 @@ const en = {
   },
   seoPage: {
     introLead:
-      "Architecture clients search by discipline, project type, service, location, and credibility. Your website has to answer those signals clearly.",
+      "SEO for architecture studios connects services, projects, and locations with searches from clients who do not yet know the studio by name.",
     introP1:
-      "A strong architecture studio website does more than look refined. It gives every project a clear title, scope, service context, image structure, and path to the next relevant page.",
+      "Search engine optimization, or SEO, organizes content and technical foundations so a website can be crawled, interpreted, and indexed. Each project needs a clear title, scope, typology, location, described images, and links to related services.",
     introP2:
-      "Search engines reward clarity. Visitors do too. The same structure that helps Google understand your work also helps clients compare your studio with confidence.",
+      "Google Search Central recommends unique page titles and descriptions, semantic HTML, and structured data that represents visible content. The same clarity helps clients compare experience, scope, and fit.",
     stats: [
       {
-        stat: "Project intent",
-        desc: "Clients often search around project types, services, materials, locations, and studio specialization.",
+        stat: "Specific queries",
+        desc: "Pages should answer concrete combinations of project type, service, material, location, and specialization.",
       },
       {
         stat: "Multilingual markets",
         desc: "Studios working internationally need language structure that is technically correct and written for people.",
       },
       {
-        stat: "Low visibility",
-        desc: "Many studios only rank for their own name, leaving them invisible to people who have not already heard of them.",
+        stat: "Non-branded discovery",
+        desc: "Service and project pages help clients discover REFRAME Studio while searching for a solution rather than a brand name.",
       },
     ],
     citiesHeading: "Search foundations for design studios",
@@ -573,19 +575,38 @@ const en = {
       },
       {
         title: "Project pages as content",
-        desc: "Each completed project is structured as indexable content with location, scope, materials, and photography. It becomes a rankable asset, not just a gallery entry.",
+        desc: "Each project becomes indexable content with location, scope, materials, and photography. The result is a useful case study rather than a gallery without context.",
       },
       {
         title: "Technical SEO",
-        desc: "Page speed, Core Web Vitals, clean URLs, canonical tags, structured data, and image optimization across the site.",
+        desc: "Technical SEO covers speed, Core Web Vitals, clean URLs, canonicals, structured data, crawling, and optimized images.",
       },
       {
         title: "Hreflang for multilingual",
-        desc: "Correct language and region targeting so English, Spanish, and French pages reach the right audience in search results.",
+        desc: "Hreflang identifies the language and region of each URL so English, Spanish, and French pages reach the right audience.",
       },
       {
         title: "Google Business Profile",
-        desc: "Full setup and optimization: category, description, services, photos, and consistent name, address, and phone data.",
+        desc: "Category, description, services, photos, and consistent NAP details. NAP means name, address, and phone number.",
+      },
+    ],
+    editorialByline: "Published by REFRAME Studio",
+    editorialUpdated: "Updated 30 July 2026",
+    sourcesHeading: "Sources and technical criteria",
+    sourcesIntro:
+      "This guide uses official Google Search Central documentation consulted on 30 July 2026.",
+    sources: [
+      {
+        label: "SEO guide for web developers",
+        href: "https://developers.google.com/search/docs/fundamentals/get-started-developers",
+      },
+      {
+        label: "Canonical URLs and multilingual versions",
+        href: "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      },
+      {
+        label: "Introduction to structured data",
+        href: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
       },
     ],
     ctaHeading: "Want your studio website to become clearer in search?",
@@ -605,7 +626,7 @@ const en = {
       },
       {
         q: "How long does it take?",
-        a: "Most websites can be launched in 2 to 4 weeks depending on content and feedback.",
+        a: "The standard timeline is 2 to 4 weeks after content delivery and scope approval. Additional languages, a large portfolio migration, or extra review rounds extend the schedule.",
       },
       {
         q: "Do I own the website?",

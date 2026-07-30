@@ -47,7 +47,7 @@ export function FAQAccordion({ items, className, light }: FAQAccordionProps) {
               </span>
               <ChevronDown
                 className={clsx(
-                  "mt-0.5 h-4 w-4 flex-shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[state=open]:rotate-180",
+                  "mt-0.5 h-4 w-4 flex-shrink-0 transition-transform duration-300 ease-out group-data-[state=open]:rotate-180",
                   light ? "text-clay" : "text-bronze"
                 )}
                 aria-hidden="true"

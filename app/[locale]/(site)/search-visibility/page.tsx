@@ -3,14 +3,17 @@ import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
 import { Button } from "@/components/ui/Button";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Search } from "lucide-react";
-import { breadcrumbSchema } from "@/lib/structured-data";
+import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -67,10 +70,33 @@ export default async function SEOPage({ params }: Props) {
     categories: seoContent.cities.map((category) => ({ ...category })),
     sections: seoContent.sections.map((section) => ({ ...section })),
   };
+  const articleUrl = absoluteLocaleUrl(locale, "/search-visibility");
+  const articleText = [
+    seo.heading,
+    seo.sub,
+    seoPage.introLead,
+    seoPage.introP1,
+    seoPage.introP2,
+    ...seo.categories.flatMap((category) => [category.name, category.desc]),
+    ...seo.sections.flatMap((section) => [section.title, section.body]),
+    ...seoPage.practiceItems.flatMap((item) => [item.title, item.desc]),
+  ].join(" ");
+  const articleJsonLd = articleSchema({
+    locale,
+    url: articleUrl,
+    headline: seo.heading,
+    description: content.pageMeta.searchVisibility.description,
+    image: `${SITE_URL}/images/hero.png`,
+    datePublished: "2026-05-07T10:30:00+02:00",
+    dateModified: "2026-07-30T15:30:00+02:00",
+    wordCount: articleText.trim().split(/\s+/u).length,
+    speakableSelectors: ["h1", ".schema-summary", ".schema-answer"],
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={articleJsonLd} />
       <PageHero heading={seo.heading} subtext={seo.sub} />
 
       <section className="section-space-tight bg-offwhite" aria-label="SEO introduction">
@@ -78,7 +104,7 @@ export default async function SEOPage({ params }: Props) {
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <div>
               <AnimatedText
-                className="font-heading text-[clamp(24px,2.2vw,32px)] font-light text-primary leading-snug mb-6"
+                className="schema-summary font-heading text-[clamp(24px,2.2vw,32px)] font-light text-primary leading-snug mb-6"
                 as="p"
               >
                 {seoPage.introLead}
@@ -86,18 +112,22 @@ export default async function SEOPage({ params }: Props) {
               <AnimatedText className="text-support font-body text-muted mb-5" delay={0.1}>
                 {seoPage.introP1}
               </AnimatedText>
-              <AnimatedText className="text-support font-body text-muted" delay={0.15}>
+              <AnimatedText className="schema-answer text-support font-body text-muted" delay={0.15}>
                 {seoPage.introP2}
               </AnimatedText>
+              <div className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[12px] font-medium uppercase tracking-[0.12em] text-primary/44">
+                <span>{seoPage.editorialByline}</span>
+                <time dateTime="2026-07-30">{seoPage.editorialUpdated}</time>
+              </div>
             </div>
             <div className="space-y-6">
               {seoPage.stats.map((item, i) => (
-                <AnimatedText key={item.stat} delay={i * 0.1} as="div">
+                <AnimatedUI key={item.stat} delay={i * 0.1}>
                   <div className="p-6 bg-stone border border-charcoal/8">
                     <div className="font-heading text-[20px] font-medium text-bronze mb-2">{item.stat}</div>
                     <p className="font-body text-[14px] text-muted leading-relaxed">{item.desc}</p>
                   </div>
-                </AnimatedText>
+                </AnimatedUI>
               ))}
             </div>
           </div>
@@ -173,15 +203,48 @@ export default async function SEOPage({ params }: Props) {
             <div>
               <div className="space-y-4">
                 {seoPage.practiceItems.map((item, i) => (
-                  <AnimatedText key={item.title} delay={i * 0.08} as="div">
+                  <AnimatedUI key={item.title} delay={i * 0.08}>
                     <div className="border-l border-bronze/40 pl-5 py-1">
                       <h3 className="font-heading text-[16px] font-medium text-primary mb-1">{item.title}</h3>
                       <p className="font-body text-[14px] text-muted leading-relaxed">{item.desc}</p>
                     </div>
-                  </AnimatedText>
+                  </AnimatedUI>
                 ))}
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-space-tight bg-offwhite" aria-labelledby="seo-sources-heading">
+        <Container>
+          <div className="grid grid-cols-1 gap-10 border-t border-charcoal/10 pt-12 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <h2
+                id="seo-sources-heading"
+                className="font-heading text-[24px] font-medium leading-tight text-primary md:text-[30px]"
+              >
+                {seoPage.sourcesHeading}
+              </h2>
+              <p className="mt-4 max-w-[48ch] text-[14px] leading-relaxed text-muted">
+                {seoPage.sourcesIntro}
+              </p>
+            </div>
+            <ul className="grid gap-3">
+              {seoPage.sources.map((source) => (
+                <li key={source.href}>
+                  <a
+                    href={source.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-between gap-4 border-b border-charcoal/10 py-3 text-[15px] text-primary transition-colors hover:text-bronze"
+                  >
+                    <span>{source.label}</span>
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
       </section>
@@ -195,11 +258,11 @@ export default async function SEOPage({ params }: Props) {
                 {seoPage.ctaSub}
               </AnimatedText>
             </div>
-            <AnimatedText delay={0.2} as="div">
+            <AnimatedUI delay={0.2}>
               <Button asChild variant="secondary" size="lg">
                 <Link href={`/${locale}/contact`}>{seoPage.ctaLabel}</Link>
               </Button>
-            </AnimatedText>
+            </AnimatedUI>
           </div>
         </Container>
       </section>

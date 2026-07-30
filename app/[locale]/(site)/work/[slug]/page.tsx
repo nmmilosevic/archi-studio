@@ -2,11 +2,13 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { CaseStudyPageTemplate } from "@/components/work/CaseStudyPageTemplate";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { buildPageMetadata } from "@/lib/seo";
 import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import en from "@/content/en";
-import { breadcrumbSchema } from "@/lib/structured-data";
+import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
 
 const VALID_SLUGS: readonly string[] = en.work.items.map((item) => item.slug);
 
@@ -30,22 +32,22 @@ const PROJECT_SEO: Record<
   "villa-architecture-studio": {
     title: "Aurea Studio Website Concept | Reframe Studio",
     description:
-      "Contemporary website concept for an architecture studio. Bold editorial direction, structured project UX, and a calm premium atmosphere designed for immersive villa case studies.",
+      "Architecture studio website concept with editorial direction, structured project UX, mobile clarity, and immersive villa case studies.",
   },
   "casa-noma-marbella": {
     title: "Casa Noma Website Redesign | Reframe Studio",
     description:
-      "Minimal Mediterranean website concept for a luxury interior design studio. Warm editorial layouts, refined typography, and immersive project presentation with a smooth mobile-first UX rhythm.",
+      "Interior design website concept with warm editorial layouts, refined typography, immersive project stories, and a smooth mobile experience.",
   },
   "forma-sur-malaga": {
     title: "Forma Sur Website Identity | Reframe Studio",
     description:
-      "Expressive website direction for an architecture studio in Malaga. High-contrast visual language, clear project navigation UX, and a confident urban atmosphere for portfolio storytelling.",
+      "Architecture website concept for a Malaga studio with a high-contrast identity, clear project navigation, mobile structure, and CMS.",
   },
   "terral-studio-estepona": {
     title: "Terral Studio Portfolio System | Reframe Studio",
     description:
-      "Portfolio-led website system for a landscape and outdoor design studio. Mediterranean visual direction, image-first UX flow, and an atmospheric presentation tuned for mobile exploration.",
+      "Landscape studio website concept with Mediterranean art direction, image-led project flow, service context, mobile UX, and CMS.",
   },
 };
 
@@ -62,11 +64,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     locale,
     path: `/work/${slug}`,
     title: seo?.title ?? `${item.title} | Reframe Studio`,
-    description: seo?.description ?? item.challenge,
+    description: seo?.description ?? item.summary,
     ogTitle: seo?.title ?? `${item.title} | Reframe Studio`,
-    ogDescription: seo?.description ?? item.challenge,
+    ogDescription: seo?.description ?? item.summary,
     twitterTitle: seo?.title ?? `${item.title} | Reframe Studio`,
-    twitterDescription: seo?.description ?? item.challenge,
+    twitterDescription: seo?.description ?? item.summary,
     ogImage: item.heroDesktop,
     twitterImage: item.heroDesktop,
     keywords: [
@@ -89,15 +91,37 @@ export default async function WorkDetailPage({ params }: Props) {
 
   const item = content.work.items[index];
   const labels = content.work.caseStudy;
+  const articleUrl = absoluteLocaleUrl(locale, `/work/${slug}`);
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: absoluteLocaleUrl(locale, "") },
     { name: "Projects", url: absoluteLocaleUrl(locale, "/work") },
-    { name: item.title, url: absoluteLocaleUrl(locale, `/work/${slug}`) },
+    { name: item.title, url: articleUrl },
   ]);
+  const articleText = [
+    item.title,
+    item.location,
+    item.summary,
+    labels.keyScreens,
+    labels.whatChangedHeading,
+    ...labels.whatChangedThemes,
+    ...item.whatChanged.map((change) => change.body),
+  ].join(" ");
+  const articleJsonLd = articleSchema({
+    locale,
+    url: articleUrl,
+    headline: item.title,
+    description: item.summary,
+    image: `${SITE_URL}${item.heroDesktop}`,
+    datePublished: "2026-05-07T10:30:00+02:00",
+    dateModified: "2026-07-30T15:30:00+02:00",
+    wordCount: articleText.trim().split(/\s+/u).length,
+    speakableSelectors: ["h1", ".case-study-summary"],
+  });
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={articleJsonLd} />
       <CaseStudyPageTemplate locale={locale} item={item} labels={labels} />
     </>
   );

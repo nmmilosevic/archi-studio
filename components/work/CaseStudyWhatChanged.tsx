@@ -60,7 +60,7 @@ export function CaseStudyWhatChanged({ headingId, sectionHeading, themes, items 
                 <p className="mt-5 max-w-[52ch] pl-[52px] text-[11px] font-medium uppercase tracking-[0.16em] text-primary/38">
                   <span className="text-primary/48">{contrast.before}</span>
                   <span className="mx-2 inline-block text-bronze/40" aria-hidden="true">
-                    —
+                    ·
                   </span>
                   <span className="text-primary/52">{contrast.after}</span>
                 </p>

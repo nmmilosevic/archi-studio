@@ -25,7 +25,7 @@ const ASPECT_BY_IMAGE: Record<string, string> = {
 };
 
 /**
- * Second key-screen (project / archive / detail page): same treatment as project 01 —
+ * Second key-screen (project / archive / detail page): same treatment as project 01.
  * fill the frame edge-to-edge and anchor to the top (no letterboxing).
  */
 const PROJECT_PAGE_THUMB_KEYS = new Set<string>([

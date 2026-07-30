@@ -161,7 +161,7 @@ export function CaseStudyScreens({ title, heading, closeLabel, screens }: Props)
                 >
                   <Image
                     src={assetPath(s.image)}
-                    alt={`${title} — ${s.label}`}
+                    alt={`${title}: ${s.label}`}
                     fill
                     quality={92}
                     className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-[1.02]"

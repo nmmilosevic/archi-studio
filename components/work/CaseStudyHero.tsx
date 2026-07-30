@@ -15,6 +15,9 @@ type Props = {
   summary: string;
   heroDesktop: string;
   desktopImageAlt: string;
+  typeLabel: string;
+  publishedLabel: string;
+  updatedLabel: string;
 };
 
 export function CaseStudyHero({
@@ -24,6 +27,9 @@ export function CaseStudyHero({
   summary,
   heroDesktop,
   desktopImageAlt,
+  typeLabel,
+  publishedLabel,
+  updatedLabel,
 }: Props) {
   return (
     <section className="overflow-hidden bg-charcoal pb-0 pt-32 text-inverted md:pt-44">
@@ -40,8 +46,13 @@ export function CaseStudyHero({
           <div>
             <AnimatedTitle text={title} as="h1" className="text-page-title max-w-[18ch] text-inverted" />
             <p className="mt-5 text-[15px] text-inverted/48">{location}</p>
+            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-medium uppercase tracking-[0.12em] text-inverted/35">
+              <span>{typeLabel}</span>
+              <time dateTime="2026-05-07">{publishedLabel}</time>
+              <time dateTime="2026-07-30">{updatedLabel}</time>
+            </div>
           </div>
-          <AnimatedText className="text-support max-w-[720px] text-inverted/62 lg:ml-auto" delay={0.08}>
+          <AnimatedText className="case-study-summary text-support max-w-[720px] text-inverted/62 lg:ml-auto" delay={0.08}>
             {summary}
           </AnimatedText>
         </div>

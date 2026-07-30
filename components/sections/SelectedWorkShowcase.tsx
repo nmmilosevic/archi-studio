@@ -85,7 +85,7 @@ function buildItems(labels: readonly string[]) {
   }));
 }
 
-const AUTO_PAUSE_MS = 3200;
+const AUTO_RESUME_DELAY_MS = 700;
 /** ~same perceived pace as the former 90s marquee over half the duplicated track */
 const AUTO_SCROLL_PX_PER_SEC = 42;
 
@@ -96,25 +96,52 @@ export function SelectedWorkShowcase({ styleLabels }: Props) {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   /** Last scrollLeft we applied in the auto-scroll loop (async `scroll` events must not look like “user”). */
   const lastAutoScrollLeftRef = useRef(0);
-  const pauseUntilRef = useRef(0);
-
-  function pauseAutoScroll() {
-    pauseUntilRef.current = Date.now() + AUTO_PAUSE_MS;
-  }
+  const resumeAtRef = useRef(0);
+  const pointerActiveRef = useRef(false);
 
   useEffect(() => {
     if (reduced) return;
     const el = scrollerRef.current;
     if (!el) return;
 
+    const pauseAutoScroll = (delay = AUTO_RESUME_DELAY_MS) => {
+      lastAutoScrollLeftRef.current = el.scrollLeft;
+      resumeAtRef.current = performance.now() + delay;
+    };
+
     const onScroll = () => {
       const left = el.scrollLeft;
       const expected = lastAutoScrollLeftRef.current;
       if (Math.abs(left - expected) <= 2) return;
+
+      // Keep the automatic track synchronized with the user-controlled
+      // position so it resumes from here instead of restarting or jumping.
+      lastAutoScrollLeftRef.current = left;
       pauseAutoScroll();
     };
 
+    const onPointerDown = () => {
+      pointerActiveRef.current = true;
+      pauseAutoScroll();
+    };
+
+    const onPointerEnd = () => {
+      if (!pointerActiveRef.current) return;
+      pointerActiveRef.current = false;
+      pauseAutoScroll();
+    };
+
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY) && Math.abs(event.deltaX) > 0.5) {
+        pauseAutoScroll();
+      }
+    };
+
     el.addEventListener("scroll", onScroll, { passive: true });
+    el.addEventListener("pointerdown", onPointerDown, { passive: true });
+    el.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("pointerup", onPointerEnd, { passive: true });
+    window.addEventListener("pointercancel", onPointerEnd, { passive: true });
 
     let rafId = 0;
     let lastTs = 0;
@@ -124,7 +151,7 @@ export function SelectedWorkShowcase({ styleLabels }: Props) {
       const dt = Math.min(0.05, (ts - lastTs) / 1000);
       lastTs = ts;
 
-      if (Date.now() < pauseUntilRef.current) {
+      if (pointerActiveRef.current || ts < resumeAtRef.current) {
         rafId = requestAnimationFrame(tick);
         return;
       }
@@ -145,6 +172,10 @@ export function SelectedWorkShowcase({ styleLabels }: Props) {
     return () => {
       cancelAnimationFrame(rafId);
       el.removeEventListener("scroll", onScroll);
+      el.removeEventListener("pointerdown", onPointerDown);
+      el.removeEventListener("wheel", onWheel);
+      window.removeEventListener("pointerup", onPointerEnd);
+      window.removeEventListener("pointercancel", onPointerEnd);
     };
   }, [reduced]);
 
@@ -157,16 +188,7 @@ export function SelectedWorkShowcase({ styleLabels }: Props) {
         ref={scrollerRef}
         className="overflow-x-auto overflow-y-hidden overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:h-0 [&::-webkit-scrollbar]:w-0"
         aria-label="Selected work moving showcase"
-        onPointerDown={reduced ? undefined : pauseAutoScroll}
-        onWheel={
-          reduced
-            ? undefined
-            : (e) => {
-                if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 0.5) {
-                  pauseAutoScroll();
-                }
-              }
-        }
+        tabIndex={0}
       >
         <div
           className={clsx(
@@ -181,7 +203,7 @@ export function SelectedWorkShowcase({ styleLabels }: Props) {
                 draggable={false}
                 loading="lazy"
                 sizes="(max-width: 768px) 40vw, (max-width: 1280px) 280px, 340px"
-                className="h-auto w-auto max-h-[220px] select-none md:max-h-[280px] xl:max-h-[340px] shadow-[0_12px_30px_rgb(8_8_8/0.09)]"
+                className="h-auto w-auto max-h-[220px] select-none shadow-[0_12px_30px_rgb(8_8_8/0.09)] md:max-h-[280px] xl:max-h-[340px]"
               />
             </article>
           ))}
@@ -190,4 +212,3 @@ export function SelectedWorkShowcase({ styleLabels }: Props) {
     </div>
   );
 }
-

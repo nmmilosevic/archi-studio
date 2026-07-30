@@ -1,12 +1,6 @@
 import { getGlobalStructuredData } from "@/lib/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export function GlobalJsonLd() {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(getGlobalStructuredData()),
-      }}
-    />
-  );
+  return <JsonLd data={getGlobalStructuredData()} />;
 }

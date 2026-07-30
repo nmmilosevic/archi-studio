@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { fadeUp } from "@/lib/motion";
+import { m } from "framer-motion";
+import { motionViewport, uiReveal } from "@/lib/motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Check } from "lucide-react";
 
@@ -21,7 +21,7 @@ export function ServiceCard({
   const reduced = useReducedMotion();
 
   const content = (
-    <div className="group border border-charcoal/10 bg-offwhite p-6 transition-all duration-500 hover:-translate-y-0.5 hover:border-bronze/40 sm:p-7 md:p-9">
+    <div className="motion-surface group border border-charcoal/10 bg-offwhite p-6 hover:border-bronze/40 sm:p-7 md:p-9">
       <h3 className="text-card-title mb-4 font-heading font-semibold text-primary group-hover:text-bronze transition-colors duration-300">
         {title}
       </h3>
@@ -51,14 +51,14 @@ export function ServiceCard({
   }
 
   return (
-    <motion.div
-      variants={fadeUp}
+    <m.div
+      variants={uiReveal}
+      custom={index * 0.08}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay: index * 0.08 }}
+      viewport={motionViewport}
     >
       {content}
-    </motion.div>
+    </m.div>
   );
 }

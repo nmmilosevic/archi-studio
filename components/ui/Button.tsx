@@ -24,10 +24,10 @@ export function Button({
   return (
     <Comp
       className={clsx(
-        "inline-flex w-full sm:w-auto min-h-11 items-center justify-center rounded-full font-body font-medium tracking-[0.01em] transition-all duration-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+        "motion-control inline-flex w-full sm:w-auto min-h-11 items-center justify-center rounded-full font-body font-medium tracking-[0.01em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bronze focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
         {
-          "bg-charcoal text-inverted hover:bg-[#1a1a1a] hover:-translate-y-0.5": variant === "primary",
-          "bg-bronze text-inverted hover:bg-bronze hover:-translate-y-0.5": variant === "secondary",
+          "bg-charcoal text-inverted hover:bg-[#1a1a1a]": variant === "primary",
+          "bg-bronze text-inverted hover:bg-bronze": variant === "secondary",
           "border border-charcoal/18 text-primary hover:border-charcoal/40 hover:bg-charcoal/4 bg-transparent":
             variant === "outline",
           "text-primary hover:text-bronze underline-offset-4 hover:underline bg-transparent":

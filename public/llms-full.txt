@@ -1,0 +1,137 @@
+# REFRAME Studio
+
+> REFRAME Studio is a web design studio for architecture, interior design, and landscape practices. It creates refined websites, portfolio systems, multilingual structures, and clear enquiry journeys.
+
+REFRAME Studio works with design-led practices in Spain, Europe, and international markets. The website is available in Spanish, English, and French. Contact: hello@reframestudio.es.
+
+## Studio overview
+
+Architecture and interior design projects are detailed, visual, and high-value. Their digital presentation needs the same level of care. REFRAME Studio structures a website so visitors can understand the practice, explore projects, compare services, and make an enquiry without unnecessary friction.
+
+The studio combines visual direction, responsive web design, development, technical SEO, structured portfolio content, analytics setup, and launch support. Every engagement starts with a review of the current website, positioning, and goals. Deliverables and scope are defined before work begins.
+
+## Website design services
+
+Source: [Website design services](https://reframestudio.es/es/services/)
+
+### Architecture studio website redesign
+
+A redesign gives architecture practices a clearer position, a more useful project portfolio, a stronger first impression, and a direct enquiry path. Typical deliverables include the home page, project pages, studio page, contact flow, mobile experience, performance-focused development, and multilingual configuration.
+
+### Interior design studio websites
+
+These websites are designed to communicate atmosphere, materials, style, and trust before the first meeting. Typical deliverables include a visual portfolio system, service pages, process narrative, lead capture, and portfolio or Instagram integration.
+
+### Organic search visibility foundations
+
+Organic visibility is the ability to appear in unpaid searches related to services, projects, and locations. The foundation includes unique metadata, search-oriented page structure, structured data, internal links, image alternative text, and performance optimization.
+
+### Hosting and maintenance
+
+Hosting and maintenance keep the site fast, secure, current, and manageable. Available support includes Vercel hosting setup, technical monitoring, content updates, analytics reviews, and portfolio publishing.
+
+### Portfolio systems
+
+A portfolio system creates a consistent structure for publishing projects. Each project can include images, location, service type, materials, scope, and a clear narrative. A CMS is a content management system that lets the studio update this information without rebuilding the site.
+
+### Brand refinement
+
+Brand refinement aligns typography, color, layout, voice, and digital consistency. It is a focused visual system for the website, not a replacement for a complete branding engagement.
+
+## Pricing
+
+Source: [Website pricing](https://reframestudio.es/es/pricing/)
+
+The principal website offer costs 1,500€. Scope and price change when a project adds pages, languages, a content management system, or new content. Prices exclude VAT where applicable.
+
+One-time options include:
+
+1. Website audit preview at 190€.
+2. Studio refresh from 790€.
+3. Signature website from 1,900€.
+4. Editorial studio website from 3,500€.
+
+Care plans start at 49€ per month for hosting and technical support. Content and portfolio support starts at 149€ per month. Ongoing search visibility and conversion support starts at 390€ per month.
+
+The usual delivery time is 2 to 4 weeks after content is received and scope is approved. Additional languages, extensive portfolio migration, or extra review rounds extend the timeline.
+
+## Website review
+
+Source: [Website review](https://reframestudio.es/es/audit/)
+
+The website review examines first impression, mobile usability, portfolio clarity, project narrative, SEO foundations, search visibility, enquiry flow, typography, spacing, image quality, loading speed, and multilingual readiness.
+
+The deliverable includes a written review, 5 to 10 prioritized recommendations, visual direction notes, an optional redesign screenshot, and a clear recommended next step.
+
+## Selected redesign studies
+
+Source: [Selected redesign studies](https://reframestudio.es/es/work/)
+
+The portfolio contains conceptual redesign studies. They demonstrate how architecture, interior design, and landscape studios can improve project hierarchy, mobile reading, studio positioning, and enquiry flow.
+
+### Villa architecture studio
+
+Source: [Villa architecture studio study](https://reframestudio.es/es/work/villa-architecture-studio/)
+
+This study reorganizes an architecture portfolio so projects read as curated case studies instead of a flat gallery. It improves mobile typography, image rhythm, studio positioning, and the path from interest to enquiry.
+
+### Casa Noma Marbella
+
+Source: [Casa Noma Marbella study](https://reframestudio.es/es/work/casa-noma-marbella/)
+
+This interior design study focuses on project storytelling, service clarity, a warmer visual system, mobile performance, and a repeatable content management structure.
+
+### Forma Sur Málaga
+
+Source: [Forma Sur Málaga study](https://reframestudio.es/es/work/forma-sur-malaga/)
+
+This architecture study creates a stronger project archive, a more memorable visual identity, a responsive editorial structure, and a repeatable CMS.
+
+### Terral Studio Estepona
+
+Source: [Terral Studio Estepona study](https://reframestudio.es/es/work/terral-studio-estepona/)
+
+This landscape architecture study improves outdoor project storytelling, service context, mobile presentation, and the enquiry journey.
+
+## SEO for architecture studios
+
+Source: [SEO for architecture studios](https://reframestudio.es/es/search-visibility/)
+
+Published by REFRAME Studio. Published 7 May 2026. Updated 30 July 2026.
+
+SEO for architecture studios connects services, projects, and locations with searches from clients who do not yet know the practice by name.
+
+Search engine optimization organizes content and technical foundations so a website can be crawled, interpreted, and indexed. Each project page needs a clear title, scope, building type, location, described images, and links to related services.
+
+Technical SEO covers speed, Core Web Vitals, clean URLs, canonical URLs, structured data, crawl access, and optimized images. Hreflang identifies the language and region of each URL so Spanish, English, and French versions can reach the correct audience.
+
+Useful search content includes:
+
+1. Service pages for architecture, interior design, landscape, and website redesign.
+2. Project pages with location, scope, materials, photography, and outcomes.
+3. Unique page titles and descriptions.
+4. Internal links between services, projects, pricing, and contact pages.
+5. Structured data that matches visible page content.
+6. Correct canonical and hreflang signals.
+
+Technical criteria are based on official Google Search Central documentation:
+
+- [SEO guide for developers](https://developers.google.com/search/docs/fundamentals/get-started-developers)
+- [Canonical URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+- [Structured data introduction](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
+
+## Contact and service area
+
+Source: [Contact REFRAME Studio](https://reframestudio.es/es/contact/)
+
+REFRAME Studio serves architecture, interior design, and landscape studios in Spain, Europe, and international markets. The studio works in Spanish, English, and French.
+
+Email: hello@reframestudio.es
+
+Instagram: [@reframe.stud](https://instagram.com/reframe.stud)
+
+## Language versions
+
+- [Spanish website](https://reframestudio.es/es/)
+- [English website](https://reframestudio.es/en/)
+- [French website](https://reframestudio.es/fr/)

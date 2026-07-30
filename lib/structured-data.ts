@@ -5,7 +5,7 @@ import {
 } from "@/lib/constants";
 import { SITE_URL } from "@/lib/site";
 
-const ORG_ID = `${SITE_URL}/#organization`;
+export const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 
 const CORE_SERVICE_TYPES = [
@@ -26,6 +26,23 @@ const KNOWS_ABOUT = [
 
 export function getGlobalStructuredData() {
   const orgDescription = PREFERRED_SEO_DESCRIPTION;
+  const services = CORE_SERVICE_TYPES.map((name) => {
+    const slug = name.toLowerCase().replace(/\s+/g, "-");
+    return {
+      "@type": "Service",
+      "@id": `${SITE_URL}/#${slug}`,
+      name,
+      serviceType: name,
+      url: `${SITE_URL}/es/services/`,
+      description: `${name} for architecture, interior design, and landscape studios.`,
+      provider: { "@id": ORG_ID },
+      areaServed: [
+        { "@type": "Country", name: "Spain" },
+        { "@type": "Place", name: "Europe" },
+        { "@type": "Place", name: "International" },
+      ],
+    };
+  });
 
   return {
     "@context": "https://schema.org",
@@ -35,10 +52,17 @@ export function getGlobalStructuredData() {
         "@id": ORG_ID,
         name: "REFRAME Studio",
         alternateName: [...STUDIO_SEO_ALIASES],
-        legalName: "REFRAME Studio",
-        url: "https://reframestudio.es",
+        url: SITE_URL,
         description: orgDescription,
         email: BRAND.email,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: BRAND.email,
+          url: `${SITE_URL}/es/contact/`,
+          availableLanguage: ["Spanish", "English", "French"],
+          areaServed: ["ES", "EU"],
+        },
         areaServed: [
           { "@type": "Country", name: "Spain" },
           { "@type": "Place", name: "Europe" },
@@ -46,22 +70,14 @@ export function getGlobalStructuredData() {
         ],
         logo: {
           "@type": "ImageObject",
+          "@id": `${SITE_URL}/#logo`,
           url: `${SITE_URL}/ref26.svg`,
         },
-        sameAs: [
-          BRAND.instagramLink,
-          "https://www.linkedin.com/company/reframe-studio",
-        ],
-        serviceType: [...CORE_SERVICE_TYPES],
+        sameAs: [BRAND.instagramLink],
         knowsAbout: [...KNOWS_ABOUT],
-        makesOffer: CORE_SERVICE_TYPES.map((name) => ({
+        makesOffer: services.map((service) => ({
           "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name,
-            provider: { "@id": ORG_ID },
-            areaServed: { "@type": "Country", name: "Spain" },
-          },
+          itemOffered: { "@id": service["@id"] },
         })),
       },
       {
@@ -74,26 +90,67 @@ export function getGlobalStructuredData() {
         inLanguage: ["es-ES", "en-US", "fr-FR"],
         publisher: { "@id": ORG_ID },
       },
-      {
-        "@type": "ProfessionalService",
-        "@id": `${SITE_URL}/#professional-service`,
-        name: "REFRAME Studio",
-        alternateName: STUDIO_SEO_ALIASES[0],
-        description: orgDescription,
-        url: SITE_URL,
-        email: BRAND.email,
-        telephone: "+34600000000",
-        image: `${SITE_URL}/images/hero.png`,
-        areaServed: [
-          { "@type": "Country", name: "Spain" },
-          { "@type": "Place", name: "Europe" },
-          { "@type": "Place", name: "International" },
-        ],
-        serviceType: [...CORE_SERVICE_TYPES],
-        knowsAbout: [...KNOWS_ABOUT],
-        parentOrganization: { "@id": ORG_ID },
-      },
+      ...services,
     ],
+  };
+}
+
+const SCHEMA_LANGUAGE: Record<string, string> = {
+  es: "es-ES",
+  en: "en-US",
+  fr: "fr-FR",
+};
+
+type ArticleSchemaInput = {
+  locale: string;
+  url: string;
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified: string;
+  wordCount: number;
+  speakableSelectors: string[];
+};
+
+export function articleSchema({
+  locale,
+  url,
+  headline,
+  description,
+  image,
+  datePublished,
+  dateModified,
+  wordCount,
+  speakableSelectors,
+}: ArticleSchemaInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    headline,
+    description,
+    inLanguage: SCHEMA_LANGUAGE[locale] ?? SCHEMA_LANGUAGE.es,
+    author: {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: "REFRAME Studio",
+      url: `${SITE_URL}/`,
+    },
+    publisher: { "@id": ORG_ID },
+    datePublished,
+    dateModified,
+    image,
+    wordCount,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: speakableSelectors,
+    },
   };
 }
 
@@ -108,4 +165,8 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
       item: item.url,
     })),
   };
+}
+
+export function serializeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }

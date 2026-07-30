@@ -1,0 +1,36 @@
+# REFRAME Studio
+
+> REFRAME Studio designs refined, multilingual websites and portfolio systems for architecture, interior design, and landscape studios.
+
+REFRAME Studio helps design practices present projects clearly, build trust on desktop and mobile, and create a direct path from discovery to enquiry. The studio serves clients in Spain, Europe, and internationally in Spanish, English, and French.
+
+## Services
+
+- [Website design services](https://reframestudio.es/es/services/): Redesign, portfolio, visibility, hosting, and brand refinement services.
+- [Website pricing](https://reframestudio.es/es/pricing/): One-time projects from 790€, plus care plans and add-ons.
+- [Website review](https://reframestudio.es/es/audit/): A focused review of UX, mobile, portfolio, SEO, and enquiry flow.
+
+## Portfolio
+
+- [Selected redesign studies](https://reframestudio.es/es/work/): Concept studies for architecture and interior design websites.
+- [Villa architecture studio](https://reframestudio.es/es/work/villa-architecture-studio/): Portfolio hierarchy, mobile presentation, and enquiry flow.
+- [Casa Noma Marbella](https://reframestudio.es/es/work/casa-noma-marbella/): Interior design storytelling, services, mobile, and CMS structure.
+- [Forma Sur Málaga](https://reframestudio.es/es/work/forma-sur-malaga/): Architecture archive, identity, mobile, and CMS structure.
+- [Terral Studio Estepona](https://reframestudio.es/es/work/terral-studio-estepona/): Landscape portfolio, services, mobile, and CMS structure.
+
+## Guides
+
+- [SEO for architecture studios](https://reframestudio.es/es/search-visibility/): Search structure, project content, technical SEO, schema, and hreflang.
+- [Contact REFRAME Studio](https://reframestudio.es/es/contact/): Send a current website or project idea for a clear next step.
+
+## Languages
+
+- [Español](https://reframestudio.es/es/): Primary Spanish website.
+- [English](https://reframestudio.es/en/): English website.
+- [Français](https://reframestudio.es/fr/): French website.
+
+## Optional
+
+- [Privacy policy](https://reframestudio.es/es/legal/privacy/)
+- [Terms](https://reframestudio.es/es/legal/terms/)
+- [Cookie policy](https://reframestudio.es/es/legal/cookies/)

@@ -2,8 +2,10 @@ import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { AuditForm } from "@/components/forms/AuditForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { buildPageMetadata, faqSchema } from "@/lib/seo";
@@ -65,8 +67,8 @@ export default async function AuditPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbs} />
 
       <section className="bg-stone pt-36 pb-24 md:pt-48 md:pb-36">
         <Container>
@@ -76,11 +78,11 @@ export default async function AuditPage({ params }: Props) {
               <AnimatedText className="text-support max-w-[600px] text-muted" delay={0.12}>
                 {audit.sub}
               </AnimatedText>
-              <AnimatedText as="div" delay={0.2}>
+              <AnimatedUI delay={0.2}>
                 <Button asChild size="lg" className="mt-10">
                   <Link href="#audit-form">{content.auditPage.scrollCta}</Link>
                 </Button>
-              </AnimatedText>
+              </AnimatedUI>
             </div>
           </div>
         </Container>

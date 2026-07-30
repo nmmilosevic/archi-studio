@@ -2,7 +2,9 @@ import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { AnimatedText } from "@/components/motion/AnimatedText";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { BRAND } from "@/lib/constants";
 import { buildPageMetadata } from "@/lib/seo";
@@ -60,7 +62,7 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={breadcrumbs} />
       <section className="bg-charcoal pt-30 pb-20 text-inverted md:pt-40 md:pb-26">
         <Container>
           <div className="grid grid-cols-1 gap-9 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
@@ -101,13 +103,13 @@ export default async function ContactPage({ params }: Props) {
               </a>
             </div>
 
-            <AnimatedText as="div" delay={0.12}>
+            <AnimatedUI delay={0.12}>
               <div className="lg:pl-4">
                 <div className="border border-charcoal/12 bg-stone/72 p-5 md:p-8">
                   <ContactForm />
                 </div>
               </div>
-            </AnimatedText>
+            </AnimatedUI>
           </div>
         </Container>
       </section>

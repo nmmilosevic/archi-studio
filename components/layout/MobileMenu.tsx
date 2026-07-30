@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
@@ -9,6 +9,7 @@ import { clsx } from "clsx";
 import { NAV_LINKS, type Locale } from "@/lib/constants";
 import { getLocalizedPathname } from "@/lib/locale-navigation";
 import { getPageCopy } from "@/lib/page-copy";
+import { motionEase } from "@/lib/motion";
 import { ReframeLogo } from "@/components/ui/ReframeLogo";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -17,17 +18,16 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
-
 const itemVariants = {
   hidden: { opacity: 0, y: 14 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
+      type: "tween" as const,
       duration: 0.38,
       delay: 0.08 + i * 0.06,
-      ease: EASE,
+      ease: motionEase.out,
     },
   }),
 };
@@ -64,22 +64,30 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{
+              type: "tween",
+              duration: 0.36,
+              ease: motionEase.opacity,
+            }}
             className="fixed inset-0 z-40 bg-charcoal/45 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
 
           {/* Menu panel */}
-          <motion.div
+          <m.div
             initial={reduced ? false : { opacity: 0, y: 10 }}
             animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
             exit={reduced ? { opacity: 0 } : { opacity: 0, y: 8 }}
-            transition={{ duration: reduced ? 0.15 : 0.42, ease: EASE }}
+            transition={{
+              type: "tween",
+              duration: reduced ? 0.15 : 0.5,
+              ease: motionEase.out,
+            }}
             className="fixed inset-0 z-50 flex flex-col bg-charcoal text-inverted"
             role="dialog"
             aria-modal="true"
@@ -110,7 +118,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <nav className="flex-1 px-5 pt-8 pb-6 sm:px-7 sm:pt-10" aria-label={navigationCopy.mobile}>
               <ul className="space-y-4">
                 {NAV_LINKS.map((link, i) => (
-                  <motion.li
+                  <m.li
                     key={link.key}
                     custom={i}
                     variants={itemVariants}
@@ -148,7 +156,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         )}
                       />
                     </Link>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
             </nav>
@@ -178,7 +186,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </label>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>

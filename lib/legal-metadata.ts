@@ -15,7 +15,7 @@ const privacy: Record<
   en: {
     title: "Privacy policy",
     description:
-      "How Reframe Studio collects, uses, and stores personal data when you use reframestudio.es or enquire about architecture, interior design, and landscape studio web services.",
+      "How Reframe Studio collects, uses, and stores personal data when you visit reframestudio.es or enquire about website services.",
     keywords: [
       "Reframe Studio privacy",
       "architecture website studio",
@@ -26,7 +26,7 @@ const privacy: Record<
   es: {
     title: "Política de privacidad",
     description:
-      "Información sobre el tratamiento de datos al usar la web de Reframe Studio y solicitar servicios digitales para estudios de arquitectura, interiorismo y paisajismo.",
+      "Información sobre el tratamiento de datos al usar la web de Reframe Studio o solicitar sus servicios de diseño web.",
     keywords: [
       "privacidad Reframe Studio",
       "estudio web arquitectura",
@@ -36,7 +36,7 @@ const privacy: Record<
   fr: {
     title: "Politique de confidentialité",
     description:
-      "Modalités de traitement des données lors de l’utilisation du site Reframe Studio et des demandes liées aux sites de studios d’architecture, de design intérieur et de paysage.",
+      "Traitement des données lors de l’utilisation du site Reframe Studio ou d’une demande de services de conception web.",
     keywords: [
       "confidentialité Reframe Studio",
       "site web architecture",

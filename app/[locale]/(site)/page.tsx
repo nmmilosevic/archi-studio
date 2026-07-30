@@ -1,13 +1,14 @@
 import { setRequestLocale } from "next-intl/server";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
+import { RevealMedia } from "@/components/motion/RevealMedia";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { buildPageMetadata } from "@/lib/seo";
-import { PREFERRED_SEO_DESCRIPTION } from "@/lib/constants";
 import { getContent } from "@/lib/getContent";
+import { getPageCopy } from "@/lib/page-copy";
 import { assetPath } from "@/lib/paths";
-import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -23,7 +24,7 @@ interface Props {
 }
 
 const HOME_TITLE: Record<string, string> = {
-  en: "Architecture Website Design for Design Studios | Reframe Studio",
+  en: "Architecture Studio Website Design | Reframe Studio",
   es: "Diseño web para estudios de arquitectura | Reframe Studio",
   fr: "Sites web pour studios d'architecture | Reframe Studio",
 };
@@ -60,16 +61,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const title = HOME_TITLE[locale] ?? HOME_TITLE.en;
   const keywords = HOME_KEYWORDS[locale] ?? HOME_KEYWORDS.en;
+  const description = getPageCopy(locale).metadata.homeDescription;
   return buildPageMetadata({
     locale,
     path: "",
     title,
-    canonical: `${SITE_URL}/`,
-    description: PREFERRED_SEO_DESCRIPTION,
+    description,
     ogTitle: title,
-    ogDescription: PREFERRED_SEO_DESCRIPTION,
+    ogDescription: description,
     twitterTitle: title,
-    twitterDescription: PREFERRED_SEO_DESCRIPTION,
+    twitterDescription: description,
     ogImage: "/images/hero.png",
     twitterImage: "/images/hero.png",
     keywords,
@@ -109,7 +110,7 @@ export default async function HomePage({ params }: Props) {
             <AnimatedText className="text-support mb-7 max-w-[590px] text-muted md:mb-8" delay={0.18}>
               {hero.sub}
             </AnimatedText>
-            <AnimatedText as="div" delay={0.28}>
+            <AnimatedUI delay={0.28}>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg">
                   <Link href={`/${locale}/work`}>{hero.ctaPrimary}</Link>
@@ -118,10 +119,13 @@ export default async function HomePage({ params }: Props) {
                   <Link href={`/${locale}/contact`}>{hero.ctaSecondary}</Link>
                 </Button>
               </div>
-            </AnimatedText>
+            </AnimatedUI>
           </div>
 
-          <AnimatedText as="div" delay={0.22} className="hidden min-w-0 md:block">
+          <RevealMedia
+            className="hidden min-w-0 md:block"
+            delay={0.18}
+          >
             <div className="relative ml-auto w-full max-w-[500px] xl:max-w-[540px]">
               <div className="relative h-[min(48dvh,440px)] overflow-hidden shadow-[0_24px_64px_rgb(10_10_10/0.10)]">
                 <Image
@@ -136,7 +140,7 @@ export default async function HomePage({ params }: Props) {
                 <div className="absolute inset-x-0 bottom-0 h-px bg-bronze/40" aria-hidden="true" />
               </div>
             </div>
-          </AnimatedText>
+          </RevealMedia>
         </Container>
       </section>
 
@@ -164,36 +168,54 @@ export default async function HomePage({ params }: Props) {
         aria-labelledby="preview-heading"
       >
         <Container>
-          <div className="mb-[80px] grid grid-cols-1 gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-            <AnimatedTitle
-              text={home.beforeTitle}
-              as="h2"
-              id="preview-heading"
-              className="text-display max-w-[820px] text-inverted"
-            />
-            <AnimatedText as="div" className="max-w-[560px] lg:ml-auto" delay={0.12}>
-              <p className="text-support mb-8 font-body text-inverted/62">{home.beforeBody}</p>
-              <ul className="max-w-[500px] space-y-4.5">
-                {home.beforeProblems.map((problem) => (
-                  <li key={problem} className="flex items-start gap-3">
-                    <span className="mt-[0.9rem] h-px w-3 bg-bronze/48 flex-shrink-0" aria-hidden="true" />
-                    <span className="font-body text-[16px] leading-[1.65] text-inverted/68">{problem}</span>
-                  </li>
-                ))}
-              </ul>
-            </AnimatedText>
+          <div className="mb-[clamp(72px,8vw,112px)] pt-[clamp(48px,5vw,72px)]">
+            <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,1.2fr)_minmax(360px,0.8fr)] lg:items-end lg:gap-[clamp(72px,8vw,144px)]">
+              <div>
+                <AnimatedTitle
+                  text={home.beforeTitle}
+                  as="h2"
+                  id="preview-heading"
+                  className="max-w-[900px] font-heading text-[clamp(40px,5.6vw,80px)] font-medium leading-[0.96] tracking-[-0.025em] text-inverted"
+                />
+              </div>
+
+              <AnimatedUI delay={0.14}>
+                <ol className="flex flex-col gap-8 md:gap-10 lg:gap-[clamp(36px,3.8vw,56px)]">
+                  {home.beforeProblems.map((problem, index) => (
+                    <li
+                      key={problem}
+                      className={`grid grid-cols-[3.25rem_1fr] items-start gap-4 md:grid-cols-[4.25rem_1fr] md:gap-5 ${
+                        index === 1
+                          ? "lg:ml-[clamp(28px,3.5vw,56px)]"
+                          : index === 2
+                            ? "lg:ml-[clamp(8px,1.25vw,20px)]"
+                            : ""
+                      }`}
+                    >
+                      <span
+                        className="font-heading text-[30px] font-medium leading-[0.9] tracking-[-0.035em] text-bronze/90 md:text-[36px]"
+                        aria-hidden="true"
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span className="max-w-[30ch] font-body text-[17px] leading-[1.45] text-inverted/78 md:text-[19px]">
+                        {problem}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </AnimatedUI>
+            </div>
           </div>
 
-          <AnimatedText as="div" delay={0.08}>
-            <BeforeAfterSlider
-              beforeSrc={assetPath("/images/avant1.png")}
-              afterSrc={assetPath("/images/apres.png")}
-              beforeAlt={home.beforeAfterBeforeAlt}
-              afterAlt={home.beforeAfterAfterAlt}
-              annotationLabels={[...home.beforeAfterLabels]}
-              annotationRevealThreshold={58}
-            />
-          </AnimatedText>
+          <BeforeAfterSlider
+            beforeSrc={assetPath("/images/avant1.png")}
+            afterSrc={assetPath("/images/apres.png")}
+            beforeAlt={home.beforeAfterBeforeAlt}
+            afterAlt={home.beforeAfterAfterAlt}
+            annotationLabels={[...home.beforeAfterLabels]}
+            annotationRevealThreshold={58}
+          />
         </Container>
       </section>
 
@@ -257,7 +279,6 @@ export default async function HomePage({ params }: Props) {
         title={home.reviewTitle}
         body={home.reviewBody}
         cta={content.audit.form.cta}
-        points={home.diagnosisPoints}
         floatCards={home.diagnosisFloatCards}
         imageAlt={home.diagnosisImageAlt}
         variant="charcoal"

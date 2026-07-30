@@ -5,11 +5,14 @@ import { Check } from "lucide-react";
 import Image from "next/image";
 import { AnimatedTitle } from "@/components/motion/AnimatedTitle";
 import { AnimatedText } from "@/components/motion/AnimatedText";
+import { AnimatedUI } from "@/components/motion/AnimatedUI";
+import { RevealMedia } from "@/components/motion/RevealMedia";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { FAQAccordion } from "@/components/ui/FAQAccordion";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PricingBeyondWebsite } from "@/components/sections/PricingBeyondWebsite";
-import { buildPageMetadata } from "@/lib/seo";
+import { buildPageMetadata, faqSchema } from "@/lib/seo";
 import { absoluteLocaleUrl } from "@/lib/seo";
 import { getContent } from "@/lib/getContent";
 import { assetPath } from "@/lib/paths";
@@ -83,6 +86,7 @@ export default async function PricingPage({ params }: Props) {
   const content = getContent(locale);
   const home = content.home;
   const offer = home.simpleMarketingOffer;
+  const pricingFaq = [...content.pricingPage.faq];
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: absoluteLocaleUrl(locale, "") },
     { name: "Pricing", url: absoluteLocaleUrl(locale, "/pricing") },
@@ -90,7 +94,8 @@ export default async function PricingPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }} />
+      <JsonLd data={breadcrumbs} />
+      <JsonLd data={faqSchema(pricingFaq)} />
       <section className="bg-charcoal pt-36 pb-24 text-inverted md:pt-48 md:pb-36">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
@@ -112,7 +117,7 @@ export default async function PricingPage({ params }: Props) {
       <section className="bg-charcoal py-[clamp(86px,11vw,168px)] text-inverted" aria-labelledby="main-price-heading">
         <Container>
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center lg:gap-14">
-            <AnimatedText as="div" delay={0.04} className="lg:pr-2">
+            <div className="lg:pr-2">
               <AnimatedTitle
                 text={home.offerTitle}
                 as="h2"
@@ -121,25 +126,27 @@ export default async function PricingPage({ params }: Props) {
               <AnimatedText className="text-support mb-8 max-w-[560px] text-inverted/66" delay={0.1}>
                 {home.offerPriceDetail}
               </AnimatedText>
-              <h2
-                id="main-price-heading"
-                className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-inverted"
-              >
-                {offer.price}
-              </h2>
-              <p className="mt-2 text-[18px] leading-relaxed text-inverted/74">{home.offerPaymentLabel}</p>
-              <div className="mt-7">
-                <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
-                  <Link href={`/${locale}/contact`}>{content.nav.cta}</Link>
-                </Button>
-              </div>
-              <div className="mt-8 pt-1">
-                <CheckList items={[...offer.includes]} light />
-              </div>
-            </AnimatedText>
+              <AnimatedUI delay={0.16}>
+                <h2
+                  id="main-price-heading"
+                  className="font-heading text-[clamp(36px,6vw,72px)] font-medium leading-[0.95] tracking-[-0.03em] text-inverted"
+                >
+                  {offer.price}
+                </h2>
+                <p className="mt-2 text-[18px] leading-relaxed text-inverted/74">{home.offerPaymentLabel}</p>
+                <div className="mt-7">
+                  <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+                    <Link href={`/${locale}/contact`}>{content.nav.cta}</Link>
+                  </Button>
+                </div>
+                <div className="mt-8 pt-1">
+                  <CheckList items={[...offer.includes]} light />
+                </div>
+              </AnimatedUI>
+            </div>
 
             <div className="relative lg:pl-2">
-              <div className="relative aspect-[1/1] w-full overflow-hidden rounded-[12px]">
+              <RevealMedia className="relative aspect-[1/1] w-full rounded-[12px]" delay={0.08}>
                 <Image
                   src={assetPath("/images/mood.png")}
                   alt={home.moodImageAlt}
@@ -148,7 +155,7 @@ export default async function PricingPage({ params }: Props) {
                   className="object-contain object-center"
                   sizes="(min-width: 1280px) 520px, (min-width: 1024px) 44vw, 100vw"
                 />
-              </div>
+              </RevealMedia>
               <div className="pointer-events-none absolute inset-0 rounded-[12px] shadow-[0_34px_80px_rgb(0_0_0/0.42)]" />
             </div>
           </div>
@@ -171,7 +178,7 @@ export default async function PricingPage({ params }: Props) {
               id="pricing-faq-heading"
               className="text-display text-primary"
             />
-            <FAQAccordion items={[...content.pricingPage.faq]} />
+            <FAQAccordion items={pricingFaq} />
           </div>
         </Container>
       </section>

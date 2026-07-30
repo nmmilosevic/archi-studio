@@ -8,6 +8,9 @@ const isGitHubPages = process.env.GITHUB_PAGES === "true";
 const githubPagesBasePath = process.env.GITHUB_PAGES_BASE_PATH ?? "";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    viewTransition: true,
+  },
   turbopack: {
     root: process.cwd(),
   },

@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { CookieProvider } from "@/components/cookies/CookieProvider";
+import { MotionProvider } from "@/components/motion/MotionProvider";
 import { GlobalJsonLd } from "@/components/seo/GlobalJsonLd";
 import {
   PREFERRED_SEO_DESCRIPTION,
@@ -103,7 +104,9 @@ export default async function LocaleLayout({
       <body>
         <GlobalJsonLd />
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <CookieProvider>{children}</CookieProvider>
+          <MotionProvider>
+            <CookieProvider>{children}</CookieProvider>
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

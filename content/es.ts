@@ -56,7 +56,7 @@ const es = {
       {
         number: "03",
         title: "Fundamentos de visibilidad",
-        desc: "Estructura técnica y de contenido para que los buscadores entiendan tus servicios, tipos de proyecto, posicionamiento y páginas de portfolio.",
+        desc: "La visibilidad orgánica es la capacidad de aparecer en búsquedas no pagadas relacionadas con tus servicios, proyectos y ubicaciones. La trabajamos con estructura de contenido, metadatos, enlazado interno y una base técnica clara.",
         deliverables: ["Metadatos SEO", "Estructura de páginas orientada a búsqueda", "Datos estructurados", "Enlazado interno", "Estructura de alt en imágenes", "Optimización de rendimiento"],
       },
       {
@@ -69,7 +69,7 @@ const es = {
         number: "05",
         title: "Sistemas de portafolio",
         desc: "Una estructura limpia para publicar proyectos de forma consistente, incluyendo imágenes, ubicación, tipo de servicio, materiales, alcance e historia.",
-        deliverables: ["Modelo de contenido compatible con CMS", "Plantillas de proyectos", "Filtros por ubicación y tipo", "Estructura de caso de estudio", "Diseño centrado en la imagen"],
+        deliverables: ["Modelo para CMS, el sistema de gestión de contenidos", "Plantillas de proyectos", "Filtros por ubicación y tipo", "Estructura de caso de estudio", "Diseño centrado en la imagen"],
       },
       {
         number: "06",
@@ -94,7 +94,7 @@ const es = {
   pricing: {
     label: "Precios",
     heading: "Precios transparentes. Sin cifras aproximadas.",
-    sub: "Precios de partida. El presupuesto final depende del número de páginas, idiomas, alcance del CMS y disponibilidad de contenido.",
+    sub: "La web principal cuesta 1.500€. El presupuesto cambia cuando el proyecto añade páginas, idiomas, un sistema de gestión de contenidos o nuevo contenido.",
     vatNote: "Precios sin IVA cuando corresponda.",
     paymentNote: "50% al inicio, 50% antes del lanzamiento para proyectos superiores a 790€. Los planes mensuales se facturan mensualmente.",
     cta: "Solicitar presupuesto",
@@ -172,6 +172,9 @@ const es = {
     caseStudy: {
       keyScreens: "Vistas seleccionadas.",
       whatChangedHeading: "Qué cambió",
+      typeLabel: "Estudio conceptual de rediseño",
+      publishedLabel: "Publicado el 7 de mayo de 2026",
+      updatedLabel: "Actualizado el 30 de julio de 2026",
       whatChangedThemes: [
         "Estructura del portafolio",
         "Lectura en móvil",
@@ -348,7 +351,7 @@ const es = {
   seo: {
     label: "Visibilidad en búsqueda para estudios",
     heading: "Tu trabajo debería ser fácil de encontrar y más fácil de entender.",
-    sub: "La visibilidad empieza con una web de estudio clara: servicios precisos, páginas de proyecto estructuradas, metadatos sólidos, enlaces internos y páginas rápidas que apoyan el descubrimiento orgánico.",
+    sub: "La visibilidad orgánica es la capacidad de una web para aparecer en búsquedas no pagadas. Para un estudio de arquitectura depende de servicios precisos, proyectos indexables, metadatos descriptivos, enlaces internos y páginas rápidas.",
     cities: [
       { name: "Arquitectura", desc: "Las páginas de servicio y proyecto deben aclarar tipología, alcance, proceso y calidad construida para clientes que comparan estudios." },
       { name: "Interiorismo", desc: "Las webs de interiorismo necesitan secuencia visual, lenguaje material, claridad de servicios y señales de confianza antes de la primera consulta." },
@@ -356,15 +359,15 @@ const es = {
       { name: "Portfolio", desc: "Un portfolio de arquitectura debe convertir los proyectos en casos de estudio estructurados e indexables, no en una galería desconectada." },
       { name: "Rediseño", desc: "Un rediseño web de arquitectura debe mejorar percepción, lectura móvil, velocidad, metadatos y el paso del interés a la consulta." },
       { name: "Multilingüe", desc: "Los estudios internacionales necesitan estructura de idioma, hreflang, metadatos traducidos y textos naturales en cada mercado." },
-      { name: "SEO técnico", desc: "URLs limpias, datos estructurados, optimización de imágenes, enlaces internos y Core Web Vitals ayudan a leer bien la web." },
+      { name: "SEO técnico", desc: "El SEO técnico reúne las decisiones que permiten rastrear, interpretar e indexar una web: URLs limpias, datos estructurados, imágenes optimizadas, enlaces internos y Core Web Vitals." },
       { name: "Percepción de marca", desc: "El tráfico solo importa si la web hace que el estudio se perciba creíble, especialista y cuidado." },
     ],
     sections: [
-      { title: "Por qué importa la visibilidad para estudios de arquitectura", body: "Los clientes buscan por disciplina, tipo de proyecto, estilo, servicio y ubicación. La web necesita estructura suficiente para que los buscadores entiendan qué hace el estudio sin convertir la página en una lista de palabras clave." },
-      { title: "Las páginas de proyectos como activos SEO", body: "Cada proyecto terminado es contenido indexable. Una página bien estructurada con alcance, tipología, materiales, intención de diseño y fotografía puede apoyar búsquedas de long-tail y mejorar la experiencia de portfolio." },
-      { title: "SEO multilingüe", body: "Los estudios que trabajan en varios mercados necesitan versiones de idioma correctas técnicamente y bien escritas. Hreflang, metadatos traducidos y lenguaje natural ayudan a llegar al público adecuado." },
+      { title: "Por qué importa la visibilidad para estudios de arquitectura", body: "Los clientes buscan por disciplina, tipo de proyecto, estilo, servicio y ubicación. Una arquitectura de información clara relaciona cada página con esas necesidades sin convertir el contenido en una lista de palabras clave." },
+      { title: "Las páginas de proyectos como activos SEO", body: "Cada proyecto terminado es contenido indexable. Una página con alcance, tipología, materiales, intención de diseño y fotografía responde a búsquedas específicas y convierte el portfolio en información útil, no solo en una galería." },
+      { title: "SEO multilingüe", body: "El atributo hreflang indica a los buscadores el idioma y la región de cada versión de una página. Hreflang, metadatos traducidos y textos naturales permiten que las versiones en español, inglés y francés lleguen al público adecuado." },
       { title: "Páginas de servicio con sustancia", body: "El diseño web para arquitectura, las webs de interiorismo y las webs de paisajismo necesitan páginas que expliquen expertise, proceso y encaje sin repetir lenguaje genérico de agencia." },
-      { title: "SEO técnico", body: "Velocidad, Core Web Vitals, URLs limpias, datos estructurados, imágenes optimizadas y enlaces internos afectan a cómo Google lee y posiciona la web. La base técnica debe apoyar el portfolio." },
+      { title: "SEO técnico", body: "El SEO técnico facilita el rastreo, la interpretación y la indexación de una web. Incluye velocidad, Core Web Vitals, URLs limpias, datos estructurados, imágenes optimizadas, canónicas coherentes y enlaces internos." },
     ],
   },
   contact: {
@@ -425,7 +428,6 @@ const es = {
     footerNavAria: "Enlaces principales",
     locations: "Con base en España · Trabajo internacional",
     email: "hello@reframestudio.es",
-    whatsapp: "+34 600 000 000",
     legal: { privacy: "Política de privacidad", terms: "Términos", cookies: "Cookies" },
     copy: "© 2026 REFRAME. Todos los derechos reservados.",
     nav: {
@@ -441,19 +443,19 @@ const es = {
   },
   pageMeta: {
     pricing: {
-      title: "Precios: paquetes web transparentes para estudios",
+      title: "Precios web para estudios de arquitectura",
       description:
-        "Precios claros para webs de estudios de arquitectura, interiorismo y paisajismo: estrategia, diseño a medida, desarrollo responsive, bases SEO, soporte de lanzamiento y planes de cuidado opcionales.",
+        "Web para estudios desde 1.500€: estrategia, diseño a medida, desarrollo responsive, bases SEO, formulario y soporte de lanzamiento.",
     },
     audit: {
-      title: "Revisión web gratuita para estudios de arquitectura e interiorismo",
+      title: "Revisión web para estudios de diseño",
       description:
-        "Reframe Studio revisa tu web de arquitectura o interiorismo: primera impresión, UX móvil, portfolio, bases SEO y contacto, con próximos pasos claros.",
+        "Revisión de primera impresión, experiencia móvil, portfolio, bases SEO y flujo de contacto, con próximos pasos claros.",
     },
     searchVisibility: {
-      title: "Visibilidad en búsqueda para estudios de arquitectura e interiorismo",
+      title: "SEO para estudios de arquitectura",
       description:
-        "Visibilidad en búsqueda para webs de arquitectura, interiorismo y paisajismo: páginas de proyecto, estructura de servicios, SEO técnico, metadatos de imagen, enlazado interno y hreflang.",
+        "SEO para estudios de arquitectura: servicios claros, proyectos indexables, metadatos, enlazado interno, datos estructurados y hreflang.",
     },
   },
   home: {
@@ -545,23 +547,23 @@ const es = {
   },
   seoPage: {
     introLead:
-      "Los clientes de arquitectura buscan por disciplina, tipo de proyecto, servicio, ubicación y credibilidad. Tu web debe responder a esas señales con claridad.",
+      "El SEO para estudios de arquitectura conecta servicios, proyectos y ubicaciones con las búsquedas de clientes que todavía no conocen el nombre del estudio.",
     introP1:
-      "Una buena web de arquitectura hace más que verse refinada. Da a cada proyecto un título claro, alcance, contexto de servicio, estructura de imagen y ruta hacia la siguiente página relevante.",
+      "La optimización para buscadores, o SEO, organiza el contenido y la base técnica para que una web pueda rastrearse, interpretarse e indexarse. Cada proyecto necesita un título claro, alcance, tipología, ubicación, imágenes descritas y enlaces hacia servicios relacionados.",
     introP2:
-      "Los buscadores premian la claridad. Los visitantes también. La misma estructura que ayuda a Google a entender tu trabajo ayuda a los clientes a comparar tu estudio con confianza.",
+      "Google Search Central recomienda títulos y descripciones propios para cada página, HTML semántico y datos estructurados que representen el contenido visible. Esa misma claridad ayuda a los clientes a comparar experiencia, alcance y encaje.",
     stats: [
       {
-        stat: "Intención de proyecto",
-        desc: "Los clientes suelen buscar por tipos de proyecto, servicios, materiales, ubicaciones y especialización del estudio.",
+        stat: "Consultas específicas",
+        desc: "Las páginas deben responder a combinaciones concretas de tipología, servicio, material, ubicación y especialización.",
       },
       {
         stat: "Mercados multilingües",
         desc: "Los estudios internacionales necesitan estructura de idioma correcta técnicamente y escrita para personas.",
       },
       {
-        stat: "Poca visibilidad",
-        desc: "Muchos estudios solo posicionan por su nombre, por lo que son invisibles para quien aún no los conoce.",
+        stat: "Descubrimiento sin marca",
+        desc: "Las páginas de servicio y proyecto permiten aparecer ante clientes que buscan una solución y todavía no conocen REFRAME Studio.",
       },
     ],
     citiesHeading: "Fundamentos de búsqueda para estudios de diseño",
@@ -573,19 +575,38 @@ const es = {
       },
       {
         title: "Páginas de proyecto como contenido",
-        desc: "Cada proyecto se estructura como contenido indexable: ubicación, alcance, materiales y fotografía. Se convierte en un activo SEO, no solo en una galería.",
+        desc: "Cada proyecto se estructura como contenido indexable con ubicación, alcance, materiales y fotografía. El resultado es un caso de estudio útil, no una galería sin contexto.",
       },
       {
         title: "SEO técnico",
-        desc: "Velocidad, Core Web Vitals, URLs limpias, canónicas, datos estructurados e imágenes optimizadas en todo el sitio.",
+        desc: "El SEO técnico cubre velocidad, Core Web Vitals, URLs limpias, canónicas, datos estructurados, rastreo e imágenes optimizadas.",
       },
       {
         title: "Hreflang multilingüe",
-        desc: "Cobertura correcta de idioma y región para que EN, ES y FR lleguen al público adecuado en los resultados.",
+        desc: "Hreflang identifica el idioma y la región de cada URL para que las versiones en español, inglés y francés lleguen al público adecuado.",
       },
       {
         title: "Google Business Profile",
-        desc: "Configuración y optimización: categoría, descripción, servicios, fotos y datos NAP coherentes.",
+        desc: "Configuración de categoría, descripción, servicios, fotos y datos NAP coherentes. NAP significa nombre, dirección y teléfono.",
+      },
+    ],
+    editorialByline: "Publicado por REFRAME Studio",
+    editorialUpdated: "Actualizado el 30 de julio de 2026",
+    sourcesHeading: "Fuentes y criterios técnicos",
+    sourcesIntro:
+      "Esta guía se apoya en documentación oficial de Google Search Central, consultada el 30 de julio de 2026.",
+    sources: [
+      {
+        label: "Guía SEO para desarrolladores",
+        href: "https://developers.google.com/search/docs/fundamentals/get-started-developers",
+      },
+      {
+        label: "URLs canónicas y versiones multilingües",
+        href: "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      },
+      {
+        label: "Introducción a los datos estructurados",
+        href: "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
       },
     ],
     ctaHeading: "¿Quieres que la web de tu estudio sea más clara en búsqueda?",
@@ -605,7 +626,7 @@ const es = {
       },
       {
         q: "¿Cuánto tarda?",
-        a: "La mayoría de webs pueden publicarse en 2 a 4 semanas según contenido y feedback.",
+        a: "El plazo habitual es de 2 a 4 semanas desde la recepción del contenido y la aprobación del alcance. Los idiomas adicionales, la migración extensa del portfolio o nuevas rondas de revisión amplían el calendario.",
       },
       {
         q: "¿El sitio es mío?",
