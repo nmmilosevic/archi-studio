@@ -257,7 +257,7 @@ const es = {
             body: "Tipografía y márgenes que siguen siendo legibles cuando el layout se comprime a una columna.",
           },
           {
-            body: "Una voz gráfica más nítida y memorable, alineada con los edificios—sin recurrir al ruido.",
+            body: "Una voz gráfica más nítida y memorable, alineada con los edificios y sin recurrir al ruido.",
           },
           {
             body: "La consulta sigue al alcance sin romper el ritmo editorial ni diluir el tono del estudio.",
@@ -441,14 +441,14 @@ const es = {
   },
   pageMeta: {
     pricing: {
-      title: "Precios — paquetes web transparentes para estudios",
+      title: "Precios: paquetes web transparentes para estudios",
       description:
         "Precios claros para webs de estudios de arquitectura, interiorismo y paisajismo: estrategia, diseño a medida, desarrollo responsive, bases SEO, soporte de lanzamiento y planes de cuidado opcionales.",
     },
     audit: {
       title: "Revisión web gratuita para estudios de arquitectura e interiorismo",
       description:
-        "Reframe Studio revisa tu web de arquitectura o interiorismo: primera impresión, UX móvil, portfolio, bases SEO y contacto — con próximos pasos claros.",
+        "Reframe Studio revisa tu web de arquitectura o interiorismo: primera impresión, UX móvil, portfolio, bases SEO y contacto, con próximos pasos claros.",
     },
     searchVisibility: {
       title: "Visibilidad en búsqueda para estudios de arquitectura e interiorismo",
@@ -459,7 +459,7 @@ const es = {
   home: {
     workTitle: "Webs para estudios con trabajo que merece mostrarse bien.",
     workBody:
-      "Ejemplos enfocados: portfolios más claros, mejor lectura en móvil y primera impresión más sólida — sin plantillas genéricas.",
+      "Ejemplos enfocados: portfolios más claros, mejor lectura en móvil y una primera impresión más sólida, sin plantillas genéricas.",
     beforeTitle: "Tu web debería sentirse tan cuidada como tus proyectos.",
     beforeProblems: [
       "Las plantillas genéricas debilitan el posicionamiento",
@@ -476,7 +476,7 @@ const es = {
     ],
     reviewTitle: "La fricción reduce la confianza.",
     reviewBody:
-      "¿Aún no quieres empezar? Envíanos tu web y te diremos dónde pierdes claridad y confianza. Notas útiles, sin presión.",
+      "Un cliente potencial lee una web como lee un espacio. La secuencia, la proporción y la atención al detalle construyen la impresión antes de iniciar una conversación.",
     offerTitle: "Una inversión clara para tu estudio.",
     offerPriceDetail:
       "Esta oferta incluye el desarrollo del diseño presentado. Para cualquier cambio o añadido, te enviaremos un presupuesto adicional.",
@@ -523,23 +523,6 @@ const es = {
       "Estilo parisino",
       "Estilo lujo oscuro",
     ],
-    diagnosisPoints: [
-      {
-        title: "Posicionamiento",
-        description:
-          "El valor de tu estudio debe entenderse en segundos, no adivinarse tras mucho scroll.",
-      },
-      {
-        title: "Presentación de proyectos",
-        description:
-          "Los casos necesitan más jerarquía para que cada proyecto se sienta intencional y premium.",
-      },
-      {
-        title: "Flujo de contacto",
-        description:
-          "De la primera impresión a la consulta, cada paso debe reducir fricción y generar confianza.",
-      },
-    ],
     diagnosisFloatCards: [
       {
         title: "Posicionamiento",
@@ -578,7 +561,7 @@ const es = {
       },
       {
         stat: "Poca visibilidad",
-        desc: "Muchos estudios solo posicionan por su nombre — invisibles para quien aún no los conoce.",
+        desc: "Muchos estudios solo posicionan por su nombre, por lo que son invisibles para quien aún no los conoce.",
       },
     ],
     citiesHeading: "Fundamentos de búsqueda para estudios de diseño",
@@ -590,7 +573,7 @@ const es = {
       },
       {
         title: "Páginas de proyecto como contenido",
-        desc: "Cada proyecto se estructura como contenido indexable: ubicación, alcance, materiales y fotografía — activo SEO, no solo galería.",
+        desc: "Cada proyecto se estructura como contenido indexable: ubicación, alcance, materiales y fotografía. Se convierte en un activo SEO, no solo en una galería.",
       },
       {
         title: "SEO técnico",

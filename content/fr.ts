@@ -197,10 +197,10 @@ const fr = {
             body: "Rythme tactile, typographie lisible et images qui gardent leur autorité sur petit écran.",
           },
           {
-            body: "Typographie et espacement alignés sur une présence sobre et premium — le numérique reflète la qualité de réalisation.",
+            body: "Typographie et espacement s'alignent sur une présence sobre et premium, afin que le numérique reflète la qualité de réalisation.",
           },
           {
-            body: "Moins de friction de l'intérêt à la prise de contact — moins de distractions, intention plus nette quand on veut parler.",
+            body: "Moins de friction entre l'intérêt et la prise de contact signifie moins de distractions et une intention plus nette.",
           },
         ] as const,
         screens: [
@@ -221,7 +221,7 @@ const fr = {
         heroDesktop: "/images/project02/p02-hero.png",
         whatChanged: [
           {
-            body: "Les projets se lisent comme des récits, pas comme une grille plate — on perçoit le geste, l'échelle, l'atmosphère.",
+            body: "Les projets se lisent comme des récits, pas comme une grille plate. On perçoit le geste, l'échelle et l'atmosphère.",
           },
           {
             body: "Rythme plus doux et images fortes qui restent légères et rapides sur téléphone.",
@@ -257,7 +257,7 @@ const fr = {
             body: "Typographie et marges qui restent lisibles quand la mise en page se réduit à une colonne.",
           },
           {
-            body: "Une voix graphique plus nette et mémorable, alignée sur les bâtiments — sans bruit superflu.",
+            body: "Une voix graphique plus nette et mémorable s'aligne sur les bâtiments sans ajouter de bruit superflu.",
           },
           {
             body: "La prise de contact reste à portée sans casser le rythme éditorial ni diluer le ton du studio.",
@@ -290,7 +290,7 @@ const fr = {
             body: "Un ton cinématographique aligné sur la vie méditerranéenne de plein air, sans cliché resort.",
           },
           {
-            body: "Services et prise de contact suivent le récit — la confiance se construit avant de demander l'action.",
+            body: "Les services et la prise de contact suivent le récit, afin de construire la confiance avant de demander une action.",
           },
         ] as const,
         screens: [
@@ -441,14 +441,14 @@ const fr = {
   },
   pageMeta: {
     pricing: {
-      title: "Tarifs — offres web transparentes pour studios",
+      title: "Tarifs : offres web transparentes pour studios",
       description:
         "Tarifs clairs pour sites de studios d'architecture, de design intérieur et de paysage : stratégie, design sur mesure, développement responsive, bases SEO, lancement et plans de suivi optionnels.",
     },
     audit: {
       title: "Revue de site gratuite pour studios d'architecture et d'intérieur",
       description:
-        "Reframe Studio analyse votre site architecture ou intérieur : première impression, mobile, portfolio, bases SEO et contact — avec des prochaines étapes claires.",
+        "Reframe Studio analyse votre site d'architecture ou d'intérieur : première impression, mobile, portfolio, bases SEO et contact, avec des prochaines étapes claires.",
     },
     searchVisibility: {
       title: "Visibilité en recherche pour studios d'architecture et d'intérieur",
@@ -459,7 +459,7 @@ const fr = {
   home: {
     workTitle: "Des directions de site pour studios dont le travail mérite d'être bien présenté.",
     workBody:
-      "Exemples ciblés : portfolios plus clairs, meilleure lecture mobile et première impression plus forte — sans templates génériques.",
+      "Exemples ciblés : portfolios plus clairs, meilleure lecture mobile et première impression plus forte, sans templates génériques.",
     beforeTitle: "Votre site devrait être aussi soigné que vos projets.",
     beforeProblems: [
       "Les templates génériques affaiblissent le positionnement",
@@ -476,7 +476,7 @@ const fr = {
     ],
     reviewTitle: "Les frictions réduisent la confiance.",
     reviewBody:
-      "Pas prêt à vous lancer ? Envoyez votre site : nous montrerons où vous perdez en clarté et en confiance. Des notes utiles, sans vente agressive.",
+      "Un client potentiel lit un site comme il lit un espace. La séquence, les proportions et l’attention portée aux détails façonnent l’impression avant même la première conversation.",
     offerTitle: "Un investissement clair pour votre studio.",
     offerPriceDetail:
       "Cette offre comprend le développement du design présenté. Pour toute modification ou ajout, nous vous proposerons un devis complémentaire.",
@@ -523,23 +523,6 @@ const fr = {
       "Style parisien",
       "Style luxe sombre",
     ],
-    diagnosisPoints: [
-      {
-        title: "Positionnement",
-        description:
-          "La valeur de votre studio doit se comprendre en quelques secondes, pas après un long défilement.",
-      },
-      {
-        title: "Présentation des projets",
-        description:
-          "Les études de cas ont besoin d'une hiérarchie plus claire pour que chaque projet paraisse intentionnel et premium.",
-      },
-      {
-        title: "Parcours de contact",
-        description:
-          "De la première impression à la prise de contact, chaque étape doit réduire les frictions et renforcer la confiance.",
-      },
-    ],
     diagnosisFloatCards: [
       {
         title: "Positionnement",
@@ -578,7 +561,7 @@ const fr = {
       },
       {
         stat: "Faible visibilité",
-        desc: "Beaucoup de studios ne se positionnent que sur leur nom — invisibles pour ceux qui ne les connaissent pas encore.",
+        desc: "Beaucoup de studios ne se positionnent que sur leur nom, ce qui les rend invisibles pour ceux qui ne les connaissent pas encore.",
       },
     ],
     citiesHeading: "Fondations de recherche pour studios de design",
@@ -590,7 +573,7 @@ const fr = {
       },
       {
         title: "Pages projet comme contenu",
-        desc: "Chaque projet livré est structuré comme du contenu indexable : lieu, portée, matériaux, photo — un actif SEO, pas seulement une image de galerie.",
+        desc: "Chaque projet livré est structuré comme du contenu indexable : lieu, portée, matériaux et photo. Il devient un actif SEO, pas seulement une image de galerie.",
       },
       {
         title: "SEO technique",

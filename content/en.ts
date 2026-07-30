@@ -34,8 +34,8 @@ const en = {
     heading: "I do not start with a pitch. I start with proof.",
     body: "I redesign a key part of your website first, deploy it as a private Vercel preview, and send you the live link. If it works for you, we turn it into your real site.",
     cta: "Show me what my site could look like",
-    before: "Before — generic, slow, hard to trust",
-    after: "After — refined, editorial, clear to convert",
+    before: "Before: generic, slow, hard to trust",
+    after: "After: refined, editorial, clear to convert",
   },
   services: {
     label: "What we do",
@@ -74,7 +74,7 @@ const en = {
       {
         number: "06",
         title: "Brand refinement",
-        desc: "Not a full branding agency replacement — a precise refinement of typography, color, layout, tone, and digital consistency.",
+        desc: "Not a full branding agency replacement. It is a precise refinement of typography, color, layout, tone, and digital consistency.",
         deliverables: ["Visual direction", "Typography system", "Color system", "Website UI kit", "Basic brand guidelines"],
       },
     ],
@@ -197,10 +197,10 @@ const en = {
             body: "Tactile rhythm, readable typography, and images that keep their authority on small screens.",
           },
           {
-            body: "Typography and spacing aligned with a quiet, premium presence — digital reflects build quality.",
+            body: "Typography and spacing align with a quiet, premium presence, so the digital experience reflects the build quality.",
           },
           {
-            body: "Less friction from interest to contact — fewer distractions, clearer intent when someone wants to talk.",
+            body: "Less friction from interest to contact means fewer distractions and clearer intent when someone wants to talk.",
           },
         ] as const,
         screens: [
@@ -221,7 +221,7 @@ const en = {
         heroDesktop: "/images/project02/p02-hero.png",
         whatChanged: [
           {
-            body: "Projects read as stories, not a flat grid — craft, scale, and atmosphere come through.",
+            body: "Projects read as stories, not a flat grid. Craft, scale, and atmosphere come through.",
           },
           {
             body: "Softer rhythm and strong images that stay light and fast on the phone.",
@@ -257,7 +257,7 @@ const en = {
             body: "Typography and margins that stay readable when the layout collapses to a single column.",
           },
           {
-            body: "A sharper, more memorable graphic voice aligned with the buildings — without noisy clutter.",
+            body: "A sharper, more memorable graphic voice aligns with the buildings without adding visual clutter.",
           },
           {
             body: "Contact stays within reach without breaking editorial rhythm or diluting the studio's tone.",
@@ -281,16 +281,16 @@ const en = {
         heroDesktop: "/images/project04/p04-hero.png",
         whatChanged: [
           {
-            body: "Outdoor work reads as lifestyle chapters: terraces, gardens, and light in sequence — not isolated photos.",
+            body: "Outdoor work reads as lifestyle chapters, with terraces, gardens, and light shown in sequence rather than as isolated photos.",
           },
           {
             body: "Large images and calm scrolling that still perform when shared from site visits.",
           },
           {
-            body: "A cinematic tone aligned with Mediterranean outdoor living — without resort clichés.",
+            body: "A cinematic tone aligns with Mediterranean outdoor living without relying on resort clichés.",
           },
           {
-            body: "Services and contact follow the story — trust is built before asking for action.",
+            body: "Services and contact follow the story, building trust before asking for action.",
           },
         ] as const,
         screens: [
@@ -303,7 +303,7 @@ const en = {
   audit: {
     label: "Free audit offer",
     heading: "Want to see what your studio website could become?",
-    sub: "Send your current website. I will review the first impression, mobile experience, portfolio clarity, SEO basics, and contact journey — and send you a clear set of recommendations.",
+    sub: "Send your current website. I will review the first impression, mobile experience, portfolio clarity, SEO basics, and contact journey, then send you a clear set of recommendations.",
     what: {
       heading: "What I review",
       items: ["First impression and visual credibility", "Mobile experience and responsiveness", "Portfolio clarity and project storytelling", "SEO basics and search visibility", "Enquiry flow and conversion path", "Typography, spacing, and image quality", "Page speed basics", "Multilingual readiness"],
@@ -374,10 +374,10 @@ const en = {
     locations: "Based in Spain. Working with architecture, interior design, and landscape studios internationally.",
     response: "Typical response within 24 hours.",
     steps: [
-      "I review the current website — first impression, portfolio clarity, mobile experience and contact journey.",
+      "I review the current website, focusing on first impression, portfolio clarity, mobile experience, and the contact journey.",
       "I identify the clearest perception gap between the studio's work and its digital presence.",
       "If there is a clear opportunity, I reply within 24 hours with a concrete next step.",
-      "For selected studios, that next step can be a private redesign preview — deployed and ready to judge.",
+      "For selected studios, that next step can be a private redesign preview, deployed and ready to evaluate.",
     ],
     form: {
       name: "Your name",
@@ -441,14 +441,14 @@ const en = {
   },
   pageMeta: {
     pricing: {
-      title: "Pricing — transparent website packages for studios",
+      title: "Pricing: transparent website packages for studios",
       description:
         "Clear website design pricing for architecture studios, interior design studios, and landscape practices: strategy, custom design, responsive development, SEO basics, launch support, and optional care plans.",
     },
     audit: {
       title: "Free website review for architecture & interior studios",
       description:
-        "Reframe Studio reviews your architecture or interior design website — first impression, mobile UX, portfolio clarity, SEO basics, and contact flow — with practical next steps.",
+        "Reframe Studio reviews your architecture or interior design website across first impression, mobile UX, portfolio clarity, SEO basics, and contact flow, with practical next steps.",
     },
     searchVisibility: {
       title: "Search visibility for architecture & interior studios",
@@ -459,7 +459,7 @@ const en = {
   home: {
     workTitle: "Selected website directions for architecture studios.",
     workBody:
-      "Focused examples of clearer portfolios, better mobile reading, and a stronger first impression — without generic templates.",
+      "Focused examples of clearer portfolios, better mobile reading, and a stronger first impression, without generic templates.",
     beforeTitle: "Your website should feel as considered as your projects.",
     beforeProblems: [
       "Generic templates weaken positioning",
@@ -476,7 +476,7 @@ const en = {
     ],
     reviewTitle: "Small friction reduces trust.",
     reviewBody:
-      "Not ready to start? Send your current site — we’ll show where you lose clarity and trust. Useful notes, no hard sell.",
+      "Prospective clients read a website much like they read a space. Sequence, proportion, and attention to detail shape the impression before a conversation begins.",
     offerTitle: "One clear investment for your studio.",
     offerPriceDetail:
       "This package includes the development of the design shown. For any changes or additions, we’ll provide a separate quote.",
@@ -523,23 +523,6 @@ const en = {
       "Parisian style",
       "Dark luxury style",
     ],
-    diagnosisPoints: [
-      {
-        title: "Positioning",
-        description:
-          "Your studio’s value should be understood in seconds, not guessed after scrolling.",
-      },
-      {
-        title: "Project presentation",
-        description:
-          "Case studies need clearer hierarchy so each project feels intentional and premium.",
-      },
-      {
-        title: "Contact flow",
-        description:
-          "From first impression to enquiry, each step should reduce friction and build trust.",
-      },
-    ],
     diagnosisFloatCards: [
       {
         title: "Positioning",
@@ -578,7 +561,7 @@ const en = {
       },
       {
         stat: "Low visibility",
-        desc: "Many studios only rank for their own name — invisible to everyone who has not already heard of them.",
+        desc: "Many studios only rank for their own name, leaving them invisible to people who have not already heard of them.",
       },
     ],
     citiesHeading: "Search foundations for design studios",
@@ -590,7 +573,7 @@ const en = {
       },
       {
         title: "Project pages as content",
-        desc: "Each completed project is structured as indexable content with location, scope, materials, and photography — rankable assets, not just gallery entries.",
+        desc: "Each completed project is structured as indexable content with location, scope, materials, and photography. It becomes a rankable asset, not just a gallery entry.",
       },
       {
         title: "Technical SEO",
