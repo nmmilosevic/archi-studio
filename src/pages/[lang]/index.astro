@@ -120,7 +120,7 @@ const beyondIcons = [
       </div>
 
       <div class="grid cards">
-        <div class="span-8 home-pricing__offer" data-fade>
+        <div class="span-8 card home-pricing__offer" data-fade>
           <div>
             <p class="t-display home-pricing__price">{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
@@ -294,7 +294,14 @@ const beyondIcons = [
   /* Pricing */
   .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
   .home-pricing__note { max-width: 34rem; }
-  @media (min-width: 900px) { .home-pricing__offer { justify-content: space-between; } }
+  .home-pricing__offer.card { background: rgb(255 255 255 / .035); padding: clamp(1.5rem, 1rem + 1.6vw, 2.75rem); }
+  @media (min-width: 900px) {
+    /* Heading sits above the cards; the offer box and the card stack share row 2, so tops and bottoms line up */
+    .cards > .home-pricing__more { display: contents; }
+    .home-pricing__more > h3 { grid-column: 9 / -1; grid-row: 1; }
+    .home-pricing__more > .home-beyond { grid-column: 9 / -1; grid-row: 2; }
+    .home-pricing__offer { grid-row: 2; justify-content: space-between; gap: var(--s-6); }
+  }
   .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
   .home-pricing__terms { margin-top: var(--s-3); }
   .home-pricing__included { display: grid; gap: var(--s-5); width: 100%; }
