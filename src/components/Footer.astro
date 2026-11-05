@@ -1,0 +1,97 @@
+---
+/** Closing block: the shared audit CTA flows straight into the footer. */
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+import Media from './Media.astro';
+import { site, img } from '../data/site';
+import { langs, href, swapLang, useContent, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useContent(lang);
+const path = Astro.url.pathname;
+const year = new Date().getFullYear();
+---
+<div class="closing" data-theme="dark">
+  <section class="wrap section cta" aria-labelledby="cta-title">
+    <div class="grid">
+      <h2 id="cta-title" class="t-display cta__title" data-split>{t.cta.title}</h2>
+      <div class="cta__body" data-stagger>
+        <p class="t-lead t-muted">{t.cta.body}</p>
+        <div><Button href={href(lang, '/contact/')} arrow>{t.cta.action}</Button></div>
+      </div>
+      <Media class="cta__media" src={img.review} alt={t.cta.alt} ratio="3 / 2" parallax={0.08} sizes="(min-width: 900px) 50vw, 100vw" />
+    </div>
+  </section>
+
+  <footer class="wrap footer">
+    <div class="grid footer__top">
+      <div class="footer__brand">
+        <a href={href(lang)} aria-label={`Reframe Studio, ${t.ui.home}`}><Logo class="footer__logo" /></a>
+        <p class="t-lead">{t.footer.tagline}</p>
+        <p class="t-small t-muted">{t.footer.about}</p>
+      </div>
+      <nav class="footer__nav" aria-label={t.ui.footerNav}>
+        <a href={href(lang, '/work/')} class="link link--quiet">{t.ui.work}</a>
+        <a href={href(lang, '/services/')} class="link link--quiet">{t.ui.services}</a>
+        <a href={href(lang, '/contact/')} class="link link--quiet">{t.ui.contact}</a>
+      </nav>
+    </div>
+
+    <a href={`mailto:${site.email}`} class="footer__mail t-h1">
+      <span class="roll"><span>{site.email}</span><span aria-hidden="true">{site.email}</span></span>
+    </a>
+
+    <div class="footer__base t-small">
+      <span class="t-muted">© {year} Reframe Studio</span>
+      <nav class="lang" aria-label={t.ui.language}>
+        {langs.map((l) => (
+          <a href={swapLang(path, l)} class:list={['lang__item', { 'is-current': l === lang }]} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a>
+        ))}
+      </nav>
+      <button type="button" class="link link--quiet" data-cookie-open>{t.ui.cookieSettings}</button>
+      <button type="button" class="link link--quiet" data-to-top>{t.ui.backToTop}</button>
+    </div>
+  </footer>
+</div>
+
+<style>
+  .cta { padding-bottom: var(--s-9); }
+  .cta .grid { row-gap: var(--s-7); align-items: end; }
+  .cta__title { grid-column: 1 / span 10; }
+  .cta__body { display: grid; gap: var(--s-6); max-width: 30rem; }
+  @media (min-width: 900px) {
+    .cta__body { grid-column: 1 / span 4; grid-row: 2; align-self: end; }
+    .cta__media { grid-column: 6 / -1; grid-row: 2; }
+  }
+
+  .footer { padding-bottom: var(--s-5); }
+  .footer__top { padding-top: var(--s-8); row-gap: var(--s-7); }
+  .footer__brand { display: grid; gap: var(--s-5); max-width: 34rem; }
+  :global(.footer__logo) { width: 7rem; height: auto; margin-bottom: var(--s-3); }
+  .footer__nav { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); font-size: var(--fs-lead); }
+  @media (min-width: 900px) {
+    .footer__brand { grid-column: 1 / span 6; }
+    .footer__nav { grid-column: 9 / -1; }
+  }
+
+  .footer__mail {
+    display: block; width: fit-content; max-width: 100%;
+    margin-block: var(--s-9) var(--s-7);
+    font-size: clamp(1.75rem, .6rem + 5.6vw, 7.5rem);
+    overflow-wrap: anywhere;
+  }
+  .footer__mail:hover { color: var(--c-sand); }
+  .footer__mail .roll { line-height: 1.05; }
+  /* Room for the @ descender inside the rolling mask */
+  .footer__mail .roll > span { padding-bottom: .16em; }
+
+  .footer__base {
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4) var(--s-6);
+    padding-top: var(--s-5); border-top: var(--hairline);
+  }
+  .footer__base > :first-child { margin-right: auto; }
+  .lang { display: flex; gap: .875rem; font-weight: var(--fw-medium); }
+  .lang__item { color: var(--fg-muted); }
+  .lang__item.is-current, .lang__item:hover { color: var(--fg); }
+</style>

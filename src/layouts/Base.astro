@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import { langs, defaultLang, swapLang, useContent, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  closing?: boolean;   // show the shared CTA + footer block
+  alternates?: boolean; // emit hreflang links (off for pages that exist in one language)
+}
+const { lang, title, description, closing = true, alternates = true } = Astro.props;
+const t = useContent(lang);
+const path = Astro.url.pathname;
+const canonical = new URL(path, Astro.site);
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates && langs.map((l) => <link rel="alternate" hreflang={l} href={new URL(swapLang(path, l), Astro.site)} />)}
+    {alternates && <link rel="alternate" hreflang="x-default" href={new URL(swapLang(path, defaultLang), Astro.site)} />}
+    <meta property="og:locale" content={{ en: 'en_GB', es: 'es_ES', fr: 'fr_FR' }[lang]} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#f5f1eb" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" />
+
+    <!-- Runs before first paint: sets motion state and catches page-transition info -->
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        d.classList.add('js');
+        if (reduce) d.classList.add('motion-off');
+        if (sessionStorage.getItem('reframe:morph')) {
+          d.classList.add('morph-in');
+          sessionStorage.removeItem('reframe:morph');
+        }
+        window.__reveal = new Promise(function (resolve) {
+          addEventListener('pagereveal', function (e) { resolve(!!e.viewTransition); }, { once: true });
+          setTimeout(function () { resolve(false); }, 250);
+        });
+        // Never leave content hidden if scripts fail
+        setTimeout(function () {
+          if (!d.classList.contains('motion-ready')) d.classList.add('motion-off');
+        }, 3500);
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.ui.skip}</a>
+    <Header lang={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    {closing && <Footer lang={lang} />}
+    <CookieBanner lang={lang} />
+
+    <div class="grid-overlay" aria-hidden="true">
+      <div class="wrap grid">{Array.from({ length: 12 }).map(() => <span />)}</div>
+    </div>
+
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+---
+/** Hosting & maintenance: a quiet status panel (dark). */
+import { useContent, type Lang } from '../../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls } = Astro.props;
+const t = useContent(lang).services.visuals;
+const v = t.hosting;
+// 30 days of uptime; one short dip keeps it believable (99.98%)
+const days = Array.from({ length: 30 }, (_, i) => (i === 17 ? 0.62 : 1));
+---
+<figure class:list={['viz', 'viz-host', cls]} data-viz-host>
+  <div class="viz__frame frame" role="img" aria-label={v.label}>
+    <div class="head">
+      <span class="site">aurea-studio.com</span>
+      <span class="status"><i></i>{v.status}</span>
+    </div>
+    <div class="uptime">
+      <div class="bars">{days.map((d) => <span style={`--h:${d}`} class:list={{ dip: d < 1 }} data-bar></span>)}</div>
+      <div class="legend"><span>{v.uptime}</span><span>99.98%</span></div>
+    </div>
+    <dl class="rows">
+      {v.rows.map(([k, val]) => (
+        <div><dt>{k}</dt><dd>{val}</dd></div>
+      ))}
+    </dl>
+  </div>
+</figure>
+
+<style>
+  .frame { display: grid; gap: 1.5rem; background: var(--viz-chrome); color: #ece8e1; }
+  .head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .site { font-weight: var(--fw-medium); font-size: .9375rem; }
+  .status { display: inline-flex; align-items: center; gap: .5rem; color: var(--viz-chrome-text); font-size: .8125rem; }
+  .status i { width: .5rem; height: .5rem; background: var(--viz-sage); }
+  .uptime { display: grid; gap: .625rem; }
+  .bars { display: grid; grid-template-columns: repeat(30, 1fr); gap: 3px; height: 2.75rem; align-items: end; }
+  .bars span { height: calc(var(--h) * 100%); background: var(--viz-sage); transform-origin: 50% 100%; }
+  .bars .dip { background: var(--viz-clay); }
+  .legend { display: flex; justify-content: space-between; font-size: .75rem; color: var(--viz-chrome-text); }
+  .rows { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--viz-chrome-2); }
+  .rows div { display: grid; gap: .2rem; padding: .75rem .875rem; background: var(--viz-chrome); }
+  .rows dt { font-size: .75rem; color: var(--viz-chrome-text); }
+  .rows dd { font-weight: var(--fw-medium); }
+</style>

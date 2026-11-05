@@ -1,0 +1,381 @@
+---
+import Base from '../../layouts/Base.astro';
+import Media from '../../components/Media.astro';
+import Button from '../../components/Button.astro';
+import { img, directionImages, projects, studioSlugs } from '../../data/site';
+import { langPaths, href, useContent, type Lang } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useContent(lang);
+const h = t.home;
+const contact = href(lang, '/contact/');
+
+// Line icons for the "Design beyond your website" cards (see .icon-draw in global.css)
+const beyondIcons = [
+  // Brand & Print: the front sheet fans out from the back one
+  `<svg class="icon-draw home-beyond__icon icon-print" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M17 5h24v32H17z" style="--i:0"/>
+     <g class="mv"><path class="d f" pathLength="1" d="M8 11h24v32H8z" style="--i:1"/>
+     <path class="d" pathLength="1" d="M13 21h14M13 27h14M13 33h9" style="--i:2"/></g>
+   </svg>`,
+  // Digital Marketing: posts scroll up a phone like a feed
+  `<svg class="icon-draw home-beyond__icon icon-feed" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M13 3h22v42H13z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M21 8h6" style="--i:1"/>
+     <g class="mv"><path class="d" pathLength="1" d="M18 14h12v10H18z" style="--i:1"/>
+     <path class="d" pathLength="1" d="M18 28h12v10H18z" style="--i:2"/></g>
+   </svg>`,
+  // Website Care: a window with a refresh arrow that turns once
+  `<svg class="icon-draw home-beyond__icon icon-care" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M5 9h38v30H5z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M5 16h38" style="--i:1"/>
+     <g class="mv"><path class="d" pathLength="1" d="M30.5 27.5a6.5 6.5 0 1 1-1.9-4.6" style="--i:2"/>
+     <path class="d" pathLength="1" d="M29 19.5v3.6h-3.6" style="--i:3"/></g>
+   </svg>`,
+];
+---
+<Base lang={lang} title={t.meta.home.title} description={t.meta.home.description}>
+  <!-- Hero ------------------------------------------------------------ -->
+  <section class="wrap home-hero">
+    <div class="grid home-hero__grid">
+      <div class="home-hero__copy">
+        <h1 class="t-h1" data-split="intro">{h.hero.title}</h1>
+        <div class="home-hero__foot">
+          <p class="t-lead t-muted" data-fade="intro">{h.hero.lead}</p>
+          <div class="home-hero__actions" data-fade="intro">
+            <Button href={href(lang, '/work/')} arrow>{h.hero.primary}</Button>
+            <Button href={contact} variant="link">{h.hero.secondary}</Button>
+          </div>
+        </div>
+      </div>
+      <div class="home-hero__visual">
+        <Media class="home-hero__image" src={img.hero} alt="" intro priority parallax={0.08} sizes="(min-width: 900px) 42vw, 100vw" />
+        <div class="home-hero__mock" data-hero-mock>
+          <Media src={img.heroMock} alt={h.hero.mockAlt} intro sizes="(min-width: 900px) 18vw, 40vw" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directions: pinned horizontal gallery -------------------------- -->
+  <section id="directions" class="home-dir" data-directions aria-labelledby="dir-title">
+    <div class="home-dir__pin" data-directions-pin>
+      <div class="wrap grid home-dir__head">
+        <h2 id="dir-title" class="t-h2" data-split>{h.directions.title}</h2>
+        <p class="t-body t-muted" data-fade>{h.directions.body}</p>
+      </div>
+      <div class="home-dir__viewport" data-directions-viewport>
+        <ul class="home-dir__track" data-directions-track data-stagger>
+          {directionImages.map((image, i) => (
+            <li class="home-dir__item">
+              <Media src={image} alt={`${h.directions.altPrefix} ${h.directions.names[i]}`} ratio="3 / 2" reveal={false} eager sizes="(min-width: 900px) 40vw, 82vw" />
+              <p class="t-label">{h.directions.names[i]}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="wrap">
+        <div class="home-dir__progress" aria-hidden="true"><span data-directions-bar></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studios we design for: pick a studio type, see a matching case study.
+       Desktop: names on the left drive a shared image stage on the right.
+       Mobile: each type stacks with its own image. -->
+  <section class="wrap section home-studios" aria-labelledby="studios-title">
+    <h2 id="studios-title" class="t-h2 home-studios__title" data-split>{h.studios.title}</h2>
+    <ul class="home-studios__list" data-studios>
+      {studioSlugs.map((slug, i) => {
+        const base = projects.find((p) => p.slug === slug)!;
+        const p = t.projects[slug];
+        const url = href(lang, `/work/${slug}/`);
+        return (
+          <li class="home-studios__item" data-studio data-active={i === 0 ? '' : undefined}>
+            <a href={url} class="home-studios__name" data-studio-trigger>
+              <span class="t-h1">{h.studios.labels[i]}</span>
+              <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" /></svg>
+            </a>
+            <a href={url} class="home-studios__panel" data-morph-link tabindex="-1">
+              <Media src={base.cover} alt={t.work.previewAlt(p.title)} ratio="3 / 2" sizes="(min-width: 900px) 56vw, 100vw" />
+              <span class="home-studios__caption">
+                <span class="t-small t-muted">{p.location}</span>
+                <span class="t-body">{p.summary}</span>
+                <span class="link">{t.work.viewProject}</span>
+              </span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+
+  <!-- Pricing ---------------------------------------------------------- -->
+  <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
+    <div class="wrap section">
+      <div class="grid home-pricing__main">
+        <h2 id="pricing-title" class="t-h2 home-pricing__title" data-split>{h.pricing.title}</h2>
+        <div class="home-pricing__offer card card--raised">
+          <p class="t-display home-pricing__price" data-split>{h.pricing.price}</p>
+          <p class="t-label t-muted" data-fade>{h.pricing.terms}</p>
+          <ul class="home-pricing__includes list-marked" data-stagger>
+            {h.pricing.includes.map((i) => <li>{i}</li>)}
+          </ul>
+          <p class="t-small t-muted home-pricing__note" data-fade>{h.pricing.note}</p>
+          <div data-fade><Button href={contact} arrow>{h.pricing.action}</Button></div>
+        </div>
+      </div>
+
+      <div class="home-beyond">
+        <h3 class="t-h3" data-split>{h.beyond.title}</h3>
+        <div class="grid home-beyond__grid" data-stagger>
+          {h.beyond.items.map((item, i) => (
+            <article class="home-beyond__item card card--raised">
+              <Fragment set:html={beyondIcons[i]} />
+              <h4 class="t-h4">{item.title}</h4>
+              <p class="t-small t-muted">{item.body}</p>
+              <div class="home-beyond__foot">
+                {item.price.map((line) => <p class="t-small">{line}</p>)}
+                {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Friction --------------------------------------------------------- -->
+  <section class="wrap section home-friction" aria-labelledby="friction-title">
+    <div class="grid">
+      <h2 id="friction-title" class="t-h2 home-friction__title" data-split>{h.friction.title}</h2>
+      <div class="home-friction__intro" data-stagger>
+        <p class="t-lead">{h.friction.body}</p>
+        <div><Button href={contact} variant="link" arrow>{h.friction.action}</Button></div>
+      </div>
+      <Media class="home-friction__media" src={img.friction} alt={h.friction.alt} ratio="16 / 9" reveal={false} parallax={0.1} sizes="100vw" data-expand />
+      <ul class="grid home-friction__points" data-stagger>
+        {h.friction.points.map((p) => (
+          <li>
+            <h3 class="t-h4">{p.title}</h3>
+            <p class="t-muted">{p.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  /* Hero */
+  /* The hero always fills exactly one screen: the copy keeps its natural
+     height and the photo takes whatever space is left. */
+  .home-hero {
+    display: flex;
+    min-height: 100svh;
+    padding-top: calc(var(--header-h) + var(--s-4));
+    padding-bottom: var(--margin);
+  }
+  .home-hero__grid { flex: 1; display: flex; flex-direction: column; gap: var(--s-6); }
+  .home-hero__copy { display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-6); }
+  .home-hero__foot { display: grid; gap: var(--s-5); max-width: 33rem; }
+  .home-hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-4) var(--s-6); }
+  .home-hero__visual { position: relative; flex: 1; min-height: 26svh; }
+  /* Fill the slot exactly; the inline aspect-ratio would otherwise win and
+     let the photo run past the hero into the next section. */
+  .home-hero__visual .home-hero__image {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    aspect-ratio: auto !important;
+  }
+  .home-hero__mock {
+    position: absolute; z-index: 1;
+    width: 32%; left: var(--s-4); bottom: var(--s-4);
+    /* drop-shadow follows the clipped image, so the shadow reveals with it
+       (a box-shadow here would show an empty frame before the animation) */
+    filter: drop-shadow(0 26px 26px rgb(17 17 17 / .2));
+  }
+  @media (min-width: 900px) {
+    .home-hero { height: 100svh; min-height: 38rem; }
+    .home-hero__grid { display: grid; }
+    .home-hero__copy { grid-column: 1 / span 7; padding-top: var(--s-6); }
+    /* Heading scales with screen height too, so the copy never overflows */
+    .home-hero__copy h1 { font-size: clamp(2.5rem, calc((100svh - 29rem) / 3.2), var(--fs-h1)); }
+    .home-hero__visual { grid-column: 8 / -1; min-height: 0; }
+    /* Sits low, hanging just past the photo, well clear of the heading */
+    .home-hero__mock { width: min(38%, 26svh); left: -28%; bottom: -3%; }
+  }
+
+  /* Directions */
+  .home-dir { padding-top: var(--s-9); }
+  .home-dir__pin { display: flex; flex-direction: column; justify-content: center; gap: var(--s-7); }
+  .home-dir__head { row-gap: var(--s-5); align-items: end; }
+  .home-dir__viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .home-dir__viewport::-webkit-scrollbar { display: none; }
+  .home-dir__track {
+    display: flex; gap: var(--gutter); width: max-content;
+    padding-inline: var(--margin);
+  }
+  .home-dir__item { width: 82vw; display: grid; gap: var(--s-3); scroll-snap-align: center; }
+  .home-dir__progress { height: 1px; background: var(--rule); overflow: hidden; }
+  .home-dir__progress span { display: block; height: 100%; background: var(--fg); transform-origin: 0 50%; transform: scaleX(0); }
+  @media (min-width: 900px) {
+    .home-dir__pin { min-height: 100svh; padding-block: calc(var(--header-h) * .5) var(--s-6); }
+    .home-dir__head h2 { grid-column: 1 / span 7; }
+    .home-dir__head p { grid-column: 9 / -1; }
+    .home-dir__viewport { overflow: visible; scroll-snap-type: none; }
+    .home-dir__item { width: clamp(28rem, 38vw, 44rem); }
+  }
+
+  /* Studios we design for */
+  .home-studios__title { margin-bottom: var(--s-8); max-width: 14ch; }
+  .home-studios__list { display: grid; gap: var(--s-8); }
+  .home-studios__item { display: grid; gap: var(--s-5); }
+  .home-studios__name {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+    padding-block: var(--s-2);
+  }
+  .home-studios__name .arrow { width: clamp(1.25rem, 2vw, 2rem); height: auto; }
+  .home-studios__panel { display: grid; gap: var(--s-4); }
+  .home-studios__caption { display: grid; gap: var(--s-2); max-width: 34rem; }
+  .home-studios__caption .link { justify-self: start; margin-top: var(--s-2); }
+
+  @media (min-width: 900px) {
+    /* Names in a column on the left; all panels share one stage on the right */
+    .home-studios__list {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: repeat(3, auto) 1fr;
+      column-gap: var(--gutter); row-gap: 0;
+    }
+    .home-studios__item { display: contents; }
+    .home-studios__name {
+      grid-column: 1 / span 5;
+      padding-block: var(--s-5);
+      color: var(--fg-muted);
+      transition: color var(--d-base) var(--ease-soft);
+    }
+    .home-studios__item:nth-child(1) .home-studios__name { grid-row: 1; }
+    .home-studios__item:nth-child(2) .home-studios__name { grid-row: 2; }
+    .home-studios__item:nth-child(3) .home-studios__name { grid-row: 3; }
+    .home-studios__name .arrow { opacity: 0; transform: translateX(-.5em); transition: opacity var(--d-base), transform var(--d-base) var(--ease-out); }
+    [data-active] > .home-studios__name { color: var(--fg); }
+    [data-active] > .home-studios__name .arrow { opacity: 1; transform: none; }
+
+    .home-studios__panel {
+      grid-column: 7 / -1; grid-row: 1 / -1; align-self: start;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1s var(--ease-in-out);
+      pointer-events: none;
+    }
+    .home-studios__panel .media__inner { transform: scale(1.08); transition: transform 1.6s var(--ease-out); }
+    [data-active] > .home-studios__panel { clip-path: inset(0); pointer-events: auto; z-index: 1; }
+    [data-active] > .home-studios__panel .media__inner { transform: none; }
+    .home-studios__caption { opacity: 0; transition: opacity var(--d-base) var(--ease-soft); }
+    [data-active] > .home-studios__panel .home-studios__caption { opacity: 1; transition-delay: .35s; }
+  }
+
+  /* Pricing */
+  .home-pricing { background: var(--c-stone-deep); }
+  .home-pricing__main { row-gap: var(--s-8); }
+  .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-5); }
+  .home-pricing__price { font-size: clamp(4rem, 2rem + 6vw, 9rem); line-height: .85; }
+  .home-pricing__includes {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr); gap: var(--s-3) var(--gutter);
+    margin-block: var(--s-3);
+  }
+  .home-pricing__note { max-width: 30rem; }
+  @media (min-width: 900px) {
+    .home-pricing__title { grid-column: 1 / span 5; grid-row: 1; align-self: start; }
+    .home-pricing__offer { grid-column: 6 / -1; grid-row: 1; }
+    .home-pricing__includes { grid-template-columns: repeat(3, 1fr); }
+  }
+  .home-beyond { margin-top: var(--s-section); display: grid; gap: var(--s-7); }
+  .home-beyond__grid { row-gap: var(--gutter); }
+  .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
+  .home-beyond__icon { --icon-bg: var(--c-stone); margin-bottom: var(--s-3); }
+  html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
+  html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
+  html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }
+  .icon-care .mv { transform-origin: 24px 27.5px; }
+  .home-beyond__foot { margin-top: auto; padding-top: var(--s-4); display: grid; gap: var(--s-2); justify-items: start; }
+  .home-beyond__foot .link { margin-top: var(--s-3); }
+  @media (min-width: 900px) {
+    .home-beyond__item { grid-column: span 4; }
+  }
+
+  /* Friction */
+  .home-friction .grid { row-gap: var(--s-7); }
+  .home-friction__intro { display: grid; gap: var(--s-6); max-width: 32rem; }
+  .home-friction__points { row-gap: var(--s-6); }
+  .home-friction__points li { display: grid; gap: var(--s-2); align-content: start; }
+  @media (min-width: 900px) {
+    .home-friction__title { grid-column: 1 / span 6; }
+    .home-friction__intro { grid-column: 8 / -1; align-self: end; }
+    .home-friction__points li { grid-column: span 4; }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced, ready, settle } from '../../scripts/motion';
+
+  ready.then(() => {
+    // Studios (works with reduced motion too): hovering or focusing a studio type shows its case study
+    const studios = Array.from(document.querySelectorAll<HTMLElement>('[data-studio]'));
+    studios.forEach((item) => {
+      const activate = () => studios.forEach((s) => s.toggleAttribute('data-active', s === item));
+      const trigger = item.querySelector('[data-studio-trigger]');
+      trigger?.addEventListener('mouseenter', activate);
+      trigger?.addEventListener('focus', activate);
+    });
+
+    if (reduced) return;
+    const mm = gsap.matchMedia();
+
+    // Hero: the website mock floats at a different depth than the photo.
+    // It lags behind the scroll (moves down) so it never drifts up into the heading.
+    const mock = document.querySelector('[data-hero-mock]');
+    if (mock) {
+      gsap.to(mock, {
+        yPercent: 14, ease: 'none',
+        scrollTrigger: { trigger: '.home-hero', start: 'top top', end: 'bottom top', scrub: true },
+      });
+    }
+
+    // Directions: vertical scroll drives the horizontal track (desktop only)
+    mm.add('(min-width: 900px)', () => {
+      const pin = document.querySelector<HTMLElement>('[data-directions-pin]')!;
+      const track = document.querySelector<HTMLElement>('[data-directions-track]')!;
+      const bar = document.querySelector<HTMLElement>('[data-directions-bar]')!;
+      const distance = () => track.scrollWidth - window.innerWidth;
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: pin, start: 'top top', end: () => `+=${distance()}`,
+          pin: true, scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1,
+        },
+      })
+        .to(track, { x: () => -distance(), ease: 'none' }, 0)
+        .to(bar, { scaleX: 1, ease: 'none' }, 0);
+    });
+    mm.add('(max-width: 899px)', () => {
+      const vp = document.querySelector<HTMLElement>('[data-directions-viewport]')!;
+      const bar = document.querySelector<HTMLElement>('[data-directions-bar]')!;
+      const onScroll = () => {
+        const p = vp.scrollLeft / (vp.scrollWidth - vp.clientWidth || 1);
+        bar.style.transform = `scaleX(${p})`;
+      };
+      vp.addEventListener('scroll', onScroll, { passive: true });
+      return () => vp.removeEventListener('scroll', onScroll);
+    });
+
+    // Friction: the image opens from an inset frame to full width
+    const expand = document.querySelector('[data-expand]');
+    if (expand) {
+      gsap.fromTo(expand, { clipPath: 'inset(10% 12% 10% 12%)' }, {
+        clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
+        scrollTrigger: { trigger: expand, start: 'top 95%', end: 'center 55%', scrub: 0.4 },
+      });
+    }
+    settle();
+  });
+</script>

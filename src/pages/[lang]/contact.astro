@@ -1,0 +1,192 @@
+---
+import Base from '../../layouts/Base.astro';
+import Button from '../../components/Button.astro';
+import { site } from '../../data/site';
+import { langPaths, href, useContent, type Lang } from '../../i18n';
+
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+const t = useContent(lang);
+const c = t.contact;
+
+const fields = [
+  { name: 'name', label: c.fields.name, type: 'text', required: true, autocomplete: 'name' },
+  { name: 'studio', label: c.fields.studio, type: 'text', required: false, autocomplete: 'organization' },
+  { name: 'email', label: c.fields.email, type: 'email', required: true, autocomplete: 'email' },
+  { name: 'website', label: c.fields.website, type: 'url', required: true, autocomplete: 'url' },
+];
+---
+<Base lang={lang} title={t.meta.contact.title} description={t.meta.contact.description}>
+  <section class="wrap page-hero">
+    <div class="grid">
+      <h1 class="t-h1 page-hero__title" data-split="intro">{c.title}</h1>
+      <p class="t-lead t-muted page-hero__lead" data-fade="intro">{c.lead}</p>
+    </div>
+  </section>
+
+  <section class="wrap contact" aria-labelledby="contact-title">
+    <div class="grid contact__grid">
+      <div class="contact__aside">
+        <h2 id="contact-title" class="t-h3" data-split>{c.asideTitle}</h2>
+        <p class="t-muted" data-fade>{c.asideBody}</p>
+        <a href={`mailto:${site.email}`} class="link t-lead" data-fade>{site.email}</a>
+      </div>
+
+      <form
+        class="contact__form"
+        data-contact-form
+        data-endpoint={site.form.ajax}
+        data-lang={lang}
+        data-msg-missing={c.errors.missing}
+        data-msg-email={c.errors.email}
+        data-msg-url={c.errors.url}
+        data-msg-sending={c.sending}
+        data-msg-submit={c.submit}
+        action={site.form.action}
+        method="POST"
+        novalidate
+        data-stagger
+      >
+        <!-- Used only when JavaScript is off: FormSubmit posts, then redirects back here -->
+        <input type="hidden" name="_subject" value={`New enquiry (${lang.toUpperCase()}) from reframestudio.es`} />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value={new URL(href(lang, '/contact/?sent=1'), Astro.site).href} />
+        <!-- Spam trap: hidden from people, filled in by bots -->
+        <div class="contact__trap" aria-hidden="true">
+          <label for="_honey">{c.trap}</label>
+          <input id="_honey" type="text" name="_honey" tabindex="-1" autocomplete="off" />
+        </div>
+        {fields.map((f) => (
+          <div class="field">
+            <label for={f.name} class="t-label">{f.label}{f.required && <span aria-hidden="true"> *</span>}</label>
+            <input id={f.name} name={f.name} type={f.type} required={f.required} autocomplete={f.autocomplete} aria-describedby={`${f.name}-error`} />
+            <p class="field__error t-small" id={`${f.name}-error`}></p>
+          </div>
+        ))}
+        <div class="field">
+          <label for="message" class="t-label">{c.fields.message}</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <div class="contact__submit">
+          <Button type="submit" arrow data-submit>{c.submit}</Button>
+          <p class="t-small t-muted">{c.required}</p>
+        </div>
+        <p class="contact__error" data-form-error role="alert" hidden>
+          {c.sendError} <a href={`mailto:${site.email}`} class="link">{site.email}</a>.
+        </p>
+      </form>
+
+      <div class="contact__done" data-contact-done hidden tabindex="-1">
+        <p class="t-h3">{c.thanks}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .contact { padding-bottom: var(--s-section); }
+  .contact__grid { row-gap: var(--s-8); }
+  .contact__aside { display: grid; gap: var(--s-5); align-content: start; max-width: 30rem; }
+  .contact__aside .link { justify-self: start; }
+  .contact__form, .contact__done { display: grid; gap: var(--s-6); }
+  @media (min-width: 900px) {
+    .contact__aside { grid-column: 1 / span 5; position: sticky; top: calc(var(--header-h) + var(--s-5)); align-self: start; }
+    .contact__form, .contact__done { grid-column: 7 / -1; }
+  }
+
+  .contact__submit { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-4) var(--s-6); margin-top: var(--s-4); }
+  .contact__submit .btn[aria-busy="true"] { opacity: .55; pointer-events: none; }
+  .contact__error { padding-top: var(--s-4); border-top: 1px solid #a3402c; color: #a3402c; }
+  .contact__error[hidden], .contact__done[hidden] { display: none; }
+  .contact__trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const done = document.querySelector<HTMLElement>('[data-contact-done]');
+
+  const msg = form?.dataset ?? {};
+  const message = (input: HTMLInputElement) => {
+    if (input.validity.valueMissing) return msg.msgMissing!;
+    if (input.validity.typeMismatch && input.type === 'email') return msg.msgEmail!;
+    if (input.validity.typeMismatch && input.type === 'url') return msg.msgUrl!;
+    return '';
+  };
+  const check = (input: HTMLInputElement) => {
+    const msg = message(input);
+    const field = input.closest('.field')!;
+    field.toggleAttribute('data-invalid', !!msg);
+    input.setAttribute('aria-invalid', String(!!msg));
+    field.querySelector('.field__error')!.textContent = msg;
+    return !msg;
+  };
+
+  const errorBox = document.querySelector<HTMLElement>('[data-form-error]');
+  const submit = document.querySelector<HTMLButtonElement>('[data-submit]');
+  const fieldInputs = () => Array.from(form!.querySelectorAll<HTMLInputElement>('.field input'));
+  const value = (name: string) => (form!.elements.namedItem(name) as HTMLInputElement | null)?.value.trim() ?? '';
+  const openedAt = Date.now();
+
+  const showDone = () => {
+    form!.hidden = true;
+    if (done) { done.hidden = false; done.focus(); }
+  };
+
+  // Arriving back from the no-JavaScript fallback
+  if (new URLSearchParams(location.search).get('sent') === '1') showDone();
+
+  fieldInputs().forEach((i) => i.addEventListener('blur', () => i.value && check(i)));
+  form?.querySelector<HTMLInputElement>('#website')?.addEventListener('change', (e) => {
+    const i = e.target as HTMLInputElement;
+    if (i.value && !/^https?:\/\//.test(i.value)) i.value = `https://${i.value}`;
+  });
+
+  const setSending = (on: boolean) => {
+    if (!submit) return;
+    submit.setAttribute('aria-busy', String(on));
+    submit.disabled = on;
+    submit.querySelectorAll('.roll > span').forEach((s) => (s.textContent = (on ? msg.msgSending : msg.msgSubmit) ?? ''));
+  };
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (errorBox) errorBox.hidden = true;
+
+    const inputs = fieldInputs();
+    if (!inputs.map(check).every(Boolean)) {
+      inputs.find((i) => i.getAttribute('aria-invalid') === 'true')?.focus();
+      return;
+    }
+
+    // Bots fill the hidden field or submit instantly: pretend success, send nothing.
+    if (value('_honey') || Date.now() - openedAt < 2500) { showDone(); return; }
+
+    const studio = value('studio');
+    const name = value('name');
+    const body = new FormData();
+    body.append('_subject', `New enquiry (${(msg.lang ?? '').toUpperCase()}): ${studio || name}`);
+    body.append('_template', 'table');
+    body.append('_captcha', 'false');
+    body.append('_replyto', value('email'));
+    body.append('Name', name);
+    body.append('Studio', studio || '-');
+    body.append('Email', value('email'));
+    body.append('Website', value('website'));
+    body.append('What is not working', (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim() || '-');
+    body.append('Page', location.href);
+
+    setSending(true);
+    try {
+      const res = await fetch(form.dataset.endpoint!, { method: 'POST', headers: { Accept: 'application/json' }, body });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || data?.success === false || data?.success === 'false') throw new Error(data?.message || 'Delivery failed');
+      showDone();
+    } catch (err) {
+      console.error('[contact]', err);
+      if (errorBox) errorBox.hidden = false;
+    } finally {
+      setSending(false);
+    }
+  });
+</script>

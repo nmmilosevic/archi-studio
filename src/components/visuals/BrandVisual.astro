@@ -1,0 +1,59 @@
+---
+/** Brand refinement: a client type specimen and palette, built in code. */
+import { useContent, type Lang } from '../../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls } = Astro.props;
+const t = useContent(lang).services.visuals;
+const v = t.brand;
+const palette = ['#F2ECE2', '#DCCDB6', '#A9634A', '#6E6B4B', '#2E2C29'];
+const spacing = [4, 8, 16, 32, 64];
+---
+<figure class:list={['viz', 'viz-brand', cls]}>
+  <div class="viz__frame frame" role="img" aria-label={v.label}>
+    <div class="type">
+      <span class="aa" data-fade>Aa</span>
+      <div class="scale">
+        <p><span class="viz__label">{v.scale[0]} · 64</span><span class="s s--1">{v.sample}</span></p>
+        <p><span class="viz__label">{v.scale[1]} · 32</span><span class="s s--2">{v.sample}</span></p>
+        <p><span class="viz__label">{v.scale[2]} · 16</span><span class="s s--3">{v.body}</span></p>
+      </div>
+    </div>
+    <div class="spacing" aria-hidden="true">
+      {spacing.map((n) => <span class="space"><i style={`width:${n * 1.5}px;height:${n * 1.5}px`}></i><span class="viz__muted">{n}</span></span>)}
+    </div>
+    <ul class="swatches" data-stagger>
+      {palette.map((hex, i) => (
+        <li>
+          <span class="chip" style={`background:${hex}`}></span>
+          <span class="name">{v.colors[i]}</span>
+          <span class="viz__muted hex">{hex}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</figure>
+
+<style>
+  .frame { display: grid; gap: 1.75rem; background: var(--viz-paper); }
+  .type { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: end; }
+  .aa, .s--1, .s--2 { font-family: ui-serif, 'Iowan Old Style', 'Times New Roman', Georgia, serif; letter-spacing: -.02em; }
+  .aa { font-size: clamp(5rem, 3rem + 6vw, 9.5rem); line-height: .8; color: #2e2c29; }
+  .scale { display: grid; gap: .75rem; padding-bottom: .25rem; }
+  .scale p { display: grid; gap: .1rem; }
+  .s--1 { font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); line-height: 1; }
+  .s--2 { font-size: 1.25rem; line-height: 1.1; }
+  .s--3 { font-size: .875rem; color: #4a4741; }
+  .spacing { display: flex; align-items: end; gap: 1rem; }
+  .space { display: grid; justify-items: start; gap: .3rem; font-size: .6875rem; }
+  .space i { display: block; max-width: 96px; max-height: 96px; background: #a9634a; opacity: .85; }
+  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; }
+  .swatches li { display: grid; gap: .3rem; }
+  .chip { aspect-ratio: 3 / 4; box-shadow: inset 0 0 0 1px rgb(17 17 17 / .06); }
+  .name { font-weight: var(--fw-medium); font-size: .8125rem; }
+  .hex { font-size: .6875rem; }
+  @media (max-width: 599px) {
+    .type { grid-template-columns: 1fr; }
+    .swatches { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>

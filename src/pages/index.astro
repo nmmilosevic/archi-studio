@@ -1,0 +1,28 @@
+---
+/**
+ * Root: send visitors to their language. Browser language decides,
+ * Spanish is the fallback (same x-default as the live site).
+ */
+import { langs, defaultLang } from '../i18n';
+const target = `/${defaultLang}/`;
+---
+<!doctype html>
+<html lang={defaultLang}>
+  <head>
+    <meta charset="utf-8" />
+    <title>Reframe Studio</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL(target, Astro.site)} />
+    {langs.map((l) => <link rel="alternate" hreflang={l} href={new URL(`/${l}/`, Astro.site)} />)}
+    <link rel="alternate" hreflang="x-default" href={new URL(target, Astro.site)} />
+    <noscript><meta http-equiv="refresh" content={`0; url=${target}`} /></noscript>
+    <script is:inline define:vars={{ langs, defaultLang }}>
+      var pick = (navigator.languages || [navigator.language || ''])
+        .map(function (l) { return l.slice(0, 2).toLowerCase(); })
+        .find(function (l) { return langs.indexOf(l) !== -1; });
+      location.replace('/' + (pick || defaultLang) + '/' + location.hash);
+    </script>
+    <style>html { background: #f5f1eb; }</style>
+  </head>
+  <body></body>
+</html>

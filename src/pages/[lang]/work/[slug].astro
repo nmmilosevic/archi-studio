@@ -1,0 +1,189 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Media from '../../../components/Media.astro';
+import { projects } from '../../../data/site';
+import { langs, href, useContent, type Lang } from '../../../i18n';
+import { getImage } from 'astro:assets';
+
+export function getStaticPaths() {
+  return langs.flatMap((lang) => projects.map((p) => ({ params: { lang, slug: p.slug }, props: { base: p } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useContent(lang);
+const { base } = Astro.props as { base: (typeof projects)[number] };
+const p = t.projects[base.slug];
+const d = base.design;
+
+// Full-size versions for the lightbox
+const large = await Promise.all(base.gallery.map((image) => getImage({ src: image, width: 1800 })));
+---
+<Base lang={lang} title={`${p.title}, ${p.location.split(',')[0]} | Reframe Studio`} description={p.summary}>
+  <article>
+    <header class="wrap case-hero">
+      <a href={href(lang, '/work/')} class="link link--quiet case-hero__back" data-fade="intro">
+        <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="rotate:180deg"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" /></svg>
+        {t.ui.work}
+      </a>
+      <div class="grid case-hero__grid">
+        <h1 class="t-display case-hero__title" data-split="intro">{p.title}</h1>
+        <p class="t-lead case-hero__summary" data-fade="intro">{p.summary}</p>
+        <dl class="case-hero__meta t-small" data-stagger="intro">
+          <div><dt class="t-muted">{t.project.location}</dt><dd>{p.location}</dd></div>
+          <div><dt class="t-muted">{t.project.type}</dt><dd>{t.project.typeValue}</dd></div>
+          <div><dt class="t-muted">{t.project.published}</dt><dd>{t.project.publishedValue}</dd></div>
+          <div><dt class="t-muted">{t.project.updated}</dt><dd>{t.project.updatedValue}</dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <Media class="case-cover" src={base.cover} alt={t.project.coverAlt(p.title)} ratio="3 / 2" intro morph parallax={0.06} sizes="100vw" />
+    </div>
+
+    <section class="wrap section case-gallery">
+      <div class="grid">
+        {base.gallery.map((image, i) => (
+          <figure class="case-gallery__item">
+            <button type="button" class="case-gallery__open" data-lightbox={large[i].src} data-alt={`${p.title}: ${p.captions[i]}`} aria-label={`${t.project.enlarge} ${p.captions[i]}`}>
+              <Media src={image} alt={`${p.title}: ${p.captions[i]}`} ratio="3 / 2" sizes="(min-width: 900px) 50vw, 100vw" />
+            </button>
+            <figcaption class="t-small t-muted" data-fade>{p.captions[i]}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <!-- Design decisions: the redesign's own palette and type, then three
+         decisions you can see in the screenshots above. -->
+    <section class="wrap case-design" aria-labelledby="design-title">
+      <div class="grid">
+        <div class="case-design__head">
+          <h2 id="design-title" class="t-h2" data-split>{t.project.designTitle}</h2>
+          <p class="t-lead t-muted" data-fade>{t.project.designIntro}</p>
+        </div>
+        <div class="case-design__body">
+          <div
+            class:list={['case-design__spec', { 'is-dark': d.dark }]}
+            style={`--page:${d.palette[0]};--ink:${d.palette[d.palette.length - 1]}`}
+            data-fade
+          >
+            <div class="case-design__type">
+              <span class="case-design__label">{t.project.type}</span>
+              <p class:list={['case-design__sample', `case-design__sample--${d.family}`]}>{d.sample}</p>
+              <p class="t-small case-design__note">{p.typeNote}</p>
+            </div>
+            <div class="case-design__palette">
+              <span class="case-design__label">{t.project.palette}</span>
+              <ul>
+                {d.palette.map((hex, i) => (
+                  <li>
+                    <span class="case-design__chip" style={`background:${hex}`}></span>
+                    <span class="case-design__name">{p.paletteNames[i]}</span>
+                    <span class="case-design__hex">{hex}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <ul class="case-design__decisions list-marked" data-stagger>
+            {p.decisions.map((dec) => <li class="t-lead">{dec}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label={t.project.enlarged}>
+    <img alt="" />
+    <button type="button" class="lightbox__close link" data-lightbox-close>{t.project.close}</button>
+  </dialog>
+</Base>
+
+<style is:global>
+  .case-hero { padding-top: calc(var(--header-h) + var(--s-7)); padding-bottom: var(--s-8); }
+  .case-hero__back { margin-bottom: var(--s-8); }
+  .case-hero__grid { row-gap: var(--s-7); align-items: end; }
+  .case-hero__summary { max-width: 30rem; }
+  .case-hero__meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-5) var(--gutter); }
+  .case-hero__meta dd { margin-top: var(--s-1); }
+  @media (min-width: 900px) {
+    .case-hero__title { grid-column: 1 / span 8; }
+    .case-hero__summary { grid-column: 9 / -1; }
+    .case-hero__meta { grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .case-cover { view-transition-name: project-hero; }
+
+  .case-gallery .grid { row-gap: var(--s-7); }
+  .case-gallery__item { display: grid; gap: var(--s-4); }
+  .case-gallery__open { display: block; width: 100%; cursor: zoom-in; }
+  .case-gallery__open .media__inner { transition: transform 1.2s var(--ease-out); }
+  .case-gallery__open:hover .media__inner { transform: scale(1.03); }
+  @media (min-width: 900px) {
+    .case-gallery__item:nth-child(1) { grid-column: 1 / span 7; }
+    .case-gallery__item:nth-child(2) { grid-column: 8 / -1; margin-top: 30%; }
+  }
+
+  .case-design { padding-bottom: var(--s-section); }
+  .case-design .grid { row-gap: var(--s-7); }
+  .case-design__head { display: grid; gap: var(--s-4); align-content: start; max-width: 26rem; }
+  .case-design__body { display: grid; gap: var(--s-8); }
+
+  /* Spec card: painted in the redesign's own page colour and ink */
+  .case-design__spec {
+    display: grid; gap: var(--s-7);
+    padding: clamp(1.25rem, .9rem + 1.6vw, 2.75rem);
+    background: var(--page); color: var(--ink);
+  }
+  .case-design__label { font-size: .75rem; font-weight: var(--fw-medium); opacity: .6; }
+  .case-design__type { display: grid; gap: var(--s-3); }
+  .case-design__sample { font-size: clamp(2.5rem, 1.6rem + 3vw, 4.75rem); line-height: 1; }
+  .case-design__sample--serif { font-family: ui-serif, 'Iowan Old Style', 'Times New Roman', Georgia, serif; font-weight: 400; letter-spacing: -.02em; }
+  .case-design__sample--sans { font-weight: var(--fw-semibold); letter-spacing: -.035em; }
+  .case-design__note { max-width: 32rem; opacity: .8; }
+  .case-design__palette { display: grid; gap: var(--s-3); }
+  .case-design__palette ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr)); gap: .5rem; }
+  .case-design__palette li { display: grid; gap: .3rem; }
+  .case-design__chip { aspect-ratio: 4 / 3; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent); }
+  .case-design__name { font-size: .8125rem; font-weight: var(--fw-medium); }
+  .case-design__hex { font-size: .6875rem; opacity: .6; }
+
+  .case-design__decisions { gap: var(--s-6); max-width: 46rem; }
+
+  @media (min-width: 900px) {
+    .case-design__head { grid-column: 1 / span 4; position: sticky; top: calc(var(--header-h) + var(--s-5)); align-self: start; }
+    .case-design__body { grid-column: 6 / -1; }
+  }
+
+  .lightbox {
+    margin: auto; padding: 0; border: 0; background: transparent;
+    max-width: 92vw; max-height: 92svh; overflow: visible;
+    opacity: 0; scale: .97;
+    transition: opacity var(--d-base) var(--ease-soft), scale var(--d-base) var(--ease-out), overlay var(--d-base) allow-discrete, display var(--d-base) allow-discrete;
+  }
+  .lightbox[open] { opacity: 1; scale: 1; }
+  @starting-style { .lightbox[open] { opacity: 0; scale: .97; } }
+  .lightbox::backdrop { background: rgb(11 11 11 / 0); transition: background var(--d-base) var(--ease-soft), overlay var(--d-base) allow-discrete, display var(--d-base) allow-discrete; }
+  .lightbox[open]::backdrop { background: rgb(11 11 11 / .9); }
+  @starting-style { .lightbox[open]::backdrop { background: rgb(11 11 11 / 0); } }
+  .lightbox img { max-width: 92vw; max-height: 86svh; width: auto; height: auto; }
+  .lightbox__close { position: absolute; top: calc(100% + var(--s-3)); right: 0; color: var(--c-stone); }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox-dialog]');
+  const img = dialog?.querySelector('img');
+  document.querySelectorAll<HTMLButtonElement>('[data-lightbox]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (!dialog || !img) return;
+      img.src = b.dataset.lightbox!;
+      img.alt = b.dataset.alt ?? '';
+      dialog.showModal();
+      window.lenis?.stop();
+    }),
+  );
+  dialog?.addEventListener('close', () => window.lenis?.start());
+  dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+  dialog?.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
+</script>

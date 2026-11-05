@@ -1,0 +1,70 @@
+---
+/** Portfolio systems: the content editor on the left builds the project page on the right. */
+import { useContent, type Lang } from '../../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls } = Astro.props;
+const t = useContent(lang).services.visuals;
+const v = t.portfolio;
+const [project, location, type, materials] = v.values;
+---
+<figure class:list={['viz', 'viz-cms', cls]} data-viz-cms>
+  <div class="viz__frame frame" role="img" aria-label={v.label}>
+    <div class="pane pane--editor">
+      <p class="viz__label">{v.editor}</p>
+      {v.fields.map((f, i) => (
+        <div class="field">
+          <span class="viz__label">{f}</span>
+          <span class="value" data-cms-in>{v.values[i]}</span>
+        </div>
+      ))}
+      <div class="field">
+        <span class="viz__label">{v.images}</span>
+        <span class="thumbs" data-cms-in><i class="tone tone--a"></i><i class="tone tone--b"></i><i class="tone tone--c"></i></span>
+      </div>
+      <span class="publish" data-cms-in>{v.publish}</span>
+    </div>
+
+    <div class="pane pane--page">
+      <p class="viz__label">{v.page}</p>
+      <div class="page">
+        <i class="tone tone--a page__hero" data-cms-out></i>
+        <p class="page__title" data-cms-out>{project}</p>
+        <p class="viz__muted" data-cms-out>{location} · {type}</p>
+        <p class="chips" data-cms-out>{materials.split(/,\s*/).map((m) => <span>{m}</span>)}</p>
+        <span class="page__grid" data-cms-out><i class="tone tone--b"></i><i class="tone tone--c"></i><i class="tone tone--a"></i></span>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .frame { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1rem; }
+  .pane { display: grid; gap: .625rem; align-content: start; }
+  .pane--editor { padding: 1rem; background: var(--viz-paper); box-shadow: 0 0 0 1px var(--viz-line); }
+  .field { display: grid; gap: .2rem; padding: .5rem .625rem; background: var(--viz-panel); }
+  .value { font-weight: var(--fw-medium); }
+  .thumbs { display: flex; gap: .375rem; }
+  .thumbs i { width: 2.25rem; aspect-ratio: 1; }
+  .publish {
+    justify-self: start; margin-top: .25rem; padding: .5rem .875rem;
+    background: var(--viz-clay); color: var(--viz-paper); font-weight: var(--fw-medium);
+  }
+  .page { display: grid; gap: .5rem; padding: 1rem; background: var(--viz-paper); box-shadow: 0 0 0 1px var(--viz-line); }
+  .page__hero { aspect-ratio: 16 / 9; }
+  .page__title { font-family: ui-serif, 'Iowan Old Style', Georgia, serif; font-size: 1.5rem; line-height: 1.1; letter-spacing: -.01em; margin-top: .25rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+  .chips span { padding: .2rem .45rem; background: var(--viz-panel); font-size: .75rem; }
+  .page__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .3rem; }
+  .page__grid i { aspect-ratio: 4 / 5; }
+
+  /* Material-toned placeholders instead of reused photos */
+  .tone { display: block; }
+  .tone--a { background: var(--viz-tone-stone); }
+  .tone--b { background: var(--viz-tone-sage); }
+  .tone--c { background: var(--viz-tone-clay); }
+
+  @media (max-width: 599px) {
+    .frame { grid-template-columns: 1fr; }
+  }
+</style>

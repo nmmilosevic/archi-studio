@@ -1,0 +1,48 @@
+---
+import Button from './Button.astro';
+import { useContent, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const t = useContent(Astro.props.lang);
+---
+<aside class="cookie" data-cookie hidden aria-label={t.cookie.title}>
+  <p class="t-h4">{t.cookie.title}</p>
+  <p class="t-small t-muted">{t.cookie.body}</p>
+  <div class="cookie__actions">
+    <Button size="small" data-cookie-choice="all">{t.cookie.accept}</Button>
+    <Button size="small" variant="outline" data-cookie-choice="essential">{t.cookie.reject}</Button>
+  </div>
+</aside>
+
+<style>
+  .cookie {
+    position: fixed; z-index: 60;
+    right: var(--margin); bottom: var(--margin);
+    width: min(24rem, calc(100vw - var(--margin) * 2));
+    display: grid; gap: var(--s-3);
+    padding: var(--s-5);
+    background: var(--c-stone); color: var(--c-ink);
+    box-shadow: 0 0 0 1px var(--c-line), 0 24px 48px -24px rgb(17 17 17 / .18);
+    transition: opacity var(--d-base) var(--ease-soft), transform var(--d-base) var(--ease-out);
+  }
+  .cookie[hidden] { display: none; }
+  .cookie[data-leaving] { opacity: 0; transform: translateY(1rem); }
+  .cookie__actions { display: flex; gap: var(--s-3); margin-top: var(--s-2); }
+</style>
+
+<script>
+  const KEY = 'reframe:cookies';
+  const el = document.querySelector<HTMLElement>('[data-cookie]')!;
+  const show = () => { el.hidden = false; el.removeAttribute('data-leaving'); };
+  const hide = () => {
+    el.setAttribute('data-leaving', '');
+    setTimeout(() => (el.hidden = true), 450);
+  };
+  if (!localStorage.getItem(KEY)) setTimeout(show, 1600);
+  el.querySelectorAll<HTMLElement>('[data-cookie-choice]').forEach((b) =>
+    b.addEventListener('click', () => {
+      localStorage.setItem(KEY, b.dataset.cookieChoice!);
+      hide();
+    }),
+  );
+  document.querySelectorAll('[data-cookie-open]').forEach((b) => b.addEventListener('click', show));
+</script>

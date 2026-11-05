@@ -1,0 +1,219 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import Media from '../components/Media.astro';
+import { img } from '../data/site';
+
+const colors = [
+  { name: 'Stone', token: '--c-stone', hex: '#F5F1EB', role: 'Page background' },
+  { name: 'Stone deep', token: '--c-stone-deep', hex: '#E7E0D5', role: 'Secondary surface, pricing, engagement' },
+  { name: 'Line', token: '--c-line', hex: '#D8D2CA', role: 'Hairlines, input rules' },
+  { name: 'Sand', token: '--c-sand', hex: '#C6A98B', role: 'Accent on dark' },
+  { name: 'Bronze', token: '--c-bronze', hex: '#8E745C', role: 'Accent on light, focus ring, hover' },
+  { name: 'Muted', token: '--c-muted', hex: '#6E6A64', role: 'Secondary text (4.8:1 on stone)' },
+  { name: 'Ink', token: '--c-ink', hex: '#111111', role: 'Text, primary button' },
+  { name: 'Charcoal', token: '--c-charcoal', hex: '#0B0B0B', role: 'Dark sections, footer, menu' },
+];
+
+const type = [
+  { cls: 't-display', token: '--fs-display', range: '48 → 148px', spec: '500 · 0.92 · −4.5%', sample: 'Considered online' },
+  { cls: 't-h1', token: '--fs-h1', range: '42 → 112px', spec: '500 · 0.92 · −4.5%', sample: 'Your studio already feels premium.' },
+  { cls: 't-h2', token: '--fs-h2', range: '34 → 76px', spec: '500 · 1.0 · −3.5%', sample: 'Small friction reduces trust.' },
+  { cls: 't-h3', token: '--fs-h3', range: '24 → 38px', spec: '500 · 1.2 · −2%', sample: 'Design beyond your website.' },
+  { cls: 't-h4', token: '--fs-h4', range: '19 → 24px', spec: '500 · 1.2 · −2%', sample: 'Portfolio structure' },
+  { cls: 't-lead', token: '--fs-lead', range: '18 → 23px', spec: '400 · 1.42 · −1.2%', sample: 'Prospective clients read a website much like they read a space.' },
+  { cls: 't-body', token: '--fs-body', range: '16px', spec: '400 · 1.55', sample: 'Every project starts with a review of your current site, positioning, and goals.' },
+  { cls: 't-small', token: '--fs-small', range: '14px', spec: '400 · 1.5', sample: 'Quoted based on scope' },
+  { cls: 't-label', token: '--fs-label', range: '13px', spec: '500 · 1.3', sample: 'One-time payment' },
+];
+
+const spacing = [
+  ['--s-1', '4'], ['--s-2', '8'], ['--s-3', '12'], ['--s-4', '16'], ['--s-5', '24'], ['--s-6', '32'],
+  ['--s-7', '48'], ['--s-8', '48 → 80'], ['--s-9', '72 → 128'], ['--s-section', '96 → 208'],
+];
+
+const motion = [
+  ['Text', 'Heading lines rise out of a mask', 'yPercent 110 → 0', '1.15s', 'expo.out', 'stagger .085s per line'],
+  ['Copy', 'Paragraphs, buttons, list rows fade up', 'y 28px → 0, opacity 0 → 1', '1.1s', 'expo.out', 'stagger .075s in groups'],
+  ['Image', 'Frame opens with a clip curtain, image settles', 'clip inset 100% → 0, scale 1.22 → 1', '1.3s / 1.9s', 'expo.inOut / expo.out', 'triggers at 92% viewport'],
+  ['Depth', 'Inner image drifts against scroll', '± up to 6% of frame', 'scrubbed', 'linear', 'max one per section'],
+  ['Page', 'Old page sinks, new page rises behind a curtain', 'clip inset 100% → 0', '0.9s', 'cubic-bezier(.76,0,.24,1)', 'native View Transitions'],
+  ['Morph', 'Project image becomes the case-study hero', 'shared element', '0.9s', 'same as page', 'Work → case study'],
+  ['Hover', 'Labels roll, underlines draw, images breathe', 'translateY 110%, scale 1.035', '0.22 – 1.2s', 'expo.out', 'never on touch-only info'],
+];
+---
+<Base lang="en" alternates={false} title="Design system | Reframe Studio" description="Reframe Studio design system: tokens, grid, type, components and motion." closing={false}>
+  <section class="wrap page-hero">
+    <div class="grid">
+      <h1 class="t-h1 page-hero__title" data-split="intro">Design system</h1>
+      <p class="t-lead t-muted page-hero__lead" data-fade="intro">The rules behind every page. Tokens live in <code>src/styles/tokens.css</code>; motion in <code>src/scripts/motion.ts</code>. Press G anywhere on the site to see the grid.</p>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-principles">
+    <div class="grid">
+      <h2 id="ds-principles" class="t-h2 ds-title">Principles</h2>
+      <ul class="ds-body ds-rules rows">
+        <li><strong>Work first.</strong> <span class="t-muted">Images carry the page; type frames them. No decorative shapes, gradients, badges or icons.</span></li>
+        <li><strong>One idea per section.</strong> <span class="t-muted">A heading, a short paragraph, one action. Standalone items go on flat cards; plain lists use square markers; lines only where they carry meaning.</span></li>
+        <li><strong>Square and quiet.</strong> <span class="t-muted">Zero radius, one weight family, two text colours per surface.</span></li>
+        <li><strong>Motion confirms, never performs.</strong> <span class="t-muted">Everything enters once, from below. Only images respond to scroll. Nothing loops.</span></li>
+        <li><strong>No ornamental numbering.</strong> <span class="t-muted">No section counters, eyebrow tags or index labels. Hierarchy comes from size and space.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-colour">
+    <div class="grid">
+      <h2 id="ds-colour" class="t-h2 ds-title">Colour</h2>
+      <ul class="ds-body ds-swatches">
+        {colors.map((c) => (
+          <li>
+            <span class="ds-swatch" style={`background:var(${c.token})`}></span>
+            <span class="t-h4">{c.name}</span>
+            <span class="t-small t-muted">{c.hex} · <code>{c.token}</code></span>
+            <span class="t-small">{c.role}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-type">
+    <div class="grid">
+      <h2 id="ds-type" class="t-h2 ds-title">Type</h2>
+      <div class="ds-body">
+        <p class="t-muted ds-note">General Sans, 400 / 500. Fluid sizes between 375px and 1680px viewports. Headings use balanced wrapping, body text uses pretty wrapping.</p>
+        <ul class="rows ds-type">
+          {type.map((t) => (
+            <li>
+              <p class={t.cls}>{t.sample}</p>
+              <p class="t-small t-muted"><code>.{t.cls}</code> · {t.range} · {t.spec}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-grid">
+    <div class="grid">
+      <h2 id="ds-grid" class="t-h2 ds-title">Grid</h2>
+      <div class="ds-body">
+        <p class="t-muted ds-note">12 columns on desktop, 6 under 900px, 4 under 600px. Margin 20 → 64px, gutter 16 → 28px, content capped at 1760px. Layouts alternate between full-width imagery and asymmetric 7 / 5 and 5 / 7 splits.</p>
+        <div class="grid ds-cols" aria-hidden="true">
+          {Array.from({ length: 12 }).map(() => <span></span>)}
+        </div>
+        <div class="grid ds-cols ds-cols--example" aria-hidden="true">
+          <span style="grid-column: 1 / span 7">Heading · 7</span>
+          <span style="grid-column: 9 / -1">Copy · 4</span>
+          <span style="grid-column: 1 / span 5">Image · 5</span>
+          <span style="grid-column: 7 / -1">Offer · 6</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-space">
+    <div class="grid">
+      <h2 id="ds-space" class="t-h2 ds-title">Spacing</h2>
+      <ul class="ds-body ds-space">
+        {spacing.map(([token, px]) => (
+          <li>
+            <span class="ds-bar" style={`width:var(${token})`}></span>
+            <code class="t-small">{token}</code>
+            <span class="t-small t-muted">{px}px</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-components">
+    <div class="grid">
+      <h2 id="ds-components" class="t-h2 ds-title">Components</h2>
+      <div class="ds-body ds-components">
+        <div class="ds-row">
+          <Button arrow>Primary action</Button>
+          <Button variant="outline">Secondary</Button>
+          <Button size="small">Small</Button>
+          <Button variant="link" arrow>Text link</Button>
+        </div>
+        <div class="ds-row ds-row--dark" data-theme="dark">
+          <Button arrow>Primary on dark</Button>
+          <Button variant="link" arrow>Text link</Button>
+        </div>
+        <div class="ds-cards">
+          <div class="card"><p class="t-h4">Card</p><p class="t-small t-muted">On the page background. Offers, services, facts.</p></div>
+          <div class="card" style="background:var(--c-stone-deep)"><p class="t-h4">On surface</p><p class="t-small t-muted">Inside a stone-deep section, use .card--raised.</p></div>
+        </div>
+        <ul class="list-marked">
+          <li>Marked list: plain items</li>
+          <li>Square bronze marker, no lines</li>
+        </ul>
+        <div class="field ds-field">
+          <label for="ds-input" class="t-label">Field label *</label>
+          <input id="ds-input" type="text" placeholder="Underline input" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap ds-section" aria-labelledby="ds-motion">
+    <div class="grid">
+      <h2 id="ds-motion" class="t-h2 ds-title">Motion</h2>
+      <div class="ds-body">
+        <p class="t-muted ds-note">Respects reduced-motion: smooth scroll, reveals and page transitions are all disabled, content shows immediately.</p>
+        <div class="ds-table" role="table" aria-label="Motion tokens">
+          <div role="row" class="ds-table__head t-label t-muted">
+            <span role="columnheader">Pattern</span><span role="columnheader">Behaviour</span><span role="columnheader">Values</span><span role="columnheader">Duration</span><span role="columnheader">Ease</span><span role="columnheader">Notes</span>
+          </div>
+          {motion.map((m) => (
+            <div role="row" class="t-small">{m.map((v) => <span role="cell">{v}</span>)}</div>
+          ))}
+        </div>
+        <div class="ds-demo">
+          <p class="t-h2" data-split>Lines rise out of a mask, one after another.</p>
+          <Media src={img.friction} alt="" ratio="16 / 9" parallax={0.08} sizes="(min-width: 900px) 58vw, 100vw" />
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .ds-section { padding-block: var(--s-9); border-top: var(--hairline); }
+  .ds-section .grid { row-gap: var(--s-6); }
+  .ds-note { max-width: 40rem; margin-bottom: var(--s-6); }
+  .ds-section code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85em; }
+  @media (min-width: 900px) {
+    .ds-title { grid-column: 1 / span 4; align-self: start; position: sticky; top: calc(var(--header-h) + var(--s-5)); }
+    .ds-body { grid-column: 5 / -1; }
+  }
+  .ds-rules li { display: grid; gap: var(--s-1); padding-block: var(--s-4); }
+
+  .ds-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--s-6) var(--gutter); }
+  .ds-swatches li { display: grid; gap: var(--s-1); }
+  .ds-swatch { aspect-ratio: 4 / 3; margin-bottom: var(--s-3); box-shadow: inset 0 0 0 1px rgb(17 17 17 / .08); }
+
+  .ds-type li { display: grid; gap: var(--s-3); padding-block: var(--s-6); }
+
+  .ds-cols { height: 6rem; margin-bottom: var(--s-3); }
+  .ds-cols > span { grid-column: auto; background: rgb(142 116 92 / .12); }
+  .ds-cols--example { height: auto; row-gap: var(--s-3); }
+  .ds-cols--example > span { padding: var(--s-3); font-size: var(--fs-small); background: var(--c-stone-deep); }
+
+  .ds-space { display: grid; gap: var(--s-3); }
+  .ds-space li { display: grid; grid-template-columns: 14rem 8rem 1fr; align-items: center; gap: var(--s-4); }
+  .ds-bar { height: .75rem; background: var(--c-bronze); }
+
+  .ds-components { display: grid; gap: var(--s-7); }
+  .ds-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-5); }
+  .ds-row--dark { padding: var(--s-6); }
+  .ds-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--gutter); }
+  .ds-field { max-width: 28rem; }
+
+  .ds-table { display: grid; margin-bottom: var(--s-8); overflow-x: auto; }
+  .ds-table > div { display: grid; grid-template-columns: 6rem 1.6fr 1.4fr 6rem 1.2fr 1.2fr; gap: var(--s-4); padding-block: var(--s-3); border-top: var(--hairline); min-width: 52rem; }
+  .ds-demo { display: grid; gap: var(--s-7); }
+</style>
