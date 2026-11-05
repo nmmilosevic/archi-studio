@@ -142,7 +142,7 @@ const en = {
     typeValue: 'Conceptual redesign study',
     publishedValue: '7 May 2026',
     updatedValue: '30 July 2026',
-    designTitle: "Design decisions",
+    designTitle: "Design *decisions*.",
     designIntro: "What we chose for this studio, and why.",
     palette: "Palette",
     type: "Type",

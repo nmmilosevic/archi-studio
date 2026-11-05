@@ -141,7 +141,7 @@ const fr: Content = {
     typeValue: 'Étude conceptuelle de refonte',
     publishedValue: '7 mai 2026',
     updatedValue: '30 juillet 2026',
-    designTitle: "Choix de design",
+    designTitle: "Choix de *design*.",
     designIntro: "Ce que nous avons choisi pour ce studio, et pourquoi.",
     palette: "Palette",
     type: "Typographie",

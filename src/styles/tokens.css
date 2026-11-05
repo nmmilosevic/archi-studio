@@ -33,9 +33,6 @@
   --viz-muted: #8f8b84;
   --viz-clay: #ff5a1f;
   --viz-sage: #3ccf8e;
-  --viz-tone-stone: linear-gradient(160deg, #e9e4dc 0%, #cfc7bb 60%, #b3aa9d 100%);
-  --viz-tone-sage: linear-gradient(200deg, #dfe6df 0%, #b8c7bb 60%, #93a596 100%);
-  --viz-tone-clay: linear-gradient(140deg, #ffe4d6 0%, #ffb594 55%, #ff8a5c 100%);
 
   /* Semantic aliases (light theme default) */
   --bg: var(--c-stone);

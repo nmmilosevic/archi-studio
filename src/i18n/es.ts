@@ -141,7 +141,7 @@ const es: Content = {
     typeValue: 'Estudio conceptual de rediseño',
     publishedValue: '7 de mayo de 2026',
     updatedValue: '30 de julio de 2026',
-    designTitle: "Decisiones de diseño",
+    designTitle: "Decisiones de *diseño*.",
     designIntro: "Qué elegimos para este estudio y por qué.",
     palette: "Paleta",
     type: "Tipografía",
