@@ -111,7 +111,7 @@ const beyondIcons = [
     </ul>
   </section>
 
-  <!-- Pricing: one 12-column card grid. Price (8) + included (4), then the
+  <!-- Pricing: open price (8) + included list (4), then the
        three extra services (4 + 4 + 4), so every card edge lines up. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
@@ -121,14 +121,14 @@ const beyondIcons = [
       </div>
 
       <div class="grid cards">
-        <div class="card card--raised span-8 home-pricing__offer" data-fade>
+        <div class="span-8 home-pricing__offer" data-fade>
           <div>
             <p class="t-display home-pricing__price">{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
           </div>
           <div><Button href={contact} arrow>{h.pricing.action}</Button></div>
         </div>
-        <div class="card card--raised span-4 home-pricing__included" data-fade>
+        <div class="span-4 home-pricing__included" data-fade>
           <p class="t-label t-muted">{h.pricing.included}</p>
           <ul class="list-marked">
             {h.pricing.includes.map((i) => <li>{i}</li>)}
@@ -163,7 +163,7 @@ const beyondIcons = [
       <p class="t-muted" data-fade>{h.faq.aside}</p>
     </div>
     <div class="grid cards">
-      <aside class="card card--raised span-4 home-faq__card" data-fade>
+      <aside class="span-4 home-faq__card" data-fade>
         <p class="t-h4">{h.faq.cardTitle}</p>
         <p class="t-muted">{h.faq.cardBody}</p>
         <div><Button href={contact} arrow>{h.faq.cardAction}</Button></div>
@@ -291,11 +291,10 @@ const beyondIcons = [
   }
 
   /* Pricing */
-  .home-pricing { background: var(--c-stone-deep); }
-  .home-pricing__offer { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--s-7); }
+  .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-6); }
   .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
   .home-pricing__terms { margin-top: var(--s-3); }
-  .home-pricing__included { gap: var(--s-5); }
+  .home-pricing__included { display: grid; align-content: start; gap: var(--s-5); padding-top: var(--s-2); }
   .home-pricing__more { margin-top: var(--s-9); margin-bottom: var(--s-6); }
   .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
   .home-beyond__icon { --icon-bg: var(--c-raised); margin-bottom: var(--s-3); }
@@ -307,12 +306,12 @@ const beyondIcons = [
   .home-beyond__foot .link { margin-top: var(--s-3); }
 
   /* Questions */
-  .home-faq__card { align-content: start; gap: var(--s-4); }
-  .home-faq__list { display: grid; gap: var(--s-2); }
-  .home-faq__item { border-radius: var(--radius); background: var(--c-stone-deep); }
+  .home-faq__card { display: grid; align-content: start; justify-items: start; gap: var(--s-4); max-width: 24rem; }
+  .home-faq__list { display: grid; border-top: 1px solid var(--c-line); }
+  .home-faq__item { border-bottom: 1px solid var(--c-line); }
   .home-faq__item summary {
     display: flex; justify-content: space-between; align-items: center; gap: var(--s-5);
-    padding: var(--s-5) clamp(1.25rem, .9rem + 1.2vw, 2rem);
+    padding-block: var(--s-6);
     cursor: pointer; list-style: none;
   }
   .home-faq__item summary::-webkit-details-marker { display: none; }
@@ -328,7 +327,7 @@ const beyondIcons = [
   .home-faq__toggle::after { rotate: 90deg; }
   .home-faq__item[open] .home-faq__toggle { background: var(--accent); color: var(--c-black); }
   .home-faq__item[open] .home-faq__toggle::after { rotate: 0deg; opacity: 0; }
-  .home-faq__answer { padding: 0 clamp(1.25rem, .9rem + 1.2vw, 2rem) var(--s-6); max-width: 46rem; }
+  .home-faq__answer { padding-bottom: var(--s-6); max-width: 46rem; }
   /* Smooth open/close where supported */
   .home-faq__item { interpolate-size: allow-keywords; }
   .home-faq__item::details-content { height: 0; overflow: clip; transition: height .5s var(--ease-out), content-visibility .5s allow-discrete; }
