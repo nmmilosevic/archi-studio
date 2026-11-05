@@ -259,10 +259,9 @@ const stepIcons = [
     background: linear-gradient(to right, transparent, var(--c-line) var(--margin), var(--c-line) calc(100% - var(--margin)), transparent);
   }
   @media (min-width: 900px) {
-    .svc-between__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; }
-    .svc-between__item { padding: var(--s-6); }
-    .svc-between__item:nth-child(3n+1) { padding-left: 0; }
-    .svc-between__item:nth-child(3n) { padding-right: 0; }
+    /* 4 + 4 + 4 columns with the real gutter, so every item starts on a column line */
+    .svc-between__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); grid-auto-rows: 1fr; }
+    .svc-between__item { padding: var(--s-6) 0; }
     .svc-between__item + .svc-between__item::before { content: none; }
     /* Two vertical lines between the columns */
     .svc-between__grid::before, .svc-between__grid::after {
@@ -270,12 +269,13 @@ const stepIcons = [
       top: calc(var(--ext) * -1); bottom: calc(var(--ext) * -1);
       background: linear-gradient(to bottom, transparent, var(--c-line) var(--ext), var(--c-line) calc(100% - var(--ext)), transparent);
     }
-    .svc-between__grid::before { left: calc(100% / 3); }
-    .svc-between__grid::after { left: calc(200% / 3); }
+    /* centred in the two gutters */
+    .svc-between__grid::before { left: calc((100% - var(--gutter) * 2) / 3 + var(--gutter) / 2); }
+    .svc-between__grid::after { left: calc((100% - var(--gutter) * 2) / 3 * 2 + var(--gutter) * 1.5); }
     /* One horizontal line between the two rows, across all three columns */
     .svc-between__item:nth-child(4)::before {
       content: ''; position: absolute; top: 0; height: 1px;
-      left: calc(var(--ext) * -1); width: calc(300% + var(--ext) * 2);
+      left: calc(var(--ext) * -1); width: calc(300% + var(--gutter) * 2 + var(--ext) * 2);
       background: linear-gradient(to right, transparent, var(--c-line) var(--ext), var(--c-line) calc(100% - var(--ext)), transparent);
     }
   }

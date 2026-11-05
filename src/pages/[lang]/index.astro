@@ -409,9 +409,10 @@ const includedIcons = [
   .home-included {
     --ext: min(var(--s-8), var(--margin));
     --fade-line: var(--c-line);
-    position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr;
+    position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); grid-auto-rows: 1fr;
   }
-  .home-included > li { position: relative; padding: var(--s-6); }
+  /* 3 + 3 columns with the real gutter, so the second column starts on a column line */
+  .home-included > li { position: relative; padding: var(--s-6) 0; }
   /* Vertical line between the two columns */
   .home-included::before {
     content: ''; position: absolute; left: 50%; width: 1px;
@@ -436,11 +437,9 @@ const includedIcons = [
   /* Horizontal lines above rows 2 and 3, spanning both columns */
   .home-included > li:nth-child(odd):nth-child(n+3)::before {
     content: ''; position: absolute; top: 0; height: 1px;
-    left: calc(var(--ext) * -1); width: calc(200% + var(--ext) * 2);
+    left: calc(var(--ext) * -1); width: calc(200% + var(--gutter) + var(--ext) * 2);
     background: linear-gradient(to right, transparent, var(--fade-line) var(--ext), var(--fade-line) calc(100% - var(--ext)), transparent);
   }
-  .home-included > li:nth-child(odd) { padding-left: 0; }
-  .home-included > li:nth-child(even) { padding-right: 0; }
   /* Same padding on every cell and content pinned to the top, so all six cells match */
   .home-included__item {
     display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-4); row-gap: var(--s-2);
