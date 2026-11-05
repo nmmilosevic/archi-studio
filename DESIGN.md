@@ -28,8 +28,8 @@ All tokens live in `src/styles/tokens.css`. Components only use semantic aliases
 | `--c-line` | #2A2A2A | Hairlines, input rules |
 | `--c-muted` | #9B978F | Secondary text |
 | `--c-ink` | #F4F1EA | Text, primary button (warm paper) |
-| `--c-bronze` | #7C6CFF | Indigo-violet: the one accent |
-| `--c-sand` | #C9C2FF | Lavender: soft accent |
+| `--c-bronze` | #CDBF9F | Champagne: the one accent |
+| `--c-sand` | #E6DCC8 | Light champagne: soft accent |
 
 Token names are kept from v1 so components didn't change: read them by role ("stone" = page, "ink" = text).
 
