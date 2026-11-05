@@ -1,0 +1,152 @@
+---
+/** Web: a laptop and a phone on the table showing the same studio site.
+    The lid opens, the screen wakes, the page builds itself, then the phone is set down.
+    No photos: the hero "image" is a small drawn villa in the brand palette.
+    Shadows and lift come from .obj in global.css. */
+import { useContent, type Lang } from '../../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls } = Astro.props;
+const v = useContent(lang).services.visuals.web;
+const tones = ['#B5603F', '#5F6447', '#D8C7AE'];
+---
+<figure class:list={['vz', 'vz-web', 'obj-scene', cls]} data-vz-web role="img" aria-label={v.label}>
+  <div class="stage obj-table">
+    <!-- Laptop -->
+    <div class="laptop" data-laptop>
+      <div class="lid obj" data-lid>
+        <span class="cam"></span>
+        <div class="display" data-display>
+          <div class="site">
+            <div class="site__nav" data-build>
+              <span class="logo">AUREA</span>
+              <span class="nav">{v.nav.map((n) => <span>{n}</span>)}</span>
+            </div>
+            <div class="site__hero">
+              <div class="site__copy" data-build>
+                <span class="h1">{v.headline}</span>
+                <span class="cta">{v.cta}</span>
+              </div>
+              <svg class="villa" viewBox="0 0 160 110" aria-hidden="true" data-photo>
+                <rect width="160" height="110" fill="#E6DCC8" />
+                <circle cx="128" cy="24" r="9" fill="#F4EFE6" />
+                <rect y="84" width="160" height="26" fill="#CFC5B3" />
+                <rect x="18" y="52" width="86" height="34" fill="#F7F3EC" />
+                <rect x="48" y="34" width="92" height="20" fill="#FBF8F2" />
+                <rect x="48" y="52" width="92" height="3" fill="#D8CFC0" />
+                <rect x="58" y="60" width="38" height="24" fill="#23211E" />
+                <rect x="112" y="60" width="16" height="24" fill="#2F2C28" />
+                <rect x="20" y="88" width="64" height="6" fill="#9DB0AE" />
+                <circle cx="14" cy="66" r="13" fill="#5F6447" />
+                <rect x="13" y="76" width="2" height="10" fill="#4A4E37" />
+              </svg>
+            </div>
+            <ul class="site__grid" data-build>
+              {v.projects.map((p, i) => <li><span class="thumb" style={`background:${tones[i]}`}></span><span>{p}</span></li>)}
+            </ul>
+          </div>
+          <span class="glare" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="base obj"><span class="notch"></span></div>
+    </div>
+
+    <!-- Phone: the same site, mobile -->
+    <div class="phone obj" data-phone>
+      <div class="screen">
+        <span class="island"></span>
+        <div class="m-site" data-scroll>
+          <div class="m-nav"><span class="logo">AUREA</span><span class="burger"><i></i><i></i></span></div>
+          <span class="m-h1">{v.headline}</span>
+          <span class="m-photo"></span>
+          <span class="m-cta">{v.cta}</span>
+          <span class="m-card" style={`background:${tones[0]}`}></span>
+          <span class="m-name">{v.projects[0]}</span>
+          <span class="m-card" style={`background:${tones[1]}`}></span>
+        </div>
+        <span class="glare" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .vz { margin: 0; }
+  .vz-web {
+    padding: clamp(1rem, .8rem + 1vw, 1.5rem);
+    background: var(--viz-paper); border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px var(--viz-line);
+    overflow: hidden;
+  }
+  .stage { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; }
+
+  /* Laptop: space-grey aluminium, black bezel, a base with a thumb notch */
+  .laptop { position: absolute; left: 3%; top: 10%; width: 78%; }
+  .lid {
+    position: relative; aspect-ratio: 16 / 10.4; border-radius: 1.6cqw 1.6cqw .4cqw .4cqw;
+    background: #0b0b0b; padding: 1.7cqw 1.7cqw 2.2cqw;
+    border: .25cqw solid #3b3b3b; transform-origin: 50% 100%;
+  }
+  .cam { position: absolute; top: .65cqw; left: 50%; width: .5cqw; height: .5cqw; translate: -50% 0; border-radius: 50%; background: #1d1d1d; }
+  .display { position: relative; height: 100%; overflow: hidden; border-radius: .3cqw; background: #EFE8DC; }
+  .base {
+    position: relative; height: 1.5cqw; margin-inline: -4%;
+    background: #3a3a3a; border-radius: 0 0 1.6cqw 1.6cqw;
+    border-top: .2cqw solid #4a4a4a;
+  }
+  .notch { position: absolute; top: 0; left: 50%; width: 14%; height: .6cqw; translate: -50% 0; background: #2a2a2a; border-radius: 0 0 .8cqw .8cqw; }
+
+  /* The site on the laptop */
+  .site { height: 100%; display: grid; grid-template-rows: auto 1fr auto; gap: 2.2cqw; padding: 2cqw 2.6cqw 2.4cqw; color: #23211E; }
+  .site__nav { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: var(--font-serif); letter-spacing: .3em; font-size: 1.6cqw; }
+  .nav { display: flex; gap: 2cqw; font-size: 1cqw; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+  .site__hero { display: grid; grid-template-columns: 1fr 1.25fr; gap: 2.4cqw; align-items: center; min-height: 0; }
+  .site__copy { display: grid; gap: 2cqw; justify-items: start; }
+  .h1 { font-family: var(--font-serif); font-size: 3.4cqw; line-height: 1.02; }
+  .cta { font-size: 1cqw; padding: .8cqw 1.6cqw; border-radius: 99px; background: #23211E; color: #EFE8DC; }
+  .villa { width: 100%; height: 100%; max-height: 100%; display: block; }
+  .site__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2cqw; }
+  .site__grid li { display: grid; gap: .5cqw; font-size: .95cqw; }
+  .thumb { display: block; aspect-ratio: 16 / 7; }
+  .glare { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgb(255 255 255 / .06) 0 32%, transparent 32.5% 100%); }
+
+  /* Phone */
+  .phone {
+    position: absolute; right: 4%; bottom: 4%; width: 21%; aspect-ratio: 9 / 18.5;
+    border-radius: 3.4cqw; padding: .6cqw; background: #2a2a2a; border: .2cqw solid #3a3a3a;
+    transform: rotate(4deg);
+  }
+  .screen { position: relative; height: 100%; overflow: hidden; border-radius: 2.9cqw; background: #EFE8DC; }
+  .island { position: absolute; z-index: 2; top: .9cqw; left: 50%; width: 5.6cqw; height: 1.5cqw; translate: -50% 0; border-radius: 99px; background: #000; }
+  .m-site { display: grid; gap: 1.3cqw; padding: 4.2cqw 1.8cqw 2cqw; color: #23211E; }
+  .m-nav { display: flex; justify-content: space-between; align-items: center; }
+  .m-nav .logo { font-size: 1.15cqw; }
+  .burger { display: grid; gap: .4cqw; width: 1.8cqw; }
+  .burger i { height: 1px; background: #23211E; }
+  .m-h1 { font-family: var(--font-serif); font-size: 2.3cqw; line-height: 1.05; }
+  .m-photo { display: block; aspect-ratio: 4 / 3; background: #E6DCC8; box-shadow: inset 0 -3.2cqw 0 #CFC5B3, inset -6cqw -3.2cqw 0 #F7F3EC; }
+  .m-cta { justify-self: start; font-size: .85cqw; padding: .6cqw 1.2cqw; border-radius: 99px; background: #23211E; color: #EFE8DC; }
+  .m-card { display: block; aspect-ratio: 16 / 9; }
+  .m-name { font-size: .9cqw; margin-top: -.6cqw; }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced } from '../../scripts/motion';
+
+  document.querySelectorAll<HTMLElement>('[data-vz-web]').forEach((root) => {
+    if (reduced) return;
+    const tl = gsap.timeline({ paused: true });
+    // Laptop is set down, then the lid opens from almost closed
+    tl.from(root.querySelector('[data-laptop]'), { opacity: 0, y: -24, scale: 1.04, duration: 1, ease: 'power3.out' })
+      .from(root.querySelector('[data-lid]'), { rotationX: -82, transformPerspective: 1100, duration: 1.4, ease: 'power3.inOut' }, 0.2)
+      // Screen wakes, then the page builds: nav, headline, hero picture, projects
+      .from(root.querySelector('[data-display]'), { filter: 'brightness(0)', duration: 0.6, ease: 'power1.out' }, 1.25)
+      .from(root.querySelectorAll('[data-build]'), { opacity: 0, y: 10, duration: 0.7, ease: 'power3.out', stagger: 0.18 }, 1.5)
+      .from(root.querySelector('[data-photo]'), { clipPath: 'inset(0 100% 0 0)', duration: 1, ease: 'expo.inOut' }, 1.7)
+      // Phone is put down beside it
+      .from(root.querySelector('[data-phone]'), { opacity: 0, x: 40, y: -30, rotation: 14, scale: 1.06, '--lift': 1, duration: 1.2, ease: 'power3.out' }, 1.1);
+    tl.progress(0.001).pause();
+    ScrollTrigger.create({ trigger: root, start: 'top 70%', once: true, onEnter: () => tl.play() });
+  });
+</script>

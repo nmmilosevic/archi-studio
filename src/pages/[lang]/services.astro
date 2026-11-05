@@ -1,11 +1,10 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Button from '../../components/Button.astro';
-import Media from '../../components/Media.astro';
+import WebVisual from '../../components/visuals/WebVisual.astro';
 import BrandVisual from '../../components/visuals/BrandVisual.astro';
 import PrintVisual from '../../components/visuals/PrintVisual.astro';
 import SocialVisual from '../../components/visuals/SocialVisual.astro';
-import { serviceImages } from '../../data/site';
 import { langPaths, href, useContent, type Lang, rich } from '../../i18n';
 
 export const getStaticPaths = langPaths;
@@ -100,10 +99,10 @@ const stepIcons = [
     </ul>
   </section>
 
-  <!-- Web: image (1–7) + text with three groups (8–12) -------------- -->
+  <!-- Web: laptop + phone visual (1–7) + text with three groups (8–12) -->
   <section class="wrap section svc-disc" id="web" aria-labelledby="svc-web">
     <div class="grid">
-      <Media class="svc-disc__media" src={serviceImages.redesign} alt={web.alt} ratio="4 / 3" sizes="(min-width: 900px) 56vw, 100vw" />
+      <WebVisual lang={lang} class="svc-disc__media" />
       <div class="svc-disc__text">
         <h2 id="svc-web" class="t-h2" data-split>{web.title}</h2>
         <p class="t-lead t-muted" data-fade>{web.body}</p>
@@ -248,7 +247,7 @@ const stepIcons = [
   }
   .svc-between__item {
     position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr);
-    column-gap: var(--s-4); row-gap: var(--s-2); align-items: center; align-content: start;
+    column-gap: var(--s-4); row-gap: var(--s-2); align-items: center; align-content: center; /* content centred in each cell */
     padding: var(--s-5) 0;
   }
   .svc-between__item > p { grid-column: 2; max-width: 30ch; }

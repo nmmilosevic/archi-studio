@@ -1,5 +1,7 @@
 ---
-/** Brand refinement: a small brand board. Wordmark, type, print, palette. */
+/** Brand refinement: a brand board laid out on a table. Wordmark card, type card,
+    business card, and a paint-chip deck that fans out. Objects have paper grain,
+    real thickness and shadows that lift and settle as they land (see .obj in global.css). */
 import { useContent, type Lang } from '../../i18n';
 
 interface Props { lang: Lang; class?: string }
@@ -13,23 +15,23 @@ const palette = [
   { hex: '#23211E', ink: '#EFE8DC' },
 ];
 ---
-<figure class:list={['vz', 'vz-brand', cls]} data-vz-brand role="img" aria-label={v.label}>
-  <div class="board">
-    <div class="tile tile--word" data-tile>
+<figure class:list={['vz', 'vz-brand', 'obj-scene', cls]} data-vz-brand role="img" aria-label={v.label}>
+  <div class="board obj-table">
+    <div class="tile tile--word obj obj-grain" data-tile>
       <span class="word" data-word>Aurea</span>
       <span class="word-sub">Studio · {v.sample}</span>
     </div>
-    <div class="tile tile--type" data-tile>
+    <div class="tile tile--type obj obj-grain" data-tile>
       <span class="aa">Aa</span>
       <span class="fonts"><b>Instrument Serif</b><span>Satoshi</span></span>
     </div>
-    <div class="tile tile--card" data-tile>
+    <div class="tile tile--card obj obj-grain" data-tile>
       <span class="card-name">Aurea Studio</span>
       <span class="card-meta">{v.sample}<br />Marbella</span>
     </div>
-    <ul class="tile tile--palette" data-tile>
+    <ul class="deck">
       {palette.map((c, i) => (
-        <li style={`background:${c.hex};color:${c.ink}`} data-strip>
+        <li class="chip obj obj-grain" style={`background:${c.hex};color:${c.ink};--n:${i}`} data-chip>
           <span>{v.colors[i]}</span><span class="hex">{c.hex}</span>
         </li>
       ))}
@@ -40,24 +42,27 @@ const palette = [
 <style>
   .vz { margin: 0; }
   .vz-brand {
-    padding: clamp(1rem, .8rem + 1vw, 1.5rem);
+    padding: clamp(1.25rem, 1rem + 1.4vw, 2.25rem);
     background: var(--viz-paper); border-radius: var(--radius-lg);
     box-shadow: inset 0 0 0 1px var(--viz-line);
+    overflow: hidden;
   }
   .board {
-    display: grid; gap: .625rem;
+    display: grid; gap: .875rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "word word" "type pal" "card pal";
+    grid-template-areas: "word word" "type deck" "card deck";
   }
-  .tile { border-radius: var(--radius-sm); overflow: hidden; }
+  .tile { border-radius: 3px; }
+  /* Paper thickness: a hairline darker edge along the bottom */
+  .tile--word, .tile--card { outline: 1px solid rgb(0 0 0 / .08); outline-offset: -1px; }
 
   .tile--word {
     grid-area: word; display: grid; place-items: center; align-content: center; gap: .5rem;
     padding: clamp(1.75rem, 1rem + 3vw, 3rem) 1rem;
     background: #EFE8DC; color: #23211E;
   }
-  .word { font-family: var(--font-serif); font-size: clamp(3rem, 1.8rem + 4vw, 5.5rem); line-height: .9; letter-spacing: .14em; padding-left: .14em; text-transform: uppercase; }
-  .word-sub { font-size: .6875rem; letter-spacing: .28em; text-transform: uppercase; opacity: .7; }
+  .word { position: relative; z-index: 3; font-family: var(--font-serif); font-size: clamp(3rem, 1.8rem + 4vw, 5.5rem); line-height: .9; letter-spacing: .14em; padding-left: .14em; text-transform: uppercase; }
+  .word-sub { position: relative; z-index: 3; font-size: .6875rem; letter-spacing: .28em; text-transform: uppercase; opacity: .7; }
 
   .tile--type {
     grid-area: type; display: grid; align-content: space-between; gap: 1rem;
@@ -68,20 +73,26 @@ const palette = [
   .fonts { display: grid; font-size: .75rem; line-height: 1.4; }
   .fonts span { opacity: .65; }
 
+  /* Business card: 85 × 55, a little smaller than its cell, set at an angle */
   .tile--card {
-    grid-area: card; display: grid; align-content: space-between; gap: 1rem;
-    padding: 1rem; min-height: 7rem;
-    background: #D8C7AE; color: #23211E;
+    grid-area: card; justify-self: center; align-self: center; width: 74%; aspect-ratio: 85 / 55;
+    display: grid; align-content: space-between; padding: .9rem 1rem;
+    background: #D8C7AE; color: #23211E; transform: rotate(-3deg);
   }
-  .card-name { font-family: var(--font-serif); font-size: 1.25rem; letter-spacing: .02em; }
-  .card-meta { font-size: .6875rem; line-height: 1.45; letter-spacing: .04em; opacity: .75; }
+  .card-name { font-family: var(--font-serif); font-size: 1.15rem; letter-spacing: .02em; }
+  .card-meta { font-size: .625rem; line-height: 1.45; letter-spacing: .04em; opacity: .75; }
 
-  .tile--palette { grid-area: pal; display: grid; grid-template-rows: repeat(5, 1fr); }
-  .tile--palette li {
+  /* Paint-chip deck: chips pinned at the bottom-left corner, fanned out */
+  .deck { grid-area: deck; position: relative; min-height: 15rem; }
+  .chip {
+    position: absolute; left: 6%; bottom: 4%; width: 78%; height: 34%;
     display: flex; justify-content: space-between; align-items: flex-end; gap: .5rem;
-    padding: .6rem .75rem; font-size: .75rem; font-weight: 500; transform-origin: 0 50%;
+    padding: .6rem .75rem; border-radius: 3px; font-size: .75rem; font-weight: 500;
+    transform-origin: 8% 92%;
+    transform: rotate(calc(var(--n) * -11deg + 6deg));
   }
-  .tile--palette .hex { font-variant-numeric: tabular-nums; opacity: .7; font-weight: 400; }
+  .chip .hex { font-variant-numeric: tabular-nums; opacity: .7; font-weight: 400; }
+  .chip > span { position: relative; z-index: 3; }
 </style>
 
 <script>
@@ -89,11 +100,19 @@ const palette = [
 
   document.querySelectorAll<HTMLElement>('[data-vz-brand]').forEach((root) => {
     if (reduced) return;
+    const tiles = root.querySelectorAll<HTMLElement>('[data-tile]');
+    const chips = Array.from(root.querySelectorAll<HTMLElement>('[data-chip]'));
     const tl = gsap.timeline({ paused: true });
-    tl.from(root.querySelectorAll('[data-tile]'), { opacity: 0, scale: 0.96, duration: 0.8, ease: 'expo.out', stagger: 0.1 })
-      .from(root.querySelector('[data-word]'), { letterSpacing: '-0.04em', duration: 1.4, ease: 'expo.inOut' }, 0.2)
-      .from(root.querySelectorAll('[data-strip]'), { scaleX: 0, duration: 0.9, ease: 'expo.out', stagger: 0.07 }, 0.45);
+    // Each card is set down: it comes in a little high and large, shadow wide, then settles
+    tl.from(tiles, {
+      opacity: 0, y: -26, scale: 1.05, '--lift': 1,
+      duration: 1.1, ease: 'power3.out', stagger: 0.14,
+    })
+      .from(root.querySelector('[data-word]'), { letterSpacing: '-0.04em', duration: 1.4, ease: 'expo.inOut' }, 0.25)
+      // The chip deck lands closed, then fans open from its corner pin
+      .from(chips, { opacity: 0, y: -20, '--lift': 1, duration: 0.7, ease: 'power3.out' }, 0.45)
+      .from(chips, { rotation: 6, duration: 1.2, ease: 'expo.out', stagger: 0.06 }, 0.95);
     tl.progress(0.001).pause();
-    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: () => tl.play() });
+    ScrollTrigger.create({ trigger: root, start: 'top 70%', once: true, onEnter: () => tl.play() });
   });
 </script>

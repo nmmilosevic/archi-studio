@@ -360,6 +360,7 @@ const en = {
         ]
       },
     "visuals": {
+      "web": {"label": "Example studio website shown on a laptop and a phone", "url": "aurea-studio.com", "nav": ["Projects", "Studio", "Contact"], "headline": "Architecture in harmony with place.", "cta": "View projects", "projects": ["Villa Aurora", "Casa Lunara", "Casa Bruta"]},
       "print": {
         "label": "Example print set for a studio: a brochure spread, business cards and a competition board",
         "book": "Selected works",
@@ -373,16 +374,14 @@ const en = {
       "social": {
         "label": "Example Instagram grid and newsletter designed for a studio",
         "handle": "aurea.studio",
-        "stats": [
-          [
-            "128",
-            "posts"
-          ],
-          [
-            "4.2k",
-            "followers"
-          ]
-        ],
+        "stats": [["128", "posts"], ["4.2k", "followers"], ["312", "following"]],
+        "name": "Aurea Studio",
+        "bio": "Architecture · Marbella",
+        "bio2": "Villas and private homes on the Costa del Sol",
+        "link": "aurea-studio.com",
+        "follow": "Follow",
+        "message": "Message",
+        "highlights": ["Villas", "Process", "Interiors", "Press"],
         "tiles": [
           "New project",
           "Casa Lunara",

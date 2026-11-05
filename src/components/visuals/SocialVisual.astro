@@ -1,5 +1,7 @@
 ---
-/** Social & marketing: a studio's Instagram grid on a phone, and a newsletter beside it. */
+/** Social & marketing: a phone lying on the table showing the studio's Instagram grid,
+    and a printed-looking newsletter beside it. Real phone bezel, island and side buttons;
+    paper grain and lift/settle shadows from .obj / .obj-grain in global.css. */
 import { useContent, type Lang } from '../../i18n';
 
 interface Props { lang: Lang; class?: string }
@@ -18,27 +20,53 @@ const tiles = [
   { tone: '#B5603F', ink: '#FBF6EE', text: v.tiles[5], kind: 'kicker' },
 ];
 ---
-<figure class:list={['vz', 'vz-social', cls]} data-vz-social role="img" aria-label={v.label}>
-  <div class="stage">
-    <div class="phone" data-phone>
-      <div class="profile">
-        <span class="avatar">A</span>
-        <span class="handle">{v.handle}</span>
-        <span class="stats">{v.stats.map(([n, l]) => <span><b>{n}</b> {l}</span>)}</span>
+<figure class:list={['vz', 'vz-social', 'obj-scene', cls]} data-vz-social role="img" aria-label={v.label}>
+  <div class="stage obj-table">
+    <div class="phone obj" data-phone>
+      <span class="key key--a"></span><span class="key key--b"></span><span class="key key--c"></span>
+      <div class="screen">
+        <span class="island"></span>
+        <div class="ig">
+          <div class="ig-top">
+            <b>{v.handle}</b>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="ig-top__icons"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM12 8v8M8 12h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="ig-head">
+            <span class="ig-avatar"><span>A</span></span>
+            <ul class="ig-stats">{v.stats.map(([n, l]) => <li><b>{n}</b><span>{l}</span></li>)}</ul>
+          </div>
+          <div class="ig-bio">
+            <b>{v.name}</b>
+            <span class="ig-muted">{v.bio}</span>
+            <span>{v.bio2}</span>
+            <span class="ig-link">{v.link}</span>
+          </div>
+          <div class="ig-btns"><span class="ig-btn ig-btn--primary">{v.follow}</span><span class="ig-btn">{v.message}</span></div>
+          <ul class="ig-hl">{v.highlights.map((h, i) => <li><span class="ig-hl__c" style={`--tone:${['#D8C7AE', '#5F6447', '#EFE8DC', '#B5603F'][i]}`}></span><span>{h}</span></li>)}</ul>
+          <div class="ig-tabs">
+            <span class="is-on"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M9 4l3 5M14 4l3 5M10.5 12.5v5l4-2.5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM12 11.5a2.5 2.5 0 1 0 0-.1M7.5 18c1-2.5 2.6-3.5 4.5-3.5s3.5 1 4.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        <ul class="tiles">
+          {tiles.map((t) => (
+            <li class:list={['tile', `tile--${t.kind}`]} style={`--tone:${t.tone};color:${t.ink}`}>
+              <span class="ph" aria-hidden="true" data-ph></span>
+              {t.text && <span>{t.text}</span>}
+              {t.kind === 'arch' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M10 34V20a10 10 0 0 1 20 0v14" stroke="currentColor" stroke-width="1.2"/></svg>}
+              {t.kind === 'plan' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 7h26v26H7zM7 20h14M21 7v26M21 26h12" stroke="currentColor" stroke-width="1.2"/></svg>}
+              {t.kind === 'stair' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 33h7v-7h7v-7h7v-7h7" stroke="currentColor" stroke-width="1.2"/></svg>}
+            </li>
+          ))}
+        </ul>
+        </div>
+        <div class="ig-nav"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 4a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM16 16l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM12 8v8M8 12h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM10 9.5v5l4.5-2.5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ig-nav__me">A</span></div>
+        <span class="glare" aria-hidden="true"></span>
       </div>
-      <ul class="tiles">
-        {tiles.map((t) => (
-          <li class:list={['tile', `tile--${t.kind}`]} style={`background:${t.tone};color:${t.ink}`} data-tile>
-            {t.text && <span>{t.text}</span>}
-            {t.kind === 'arch' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M10 34V20a10 10 0 0 1 20 0v14" stroke="currentColor" stroke-width="1.2"/></svg>}
-            {t.kind === 'plan' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 7h26v26H7zM7 20h14M21 7v26M21 26h12" stroke="currentColor" stroke-width="1.2"/></svg>}
-            {t.kind === 'stair' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 33h7v-7h7v-7h7v-7h7" stroke="currentColor" stroke-width="1.2"/></svg>}
-          </li>
-        ))}
-      </ul>
     </div>
 
-    <div class="mail" data-mail>
+    <div class="mail obj obj-grain" data-mail>
       <span class="mail__from">{v.mailFrom}</span>
       <span class="mail__subject">{v.mailSubject}</span>
       <span class="mail__plate"></span>
@@ -54,38 +82,83 @@ const tiles = [
     padding: clamp(1rem, .8rem + 1vw, 1.5rem);
     background: var(--viz-paper); border-radius: var(--radius-lg);
     box-shadow: inset 0 0 0 1px var(--viz-line);
+    overflow: hidden;
   }
   .stage { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; }
 
-  /* Phone with the studio's grid */
+  /* Phone: aluminium frame, black glass, side buttons, dynamic island */
   .phone {
-    position: absolute; left: 6%; top: 3%; bottom: 3%; aspect-ratio: 9 / 17;
-    background: #121212; border-radius: 4cqw; padding: 3cqw 2.4cqw;
-    box-shadow: inset 0 0 0 1px var(--viz-line), 0 2cqw 4cqw -2cqw rgb(0 0 0 / .8);
-    display: grid; grid-template-rows: auto 1fr; gap: 2.4cqw; color: var(--viz-ink);
+    position: absolute; left: 7%; top: 3%; bottom: 4%; aspect-ratio: 9 / 18.5;
+    border-radius: 5.4cqw; padding: .9cqw;
+    background: #2a2a2a;
+    border: .25cqw solid #3a3a3a;
+    transform: rotate(-4deg);
   }
-  .profile { display: grid; grid-template-columns: auto 1fr; column-gap: 1.6cqw; align-items: center; }
-  .avatar {
-    grid-row: span 2; width: 6cqw; aspect-ratio: 1; border-radius: 50%;
-    display: grid; place-items: center; background: #EFE8DC; color: #23211E;
-    font-family: var(--font-serif); font-size: 3.2cqw;
+  .key { position: absolute; width: .45cqw; background: #333; border-radius: 1px; }
+  .key--a { left: -.6cqw; top: 18%; height: 4%; }
+  .key--b { left: -.6cqw; top: 26%; height: 8%; }
+  .key--c { right: -.6cqw; top: 24%; height: 11%; }
+  .screen {
+    position: relative; height: 100%; overflow: hidden;
+    border-radius: 4.6cqw; background: #0e0e0e; color: var(--viz-ink);
+    padding: 5cqw 2cqw 0;
   }
-  .handle { font-size: 1.7cqw; font-weight: 700; }
-  .stats { display: flex; gap: 1.6cqw; font-size: 1.25cqw; color: var(--viz-muted); }
-  .stats b { color: var(--viz-ink); font-weight: 700; }
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5cqw; align-content: start; }
-  .tile { aspect-ratio: 1; display: grid; place-items: center; padding: .8cqw; overflow: hidden; text-align: center; }
+  .island { position: absolute; top: 1.4cqw; left: 50%; width: 9cqw; height: 2.2cqw; translate: -50% 0; border-radius: 99px; background: #000; }
+  /* Glass reflection: a soft diagonal sheen across the screen */
+  .glare { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgb(255 255 255 / .07) 0 30%, transparent 30.5% 100%); }
+
+  /* Instagram profile, laid out like the app */
+  .ig { display: flex; flex-direction: column; gap: 1.1cqw; font-size: 1.05cqw; line-height: 1.3; }
+  .ig svg { width: 1.9cqw; height: 1.9cqw; flex: none; }
+  .ig-top { display: flex; align-items: center; gap: .3cqw; font-size: 1.5cqw; }
+  .ig-top svg { width: 1.4cqw; }
+  .ig-top__icons { margin-left: auto; display: flex; gap: 1.4cqw; }
+  .ig-head { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 2cqw; }
+  .ig-avatar { width: 7.4cqw; aspect-ratio: 1; border-radius: 50%; padding: .35cqw; box-shadow: inset 0 0 0 .2cqw #6b6b6b; display: grid; }
+  .ig-avatar span {
+    border-radius: 50%; border: .3cqw solid #0e0e0e; background: #EFE8DC; color: #23211E;
+    display: grid; place-items: center; font-family: var(--font-serif); font-size: 3.2cqw;
+  }
+  .ig-stats { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+  .ig-stats li { display: grid; gap: .1cqw; }
+  .ig-stats b { font-size: 1.45cqw; font-weight: 700; }
+  .ig-stats span { font-size: .95cqw; color: #d8d8d8; }
+  .ig-bio { display: grid; gap: .15cqw; }
+  .ig-bio b { font-weight: 700; }
+  .ig-muted { color: var(--viz-muted); }
+  .ig-link { color: #e0f1ff; }
+  .ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .6cqw; }
+  .ig-btn { display: grid; place-items: center; height: 2.8cqw; border-radius: .7cqw; background: #262626; font-weight: 600; }
+  .ig-btn--primary { background: #0095f6; color: #fff; }
+  .ig-hl { display: flex; gap: 1.6cqw; }
+  .ig-hl li { display: grid; justify-items: center; gap: .4cqw; font-size: .9cqw; }
+  .ig-hl__c { width: 5.4cqw; aspect-ratio: 1; border-radius: 50%; background: var(--tone); box-shadow: 0 0 0 .3cqw #0e0e0e, 0 0 0 .45cqw #3a3a3a; }
+  .ig-tabs { display: grid; grid-template-columns: repeat(3, 1fr); margin-inline: -2cqw; border-bottom: 1px solid #262626; }
+  .ig-tabs span { display: grid; place-items: center; padding-block: .8cqw; color: #8e8e8e; }
+  .ig-tabs .is-on { color: var(--viz-ink); box-shadow: inset 0 -.18cqw 0 var(--viz-ink); }
+  .ig-nav {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 1.2cqw 2cqw 2.2cqw; background: #0e0e0e; border-top: 1px solid #262626;
+  }
+  .ig-nav svg { width: 2cqw; height: 2cqw; }
+  .ig-nav__me { width: 2.2cqw; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: #EFE8DC; color: #23211E; font-family: var(--font-serif); font-size: 1.2cqw; box-shadow: 0 0 0 .15cqw var(--viz-ink); }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-inline: -2cqw; }
+  /* .ph: grey placeholder that fades away, like an image loading */
+  .ph { position: absolute; inset: 0; background: #1f1f1f; z-index: 1; display: none; }
+  :global(html.js:not(.motion-off)) .ph { display: block; }
+  .tile { position: relative; aspect-ratio: 4 / 5; display: grid; place-items: center; padding: .8cqw; overflow: hidden; text-align: center; background: var(--tone); }
   .tile--serif span { font-family: var(--font-serif); font-size: 2.1cqw; line-height: 1; }
   .tile--kicker span { font-size: 1cqw; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; }
   .tile svg { width: 70%; }
 
-  /* Newsletter */
+  /* Newsletter: printed proof on linen paper */
   .mail {
-    position: absolute; right: 3%; top: 14%; width: 46%;
-    background: #EFE8DC; color: #23211E; padding: 3cqw;
-    display: grid; gap: 1.6cqw; justify-items: start;
-    box-shadow: 0 2cqw 4cqw -2cqw rgb(0 0 0 / .8);
+    position: absolute; right: 4%; top: 13%; width: 45%;
+    background: #EFE8DC; color: #23211E; padding: 3cqw; border-radius: .3cqw;
+    display: grid; gap: 1.6cqw; justify-items: start; transform: rotate(3deg);
   }
+  .mail > * { position: relative; z-index: 3; }
   .mail__from { font-size: 1.3cqw; letter-spacing: .18em; text-transform: uppercase; opacity: .6; }
   .mail__subject { font-family: var(--font-serif); font-size: 3.6cqw; line-height: 1.05; }
   .mail__plate { width: 100%; aspect-ratio: 16 / 9; background: #5F6447; }
@@ -99,12 +172,17 @@ const tiles = [
 
   document.querySelectorAll<HTMLElement>('[data-vz-social]').forEach((root) => {
     if (reduced) return;
+    const phone = root.querySelector<HTMLElement>('[data-phone]');
+    const placeholders = root.querySelectorAll<HTMLElement>('[data-ph]');
     const tl = gsap.timeline({ paused: true });
-    // Phone rises, the grid fills in tile by tile, then the newsletter slides in
-    tl.from(root.querySelector('[data-phone]'), { opacity: 0, y: 30, duration: 1, ease: 'expo.out' })
-      .from(root.querySelectorAll('[data-tile]'), { opacity: 0, scale: 0.85, duration: 0.6, ease: 'expo.out', stagger: 0.06 }, 0.3)
-      .from(root.querySelector('[data-mail]'), { opacity: 0, x: 40, rotation: 3, duration: 1.1, ease: 'expo.out' }, 0.7);
+    // The phone is set down on the table, then its screen wakes and the grid loads in
+    tl.from(phone, { opacity: 0, x: -40, y: -24, rotation: -14, scale: 1.05, '--lift': 1, duration: 1.2, ease: 'power3.out' })
+      .from(root.querySelector('.screen'), { filter: 'brightness(0)', duration: 0.5, ease: 'power1.out' }, 0.55)
+      // Tiles load like images: a grey placeholder first, then the post itself
+      .fromTo(placeholders, { opacity: 1 }, { opacity: 0, duration: 0.5, ease: 'power1.out', stagger: 0.07 }, 0.85)
+      // The printed newsletter is dropped beside it
+      .from(root.querySelector('[data-mail]'), { opacity: 0, x: 50, y: -30, rotation: 12, scale: 1.06, '--lift': 1, duration: 1.2, ease: 'power3.out' }, 0.5);
     tl.progress(0.001).pause();
-    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: () => tl.play() });
+    ScrollTrigger.create({ trigger: root, start: 'top 70%', once: true, onEnter: () => tl.play() });
   });
 </script>
