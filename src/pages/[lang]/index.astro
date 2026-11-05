@@ -122,7 +122,7 @@ const beyondIcons = [
       <div class="grid cards">
         <div class="span-8 card home-pricing__offer" data-fade>
           <div>
-            <p class="t-display home-pricing__price">{h.pricing.price}</p>
+            <p class="t-display home-pricing__price" data-count aria-label={h.pricing.price}>{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
           </div>
           <p class="t-muted home-pricing__note">{h.pricing.note}</p>
@@ -408,6 +408,26 @@ const beyondIcons = [
       vp.addEventListener('scroll', onScroll, { passive: true });
       return () => vp.removeEventListener('scroll', onScroll);
     });
+
+    // Price counts up from 0 the first time it scrolls into view.
+    // Keeps each language's own format (1,500€ / 1.500€ / 1 500€).
+    const price = document.querySelector<HTMLElement>('[data-count]');
+    const match = price?.textContent?.match(/\d[\d.,\s\u202f\u00a0]*\d|\d/);
+    if (price && match && !reduced) {
+      const raw = price.textContent!;
+      const sep = match[0].replace(/\d/g, '')[0] ?? '';
+      const target = parseInt(match[0].replace(/\D/g, ''), 10);
+      const fmt = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+      const paint = (n: number) => { price.textContent = raw.replace(match[0], fmt(n)); };
+      price.style.display = 'inline-block';
+      price.style.minWidth = `${price.getBoundingClientRect().width}px`;
+      paint(0);
+      const n = { v: 0 };
+      ScrollTrigger.create({
+        trigger: price, start: 'top 85%', once: true,
+        onEnter: () => gsap.to(n, { v: target, duration: 1.8, ease: 'expo.out', onUpdate: () => paint(Math.round(n.v)) }),
+      });
+    }
 
     settle();
   });
