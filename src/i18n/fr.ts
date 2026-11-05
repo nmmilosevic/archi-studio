@@ -82,6 +82,7 @@ const fr: Content = {
       price: '1 500€',
       terms: 'Paiement unique',
       note: 'Cela couvre le design présenté et son développement. Plus de pages ou des changements plus tard ? On vous fait un devis avant, pour qu’aucune facture ne vous surprenne.',
+      included: 'Ce qui est inclus',
       includes: ['Stratégie site web', 'Design sur mesure', 'Développement responsive', 'Bases SEO', 'Formulaire de contact', 'Support au lancement'],
       action: 'Commencer le site',
     },

@@ -111,37 +111,46 @@ const beyondIcons = [
     </ul>
   </section>
 
-  <!-- Pricing ---------------------------------------------------------- -->
+  <!-- Pricing: one 12-column card grid. Price (8) + included (4), then the
+       three extra services (4 + 4 + 4), so every card edge lines up. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
-      <div class="grid home-pricing__main">
-        <h2 id="pricing-title" class="t-h2 home-pricing__title" data-split set:html={rich(h.pricing.title)}></h2>
-        <div class="home-pricing__offer card card--raised">
-          <p class="t-display home-pricing__price" data-split>{h.pricing.price}</p>
-          <p class="t-label t-muted" data-fade>{h.pricing.terms}</p>
-          <ul class="home-pricing__includes list-marked" data-stagger>
+      <div class="grid section-head">
+        <h2 id="pricing-title" class="t-h2" data-split set:html={rich(h.pricing.title)}></h2>
+        <p class="t-muted" data-fade>{h.pricing.note}</p>
+      </div>
+
+      <div class="grid cards">
+        <div class="card card--raised span-8 home-pricing__offer" data-fade>
+          <div>
+            <p class="t-display home-pricing__price">{h.pricing.price}</p>
+            <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
+          </div>
+          <div><Button href={contact} arrow>{h.pricing.action}</Button></div>
+        </div>
+        <div class="card card--raised span-4 home-pricing__included" data-fade>
+          <p class="t-label t-muted">{h.pricing.included}</p>
+          <ul class="list-marked">
             {h.pricing.includes.map((i) => <li>{i}</li>)}
           </ul>
-          <p class="t-small t-muted home-pricing__note" data-fade>{h.pricing.note}</p>
-          <div data-fade><Button href={contact} arrow>{h.pricing.action}</Button></div>
         </div>
       </div>
 
-      <div class="home-beyond">
+      <div class="grid section-head home-pricing__more">
         <h3 class="t-h3" data-split set:html={rich(h.beyond.title)}></h3>
-        <div class="grid home-beyond__grid" data-stagger>
-          {h.beyond.items.map((item, i) => (
-            <article class="home-beyond__item card card--raised">
-              <Fragment set:html={beyondIcons[i]} />
-              <h4 class="t-h4">{item.title}</h4>
-              <p class="t-small t-muted">{item.body}</p>
-              <div class="home-beyond__foot">
-                {item.price.map((line) => <p class="t-small">{line}</p>)}
-                {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
-              </div>
-            </article>
-          ))}
-        </div>
+      </div>
+      <div class="grid cards" data-stagger>
+        {h.beyond.items.map((item, i) => (
+          <article class="home-beyond__item card card--raised span-4">
+            <Fragment set:html={beyondIcons[i]} />
+            <h4 class="t-h4">{item.title}</h4>
+            <p class="t-small t-muted">{item.body}</p>
+            <div class="home-beyond__foot">
+              {item.price.map((line) => <p class="t-small">{line}</p>)}
+              {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -276,22 +285,11 @@ const beyondIcons = [
 
   /* Pricing */
   .home-pricing { background: var(--c-stone-deep); }
-  .home-pricing__main { row-gap: var(--s-8); }
-  .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-5); }
-  .home-pricing__price { font-size: clamp(4rem, 2rem + 6vw, 9rem); line-height: .85; }
-  .home-pricing__includes {
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr); gap: var(--s-3) var(--gutter);
-    margin-block: var(--s-3);
-  }
-  .home-pricing__note { max-width: 30rem; }
-  @media (min-width: 900px) {
-    .home-pricing__title { grid-column: 1 / span 5; grid-row: 1; align-self: start; }
-    .home-pricing__offer { grid-column: 6 / -1; grid-row: 1; }
-    .home-pricing__includes { grid-template-columns: repeat(3, 1fr); }
-  }
-  .home-beyond { margin-top: var(--s-section); display: grid; gap: var(--s-7); }
-  .home-beyond__grid { row-gap: var(--gutter); }
+  .home-pricing__offer { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: var(--s-7); }
+  .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
+  .home-pricing__terms { margin-top: var(--s-3); }
+  .home-pricing__included { gap: var(--s-5); }
+  .home-pricing__more { margin-top: var(--s-9); margin-bottom: var(--s-6); }
   .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
   .home-beyond__icon { --icon-bg: var(--c-raised); margin-bottom: var(--s-3); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
@@ -300,9 +298,6 @@ const beyondIcons = [
   .icon-care .mv { transform-origin: 24px 27.5px; }
   .home-beyond__foot { margin-top: auto; padding-top: var(--s-4); display: grid; gap: var(--s-2); justify-items: start; }
   .home-beyond__foot .link { margin-top: var(--s-3); }
-  @media (min-width: 900px) {
-    .home-beyond__item { grid-column: span 4; }
-  }
 
   /* Friction */
   .home-friction .grid { row-gap: var(--s-7); }

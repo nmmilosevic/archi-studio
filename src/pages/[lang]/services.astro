@@ -355,45 +355,7 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
 <script>
   import { gsap, ScrollTrigger, reduced, ready } from '../../scripts/motion';
 
-  // Illustrations: one quiet sequence each, played once on enter.
-  function animateVisuals() {
-    const once = (trigger: Element, tl: gsap.core.Timeline) =>
-      ScrollTrigger.create({ trigger, start: 'top 75%', once: true, onEnter: () => tl.play() });
-
-    // Search: the studio's result climbs from third to first, then the scores fill
-    const search = document.querySelector<HTMLElement>('[data-viz-search]');
-    if (search) {
-      const hits = Array.from(search.querySelectorAll<HTMLElement>('[data-hit]'));
-      const rings = Array.from(search.querySelectorAll<SVGCircleElement>('[data-ring]'));
-      const tops = hits.map((h) => h.offsetTop);
-      const tl = gsap.timeline({ paused: true, delay: 0.3 });
-      tl.from(hits[0], { y: tops[2] - tops[0], duration: 1.4, ease: 'expo.inOut' }, 0)
-        .from(hits[1], { y: tops[0] - tops[1], duration: 1.4, ease: 'expo.inOut' }, 0)
-        .from(hits[2], { y: tops[1] - tops[2], duration: 1.4, ease: 'expo.inOut' }, 0);
-      rings.forEach((ring, i) => tl.from(ring, { attr: { 'stroke-dashoffset': Number(ring.dataset.c) }, duration: 1.6, ease: 'expo.out' }, 0.9 + i * 0.12));
-      once(search, tl);
-    }
-
-    // Portfolio: fields fill in one by one, then the published page assembles
-    const cms = document.querySelector<HTMLElement>('[data-viz-cms]');
-    if (cms) {
-      const tl = gsap.timeline({ paused: true, delay: 0.2 });
-      tl.from(cms.querySelectorAll('[data-cms-in]'), { clipPath: 'inset(0% 100% 0% 0%)', duration: 0.7, ease: 'expo.out', stagger: 0.18 })
-        .from(cms.querySelectorAll('[data-cms-out]'), { opacity: 0, y: 12, duration: 0.9, ease: 'expo.out', stagger: 0.08 }, '-=0.3');
-      once(cms, tl);
-    }
-
-    // Hosting: the 30 days of uptime grow in from the left
-    const host = document.querySelector<HTMLElement>('[data-viz-host]');
-    if (host) {
-      const tl = gsap.timeline({ paused: true, delay: 0.2 });
-      tl.from(host.querySelectorAll('[data-bar]'), { scaleY: 0, duration: 0.9, ease: 'expo.out', stagger: 0.025 });
-      once(host, tl);
-    }
-  }
-
   ready.then(() => {
-    if (!reduced) animateVisuals();
     const steps = document.querySelector<HTMLElement>('[data-process]');
     const line = document.querySelector<HTMLElement>('[data-process-line]');
     if (!steps || !line) return;

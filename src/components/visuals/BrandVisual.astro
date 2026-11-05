@@ -1,59 +1,68 @@
 ---
-/** Brand refinement: a client type specimen and palette, built in code. */
+/** Brand refinement: a cramped wordmark relaxes into refined spacing over construction lines. */
 import { useContent, type Lang } from '../../i18n';
 
 interface Props { lang: Lang; class?: string }
 const { lang, class: cls } = Astro.props;
-const t = useContent(lang).services.visuals;
-const v = t.brand;
+const v = useContent(lang).services.visuals.brand;
 const palette = ['#F2ECE2', '#DCCDB6', '#A9634A', '#6E6B4B', '#2E2C29'];
-const spacing = [4, 8, 16, 32, 64];
 ---
-<figure class:list={['viz', 'viz-brand', cls]}>
-  <div class="viz__frame frame" role="img" aria-label={v.label}>
-    <div class="type">
-      <span class="aa" data-fade>Aa</span>
-      <div class="scale">
-        <p><span class="viz__label">{v.scale[0]} · 64</span><span class="s s--1">{v.sample}</span></p>
-        <p><span class="viz__label">{v.scale[1]} · 32</span><span class="s s--2">{v.sample}</span></p>
-        <p><span class="viz__label">{v.scale[2]} · 16</span><span class="s s--3">{v.body}</span></p>
-      </div>
-    </div>
-    <div class="spacing" aria-hidden="true">
-      {spacing.map((n) => <span class="space"><i style={`width:${n * 1.5}px;height:${n * 1.5}px`}></i><span class="viz__muted">{n}</span></span>)}
-    </div>
-    <ul class="swatches" data-stagger>
-      {palette.map((hex, i) => (
-        <li>
-          <span class="chip" style={`background:${hex}`}></span>
-          <span class="name">{v.colors[i]}</span>
-          <span class="viz__muted hex">{hex}</span>
-        </li>
-      ))}
-    </ul>
+<figure class:list={['vz', 'vz-brand', cls]} data-vz-brand role="img" aria-label={v.label}>
+  <div class="mark">
+    <span class="guides" aria-hidden="true"><i class="g g--cap" data-guide></i><i class="g g--base" data-guide></i></span>
+    <span class="word" data-word>Aurea</span>
   </div>
+  <div class="scale" data-scale>
+    <span class="s s--1">{v.sample}</span>
+    <span class="s s--2">{v.scale[1]}</span>
+    <span class="s s--3">{v.body}</span>
+  </div>
+  <ul class="palette" data-palette>
+    {palette.map((hex, i) => (
+      <li><i style={`background:${hex}`}></i><span>{v.colors[i]}</span></li>
+    ))}
+  </ul>
 </figure>
 
 <style>
-  .frame { display: grid; gap: 1.75rem; background: var(--viz-paper); }
-  .type { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: end; }
-  .aa, .s--1, .s--2 { font-family: ui-serif, 'Iowan Old Style', 'Times New Roman', Georgia, serif; letter-spacing: -.02em; }
-  .aa { font-size: clamp(5rem, 3rem + 6vw, 9.5rem); line-height: .8; color: var(--viz-ink); }
-  .scale { display: grid; gap: .75rem; padding-bottom: .25rem; }
-  .scale p { display: grid; gap: .1rem; }
-  .s--1 { font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); line-height: 1; }
-  .s--2 { font-size: 1.25rem; line-height: 1.1; }
-  .s--3 { font-size: .875rem; color: var(--viz-muted); }
-  .spacing { display: flex; align-items: end; gap: 1rem; }
-  .space { display: grid; justify-items: start; gap: .3rem; font-size: .6875rem; }
-  .space i { display: block; max-width: 96px; max-height: 96px; background: #a9634a; opacity: .85; }
-  .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; }
-  .swatches li { display: grid; gap: .3rem; }
-  .chip { aspect-ratio: 3 / 4; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .08); }
-  .name { font-weight: var(--fw-medium); font-size: .8125rem; }
-  .hex { font-size: .6875rem; }
-  @media (max-width: 599px) {
-    .type { grid-template-columns: 1fr; }
-    .swatches { grid-template-columns: repeat(3, 1fr); }
+  .vz { margin: 0; }
+  .vz-brand {
+    display: grid; gap: 1.5rem; padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    background: var(--viz-paper); border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px var(--viz-line);
+    color: var(--viz-ink);
   }
+  .mark { position: relative; display: grid; place-items: center; padding-block: 1.5rem; }
+  .word {
+    position: relative; z-index: 1;
+    font-family: var(--font-serif); font-size: clamp(3.5rem, 2rem + 5vw, 6.5rem); line-height: 1;
+    letter-spacing: .06em;
+  }
+  .guides { position: absolute; inset: 0; }
+  .g { position: absolute; left: 0; right: 0; height: 1px; background: var(--viz-clay); opacity: .55; transform-origin: 0 50%; }
+  .g--cap { top: 34%; }
+  .g--base { top: 70%; }
+  .scale { display: grid; gap: .35rem; padding-top: 1.25rem; border-top: 1px solid var(--viz-line); }
+  .s--1 { font-family: var(--font-serif); font-size: 1.75rem; line-height: 1; }
+  .s--2 { font-family: var(--font-display); font-weight: 500; font-size: 1.125rem; }
+  .s--3 { font-size: .8125rem; color: var(--viz-muted); }
+  .palette { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; }
+  .palette li { display: grid; gap: .35rem; font-size: .6875rem; color: var(--viz-muted); }
+  .palette i { display: block; aspect-ratio: 1; border-radius: 50%; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .08); }
 </style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced } from '../../scripts/motion';
+
+  document.querySelectorAll<HTMLElement>('[data-vz-brand]').forEach((root) => {
+    if (reduced) return;
+    const tl = gsap.timeline({ paused: true });
+    tl.from(root.querySelectorAll('[data-guide]'), { scaleX: 0, duration: 0.9, ease: 'expo.out', stagger: 0.12 })
+      // cramped, heavy-handed spacing relaxes into the refined wordmark
+      .from(root.querySelector('[data-word]'), { letterSpacing: '-0.09em', scaleX: 0.86, duration: 1.4, ease: 'expo.inOut' }, 0.3)
+      .from(root.querySelectorAll('[data-scale] > *'), { opacity: 0, y: 10, duration: 0.6, ease: 'power2.out', stagger: 0.08 }, 1.1)
+      .from(root.querySelectorAll('[data-palette] li'), { opacity: 0, scale: 0.6, duration: 0.6, ease: 'back.out(1.6)', stagger: 0.07 }, 1.3);
+    tl.progress(0.001).pause();
+    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: () => tl.play() });
+  });
+</script>

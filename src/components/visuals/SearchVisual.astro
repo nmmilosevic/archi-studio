@@ -1,70 +1,86 @@
 ---
-/** Search visibility: a search result where the studio ranks first, plus score rings. */
+/** Search visibility: the query types itself, then the studio climbs from #5 to #1. */
 import { useContent, type Lang } from '../../i18n';
 
 interface Props { lang: Lang; class?: string }
 const { lang, class: cls } = Astro.props;
-const t = useContent(lang).services.visuals;
-const v = t.search;
-const scores = [98, 100, 100];
-const C = 2 * Math.PI * 18; // ring circumference
+const v = useContent(lang).services.visuals.search;
 ---
-<figure class:list={['viz', 'viz-search', cls]} data-viz-search>
-  <div class="viz__frame" role="img" aria-label={v.label}>
-    <div class="bar">
-      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.25" /><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.25" /></svg>
-      <span>{v.query}</span>
-    </div>
+<figure class:list={['vz', 'vz-search', cls]} data-vz-search role="img" aria-label={v.label}>
+  <div class="q">
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.4" /><path d="m10.5 10.5 3.5 3.5" stroke="currentColor" stroke-width="1.4" /></svg>
+    <span class="q__text" data-typed>{v.query}</span>
+  </div>
 
-    <ol class="results">
-      <li class="hit hit--studio" data-hit>
-        <span class="viz__muted">{v.url}</span>
-        <span class="hit__title">{v.title}</span>
-        <span class="viz__muted">{v.desc}</span>
+  <div class="board">
+    <p class="rank"><span class="rank__hash">#</span><span data-rank>1</span></p>
+    <ol class="list">
+      <li class="row row--studio" data-row>
+        <span class="row__url">{v.url}</span>
+        <span class="row__title">{v.title}</span>
       </li>
-      <li class="hit" data-hit><span class="ph" style="width:34%"></span><span class="ph ph--title" style="width:62%"></span><span class="ph" style="width:88%"></span></li>
-      <li class="hit" data-hit><span class="ph" style="width:28%"></span><span class="ph ph--title" style="width:54%"></span><span class="ph" style="width:80%"></span></li>
+      {[0, 1, 2, 3].map(() => <li class="row" data-row><i style="width:38%"></i><i class="t" style="width:72%"></i></li>)}
     </ol>
-
-    <div class="scores">
-      {scores.map((s, i) => (
-        <div class="score">
-          <svg viewBox="0 0 44 44" aria-hidden="true">
-            <circle class="ring ring--track" cx="22" cy="22" r="18" />
-            <circle class="ring ring--value" cx="22" cy="22" r="18" stroke-dasharray={C} stroke-dashoffset={C * (1 - s / 100)} data-ring={C * (1 - s / 100)} data-c={C} />
-          </svg>
-          <span class="score__num">{s}</span>
-          <span class="viz__label">{v.scores[i]}</span>
-        </div>
-      ))}
-    </div>
   </div>
 </figure>
 
 <style>
-  .bar {
-    display: flex; align-items: center; gap: .625rem;
-    padding: .75rem 1rem; margin-bottom: 1.25rem;
-    background: var(--viz-paper); font-size: .9375rem;
-    box-shadow: 0 0 0 1px var(--viz-line);
+  .vz { margin: 0; }
+  .vz-search {
+    display: grid; gap: 1.25rem; padding: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    background: var(--viz-paper); border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px var(--viz-line);
+    color: var(--viz-ink);
   }
-  .bar svg { width: 1rem; color: var(--viz-muted); }
-  .results { display: grid; gap: .75rem; }
-  .hit { display: grid; gap: .3rem; padding: .875rem 1rem; background: var(--viz-paper); position: relative; box-shadow: 0 0 0 1px var(--viz-line); }
-  .hit--studio { box-shadow: inset 2px 0 0 var(--viz-clay), 0 0 0 1px var(--viz-line), 0 16px 32px -18px rgb(0 0 0 / .7); z-index: 1; }
-  .hit__title { font-size: 1.0625rem; font-weight: var(--fw-medium); letter-spacing: -.01em; color: var(--viz-clay); }
-  .ph { display: block; height: .5rem; background: var(--viz-line); opacity: .7; }
-  .ph--title { height: .75rem; background: var(--viz-line); }
+  .q {
+    display: flex; align-items: center; gap: .75rem;
+    padding: .875rem 1.125rem; border-radius: var(--radius-pill);
+    background: var(--viz-panel); box-shadow: inset 0 0 0 1px var(--viz-line);
+    font-size: 1rem;
+  }
+  .q svg { width: 1rem; color: var(--viz-muted); flex: none; }
+  .q__text { white-space: nowrap; }
 
-  .scores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
-  .score { position: relative; display: grid; justify-items: start; gap: .375rem; }
-  .score svg { width: 3.25rem; height: 3.25rem; transform: rotate(-90deg); }
-  .ring { fill: none; stroke-width: 3; }
-  .ring--track { stroke: var(--viz-line); }
-  .ring--value { stroke: var(--viz-sage); }
-  .score__num {
-    position: absolute; top: 0; left: 0; width: 3.25rem; height: 3.25rem;
-    display: grid; place-items: center;
-    font-size: .875rem; font-weight: var(--fw-medium);
+  .board { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: start; }
+  .rank {
+    font-family: var(--font-display); font-weight: 600; line-height: .8;
+    font-size: clamp(4.5rem, 3rem + 5vw, 8rem); letter-spacing: -.04em;
+    color: var(--viz-clay); min-width: 1.6em; font-variant-numeric: tabular-nums;
   }
+  .rank__hash { font-size: .45em; vertical-align: top; margin-right: .05em; color: var(--viz-muted); }
+  .list { display: grid; gap: .5rem; }
+  .row {
+    display: grid; gap: .35rem; padding: .75rem .9rem;
+    border-radius: var(--radius-sm); background: var(--viz-panel);
+  }
+  .row i { display: block; height: .4rem; border-radius: 99px; background: var(--viz-line); }
+  .row i.t { height: .55rem; }
+  .row--studio { background: var(--viz-clay); color: #0a0a0a; position: relative; z-index: 1; }
+  .row__url { font-size: .75rem; opacity: .7; }
+  .row__title { font-weight: 700; font-size: .9375rem; letter-spacing: -.01em; }
+  @media (max-width: 599px) { .board { grid-template-columns: 1fr; } .rank { font-size: 4rem; } }
 </style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced } from '../../scripts/motion';
+
+  document.querySelectorAll<HTMLElement>('[data-vz-search]').forEach((root) => {
+    if (reduced) return;
+    const typed = root.querySelector<HTMLElement>('[data-typed]')!;
+    const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-row]'));
+    const rank = root.querySelector<HTMLElement>('[data-rank]')!;
+    const chars = typed.textContent!.length;
+    const step = () => rows[1].offsetTop - rows[0].offsetTop;
+    const n = { v: 5 };
+
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(typed, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: chars * 0.045, ease: `steps(${chars})` })
+      // the studio starts last; the others start one row higher
+      .fromTo(rows[0], { y: () => step() * 4 }, { y: 0, duration: 1.3, ease: 'expo.inOut' }, '+=0.25')
+      .fromTo(rows.slice(1), { y: () => -step() }, { y: 0, duration: 1.3, ease: 'expo.inOut' }, '<')
+      .fromTo(n, { v: 5 }, { v: 1, duration: 1.3, ease: 'expo.inOut', onUpdate: () => { rank.textContent = String(Math.round(n.v)); } }, '<');
+    tl.progress(0.001).pause(); // show the start state until it scrolls into view
+    rank.textContent = '5';
+    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: () => tl.play() });
+  });
+</script>

@@ -82,6 +82,7 @@ const es: Content = {
       price: '1.500€',
       terms: 'Pago único',
       note: 'Incluye el diseño que ves y su desarrollo. ¿Más páginas o cambios después? Te lo presupuestamos antes, para que nada aparezca en una factura que no esperabas.',
+      included: 'Qué incluye',
       includes: ['Estrategia web', 'Diseño a medida', 'Desarrollo responsive', 'Bases SEO', 'Formulario de contacto', 'Soporte de lanzamiento'],
       action: 'Empezar mi web',
     },

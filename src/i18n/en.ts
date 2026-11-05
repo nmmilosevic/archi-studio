@@ -83,6 +83,7 @@ const en = {
       price: '1,500€',
       terms: 'One-time payment',
       note: 'That covers the design you see and the build. Want more pages or changes later? We quote it first, so nothing lands on an invoice you didn’t expect.',
+      included: 'What’s included',
       includes: ['Website strategy', 'Custom design', 'Responsive development', 'SEO basics', 'Contact form', 'Launch support'],
       action: 'Start my site',
     },
