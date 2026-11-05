@@ -269,8 +269,11 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   .svc-statement__items li { padding-block: var(--s-5); }
   .svc-band .svc-host { display: flex; align-items: center; gap: var(--s-4); }
   /* Same dark warm card as the homepage extra services */
-  .svc-band .svc-host, .svc-statement .svc-feature { background: #0e0b0a; }
-  .svc-host__icon, .svc-feature__icon { --icon-bg: #0e0b0a; }
+  .svc-statement .svc-feature { background: #0e0b0a; }
+  .svc-feature__icon { --icon-bg: #0e0b0a; }
+  /* On the grey hosting band the cards sit clearly darker than the band */
+  .svc-band .svc-host { background: #060504; }
+  .svc-host__icon { --icon-bg: #060504; }
   .svc-host__icon { width: 2.25rem; height: 2.25rem; flex: none; }
   html.js:not(.motion-off) .ic-server .mv { opacity: 0; transition: opacity .4s 1s, transform 1.1s var(--ease-out) .55s; }
   html.js:not(.motion-off) .ic-server.is-drawn .mv { opacity: 1; }
