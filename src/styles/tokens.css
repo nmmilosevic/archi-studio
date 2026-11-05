@@ -5,24 +5,24 @@
 
 :root {
   /* ---- Colour: black theme ------------------------------------------
-     Black page, warm off-white text, one sunset accent. Variable names kept
+     Black page, warm off-white text, one indigo-violet accent. Variable names kept
      from v1 so every component follows; read them by role, not by name:
      "stone" = page, "stone-deep" = surface, "ink" = text. */
   --c-stone: #0a0a0a;        /* page background */
   --c-stone-deep: #151515;   /* surface: bands, cards */
   --c-raised: #1f1f1f;       /* cards inside surface sections */
   --c-line: #2a2a2a;         /* hairlines, input rules */
-  --c-sand: #ffb999;         /* peach: soft accent */
-  --c-bronze: #ff5a1f;       /* sunset: the one accent (hover, focus, highlights) */
+  --c-sand: #c9c2ff;         /* lavender: soft accent tint */
+  --c-bronze: #7c6cff;       /* indigo-violet: the one accent (hover, focus, highlights) */
   --c-muted: #9b978f;        /* secondary text (AA on black) */
   --c-ink: #f4f1ea;          /* text, primary button */
   --c-charcoal: #141414;     /* "dark" bands: footer, hosting, menu */
   --c-black: #0a0a0a;        /* text on light/accent fills */
-  --c-peach: #ffe4d6;
+  --c-peach: #ece9ff;
 
   /* ---- Illustration palette ------------------------------------------
      Dark "screens" for the code-built visuals: a step lighter than the page,
-     off-white text, sunset accent, green for positive states. */
+     off-white text, indigo-violet accent, green for positive states. */
   --viz-chrome: #222222;
   --viz-chrome-2: #303030;
   --viz-chrome-text: #a8a5a0;
@@ -31,7 +31,7 @@
   --viz-line: #2e2e2e;
   --viz-ink: #f4f1ea;
   --viz-muted: #8f8b84;
-  --viz-clay: #ff5a1f;
+  --viz-clay: #7c6cff;
   --viz-sage: #3ccf8e;
 
   /* Semantic aliases (light theme default) */
