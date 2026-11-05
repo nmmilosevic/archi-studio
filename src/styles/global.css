@@ -231,7 +231,7 @@ a.card:hover { background: var(--c-line); }
 /* Drawn line icons: 48px grid, 1.5 stroke, square caps. Paths marked .d draw
    themselves (pathLength="1"); groups marked .mv make one small move after.
    Add data-draw to play on scroll into view (motion.ts adds .is-drawn). */
-.icon-draw { width: 3rem; height: 3rem; overflow: visible; color: var(--fg); }
+.icon-draw { width: 3rem; height: 3rem; overflow: visible; color: var(--accent); } /* champagne line icons */
 .icon-draw .d { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; }
 .icon-draw .f { fill: var(--icon-bg, transparent); }
 .icon-draw .mv { transform-box: view-box; transition: transform 1.1s var(--ease-out) .55s; }
