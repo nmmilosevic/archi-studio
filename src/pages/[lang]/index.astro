@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Media from '../../components/Media.astro';
 import Button from '../../components/Button.astro';
 import { img, directionImages, projects, studioSlugs } from '../../data/site';
-import { langPaths, href, useContent, type Lang } from '../../i18n';
+import { langPaths, href, useContent, type Lang, rich } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -40,7 +40,7 @@ const beyondIcons = [
   <section class="wrap home-hero">
     <div class="grid home-hero__grid">
       <div class="home-hero__copy">
-        <h1 class="t-h1" data-split="intro">{h.hero.title}</h1>
+        <h1 class="t-h1" data-split="intro" set:html={rich(h.hero.title)}></h1>
         <div class="home-hero__foot">
           <p class="t-lead t-muted" data-fade="intro">{h.hero.lead}</p>
           <div class="home-hero__actions" data-fade="intro">
@@ -62,7 +62,7 @@ const beyondIcons = [
   <section id="directions" class="home-dir" data-directions aria-labelledby="dir-title">
     <div class="home-dir__pin" data-directions-pin>
       <div class="wrap grid home-dir__head">
-        <h2 id="dir-title" class="t-h2" data-split>{h.directions.title}</h2>
+        <h2 id="dir-title" class="t-h2" data-split set:html={rich(h.directions.title)}></h2>
         <p class="t-body t-muted" data-fade>{h.directions.body}</p>
       </div>
       <div class="home-dir__viewport" data-directions-viewport>
@@ -85,7 +85,7 @@ const beyondIcons = [
        Desktop: names on the left drive a shared image stage on the right.
        Mobile: each type stacks with its own image. -->
   <section class="wrap section home-studios" aria-labelledby="studios-title">
-    <h2 id="studios-title" class="t-h2 home-studios__title" data-split>{h.studios.title}</h2>
+    <h2 id="studios-title" class="t-h2 home-studios__title" data-split set:html={rich(h.studios.title)}></h2>
     <ul class="home-studios__list" data-studios>
       {studioSlugs.map((slug, i) => {
         const base = projects.find((p) => p.slug === slug)!;
@@ -115,7 +115,7 @@ const beyondIcons = [
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
       <div class="grid home-pricing__main">
-        <h2 id="pricing-title" class="t-h2 home-pricing__title" data-split>{h.pricing.title}</h2>
+        <h2 id="pricing-title" class="t-h2 home-pricing__title" data-split set:html={rich(h.pricing.title)}></h2>
         <div class="home-pricing__offer card card--raised">
           <p class="t-display home-pricing__price" data-split>{h.pricing.price}</p>
           <p class="t-label t-muted" data-fade>{h.pricing.terms}</p>
@@ -128,7 +128,7 @@ const beyondIcons = [
       </div>
 
       <div class="home-beyond">
-        <h3 class="t-h3" data-split>{h.beyond.title}</h3>
+        <h3 class="t-h3" data-split set:html={rich(h.beyond.title)}></h3>
         <div class="grid home-beyond__grid" data-stagger>
           {h.beyond.items.map((item, i) => (
             <article class="home-beyond__item card card--raised">
@@ -149,7 +149,7 @@ const beyondIcons = [
   <!-- Friction --------------------------------------------------------- -->
   <section class="wrap section home-friction" aria-labelledby="friction-title">
     <div class="grid">
-      <h2 id="friction-title" class="t-h2 home-friction__title" data-split>{h.friction.title}</h2>
+      <h2 id="friction-title" class="t-h2 home-friction__title" data-split set:html={rich(h.friction.title)}></h2>
       <div class="home-friction__intro" data-stagger>
         <p class="t-lead">{h.friction.body}</p>
         <div><Button href={contact} variant="link" arrow>{h.friction.action}</Button></div>
@@ -193,7 +193,7 @@ const beyondIcons = [
     width: 32%; left: var(--s-4); bottom: var(--s-4);
     /* drop-shadow follows the clipped image, so the shadow reveals with it
        (a box-shadow here would show an empty frame before the animation) */
-    filter: drop-shadow(0 26px 26px rgb(17 17 17 / .2));
+    filter: drop-shadow(0 26px 40px rgb(0 0 0 / .55));
   }
   @media (min-width: 900px) {
     .home-hero { height: 100svh; min-height: 38rem; }
@@ -293,7 +293,7 @@ const beyondIcons = [
   .home-beyond { margin-top: var(--s-section); display: grid; gap: var(--s-7); }
   .home-beyond__grid { row-gap: var(--gutter); }
   .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
-  .home-beyond__icon { --icon-bg: var(--c-stone); margin-bottom: var(--s-3); }
+  .home-beyond__icon { --icon-bg: var(--c-raised); margin-bottom: var(--s-3); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
   html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
   html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }

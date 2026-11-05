@@ -69,9 +69,9 @@ const isActive = (h: string) => path.startsWith(h);
     color: var(--c-ink);
     transition: transform .7s var(--ease-out), background-color var(--d-base) var(--ease-soft), box-shadow var(--d-base) var(--ease-soft);
   }
-  .site-header[data-scrolled] { background: var(--c-stone); box-shadow: 0 1px 0 var(--c-line); }
+  .site-header[data-scrolled] { background: rgb(10 10 10 / .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--c-line); }
   .site-header[data-hidden] { transform: translateY(-101%); }
-  .site-header[data-menu-open] { background: transparent; box-shadow: none; color: var(--c-stone); transform: none; }
+  .site-header[data-menu-open] { background: transparent; box-shadow: none; color: var(--c-ink); transform: none; }
 
   .site-header__inner {
     height: 100%;
@@ -79,14 +79,23 @@ const isActive = (h: string) => path.startsWith(h);
   }
   .site-header__logo { justify-self: start; }
   .site-header__logo :global(.logo) { width: 5.75rem; height: auto; }
-  .site-header__nav { display: flex; gap: clamp(1.5rem, 3vw, 2.75rem); font-size: .9375rem; }
-  .site-header__nav a { padding-block: .25rem; }
+  /* Floating capsule behind the main links */
+  .site-header__nav {
+    display: flex; gap: .25rem; padding: .3rem;
+    font-size: .9375rem;
+    background: rgb(255 255 255 / .06); border-radius: var(--radius-pill);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / .08);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  }
+  .site-header__nav a { padding: .45rem 1rem; border-radius: var(--radius-pill); background-image: none; transition: background-color var(--d-fast), color var(--d-fast); }
+  .site-header__nav a:hover { background-color: rgb(255 255 255 / .08); }
+  .site-header__nav a[aria-current="page"] { background-color: var(--c-ink); color: var(--c-black); }
   .site-header__end { justify-self: end; display: flex; align-items: center; gap: var(--s-5); }
 
   .lang { display: flex; gap: .875rem; font-size: var(--fs-label); font-weight: var(--fw-medium); }
   .lang__item { color: var(--fg-muted, var(--c-muted)); transition: color var(--d-fast); }
   .lang__item:hover, .lang__item.is-current { color: currentColor; }
-  .site-header .lang__item { color: rgb(17 17 17 / .45); }
+  .site-header .lang__item { color: rgb(244 241 234 / .45); }
   .site-header .lang__item.is-current, .site-header .lang__item:hover { color: var(--c-ink); }
 
   .menu-toggle { display: none; font-size: .9375rem; font-weight: var(--fw-medium); height: 2.75rem; }

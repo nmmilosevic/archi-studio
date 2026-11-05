@@ -8,8 +8,8 @@ const en = {
 
   meta: {
     home: {
-      title: 'Architecture Studio Website Design | Reframe Studio',
-      description: 'Architecture website design for studios that need stronger portfolio presentation, clearer positioning, and a digital experience that matches the quality of their work.',
+      title: 'Reframe Studio · Websites, brand and print for architects and interior designers',
+      description: 'Websites, brand, print and social for architecture, interior and landscape studios. Made with the care you put into a floor plan.',
     },
     work: {
       title: 'Work | Reframe Studio',
@@ -42,8 +42,8 @@ const en = {
   },
 
   footer: {
-    tagline: 'Web design studio specializing in architecture, interior design, and landscape studios.',
-    about: 'REFRAME is a web design studio for architecture and interior design firms, creating refined websites, portfolio systems, and presentation concepts.',
+    tagline: 'A design studio for architects, interior designers and landscape studios. Websites, brand, print and marketing.',
+    about: 'REFRAME makes websites, portfolios, print and social content for studios whose work deserves better than a template.',
   },
 
   cookie: {
@@ -54,77 +54,77 @@ const en = {
   },
 
   cta: {
-    title: 'Want your studio to feel more premium online?',
-    body: 'Send your current website. We’ll tell you what should change first.',
-    action: 'Request a quick audit',
+    title: 'Send us your site. We’ll tell you what to *fix first*.',
+    body: 'A short, honest review of what’s working and what isn’t. No pitch deck.',
+    action: 'Request a review',
     alt: 'Architecture website review materials with plans and natural samples',
   },
 
   home: {
     hero: {
-      title: 'Your studio already feels premium. Your website should too.',
-      lead: 'Architecture website design for studios that need stronger portfolio presentation, clearer positioning, and a digital experience that matches the quality of their work.',
-      primary: 'See redesign previews',
-      secondary: 'Request a review',
+      title: 'You design beautiful spaces. Your website should *feel* like one.',
+      lead: 'Websites, brand, print and social for architects and interior designers. Made with the same care you put into a floor plan.',
+      primary: 'See the work',
+      secondary: 'Book a site review',
       mockAlt: 'Example architecture studio website redesign',
     },
     directions: {
-      title: 'Selected website directions for architecture studios.',
-      body: 'Focused examples of clearer portfolios, better mobile reading, and a stronger first impression, without generic templates.',
+      title: 'Nine directions. *Zero* templates.',
+      body: 'Each one starts from a real kind of studio: Mediterranean villas, quiet interiors, raw concrete. Find the one that feels like you.',
       names: ['Mediterranean', 'Organic', 'Avantforme', 'Futuristic', 'Japan', 'Luxury', 'Modern eco', 'Parisian', 'Dark luxury'],
       altPrefix: 'Style:',
     },
     studios: {
-      title: 'Studios we design for.',
+      title: 'Who we *work* with.',
       labels: ['Architecture', 'Interiors', 'Landscape'],
     },
     pricing: {
-      title: 'One clear investment for your studio.',
+      title: 'One price. *No* surprises.',
       price: '1,500€',
       terms: 'One-time payment',
-      note: 'This package includes the development of the design shown. For any changes or additions, we’ll provide a separate quote.',
+      note: 'That covers the design you see and the build. Want more pages or changes later? We quote it first, so nothing lands on an invoice you didn’t expect.',
       includes: ['Website strategy', 'Custom design', 'Responsive development', 'SEO basics', 'Contact form', 'Launch support'],
       action: 'Start my site',
     },
     beyond: {
-      title: 'Design beyond your website.',
+      title: 'Not *just* websites.',
       items: [
         {
           title: 'Brand & Print',
-          body: 'Brochures, portfolio PDFs, business cards and stationery, presentation templates, competition documents, signage, and printed marketing materials.',
-          price: ['Quoted based on scope'],
-          action: 'Request a quote' as string | null,
+          body: 'Business cards, brochures, portfolio PDFs, competition boards, signage. Anything that ends up on paper or on a wall.',
+          price: ['Priced per project'],
+          action: 'Ask for a quote' as string | null,
         },
         {
           title: 'Digital Marketing',
-          body: 'Social media design, Instagram templates, campaign visuals, newsletters, landing pages, digital ads, and content creation.',
-          price: ['Quoted based on scope'],
-          action: 'Request a quote' as string | null,
+          body: 'Instagram templates, campaign visuals, newsletters, landing pages and ads. Your feed, finally on brand.',
+          price: ['Priced per project'],
+          action: 'Ask for a quote' as string | null,
         },
         {
           title: 'Website Care',
-          body: 'Hosting, backups, security updates, small fixes, content edits, and project uploads.',
+          body: 'Hosting, backups, security updates, small fixes. New projects uploaded for you.',
           price: ['Hosting from 30€/month', 'Content updates from 120€/month'],
           action: null as string | null,
         },
       ],
     },
     friction: {
-      title: 'Small friction reduces trust.',
-      body: 'Prospective clients read a website much like they read a space. Sequence, proportion, and attention to detail shape the impression before a conversation begins.',
-      action: 'Request a website review',
+      title: 'Clients read your site like a *space*.',
+      body: 'Where they walk in, what they see first, how fast they find the door. Every bit of friction costs a little trust before anyone picks up the phone.',
+      action: 'Book a site review',
       alt: 'Website review visual composition',
       points: [
-        { title: 'Positioning', body: 'Clarify what your studio is known for.' },
-        { title: 'Project presentation', body: 'Improve hierarchy and reading rhythm.' },
-        { title: 'Contact flow', body: 'Reduce friction from interest to enquiry.' },
+        { title: 'Positioning', body: 'Say what you’re known for in one line.' },
+        { title: 'Project presentation', body: 'Let the photos lead. Keep the words short.' },
+        { title: 'Contact flow', body: 'Make getting in touch the easiest part.' },
       ],
     },
   },
 
   work: {
-    title: 'Websites for studios with work worth showing properly.',
-    lead: 'A clear look at how architecture and interior studios can present their work with more clarity, confidence, and visual quality.',
+    title: 'Four studies in *showing* the work.',
+    lead: 'Redesign concepts for studios on the Costa del Sol. Not client work: studies, so you can see how we think.',
     listTitle: 'Selected website redesign studies',
     viewProject: 'View project',
     previewAlt: (title: string) => `${title} website redesign preview`,
@@ -204,46 +204,46 @@ const en = {
   } as Record<string, { title: string; location: string; summary: string; captions: string[]; typeNote: string; paletteNames: string[]; decisions: string[] }>,
 
   services: {
-    title: 'Everything a studio needs to stand out online.',
-    lead: 'From website redesigns to portfolio systems and search visibility foundations, every service is built around how architecture and design studios present work, earn trust, and attract better enquiries.',
+    title: 'Web, brand, print and *everything* in between.',
+    lead: 'Everything here is built around how architecture and interior studios actually win work: the portfolio, the first impression, the enquiry.',
     redesign: {
       title: 'Website redesign for architecture studios',
-      body: 'A refined digital presence that makes your portfolio easier to explore, your positioning clearer, and your studio more credible to high-value clients.',
+      body: 'A site that makes your portfolio easy to explore, and makes the right clients take you seriously.',
       items: ['Homepage redesign', 'Project pages', 'About page', 'Enquiry flow', 'Mobile experience', 'Performance-focused build', 'Multilingual setup'],
       alt: 'Architecture studio website redesign, project page',
     },
     interiors: {
       title: 'Interior design studio websites',
-      body: 'Elegant, image-led websites for studios that need to present mood, materials, style, and trust before the first meeting.',
+      body: 'Image-led sites that carry the mood, the materials and the feel of a room before the first meeting.',
       items: ['Visual portfolio system', 'Service pages', 'Process storytelling', 'Lead capture', 'Instagram and portfolio integration'],
       alt: 'Interior design studio website, project page',
     },
     search: {
       title: 'Search visibility foundation',
-      body: 'Organic visibility is the ability to appear in unpaid searches related to your services, projects, and locations. We build it through content structure, metadata, internal links, and a clear technical foundation.',
+      body: 'Showing up when someone searches “architect in Marbella” isn’t luck. It’s structure, metadata, links and a fast site. We set all of it up properly.',
       items: ['SEO metadata', 'Search-focused page structure', 'Structured data', 'Internal linking', 'Image alt structure', 'Performance optimization'],
     },
     hosting: {
       title: 'Hosting & maintenance',
-      body: 'Keep the website fast, secure, updated, and easy to manage without worrying about technical details.',
+      body: 'We keep the site fast, safe and up to date. You never have to think about it.',
       items: ['Vercel hosting setup', 'Monthly updates', 'Technical monitoring', 'Small content edits', 'Analytics checks'],
     },
     portfolio: {
       title: 'Portfolio systems',
-      body: 'A clean structure to publish projects consistently, including images, location, service type, materials, scope, and story.',
+      body: 'One clean way to publish every project: photos, location, type, materials, scope and the story behind it.',
       items: ['Content model for a CMS, or content management system', 'Project templates', 'Filters by location and type', 'Case study structure', 'Image-first layout'],
       alt: 'Project archive layout for an architecture studio',
     },
     brand: {
       title: 'Brand refinement',
-      body: 'Not a full branding agency replacement. It is a precise refinement of typography, color, layout, tone, and digital consistency.',
+      body: 'Not a full rebrand. A careful tune-up of type, colour, layout and tone, so everything looks like it comes from the same studio.',
       items: ['Visual direction', 'Typography system', 'Color system', 'Website UI kit', 'Basic brand guidelines'],
       alt: 'Typography and colour system for a studio brand',
     },
     fit: {
-      title: 'Not sure which service fits?',
-      body: 'Request a website review and we will tell you what your studio website needs first.',
-      action: 'Request a website review',
+      title: 'Not sure where to *start*?',
+      body: 'Send us your site. We’ll tell you what it needs first.',
+      action: 'Book a site review',
     },
     visuals: {
       search: {
@@ -278,21 +278,21 @@ const en = {
       },
     },
     engagement: {
-      title: 'Every engagement follows the same structure.',
+      title: 'How every project *runs*.',
       items: [
-        { title: 'Review first', body: 'Every project starts with a review of your current site, positioning, and goals. This shapes the direction and scope before any work begins.' },
-        { title: 'Fixed deliverables', body: 'Each package has a defined scope, so you know what you are getting before you sign.' },
-        { title: 'Direct involvement', body: 'You work directly with the designer and developer. Faster revisions and cleaner decisions, with no account-manager handoffs.' },
-        { title: 'Launch ready', body: 'Every project includes performance optimization, technical SEO setup, analytics configuration, and domain connection.' },
+        { title: 'Review first', body: 'We start with your current site, your positioning and your goals. That sets the direction before any design happens.' },
+        { title: 'Fixed deliverables', body: 'You know exactly what you’re getting before you sign.' },
+        { title: 'Direct involvement', body: 'You talk to the person designing and building it. Nobody in between.' },
+        { title: 'Launch ready', body: 'Speed, SEO, analytics and your domain, all set up before you go live.' },
       ],
     },
   },
 
   contact: {
-    title: 'Tell us about your studio website.',
-    lead: 'Send your current website or project idea. We’ll reply with the clearest next step.',
-    asideTitle: 'The right website should help clients trust your work.',
-    asideBody: 'We help architecture and interior studios present their work with more clarity, trust, and consistency across desktop and mobile.',
+    title: 'Tell us about your *studio*.',
+    lead: 'Send your current site or a project idea. We’ll reply with a clear next step.',
+    asideTitle: 'A good website makes clients trust your work before they meet you.',
+    asideBody: 'We help architecture and interior studios show their work clearly, on every screen.',
     fields: {
       name: 'Your name',
       studio: 'Studio name',
@@ -300,7 +300,7 @@ const en = {
       website: 'Current website URL',
       message: 'What is not working on your current site?',
     },
-    submit: 'Send the current site',
+    submit: 'Send it over',
     sending: 'Sending…',
     required: 'Fields marked * are required.',
     errors: {
@@ -309,7 +309,7 @@ const en = {
       url: 'Please enter the full address, including https://',
     },
     sendError: 'The message could not be sent. Please try again, or write to',
-    thanks: 'Thank you. We’ll reply with the clearest next step.',
+    thanks: 'Got it. We’ll get back to you with a clear next step.',
     trap: 'Leave this empty',
   },
 };

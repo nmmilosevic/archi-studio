@@ -7,7 +7,7 @@ import PortfolioVisual from '../../components/visuals/PortfolioVisual.astro';
 import BrandVisual from '../../components/visuals/BrandVisual.astro';
 import HostingVisual from '../../components/visuals/HostingVisual.astro';
 import { serviceImages } from '../../data/site';
-import { langPaths, href, useContent, type Lang } from '../../i18n';
+import { langPaths, href, useContent, type Lang, rich } from '../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -119,7 +119,7 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   <!-- Hero + index --------------------------------------------------- -->
   <section class="wrap svc-hero">
     <div class="grid">
-      <h1 class="t-h1 svc-hero__title" data-split="intro">{sv.title}</h1>
+      <h1 class="t-h1 svc-hero__title" data-split="intro" set:html={rich(sv.title)}></h1>
       <p class="t-lead t-muted svc-hero__lead" data-fade="intro">{sv.lead}</p>
     </div>
   </section>
@@ -201,7 +201,7 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
 
   <!-- Not sure: a pause ---------------------------------------------- -->
   <section class="wrap section svc-fit" aria-labelledby="svc-fit">
-    <h2 id="svc-fit" class="t-h1" data-split>{sv.fit.title}</h2>
+    <h2 id="svc-fit" class="t-h1" data-split set:html={rich(sv.fit.title)}></h2>
     <div class="svc-fit__body" data-stagger>
       <p class="t-lead t-muted">{sv.fit.body}</p>
       <div><Button href={href(lang, '/contact/')} arrow>{sv.fit.action}</Button></div>
@@ -211,7 +211,7 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   <!-- Engagement: a timeline that draws as you scroll ----------------- -->
   <section class="svc-process" aria-labelledby="svc-process">
     <div class="wrap section">
-      <h2 id="svc-process" class="t-h2 svc-process__title" data-split>{engagement.title}</h2>
+      <h2 id="svc-process" class="t-h2 svc-process__title" data-split set:html={rich(engagement.title)}></h2>
       <ol class="svc-process__steps" data-process>
         <span class="svc-process__track" aria-hidden="true"><span data-process-line></span></span>
         {engagement.items.map((e, i) => (

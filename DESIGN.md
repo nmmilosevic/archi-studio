@@ -18,18 +18,20 @@ Reframe designs websites for architecture and interior design studios. The site 
 
 All tokens live in `src/styles/tokens.css`. Components only use semantic aliases (`--bg`, `--fg`, `--fg-muted`, `--rule`, `--accent`, `--surface`), so wrapping a block in `data-theme="dark"` switches it to the dark theme with no extra CSS.
 
-### Colour
+### Colour: black theme
 
 | Token | Hex | Role |
 |---|---|---|
-| `--c-stone` | #F5F1EB | Page background |
-| `--c-stone-deep` | #E7E0D5 | Secondary surface (pricing, engagement) |
-| `--c-line` | #D8D2CA | Hairlines, input rules |
-| `--c-sand` | #C6A98B | Accent on dark |
-| `--c-bronze` | #8E745C | Accent on light, focus ring, button hover |
-| `--c-muted` | #6E6A64 | Secondary text (4.8:1 on stone, passes AA) |
-| `--c-ink` | #111111 | Text, primary button |
-| `--c-charcoal` | #0B0B0B | Dark sections, footer, mobile menu |
+| `--c-stone` | #0A0A0A | Page background (black) |
+| `--c-stone-deep` | #151515 | Surface: bands, cards |
+| `--c-raised` | #1F1F1F | Cards inside surface sections |
+| `--c-line` | #2A2A2A | Hairlines, input rules |
+| `--c-muted` | #9B978F | Secondary text |
+| `--c-ink` | #F4F1EA | Text, primary button (warm paper) |
+| `--c-bronze` | #FF5A1F | Sunset: the one accent |
+| `--c-sand` | #FFB999 | Peach: soft accent |
+
+Token names are kept from v1 so components didn't change: read them by role ("stone" = page, "ink" = text).
 
 ### Illustration palette
 
@@ -50,7 +52,9 @@ Photo placeholders use three gradients (`--viz-tone-stone`, `--viz-tone-sage`, `
 
 `.icon-draw` in `global.css`: 48px grid, 1.5px stroke, square caps, page ink colour. Paths marked `.d` draw themselves; groups marked `.mv` make one small move afterwards. Add `data-draw` to play on scroll into view. The process timeline icons on Services use the same style and draw when the timeline line reaches them.
 
-### Type: General Sans 400 / 500
+### Type: Clash Display / Satoshi / Instrument Serif
+
+Headlines use Clash Display 500. Text uses Satoshi. One accent word per headline is written `*word*` in the copy files and set in Instrument Serif italic. Buttons and the menu capsule are pills; cards and images use an 18px radius.
 
 | Class | Size (375 → 1680px) | Weight · leading · tracking |
 |---|---|---|

@@ -5,14 +5,14 @@ import Media from '../components/Media.astro';
 import { img } from '../data/site';
 
 const colors = [
-  { name: 'Stone', token: '--c-stone', hex: '#F5F1EB', role: 'Page background' },
-  { name: 'Stone deep', token: '--c-stone-deep', hex: '#E7E0D5', role: 'Secondary surface, pricing, engagement' },
-  { name: 'Line', token: '--c-line', hex: '#D8D2CA', role: 'Hairlines, input rules' },
-  { name: 'Sand', token: '--c-sand', hex: '#C6A98B', role: 'Accent on dark' },
-  { name: 'Bronze', token: '--c-bronze', hex: '#8E745C', role: 'Accent on light, focus ring, hover' },
-  { name: 'Muted', token: '--c-muted', hex: '#6E6A64', role: 'Secondary text (4.8:1 on stone)' },
-  { name: 'Ink', token: '--c-ink', hex: '#111111', role: 'Text, primary button' },
-  { name: 'Charcoal', token: '--c-charcoal', hex: '#0B0B0B', role: 'Dark sections, footer, menu' },
+  { name: 'Black', token: '--c-stone', hex: '#0A0A0A', role: 'Page background' },
+  { name: 'Surface', token: '--c-stone-deep', hex: '#151515', role: 'Bands, cards' },
+  { name: 'Raised', token: '--c-raised', hex: '#1F1F1F', role: 'Cards inside surface sections' },
+  { name: 'Line', token: '--c-line', hex: '#2A2A2A', role: 'Hairlines, input rules' },
+  { name: 'Muted', token: '--c-muted', hex: '#9B978F', role: 'Secondary text' },
+  { name: 'Paper', token: '--c-ink', hex: '#F4F1EA', role: 'Text, primary button' },
+  { name: 'Sunset', token: '--c-bronze', hex: '#FF5A1F', role: 'The one accent: hover, focus, highlights' },
+  { name: 'Peach', token: '--c-sand', hex: '#FFB999', role: 'Soft accent' },
 ];
 
 const type = [
@@ -83,7 +83,7 @@ const motion = [
     <div class="grid">
       <h2 id="ds-type" class="t-h2 ds-title">Type</h2>
       <div class="ds-body">
-        <p class="t-muted ds-note">General Sans, 400 / 500. Fluid sizes between 375px and 1680px viewports. Headings use balanced wrapping, body text uses pretty wrapping.</p>
+        <p class="t-muted ds-note">Clash Display for headlines, Satoshi for text, Instrument Serif italic for one accent word per headline. Fluid sizes between 375px and 1680px viewports. Headings use balanced wrapping, body text uses pretty wrapping.</p>
         <ul class="rows ds-type">
           {type.map((t) => (
             <li>

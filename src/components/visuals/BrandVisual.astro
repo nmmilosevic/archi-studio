@@ -38,18 +38,18 @@ const spacing = [4, 8, 16, 32, 64];
   .frame { display: grid; gap: 1.75rem; background: var(--viz-paper); }
   .type { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: end; }
   .aa, .s--1, .s--2 { font-family: ui-serif, 'Iowan Old Style', 'Times New Roman', Georgia, serif; letter-spacing: -.02em; }
-  .aa { font-size: clamp(5rem, 3rem + 6vw, 9.5rem); line-height: .8; color: #2e2c29; }
+  .aa { font-size: clamp(5rem, 3rem + 6vw, 9.5rem); line-height: .8; color: var(--viz-ink); }
   .scale { display: grid; gap: .75rem; padding-bottom: .25rem; }
   .scale p { display: grid; gap: .1rem; }
   .s--1 { font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.5rem); line-height: 1; }
   .s--2 { font-size: 1.25rem; line-height: 1.1; }
-  .s--3 { font-size: .875rem; color: #4a4741; }
+  .s--3 { font-size: .875rem; color: var(--viz-muted); }
   .spacing { display: flex; align-items: end; gap: 1rem; }
   .space { display: grid; justify-items: start; gap: .3rem; font-size: .6875rem; }
   .space i { display: block; max-width: 96px; max-height: 96px; background: #a9634a; opacity: .85; }
   .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; }
   .swatches li { display: grid; gap: .3rem; }
-  .chip { aspect-ratio: 3 / 4; box-shadow: inset 0 0 0 1px rgb(17 17 17 / .06); }
+  .chip { aspect-ratio: 3 / 4; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .08); }
   .name { font-weight: var(--fw-medium); font-size: .8125rem; }
   .hex { font-size: .6875rem; }
   @media (max-width: 599px) {

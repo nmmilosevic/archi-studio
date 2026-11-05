@@ -2,7 +2,7 @@
 import Base from '../../../layouts/Base.astro';
 import Media from '../../../components/Media.astro';
 import { projects } from '../../../data/site';
-import { langPaths, href, useContent, type Lang } from '../../../i18n';
+import { langPaths, href, useContent, type Lang, rich } from '../../../i18n';
 
 export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
@@ -11,7 +11,7 @@ const t = useContent(lang);
 <Base lang={lang} title={t.meta.work.title} description={t.meta.work.description}>
   <section class="wrap page-hero">
     <div class="grid">
-      <h1 class="t-h1 page-hero__title" data-split="intro">{t.work.title}</h1>
+      <h1 class="t-h1 page-hero__title" data-split="intro" set:html={rich(t.work.title)}></h1>
       <p class="t-lead t-muted page-hero__lead" data-fade="intro">{t.work.lead}</p>
     </div>
   </section>

@@ -7,19 +7,19 @@ const es: Content = {
 
   meta: {
     home: {
-      title: 'Diseño web para estudios de arquitectura | Reframe Studio',
-      description: 'Diseño y rediseño web para estudios de arquitectura e interiorismo, con portafolios refinados, estructura multilingüe y rutas de contacto claras.',
+      title: 'Reframe Studio · Webs, marca e impresión para arquitectos e interioristas',
+      description: 'Webs, marca, impresión y redes para estudios de arquitectura, interiorismo y paisajismo. Hechas con el mismo cuidado que pones en un plano.',
     },
     work: {
-      title: 'Proyectos web de estudios de arquitectura | Reframe Studio',
+      title: 'Cuatro estudios sobre cómo *mostrar* el trabajo.',
       description: 'Estudios de rediseño web para arquitectura e interiorismo, con proyectos mejor estructurados, posicionamiento claro y presentación móvil cuidada.',
     },
     services: {
-      title: 'Servicios web para estudios de arquitectura | Reframe Studio',
+      title: 'Web, marca, impresión y *todo* lo demás.',
       description: 'Rediseño web, sistemas de portafolio, visibilidad en buscadores, alojamiento y refinamiento de marca para estudios de arquitectura, interiorismo y paisajismo.',
     },
     contact: {
-      title: 'Contacta con Reframe Studio',
+      title: 'Cuéntanos sobre tu *estudio*.',
       description: 'Cuéntanos sobre la web de tu estudio de arquitectura o interiorismo y recibe una recomendación clara para el siguiente paso.',
     },
   },
@@ -41,8 +41,8 @@ const es: Content = {
   },
 
   footer: {
-    tagline: 'Estudio de diseño web especializado en estudios de arquitectura, interiorismo y paisajismo.',
-    about: 'REFRAME es un estudio de diseño web para firmas de arquitectura e interiorismo que crea webs refinadas, sistemas de portafolio y conceptos de presentación.',
+    tagline: 'Estudio de diseño para arquitectos, interioristas y paisajistas. Webs, marca, impresión y marketing.',
+    about: 'REFRAME crea webs, portafolios, impresos y contenido para redes para estudios cuyo trabajo merece algo mejor que una plantilla.',
   },
 
   cookie: {
@@ -53,70 +53,70 @@ const es: Content = {
   },
 
   cta: {
-    title: '¿Quieres que tu estudio se vea más premium online?',
-    body: 'Envíanos tu web actual. Te diremos qué deberías cambiar primero.',
-    action: 'Solicitar una auditoría rápida',
+    title: 'Envíanos tu web. Te diremos qué *arreglar primero*.',
+    body: 'Una revisión breve y sincera de lo que funciona y lo que no. Sin presentaciones comerciales.',
+    action: 'Solicitar una revisión',
     alt: 'Materiales de revisión web con planos y muestras naturales',
   },
 
   home: {
     hero: {
-      title: 'Tu estudio ya parece premium. Tu web también debería.',
-      lead: 'Diseño web para estudios de arquitectura, interiorismo y paisajismo que necesitan mejor presentación de portfolio, posicionamiento más claro y una experiencia digital a la altura de su trabajo.',
-      primary: 'Ver previews de rediseño',
-      secondary: 'Solicitar revisión',
+      title: 'Diseñas espacios bonitos. Tu web debería *sentirse* como uno.',
+      lead: 'Envíanos tu web actual o una idea de proyecto. Te responderemos con un siguiente paso claro.',
+      primary: 'Ver el trabajo',
+      secondary: 'Reservar una revisión',
       mockAlt: 'Ejemplo de rediseño web para estudio de arquitectura',
     },
     directions: {
-      title: 'Webs para estudios con trabajo que merece mostrarse bien.',
-      body: 'Ejemplos enfocados: portfolios más claros, mejor lectura en móvil y una primera impresión más sólida, sin plantillas genéricas.',
+      title: 'Nueve direcciones. *Cero* plantillas.',
+      body: 'Cada una parte de un tipo de estudio real: villas mediterráneas, interiores serenos, hormigón visto. Encuentra la que se parece a ti.',
       names: ['Mediterráneo', 'Orgánico', 'Avantforme', 'Futurista', 'Japonés', 'Lujo', 'Eco moderno', 'Parisino', 'Lujo oscuro'],
       altPrefix: 'Estilo:',
     },
     studios: {
-      title: 'Los estudios para los que diseñamos.',
+      title: 'Con quién *trabajamos*.',
       labels: ['Arquitectura', 'Interiorismo', 'Paisajismo'],
     },
     pricing: {
-      title: 'Una inversión clara para tu estudio.',
+      title: 'Un precio. *Sin* sorpresas.',
       price: '1.500€',
       terms: 'Pago único',
-      note: 'Esta oferta incluye el desarrollo del diseño presentado. Para cualquier cambio o añadido, te enviaremos un presupuesto adicional.',
+      note: 'Incluye el diseño que ves y su desarrollo. ¿Más páginas o cambios después? Te lo presupuestamos antes, para que nada aparezca en una factura que no esperabas.',
       includes: ['Estrategia web', 'Diseño a medida', 'Desarrollo responsive', 'Bases SEO', 'Formulario de contacto', 'Soporte de lanzamiento'],
       action: 'Empezar mi web',
     },
     beyond: {
-      title: 'Diseño más allá de tu web.',
+      title: 'No *solo* webs.',
       items: [
         {
           title: 'Marca e impresión',
-          body: 'Folletos, portfolios en PDF, tarjetas y papelería, plantillas de presentación, documentos para concursos, señalética y material de marketing impreso.',
-          price: ['Presupuesto según el alcance'],
-          action: 'Solicitar presupuesto',
+          body: 'Tarjetas, folletos, portafolios en PDF, paneles de concurso, señalética. Todo lo que acaba en papel o en una pared.',
+          price: ['Presupuesto por proyecto'],
+          action: 'Pedir presupuesto',
         },
         {
           title: 'Marketing digital',
-          body: 'Diseño para redes sociales, plantillas de Instagram, visuales de campaña, newsletters, landing pages, anuncios digitales y creación de contenido.',
-          price: ['Presupuesto según el alcance'],
-          action: 'Solicitar presupuesto',
+          body: 'Plantillas de Instagram, visuales de campaña, newsletters, landing pages y anuncios. Tu feed, por fin coherente con tu marca.',
+          price: ['Presupuesto por proyecto'],
+          action: 'Pedir presupuesto',
         },
         {
           title: 'Mantenimiento web',
-          body: 'Alojamiento, copias de seguridad, actualizaciones de seguridad, pequeños ajustes, edición de contenidos y subida de proyectos.',
+          body: 'Alojamiento, copias de seguridad, actualizaciones de seguridad, pequeños ajustes. Subimos tus nuevos proyectos.',
           price: ['Alojamiento desde 30€/mes', 'Actualizaciones de contenido desde 120€/mes'],
           action: null,
         },
       ],
     },
     friction: {
-      title: 'La fricción reduce la confianza.',
-      body: 'Un cliente potencial lee una web como lee un espacio. La secuencia, la proporción y la atención al detalle construyen la impresión antes de iniciar una conversación.',
-      action: 'Solicitar revisión web',
+      title: 'Tus clientes leen tu web como un *espacio*.',
+      body: 'Por dónde entran, qué ven primero, cuánto tardan en encontrar la puerta. Cada fricción resta un poco de confianza antes de que alguien llame.',
+      action: 'Reservar una revisión',
       alt: 'Composición visual para la revisión web',
       points: [
-        { title: 'Posicionamiento', body: 'Aclara por lo que tu estudio es conocido.' },
-        { title: 'Presentación de proyectos', body: 'Mejora la jerarquía y el ritmo de lectura.' },
-        { title: 'Flujo de contacto', body: 'Menos fricción del interés a la consulta.' },
+        { title: 'Posicionamiento', body: 'Di por lo que se te conoce en una frase.' },
+        { title: 'Presentación de proyectos', body: 'Que manden las fotos. Textos cortos.' },
+        { title: 'Flujo de contacto', body: 'Que contactar sea lo más fácil.' },
       ],
     },
   },
@@ -207,42 +207,42 @@ const es: Content = {
     lead: 'Desde rediseños web y sistemas de portafolio hasta bases de visibilidad en buscadores, cada servicio se adapta a cómo los estudios de arquitectura y diseño presentan su trabajo, generan confianza y atraen mejores consultas.',
     redesign: {
       title: 'Rediseño web para estudios de arquitectura',
-      body: 'Una presencia digital refinada que facilita la exploración de tu portafolio, clarifica tu posicionamiento y hace que tu estudio sea más creíble para clientes de alto valor.',
+      body: 'Una web que hace fácil recorrer tu portafolio y que los clientes adecuados te tomen en serio.',
       items: ['Rediseño de portada', 'Páginas de proyectos', 'Página sobre nosotros', 'Flujo de consulta', 'Experiencia móvil', 'Construcción orientada al rendimiento', 'Configuración multilingüe'],
       alt: 'Rediseño web para estudio de arquitectura, página de proyecto',
     },
     interiors: {
       title: 'Webs para estudios de diseño de interiores',
-      body: 'Webs elegantes y visuales para estudios que necesitan transmitir ambiente, materiales, estilo y confianza antes de la primera reunión.',
+      body: 'Webs visuales que transmiten el ambiente, los materiales y la sensación de un espacio antes de la primera reunión.',
       items: ['Sistema de portafolio visual', 'Páginas de servicios', 'Narrativa del proceso', 'Captación de leads', 'Integración con Instagram y portafolio'],
       alt: 'Web para estudio de interiorismo, página de proyecto',
     },
     search: {
       title: 'Fundamentos de visibilidad',
-      body: 'La visibilidad orgánica es la capacidad de aparecer en búsquedas no pagadas relacionadas con tus servicios, proyectos y ubicaciones. La trabajamos con estructura de contenido, metadatos, enlazado interno y una base técnica clara.',
+      body: 'Aparecer cuando alguien busca “arquitecto en Marbella” no es suerte. Es estructura, metadatos, enlaces y una web rápida. Lo dejamos todo bien hecho.',
       items: ['Metadatos SEO', 'Estructura de páginas orientada a búsqueda', 'Datos estructurados', 'Enlazado interno', 'Estructura de alt en imágenes', 'Optimización de rendimiento'],
     },
     hosting: {
       title: 'Alojamiento y mantenimiento',
-      body: 'Mantén la web rápida, segura, actualizada y fácil de gestionar sin preocuparte por los detalles técnicos.',
+      body: 'Mantenemos la web rápida, segura y al día. Tú no tienes que pensar en ello.',
       items: ['Configuración de alojamiento en Vercel', 'Actualizaciones mensuales', 'Monitoreo técnico', 'Pequeñas ediciones de contenido', 'Revisiones de analítica'],
     },
     portfolio: {
       title: 'Sistemas de portafolio',
-      body: 'Una estructura limpia para publicar proyectos de forma consistente, incluyendo imágenes, ubicación, tipo de servicio, materiales, alcance e historia.',
+      body: 'Una forma clara de publicar cada proyecto: fotos, ubicación, tipo, materiales, alcance y la historia detrás.',
       items: ['Modelo para CMS, el sistema de gestión de contenidos', 'Plantillas de proyectos', 'Filtros por ubicación y tipo', 'Estructura de caso de estudio', 'Diseño centrado en la imagen'],
       alt: 'Archivo de proyectos para un estudio de arquitectura',
     },
     brand: {
       title: 'Refinamiento de marca',
-      body: 'No es un reemplazo de agencia de branding completa, sino un refinamiento preciso de tipografía, color, layout, tono y consistencia digital.',
+      body: 'No es un rebranding completo. Es un ajuste cuidadoso de tipografía, color, maquetación y tono, para que todo parezca salir del mismo estudio.',
       items: ['Dirección visual', 'Sistema tipográfico', 'Sistema de color', 'Kit de UI para la web', 'Guía básica de marca'],
       alt: 'Sistema tipográfico y de color para la marca de un estudio',
     },
     fit: {
-      title: '¿No sabes qué servicio encaja?',
-      body: 'Solicita una revisión web y te diremos qué necesita primero la web de tu estudio.',
-      action: 'Solicitar una revisión web',
+      title: '¿No sabes por dónde *empezar*?',
+      body: 'Envíanos tu web. Te diremos qué necesita primero.',
+      action: 'Reservar una revisión',
     },
     visuals: {
       search: {
@@ -277,12 +277,12 @@ const es: Content = {
       },
     },
     engagement: {
-      title: 'Todos los proyectos siguen la misma estructura.',
+      title: 'Cómo *funciona* cada proyecto.',
       items: [
-        { title: 'Primero, la revisión', body: 'Cada proyecto empieza con una revisión de tu web actual, tu posicionamiento y tus objetivos. Así definimos la dirección y el alcance antes de comenzar.' },
-        { title: 'Entregables definidos', body: 'Cada paquete tiene un alcance claro, para que sepas qué recibirás antes de firmar.' },
-        { title: 'Implicación directa', body: 'Trabajas directamente con quien diseña y desarrolla. Revisiones más rápidas y decisiones más claras, sin intermediarios.' },
-        { title: 'Lista para publicar', body: 'Cada proyecto incluye optimización de rendimiento, SEO técnico, configuración de analítica y conexión del dominio.' },
+        { title: 'Primero, la revisión', body: 'Empezamos por tu web actual, tu posicionamiento y tus objetivos. Eso marca la dirección antes de diseñar nada.' },
+        { title: 'Entregables definidos', body: 'Sabes exactamente qué recibirás antes de firmar.' },
+        { title: 'Implicación directa', body: 'Hablas con quien diseña y desarrolla. Sin intermediarios.' },
+        { title: 'Lista para publicar', body: 'Velocidad, SEO, analítica y tu dominio, todo listo antes de publicar.' },
       ],
     },
   },
@@ -290,8 +290,8 @@ const es: Content = {
   contact: {
     title: 'Cuéntanos sobre la web de tu estudio.',
     lead: 'Envíanos tu web actual o la idea de tu proyecto. Te responderemos con el siguiente paso más claro.',
-    asideTitle: 'La web adecuada debe ayudar a que los clientes confíen en tu trabajo.',
-    asideBody: 'Ayudamos a estudios de arquitectura e interiorismo a presentar su trabajo con más claridad, confianza y coherencia en ordenador y móvil.',
+    asideTitle: 'Una buena web hace que los clientes confíen en tu trabajo antes de conocerte.',
+    asideBody: 'Ayudamos a estudios de arquitectura e interiorismo a mostrar su trabajo con claridad, en cualquier pantalla.',
     fields: {
       name: 'Tu nombre',
       studio: 'Nombre del estudio',
@@ -299,7 +299,7 @@ const es: Content = {
       website: 'URL de la web actual',
       message: '¿Qué sientes que no funciona en la web actual?',
     },
-    submit: 'Enviar web actual',
+    submit: 'Enviar',
     sending: 'Enviando…',
     required: 'Los campos marcados con * son obligatorios.',
     errors: {
@@ -308,7 +308,7 @@ const es: Content = {
       url: 'Introduce la dirección completa, con https://',
     },
     sendError: 'No se pudo enviar el mensaje. Inténtalo de nuevo o escribe a',
-    thanks: 'Gracias. Te responderemos con el siguiente paso más claro.',
+    thanks: 'Recibido. Te responderemos con un siguiente paso claro.',
     trap: 'Deja este campo vacío',
   },
 };

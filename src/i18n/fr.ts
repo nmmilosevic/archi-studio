@@ -7,19 +7,19 @@ const fr: Content = {
 
   meta: {
     home: {
-      title: 'Sites web pour studios d’architecture | Reframe Studio',
-      description: 'Conception et refonte de sites pour studios d’architecture et d’intérieur, avec portfolios raffinés, structure multilingue et parcours de contact clairs.',
+      title: 'Reframe Studio · Sites, identité et print pour architectes et architectes d’intérieur',
+      description: 'Sites, identité, print et réseaux pour studios d’architecture, d’intérieur et de paysage. Faits avec le soin que vous mettez dans un plan.',
     },
     work: {
-      title: 'Projets web de studios d’architecture | Reframe Studio',
+      title: 'Quatre études pour *montrer* le travail.',
       description: 'Études de refonte pour studios d’architecture et d’intérieur, avec projets mieux structurés, positionnement clair et présentation mobile soignée.',
     },
     services: {
-      title: 'Services web pour studios d’architecture | Reframe Studio',
+      title: 'Web, identité, print et *tout* le reste.',
       description: 'Refonte de site, portfolio, visibilité organique, hébergement et raffinement de marque pour studios d’architecture, d’intérieur et de paysage.',
     },
     contact: {
-      title: 'Contacter Reframe Studio',
+      title: 'Parlez-nous de votre *studio*.',
       description: 'Parlez-nous du site de votre studio d’architecture ou d’intérieur et recevez une recommandation claire pour la prochaine étape.',
     },
   },
@@ -41,8 +41,8 @@ const fr: Content = {
   },
 
   footer: {
-    tagline: 'Studio de design web spécialisé pour les studios d’architecture, de design intérieur et de paysage.',
-    about: 'REFRAME est un studio de design web pour les agences d’architecture et d’intérieur, créant des sites raffinés, des systèmes de portfolio et des concepts de présentation.',
+    tagline: 'Studio de design pour architectes, architectes d’intérieur et paysagistes. Sites, identité, print et marketing.',
+    about: 'REFRAME crée des sites, des portfolios, du print et du contenu social pour les studios dont le travail mérite mieux qu’un template.',
   },
 
   cookie: {
@@ -53,70 +53,70 @@ const fr: Content = {
   },
 
   cta: {
-    title: 'Votre studio doit paraître plus premium en ligne.',
-    body: 'Envoyez votre site actuel. Nous vous dirons ce qui doit changer en premier.',
-    action: 'Demander un audit rapide',
+    title: 'Envoyez-nous votre site. On vous dira quoi *corriger d’abord*.',
+    body: 'Une revue courte et honnête de ce qui marche et de ce qui ne marche pas. Pas de présentation commerciale.',
+    action: 'Demander une revue',
     alt: 'Documents d’analyse web avec plans et échantillons naturels',
   },
 
   home: {
     hero: {
-      title: 'Votre studio paraît déjà premium. Votre site devrait aussi.',
-      lead: 'Design de sites pour studios d’architecture, de design intérieur et de paysage qui ont besoin d’un portfolio plus fort, d’un positionnement plus clair et d’une expérience digitale à la hauteur de leur travail.',
-      primary: 'Voir les previews',
-      secondary: 'Demander une revue',
+      title: 'Vous concevez de beaux espaces. Votre site devrait *en être* un.',
+      lead: 'Envoyez votre site actuel ou une idée de projet. On vous répond avec une prochaine étape claire.',
+      primary: 'Voir le travail',
+      secondary: 'Réserver une revue',
       mockAlt: 'Exemple de refonte de site pour studio d’architecture',
     },
     directions: {
-      title: 'Des directions de site pour studios dont le travail mérite d’être bien présenté.',
-      body: 'Exemples ciblés : portfolios plus clairs, meilleure lecture mobile et première impression plus forte, sans templates génériques.',
+      title: 'Neuf directions. *Zéro* template.',
+      body: 'Chacune part d’un vrai type de studio : villas méditerranéennes, intérieurs calmes, béton brut. Trouvez celle qui vous ressemble.',
       names: ['Méditerranéen', 'Organique', 'Avantforme', 'Futuriste', 'Japonais', 'Luxe', 'Éco moderne', 'Parisien', 'Luxe sombre'],
       altPrefix: 'Style :',
     },
     studios: {
-      title: 'Les studios pour lesquels nous concevons.',
+      title: 'Avec qui nous *travaillons*.',
       labels: ['Architecture', 'Intérieur', 'Paysage'],
     },
     pricing: {
-      title: 'Un investissement clair pour votre studio.',
+      title: 'Un prix. *Aucune* surprise.',
       price: '1 500€',
       terms: 'Paiement unique',
-      note: 'Cette offre comprend le développement du design présenté. Pour toute modification ou ajout, nous vous proposerons un devis complémentaire.',
+      note: 'Cela couvre le design présenté et son développement. Plus de pages ou des changements plus tard ? On vous fait un devis avant, pour qu’aucune facture ne vous surprenne.',
       includes: ['Stratégie site web', 'Design sur mesure', 'Développement responsive', 'Bases SEO', 'Formulaire de contact', 'Support au lancement'],
       action: 'Commencer le site',
     },
     beyond: {
-      title: 'Le design au-delà de votre site web.',
+      title: 'Pas *seulement* des sites.',
       items: [
         {
           title: 'Identité & impression',
-          body: 'Brochures, portfolios PDF, cartes de visite et papeterie, modèles de présentation, dossiers de concours, signalétique et supports marketing imprimés.',
-          price: ['Devis selon le périmètre'],
+          body: 'Cartes de visite, brochures, portfolios PDF, planches de concours, signalétique. Tout ce qui finit sur papier ou sur un mur.',
+          price: ['Devis par projet'],
           action: 'Demander un devis',
         },
         {
           title: 'Marketing digital',
-          body: 'Design pour les réseaux sociaux, modèles Instagram, visuels de campagne, newsletters, landing pages, publicités digitales et création de contenu.',
-          price: ['Devis selon le périmètre'],
+          body: 'Modèles Instagram, visuels de campagne, newsletters, landing pages et publicités. Votre feed, enfin cohérent.',
+          price: ['Devis par projet'],
           action: 'Demander un devis',
         },
         {
           title: 'Maintenance du site',
-          body: 'Hébergement, sauvegardes, mises à jour de sécurité, petites corrections, modifications de contenu et ajout de projets.',
+          body: 'Hébergement, sauvegardes, mises à jour de sécurité, petites corrections. On met en ligne vos nouveaux projets.',
           price: ['Hébergement à partir de 30€/mois', 'Mises à jour de contenu à partir de 120€/mois'],
           action: null,
         },
       ],
     },
     friction: {
-      title: 'Les frictions réduisent la confiance.',
-      body: 'Un client potentiel lit un site comme il lit un espace. La séquence, les proportions et l’attention portée aux détails façonnent l’impression avant même la première conversation.',
-      action: 'Demander une revue du site',
+      title: 'Vos clients lisent votre site comme un *espace*.',
+      body: 'Par où ils entrent, ce qu’ils voient d’abord, combien de temps pour trouver la porte. Chaque friction coûte un peu de confiance avant le premier appel.',
+      action: 'Réserver une revue',
       alt: 'Composition visuelle pour la revue de site',
       points: [
-        { title: 'Positionnement', body: 'Clarifiez ce pour quoi votre studio est reconnu.' },
-        { title: 'Présentation des projets', body: 'Améliorez la hiérarchie et le rythme de lecture.' },
-        { title: 'Parcours de contact', body: 'Réduisez les frictions de l’intérêt à la prise de contact.' },
+        { title: 'Positionnement', body: 'Dites en une phrase ce pour quoi on vous connaît.' },
+        { title: 'Présentation des projets', body: 'Laissez les photos parler. Gardez les textes courts.' },
+        { title: 'Parcours de contact', body: 'Faites du contact la partie la plus simple.' },
       ],
     },
   },
@@ -207,42 +207,42 @@ const fr: Content = {
     lead: 'De la refonte de site aux systèmes de portfolio et aux bases de visibilité dans les moteurs de recherche, chaque service s’adapte à la façon dont les studios d’architecture et de design présentent leur travail, inspirent confiance et attirent de meilleures demandes.',
     redesign: {
       title: 'Refonte de site pour studios d’architecture',
-      body: 'Une présence digitale raffinée qui rend votre portfolio plus facile à explorer, votre positionnement plus clair et votre studio plus crédible auprès de clients à haute valeur.',
+      body: 'Un site qui rend votre portfolio facile à parcourir, et qui fait que les bons clients vous prennent au sérieux.',
       items: ['Refonte de la page d’accueil', 'Pages de projets', 'Page à propos', 'Parcours de demande', 'Expérience mobile', 'Construction axée sur la performance', 'Configuration multilingue'],
       alt: 'Refonte de site pour studio d’architecture, page projet',
     },
     interiors: {
       title: 'Sites pour studios de design d’intérieur',
-      body: 'Des sites web élégants et visuels pour les studios qui ont besoin de présenter l’ambiance, les matériaux, le style et la confiance avant la première réunion.',
+      body: 'Des sites portés par l’image, qui transmettent l’ambiance, les matériaux et le ressenti d’une pièce avant le premier rendez-vous.',
       items: ['Système de portfolio visuel', 'Pages de services', 'Narration du processus', 'Captation de leads', 'Intégration Instagram et portfolio'],
       alt: 'Site pour studio de design d’intérieur, page projet',
     },
     search: {
       title: 'Fondation de visibilité',
-      body: 'La visibilité organique est la capacité d’apparaître dans les recherches non payantes liées à vos services, projets et localisations. Nous la construisons par la structure du contenu, les métadonnées, le maillage interne et une base technique claire.',
+      body: 'Apparaître quand quelqu’un cherche « architecte à Marbella » n’a rien d’un hasard. C’est de la structure, des métadonnées, des liens et un site rapide. On met tout en place correctement.',
       items: ['Métadonnées SEO', 'Structure de pages orientée recherche', 'Données structurées', 'Maillage interne', 'Structure alt des images', 'Optimisation des performances'],
     },
     hosting: {
       title: 'Hébergement et maintenance',
-      body: 'Gardez le site rapide, sécurisé, mis à jour et facile à gérer sans vous soucier des détails techniques.',
+      body: 'On garde le site rapide, sûr et à jour. Vous n’avez pas à y penser.',
       items: ['Configuration d’hébergement Vercel', 'Mises à jour mensuelles', 'Surveillance technique', 'Petites modifications de contenu', 'Vérifications analytiques'],
     },
     portfolio: {
       title: 'Systèmes de portfolio',
-      body: 'Une structure propre pour publier des projets de manière cohérente, incluant les images, la localisation, le type de service, les matériaux, la portée et l’histoire.',
+      body: 'Une manière claire de publier chaque projet : photos, lieu, type, matériaux, périmètre et l’histoire derrière.',
       items: ['Modèle pour CMS, le système de gestion de contenu', 'Modèles de projets', 'Filtres par localisation et type', 'Structure d’étude de cas', 'Mise en page centrée sur l’image'],
       alt: 'Archive de projets pour un studio d’architecture',
     },
     brand: {
       title: 'Raffinement de marque',
-      body: 'Pas un remplacement d’agence de branding complète, mais un affinement précis de la typographie, la couleur, la mise en page, le ton et la cohérence digitale.',
+      body: 'Pas une refonte complète. Un réglage soigné de la typographie, des couleurs, de la mise en page et du ton, pour que tout semble venir du même studio.',
       items: ['Direction visuelle', 'Système typographique', 'Système de couleurs', 'Kit UI pour le site', 'Lignes directrices de marque de base'],
       alt: 'Système typographique et couleurs pour la marque d’un studio',
     },
     fit: {
-      title: 'Vous ne savez pas quel service choisir ?',
-      body: 'Demandez une revue de site et nous vous dirons ce dont le site de votre studio a besoin en premier.',
-      action: 'Demander une revue de site',
+      title: 'Vous ne savez pas par où *commencer* ?',
+      body: 'Envoyez-nous votre site. On vous dira ce dont il a besoin en premier.',
+      action: 'Réserver une revue',
     },
     visuals: {
       search: {
@@ -277,12 +277,12 @@ const fr: Content = {
       },
     },
     engagement: {
-      title: 'Chaque mission suit la même structure.',
+      title: 'Comment se *déroule* chaque projet.',
       items: [
-        { title: 'La revue d’abord', body: 'Chaque projet commence par une revue de votre site actuel, de votre positionnement et de vos objectifs. Elle définit la direction et le périmètre avant le début du travail.' },
-        { title: 'Livrables définis', body: 'Chaque offre possède un périmètre clair, afin que vous sachiez ce que vous recevrez avant de signer.' },
-        { title: 'Implication directe', body: 'Vous travaillez directement avec la personne qui conçoit et développe. Des révisions plus rapides et des décisions plus nettes, sans intermédiaire.' },
-        { title: 'Prêt à publier', body: 'Chaque projet inclut l’optimisation des performances, le SEO technique, la configuration des statistiques et la connexion du domaine.' },
+        { title: 'La revue d’abord', body: 'On commence par votre site actuel, votre positionnement et vos objectifs. Cela fixe la direction avant tout design.' },
+        { title: 'Livrables définis', body: 'Vous savez exactement ce que vous recevez avant de signer.' },
+        { title: 'Implication directe', body: 'Vous parlez à la personne qui conçoit et développe. Personne entre les deux.' },
+        { title: 'Prêt à publier', body: 'Vitesse, SEO, statistiques et domaine, tout est prêt avant la mise en ligne.' },
       ],
     },
   },
@@ -290,8 +290,8 @@ const fr: Content = {
   contact: {
     title: 'Parlez-nous du site de votre studio.',
     lead: 'Envoyez-nous votre site actuel ou votre idée de projet. Nous vous répondrons avec la prochaine étape la plus claire.',
-    asideTitle: 'Le bon site doit aider les clients à faire confiance à votre travail.',
-    asideBody: 'Nous aidons les studios d’architecture et d’intérieur à présenter leur travail avec plus de clarté, de confiance et de cohérence sur ordinateur et mobile.',
+    asideTitle: 'Un bon site donne confiance dans votre travail avant même la rencontre.',
+    asideBody: 'Nous aidons les studios d’architecture et d’intérieur à montrer leur travail clairement, sur tous les écrans.',
     fields: {
       name: 'Votre nom',
       studio: 'Nom du studio',
@@ -299,7 +299,7 @@ const fr: Content = {
       website: 'URL du site actuel',
       message: 'Qu’est-ce qui ne fonctionne pas sur le site actuel ?',
     },
-    submit: 'Envoyer le site actuel',
+    submit: 'Envoyer',
     sending: 'Envoi…',
     required: 'Les champs marqués d’un * sont obligatoires.',
     errors: {
@@ -308,7 +308,7 @@ const fr: Content = {
       url: 'Saisissez l’adresse complète, avec https://',
     },
     sendError: 'Le message n’a pas pu être envoyé. Réessayez ou écrivez à',
-    thanks: 'Merci. Nous vous répondrons avec la prochaine étape la plus claire.',
+    thanks: 'Bien reçu. On revient vers vous avec une prochaine étape claire.',
     trap: 'Laissez ce champ vide',
   },
 };

@@ -21,3 +21,11 @@ export const swapLang = (pathname: string, to: Lang) =>
   /^\/(en|es|fr)(\/|$)/.test(pathname) ? pathname.replace(/^\/(en|es|fr)/, `/${to}`) : `/${to}/`;
 
 export type { Content };
+
+/** Copy may mark an accent word as *word*; this escapes the text and turns it into <em>. */
+export const rich = (text: string) =>
+  text.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!)
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+/** Same copy without the accent markers (titles, alt text, meta). */
+export const plain = (text: string) => text.replace(/\*/g, '');

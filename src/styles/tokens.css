@@ -4,33 +4,38 @@
    ========================================================================== */
 
 :root {
-  /* ---- Colour: the existing Reframe palette, renamed by role ---------- */
-  --c-stone: #f5f1eb;        /* page background */
-  --c-stone-deep: #e7e0d5;   /* secondary surface */
-  --c-line: #d8d2ca;         /* hairlines, input rules */
-  --c-sand: #c6a98b;         /* warm accent, on dark only */
-  --c-bronze: #8e745c;       /* accent: links on hover, focus ring */
-  --c-muted: #6e6a64;        /* secondary text (AA on stone) */
-  --c-ink: #111111;          /* primary text, primary button */
-  --c-charcoal: #0b0b0b;     /* dark sections */
+  /* ---- Colour: black theme ------------------------------------------
+     Black page, warm off-white text, one sunset accent. Variable names kept
+     from v1 so every component follows; read them by role, not by name:
+     "stone" = page, "stone-deep" = surface, "ink" = text. */
+  --c-stone: #0a0a0a;        /* page background */
+  --c-stone-deep: #151515;   /* surface: bands, cards */
+  --c-raised: #1f1f1f;       /* cards inside surface sections */
+  --c-line: #2a2a2a;         /* hairlines, input rules */
+  --c-sand: #ffb999;         /* peach: soft accent */
+  --c-bronze: #ff5a1f;       /* sunset: the one accent (hover, focus, highlights) */
+  --c-muted: #9b978f;        /* secondary text (AA on black) */
+  --c-ink: #f4f1ea;          /* text, primary button */
+  --c-charcoal: #141414;     /* "dark" bands: footer, hosting, menu */
+  --c-black: #0a0a0a;        /* text on light/accent fills */
+  --c-peach: #ffe4d6;
 
   /* ---- Illustration palette ------------------------------------------
-     Code-built visuals (Services, pricing) use their own colours so they
-     read as screens and never blend into the page UI. Same warm family as
-     the brand, but cooler neutrals and two accents the UI never uses. */
-  --viz-chrome: #1f1d1a;       /* window chrome, dark frames */
-  --viz-chrome-2: #2c2a26;     /* raised elements on chrome */
-  --viz-chrome-text: #b9b2a7;
-  --viz-paper: #ffffff;        /* screen surface */
-  --viz-panel: #fbfaf7;        /* warm near-white: whiter than stone, never grey */
-  --viz-line: #e6e1d9;
-  --viz-ink: #1c1a17;
-  --viz-muted: #8a847b;
-  --viz-clay: #b4654a;         /* accent: highlights, active, actions */
-  --viz-sage: #7f8c6e;         /* positive: scores, uptime, status */
-  --viz-tone-stone: linear-gradient(160deg, #dcd7ce 0%, #b9b2a6 55%, #9f978b 100%);
-  --viz-tone-sage: linear-gradient(200deg, #d4d8cc 0%, #a9b19b 60%, #8a9479 100%);
-  --viz-tone-clay: linear-gradient(140deg, #ead6c8 0%, #cfa58c 55%, #b98a70 100%);
+     Dark "screens" for the code-built visuals: a step lighter than the page,
+     off-white text, sunset accent, green for positive states. */
+  --viz-chrome: #222222;
+  --viz-chrome-2: #303030;
+  --viz-chrome-text: #a8a5a0;
+  --viz-paper: #181818;
+  --viz-panel: #121212;
+  --viz-line: #2e2e2e;
+  --viz-ink: #f4f1ea;
+  --viz-muted: #8f8b84;
+  --viz-clay: #ff5a1f;
+  --viz-sage: #3ccf8e;
+  --viz-tone-stone: linear-gradient(160deg, #e9e4dc 0%, #cfc7bb 60%, #b3aa9d 100%);
+  --viz-tone-sage: linear-gradient(200deg, #dfe6df 0%, #b8c7bb 60%, #93a596 100%);
+  --viz-tone-clay: linear-gradient(140deg, #ffe4d6 0%, #ffb594 55%, #ff8a5c 100%);
 
   /* Semantic aliases (light theme default) */
   --bg: var(--c-stone);
@@ -41,7 +46,9 @@
   --accent: var(--c-bronze);
 
   /* ---- Typography ----------------------------------------------------- */
-  --font: "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font: "Satoshi", ui-sans-serif, system-ui, sans-serif;            /* text */
+  --font-display: "Clash Display", "Satoshi", ui-sans-serif, sans-serif; /* headlines */
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;          /* italic accents */
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
@@ -57,13 +64,13 @@
   --fs-small: .875rem;
   --fs-label: .8125rem;
 
-  --lh-display: .92;
+  --lh-display: .94;
   --lh-heading: 1;
   --lh-snug: 1.2;
   --lh-body: 1.55;
 
-  --tr-display: -.045em;
-  --tr-heading: -.035em;
+  --tr-display: -.025em;
+  --tr-heading: -.02em;
   --tr-snug: -.02em;
   --tr-body: -.005em;
 
@@ -86,7 +93,10 @@
   --s-section: clamp(6rem, 4rem + 9vw, 13rem);
 
   /* ---- Shape ---------------------------------------------------------- */
-  --radius: 0;
+  --radius: 18px;            /* cards, media */
+  --radius-sm: 10px;         /* small parts, inputs */
+  --radius-lg: 28px;         /* large panels */
+  --radius-pill: 999px;      /* buttons, nav capsule, tags */
   --hairline: 1px solid var(--rule);
   --header-h: 4.75rem;
 
@@ -105,17 +115,17 @@
   --stagger-item: .07s;
   --rise: 1.75rem;     /* distance for fade-up elements */
 
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 /* Dark scope: any section with [data-theme="dark"] swaps the semantic layer */
 [data-theme="dark"] {
   --bg: var(--c-charcoal);
-  --surface: #161514;
-  --fg: var(--c-stone);
-  --fg-muted: #a39d94;
-  --rule: #2a2826;
-  --accent: var(--c-sand);
+  --surface: #1c1c1c;
+  --fg: var(--c-ink);
+  --fg-muted: var(--c-muted);
+  --rule: #2c2c2c;
+  --accent: var(--c-bronze);
   color-scheme: dark;
 }
 

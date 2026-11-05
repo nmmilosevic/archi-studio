@@ -20,8 +20,9 @@ const t = useContent(Astro.props.lang);
     width: min(24rem, calc(100vw - var(--margin) * 2));
     display: grid; gap: var(--s-3);
     padding: var(--s-5);
-    background: var(--c-stone); color: var(--c-ink);
-    box-shadow: 0 0 0 1px var(--c-line), 0 24px 48px -24px rgb(17 17 17 / .18);
+    background: var(--c-raised); color: var(--c-ink);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--c-line), 0 24px 48px -24px rgb(0 0 0 / .6);
     transition: opacity var(--d-base) var(--ease-soft), transform var(--d-base) var(--ease-out);
   }
   .cookie[hidden] { display: none; }
