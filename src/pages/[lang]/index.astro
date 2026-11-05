@@ -35,6 +35,35 @@ const beyondIcons = [
    </svg>`,
 ];
 
+// 1px line illustrations for the studio types (same order as studioSlugs / studios.labels).
+// Each path draws in when its studio is hovered; see .home-studios__art.
+const studioArt = [
+  // Architecture: a modernist villa elevation with a cantilever, glazing and a pool
+  `<path pathLength="1" style="--i:0" d="M4 132h232"/>
+   <path pathLength="1" style="--i:1" d="M26 132V78h104v54"/>
+   <path pathLength="1" style="--i:2" d="M64 78V46h150v32h-84"/>
+   <path pathLength="1" style="--i:3" d="M196 78v54"/>
+   <path pathLength="1" style="--i:4" d="M84 46v32M104 46v32M124 46v32"/>
+   <path pathLength="1" style="--i:5" d="M40 132V98h22v34"/>
+   <path pathLength="1" style="--i:6" d="M142 132h48"/>
+   <path pathLength="1" style="--i:7" d="M214 18a7 7 0 1 1 0 14a7 7 0 1 1 0-14z"/>`,
+  // Interiors: a window, a sofa, a floor lamp and a plant
+  `<path pathLength="1" style="--i:0" d="M4 132h232"/>
+   <path pathLength="1" style="--i:1" d="M28 22h58v76H28zM57 22v76"/>
+   <path pathLength="1" style="--i:2" d="M82 130v-22a4 4 0 0 1 4-4h76a4 4 0 0 1 4 4v22"/>
+   <path pathLength="1" style="--i:3" d="M92 104V92h56v12"/>
+   <path pathLength="1" style="--i:4" d="M186 130V58M176 58h20l-5-12h-10z"/>
+   <path pathLength="1" style="--i:5" d="M216 130v-24M216 106c-9-6-11-17-6-26M216 106c9-6 11-17 6-26"/>
+   <path pathLength="1" style="--i:6" d="M70 136h108"/>`,
+  // Landscape: rolling hills, a round tree, a cypress, a path and the sun
+  `<path pathLength="1" style="--i:0" d="M4 132h232"/>
+   <path pathLength="1" style="--i:1" d="M4 112c40-22 78-22 116 0s78 22 116 0"/>
+   <path pathLength="1" style="--i:2" d="M52 132V96M52 66a15 15 0 1 1 0 30a15 15 0 1 1 0-30z"/>
+   <path pathLength="1" style="--i:3" d="M188 132V96M188 44c-9 16-9 38 0 52c9-14 9-36 0-52z"/>
+   <path pathLength="1" style="--i:4" d="M110 132c8-8 18-13 34-16"/>
+   <path pathLength="1" style="--i:5" d="M140 20a9 9 0 1 1 0 18a9 9 0 1 1 0-18z"/>`,
+];
+
 // Line icons for the "What's included" cards, same draw system
 const includedIcons = [
   // Website strategy: an arrow lands in the target
@@ -140,6 +169,7 @@ const includedIcons = [
               <span class="t-h3">{h.studios.labels[i]}</span>
               <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" /></svg>
             </a>
+            <svg class="home-studios__art" viewBox="0 0 240 140" fill="none" aria-hidden="true" set:html={studioArt[i]} />
             <a href={url} class="home-studios__panel" data-morph-link tabindex="-1">
               <Media src={base.cover} alt={t.work.previewAlt(p.title)} ratio="3 / 2" sizes="(min-width: 900px) 56vw, 100vw" />
               <span class="home-studios__caption">
@@ -336,7 +366,24 @@ const includedIcons = [
     [data-active] > .home-studios__panel .media__inner { transform: none; }
     .home-studios__caption { opacity: 0; transition: opacity var(--d-base) var(--ease-soft); }
     [data-active] > .home-studios__panel .home-studios__caption { opacity: 1; transition-delay: .35s; }
+
+    /* Line illustration under the names: all three share one cell, only the active one shows.
+       Leaving resets the strokes instantly, so every hover draws it again. */
+    .home-studios__art {
+      display: block; grid-column: 1 / span 5; grid-row: 4; align-self: start;
+      width: 100%; max-width: 26rem; margin-top: var(--s-8);
+      color: var(--fg); overflow: visible; visibility: hidden;
+    }
+    /* 240-unit viewBox shown at ~26rem wide: .6 units ≈ 1px (non-scaling-stroke breaks the dash draw in Chrome) */
+    .home-studios__art path { stroke: currentColor; stroke-width: .6; stroke-linecap: round; stroke-linejoin: round; }
+    [data-active] > .home-studios__art { visibility: visible; }
+    html.js:not(.motion-off) .home-studios__art path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    html.js:not(.motion-off) .home-studios__list.is-in [data-active] > .home-studios__art path {
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 1.1s var(--ease-out) calc(var(--i, 0) * .09s);
+    }
   }
+  @media (max-width: 899px) { .home-studios__art { display: none; } }
 
 
   /* Pricing */
@@ -469,6 +516,12 @@ const includedIcons = [
       const trigger = item.querySelector('[data-studio-trigger]');
       trigger?.addEventListener('mouseenter', activate);
       trigger?.addEventListener('focus', activate);
+    });
+
+    // Studio illustrations start drawing once the list is on screen
+    document.querySelectorAll<HTMLElement>('[data-studios]').forEach((list) => {
+      if (reduced) { list.classList.add('is-in'); return; }
+      ScrollTrigger.create({ trigger: list, start: 'top 75%', once: true, onEnter: () => list.classList.add('is-in') });
     });
 
     if (reduced) return;

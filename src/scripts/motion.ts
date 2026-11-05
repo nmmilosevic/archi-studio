@@ -182,7 +182,7 @@ function drawIcons() {
     if (!e.isIntersecting) return;
     e.target.classList.add('is-drawn');
     io.unobserve(e.target);
-  }), { threshold: 0.6 });
+  }), { threshold: 1, rootMargin: '0px 0px -22% 0px' }); // start once the icon is well inside the screen, not at the bottom edge
   icons.forEach((i) => io.observe(i));
 }
 
