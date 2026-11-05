@@ -111,13 +111,12 @@ const beyondIcons = [
     </ul>
   </section>
 
-  <!-- Pricing: open price (8) + included list (4), then the
-       three extra services (4 + 4 + 4), so every card edge lines up. -->
+  <!-- Pricing: the offer takes columns 1–8 (price, note, what's included);
+       the extra services stack in columns 9–12 beside it. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
       <div class="grid section-head">
         <h2 id="pricing-title" class="t-h2" data-split set:html={rich(h.pricing.title)}></h2>
-        <p class="t-muted" data-fade>{h.pricing.note}</p>
       </div>
 
       <div class="grid cards">
@@ -126,31 +125,32 @@ const beyondIcons = [
             <p class="t-display home-pricing__price">{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
           </div>
+          <p class="t-muted home-pricing__note">{h.pricing.note}</p>
+          <div class="home-pricing__included">
+            <p class="t-label t-muted">{h.pricing.included}</p>
+            <ul class="list-marked">
+              {h.pricing.includes.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
           <div><Button href={contact} arrow>{h.pricing.action}</Button></div>
         </div>
-        <div class="span-4 home-pricing__included" data-fade>
-          <p class="t-label t-muted">{h.pricing.included}</p>
-          <ul class="list-marked">
-            {h.pricing.includes.map((i) => <li>{i}</li>)}
-          </ul>
-        </div>
-      </div>
 
-      <div class="grid section-head home-pricing__more">
-        <h3 class="t-h3" data-split set:html={rich(h.beyond.title)}></h3>
-      </div>
-      <div class="grid cards" data-stagger>
-        {h.beyond.items.map((item, i) => (
-          <article class="home-beyond__item card card--raised span-4">
-            <Fragment set:html={beyondIcons[i]} />
-            <h4 class="t-h4">{item.title}</h4>
-            <p class="t-small t-muted">{item.body}</p>
-            <div class="home-beyond__foot">
-              {item.price.map((line) => <p class="t-small">{line}</p>)}
-              {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
-            </div>
-          </article>
-        ))}
+        <div class="span-4 home-pricing__more">
+          <h3 class="t-h4 t-muted" data-fade set:html={rich(h.beyond.title)}></h3>
+          <div class="home-beyond" data-stagger>
+            {h.beyond.items.map((item, i) => (
+              <article class="home-beyond__item card">
+                <Fragment set:html={beyondIcons[i]} />
+                <h4 class="t-h4">{item.title}</h4>
+                <p class="t-small t-muted">{item.body}</p>
+                <div class="home-beyond__foot">
+                  {item.price.map((line) => <p class="t-small">{line}</p>)}
+                  {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -292,19 +292,29 @@ const beyondIcons = [
   }
 
   /* Pricing */
-  .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-6); }
+  .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
+  .home-pricing__note { max-width: 34rem; }
+  @media (min-width: 900px) { .home-pricing__offer { justify-content: space-between; } }
   .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
   .home-pricing__terms { margin-top: var(--s-3); }
-  .home-pricing__included { display: grid; align-content: start; gap: var(--s-5); padding-top: var(--s-2); }
-  .home-pricing__more { margin-top: var(--s-9); margin-bottom: var(--s-6); }
-  .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); background: rgb(255 255 255 / .035); }
-  .home-beyond__icon { --icon-bg: #131313; margin-bottom: var(--s-3); }
+  .home-pricing__included { display: grid; gap: var(--s-5); width: 100%; }
+  @media (min-width: 600px) { .home-pricing__included .list-marked { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); max-width: 40rem; } }
+  .home-pricing__more { display: grid; align-content: start; gap: var(--s-5); }
+  .home-beyond { display: grid; gap: var(--s-3); }
+  @media (max-width: 899px) { .home-pricing__more { margin-top: var(--s-8); } }
+  .home-beyond__item {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-5); row-gap: var(--s-2);
+    align-items: start; background: rgb(255 255 255 / .035);
+  }
+  .home-beyond__item > * { grid-column: 2; }
+  .home-beyond__item > .home-beyond__icon { grid-column: 1; grid-row: 1 / span 3; width: 2.5rem; height: auto; }
+  .home-beyond__icon { --icon-bg: #131313; }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
   html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
   html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }
   .icon-care .mv { transform-origin: 24px 27.5px; }
-  .home-beyond__foot { margin-top: auto; padding-top: var(--s-4); display: grid; gap: var(--s-2); justify-items: start; }
-  .home-beyond__foot .link { margin-top: var(--s-3); }
+  .home-beyond__foot { padding-top: var(--s-3); display: grid; gap: var(--s-1); justify-items: start; }
+  .home-beyond__foot .link { margin-top: var(--s-2); }
 
   /* Questions */
   .home-faq__card { display: grid; align-content: start; justify-items: start; gap: var(--s-4); max-width: 24rem; }
