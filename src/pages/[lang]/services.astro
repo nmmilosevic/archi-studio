@@ -2,10 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import Button from '../../components/Button.astro';
 import Media from '../../components/Media.astro';
-import SearchVisual from '../../components/visuals/SearchVisual.astro';
-import PortfolioVisual from '../../components/visuals/PortfolioVisual.astro';
 import BrandVisual from '../../components/visuals/BrandVisual.astro';
-import HostingVisual from '../../components/visuals/HostingVisual.astro';
+import PrintVisual from '../../components/visuals/PrintVisual.astro';
+import SocialVisual from '../../components/visuals/SocialVisual.astro';
 import { serviceImages } from '../../data/site';
 import { langPaths, href, useContent, type Lang, rich } from '../../i18n';
 
@@ -13,77 +12,44 @@ export const getStaticPaths = langPaths;
 const lang = Astro.params.lang as Lang;
 const t = useContent(lang);
 const sv = t.services;
-const engagement = sv.engagement;
+const { web, brand, print, social, between, engagement } = sv;
+const contact = href(lang, '/contact/');
 
-// Same six services, same copy. Each one gets its own layout.
-const { redesign, interiors, search, hosting, portfolio, brand } = sv;
-
-// Line icons for the six search features, same order as search.items (see .icon-draw)
-const searchIcons = [
-  // SEO metadata: brackets close in around a slash
-  `<svg class="icon-draw svc-feature__icon ic-meta" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <g class="mv mv--l"><path class="d" pathLength="1" d="m15 15-8 9 8 9" style="--i:0"/></g>
-     <g class="mv mv--r"><path class="d" pathLength="1" d="m33 15 8 9-8 9" style="--i:0"/></g>
-     <path class="d" pathLength="1" d="m28 11-8 26" style="--i:1"/>
+// Line icons for "everything in between", same order as between.items (see .icon-draw)
+const betweenIcons = [
+  // Pitch deck: a screen, bars rise inside it
+  `<svg class="icon-draw svc-between__icon ic-deck" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M5 8h38v24H5z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M24 32v8M16 40h16" style="--i:1"/>
+     <g class="mv"><path class="d" pathLength="1" d="M15 26v-6M23 26V15M31 26v-8" style="--i:2"/></g>
    </svg>`,
-  // Page structure: heading bars slide into a hierarchy
-  `<svg class="icon-draw svc-feature__icon ic-structure" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M8 5h32v38H8z" style="--i:0"/>
-     <g class="mv"><path class="d" pathLength="1" d="M14 13h20" style="--i:1"/><path class="d" pathLength="1" d="M14 21h14M14 27h14" style="--i:2"/><path class="d" pathLength="1" d="M18 34h10" style="--i:3"/></g>
+  // Award submission: a medal, the star grows in
+  `<svg class="icon-draw svc-between__icon ic-award" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M18 25l-4 18 10-5 10 5-4-18" style="--i:0"/>
+     <path class="d f" pathLength="1" d="M24 4a12 12 0 1 1 0 24a12 12 0 1 1 0-24z" style="--i:1"/>
+     <g class="mv"><path class="d" pathLength="1" d="M24 10l2.2 4.6 5 .6-3.7 3.4 1 5L24 21l-4.5 2.6 1-5-3.7-3.4 5-.6z" style="--i:2"/></g>
    </svg>`,
-  // Structured data: a small tree of nodes
-  `<svg class="icon-draw svc-feature__icon ic-tree" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M20 6h8v8h-8z" style="--i:0"/>
-     <path class="d" pathLength="1" d="M24 14v8M24 22H12v8M24 22h12v8" style="--i:1"/>
-     <g class="mv"><path class="d" pathLength="1" d="M8 30h8v8H8zM32 30h8v8h-8z" style="--i:2"/></g>
+  // Project sheet: a page, the image drops into place
+  `<svg class="icon-draw svc-between__icon ic-sheet" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M10 4h28v40H10z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M15 29h18M15 34h18M15 39h10" style="--i:1"/>
+     <g class="mv"><path class="d" pathLength="1" d="M15 9h18v14H15z" style="--i:2"/></g>
    </svg>`,
-  // Internal linking: two links join
-  `<svg class="icon-draw svc-feature__icon ic-link" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <g class="mv mv--l"><path class="d" pathLength="1" d="m21 29-4 4a6 6 0 0 1-8.5-8.5l5-5a6 6 0 0 1 8.5 0" style="--i:0"/></g>
-     <g class="mv mv--r"><path class="d" pathLength="1" d="m27 19 4-4a6 6 0 0 1 8.5 8.5l-5 5a6 6 0 0 1-8.5 0" style="--i:0"/></g>
-     <path class="d" pathLength="1" d="m19.5 28.5 9-9" style="--i:2"/>
+  // Email signature: a signature is written above the line
+  `<svg class="icon-draw svc-between__icon ic-sign" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M6 12h22M6 18h14" style="--i:0"/>
+     <path class="d" pathLength="1" d="M6 40h36" style="--i:1"/>
+     <path class="d" pathLength="1" d="M8 33c4-10 8-14 10-8s-2 10 2 8 6-12 9-10 2 8 6 6 5-4 7-4" style="--i:2"/>
    </svg>`,
-  // Image alt: a picture with its caption line
-  `<svg class="icon-draw svc-feature__icon ic-alt" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M6 7h36v26H6z" style="--i:0"/>
-     <path class="d" pathLength="1" d="m6 29 11-10 8 7 6-5 11 9" style="--i:1"/>
-     <circle class="d" pathLength="1" cx="33" cy="14" r="2.5" style="--i:2"/>
-     <g class="mv"><path class="d" pathLength="1" d="M6 40h22" style="--i:3"/></g>
+  // Photo direction: a camera, the lens opens
+  `<svg class="icon-draw svc-between__icon ic-camera" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M5 14h10l3-5h12l3 5h10v25H5z" style="--i:0"/>
+     <g class="mv"><path class="d" pathLength="1" d="M24 19a7.5 7.5 0 1 1 0 15a7.5 7.5 0 1 1 0-15z" style="--i:1"/></g>
    </svg>`,
-  // Performance: the needle swings up the gauge
-  `<svg class="icon-draw svc-feature__icon ic-gauge" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M7 34a17 17 0 0 1 34 0" style="--i:0"/>
-     <path class="d" pathLength="1" d="M11 22.5l2.5 1.6M24 17v3M37 22.5l-2.5 1.6" style="--i:1"/>
-     <g class="mv"><path class="d" pathLength="1" d="m24 34 9-10" style="--i:2"/></g>
-   </svg>`,
-];
-
-// Line icons for the five hosting tasks, same order as hosting.items (see .icon-draw)
-const hostIcons = [
-  // Hosting setup: two server units, lights come on
-  `<svg class="icon-draw svc-host__icon ic-server" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M7 9h34v12H7zM7 27h34v12H7z" style="--i:0"/>
-     <g class="mv"><path class="d" pathLength="1" d="M13 15h3M13 33h3" style="--i:2"/></g>
-     <path class="d" pathLength="1" d="M24 15h11M24 33h11" style="--i:1"/>
-   </svg>`,
-  // Monthly updates: a calendar gets ticked
-  `<svg class="icon-draw svc-host__icon ic-cal" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M7 10h34v31H7zM7 18h34M16 6v8M32 6v8" style="--i:0"/>
-     <g class="mv"><path class="d" pathLength="1" d="m17 29 5 5 9-10" style="--i:2"/></g>
-   </svg>`,
-  // Monitoring: a pulse line runs across
-  `<svg class="icon-draw svc-host__icon ic-pulse" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M4 26h9l4-10 6 20 5-14 3 4h13" style="--i:0"/>
-   </svg>`,
-  // Content edits: a pencil writes a line
-  `<svg class="icon-draw svc-host__icon ic-edit" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <g class="mv"><path class="d" pathLength="1" d="M30 8l8 8-18 18-10 2 2-10z M26 12l8 8" style="--i:0"/></g>
-     <path class="d" pathLength="1" d="M8 42h32" style="--i:2"/>
-   </svg>`,
-  // Analytics: bars rise
-  `<svg class="icon-draw svc-host__icon ic-bars" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M6 41h36" style="--i:0"/>
-     <g class="mv"><path class="d" pathLength="1" d="M12 36V27M21 36V20M30 36V24M39 36V11" style="--i:1"/></g>
+  // Website copy: lines of text, the cursor moves to the end
+  `<svg class="icon-draw svc-between__icon ic-copy" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M6 12h36M6 20h36M6 28h24" style="--i:0"/>
+     <g class="mv"><path class="d" pathLength="1" d="M34 24v10" style="--i:1"/></g>
    </svg>`,
 ];
 
@@ -113,90 +79,99 @@ const stepIcons = [
      <g class="mv"><path class="d" pathLength="1" d="M24 34V22M18.5 27.5 24 22l5.5 5.5" style="--i:2"/></g>
    </svg>`,
 ];
-const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'search-visibility', 'brand-refinement', 'hosting'];
+
 ---
 <Base lang={lang} title={t.meta.services.title} description={t.meta.services.description}>
-  <!-- Hero + index --------------------------------------------------- -->
+  <!-- Hero, then the four disciplines as an index ------------------- -->
   <section class="wrap svc-hero">
     <div class="grid">
       <h1 class="t-h1 svc-hero__title" data-split="intro" set:html={rich(sv.title)}></h1>
       <p class="t-lead t-muted svc-hero__lead" data-fade="intro">{sv.lead}</p>
     </div>
-  </section>
-
-  <!-- Websites: two services side by side, image-led ------------------ -->
-  <section class="wrap svc-duo" aria-label="Websites">
-    <div class="grid">
-      {[
-        { s: redesign, id: ids[0], image: serviceImages.redesign },
-        { s: interiors, id: ids[1], image: serviceImages.interiors },
-      ].map(({ s, id, image }) => (
-        <article class="svc-duo__item" id={id}>
-          <Media src={image} alt={s.alt} ratio="4 / 3" sizes="(min-width: 900px) 46vw, 100vw" />
-          <h2 class="t-h3" data-split>{s.title}</h2>
-          <p class="t-muted" data-fade>{s.body}</p>
-          <ul class="svc-duo__items list-marked t-small" data-stagger>
-            {s.items.map((i) => <li>{i}</li>)}
-          </ul>
-        </article>
+    <ul class="grid svc-index" data-stagger="intro">
+      {sv.disciplines.map((d) => (
+        <li>
+          <a href={`#${d.id}`} class="svc-index__link">
+            <span class="t-h3">{d.name}</span>
+            <span class="t-small t-muted">{d.line}</span>
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   </section>
 
-  <!-- Portfolio systems: wide image, text beside ---------------------- -->
-  <section class="wrap section svc-split" id={ids[2]} aria-labelledby="svc-portfolio">
+  <!-- Web: image (1–7) + text with three groups (8–12) -------------- -->
+  <section class="wrap section svc-disc" id="web" aria-labelledby="svc-web">
     <div class="grid">
-      <PortfolioVisual lang={lang} class="svc-split__media" />
-      <div class="svc-split__text">
-        <h2 id="svc-portfolio" class="t-h2" data-split>{portfolio.title}</h2>
-        <p class="t-lead" data-fade>{portfolio.body}</p>
-        <ul class="list-marked t-small" data-stagger>
-          {portfolio.items.map((i) => <li>{i}</li>)}
-        </ul>
+      <Media class="svc-disc__media" src={serviceImages.redesign} alt={web.alt} ratio="4 / 3" sizes="(min-width: 900px) 56vw, 100vw" />
+      <div class="svc-disc__text">
+        <h2 id="svc-web" class="t-h2" data-split>{web.title}</h2>
+        <p class="t-lead t-muted" data-fade>{web.body}</p>
+        <div class="svc-groups" data-stagger>
+          {web.groups.map((g) => (
+            <div class="svc-group">
+              <h3 class="t-h4">{g.title}</h3>
+              <ul class="t-small t-muted">{g.items.map((i) => <li>{i}</li>)}</ul>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Search visibility: typographic statement on a surface ---------- -->
-  <section class="svc-statement" id={ids[3]} aria-labelledby="svc-search">
-    <div class="wrap section">
-      <div class="grid">
-        <h2 id="svc-search" class="t-h2 svc-statement__title" data-split>{search.title}</h2>
-        <p class="t-h3 svc-statement__body" data-fade>{search.body}</p>
-        <ul class="grid svc-statement__items" data-stagger>
-          {search.items.map((item, i) => <li class="card card--raised t-small svc-feature"><Fragment set:html={searchIcons[i]} /><span>{item}</span></li>)}
-        </ul>
-        <SearchVisual lang={lang} class="svc-statement__visual" />
-      </div>
-    </div>
-  </section>
-
-  <!-- Brand refinement: mirrored split -------------------------------- -->
-  <section class="wrap section svc-split svc-split--mirror" id={ids[4]} aria-labelledby="svc-brand">
+  <!-- Brand: text (1–5) + brand board (6–12) ------------------------- -->
+  <section class="wrap section svc-disc svc-disc--mirror" id="brand" aria-labelledby="svc-brand">
     <div class="grid">
-      <div class="svc-split__text">
+      <div class="svc-disc__text">
         <h2 id="svc-brand" class="t-h2" data-split>{brand.title}</h2>
-        <p class="t-lead" data-fade>{brand.body}</p>
-        <ul class="list-marked t-small" data-stagger>
-          {brand.items.map((i) => <li>{i}</li>)}
-        </ul>
+        <p class="t-lead t-muted" data-fade>{brand.body}</p>
+        <ul class="list-marked svc-disc__list" data-stagger>{brand.items.map((i) => <li>{i}</li>)}</ul>
       </div>
-      <BrandVisual lang={lang} class="svc-split__media" />
+      <BrandVisual lang={lang} class="svc-disc__media" />
     </div>
   </section>
 
-  <!-- Hosting: compact dark band ------------------------------------- -->
-  <section class="svc-band" id={ids[5]} data-theme="dark" aria-labelledby="svc-hosting">
-    <div class="wrap">
-      <div class="grid svc-band__grid">
-        <h2 id="svc-hosting" class="t-h2 svc-band__title" data-split>{hosting.title}</h2>
-        <p class="t-muted svc-band__body" data-fade>{hosting.body}</p>
-        <HostingVisual lang={lang} class="svc-band__visual" />
-        <ul class="svc-band__items t-small" data-stagger>
-          {hosting.items.map((item, i) => <li class="card svc-host"><Fragment set:html={hostIcons[i]} /><span>{item}</span></li>)}
-        </ul>
+  <!-- Print: on a surface band, print set (1–7) + text (8–12) -------- -->
+  <section class="svc-surface" id="print" aria-labelledby="svc-print">
+    <div class="wrap section svc-disc">
+      <div class="grid">
+        <PrintVisual lang={lang} class="svc-disc__media" />
+        <div class="svc-disc__text">
+          <h2 id="svc-print" class="t-h2" data-split>{print.title}</h2>
+          <p class="t-lead t-muted" data-fade>{print.body}</p>
+          <ul class="list-marked svc-disc__list" data-stagger>{print.items.map((i) => <li>{i}</li>)}</ul>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- Social & marketing: text (1–5) + phone and newsletter (6–12) --- -->
+  <section class="wrap section svc-disc svc-disc--mirror" id="marketing" aria-labelledby="svc-social">
+    <div class="grid">
+      <div class="svc-disc__text">
+        <h2 id="svc-social" class="t-h2" data-split>{social.title}</h2>
+        <p class="t-lead t-muted" data-fade>{social.body}</p>
+        <ul class="list-marked svc-disc__list" data-stagger>{social.items.map((i) => <li>{i}</li>)}</ul>
+      </div>
+      <SocialVisual lang={lang} class="svc-disc__media" />
+    </div>
+  </section>
+
+  <!-- Everything in between: six open items on a 3 × 2 grid --------- -->
+  <section class="wrap section svc-between" aria-labelledby="svc-between">
+    <div class="grid section-head">
+      <h2 id="svc-between" class="t-h2" data-split set:html={rich(between.title)}></h2>
+      <p class="t-muted" data-fade>{between.body}</p>
+    </div>
+    <ul class="svc-between__grid" data-stagger>
+      {between.items.map((item, i) => (
+        <li class="svc-between__item">
+          <Fragment set:html={betweenIcons[i]} />
+          <span class="t-h4">{item.title}</span>
+          <p class="t-small t-muted">{item.body}</p>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <!-- Not sure: a pause ---------------------------------------------- -->
@@ -204,7 +179,7 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
     <h2 id="svc-fit" class="t-h1" data-split set:html={rich(sv.fit.title)}></h2>
     <div class="svc-fit__body" data-stagger>
       <p class="t-lead t-muted">{sv.fit.body}</p>
-      <div><Button href={href(lang, '/contact/')} arrow>{sv.fit.action}</Button></div>
+      <div><Button href={contact} arrow>{sv.fit.action}</Button></div>
     </div>
   </section>
 
@@ -225,98 +200,103 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
       </ol>
     </div>
   </section>
-
 </Base>
 
 <style is:global>
-  /* Hero with index */
+  /* Hero */
   .svc-hero { padding-top: calc(var(--header-h) + var(--s-9)); padding-bottom: var(--s-section); }
   .svc-hero .grid { row-gap: var(--s-7); }
-  .svc-hero__lead { max-width: 32rem; }
+  .svc-hero__lead { max-width: 34rem; }
   @media (min-width: 900px) {
     .svc-hero__title { grid-column: 1 / span 8; }
     .svc-hero__lead { grid-column: 9 / -1; align-self: end; }
   }
 
-  /* Duo: two image-led services, second one staggered lower */
-  .svc-duo .grid { row-gap: var(--s-9); }
-  .svc-duo__item { display: grid; gap: var(--s-4); align-content: start; scroll-margin-top: var(--header-h); }
-  .svc-duo__item .media { margin-bottom: var(--s-3); }
-  .svc-duo__item > p { max-width: 34rem; }
-  .svc-duo__items { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); margin-top: var(--s-2); }
-  @media (min-width: 900px) {
-    .svc-duo__item:nth-child(1) { grid-column: 1 / span 6; }
-    .svc-duo__item:nth-child(2) { grid-column: 7 / -1; margin-top: var(--s-section); }
-  }
+  /* Discipline index: four anchors, 3 columns each, hairline above */
+  .svc-index { margin-top: var(--s-9); row-gap: var(--s-6); }
+  .svc-index > li { grid-column: span 6; border-top: 1px solid var(--c-line); }
+  .svc-index__link { display: grid; gap: var(--s-2); padding-top: var(--s-5); }
+  .svc-index__link .t-h3 { transition: color var(--d-fast); }
+  @media (hover: hover) { .svc-index__link:hover .t-h3 { color: var(--accent); } }
+  @media (min-width: 900px) { .svc-index > li { grid-column: span 3; } }
 
-  /* Split: big image + text column; mirror flips it */
-  .svc-split { scroll-margin-top: var(--header-h); }
-  .svc-split .grid { row-gap: var(--s-7); align-items: center; }
-  .svc-split__text { display: grid; gap: var(--s-5); }
-  .svc-split__text .list-marked { margin-top: var(--s-3); }
+  /* Discipline sections: visual 7 cols + text 5 cols; mirror flips them */
+  .svc-disc { scroll-margin-top: var(--header-h); }
+  .svc-disc .grid { row-gap: var(--s-7); align-items: center; }
+  .svc-disc__text { display: grid; gap: var(--s-5); align-content: start; }
+  .svc-disc__list { margin-top: var(--s-3); }
+  @media (min-width: 600px) { .svc-disc__list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); } }
   @media (min-width: 900px) {
-    .svc-split__media { grid-column: 1 / span 8; }
-    .svc-split__text { grid-column: 9 / -1; }
-    .svc-split--mirror .svc-split__text { grid-column: 1 / span 4; grid-row: 1; }
-    .svc-split--mirror .svc-split__media { grid-column: 5 / -1; grid-row: 1; }
+    .svc-disc .svc-disc__media { grid-column: 1 / span 7; grid-row: 1; }
+    .svc-disc .svc-disc__text { grid-column: 8 / -1; grid-row: 1; }
+    .svc-disc--mirror .svc-disc__text { grid-column: 1 / span 5; }
+    .svc-disc--mirror .svc-disc__media { grid-column: 6 / -1; }
+    .svc-disc__list { grid-template-columns: 1fr; }
   }
+  .svc-surface { background: var(--c-stone-deep); scroll-margin-top: var(--header-h); }
 
-  /* Statement: text-only, on a surface */
-  .svc-statement { background: var(--c-stone-deep); scroll-margin-top: var(--header-h); }
-  .svc-statement .grid { row-gap: var(--s-7); }
-  .svc-statement__body { text-wrap: pretty; }
-  .svc-statement .svc-statement__items { gap: var(--gutter); }
-  .svc-statement__items li { padding-block: var(--s-5); }
-  .svc-band .svc-host { display: flex; align-items: center; gap: var(--s-4); }
-  /* Same dark warm card as the homepage extra services */
-  /* 8% darker than the section behind them */
-  .svc-statement .svc-feature { background: color-mix(in srgb, var(--c-stone-deep) 92%, black); }
-  .svc-feature__icon { --icon-bg: color-mix(in srgb, var(--c-stone-deep) 92%, black); }
-  /* 8% darker than the hosting band behind them */
-  .svc-band .svc-host { background: color-mix(in srgb, var(--c-charcoal) 92%, black); }
-  .svc-host__icon { --icon-bg: color-mix(in srgb, var(--c-charcoal) 92%, black); }
-  .svc-host__icon { width: 2.25rem; height: 2.25rem; flex: none; }
-  html.js:not(.motion-off) .ic-server .mv { opacity: 0; transition: opacity .4s 1s, transform 1.1s var(--ease-out) .55s; }
-  html.js:not(.motion-off) .ic-server.is-drawn .mv { opacity: 1; }
-  html.js:not(.motion-off) .ic-cal .mv { transform: scale(.6); }
-  .ic-cal .mv { transform-origin: 24px 29px; }
-  html.js:not(.motion-off) .ic-edit .mv { transform: translate(-8px, 6px); }
-  html.js:not(.motion-off) .ic-bars .mv { transform: scaleY(0); }
-  .ic-bars .mv { transform-origin: 24px 36px; }
-  .svc-statement .svc-feature { display: flex; align-items: center; gap: var(--s-4); }
-  .svc-feature__icon { width: 2.25rem; height: 2.25rem; flex: none; }
-  html.js:not(.motion-off) .ic-meta .mv--l { transform: translateX(-5px); }
-  html.js:not(.motion-off) .ic-meta .mv--r { transform: translateX(5px); }
-  html.js:not(.motion-off) .ic-structure .mv { transform: translateX(-6px); }
-  html.js:not(.motion-off) .ic-tree .mv { transform: translateY(-5px); }
-  html.js:not(.motion-off) .ic-link .mv--l { transform: translate(-4px, 4px); }
-  html.js:not(.motion-off) .ic-link .mv--r { transform: translate(4px, -4px); }
-  html.js:not(.motion-off) .ic-alt .mv { transform: translateX(-8px); }
-  html.js:not(.motion-off) .ic-gauge .mv { transform: rotate(-95deg); }
-  .ic-gauge .mv { transform-origin: 24px 34px; }
-  @media (min-width: 900px) {
-    .svc-statement__title { grid-column: 1 / span 6; }
-    .svc-statement__body { grid-column: 7 / -1; }
-    .svc-statement__items { grid-column: 7 / -1; grid-row: 2; grid-template-columns: repeat(2, 1fr); }
-    .svc-statement__visual { grid-column: 1 / span 6; grid-row: 2 / span 2; align-self: start; }
-    .svc-statement__items li { grid-column: auto; }
-  }
-  @media (max-width: 899px) {
-    .svc-statement__items { grid-template-columns: repeat(2, 1fr); }
-    .svc-statement__items li { grid-column: auto; }
-  }
+  /* Web: three groups, hairline above each */
+  .svc-groups { display: grid; gap: var(--s-5); margin-top: var(--s-3); }
+  .svc-group { display: grid; gap: var(--s-2); padding-top: var(--s-4); border-top: 1px solid var(--c-line); }
+  .svc-group ul { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); }
 
-  /* Band: compact dark strip */
-  .svc-band { padding-block: var(--s-9); scroll-margin-top: var(--header-h); }
-  .svc-band__grid { row-gap: var(--s-6); align-items: start; }
-  .svc-band__items { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--gutter); }
-  .svc-band__items li { padding-block: var(--s-5); }
-  @media (min-width: 900px) {
-    .svc-band__title { grid-column: 1 / span 6; grid-row: 1; }
-    .svc-band__body { grid-column: 1 / span 6; grid-row: 2; max-width: 32rem; }
-    .svc-band__visual { grid-column: 7 / -1; grid-row: 1 / span 2; }
-    .svc-band__items { grid-column: 1 / -1; margin-top: var(--s-5); }
+  /* Everything in between: 3 × 2 open grid, inner lines that overshoot and fade,
+     drawn in with the items (same pattern as the homepage "What's included") */
+  .svc-between__grid {
+    --ext: min(var(--s-8), var(--margin));
+    position: relative; display: grid; grid-template-columns: 1fr;
   }
+  .svc-between__item {
+    position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr);
+    column-gap: var(--s-4); row-gap: var(--s-2); align-items: center; align-content: start;
+    padding: var(--s-5) 0;
+  }
+  .svc-between__item > p { grid-column: 2; max-width: 30ch; }
+  .svc-between__icon { --icon-bg: var(--bg); width: 2.25rem; height: 2.25rem; }
+  .svc-between__item + .svc-between__item::before {
+    content: ''; position: absolute; top: 0; height: 1px;
+    left: calc(var(--margin) * -1); width: calc(100% + var(--margin) * 2);
+    background: linear-gradient(to right, transparent, var(--c-line) var(--margin), var(--c-line) calc(100% - var(--margin)), transparent);
+  }
+  @media (min-width: 900px) {
+    .svc-between__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 1fr; }
+    .svc-between__item { padding: var(--s-6); }
+    .svc-between__item:nth-child(3n+1) { padding-left: 0; }
+    .svc-between__item:nth-child(3n) { padding-right: 0; }
+    .svc-between__item + .svc-between__item::before { content: none; }
+    /* Two vertical lines between the columns */
+    .svc-between__grid::before, .svc-between__grid::after {
+      content: ''; position: absolute; width: 1px;
+      top: calc(var(--ext) * -1); bottom: calc(var(--ext) * -1);
+      background: linear-gradient(to bottom, transparent, var(--c-line) var(--ext), var(--c-line) calc(100% - var(--ext)), transparent);
+    }
+    .svc-between__grid::before { left: calc(100% / 3); }
+    .svc-between__grid::after { left: calc(200% / 3); }
+    /* One horizontal line between the two rows, across all three columns */
+    .svc-between__item:nth-child(4)::before {
+      content: ''; position: absolute; top: 0; height: 1px;
+      left: calc(var(--ext) * -1); width: calc(300% + var(--ext) * 2);
+      background: linear-gradient(to right, transparent, var(--c-line) var(--ext), var(--c-line) calc(100% - var(--ext)), transparent);
+    }
+  }
+  html.js:not(.motion-off) .svc-between__grid::before,
+  html.js:not(.motion-off) .svc-between__grid::after,
+  html.js:not(.motion-off) .svc-between__item::before { transition: transform 1.4s var(--ease-out); }
+  html.js:not(.motion-off) .svc-between__grid::before,
+  html.js:not(.motion-off) .svc-between__grid::after { transform: scaleY(0); transform-origin: 50% 0; }
+  html.js:not(.motion-off) .svc-between__grid::after { transition-delay: .15s; }
+  html.js:not(.motion-off) .svc-between__item::before { transform: scaleX(0); transform-origin: 0 50%; transition-delay: .3s; }
+  html.js:not(.motion-off) .svc-between__grid.is-in::before,
+  html.js:not(.motion-off) .svc-between__grid.is-in::after,
+  html.js:not(.motion-off) .svc-between__grid.is-in > li::before { transform: none; }
+  html.js:not(.motion-off) .ic-deck .mv { transform: scaleY(0); }
+  .ic-deck .mv { transform-origin: 24px 26px; }
+  html.js:not(.motion-off) .ic-award .mv { transform: scale(.3); }
+  .ic-award .mv { transform-origin: 24px 16px; }
+  html.js:not(.motion-off) .ic-sheet .mv { transform: translateY(-6px); }
+  html.js:not(.motion-off) .ic-camera .mv { transform: scale(.4); }
+  .ic-camera .mv { transform-origin: 24px 26.5px; }
+  html.js:not(.motion-off) .ic-copy .mv { transform: translateX(-20px); }
 
   /* Fit: a centred pause */
   .svc-fit { display: grid; justify-items: center; gap: var(--s-6); text-align: center; }
@@ -363,6 +343,11 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   import { gsap, ScrollTrigger, reduced, ready } from '../../scripts/motion';
 
   ready.then(() => {
+    // Everything in between: lines draw in with the items (same start as data-stagger)
+    document.querySelectorAll<HTMLElement>('.svc-between__grid').forEach((list) => {
+      ScrollTrigger.create({ trigger: list, start: 'top 88%', once: true, onEnter: () => list.classList.add('is-in') });
+    });
+
     const steps = document.querySelector<HTMLElement>('[data-process]');
     const line = document.querySelector<HTMLElement>('[data-process-line]');
     if (!steps || !line) return;

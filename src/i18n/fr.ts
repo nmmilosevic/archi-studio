@@ -15,8 +15,8 @@ const fr: Content = {
       description: 'Études de refonte pour studios d’architecture et d’intérieur, avec projets mieux structurés, positionnement clair et présentation mobile soignée.',
     },
     services: {
-      title: 'Web, identité, print et *tout* le reste.',
-      description: 'Refonte de site, portfolio, visibilité organique, hébergement et raffinement de marque pour studios d’architecture, d’intérieur et de paysage.',
+      title: 'Services | Reframe Studio',
+      description: "Sites web, identité de marque, print et réseaux sociaux pour studios d’architecture et d’architecture d’intérieur. Un seul studio pour tout ce que vos clients voient.",
     },
     contact: {
       title: 'Parlez-nous de votre *studio*.',
@@ -208,88 +208,200 @@ const fr: Content = {
   },
 
   services: {
-    title: 'Tout ce dont un studio a besoin pour se démarquer en ligne.',
-    lead: 'De la refonte de site aux systèmes de portfolio et aux bases de visibilité dans les moteurs de recherche, chaque service s’adapte à la façon dont les studios d’architecture et de design présentent leur travail, inspirent confiance et attirent de meilleures demandes.',
-    redesign: {
-      title: 'Refonte de site pour studios d’architecture',
-      body: 'Un site qui rend votre portfolio facile à parcourir, et qui fait que les bons clients vous prennent au sérieux.',
-      items: ['Refonte de la page d’accueil', 'Pages de projets', 'Page à propos', 'Parcours de demande', 'Expérience mobile', 'Construction axée sur la performance', 'Configuration multilingue'],
-      alt: 'Refonte de site pour studio d’architecture, page projet',
-    },
-    interiors: {
-      title: 'Sites pour studios de design d’intérieur',
-      body: 'Des sites portés par l’image, qui transmettent l’ambiance, les matériaux et le ressenti d’une pièce avant le premier rendez-vous.',
-      items: ['Système de portfolio visuel', 'Pages de services', 'Narration du processus', 'Captation de leads', 'Intégration Instagram et portfolio'],
-      alt: 'Site pour studio de design d’intérieur, page projet',
-    },
-    search: {
-      title: 'Fondation de visibilité',
-      body: 'Apparaître quand quelqu’un cherche « architecte à Marbella » n’a rien d’un hasard. C’est de la structure, des métadonnées, des liens et un site rapide. On met tout en place correctement.',
-      items: ['Métadonnées SEO', 'Structure de pages orientée recherche', 'Données structurées', 'Maillage interne', 'Structure alt des images', 'Optimisation des performances'],
-    },
-    hosting: {
-      title: 'Hébergement et maintenance',
-      body: 'On garde le site rapide, sûr et à jour. Vous n’avez pas à y penser.',
-      items: ['Configuration d’hébergement Vercel', 'Mises à jour mensuelles', 'Surveillance technique', 'Petites modifications de contenu', 'Vérifications analytiques'],
-    },
-    portfolio: {
-      title: 'Systèmes de portfolio',
-      body: 'Une manière claire de publier chaque projet : photos, lieu, type, matériaux, périmètre et l’histoire derrière.',
-      items: ['Modèle pour CMS, le système de gestion de contenu', 'Modèles de projets', 'Filtres par localisation et type', 'Structure d’étude de cas', 'Mise en page centrée sur l’image'],
-      alt: 'Archive de projets pour un studio d’architecture',
-    },
-    brand: {
-      title: 'Raffinement de marque',
-      body: 'Pas une refonte complète. Un réglage soigné de la typographie, des couleurs, de la mise en page et du ton, pour que tout semble venir du même studio.',
-      items: ['Direction visuelle', 'Système typographique', 'Système de couleurs', 'Kit UI pour le site', 'Lignes directrices de marque de base'],
-      alt: 'Système typographique et couleurs pour la marque d’un studio',
-    },
-    fit: {
-      title: 'Vous ne savez pas par où *commencer* ?',
-      body: 'Envoyez-nous votre site. On vous dira ce dont il a besoin en premier.',
-      action: 'Réserver une revue',
-    },
-    visuals: {
-      search: {
-        label: 'Exemple de résultat de recherche où le studio apparaît en premier, avec scores de performance, SEO et accessibilité',
-        query: 'architecte Marbella',
-        url: 'aurea-studio.com › projets',
-        title: 'Aurea Studio · Architecture à Marbella',
-        desc: 'Villas contemporaines et résidences privées sur la Costa del Sol. Projets, processus et contact.',
-        scores: ['Performance', 'SEO', 'Accessibilité'],
+      "title": "Web, identité, print et *tout* ce qu’il y a entre les deux.",
+      "lead": "Un studio d’architecture ou d’intérieur est jugé partout : le site, la carte de visite, la planche de concours, le feed Instagram. On dessine tout, pour que tout ressemble au même studio.",
+      "disciplines": [
+        {
+          "id": "web",
+          "name": "Web",
+          "line": "Des sites et portfolios qui amènent des demandes."
+        },
+        {
+          "id": "brand",
+          "name": "Identité",
+          "line": "Typographie, couleur et ton qui tiennent ensemble."
+        },
+        {
+          "id": "print",
+          "name": "Print",
+          "line": "Tout ce qui finit sur papier ou sur un mur."
+        },
+        {
+          "id": "marketing",
+          "name": "Réseaux & marketing",
+          "line": "Votre feed et vos newsletters, à votre image."
+        }
+      ],
+      "web": {
+        "title": "Sites web",
+        "body": "Un site qui rend votre portfolio facile à parcourir et qui fait que les bons clients vous prennent au sérieux. Rapide, visible sur Google, et suivi une fois en ligne.",
+        "groups": [
+          {
+            "title": "Design et développement",
+            "items": [
+              "Sites de studio",
+              "Refontes",
+              "Sites multilingues",
+              "Parcours de demande"
+            ]
+          },
+          {
+            "title": "Portfolio",
+            "items": [
+              "Pages projet",
+              "Filtres par type et lieu",
+              "Structure d’étude de cas",
+              "Modifiable par vous"
+            ]
+          },
+          {
+            "title": "SEO et suivi",
+            "items": [
+              "Bases SEO",
+              "Performance",
+              "Hébergement",
+              "Mises à jour mensuelles"
+            ]
+          }
+        ],
+        "alt": "Site de studio d’architecture, page projet"
       },
-      portfolio: {
-        label: 'Exemple d’éditeur de contenu à côté de la page projet publiée qu’il génère',
-        editor: 'Éditeur',
-        page: 'Page publiée',
-        fields: ['Projet', 'Lieu', 'Type', 'Matériaux'],
-        values: ['Casa Lunara', 'Marbella', 'Intérieur · Résidentiel', 'Travertin, chêne, lin'],
-        images: 'Images',
-        publish: 'Publié',
+      "brand": {
+        "title": "Identité de marque",
+        "body": "D’un ajustement soigné à une identité complète. Logo, typographie, couleur et ton, réunis dans une charte que vous utiliserez vraiment.",
+        "items": [
+          "Logo et logotype",
+          "Système typographique",
+          "Palette de couleurs",
+          "Papeterie",
+          "Charte graphique",
+          "Ton de voix"
+        ]
       },
-      brand: {
+      "print": {
+        "title": "Print",
+        "body": "Cartes de visite, brochures, books portfolio, planches de concours, signalétique. Tout ce qui finit sur papier ou sur un mur, conçu et préparé pour l’imprimeur.",
+        "items": [
+          "Cartes de visite et papeterie",
+          "Brochures et books portfolio",
+          "Planches de concours et de projet",
+          "Palissades de chantier et signalétique",
+          "Panneaux d’exposition",
+          "Fichiers prêts à imprimer"
+        ]
+      },
+      "social": {
+        "title": "Réseaux & marketing",
+        "body": "Templates Instagram, visuels de campagne, newsletters et landing pages. Votre feed enfin à votre image, et simple à tenir pour votre équipe.",
+        "items": [
+          "Templates Instagram",
+          "Posts de lancement de projet",
+          "Visuels de campagne",
+          "Newsletters",
+          "Landing pages",
+          "Publicités"
+        ]
+      },
+      "between": {
+        "title": "Et tout ce qu’il y a *entre les deux*.",
+        "body": "Les pièces qui n’entrent dans aucune case, mais que vos clients voient quand même.",
+        "items": [
+          {
+            "title": "Présentations",
+            "body": "Des présentations qui convainquent en rendez-vous."
+          },
+          {
+            "title": "Candidatures aux prix",
+            "body": "Des dossiers pensés pour sortir du lot devant un jury."
+          },
+          {
+            "title": "Fiches projet",
+            "body": "Un résumé d’une page pour chaque projet."
+          },
+          {
+            "title": "Signatures email",
+            "body": "Petites, mais vues cent fois par jour."
+          },
+          {
+            "title": "Direction photo",
+            "body": "Briefs et listes de prises pour votre photographe."
+          },
+          {
+            "title": "Textes du site",
+            "body": "Des mots qui sonnent comme votre studio."
+          }
+        ]
+      },
+      "fit": {
+        "title": "Vous ne savez pas par où *commencer* ?",
+        "body": "Dites-nous ce que vous avez et ce qui ne marche pas. On vous dira quoi corriger en premier.",
+        "action": "Nous écrire"
+      },
+      "engagement": {
+        "title": "Comment se *déroule* chaque projet.",
+        "items": [
+          {
+            "title": "La revue d’abord",
+            "body": "On commence par ce que vous avez déjà : site, identité, print, feed. Cela fixe la direction avant tout design."
+          },
+          {
+            "title": "Livrables définis",
+            "body": "Vous savez exactement ce que vous recevez avant de signer."
+          },
+          {
+            "title": "Implication directe",
+            "body": "Vous parlez à la personne qui le conçoit. Personne entre les deux."
+          },
+          {
+            "title": "Prêt à l’emploi",
+            "body": "Site en ligne, fichiers prêts à imprimer, templates livrés. Rien à moitié fini."
+          }
+        ]
+      },
+    "visuals": {
+      "print": {
+        "label": "Exemple de pièces imprimées pour un studio : une brochure ouverte, des cartes de visite et une planche de concours",
+        "book": "Projets choisis",
+        "years": "2019–2025",
+        "board": "Casa Lunara",
+        "boardSub": "Concours · Marbella",
+        "name": "Aurea Studio",
+        "role": "Architecture",
+        "city": "Marbella"
+      },
+      "social": {
+        "label": "Exemple de feed Instagram et de newsletter conçus pour un studio",
+        "handle": "aurea.studio",
+        "stats": [
+          [
+            "128",
+            "posts"
+          ],
+          [
+            "4,2k",
+            "abonnés"
+          ]
+        ],
+        "tiles": [
+          "Nouveau projet",
+          "Casa Lunara",
+          "La lumière d’abord.",
+          "Process",
+          "Marbella",
+          "Matière"
+        ],
+        "mailFrom": "Aurea Studio",
+        "mailSubject": "Nouveau projet : Casa Lunara",
+        "mailCta": "Voir le projet"
+      },
+      "brand": {
         label: 'Exemple de système de marque avec échelle typographique, échelle d’espacement et palette de couleurs',
         scale: ['Display', 'Titre', 'Texte'],
         sample: 'Architecture',
         body: 'La lumière, la proportion, la matière, dans cet ordre.',
         colors: ['Lin', 'Travertin', 'Terre cuite', 'Olive', 'Basalte'],
       },
-      hosting: {
-        label: 'Exemple de tableau de bord de maintenance avec disponibilité, sauvegardes, mises à jour et temps de réponse',
-        status: 'Tous les systèmes fonctionnent',
-        uptime: 'Disponibilité, 30 derniers jours',
-        rows: [['Dernière sauvegarde', 'Aujourd’hui, 04:00'], ['Mises à jour de sécurité', 'À jour'], ['Modifications de contenu', '2 projets ajoutés'], ['Temps de réponse', '180 ms']],
-      },
-    },
-    engagement: {
-      title: 'Comment se *déroule* chaque projet.',
-      items: [
-        { title: 'La revue d’abord', body: 'On commence par votre site actuel, votre positionnement et vos objectifs. Cela fixe la direction avant tout design.' },
-        { title: 'Livrables définis', body: 'Vous savez exactement ce que vous recevez avant de signer.' },
-        { title: 'Implication directe', body: 'Vous parlez à la personne qui conçoit et développe. Personne entre les deux.' },
-        { title: 'Prêt à publier', body: 'Vitesse, SEO, statistiques et domaine, tout est prêt avant la mise en ligne.' },
-      ],
-    },
+    }
   },
 
   contact: {

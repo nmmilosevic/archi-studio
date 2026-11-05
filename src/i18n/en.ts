@@ -17,7 +17,7 @@ const en = {
     },
     services: {
       title: 'Services | Reframe Studio',
-      description: 'From website redesigns to portfolio systems and search visibility foundations, every service is built around how architecture and design studios present work.',
+      description: "Websites, brand identity, print and social for architecture and interior design studios. One studio for everything clients see.",
     },
     contact: {
       title: 'Contact | Reframe Studio',
@@ -209,88 +209,200 @@ const en = {
   } as Record<string, { title: string; location: string; summary: string; captions: string[]; typeNote: string; paletteNames: string[]; decisions: string[] }>,
 
   services: {
-    title: 'Web, brand, print and *everything* in between.',
-    lead: 'Everything here is built around how architecture and interior studios actually win work: the portfolio, the first impression, the enquiry.',
-    redesign: {
-      title: 'Website redesign for architecture studios',
-      body: 'A site that makes your portfolio easy to explore, and makes the right clients take you seriously.',
-      items: ['Homepage redesign', 'Project pages', 'About page', 'Enquiry flow', 'Mobile experience', 'Performance-focused build', 'Multilingual setup'],
-      alt: 'Architecture studio website redesign, project page',
-    },
-    interiors: {
-      title: 'Interior design studio websites',
-      body: 'Image-led sites that carry the mood, the materials and the feel of a room before the first meeting.',
-      items: ['Visual portfolio system', 'Service pages', 'Process storytelling', 'Lead capture', 'Instagram and portfolio integration'],
-      alt: 'Interior design studio website, project page',
-    },
-    search: {
-      title: 'Search visibility foundation',
-      body: 'Showing up when someone searches “architect in Marbella” isn’t luck. It’s structure, metadata, links and a fast site. We set all of it up properly.',
-      items: ['SEO metadata', 'Search-focused page structure', 'Structured data', 'Internal linking', 'Image alt structure', 'Performance optimization'],
-    },
-    hosting: {
-      title: 'Hosting & maintenance',
-      body: 'We keep the site fast, safe and up to date. You never have to think about it.',
-      items: ['Vercel hosting setup', 'Monthly updates', 'Technical monitoring', 'Small content edits', 'Analytics checks'],
-    },
-    portfolio: {
-      title: 'Portfolio systems',
-      body: 'One clean way to publish every project: photos, location, type, materials, scope and the story behind it.',
-      items: ['Content model for a CMS, or content management system', 'Project templates', 'Filters by location and type', 'Case study structure', 'Image-first layout'],
-      alt: 'Project archive layout for an architecture studio',
-    },
-    brand: {
-      title: 'Brand refinement',
-      body: 'Not a full rebrand. A careful tune-up of type, colour, layout and tone, so everything looks like it comes from the same studio.',
-      items: ['Visual direction', 'Typography system', 'Color system', 'Website UI kit', 'Basic brand guidelines'],
-      alt: 'Typography and colour system for a studio brand',
-    },
-    fit: {
-      title: 'Not sure where to *start*?',
-      body: 'Send us your site. We’ll tell you what it needs first.',
-      action: 'Book a site review',
-    },
-    visuals: {
-      search: {
-        label: 'Example search result where the studio ranks first, with performance, SEO and accessibility scores',
-        query: 'architect Marbella',
-        url: 'aurea-studio.com › projects',
-        title: 'Aurea Studio · Architecture in Marbella',
-        desc: 'Contemporary villas and private residences on the Costa del Sol. Selected projects, process and contact.',
-        scores: ['Performance', 'SEO', 'Accessibility'],
+      "title": "Web, brand, print and *everything* in between.",
+      "lead": "Architecture and interior studios get judged everywhere: the site, the business card, the competition board, the Instagram grid. We design all of it, so it all looks like one studio.",
+      "disciplines": [
+        {
+          "id": "web",
+          "name": "Web",
+          "line": "Sites and portfolios that bring in enquiries."
+        },
+        {
+          "id": "brand",
+          "name": "Brand",
+          "line": "Type, colour and tone that hold together."
+        },
+        {
+          "id": "print",
+          "name": "Print",
+          "line": "Anything that ends up on paper or on a wall."
+        },
+        {
+          "id": "marketing",
+          "name": "Social & marketing",
+          "line": "Your feed and your newsletters, on brand."
+        }
+      ],
+      "web": {
+        "title": "Websites",
+        "body": "A site that makes your portfolio easy to explore and makes the right clients take you seriously. Fast, found on Google, and looked after once it’s live.",
+        "groups": [
+          {
+            "title": "Design & build",
+            "items": [
+              "Studio websites",
+              "Redesigns",
+              "Multilingual sites",
+              "Enquiry flow"
+            ]
+          },
+          {
+            "title": "Portfolio",
+            "items": [
+              "Project pages",
+              "Filters by type and place",
+              "Case study structure",
+              "Editable by you"
+            ]
+          },
+          {
+            "title": "Search & care",
+            "items": [
+              "SEO foundation",
+              "Performance",
+              "Hosting",
+              "Monthly updates"
+            ]
+          }
+        ],
+        "alt": "Architecture studio website, project page"
       },
-      portfolio: {
-        label: 'Example content editor next to the published project page it creates',
-        editor: 'Editor',
-        page: 'Published page',
-        fields: ['Project', 'Location', 'Type', 'Materials'],
-        values: ['Casa Lunara', 'Marbella', 'Interior · Residential', 'Travertine, oak, linen'],
-        images: 'Images',
-        publish: 'Published',
+      "brand": {
+        "title": "Brand identity",
+        "body": "From a careful refresh to a full identity. Logo, type, colour and tone, set down in guidelines you’ll actually use.",
+        "items": [
+          "Logo and wordmark",
+          "Typography system",
+          "Colour palette",
+          "Stationery",
+          "Brand guidelines",
+          "Tone of voice"
+        ]
       },
-      brand: {
+      "print": {
+        "title": "Print",
+        "body": "Business cards, brochures, portfolio books, competition boards, signage. Anything that ends up on paper or on a wall, designed and prepared for the printer.",
+        "items": [
+          "Business cards and stationery",
+          "Brochures and portfolio books",
+          "Competition and project boards",
+          "Site hoardings and signage",
+          "Exhibition panels",
+          "Print-ready files"
+        ]
+      },
+      "social": {
+        "title": "Social & marketing",
+        "body": "Instagram templates, campaign visuals, newsletters and landing pages. Your feed, finally on brand, and easy for your team to keep up.",
+        "items": [
+          "Instagram templates",
+          "Project launch posts",
+          "Campaign visuals",
+          "Newsletters",
+          "Landing pages",
+          "Ads"
+        ]
+      },
+      "between": {
+        "title": "And everything *in between*.",
+        "body": "The pieces that don’t fit a category but still land in front of clients.",
+        "items": [
+          {
+            "title": "Pitch decks",
+            "body": "Presentations that hold the room."
+          },
+          {
+            "title": "Award submissions",
+            "body": "Entries laid out to stand out on a jury table."
+          },
+          {
+            "title": "Project sheets",
+            "body": "A one-page summary for every project."
+          },
+          {
+            "title": "Email signatures",
+            "body": "Small, but seen a hundred times a day."
+          },
+          {
+            "title": "Photo direction",
+            "body": "Briefs and shot lists for your photographer."
+          },
+          {
+            "title": "Website copy",
+            "body": "Words that sound like your studio."
+          }
+        ]
+      },
+      "fit": {
+        "title": "Not sure where to *start*?",
+        "body": "Tell us what you have and what isn’t working. We’ll tell you what to fix first.",
+        "action": "Get in touch"
+      },
+      "engagement": {
+        "title": "How every project *runs*.",
+        "items": [
+          {
+            "title": "Review first",
+            "body": "We start with what you already have: site, brand, print, feed. That sets the direction before anything gets designed."
+          },
+          {
+            "title": "Fixed deliverables",
+            "body": "You know exactly what you’re getting before you sign."
+          },
+          {
+            "title": "Direct involvement",
+            "body": "You talk to the person designing it. Nobody in between."
+          },
+          {
+            "title": "Ready to use",
+            "body": "Sites live, files print-ready, templates handed over. Nothing left half done."
+          }
+        ]
+      },
+    "visuals": {
+      "print": {
+        "label": "Example print set for a studio: a brochure spread, business cards and a competition board",
+        "book": "Selected works",
+        "years": "2019–2025",
+        "board": "Casa Lunara",
+        "boardSub": "Competition entry · Marbella",
+        "name": "Aurea Studio",
+        "role": "Architecture",
+        "city": "Marbella"
+      },
+      "social": {
+        "label": "Example Instagram grid and newsletter designed for a studio",
+        "handle": "aurea.studio",
+        "stats": [
+          [
+            "128",
+            "posts"
+          ],
+          [
+            "4.2k",
+            "followers"
+          ]
+        ],
+        "tiles": [
+          "New project",
+          "Casa Lunara",
+          "Light first.",
+          "Process",
+          "Marbella",
+          "Material"
+        ],
+        "mailFrom": "Aurea Studio",
+        "mailSubject": "New project: Casa Lunara",
+        "mailCta": "See the project"
+      },
+      "brand": {
         label: 'Example brand system with a typography scale, a spacing scale and a colour palette',
         scale: ['Display', 'Heading', 'Body'],
         sample: 'Architecture',
         body: 'Light, proportion and material, in that order.',
         colors: ['Linen', 'Travertine', 'Terracotta', 'Olive', 'Basalt'],
       },
-      hosting: {
-        label: 'Example maintenance dashboard showing uptime, backups, updates and response time',
-        status: 'All systems normal',
-        uptime: 'Uptime, last 30 days',
-        rows: [['Last backup', 'Today, 04:00'], ['Security updates', 'Up to date'], ['Content edits', '2 projects added'], ['Response time', '180 ms']],
-      },
-    },
-    engagement: {
-      title: 'How every project *runs*.',
-      items: [
-        { title: 'Review first', body: 'We start with your current site, your positioning and your goals. That sets the direction before any design happens.' },
-        { title: 'Fixed deliverables', body: 'You know exactly what you’re getting before you sign.' },
-        { title: 'Direct involvement', body: 'You talk to the person designing and building it. Nobody in between.' },
-        { title: 'Launch ready', body: 'Speed, SEO, analytics and your domain, all set up before you go live.' },
-      ],
-    },
+    }
   },
 
   contact: {

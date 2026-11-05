@@ -1,0 +1,105 @@
+---
+/** Print: a small print set on a table. Brochure spread, business cards, competition board. */
+import { useContent, type Lang } from '../../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls } = Astro.props;
+const v = useContent(lang).services.visuals.print;
+---
+<figure class:list={['vz', 'vz-print', cls]} data-vz-print role="img" aria-label={v.label}>
+  <div class="table">
+    <!-- Brochure spread -->
+    <div class="piece spread" data-piece>
+      <div class="page page--l">
+        <span class="kicker">{v.name}</span>
+        <span class="book">{v.book}</span>
+        <span class="years">{v.years}</span>
+      </div>
+      <div class="page page--r">
+        <span class="plate"></span>
+        <span class="lines"><i></i><i></i><i style="width:60%"></i></span>
+      </div>
+    </div>
+
+    <!-- Competition board -->
+    <div class="piece board" data-piece>
+      <span class="board__title">{v.board}</span>
+      <span class="board__sub">{v.boardSub}</span>
+      <svg class="plan" viewBox="0 0 100 80" fill="none" aria-hidden="true">
+        <path data-plan pathLength="1" d="M8 8h84v64H8z" />
+        <path data-plan pathLength="1" d="M8 40h40M48 8v64M48 52h44M70 52v20M28 40v32" />
+        <path data-plan pathLength="1" d="M58 20a10 10 0 0 1 20 0" />
+      </svg>
+      <span class="board__strip"></span>
+    </div>
+
+    <!-- Business cards: back and front -->
+    <div class="piece bcard bcard--back" data-piece><span class="mono">A</span></div>
+    <div class="piece bcard bcard--front" data-piece>
+      <span class="bcard__name">{v.name}</span>
+      <span class="bcard__meta">{v.role}<br />{v.city}</span>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .vz { margin: 0; }
+  .vz-print {
+    padding: clamp(1rem, .8rem + 1vw, 1.5rem);
+    background: var(--viz-paper); border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px var(--viz-line);
+  }
+  .table { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; }
+  .piece { position: absolute; box-shadow: 0 1.2cqw 3cqw -1.2cqw rgb(0 0 0 / .7); }
+
+  /* Brochure spread: two A4 pages side by side */
+  .spread { left: 2%; top: 6%; width: 64%; aspect-ratio: 1.414 / 1; display: grid; grid-template-columns: 1fr 1fr; }
+  .page { background: #EFE8DC; color: #23211E; padding: 7% 8%; display: grid; }
+  .page--l { align-content: space-between; box-shadow: inset -1.4cqw 0 1.6cqw -1.4cqw rgb(0 0 0 / .25); }
+  .page--r { align-content: start; gap: 8%; background: #F4EFE6; }
+  .kicker { font-size: 1.5cqw; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
+  .book { font-family: var(--font-serif); font-size: 5.6cqw; line-height: .95; }
+  .years { font-size: 1.5cqw; letter-spacing: .08em; opacity: .65; }
+  .plate { display: block; aspect-ratio: 4 / 3; background: #B5603F; }
+  .lines { display: grid; gap: .9cqw; }
+  .lines i { display: block; height: .6cqw; background: #23211E; opacity: .25; border-radius: 99px; }
+
+  /* Competition board: A1 portrait, dark */
+  .board {
+    right: 2%; top: 2%; width: 29%; aspect-ratio: 1 / 1.414;
+    background: #23211E; color: #EFE8DC; padding: 2.4cqw 2.2cqw;
+    display: grid; grid-template-rows: auto auto 1fr auto; gap: .8cqw;
+  }
+  .board__title { font-family: var(--font-serif); font-size: 3.6cqw; line-height: 1; }
+  .board__sub { font-size: 1.25cqw; letter-spacing: .06em; opacity: .7; }
+  .plan { width: 100%; align-self: center; color: #EFE8DC; }
+  .plan path { stroke: currentColor; stroke-width: .8; }
+  .board__strip { height: 3cqw; background: #5F6447; }
+
+  /* Business cards: 85 × 55 */
+  .bcard { width: 24%; aspect-ratio: 85 / 55; padding: 1.6cqw 1.8cqw; }
+  .bcard--back { left: 38%; bottom: 6%; background: #23211E; color: #EFE8DC; display: grid; place-items: center; transform: rotate(7deg); }
+  .mono { font-family: var(--font-serif); font-size: 5cqw; line-height: 1; }
+  .bcard--front {
+    left: 14%; bottom: 3%; background: #D8C7AE; color: #23211E; transform: rotate(-5deg);
+    display: grid; align-content: space-between;
+  }
+  .bcard__name { font-family: var(--font-serif); font-size: 2.3cqw; }
+  .bcard__meta { font-size: 1.15cqw; line-height: 1.4; letter-spacing: .04em; opacity: .75; }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced } from '../../scripts/motion';
+
+  document.querySelectorAll<HTMLElement>('[data-vz-print]').forEach((root) => {
+    if (reduced) return;
+    const pieces = root.querySelectorAll<HTMLElement>('[data-piece]');
+    const plan = root.querySelectorAll<SVGPathElement>('[data-plan]');
+    const tl = gsap.timeline({ paused: true });
+    // Each piece is set down on the table, a little after the last
+    tl.from(pieces, { opacity: 0, y: 40, rotation: (i) => [-4, 5, 10, -9][i] ?? 0, duration: 1.1, ease: 'expo.out', stagger: 0.12 })
+      .fromTo(plan, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: 0.15 }, 0.4);
+    tl.progress(0.001).pause();
+    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: () => tl.play() });
+  });
+</script>

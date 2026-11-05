@@ -1,0 +1,110 @@
+---
+/** Social & marketing: a studio's Instagram grid on a phone, and a newsletter beside it. */
+import { useContent, type Lang } from '../../i18n';
+
+interface Props { lang: Lang; class?: string }
+const { lang, class: cls } = Astro.props;
+const v = useContent(lang).services.visuals.social;
+// Nine tiles: six carry a word from the copy, three are simple line drawings
+const tiles = [
+  { tone: '#EFE8DC', ink: '#23211E', text: v.tiles[0], kind: 'kicker' },
+  { tone: '#B5603F', ink: '#FBF6EE', text: v.tiles[1], kind: 'serif' },
+  { tone: '#23211E', ink: '#EFE8DC', kind: 'arch' },
+  { tone: '#D8C7AE', ink: '#23211E', text: v.tiles[2], kind: 'serif' },
+  { tone: '#5F6447', ink: '#EFE8DC', kind: 'plan' },
+  { tone: '#EFE8DC', ink: '#23211E', text: v.tiles[3], kind: 'kicker' },
+  { tone: '#23211E', ink: '#EFE8DC', text: v.tiles[4], kind: 'serif' },
+  { tone: '#EFE8DC', ink: '#23211E', kind: 'stair' },
+  { tone: '#B5603F', ink: '#FBF6EE', text: v.tiles[5], kind: 'kicker' },
+];
+---
+<figure class:list={['vz', 'vz-social', cls]} data-vz-social role="img" aria-label={v.label}>
+  <div class="stage">
+    <div class="phone" data-phone>
+      <div class="profile">
+        <span class="avatar">A</span>
+        <span class="handle">{v.handle}</span>
+        <span class="stats">{v.stats.map(([n, l]) => <span><b>{n}</b> {l}</span>)}</span>
+      </div>
+      <ul class="tiles">
+        {tiles.map((t) => (
+          <li class:list={['tile', `tile--${t.kind}`]} style={`background:${t.tone};color:${t.ink}`} data-tile>
+            {t.text && <span>{t.text}</span>}
+            {t.kind === 'arch' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M10 34V20a10 10 0 0 1 20 0v14" stroke="currentColor" stroke-width="1.2"/></svg>}
+            {t.kind === 'plan' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 7h26v26H7zM7 20h14M21 7v26M21 26h12" stroke="currentColor" stroke-width="1.2"/></svg>}
+            {t.kind === 'stair' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 33h7v-7h7v-7h7v-7h7" stroke="currentColor" stroke-width="1.2"/></svg>}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="mail" data-mail>
+      <span class="mail__from">{v.mailFrom}</span>
+      <span class="mail__subject">{v.mailSubject}</span>
+      <span class="mail__plate"></span>
+      <span class="mail__lines"><i></i><i></i><i style="width:55%"></i></span>
+      <span class="mail__cta">{v.mailCta}</span>
+    </div>
+  </div>
+</figure>
+
+<style>
+  .vz { margin: 0; }
+  .vz-social {
+    padding: clamp(1rem, .8rem + 1vw, 1.5rem);
+    background: var(--viz-paper); border-radius: var(--radius-lg);
+    box-shadow: inset 0 0 0 1px var(--viz-line);
+  }
+  .stage { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; }
+
+  /* Phone with the studio's grid */
+  .phone {
+    position: absolute; left: 6%; top: 3%; bottom: 3%; aspect-ratio: 9 / 17;
+    background: #121212; border-radius: 4cqw; padding: 3cqw 2.4cqw;
+    box-shadow: inset 0 0 0 1px var(--viz-line), 0 2cqw 4cqw -2cqw rgb(0 0 0 / .8);
+    display: grid; grid-template-rows: auto 1fr; gap: 2.4cqw; color: var(--viz-ink);
+  }
+  .profile { display: grid; grid-template-columns: auto 1fr; column-gap: 1.6cqw; align-items: center; }
+  .avatar {
+    grid-row: span 2; width: 6cqw; aspect-ratio: 1; border-radius: 50%;
+    display: grid; place-items: center; background: #EFE8DC; color: #23211E;
+    font-family: var(--font-serif); font-size: 3.2cqw;
+  }
+  .handle { font-size: 1.7cqw; font-weight: 700; }
+  .stats { display: flex; gap: 1.6cqw; font-size: 1.25cqw; color: var(--viz-muted); }
+  .stats b { color: var(--viz-ink); font-weight: 700; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5cqw; align-content: start; }
+  .tile { aspect-ratio: 1; display: grid; place-items: center; padding: .8cqw; overflow: hidden; text-align: center; }
+  .tile--serif span { font-family: var(--font-serif); font-size: 2.1cqw; line-height: 1; }
+  .tile--kicker span { font-size: 1cqw; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; }
+  .tile svg { width: 70%; }
+
+  /* Newsletter */
+  .mail {
+    position: absolute; right: 3%; top: 14%; width: 46%;
+    background: #EFE8DC; color: #23211E; padding: 3cqw;
+    display: grid; gap: 1.6cqw; justify-items: start;
+    box-shadow: 0 2cqw 4cqw -2cqw rgb(0 0 0 / .8);
+  }
+  .mail__from { font-size: 1.3cqw; letter-spacing: .18em; text-transform: uppercase; opacity: .6; }
+  .mail__subject { font-family: var(--font-serif); font-size: 3.6cqw; line-height: 1.05; }
+  .mail__plate { width: 100%; aspect-ratio: 16 / 9; background: #5F6447; }
+  .mail__lines { display: grid; gap: 1cqw; width: 100%; }
+  .mail__lines i { display: block; height: .7cqw; background: #23211E; opacity: .2; border-radius: 99px; }
+  .mail__cta { padding: 1cqw 2.2cqw; border-radius: 99px; background: #23211E; color: #EFE8DC; font-size: 1.35cqw; }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced } from '../../scripts/motion';
+
+  document.querySelectorAll<HTMLElement>('[data-vz-social]').forEach((root) => {
+    if (reduced) return;
+    const tl = gsap.timeline({ paused: true });
+    // Phone rises, the grid fills in tile by tile, then the newsletter slides in
+    tl.from(root.querySelector('[data-phone]'), { opacity: 0, y: 30, duration: 1, ease: 'expo.out' })
+      .from(root.querySelectorAll('[data-tile]'), { opacity: 0, scale: 0.85, duration: 0.6, ease: 'expo.out', stagger: 0.06 }, 0.3)
+      .from(root.querySelector('[data-mail]'), { opacity: 0, x: 40, rotation: 3, duration: 1.1, ease: 'expo.out' }, 0.7);
+    tl.progress(0.001).pause();
+    ScrollTrigger.create({ trigger: root, start: 'top 75%', once: true, onEnter: () => tl.play() });
+  });
+</script>
