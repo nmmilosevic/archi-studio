@@ -11,7 +11,7 @@ const t = useContent(lang);
 const h = t.home;
 const contact = href(lang, '/contact/');
 
-// Line icons for the "Design beyond your website" cards (see .icon-draw in global.css)
+// Line icons for the "Not just websites" rows (see .icon-draw in global.css)
 const beyondIcons = [
   // Brand & Print: the front sheet fans out from the back one
   `<svg class="icon-draw home-beyond__icon icon-print" viewBox="0 0 48 48" aria-hidden="true" data-draw>
@@ -120,7 +120,7 @@ const beyondIcons = [
       </div>
 
       <div class="grid cards">
-        <div class="card home-pricing__offer" data-fade>
+        <div class="home-pricing__offer" data-fade>
           <div>
             <p class="t-display home-pricing__price" data-count aria-label={h.pricing.price}>{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
@@ -139,7 +139,7 @@ const beyondIcons = [
           <h3 class="t-h4 t-muted" data-fade set:html={rich(h.beyond.title)}></h3>
           <div class="home-beyond" data-stagger>
             {h.beyond.items.map((item, i) => (
-              <article class="home-beyond__item card">
+              <article class="home-beyond__item">
                 <Fragment set:html={beyondIcons[i]} />
                 <h4 class="t-h4">{item.title}</h4>
                 <p class="t-small t-muted">{item.body}</p>
@@ -294,7 +294,8 @@ const beyondIcons = [
   /* Pricing */
   .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
   .home-pricing__note { max-width: 34rem; }
-  .home-pricing__offer.card { background: rgb(255 255 255 / .035); padding: clamp(1.5rem, 1rem + 1.6vw, 2.75rem); }
+  /* No boxes: hairlines frame the offer and split the extra services */
+  .home-pricing__offer { border-block: 1px solid var(--c-line); padding-block: var(--s-6); }
   @media (min-width: 900px) {
     /* Heading sits above the cards; the offer box and the card stack share row 2, so tops and bottoms line up */
     .cards > .home-pricing__more { display: contents; }
@@ -307,18 +308,18 @@ const beyondIcons = [
   .home-pricing__included { display: grid; gap: var(--s-5); width: 100%; }
   @media (min-width: 600px) { .home-pricing__included .list-marked { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); max-width: 40rem; } }
   .home-pricing__more { display: grid; align-content: start; gap: var(--s-5); }
-  .home-beyond { display: grid; gap: var(--gutter); grid-auto-rows: 1fr; }
+  .home-beyond { display: grid; grid-auto-rows: 1fr; border-bottom: 1px solid var(--c-line); }
   .home-beyond__item { align-content: center; }
   @media (max-width: 899px) { .home-pricing__more { margin-top: var(--s-8); } }
   .home-beyond__item {
     display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-4); row-gap: var(--s-1);
-    align-items: start; padding: var(--s-5); background: rgb(255 255 255 / .035);
+    align-items: start; padding-block: var(--s-6); border-top: 1px solid var(--c-line);
   }
   .home-beyond__item > * { grid-column: 2; }
   .home-beyond__item > .home-beyond__icon { grid-column: 1; grid-row: 1 / span 2; width: 2rem; height: auto; }
   .home-beyond__item .t-h4 { font-size: 1.125rem; }
   .home-beyond__item .t-small { line-height: 1.45; }
-  .home-beyond__icon { --icon-bg: #131313; }
+  .home-beyond__icon { --icon-bg: var(--c-stone); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
   html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
   html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }
