@@ -83,6 +83,7 @@ const es: Content = {
       note: 'Incluye el diseño que ves y su desarrollo. ¿Más páginas o cambios después? Te lo presupuestamos antes, para que nada aparezca en una factura que no esperabas.',
       included: 'Qué incluye',
       includes: ['Estrategia web', 'Diseño a medida', 'Desarrollo responsive', 'Bases SEO', 'Formulario de contacto', 'Soporte de lanzamiento'],
+      includesNotes: ['Definimos las páginas, los proyectos y lo primero que debe encontrar quien visita.', 'Pensado para tu trabajo. Sin plantillas, sin temas.', 'Impecable en móvil, tablet y en una pantalla de 27 pulgadas.', 'Estructura limpia, páginas rápidas y títulos que Google entiende.', 'Las consultas llegan directamente a tu bandeja de entrada.', 'Publicamos juntos y arreglamos lo que aparezca.'],
       action: 'Empezar mi web',
     },
     beyond: {

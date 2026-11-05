@@ -84,6 +84,7 @@ const en = {
       note: 'That covers the design you see and the build. Want more pages or changes later? We quote it first, so nothing lands on an invoice you didn’t expect.',
       included: 'What’s included',
       includes: ['Website strategy', 'Custom design', 'Responsive development', 'SEO basics', 'Contact form', 'Launch support'],
+      includesNotes: ['We map the pages, the projects and what visitors should find first.', 'Built around your work. No template, no theme.', 'Sharp on a phone, a tablet and a 27-inch screen.', 'Clean structure, fast pages, titles Google can read.', 'Enquiries land straight in your inbox.', 'We go live together and fix anything that shows up.'],
       action: 'Start my site',
     },
     beyond: {

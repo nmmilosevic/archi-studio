@@ -83,6 +83,7 @@ const fr: Content = {
       note: 'Cela couvre le design présenté et son développement. Plus de pages ou des changements plus tard ? On vous fait un devis avant, pour qu’aucune facture ne vous surprenne.',
       included: 'Ce qui est inclus',
       includes: ['Stratégie site web', 'Design sur mesure', 'Développement responsive', 'Bases SEO', 'Formulaire de contact', 'Support au lancement'],
+      includesNotes: ['On définit les pages, les projets et ce que le visiteur doit trouver en premier.', 'Pensé pour votre travail. Pas de template, pas de thème.', 'Net sur mobile, sur tablette et sur un écran de 27 pouces.', 'Structure propre, pages rapides, titres lisibles par Google.', 'Les demandes arrivent directement dans votre boîte mail.', 'On met en ligne ensemble et on corrige ce qui se présente.'],
       action: 'Commencer le site',
     },
     beyond: {

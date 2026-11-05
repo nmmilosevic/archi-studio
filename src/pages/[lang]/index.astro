@@ -154,7 +154,7 @@ const includedIcons = [
     </ul>
   </section>
 
-  <!-- Pricing: price (1–6) beside what's included as six icon cards (7–12),
+  <!-- Pricing: price (1–6) beside what's included as six open icon items (7–12),
        then a heading and the three extra services as cards, 4 + 4 + 4. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
@@ -174,9 +174,10 @@ const includedIcons = [
 
         <ul class="span-6 home-included" aria-label={h.pricing.included} data-stagger>
           {h.pricing.includes.map((item, i) => (
-            <li class="card home-included__item">
+            <li class="home-included__item">
               <Fragment set:html={includedIcons[i]} />
-              <span class="home-included__label">{item}</span>
+              <span class="t-h4 home-included__label">{item}</span>
+              <p class="t-small t-muted home-included__note">{h.pricing.includesNotes[i]}</p>
             </li>
           ))}
         </ul>
@@ -346,14 +347,32 @@ const includedIcons = [
   /* Soft cards: a whisper of white on black */
   .home-pricing .card { background: rgb(255 255 255 / .035); }
 
-  /* What's included: six icon cards, two per row, gaps = gutter */
-  .home-included { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); }
-  .home-included__item {
-    display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-6);
-    padding: var(--s-5);
+  /* What's included: six open items, two per row, no background.
+     Icon and title share a line; the note sits under the title. */
+  /* 1px grid lines between items: the list's line colour shows through 1px gaps,
+     items carry the page colour, so only inner lines appear (no outer border) */
+  .home-included {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr;
+    gap: 1px; background: var(--c-line);
   }
-  .home-included__icon { --icon-bg: #131313; width: 2.25rem; height: 2.25rem; }
-  .home-included__label { font-weight: 500; line-height: 1.3; }
+  .home-included > li { background: var(--c-stone); padding: var(--s-6) var(--s-6); }
+  .home-included > li:nth-child(odd) { padding-left: 0; }
+  .home-included > li:nth-child(even) { padding-right: 0; }
+  .home-included > li:nth-child(-n+2) { padding-top: 0; }
+  .home-included > li:nth-last-child(-n+2) { padding-bottom: 0; }
+  .home-included__item {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-4); row-gap: var(--s-2);
+    align-items: center; align-content: start;
+  }
+  @media (max-width: 599px) {
+    .home-included { grid-template-columns: 1fr; grid-auto-rows: auto; }
+    .home-included > li, .home-included > li:nth-child(n) { padding: var(--s-5) 0; }
+    .home-included > li:first-child { padding-top: 0; }
+    .home-included > li:last-child { padding-bottom: 0; }
+  }
+  .home-included__icon { --icon-bg: var(--c-stone); width: 2.25rem; height: 2.25rem; }
+  .home-included__label { font-size: 1.125rem; }
+  .home-included__note { grid-column: 2; max-width: 28ch; }
   html.js:not(.motion-off) .icon-target .mv { transform: translate(-10px, 10px); }
   html.js:not(.motion-off) .icon-pencil .mv { transform: translate(-8px, 6px) rotate(-8deg); }
   html.js:not(.motion-off) .icon-devices .mv { transform: translateX(10px); }
