@@ -293,8 +293,7 @@ const beyondIcons = [
   /* Pricing */
   .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
   .home-pricing__note { max-width: 34rem; }
-  /* No boxes: hairlines split the extra services, one vertical line between columns */
-  .home-pricing__offer { padding-block: var(--s-6); }
+  /* No boxes: one vertical line between the offer and the services */
   @media (min-width: 900px) {
     /* Vertical hairline just left of the services column */
     .home-beyond { position: relative; }
@@ -314,13 +313,11 @@ const beyondIcons = [
   .home-pricing__included { display: grid; gap: var(--s-5); width: 100%; }
   @media (min-width: 600px) { .home-pricing__included .list-marked { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); max-width: 40rem; } }
   .home-pricing__more { display: grid; align-content: start; gap: var(--s-5); }
-  .home-beyond { display: grid; grid-auto-rows: 1fr; }
-  .home-beyond__item + .home-beyond__item { border-top: 1px solid var(--c-line); }
-  .home-beyond__item { align-content: center; }
+  .home-beyond { display: grid; gap: var(--s-8); align-self: start; }
   @media (max-width: 899px) { .home-pricing__more { margin-top: var(--s-8); } }
   .home-beyond__item {
     display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-4); row-gap: var(--s-1);
-    align-items: start; padding-block: var(--s-6);
+    align-items: start;
   }
   .home-beyond__item > * { grid-column: 2; }
   .home-beyond__item > .home-beyond__icon { grid-column: 1; grid-row: 1 / span 2; width: 2rem; height: auto; }
