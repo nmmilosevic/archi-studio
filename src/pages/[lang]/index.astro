@@ -349,11 +349,41 @@ const includedIcons = [
 
   /* What's included: six open items, two per row, no background.
      Icon and title share a line; the note sits under the title. */
-  /* 1px inner grid lines drawn as cell borders (no background, so nothing grey shows while they fade in) */
-  .home-included { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; }
-  .home-included > li { padding: var(--s-6); }
-  .home-included > li:nth-child(even) { border-left: 1px solid var(--c-line); }
-  .home-included > li:nth-child(n+3) { border-top: 1px solid var(--c-line); }
+  /* 1px inner grid lines that run past the grid and fade out at both ends.
+     --ext is how far they overshoot (never more than the page margin, so no side scroll). */
+  .home-included {
+    --ext: min(var(--s-8), var(--margin));
+    --fade-line: var(--c-line);
+    position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr;
+  }
+  .home-included > li { position: relative; padding: var(--s-6); }
+  /* Vertical line between the two columns */
+  .home-included::before {
+    content: ''; position: absolute; left: 50%; width: 1px;
+    top: calc(var(--ext) * -1); bottom: calc(var(--ext) * -1);
+    background: linear-gradient(to bottom, transparent, var(--fade-line) var(--ext), var(--fade-line) calc(100% - var(--ext)), transparent);
+  }
+  /* Lines draw in when the list enters view (same trigger as the items' fade-in):
+     vertical from the top, horizontals from the left, one after the other */
+  html.js:not(.motion-off) .home-included::before,
+  html.js:not(.motion-off) .home-included > li::before {
+    transition: transform 1.4s var(--ease-out);
+  }
+  html.js:not(.motion-off) .home-included::before { transform: scaleY(0); transform-origin: 50% 0; }
+  html.js:not(.motion-off) .home-included > li::before { transform: scaleX(0); transform-origin: 0 50%; }
+  html.js:not(.motion-off) .home-included > li:nth-child(2)::before { transition-delay: .075s; }
+  html.js:not(.motion-off) .home-included > li:nth-child(3)::before { transition-delay: .15s; }
+  html.js:not(.motion-off) .home-included > li:nth-child(4)::before { transition-delay: .225s; }
+  html.js:not(.motion-off) .home-included > li:nth-child(5)::before { transition-delay: .3s; }
+  html.js:not(.motion-off) .home-included > li:nth-child(6)::before { transition-delay: .375s; }
+  html.js:not(.motion-off) .home-included.is-in::before,
+  html.js:not(.motion-off) .home-included.is-in > li::before { transform: none; }
+  /* Horizontal lines above rows 2 and 3, spanning both columns */
+  .home-included > li:nth-child(odd):nth-child(n+3)::before {
+    content: ''; position: absolute; top: 0; height: 1px;
+    left: calc(var(--ext) * -1); width: calc(200% + var(--ext) * 2);
+    background: linear-gradient(to right, transparent, var(--fade-line) var(--ext), var(--fade-line) calc(100% - var(--ext)), transparent);
+  }
   .home-included > li:nth-child(odd) { padding-left: 0; }
   .home-included > li:nth-child(even) { padding-right: 0; }
   /* Same padding on every cell and content pinned to the top, so all six cells match */
@@ -363,8 +393,13 @@ const includedIcons = [
   }
   @media (max-width: 599px) {
     .home-included { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .home-included > li, .home-included > li:nth-child(n) { padding: var(--s-5) 0; border-left: 0; }
-    .home-included > li + li { border-top: 1px solid var(--c-line); }
+    .home-included::before { display: none; }
+    .home-included > li, .home-included > li:nth-child(n) { padding: var(--s-5) 0; }
+    .home-included > li + li::before {
+      content: ''; position: absolute; top: 0; height: 1px;
+      left: calc(var(--margin) * -1); width: calc(100% + var(--margin) * 2);
+      background: linear-gradient(to right, transparent, var(--fade-line) var(--margin), var(--fade-line) calc(100% - var(--margin)), transparent);
+    }
     .home-included > li:first-child { padding-top: 0; }
     .home-included > li:last-child { padding-bottom: 0; }
   }
@@ -472,6 +507,11 @@ const includedIcons = [
       };
       vp.addEventListener('scroll', onScroll, { passive: true });
       return () => vp.removeEventListener('scroll', onScroll);
+    });
+
+    // What's included: lines draw in with the items (same start as data-stagger)
+    document.querySelectorAll<HTMLElement>('.home-included').forEach((list) => {
+      ScrollTrigger.create({ trigger: list, start: 'top 88%', once: true, onEnter: () => list.classList.add('is-in') });
     });
 
     // Price counts up from 0 the first time it scrolls into view.
