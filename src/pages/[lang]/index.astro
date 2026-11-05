@@ -81,30 +81,28 @@ const beyondIcons = [
     </div>
   </section>
 
-  <!-- Who we work with: one case-study card per studio type, on the shared
-       card grid (4 + 4 + 4). -->
+  <!-- Studios we design for: pick a studio type, see a matching case study.
+       Desktop: names on the left drive a shared image stage on the right.
+       Mobile: each type stacks with its own image. -->
   <section class="wrap section home-studios" aria-labelledby="studios-title">
-    <div class="grid section-head">
-      <h2 id="studios-title" class="t-h2" data-split set:html={rich(h.studios.title)}></h2>
-      <div data-fade><Button href={href(lang, '/work/')} variant="link" arrow>{h.hero.primary}</Button></div>
-    </div>
-    <ul class="grid cards" data-stagger>
+    <h2 id="studios-title" class="t-h2 home-studios__title" data-split set:html={rich(h.studios.title)}></h2>
+    <ul class="home-studios__list" data-studios>
       {studioSlugs.map((slug, i) => {
         const base = projects.find((p) => p.slug === slug)!;
         const p = t.projects[slug];
+        const url = href(lang, `/work/${slug}/`);
         return (
-          <li class="span-4">
-            <a href={href(lang, `/work/${slug}/`)} class="card card--raised home-studio" data-morph-link>
-              <Media src={base.cover} alt={t.work.previewAlt(p.title)} ratio="4 / 3" reveal={false} sizes="(min-width: 900px) 30vw, 100vw" />
-              <span class="home-studio__pill">{h.studios.labels[i]}</span>
-              <span class="home-studio__head">
-                <span class="t-h4">{p.title}</span>
+          <li class="home-studios__item" data-studio data-active={i === 0 ? '' : undefined}>
+            <a href={url} class="home-studios__name" data-studio-trigger>
+              <span class="t-h1">{h.studios.labels[i]}</span>
+              <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" /></svg>
+            </a>
+            <a href={url} class="home-studios__panel" data-morph-link tabindex="-1">
+              <Media src={base.cover} alt={t.work.previewAlt(p.title)} ratio="3 / 2" sizes="(min-width: 900px) 56vw, 100vw" />
+              <span class="home-studios__caption">
                 <span class="t-small t-muted">{p.location}</span>
-              </span>
-              <span class="t-small t-muted home-studio__summary">{p.summary}</span>
-              <span class="home-studio__cta">
-                {t.work.viewProject}
-                <svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 8h13M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.25" /></svg>
+                <span class="t-body">{p.summary}</span>
+                <span class="link">{t.work.viewProject}</span>
               </span>
             </a>
           </li>
@@ -245,21 +243,52 @@ const beyondIcons = [
     .home-dir__item { width: clamp(28rem, 38vw, 44rem); }
   }
 
-  /* Who we work with */
-  .home-studio { height: 100%; gap: var(--s-4); align-content: start; padding: .625rem .625rem var(--s-5); }
-  .home-studio .media { border-radius: calc(var(--radius) - 6px); }
-  .home-studio .media__inner { transition: transform 1.2s var(--ease-out); }
-  .home-studio:hover .media__inner { transform: scale(1.04); }
-  .home-studio > :not(.media) { margin-inline: var(--s-3); }
-  .home-studio__pill {
-    justify-self: start; margin-top: var(--s-2); padding: .3rem .75rem; border-radius: var(--radius-pill);
-    font-size: var(--fs-label); font-weight: var(--fw-medium); color: var(--c-black); background: var(--accent);
+  /* Studios we design for */
+  .home-studios__title { margin-bottom: var(--s-8); max-width: 14ch; }
+  .home-studios__list { display: grid; gap: var(--s-8); }
+  .home-studios__item { display: grid; gap: var(--s-5); }
+  .home-studios__name {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s-4);
+    padding-block: var(--s-2);
   }
-  .home-studio__head { display: grid; gap: .2rem; }
-  .home-studio__summary { flex: 1; }
-  .home-studio__cta { display: inline-flex; align-items: center; gap: var(--s-3); margin-top: var(--s-2); font-weight: var(--fw-medium); }
-  .home-studio:hover .home-studio__cta .arrow { transform: translateX(.25em); }
-  a.home-studio:hover { background: var(--c-raised); box-shadow: inset 0 0 0 1px var(--c-line); }
+  .home-studios__name .arrow { width: clamp(1.25rem, 2vw, 2rem); height: auto; }
+  .home-studios__panel { display: grid; gap: var(--s-4); }
+  .home-studios__caption { display: grid; gap: var(--s-2); max-width: 34rem; }
+  .home-studios__caption .link { justify-self: start; margin-top: var(--s-2); }
+
+  @media (min-width: 900px) {
+    /* Names in a column on the left; all panels share one stage on the right */
+    .home-studios__list {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-template-rows: repeat(3, auto) 1fr;
+      column-gap: var(--gutter); row-gap: 0;
+    }
+    .home-studios__item { display: contents; }
+    .home-studios__name {
+      grid-column: 1 / span 6;
+      padding-block: var(--s-5);
+      color: var(--fg-muted);
+      transition: color var(--d-base) var(--ease-soft);
+    }
+    .home-studios__item:nth-child(1) .home-studios__name { grid-row: 1; }
+    .home-studios__item:nth-child(2) .home-studios__name { grid-row: 2; }
+    .home-studios__item:nth-child(3) .home-studios__name { grid-row: 3; }
+    .home-studios__name .arrow { opacity: 0; transform: translateX(-.5em); transition: opacity var(--d-base), transform var(--d-base) var(--ease-out); }
+    [data-active] > .home-studios__name { color: var(--fg); }
+    [data-active] > .home-studios__name .arrow { opacity: 1; transform: none; }
+
+    .home-studios__panel {
+      grid-column: 7 / -1; grid-row: 1 / -1; align-self: start;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1s var(--ease-in-out);
+      pointer-events: none;
+    }
+    .home-studios__panel .media__inner { transform: scale(1.08); transition: transform 1.6s var(--ease-out); }
+    [data-active] > .home-studios__panel { clip-path: inset(0); pointer-events: auto; z-index: 1; }
+    [data-active] > .home-studios__panel .media__inner { transform: none; }
+    .home-studios__caption { opacity: 0; transition: opacity var(--d-base) var(--ease-soft); }
+    [data-active] > .home-studios__panel .home-studios__caption { opacity: 1; transition-delay: .35s; }
+  }
 
   /* Pricing */
   .home-pricing { background: var(--c-stone-deep); }
@@ -313,6 +342,15 @@ const beyondIcons = [
   import { gsap, ScrollTrigger, reduced, ready, settle } from '../../scripts/motion';
 
   ready.then(() => {
+    // Studios (works with reduced motion too): hovering or focusing a studio type shows its case study
+    const studios = Array.from(document.querySelectorAll<HTMLElement>('[data-studio]'));
+    studios.forEach((item) => {
+      const activate = () => studios.forEach((s) => s.toggleAttribute('data-active', s === item));
+      const trigger = item.querySelector('[data-studio-trigger]');
+      trigger?.addEventListener('mouseenter', activate);
+      trigger?.addEventListener('focus', activate);
+    });
+
     if (reduced) return;
     const mm = gsap.matchMedia();
 
