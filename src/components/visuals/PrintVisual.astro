@@ -109,17 +109,14 @@ const v = useContent(lang).services.visuals.print;
   document.querySelectorAll<HTMLElement>('[data-vz-print]').forEach((root) => {
     if (reduced) return;
     const pieces = root.querySelectorAll<HTMLElement>('[data-piece]');
-    const page = root.querySelector<HTMLElement>('[data-page]');
     const plan = root.querySelectorAll<SVGPathElement>('[data-plan]');
     const tl = gsap.timeline({ paused: true });
     // Each piece is set down: held above the table (bigger, wide soft shadow), then it lands
     tl.from(pieces, {
-      opacity: 0, y: -34, scale: 1.06, '--lift': 1,
-      rotation: (i) => [-6, 5, 14, -12][i] ?? 0,
+      opacity: 0, y: -22, '--lift': 1,
+      rotation: (i) => [-2, 2, 6, -5][i] ?? 0,
       duration: 1.2, ease: 'power3.out', stagger: 0.16,
     })
-      // The brochure's right page falls open from the spine
-      .from(page, { rotationY: -70, transformPerspective: 900, duration: 1.3, ease: 'power3.out' }, 0.25)
       // The floor plan draws on the board once it's down
       .fromTo(plan, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: 0.15 }, 0.7);
     tl.progress(0.001).pause();

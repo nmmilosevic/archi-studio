@@ -105,7 +105,7 @@ const palette = [
     const tl = gsap.timeline({ paused: true });
     // Each card is set down: it comes in a little high and large, shadow wide, then settles
     tl.from(tiles, {
-      opacity: 0, y: -26, scale: 1.05, '--lift': 1,
+      opacity: 0, y: -20, '--lift': 1,
       duration: 1.1, ease: 'power3.out', stagger: 0.14,
     })
       .from(root.querySelector('[data-word]'), { letterSpacing: '-0.04em', duration: 1.4, ease: 'expo.inOut' }, 0.25)

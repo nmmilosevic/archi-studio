@@ -62,7 +62,6 @@ const tiles = [
         </ul>
         </div>
         <div class="ig-nav"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 4a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM16 16l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM12 8v8M8 12h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16v16H4zM10 9.5v5l4.5-2.5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ig-nav__me">A</span></div>
-        <span class="glare" aria-hidden="true"></span>
       </div>
     </div>
 
@@ -104,8 +103,6 @@ const tiles = [
     padding: 5cqw 2cqw 0;
   }
   .island { position: absolute; top: 1.4cqw; left: 50%; width: 9cqw; height: 2.2cqw; translate: -50% 0; border-radius: 99px; background: #000; }
-  /* Glass reflection: a soft diagonal sheen across the screen */
-  .glare { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgb(255 255 255 / .07) 0 30%, transparent 30.5% 100%); }
 
   /* Instagram profile, laid out like the app */
   .ig { display: flex; flex-direction: column; gap: 1.1cqw; font-size: 1.05cqw; line-height: 1.3; }
@@ -176,12 +173,12 @@ const tiles = [
     const placeholders = root.querySelectorAll<HTMLElement>('[data-ph]');
     const tl = gsap.timeline({ paused: true });
     // The phone is set down on the table, then its screen wakes and the grid loads in
-    tl.from(phone, { opacity: 0, x: -40, y: -24, rotation: -14, scale: 1.05, '--lift': 1, duration: 1.2, ease: 'power3.out' })
+    tl.from(phone, { opacity: 0, x: -24, y: -20, rotation: -9, '--lift': 1, duration: 1.2, ease: 'power3.out' })
       .from(root.querySelector('.screen'), { filter: 'brightness(0)', duration: 0.5, ease: 'power1.out' }, 0.55)
       // Tiles load like images: a grey placeholder first, then the post itself
       .fromTo(placeholders, { opacity: 1 }, { opacity: 0, duration: 0.5, ease: 'power1.out', stagger: 0.07 }, 0.85)
       // The printed newsletter is dropped beside it
-      .from(root.querySelector('[data-mail]'), { opacity: 0, x: 50, y: -30, rotation: 12, scale: 1.06, '--lift': 1, duration: 1.2, ease: 'power3.out' }, 0.5);
+      .from(root.querySelector('[data-mail]'), { opacity: 0, x: 30, y: -22, rotation: 8, '--lift': 1, duration: 1.2, ease: 'power3.out' }, 0.5);
     tl.progress(0.001).pause();
     ScrollTrigger.create({ trigger: root, start: 'top 70%', once: true, onEnter: () => tl.play() });
   });

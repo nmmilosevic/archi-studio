@@ -302,9 +302,9 @@ html.js.morph-in [data-morph-target] { clip-path: none !important; }
 .obj {
   --lift: 0;
   box-shadow:
-    0 1px 1px rgb(0 0 0 / .35),
-    0 calc(3px + var(--lift) * 26px) calc(6px + var(--lift) * 40px) calc(-2px - var(--lift) * 8px) rgb(0 0 0 / calc(.5 + var(--lift) * .2)),
-    0 calc(10px + var(--lift) * 40px) calc(24px + var(--lift) * 50px) -12px rgb(0 0 0 / .45);
+    0 .5px 1px rgb(0 0 0 / .4),
+    0 calc(2px + var(--lift) * 22px) calc(5px + var(--lift) * 36px) calc(-1px - var(--lift) * 6px) rgb(0 0 0 / calc(.38 + var(--lift) * .18)),
+    0 calc(14px + var(--lift) * 34px) calc(34px + var(--lift) * 44px) -16px rgb(0 0 0 / .4);
 }
 .obj-grain { position: relative; isolation: isolate; }
 .obj-grain::after {
@@ -312,8 +312,9 @@ html.js.morph-in [data-morph-target] { clip-path: none !important; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: multiply; opacity: .35;
 }
-/* Objects lie flat on the table, seen straight from above (no fake tilt, nothing deformed) */
-.obj-scene { }
+/* Objects lie flat on the table, seen straight from above (no fake tilt, nothing deformed).
+   Light falls off towards the edges of the table, like a lamp above it. */
+.vz.obj-scene { box-shadow: inset 0 0 0 1px var(--viz-line), inset 0 0 140px 10px rgb(0 0 0 / .55) !important; }
 .obj-table { }
 
 /* Safety net: nothing may create a sideways page scroll (clip keeps sticky/pins working) */
