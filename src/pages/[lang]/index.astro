@@ -11,7 +11,7 @@ const t = useContent(lang);
 const h = t.home;
 const contact = href(lang, '/contact/');
 
-// Line icons for the "Not just websites" rows (see .icon-draw in global.css)
+// Line icons for the "Not just websites" cards (see .icon-draw in global.css)
 const beyondIcons = [
   // Brand & Print: the front sheet fans out from the back one
   `<svg class="icon-draw home-beyond__icon icon-print" viewBox="0 0 48 48" aria-hidden="true" data-draw>
@@ -32,6 +32,49 @@ const beyondIcons = [
      <path class="d" pathLength="1" d="M5 16h38" style="--i:1"/>
      <g class="mv"><path class="d" pathLength="1" d="M30.5 27.5a6.5 6.5 0 1 1-1.9-4.6" style="--i:2"/>
      <path class="d" pathLength="1" d="M29 19.5v3.6h-3.6" style="--i:3"/></g>
+   </svg>`,
+];
+
+// Line icons for the "What's included" cards, same draw system
+const includedIcons = [
+  // Website strategy: an arrow lands in the target
+  `<svg class="icon-draw home-included__icon icon-target" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M24 8a16 16 0 1 1 0 32a16 16 0 1 1 0-32z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M24 18a6 6 0 1 1 0 12a6 6 0 1 1 0-12z" style="--i:1"/>
+     <g class="mv"><path class="d" pathLength="1" d="M24 24 42 6M35 6h7v7" style="--i:2"/></g>
+   </svg>`,
+  // Custom design: a pencil draws its line
+  `<svg class="icon-draw home-included__icon icon-pencil" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M6 43h36" style="--i:0"/>
+     <g class="mv"><path class="d" pathLength="1" d="M31 5l10 10-21 21H10V26z" style="--i:1"/>
+     <path class="d" pathLength="1" d="M26 10l10 10" style="--i:2"/></g>
+   </svg>`,
+  // Responsive development: the phone slides in beside the screen
+  `<svg class="icon-draw home-included__icon icon-devices" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M3 8h34v24H3z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M14 40h12M20 32v8" style="--i:1"/>
+     <g class="mv"><path class="d f" pathLength="1" d="M33 18h12v24H33z" style="--i:2"/>
+     <path class="d" pathLength="1" d="M37 38h4" style="--i:3"/></g>
+   </svg>`,
+  // SEO basics: bars rise, the lens moves over them
+  `<svg class="icon-draw home-included__icon icon-seo" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <path class="d" pathLength="1" d="M6 42h36M10 42V32M18 42V26M26 42V20" style="--i:0"/>
+     <g class="mv"><path class="d f" pathLength="1" d="M34 6a8 8 0 1 1 0 16a8 8 0 1 1 0-16z" style="--i:1"/>
+     <path class="d" pathLength="1" d="M39.7 19.7 45 25" style="--i:2"/></g>
+   </svg>`,
+  // Contact form: a letter slides into the envelope
+  `<svg class="icon-draw home-included__icon icon-mail" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <g class="mv"><path class="d" pathLength="1" d="M11 26V6h26v20" style="--i:0"/>
+     <path class="d" pathLength="1" d="M16 12h16M16 17h10" style="--i:1"/></g>
+     <path class="d f" pathLength="1" d="M4 20h40v24H4z" style="--i:1"/>
+     <path class="d" pathLength="1" d="M4 20l20 13 20-13" style="--i:2"/>
+   </svg>`,
+  // Launch support: the rocket lifts off
+  `<svg class="icon-draw home-included__icon icon-rocket" viewBox="0 0 48 48" aria-hidden="true" data-draw>
+     <g class="mv"><path class="d" pathLength="1" d="M24 3c8 6 10 16 6 28H18C14 19 16 9 24 3z" style="--i:0"/>
+     <path class="d" pathLength="1" d="M24 13a3.5 3.5 0 1 1 0 7a3.5 3.5 0 1 1 0-7z" style="--i:1"/>
+     <path class="d" pathLength="1" d="M17 24l-6 9h7M31 24l6 9h-7" style="--i:2"/>
+     <path class="d" pathLength="1" d="M21 35l3 8 3-8" style="--i:3"/></g>
    </svg>`,
 ];
 ---
@@ -111,8 +154,8 @@ const beyondIcons = [
     </ul>
   </section>
 
-  <!-- Pricing: the offer takes columns 1–7 (price, note, what's included);
-       the extra services stack in columns 8–12 beside it. -->
+  <!-- Pricing: price (1–6) beside what's included as six icon cards (7–12),
+       then the three extra services as cards, 4 + 4 + 4. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
       <div class="grid section-head">
@@ -120,36 +163,35 @@ const beyondIcons = [
       </div>
 
       <div class="grid cards">
-        <div class="home-pricing__offer" data-fade>
+        <div class="span-6 home-pricing__offer" data-fade>
           <div>
             <p class="t-display home-pricing__price" data-count aria-label={h.pricing.price}>{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
           </div>
           <p class="t-muted home-pricing__note">{h.pricing.note}</p>
-          <div class="home-pricing__included">
-            <p class="t-label t-muted">{h.pricing.included}</p>
-            <ul class="list-marked">
-              {h.pricing.includes.map((i) => <li>{i}</li>)}
-            </ul>
-          </div>
           <div><Button href={contact} arrow>{h.pricing.action}</Button></div>
         </div>
 
-        <div class="home-pricing__more">
-          <div class="home-beyond" data-stagger>
-            {h.beyond.items.map((item, i) => (
-              <article class="home-beyond__item">
-                <Fragment set:html={beyondIcons[i]} />
-                <h4 class="t-h4">{item.title}</h4>
-                <p class="t-small t-muted">{item.body}</p>
-                <div class="home-beyond__foot">
-                  {item.price.map((line) => <p class="t-small">{line}</p>)}
-                  {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
+        <ul class="span-6 home-included" aria-label={h.pricing.included} data-stagger>
+          {h.pricing.includes.map((item, i) => (
+            <li class="card home-included__item">
+              <Fragment set:html={includedIcons[i]} />
+              <span class="home-included__label">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        {h.beyond.items.map((item, i) => (
+          <article class="card span-4 home-beyond__item" data-fade>
+            <Fragment set:html={beyondIcons[i]} />
+            <h4 class="t-h4">{item.title}</h4>
+            <p class="t-small t-muted">{item.body}</p>
+            <div class="home-beyond__foot">
+              {item.price.map((line) => <p class="t-small">{line}</p>)}
+              {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -292,44 +334,38 @@ const beyondIcons = [
 
   /* Pricing */
   .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
-  .home-pricing__note { max-width: 34rem; }
-  /* No boxes: one vertical line between the offer and the services */
-  @media (min-width: 900px) {
-    /* Vertical hairline just left of the services column */
-    .home-beyond { position: relative; }
-    .home-beyond::before {
-      content: ''; position: absolute; top: 0; bottom: 0;
-      left: calc(var(--gutter) * -1.5); width: 1px; background: var(--c-line);
-    }
-  }
-  @media (min-width: 900px) {
-    /* The offer and the service rows share one grid row, so tops and bottoms line up */
-    .cards > .home-pricing__more { display: contents; }
-    .home-pricing__more > .home-beyond { grid-column: 8 / -1; grid-row: 1; }
-    .home-pricing__offer { grid-column: 1 / span 7; grid-row: 1; justify-content: space-between; gap: var(--s-6); }
-  }
+  @media (min-width: 900px) { .home-pricing__offer { justify-content: space-between; gap: var(--s-6); } }
   .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
   .home-pricing__terms { margin-top: var(--s-3); }
-  .home-pricing__included { display: grid; gap: var(--s-5); width: 100%; }
-  @media (min-width: 600px) { .home-pricing__included .list-marked { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); max-width: 40rem; } }
-  .home-pricing__more { display: grid; align-content: start; gap: var(--s-5); }
-  .home-beyond { display: grid; gap: var(--s-8); align-self: start; }
-  @media (max-width: 899px) { .home-pricing__more { margin-top: var(--s-8); } }
-  .home-beyond__item {
-    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-4); row-gap: var(--s-1);
-    align-items: start;
+  .home-pricing__note { max-width: 34rem; }
+  /* Soft cards: a whisper of white on black */
+  .home-pricing .card { background: rgb(255 255 255 / .035); }
+
+  /* What's included: six icon cards, two per row, gaps = gutter */
+  .home-included { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter); }
+  .home-included__item {
+    display: flex; flex-direction: column; justify-content: space-between; gap: var(--s-6);
+    padding: var(--s-5);
   }
-  .home-beyond__item > * { grid-column: 2; }
-  .home-beyond__item > .home-beyond__icon { grid-column: 1; grid-row: 1 / span 2; width: 2rem; height: auto; }
-  .home-beyond__item .t-h4 { font-size: 1.125rem; }
-  .home-beyond__item .t-small { line-height: 1.45; }
-  .home-beyond__icon { --icon-bg: var(--c-stone); }
+  .home-included__icon { --icon-bg: #131313; width: 2.25rem; height: 2.25rem; }
+  .home-included__label { font-weight: 500; line-height: 1.3; }
+  html.js:not(.motion-off) .icon-target .mv { transform: translate(-10px, 10px); }
+  html.js:not(.motion-off) .icon-pencil .mv { transform: translate(-8px, 6px) rotate(-8deg); }
+  html.js:not(.motion-off) .icon-devices .mv { transform: translateX(10px); }
+  html.js:not(.motion-off) .icon-seo .mv { transform: translate(-14px, 8px); }
+  html.js:not(.motion-off) .icon-mail .mv { transform: translateY(12px); }
+  html.js:not(.motion-off) .icon-rocket .mv { transform: translateY(8px); }
+  @media (max-width: 899px) { .home-included { margin-top: var(--s-4); } }
+
+  /* Not just websites: three cards in a row */
+  .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
+  .home-beyond__icon { --icon-bg: #131313; margin-bottom: var(--s-2); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
   html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
   html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }
   .icon-care .mv { transform-origin: 24px 27.5px; }
-  .home-beyond__foot { padding-top: var(--s-2); display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--s-4); row-gap: var(--s-1); }
-  .home-beyond__foot .link { margin-left: auto; font-size: .875rem; }
+  .home-beyond__foot { margin-top: auto; padding-top: var(--s-4); display: grid; gap: var(--s-2); justify-items: start; }
+  .home-beyond__foot .link { margin-top: var(--s-3); }
 
   /* Questions */
   .home-faq__card { display: grid; align-content: start; justify-items: start; gap: var(--s-4); max-width: 24rem; }
