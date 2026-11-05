@@ -1,10 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Button from '../../components/Button.astro';
+import Media from '../../components/Media.astro';
 import WebVisual from '../../components/visuals/WebVisual.astro';
 import BrandVisual from '../../components/visuals/BrandVisual.astro';
 import PrintVisual from '../../components/visuals/PrintVisual.astro';
 import SocialVisual from '../../components/visuals/SocialVisual.astro';
+import type { ImageMetadata } from 'astro';
 import { langPaths, href, useContent, type Lang, rich } from '../../i18n';
 
 export const getStaticPaths = langPaths;
@@ -13,6 +15,14 @@ const t = useContent(lang);
 const sv = t.services;
 const { web, brand, print, social, between, engagement } = sv;
 const contact = href(lang, '/contact/');
+
+// Photo mockups: if src/assets/img/services/{web,brand,print,social}.(jpg|png|webp) exists,
+// that section shows the photo; otherwise it keeps its code-built visual.
+const photoFiles = import.meta.glob<{ default: ImageMetadata }>('../../assets/img/services/*.{jpg,jpeg,png,webp}', { eager: true });
+const photo = (name: string) =>
+  Object.entries(photoFiles).find(([path]) => path.split('/').pop()!.replace(/\.\w+$/, '') === name)?.[1].default;
+const photos = { web: photo('web'), brand: photo('brand'), print: photo('print'), social: photo('social') };
+const v = sv.visuals;
 
 // Line icons for "everything in between", same order as between.items (see .icon-draw)
 const betweenIcons = [
@@ -102,7 +112,7 @@ const stepIcons = [
   <!-- Web: laptop + phone visual (1–7) + text with three groups (8–12) -->
   <section class="wrap section svc-disc" id="web" aria-labelledby="svc-web">
     <div class="grid">
-      <WebVisual lang={lang} class="svc-disc__media" />
+      {photos.web ? <Media class="svc-disc__media svc-photo" src={photos.web} alt={v.web.label} ratio="4 / 3" parallax={0.06} sizes="(min-width: 900px) 56vw, 100vw" /> : <WebVisual lang={lang} class="svc-disc__media" />}
       <div class="svc-disc__text">
         <h2 id="svc-web" class="t-h2" data-split>{web.title}</h2>
         <p class="t-lead t-muted" data-fade>{web.body}</p>
@@ -126,7 +136,7 @@ const stepIcons = [
         <p class="t-lead t-muted" data-fade>{brand.body}</p>
         <ul class="list-marked svc-disc__list" data-stagger>{brand.items.map((i) => <li>{i}</li>)}</ul>
       </div>
-      <BrandVisual lang={lang} class="svc-disc__media" />
+      {photos.brand ? <Media class="svc-disc__media svc-photo" src={photos.brand} alt={v.brand.label} ratio="4 / 3" parallax={0.06} sizes="(min-width: 900px) 56vw, 100vw" /> : <BrandVisual lang={lang} class="svc-disc__media" />}
     </div>
   </section>
 
@@ -134,7 +144,7 @@ const stepIcons = [
   <section class="svc-surface" id="print" aria-labelledby="svc-print">
     <div class="wrap section svc-disc">
       <div class="grid">
-        <PrintVisual lang={lang} class="svc-disc__media" />
+        {photos.print ? <Media class="svc-disc__media svc-photo" src={photos.print} alt={v.print.label} ratio="4 / 3" parallax={0.06} sizes="(min-width: 900px) 56vw, 100vw" /> : <PrintVisual lang={lang} class="svc-disc__media" />}
         <div class="svc-disc__text">
           <h2 id="svc-print" class="t-h2" data-split>{print.title}</h2>
           <p class="t-lead t-muted" data-fade>{print.body}</p>
@@ -152,7 +162,7 @@ const stepIcons = [
         <p class="t-lead t-muted" data-fade>{social.body}</p>
         <ul class="list-marked svc-disc__list" data-stagger>{social.items.map((i) => <li>{i}</li>)}</ul>
       </div>
-      <SocialVisual lang={lang} class="svc-disc__media" />
+      {photos.social ? <Media class="svc-disc__media svc-photo" src={photos.social} alt={v.social.label} ratio="4 / 3" parallax={0.06} sizes="(min-width: 900px) 56vw, 100vw" /> : <SocialVisual lang={lang} class="svc-disc__media" />}
     </div>
   </section>
 
@@ -233,6 +243,7 @@ const stepIcons = [
     .svc-disc__list { grid-template-columns: 1fr; }
   }
   .svc-surface { background: var(--c-stone-deep); scroll-margin-top: var(--header-h); }
+  .svc-photo { border-radius: var(--radius-lg); overflow: hidden; }
 
   /* Web: three groups, hairline above each */
   .svc-groups { display: grid; gap: var(--s-5); margin-top: var(--s-3); }
