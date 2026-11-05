@@ -281,7 +281,7 @@ const includedIcons = [
   }
   .home-dir__item { width: 82vw; display: grid; gap: var(--s-3); scroll-snap-align: center; }
   .home-dir__progress { height: 1px; background: var(--rule); overflow: hidden; }
-  .home-dir__progress span { display: block; height: 100%; background: var(--fg); transform-origin: 0 50%; transform: scaleX(0); }
+  .home-dir__progress span { display: block; height: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
   @media (min-width: 900px) {
     .home-dir__pin { min-height: 100svh; padding-block: calc(var(--header-h) * .5) var(--s-6); }
     .home-dir__head h2 { grid-column: 1 / span 8; }
@@ -323,7 +323,7 @@ const includedIcons = [
     .home-studios__item:nth-child(3) .home-studios__name { grid-row: 3; }
     .home-studios__name .arrow { opacity: 0; transform: translateX(-.5em); transition: opacity var(--d-base), transform var(--d-base) var(--ease-out); }
     [data-active] > .home-studios__name { color: var(--fg); }
-    [data-active] > .home-studios__name .arrow { opacity: 1; transform: none; }
+    [data-active] > .home-studios__name .arrow { opacity: 1; transform: none; color: var(--accent); }
 
     .home-studios__panel {
       grid-column: 7 / -1; grid-row: 1 / -1; align-self: start;
@@ -338,6 +338,14 @@ const includedIcons = [
     [data-active] > .home-studios__panel .home-studios__caption { opacity: 1; transition-delay: .35s; }
   }
 
+  /* Homepage colour pass: the sunset accent and its peach tint carry the italic
+     words, the main buttons, icons and small active states. No gradients. */
+  :is(.home-hero, .home-dir, .home-studios, .home-pricing, .home-faq) :is(.t-h1, .t-h2, .t-h3) em,
+  :is(.home-hero, .home-dir, .home-studios, .home-pricing, .home-faq) :is(.t-h1, .t-h2, .t-h3) em * { color: var(--c-sand); }
+  :is(.home-hero, .home-pricing, .home-faq) .btn:not(.btn--outline) { background: var(--accent); color: var(--c-black); }
+  :is(.home-hero, .home-pricing, .home-faq) .btn:not(.btn--outline):hover { background: var(--fg); color: var(--c-black); }
+  .home-pricing__terms { color: var(--c-sand); }
+
   /* Pricing */
   .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
   @media (min-width: 900px) { .home-pricing__offer { justify-content: space-between; gap: var(--s-6); } }
@@ -345,7 +353,7 @@ const includedIcons = [
   .home-pricing__terms { margin-top: var(--s-3); }
   .home-pricing__note { max-width: 34rem; }
   /* Soft cards: a whisper of white on black */
-  .home-pricing .card { background: rgb(255 255 255 / .02); }
+  .home-pricing .card { background: #0e0b0a; } /* near-black with a breath of sunset */
 
   /* What's included: six open items, two per row, no background.
      Icon and title share a line; the note sits under the title. */
@@ -403,7 +411,7 @@ const includedIcons = [
     .home-included > li:first-child { padding-top: 0; }
     .home-included > li:last-child { padding-bottom: 0; }
   }
-  .home-included__icon { --icon-bg: var(--c-stone); width: 2.25rem; height: 2.25rem; }
+  .home-included__icon { --icon-bg: var(--c-stone); color: var(--accent); width: 2.25rem; height: 2.25rem; }
   .home-included__label { font-size: 1.125rem; }
   .home-included__note { grid-column: 2; max-width: 28ch; }
   html.js:not(.motion-off) .icon-target .mv { transform: translate(-10px, 10px); }
@@ -417,7 +425,7 @@ const includedIcons = [
   /* Not just websites: three cards in a row */
   .home-pricing__more { margin-top: var(--s-9); margin-bottom: var(--s-6); }
   .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
-  .home-beyond__icon { --icon-bg: #0f0f0f; margin-bottom: var(--s-2); }
+  .home-beyond__icon { --icon-bg: #0e0b0a; color: var(--accent); margin-bottom: var(--s-2); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
   html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
   html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }
