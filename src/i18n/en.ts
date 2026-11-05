@@ -110,16 +110,20 @@ const en = {
         },
       ],
     },
-    friction: {
-      title: 'Clients read your site like a *space*.',
-      body: 'Where they walk in, what they see first, how fast they find the door. Every bit of friction costs a little trust before anyone picks up the phone.',
-      action: 'Book a site review',
-      alt: 'Website review visual composition',
-      points: [
-        { title: 'Positioning', body: 'Say what you’re known for in one line.' },
-        { title: 'Project presentation', body: 'Let the photos lead. Keep the words short.' },
-        { title: 'Contact flow', body: 'Make getting in touch the easiest part.' },
+    faq: {
+      title: "Questions we hear *a lot*.",
+      aside: "Straight answers before you commit to anything.",
+      items: [
+        { q: "What does the 1,500€ cover?", a: "Strategy, custom design, the responsive build, SEO basics, a contact form and launch support. Want more pages or changes later? We quote them first. No surprise invoices." },
+        { q: "Who will I actually work with?", a: "The person designing and building your site. No account managers, no hand-offs, so decisions are quick and nothing gets lost." },
+        { q: "Can I add new projects myself?", a: "Yes, if you want to. We can set the site up so you add a project in a few clicks. Or we upload them for you, from 120€/month." },
+        { q: "Do you handle hosting and the domain?", a: "We connect your domain at launch. Hosting, backups and security updates are available from 30€/month, so you never have to think about the technical side." },
+        { q: "Can my site be in more than one language?", a: "Yes. Multilingual setup is part of our website work. This site runs in English, Spanish and French." },
+        { q: "How do we start?", a: "Send us your current site. We review it first and tell you what it needs, so you know the scope and the price before you sign." },
       ],
+      cardTitle: "Still have a question?",
+      cardBody: "Write to us. A real person answers.",
+      cardAction: "Get in touch",
     },
   },
 

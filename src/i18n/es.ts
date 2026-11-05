@@ -109,16 +109,20 @@ const es: Content = {
         },
       ],
     },
-    friction: {
-      title: 'Tus clientes leen tu web como un *espacio*.',
-      body: 'Por dónde entran, qué ven primero, cuánto tardan en encontrar la puerta. Cada fricción resta un poco de confianza antes de que alguien llame.',
-      action: 'Reservar una revisión',
-      alt: 'Composición visual para la revisión web',
-      points: [
-        { title: 'Posicionamiento', body: 'Di por lo que se te conoce en una frase.' },
-        { title: 'Presentación de proyectos', body: 'Que manden las fotos. Textos cortos.' },
-        { title: 'Flujo de contacto', body: 'Que contactar sea lo más fácil.' },
+    faq: {
+      title: "Lo que más nos *preguntan*.",
+      aside: "Respuestas claras antes de comprometerte a nada.",
+      items: [
+        { q: "¿Qué incluyen los 1.500€?", a: "Estrategia, diseño a medida, desarrollo responsive, bases SEO, formulario de contacto y soporte de lanzamiento. ¿Más páginas o cambios después? Te los presupuestamos antes. Sin facturas sorpresa." },
+        { q: "¿Con quién voy a trabajar?", a: "Con quien diseña y desarrolla tu web. Sin gestores de cuenta ni intermediarios: las decisiones son rápidas y nada se pierde por el camino." },
+        { q: "¿Puedo añadir proyectos yo mismo?", a: "Sí, si quieres. Podemos dejar la web preparada para que añadas un proyecto en pocos clics. O los subimos nosotros, desde 120€/mes." },
+        { q: "¿Os ocupáis del alojamiento y el dominio?", a: "Conectamos tu dominio en el lanzamiento. Alojamiento, copias de seguridad y actualizaciones de seguridad desde 30€/mes, para que no tengas que pensar en la parte técnica." },
+        { q: "¿Puede estar mi web en varios idiomas?", a: "Sí. La configuración multilingüe forma parte de nuestro trabajo web. Esta misma web funciona en inglés, español y francés." },
+        { q: "¿Cómo empezamos?", a: "Envíanos tu web actual. Primero la revisamos y te decimos qué necesita, para que conozcas el alcance y el precio antes de firmar." },
       ],
+      cardTitle: "¿Te queda alguna duda?",
+      cardBody: "Escríbenos. Te responde una persona de verdad.",
+      cardAction: "Contactar",
     },
   },
 

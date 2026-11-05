@@ -155,23 +155,30 @@ const beyondIcons = [
     </div>
   </section>
 
-  <!-- Friction --------------------------------------------------------- -->
-  <section class="wrap section home-friction" aria-labelledby="friction-title">
-    <div class="grid">
-      <h2 id="friction-title" class="t-h2 home-friction__title" data-split set:html={rich(h.friction.title)}></h2>
-      <div class="home-friction__intro" data-stagger>
-        <p class="t-lead">{h.friction.body}</p>
-        <div><Button href={contact} variant="link" arrow>{h.friction.action}</Button></div>
-      </div>
-      <Media class="home-friction__media" src={img.friction} alt={h.friction.alt} ratio="16 / 9" reveal={false} parallax={0.1} sizes="100vw" data-expand />
-      <ul class="grid home-friction__points" data-stagger>
-        {h.friction.points.map((p) => (
-          <li>
-            <h3 class="t-h4">{p.title}</h3>
-            <p class="t-muted">{p.body}</p>
-          </li>
+  <!-- Questions: straight answers before anyone commits. Questions take two
+       thirds (5–12), a contact card takes the first third. -->
+  <section class="wrap section home-faq" aria-labelledby="faq-title">
+    <div class="grid section-head">
+      <h2 id="faq-title" class="t-h2" data-split set:html={rich(h.faq.title)}></h2>
+      <p class="t-muted" data-fade>{h.faq.aside}</p>
+    </div>
+    <div class="grid cards">
+      <aside class="card card--raised span-4 home-faq__card" data-fade>
+        <p class="t-h4">{h.faq.cardTitle}</p>
+        <p class="t-muted">{h.faq.cardBody}</p>
+        <div><Button href={contact} arrow>{h.faq.cardAction}</Button></div>
+      </aside>
+      <div class="span-8 home-faq__list" data-stagger>
+        {h.faq.items.map((item, i) => (
+          <details class="home-faq__item" open={i === 0}>
+            <summary>
+              <span class="t-h4">{item.q}</span>
+              <span class="home-faq__toggle" aria-hidden="true"></span>
+            </summary>
+            <p class="home-faq__answer t-muted">{item.a}</p>
+          </details>
         ))}
-      </ul>
+      </div>
     </div>
   </section>
 </Base>
@@ -299,15 +306,35 @@ const beyondIcons = [
   .home-beyond__foot { margin-top: auto; padding-top: var(--s-4); display: grid; gap: var(--s-2); justify-items: start; }
   .home-beyond__foot .link { margin-top: var(--s-3); }
 
-  /* Friction */
-  .home-friction .grid { row-gap: var(--s-7); }
-  .home-friction__intro { display: grid; gap: var(--s-6); max-width: 32rem; }
-  .home-friction__points { row-gap: var(--s-6); }
-  .home-friction__points li { display: grid; gap: var(--s-2); align-content: start; }
+  /* Questions */
+  .home-faq__card { align-content: start; gap: var(--s-4); }
+  .home-faq__list { display: grid; gap: var(--s-2); }
+  .home-faq__item { border-radius: var(--radius); background: var(--c-stone-deep); }
+  .home-faq__item summary {
+    display: flex; justify-content: space-between; align-items: center; gap: var(--s-5);
+    padding: var(--s-5) clamp(1.25rem, .9rem + 1.2vw, 2rem);
+    cursor: pointer; list-style: none;
+  }
+  .home-faq__item summary::-webkit-details-marker { display: none; }
+  .home-faq__item summary:hover .t-h4 { color: var(--accent); }
+  .home-faq__item summary .t-h4 { transition: color var(--d-fast); }
+  /* Plus that turns into a minus */
+  .home-faq__toggle { position: relative; flex: none; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--c-raised); }
+  .home-faq__toggle::before, .home-faq__toggle::after {
+    content: ''; position: absolute; left: 50%; top: 50%; width: .875rem; height: 1.5px;
+    background: currentColor; translate: -50% -50%;
+    transition: rotate var(--d-base) var(--ease-out), opacity var(--d-base);
+  }
+  .home-faq__toggle::after { rotate: 90deg; }
+  .home-faq__item[open] .home-faq__toggle { background: var(--accent); color: var(--c-black); }
+  .home-faq__item[open] .home-faq__toggle::after { rotate: 0deg; opacity: 0; }
+  .home-faq__answer { padding: 0 clamp(1.25rem, .9rem + 1.2vw, 2rem) var(--s-6); max-width: 46rem; }
+  /* Smooth open/close where supported */
+  .home-faq__item { interpolate-size: allow-keywords; }
+  .home-faq__item::details-content { height: 0; overflow: clip; transition: height .5s var(--ease-out), content-visibility .5s allow-discrete; }
+  .home-faq__item[open]::details-content { height: auto; }
   @media (min-width: 900px) {
-    .home-friction__title { grid-column: 1 / span 8; }
-    .home-friction__intro { grid-column: 9 / -1; align-self: end; }
-    .home-friction__points li { grid-column: span 4; }
+    .home-faq__card { position: sticky; top: calc(var(--header-h) + var(--s-5)); align-self: start; }
   }
 </style>
 
@@ -363,14 +390,6 @@ const beyondIcons = [
       return () => vp.removeEventListener('scroll', onScroll);
     });
 
-    // Friction: the image opens from an inset frame to full width
-    const expand = document.querySelector('[data-expand]');
-    if (expand) {
-      gsap.fromTo(expand, { clipPath: 'inset(10% 12% 10% 12%)' }, {
-        clipPath: 'inset(0% 0% 0% 0%)', ease: 'none',
-        scrollTrigger: { trigger: expand, start: 'top 95%', end: 'center 55%', scrub: 0.4 },
-      });
-    }
     settle();
   });
 </script>

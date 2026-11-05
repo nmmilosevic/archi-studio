@@ -69,9 +69,9 @@ const fr: Content = {
     },
     directions: {
       title: 'Neuf directions. *Zéro* template.',
-      body: 'Chacune part d’un vrai type de studio : villas méditerranéennes, intérieurs calmes, béton brut. Trouvez celle qui vous ressemble.',
+      body: 'Chacune part d’un vrai type de studio : villas méditerranéennes, intérieurs calmes, béton brut. Trouvez celle qui vous ressemble.',
       names: ['Méditerranéen', 'Organique', 'Avantforme', 'Futuriste', 'Japonais', 'Luxe', 'Éco moderne', 'Parisien', 'Luxe sombre'],
-      altPrefix: 'Style :',
+      altPrefix: 'Style :',
     },
     studios: {
       title: 'Avec qui nous *travaillons*.',
@@ -81,7 +81,7 @@ const fr: Content = {
       title: 'Un prix. *Aucune* surprise.',
       price: '1 500€',
       terms: 'Paiement unique',
-      note: 'Cela couvre le design présenté et son développement. Plus de pages ou des changements plus tard ? On vous fait un devis avant, pour qu’aucune facture ne vous surprenne.',
+      note: 'Cela couvre le design présenté et son développement. Plus de pages ou des changements plus tard ? On vous fait un devis avant, pour qu’aucune facture ne vous surprenne.',
       included: 'Ce qui est inclus',
       includes: ['Stratégie site web', 'Design sur mesure', 'Développement responsive', 'Bases SEO', 'Formulaire de contact', 'Support au lancement'],
       action: 'Commencer le site',
@@ -109,16 +109,20 @@ const fr: Content = {
         },
       ],
     },
-    friction: {
-      title: 'Vos clients lisent votre site comme un *espace*.',
-      body: 'Par où ils entrent, ce qu’ils voient d’abord, combien de temps pour trouver la porte. Chaque friction coûte un peu de confiance avant le premier appel.',
-      action: 'Réserver une revue',
-      alt: 'Composition visuelle pour la revue de site',
-      points: [
-        { title: 'Positionnement', body: 'Dites en une phrase ce pour quoi on vous connaît.' },
-        { title: 'Présentation des projets', body: 'Laissez les photos parler. Gardez les textes courts.' },
-        { title: 'Parcours de contact', body: 'Faites du contact la partie la plus simple.' },
+    faq: {
+      title: "Les questions qu’on nous *pose* souvent.",
+      aside: "Des réponses claires avant de vous engager.",
+      items: [
+        { q: "Que comprend le prix de 1 500€ ?", a: "La stratégie, le design sur mesure, le développement responsive, les bases SEO, un formulaire de contact et l’accompagnement au lancement. Plus de pages ou des changements plus tard ? On vous fait un devis avant. Aucune facture surprise." },
+        { q: "Avec qui vais-je travailler ?", a: "Avec la personne qui conçoit et développe votre site. Pas de chef de projet ni d’intermédiaire : les décisions vont vite et rien ne se perd." },
+        { q: "Puis-je ajouter mes projets moi-même ?", a: "Oui, si vous le souhaitez. On peut préparer le site pour que vous ajoutiez un projet en quelques clics. Ou on s’en charge pour vous, à partir de 120€/mois." },
+        { q: "Vous gérez l’hébergement et le domaine ?", a: "On connecte votre domaine au lancement. Hébergement, sauvegardes et mises à jour de sécurité à partir de 30€/mois, pour ne jamais vous soucier de la technique." },
+        { q: "Mon site peut-il être multilingue ?", a: "Oui. La configuration multilingue fait partie de notre travail. Ce site fonctionne d’ailleurs en anglais, espagnol et français." },
+        { q: "Comment commence-t-on ?", a: "Envoyez-nous votre site actuel. On le passe en revue et on vous dit ce dont il a besoin, pour connaître le périmètre et le prix avant de signer." },
       ],
+      cardTitle: "Encore une question ?",
+      cardBody: "Écrivez-nous. C’est une vraie personne qui vous répond.",
+      cardAction: "Nous contacter",
     },
   },
 
@@ -143,7 +147,7 @@ const fr: Content = {
     palette: "Palette",
     type: "Typographie",
     coverAlt: (title) => `${title} : aperçu du site sur ordinateur`,
-    enlarge: 'Agrandir :',
+    enlarge: 'Agrandir :',
     enlarged: 'Vue agrandie',
     close: 'Fermer',
   },
@@ -159,7 +163,7 @@ const fr: Content = {
       decisions: [
         "Les faits d’abord. Lieu, année, typologie, surface et statut se trouvent juste sous le titre, avant tout texte long.",
         "Les matériaux sont montrés, pas décrits. Travertin, enduit à la chaux, bois, bronze et béton apparaissent comme des échantillons, comme le client les verrait sur la table du studio.",
-        "Sur mobile, la photographie vient d’abord et le titre ensuite : l’œuvre se voit avant de s’expliquer.",
+        "Sur mobile, la photographie vient d’abord et le titre ensuite : l’œuvre se voit avant de s’expliquer.",
       ],
     },
     'casa-noma-marbella': {
@@ -167,7 +171,7 @@ const fr: Content = {
       location: 'Marbella, Costa del Sol',
       summary: 'Refonte du site, clarté des services, portfolio intérieur, expérience mobile et mise en place CMS.',
       captions: ['Page projet intérieur', 'Expérience mobile'],
-      typeNote: "Une serif classique avec un seul accent en italique, sur « Slow Time. » De petites capitales espacées pour la navigation et les libellés.",
+      typeNote: "Une serif classique avec un seul accent en italique, sur « Slow Time. » De petites capitales espacées pour la navigation et les libellés.",
       paletteNames: ["Fond", "Lin", "Travertin", "Chêne", "Encre"],
       decisions: [
         "Les photographies se chevauchent et décalent la grille, comme dans un magazine de décoration, au lieu de remplir des cases égales.",
@@ -185,7 +189,7 @@ const fr: Content = {
       decisions: [
         "Les pages sombres laissent la photographie du béton porter la lumière. Rien à l’écran n’est plus lumineux que le soleil sur les murs.",
         "Chaque projet montre sa coupe et son plan à côté des photographies, car les clients d’un studio d’architecture lisent aussi les dessins.",
-        "Les données du projet dans un tableau simple : lieu, achèvement, programme, surface.",
+        "Les données du projet dans un tableau simple : lieu, achèvement, programme, surface.",
       ],
     },
     'terral-studio-estepona': {
@@ -197,8 +201,8 @@ const fr: Content = {
       paletteNames: ["Fond", "Pierre calcaire", "Sauge", "Lavande", "Olive"],
       decisions: [
         "Des photographies avant et après de la même colline montrent ce que le jardin a changé, sans un mot de vente.",
-        "« L’approche » présente plantation locale, matériaux naturels et design sur mesure en trois courtes colonnes avec des dessins simples.",
-        "Une citation du studio clôt la page, puis la galerie suit le jardin dans l’ordre : terrasse, sentier, plantations, table.",
+        "« L’approche » présente plantation locale, matériaux naturels et design sur mesure en trois courtes colonnes avec des dessins simples.",
+        "Une citation du studio clôt la page, puis la galerie suit le jardin dans l’ordre : terrasse, sentier, plantations, table.",
       ],
     },
   },
@@ -220,7 +224,7 @@ const fr: Content = {
     },
     search: {
       title: 'Fondation de visibilité',
-      body: 'Apparaître quand quelqu’un cherche « architecte à Marbella » n’a rien d’un hasard. C’est de la structure, des métadonnées, des liens et un site rapide. On met tout en place correctement.',
+      body: 'Apparaître quand quelqu’un cherche « architecte à Marbella » n’a rien d’un hasard. C’est de la structure, des métadonnées, des liens et un site rapide. On met tout en place correctement.',
       items: ['Métadonnées SEO', 'Structure de pages orientée recherche', 'Données structurées', 'Maillage interne', 'Structure alt des images', 'Optimisation des performances'],
     },
     hosting: {
@@ -230,7 +234,7 @@ const fr: Content = {
     },
     portfolio: {
       title: 'Systèmes de portfolio',
-      body: 'Une manière claire de publier chaque projet : photos, lieu, type, matériaux, périmètre et l’histoire derrière.',
+      body: 'Une manière claire de publier chaque projet : photos, lieu, type, matériaux, périmètre et l’histoire derrière.',
       items: ['Modèle pour CMS, le système de gestion de contenu', 'Modèles de projets', 'Filtres par localisation et type', 'Structure d’étude de cas', 'Mise en page centrée sur l’image'],
       alt: 'Archive de projets pour un studio d’architecture',
     },
@@ -241,7 +245,7 @@ const fr: Content = {
       alt: 'Système typographique et couleurs pour la marque d’un studio',
     },
     fit: {
-      title: 'Vous ne savez pas par où *commencer* ?',
+      title: 'Vous ne savez pas par où *commencer* ?',
       body: 'Envoyez-nous votre site. On vous dira ce dont il a besoin en premier.',
       action: 'Réserver une revue',
     },
@@ -298,7 +302,7 @@ const fr: Content = {
       studio: 'Nom du studio',
       email: 'Adresse email',
       website: 'URL du site actuel',
-      message: 'Qu’est-ce qui ne fonctionne pas sur le site actuel ?',
+      message: 'Qu’est-ce qui ne fonctionne pas sur le site actuel ?',
     },
     submit: 'Envoyer',
     sending: 'Envoi…',
