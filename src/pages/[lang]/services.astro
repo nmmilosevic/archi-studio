@@ -269,8 +269,9 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   .svc-statement__items li { padding-block: var(--s-5); }
   .svc-band .svc-host { display: flex; align-items: center; gap: var(--s-4); }
   /* Same dark warm card as the homepage extra services */
-  .svc-statement .svc-feature { background: #0e0b0a; }
-  .svc-feature__icon { --icon-bg: #0e0b0a; }
+  /* 8% darker than the section behind them */
+  .svc-statement .svc-feature { background: color-mix(in srgb, var(--c-stone-deep) 92%, black); }
+  .svc-feature__icon { --icon-bg: color-mix(in srgb, var(--c-stone-deep) 92%, black); }
   /* On the grey hosting band the cards sit clearly darker than the band */
   .svc-band .svc-host { background: #060504; }
   .svc-host__icon { --icon-bg: #060504; }
