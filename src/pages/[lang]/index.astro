@@ -111,8 +111,8 @@ const beyondIcons = [
     </ul>
   </section>
 
-  <!-- Pricing: the offer takes columns 1–6 (price, note, what's included);
-       the extra services stack in columns 7–12 beside it. -->
+  <!-- Pricing: the offer takes columns 1–7 (price, note, what's included);
+       the extra services stack in columns 8–12 beside it. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
       <div class="grid section-head">
@@ -120,7 +120,7 @@ const beyondIcons = [
       </div>
 
       <div class="grid cards">
-        <div class="span-6 card home-pricing__offer" data-fade>
+        <div class="card home-pricing__offer" data-fade>
           <div>
             <p class="t-display home-pricing__price" data-count aria-label={h.pricing.price}>{h.pricing.price}</p>
             <p class="t-muted home-pricing__terms">{h.pricing.terms}</p>
@@ -135,7 +135,7 @@ const beyondIcons = [
           <div><Button href={contact} arrow>{h.pricing.action}</Button></div>
         </div>
 
-        <div class="span-6 home-pricing__more">
+        <div class="home-pricing__more">
           <h3 class="t-h4 t-muted" data-fade set:html={rich(h.beyond.title)}></h3>
           <div class="home-beyond" data-stagger>
             {h.beyond.items.map((item, i) => (
@@ -298,9 +298,9 @@ const beyondIcons = [
   @media (min-width: 900px) {
     /* Heading sits above the cards; the offer box and the card stack share row 2, so tops and bottoms line up */
     .cards > .home-pricing__more { display: contents; }
-    .home-pricing__more > h3 { grid-column: 7 / -1; grid-row: 1; }
-    .home-pricing__more > .home-beyond { grid-column: 7 / -1; grid-row: 2; }
-    .home-pricing__offer { grid-row: 2; justify-content: space-between; gap: var(--s-6); }
+    .home-pricing__more > h3 { grid-column: 8 / -1; grid-row: 1; }
+    .home-pricing__more > .home-beyond { grid-column: 8 / -1; grid-row: 2; }
+    .home-pricing__offer { grid-column: 1 / span 7; grid-row: 2; justify-content: space-between; gap: var(--s-6); }
   }
   .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
   .home-pricing__terms { margin-top: var(--s-3); }
