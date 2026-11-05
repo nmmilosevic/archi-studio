@@ -294,8 +294,16 @@ const beyondIcons = [
   /* Pricing */
   .home-pricing__offer { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-7); }
   .home-pricing__note { max-width: 34rem; }
-  /* No boxes: hairlines frame the offer and split the extra services */
-  .home-pricing__offer { border-block: 1px solid var(--c-line); padding-block: var(--s-6); }
+  /* No boxes: hairlines split the extra services, one vertical line between columns */
+  .home-pricing__offer { padding-block: var(--s-6); }
+  @media (min-width: 900px) {
+    /* Vertical hairline centred in the gutter between the offer and the services */
+    .home-beyond { position: relative; }
+    .home-beyond::before {
+      content: ''; position: absolute; top: 0; bottom: 0;
+      left: calc(var(--gutter) / -2); width: 1px; background: var(--c-line);
+    }
+  }
   @media (min-width: 900px) {
     /* Heading sits above the cards; the offer box and the card stack share row 2, so tops and bottoms line up */
     .cards > .home-pricing__more { display: contents; }
