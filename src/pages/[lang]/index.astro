@@ -136,7 +136,6 @@ const beyondIcons = [
         </div>
 
         <div class="home-pricing__more">
-          <h3 class="t-h4 t-muted" data-fade set:html={rich(h.beyond.title)}></h3>
           <div class="home-beyond" data-stagger>
             {h.beyond.items.map((item, i) => (
               <article class="home-beyond__item">
@@ -297,19 +296,18 @@ const beyondIcons = [
   /* No boxes: hairlines split the extra services, one vertical line between columns */
   .home-pricing__offer { padding-block: var(--s-6); }
   @media (min-width: 900px) {
-    /* Vertical hairline centred in the gutter between the offer and the services */
+    /* Vertical hairline just left of the services column */
     .home-beyond { position: relative; }
     .home-beyond::before {
       content: ''; position: absolute; top: 0; bottom: 0;
-      left: calc(var(--gutter) / -2); width: 1px; background: var(--c-line);
+      left: calc(var(--gutter) * -1.5); width: 1px; background: var(--c-line);
     }
   }
   @media (min-width: 900px) {
-    /* Heading sits above the cards; the offer box and the card stack share row 2, so tops and bottoms line up */
+    /* The offer and the service rows share one grid row, so tops and bottoms line up */
     .cards > .home-pricing__more { display: contents; }
-    .home-pricing__more > h3 { grid-column: 8 / -1; grid-row: 1; }
-    .home-pricing__more > .home-beyond { grid-column: 8 / -1; grid-row: 2; }
-    .home-pricing__offer { grid-column: 1 / span 7; grid-row: 2; justify-content: space-between; gap: var(--s-6); }
+    .home-pricing__more > .home-beyond { grid-column: 8 / -1; grid-row: 1; }
+    .home-pricing__offer { grid-column: 1 / span 7; grid-row: 1; justify-content: space-between; gap: var(--s-6); }
   }
   .home-pricing__price { font-size: clamp(4.5rem, 2.4rem + 7vw, 10rem); line-height: .82; }
   .home-pricing__terms { margin-top: var(--s-3); }
