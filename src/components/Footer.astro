@@ -58,11 +58,11 @@ const year = new Date().getFullYear();
 <style>
   .cta { padding-bottom: var(--s-9); }
   .cta .grid { row-gap: var(--s-7); align-items: end; }
-  .cta__title { grid-column: 1 / span 10; }
+  .cta__title { grid-column: 1 / span 8; }
   .cta__body { display: grid; gap: var(--s-6); max-width: 30rem; }
   @media (min-width: 900px) {
     .cta__body { grid-column: 1 / span 4; grid-row: 2; align-self: end; }
-    .cta__media { grid-column: 6 / -1; grid-row: 2; }
+    .cta__media { grid-column: 5 / -1; grid-row: 2; }
   }
 
   .footer { padding-bottom: var(--s-5); }
@@ -71,7 +71,7 @@ const year = new Date().getFullYear();
   :global(.footer__logo) { width: 7rem; height: auto; margin-bottom: var(--s-3); }
   .footer__nav { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); font-size: var(--fs-lead); }
   @media (min-width: 900px) {
-    .footer__brand { grid-column: 1 / span 6; }
+    .footer__brand { grid-column: 1 / span 8; }
     .footer__nav { grid-column: 9 / -1; }
   }
 

@@ -234,8 +234,8 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   .svc-hero .grid { row-gap: var(--s-7); }
   .svc-hero__lead { max-width: 32rem; }
   @media (min-width: 900px) {
-    .svc-hero__title { grid-column: 1 / span 9; }
-    .svc-hero__lead { grid-column: 1 / span 5; align-self: start; }
+    .svc-hero__title { grid-column: 1 / span 8; }
+    .svc-hero__lead { grid-column: 9 / -1; align-self: end; }
   }
 
   /* Duo: two image-led services, second one staggered lower */
@@ -246,7 +246,7 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   .svc-duo__items { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); margin-top: var(--s-2); }
   @media (min-width: 900px) {
     .svc-duo__item:nth-child(1) { grid-column: 1 / span 6; }
-    .svc-duo__item:nth-child(2) { grid-column: 8 / -1; margin-top: var(--s-section); }
+    .svc-duo__item:nth-child(2) { grid-column: 7 / -1; margin-top: var(--s-section); }
   }
 
   /* Split: big image + text column; mirror flips it */
@@ -255,10 +255,10 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   .svc-split__text { display: grid; gap: var(--s-5); }
   .svc-split__text .list-marked { margin-top: var(--s-3); }
   @media (min-width: 900px) {
-    .svc-split__media { grid-column: 1 / span 7; }
+    .svc-split__media { grid-column: 1 / span 8; }
     .svc-split__text { grid-column: 9 / -1; }
-    .svc-split--mirror .svc-split__text { grid-column: 1 / span 5; grid-row: 1; }
-    .svc-split--mirror .svc-split__media { grid-column: 7 / -1; grid-row: 1; }
+    .svc-split--mirror .svc-split__text { grid-column: 1 / span 4; grid-row: 1; }
+    .svc-split--mirror .svc-split__media { grid-column: 5 / -1; grid-row: 1; }
   }
 
   /* Statement: text-only, on a surface */
@@ -288,10 +288,10 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   html.js:not(.motion-off) .ic-gauge .mv { transform: rotate(-95deg); }
   .ic-gauge .mv { transform-origin: 24px 34px; }
   @media (min-width: 900px) {
-    .svc-statement__title { grid-column: 1 / span 5; }
+    .svc-statement__title { grid-column: 1 / span 6; }
     .svc-statement__body { grid-column: 7 / -1; }
     .svc-statement__items { grid-column: 7 / -1; grid-row: 2; grid-template-columns: repeat(2, 1fr); }
-    .svc-statement__visual { grid-column: 1 / span 5; grid-row: 2 / span 2; align-self: start; }
+    .svc-statement__visual { grid-column: 1 / span 6; grid-row: 2 / span 2; align-self: start; }
     .svc-statement__items li { grid-column: auto; }
   }
   @media (max-width: 899px) {
@@ -305,8 +305,8 @@ const ids = ['website-redesign', 'interior-websites', 'portfolio-systems', 'sear
   .svc-band__items { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: var(--gutter); }
   .svc-band__items li { padding-block: var(--s-5); }
   @media (min-width: 900px) {
-    .svc-band__title { grid-column: 1 / span 5; grid-row: 1; }
-    .svc-band__body { grid-column: 1 / span 5; grid-row: 2; max-width: 32rem; }
+    .svc-band__title { grid-column: 1 / span 6; grid-row: 1; }
+    .svc-band__body { grid-column: 1 / span 6; grid-row: 2; max-width: 32rem; }
     .svc-band__visual { grid-column: 7 / -1; grid-row: 1 / span 2; }
     .svc-band__items { grid-column: 1 / -1; margin-top: var(--s-5); }
   }

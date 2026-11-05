@@ -72,7 +72,9 @@ Headings use `text-wrap: balance` and paragraphs use `text-wrap: pretty`.
 
 ### Grid
 
-**Grid rules (every section):** a `.section-head` puts the heading in columns 1–8 and an optional aside in 9–12, with a fixed gap below. Card rows use `.cards` with `.span-4` (thirds) or `.span-8` (two thirds), so cards in consecutive rows share the same edges. All card gaps are `--gutter`.
+**Grid rules (every section):** a `.section-head` puts the heading in columns 1–8 and an optional aside in 9–12, with a fixed gap below. Card rows use `.cards` with `.span-4` (thirds), `.span-6` (halves) or `.span-8` (two thirds), so cards in consecutive rows share the same edges. All card gaps are `--gutter`.
+
+Every block on every page starts on column 1, 5, 7 or 9 and spans 4, 6, 8 or 12 columns. Pairs are 8 + 4, 4 + 8 or 6 + 6. Checked by measuring every block against the 12 column lines.
 
 - 12 columns at 900px and up, 6 below that, 4 under 600px. On small screens every child spans the full width by default.
 - Margin `--margin` is 20 → 64px. Gutter `--gutter` is 16 → 28px. Content is capped at 1760px.
