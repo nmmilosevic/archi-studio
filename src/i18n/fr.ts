@@ -131,7 +131,7 @@ const fr: Content = {
     lead: 'Un regard clair sur la façon dont les studios d’architecture et d’intérieur peuvent présenter leur travail avec plus de clarté, de confiance et de qualité visuelle.',
     listTitle: 'Études de refonte de site sélectionnées',
     viewProject: 'Voir le projet',
-    previewAlt: (title) => `Aperçu de la refonte : ${title}`,
+    previewAlt: (title) => `Aperçu de la refonte : ${title}`,
   },
 
   project: {
@@ -146,7 +146,7 @@ const fr: Content = {
     designIntro: "Ce que nous avons choisi pour ce studio, et pourquoi.",
     palette: "Palette",
     type: "Typographie",
-    coverAlt: (title) => `${title} : aperçu du site sur ordinateur`,
+    coverAlt: (title) => `${title} : aperçu du site sur ordinateur`,
     enlarge: 'Agrandir :',
     enlarged: 'Vue agrandie',
     close: 'Fermer',
