@@ -155,7 +155,7 @@ const includedIcons = [
   </section>
 
   <!-- Pricing: price (1–6) beside what's included as six icon cards (7–12),
-       then the three extra services as cards, 4 + 4 + 4. -->
+       then a heading and the three extra services as cards, 4 + 4 + 4. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
       <div class="grid section-head">
@@ -180,9 +180,14 @@ const includedIcons = [
             </li>
           ))}
         </ul>
+      </div>
 
+      <div class="grid section-head home-pricing__more">
+        <h3 class="t-h3" data-split set:html={rich(h.beyond.title)}></h3>
+      </div>
+      <div class="grid cards" data-stagger>
         {h.beyond.items.map((item, i) => (
-          <article class="card span-4 home-beyond__item" data-fade>
+          <article class="card span-4 home-beyond__item">
             <Fragment set:html={beyondIcons[i]} />
             <h4 class="t-h4">{item.title}</h4>
             <p class="t-small t-muted">{item.body}</p>
@@ -358,6 +363,7 @@ const includedIcons = [
   @media (max-width: 899px) { .home-included { margin-top: var(--s-4); } }
 
   /* Not just websites: three cards in a row */
+  .home-pricing__more { margin-top: var(--s-9); margin-bottom: var(--s-6); }
   .home-beyond__item { display: flex; flex-direction: column; gap: var(--s-4); }
   .home-beyond__icon { --icon-bg: #131313; margin-bottom: var(--s-2); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
