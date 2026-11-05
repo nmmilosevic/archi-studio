@@ -29,7 +29,6 @@ const year = new Date().getFullYear();
       <div class="footer__brand">
         <a href={href(lang)} aria-label={`Reframe Studio, ${t.ui.home}`}><Logo class="footer__logo" /></a>
         <p class="t-lead">{t.footer.tagline}</p>
-        <p class="t-small t-muted">{t.footer.about}</p>
       </div>
       <nav class="footer__nav" aria-label={t.ui.footerNav}>
         <a href={href(lang, '/work/')} class="link link--quiet">{t.ui.work}</a>
@@ -78,8 +77,9 @@ const year = new Date().getFullYear();
   .footer__mail {
     display: block; width: fit-content; max-width: 100%;
     margin-block: var(--s-9) var(--s-7);
-    font-size: clamp(1.75rem, .6rem + 5.6vw, 7.5rem);
-    overflow-wrap: anywhere;
+    /* Always one line: capped so the full address fits the screen width */
+    font-size: min(clamp(1.75rem, .6rem + 5.6vw, 7.5rem), calc((100vw - var(--margin) * 2) / 11.5));
+    white-space: nowrap;
   }
   .footer__mail:hover { color: var(--c-sand); }
   .footer__mail .roll { line-height: 1.05; }

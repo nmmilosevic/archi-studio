@@ -42,7 +42,6 @@ const fr: Content = {
 
   footer: {
     tagline: 'Studio de design pour architectes, architectes d’intérieur et paysagistes. Sites, identité, print et marketing.',
-    about: 'REFRAME crée des sites, des portfolios, du print et du contenu social pour les studios dont le travail mérite mieux qu’un template.',
   },
 
   cookie: {

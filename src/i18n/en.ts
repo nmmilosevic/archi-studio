@@ -43,7 +43,6 @@ const en = {
 
   footer: {
     tagline: 'A design studio for architects, interior designers and landscape studios. Websites, brand, print and marketing.',
-    about: 'REFRAME makes websites, portfolios, print and social content for studios whose work deserves better than a template.',
   },
 
   cookie: {

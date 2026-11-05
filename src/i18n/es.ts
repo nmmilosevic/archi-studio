@@ -42,7 +42,6 @@ const es: Content = {
 
   footer: {
     tagline: 'Estudio de diseño para arquitectos, interioristas y paisajistas. Webs, marca, impresión y marketing.',
-    about: 'REFRAME crea webs, portafolios, impresos y contenido para redes para estudios cuyo trabajo merece algo mejor que una plantilla.',
   },
 
   cookie: {
