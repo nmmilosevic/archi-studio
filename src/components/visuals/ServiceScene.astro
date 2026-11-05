@@ -1,0 +1,80 @@
+---
+/** A photographed table with a few separate photographed objects on it.
+    Every object is its own cut-out PNG (src/assets/img/services/objects), so each one can be
+    set down on the table on its own: it arrives a little high with a wide soft shadow,
+    then lands and the shadow tightens. Few objects, lots of table: calm, not crowded. */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+type Kind = 'web' | 'brand' | 'print' | 'social';
+interface Props { kind: Kind; label: string; class?: string }
+const { kind, label, class: cls } = Astro.props;
+
+const files = import.meta.glob<{ default: ImageMetadata }>('../../assets/img/services/objects/*.png', { eager: true });
+const img = (name: string) => Object.entries(files).find(([p]) => p.endsWith(`/${name}.png`))![1].default;
+
+// x / y / w are % of the table; r is the resting rotation in degrees
+type Obj = { name: string; x: number; y: number; w: number; r: number };
+const scenes: Record<Kind, Obj[]> = {
+  web: [
+    { name: 'laptop', x: 12, y: 6, w: 44, r: -2 },
+    { name: 'web-phone', x: 63, y: 24, w: 18, r: 5 },
+  ],
+  brand: [
+    { name: 'wordmark', x: 9, y: 16, w: 46, r: -3 },
+    { name: 'card-dark', x: 50, y: 52, w: 30, r: 6 },
+    { name: 'chips', x: 66, y: 8, w: 24, r: 4 },
+  ],
+  print: [
+    { name: 'brochure', x: 7, y: 14, w: 62, r: -2 },
+    { name: 'card-dark', x: 64, y: 58, w: 24, r: 8 },
+  ],
+  social: [
+    { name: 'insta-phone', x: 15, y: 14, w: 24, r: -4 },
+    { name: 'newsletter', x: 50, y: 18, w: 34, r: 3 },
+  ],
+};
+const objs = scenes[kind];
+---
+<figure class:list={['scene', cls]} data-scene role="img" aria-label={label}>
+  <Image class="scene__table" src={img('table')} alt="" widths={[640, 960, 1280]} sizes="(min-width: 900px) 56vw, 100vw" />
+  {objs.map((o, i) => (
+    <div class="scene__obj" style={`left:${o.x}%;top:${o.y}%;width:${o.w}%;--r:${o.r}deg;z-index:${i + 1}`} data-obj>
+      <Image src={img(o.name)} alt="" widths={[320, 640, 960]} sizes={`(min-width: 900px) ${Math.round(o.w * 0.56)}vw, ${o.w}vw`} />
+    </div>
+  ))}
+</figure>
+
+<style>
+  .scene {
+    position: relative; margin: 0; aspect-ratio: 4 / 3; overflow: hidden;
+    border-radius: var(--radius-lg); background: #d9cdb8;
+  }
+  .scene__table { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .scene__obj { position: absolute; --lift: 0; transform: rotate(var(--r)); }
+  .scene__obj img {
+    display: block; width: 100%; height: auto;
+    /* contact shadow + soft cast shadow (light comes from the top left) */
+    filter:
+      drop-shadow(0 1px 1px rgb(40 30 20 / .35))
+      drop-shadow(calc(2px + var(--lift) * 10px) calc(4px + var(--lift) * 22px) calc(6px + var(--lift) * 26px) rgb(40 30 20 / calc(.28 + var(--lift) * .1)));
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, reduced } from '../../scripts/motion';
+
+  document.querySelectorAll<HTMLElement>('[data-scene]').forEach((root) => {
+    if (reduced) return;
+    const objs = root.querySelectorAll<HTMLElement>('[data-obj]');
+    const tl = gsap.timeline({ paused: true });
+    // Each object is set down on the table, one after another
+    tl.from(objs, {
+      opacity: 0, y: -28, x: 10, '--lift': 1,
+      rotation: (i, el) => parseFloat(getComputedStyle(el).getPropertyValue('--r')) + (i % 2 ? 7 : -7),
+      duration: 1.25, ease: 'power3.out', stagger: 0.22,
+    });
+    tl.progress(0.001).pause();
+    ScrollTrigger.create({ trigger: root, start: 'top 72%', once: true, onEnter: () => tl.play() });
+  });
+</script>
