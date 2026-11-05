@@ -269,38 +269,17 @@ const es: Content = {
       "brand": {
         "title": "Identidad de marca",
         "body": "Desde un ajuste cuidadoso hasta una identidad completa. Logo, tipografía, color y tono, recogidos en un manual que de verdad vas a usar.",
-        "items": [
-          "Logo y logotipo",
-          "Sistema tipográfico",
-          "Paleta de color",
-          "Papelería",
-          "Manual de marca",
-          "Tono de voz"
-        ]
+        "groups": [{"title": "Identidad", "items": ["Logo y logotipo", "Tipografía", "Paleta de color"]}, {"title": "Manual", "items": ["Manual de marca", "Tono de voz", "Normas de uso"]}, {"title": "Aplicaciones", "items": ["Papelería", "Plantillas", "Kit de UI web"]}]
       },
       "print": {
         "title": "Impresión",
         "body": "Tarjetas, folletos, libros de portafolio, paneles de concurso, señalética. Todo lo que acaba en papel o en una pared, diseñado y preparado para imprenta.",
-        "items": [
-          "Tarjetas y papelería",
-          "Folletos y libros de portafolio",
-          "Paneles de concurso y de proyecto",
-          "Vallas de obra y señalética",
-          "Paneles de exposición",
-          "Archivos listos para imprenta"
-        ]
+        "groups": [{"title": "Papelería", "items": ["Tarjetas de visita", "Papel con membrete", "Sobres"]}, {"title": "Portafolio", "items": ["Folletos", "Libros de portafolio", "Fichas de proyecto"]}, {"title": "Gran formato", "items": ["Paneles de concurso", "Vallas de obra", "Paneles de exposición"]}]
       },
       "social": {
         "title": "Redes y marketing",
         "body": "Plantillas de Instagram, visuales de campaña, newsletters y landing pages. Tu feed, por fin con tu marca, y fácil de mantener para tu equipo.",
-        "items": [
-          "Plantillas de Instagram",
-          "Posts de lanzamiento de proyecto",
-          "Visuales de campaña",
-          "Newsletters",
-          "Landing pages",
-          "Anuncios"
-        ]
+        "groups": [{"title": "Redes sociales", "items": ["Plantillas de Instagram", "Posts de lanzamiento", "Stories"]}, {"title": "Campañas", "items": ["Visuales de campaña", "Anuncios", "Landing pages"]}, {"title": "Email", "items": ["Newsletters", "Plantillas de email"]}]
       },
       "between": {
         "title": "Y todo lo que hay *entre medias*.",

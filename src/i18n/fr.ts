@@ -269,38 +269,17 @@ const fr: Content = {
       "brand": {
         "title": "Identité de marque",
         "body": "D’un ajustement soigné à une identité complète. Logo, typographie, couleur et ton, réunis dans une charte que vous utiliserez vraiment.",
-        "items": [
-          "Logo et logotype",
-          "Système typographique",
-          "Palette de couleurs",
-          "Papeterie",
-          "Charte graphique",
-          "Ton de voix"
-        ]
+        "groups": [{"title": "Identité", "items": ["Logo et logotype", "Typographie", "Palette de couleurs"]}, {"title": "Charte", "items": ["Charte graphique", "Ton de voix", "Règles d’usage"]}, {"title": "Applications", "items": ["Papeterie", "Templates", "Kit UI web"]}]
       },
       "print": {
         "title": "Print",
         "body": "Cartes de visite, brochures, books portfolio, planches de concours, signalétique. Tout ce qui finit sur papier ou sur un mur, conçu et préparé pour l’imprimeur.",
-        "items": [
-          "Cartes de visite et papeterie",
-          "Brochures et books portfolio",
-          "Planches de concours et de projet",
-          "Palissades de chantier et signalétique",
-          "Panneaux d’exposition",
-          "Fichiers prêts à imprimer"
-        ]
+        "groups": [{"title": "Papeterie", "items": ["Cartes de visite", "Papier à en-tête", "Enveloppes"]}, {"title": "Portfolio", "items": ["Brochures", "Books portfolio", "Fiches projet"]}, {"title": "Grand format", "items": ["Planches de concours", "Palissades de chantier", "Panneaux d’exposition"]}]
       },
       "social": {
         "title": "Réseaux & marketing",
         "body": "Templates Instagram, visuels de campagne, newsletters et landing pages. Votre feed enfin à votre image, et simple à tenir pour votre équipe.",
-        "items": [
-          "Templates Instagram",
-          "Posts de lancement de projet",
-          "Visuels de campagne",
-          "Newsletters",
-          "Landing pages",
-          "Publicités"
-        ]
+        "groups": [{"title": "Réseaux sociaux", "items": ["Templates Instagram", "Posts de lancement", "Stories"]}, {"title": "Campagnes", "items": ["Visuels de campagne", "Publicités", "Landing pages"]}, {"title": "Email", "items": ["Newsletters", "Templates email"]}]
       },
       "between": {
         "title": "Et tout ce qu’il y a *entre les deux*.",

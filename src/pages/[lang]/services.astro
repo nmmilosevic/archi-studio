@@ -134,7 +134,14 @@ const stepIcons = [
       <div class="svc-disc__text">
         <h2 id="svc-brand" class="t-h2" data-split>{brand.title}</h2>
         <p class="t-lead t-muted" data-fade>{brand.body}</p>
-        <ul class="list-marked svc-disc__list" data-stagger>{brand.items.map((i) => <li>{i}</li>)}</ul>
+        <div class="svc-groups" data-stagger>
+          {brand.groups.map((g) => (
+            <div class="svc-group">
+              <h3 class="t-h4">{g.title}</h3>
+              <ul class="t-small t-muted">{g.items.map((i) => <li>{i}</li>)}</ul>
+            </div>
+          ))}
+        </div>
       </div>
       {photos.brand ? <Media class="svc-disc__media svc-photo" src={photos.brand} alt={v.brand.label} ratio="4 / 3" parallax={0.06} sizes="(min-width: 900px) 56vw, 100vw" /> : <BrandVisual lang={lang} class="svc-disc__media" />}
     </div>
@@ -148,7 +155,14 @@ const stepIcons = [
         <div class="svc-disc__text">
           <h2 id="svc-print" class="t-h2" data-split>{print.title}</h2>
           <p class="t-lead t-muted" data-fade>{print.body}</p>
-          <ul class="list-marked svc-disc__list" data-stagger>{print.items.map((i) => <li>{i}</li>)}</ul>
+          <div class="svc-groups" data-stagger>
+          {print.groups.map((g) => (
+            <div class="svc-group">
+              <h3 class="t-h4">{g.title}</h3>
+              <ul class="t-small t-muted">{g.items.map((i) => <li>{i}</li>)}</ul>
+            </div>
+          ))}
+        </div>
         </div>
       </div>
     </div>
@@ -160,7 +174,14 @@ const stepIcons = [
       <div class="svc-disc__text">
         <h2 id="svc-social" class="t-h2" data-split>{social.title}</h2>
         <p class="t-lead t-muted" data-fade>{social.body}</p>
-        <ul class="list-marked svc-disc__list" data-stagger>{social.items.map((i) => <li>{i}</li>)}</ul>
+        <div class="svc-groups" data-stagger>
+          {social.groups.map((g) => (
+            <div class="svc-group">
+              <h3 class="t-h4">{g.title}</h3>
+              <ul class="t-small t-muted">{g.items.map((i) => <li>{i}</li>)}</ul>
+            </div>
+          ))}
+        </div>
       </div>
       {photos.social ? <Media class="svc-disc__media svc-photo" src={photos.social} alt={v.social.label} ratio="4 / 3" parallax={0.06} sizes="(min-width: 900px) 56vw, 100vw" /> : <SocialVisual lang={lang} class="svc-disc__media" />}
     </div>

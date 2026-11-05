@@ -270,38 +270,17 @@ const en = {
       "brand": {
         "title": "Brand identity",
         "body": "From a careful refresh to a full identity. Logo, type, colour and tone, set down in guidelines you’ll actually use.",
-        "items": [
-          "Logo and wordmark",
-          "Typography system",
-          "Colour palette",
-          "Stationery",
-          "Brand guidelines",
-          "Tone of voice"
-        ]
+        "groups": [{"title": "Identity", "items": ["Logo and wordmark", "Typography", "Colour palette"]}, {"title": "Guidelines", "items": ["Brand book", "Tone of voice", "Usage rules"]}, {"title": "Applications", "items": ["Stationery", "Templates", "Website UI kit"]}]
       },
       "print": {
         "title": "Print",
         "body": "Business cards, brochures, portfolio books, competition boards, signage. Anything that ends up on paper or on a wall, designed and prepared for the printer.",
-        "items": [
-          "Business cards and stationery",
-          "Brochures and portfolio books",
-          "Competition and project boards",
-          "Site hoardings and signage",
-          "Exhibition panels",
-          "Print-ready files"
-        ]
+        "groups": [{"title": "Stationery", "items": ["Business cards", "Letterheads", "Envelopes"]}, {"title": "Portfolio", "items": ["Brochures", "Portfolio books", "Project sheets"]}, {"title": "Large format", "items": ["Competition boards", "Site hoardings", "Exhibition panels"]}]
       },
       "social": {
         "title": "Social & marketing",
         "body": "Instagram templates, campaign visuals, newsletters and landing pages. Your feed, finally on brand, and easy for your team to keep up.",
-        "items": [
-          "Instagram templates",
-          "Project launch posts",
-          "Campaign visuals",
-          "Newsletters",
-          "Landing pages",
-          "Ads"
-        ]
+        "groups": [{"title": "Social media", "items": ["Instagram templates", "Project launch posts", "Stories"]}, {"title": "Campaigns", "items": ["Campaign visuals", "Ads", "Landing pages"]}, {"title": "Email", "items": ["Newsletters", "Email templates"]}]
       },
       "between": {
         "title": "And everything *in between*.",
