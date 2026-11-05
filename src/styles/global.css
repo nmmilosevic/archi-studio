@@ -315,3 +315,6 @@ html.js.morph-in [data-morph-target] { clip-path: none !important; }
 /* Objects lie flat on the table, seen straight from above (no fake tilt, nothing deformed) */
 .obj-scene { }
 .obj-table { }
+
+/* Safety net: nothing may create a sideways page scroll (clip keeps sticky/pins working) */
+html, body { overflow-x: clip; }

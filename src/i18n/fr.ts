@@ -30,7 +30,7 @@ const fr: Content = {
     work: 'Réalisations',
     services: 'Services',
     contact: 'Contact',
-    cta: 'Commencer le site',
+    cta: 'Démarrer un projet',
     menu: 'Menu',
     close: 'Fermer',
     language: 'Langue',
@@ -84,7 +84,7 @@ const fr: Content = {
       included: 'Ce qui est inclus',
       includes: ['Stratégie site web', 'Design sur mesure', 'Développement responsive', 'Bases SEO', 'Formulaire de contact', 'Support au lancement'],
       includesNotes: ['On définit les pages, les projets et ce que le visiteur doit trouver en premier.', 'Pensé pour votre travail. Pas de template, pas de thème.', 'Net sur mobile, sur tablette et sur un écran de 27 pouces.', 'Structure propre, pages rapides, titres lisibles par Google.', 'Les demandes arrivent directement dans votre boîte mail.', 'On met en ligne ensemble et on corrige ce qui se présente.'],
-      action: 'Commencer le site',
+      action: 'Démarrer un projet',
     },
     beyond: {
       title: 'Pas *seulement* des sites.',

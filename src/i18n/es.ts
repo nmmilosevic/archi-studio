@@ -30,7 +30,7 @@ const es: Content = {
     work: 'Proyectos',
     services: 'Servicios',
     contact: 'Contacto',
-    cta: 'Empezar mi web',
+    cta: 'Empezar un proyecto',
     menu: 'Menú',
     close: 'Cerrar',
     language: 'Idioma',
@@ -84,7 +84,7 @@ const es: Content = {
       included: 'Qué incluye',
       includes: ['Estrategia web', 'Diseño a medida', 'Desarrollo responsive', 'Bases SEO', 'Formulario de contacto', 'Soporte de lanzamiento'],
       includesNotes: ['Definimos las páginas, los proyectos y lo primero que debe encontrar quien visita.', 'Pensado para tu trabajo. Sin plantillas, sin temas.', 'Impecable en móvil, tablet y en una pantalla de 27 pulgadas.', 'Estructura limpia, páginas rápidas y títulos que Google entiende.', 'Las consultas llegan directamente a tu bandeja de entrada.', 'Publicamos juntos y arreglamos lo que aparezca.'],
-      action: 'Empezar mi web',
+      action: 'Empezar un proyecto',
     },
     beyond: {
       title: 'No *solo* webs.',

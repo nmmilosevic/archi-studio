@@ -19,6 +19,8 @@ import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
+// Phones: the address bar showing/hiding resizes the viewport; don't recalculate every trigger for that
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 declare global {
   interface Window { __reveal?: Promise<boolean>; lenis?: Lenis }
@@ -29,7 +31,8 @@ export const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export const EASE = 'expo.out';
 export const CURTAIN = 'expo.inOut';
-const START = 'top 88%';
+// Reveals start a little earlier on small screens, where sections are tall and scrolling is fast
+const START = matchMedia('(max-width: 899px)').matches ? 'top 96%' : 'top 88%';
 const $$ = <T extends Element = HTMLElement>(s: string, ctx: ParentNode = document) => Array.from(ctx.querySelectorAll<T>(s));
 const isIntro = (el: HTMLElement, attr: string) => el.getAttribute(attr) === 'intro';
 
@@ -196,7 +199,8 @@ export const ready: Promise<void> = (async () => {
 
   smoothScroll();
   const viaTransition = await (window.__reveal ?? Promise.resolve(false));
-  await document.fonts.ready;
+  // Don't hold every reveal hostage to slow web fonts on mobile networks: wait at most .6s
+  await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 600))]);
 
   // Intro sequence: image curtain → heading lines → supporting copy
   const morphed = root.classList.contains('morph-in');
@@ -230,5 +234,14 @@ export function settle() {
   ScrollTrigger.refresh();
 }
 addEventListener('load', () => ready.then(() => setTimeout(settle, 0)));
+// Late images change page height; re-measure (debounced) so triggers further down stay accurate
+let reflow = 0;
+document.addEventListener('load', (e) => {
+  if (!(e.target instanceof HTMLImageElement)) return;
+  clearTimeout(reflow);
+  reflow = window.setTimeout(() => ready.then(() => ScrollTrigger.refresh()), 200);
+}, true);
+// Fonts swapping in can also shift text; refresh once they're actually ready
+document.fonts?.ready.then(() => ready.then(() => ScrollTrigger.refresh()));
 
 export { gsap, ScrollTrigger };
