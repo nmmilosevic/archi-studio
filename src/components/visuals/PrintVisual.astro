@@ -1,106 +1,107 @@
 ---
-/** Print: a print set on a table, seen slightly from above. Brochure spread with page edges,
-    a foam-board competition panel, and two business cards with card-stock thickness.
-    Paper grain and lift/settle shadows come from .obj / .obj-grain in global.css. */
+/** Print: a technical drawing that turns into the printed pieces.
+    Each sheet is outlined in 1px lines with an architect-style dimension line,
+    then "printed": its paper colour wipes down like a print pass and the content appears.
+    Flat colour only, no gradients, no fake 3D. */
 import { useContent, type Lang } from '../../i18n';
 
 interface Props { lang: Lang; class?: string }
 const { lang, class: cls } = Astro.props;
 const v = useContent(lang).services.visuals.print;
 ---
-<figure class:list={['vz', 'vz-print', 'obj-scene', cls]} data-vz-print role="img" aria-label={v.label}>
-  <div class="table obj-table">
-    <!-- Brochure spread: two A4 pages, a stack of page edges under the right page -->
-    <div class="piece spread obj" data-piece>
-      <div class="page page--l obj-grain">
-        <span class="kicker">{v.name}</span>
-        <span class="book">{v.book}</span>
-        <span class="years">{v.years}</span>
-      </div>
-      <div class="page page--r obj-grain" data-page>
-        <span class="plate"></span>
-        <span class="lines"><i></i><i></i><i style="width:60%"></i></span>
+<figure class:list={['vz', 'vz-print', cls]} data-vz-print role="img" aria-label={v.label}>
+  <div class="stage">
+    <!-- A4 spread (420 × 297) -->
+    <div class="sheet spread" data-sheet>
+      <span class="dim dim--top" data-dim><i></i><b>420 × 297</b></span>
+      <i class="e t"></i><i class="e r"></i><i class="e b"></i><i class="e l"></i>
+      <div class="paper" data-paper>
+        <div class="pg pg--l">
+          <span class="kicker">{v.name}</span>
+          <span class="book" data-ink>{v.book}</span>
+          <span class="years" data-ink>{v.years}</span>
+        </div>
+        <div class="pg pg--r">
+          <span class="plate" data-ink></span>
+          <span class="lines" data-ink><i></i><i></i><i style="width:58%"></i></span>
+        </div>
       </div>
     </div>
 
-    <!-- Competition board on foam board -->
-    <div class="piece board obj obj-grain" data-piece>
-      <span class="board__title">{v.board}</span>
-      <span class="board__sub">{v.boardSub}</span>
-      <svg class="plan" viewBox="0 0 100 80" fill="none" aria-hidden="true">
-        <path data-plan pathLength="1" d="M8 8h84v64H8z" />
-        <path data-plan pathLength="1" d="M8 40h40M48 8v64M48 52h44M70 52v20M28 40v32" />
-        <path data-plan pathLength="1" d="M58 20a10 10 0 0 1 20 0" />
-      </svg>
-      <span class="board__strip"></span>
+    <!-- A1 board (594 × 841) -->
+    <div class="sheet board" data-sheet>
+      <span class="dim dim--top" data-dim><i></i><b>594 × 841</b></span>
+      <i class="e t"></i><i class="e r"></i><i class="e b"></i><i class="e l"></i>
+      <div class="paper" data-paper>
+        <span class="b-title" data-ink>{v.board}</span>
+        <span class="b-sub" data-ink>{v.boardSub}</span>
+        <svg class="plan" viewBox="0 0 100 80" fill="none" aria-hidden="true">
+          <path data-plan pathLength="1" d="M8 8h84v64H8z" />
+          <path data-plan pathLength="1" d="M8 40h40M48 8v64M48 52h44M70 52v20M28 40v32" />
+          <path data-plan pathLength="1" d="M58 20a10 10 0 0 1 20 0" />
+        </svg>
+      </div>
     </div>
 
-    <!-- Business cards: back and front -->
-    <div class="piece bcard bcard--back obj obj-grain" data-piece><span class="mono">A</span></div>
-    <div class="piece bcard bcard--front obj obj-grain" data-piece>
-      <span class="bcard__name">{v.name}</span>
-      <span class="bcard__meta">{v.role}<br />{v.city}</span>
+    <!-- Business card (85 × 55) -->
+    <div class="sheet bizcard" data-sheet>
+      <span class="dim dim--bottom" data-dim><i></i><b>85 × 55</b></span>
+      <i class="e t"></i><i class="e r"></i><i class="e b"></i><i class="e l"></i>
+      <div class="paper" data-paper>
+        <span class="c-name" data-ink>{v.name}</span>
+        <span class="c-meta" data-ink>{v.role} · {v.city}</span>
+      </div>
     </div>
   </div>
 </figure>
 
 <style>
   .vz { margin: 0; }
-  .vz-print {
-    padding: clamp(1rem, .8rem + 1vw, 1.5rem);
-    background: var(--viz-paper); border-radius: var(--radius-lg);
-    box-shadow: inset 0 0 0 1px var(--viz-line);
-    overflow: hidden;
-  }
-  .table { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; }
-  .piece { position: absolute; }
-  .piece > * { position: relative; z-index: 3; }
+  .vz-print { background: #111; border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px var(--viz-line); overflow: hidden; }
+  .stage { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; color: #23211E; }
 
-  /* Brochure: the spine darkens towards the fold, the right page sits on a stack of page edges */
-  .spread { left: 2%; top: 7%; width: 64%; aspect-ratio: 1.414 / 1; display: grid; grid-template-columns: 1fr 1fr; }
-  .page { background: #EFE8DC; color: #23211E; padding: 7% 8%; display: grid; }
-  .page--l { align-content: space-between; box-shadow: inset -1.8cqw 0 1.6cqw -1.4cqw rgb(0 0 0 / .28); }
-  .page--r {
-    align-content: start; gap: 8%; background: #F4EFE6;
-    box-shadow: inset 1.4cqw 0 1.4cqw -1.2cqw rgb(0 0 0 / .22), .25cqw .2cqw 0 #DCD3C3, .5cqw .4cqw 0 #CFC5B3, .75cqw .6cqw 0 #C2B7A3;
-    transform-origin: 0 50%;
-  }
-  .kicker { font-size: 1.5cqw; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
-  .book { font-family: var(--font-serif); font-size: 5.6cqw; line-height: .95; }
-  .years { font-size: 1.5cqw; letter-spacing: .08em; opacity: .65; }
+  .sheet { position: absolute; }
+  .spread { left: 7%; top: 16%; width: 52%; aspect-ratio: 420 / 297; }
+  .board { left: 66%; top: 10%; width: 25%; aspect-ratio: 594 / 841; }
+  .bizcard { left: 22%; top: 70%; width: 21%; aspect-ratio: 85 / 55; }
+
+  /* 1px outline, each edge draws on its own axis */
+  .e { position: absolute; background: #4a4a4a; z-index: 2; }
+  .e.t, .e.b { left: 0; right: 0; height: 1px; transform-origin: 0 50%; }
+  .e.l, .e.r { top: 0; bottom: 0; width: 1px; transform-origin: 50% 0; }
+  .e.t { top: 0; } .e.b { bottom: 0; } .e.l { left: 0; } .e.r { right: 0; }
+
+  /* Architect-style dimension line with end ticks */
+  .dim { position: absolute; left: 0; right: 0; height: 1px; display: grid; place-items: center; color: #8f8b84; }
+  .dim--top { bottom: calc(100% + 2.2cqw); }
+  .dim--bottom { top: calc(100% + 2.2cqw); }
+  .dim i { position: absolute; inset: 0; background: #3a3a3a; }
+  .dim i::before, .dim i::after { content: ''; position: absolute; top: -.6cqw; width: 1px; height: 1.2cqw; background: #3a3a3a; }
+  .dim i::before { left: 0; } .dim i::after { right: 0; }
+  .dim b { position: relative; padding: 0 .9cqw; background: #111; font-size: 1.05cqw; font-weight: 400; letter-spacing: .08em; font-variant-numeric: tabular-nums; }
+
+  /* The printed paper: flat colour */
+  .paper { position: absolute; inset: 0; }
+  .spread .paper { display: grid; grid-template-columns: 1fr 1fr; }
+  .pg { padding: 7% 8%; display: grid; }
+  .pg--l { background: #EFE8DC; align-content: space-between; }
+  .pg--r { background: #F4EFE6; align-content: start; gap: 9%; box-shadow: inset 1px 0 0 #d9d0c1; }
+  .kicker { font-size: 1.05cqw; letter-spacing: .22em; text-transform: uppercase; opacity: .6; }
+  .book { font-family: var(--font-serif); font-size: 4.2cqw; line-height: .98; }
+  .years { font-size: 1.05cqw; letter-spacing: .08em; opacity: .6; }
   .plate { display: block; aspect-ratio: 4 / 3; background: #B5603F; }
-  .lines { display: grid; gap: .9cqw; }
-  .lines i { display: block; height: .6cqw; background: #23211E; opacity: .25; border-radius: 99px; }
+  .lines { display: grid; gap: .7cqw; }
+  .lines i { display: block; height: .45cqw; background: #23211E; opacity: .22; }
 
-  /* Board: A1 portrait on 5 mm foam board (the light edge on the right and bottom) */
-  .board {
-    right: 3%; top: 2%; width: 29%; aspect-ratio: 1 / 1.414;
-    background: #23211E; color: #EFE8DC; padding: 2.4cqw 2.2cqw;
-    display: grid; grid-template-rows: auto auto 1fr auto; gap: .8cqw;
-    outline: .45cqw solid #E9E3D7; outline-offset: -.45cqw;
-    border-right: .5cqw solid #D9D1C2; border-bottom: .5cqw solid #CFC6B5;
-  }
-  .board__title { font-family: var(--font-serif); font-size: 3.6cqw; line-height: 1; }
-  .board__sub { font-size: 1.25cqw; letter-spacing: .06em; opacity: .7; }
-  .plan { width: 100%; align-self: center; color: #EFE8DC; }
-  .plan path { stroke: currentColor; stroke-width: .8; }
-  .board__strip { height: 3cqw; background: #5F6447; }
+  .board .paper { background: #23211E; color: #EFE8DC; padding: 9% 9%; display: grid; grid-template-rows: auto auto 1fr; gap: .6cqw; }
+  .b-title { font-family: var(--font-serif); font-size: 2.8cqw; line-height: 1; }
+  .b-sub { font-size: .95cqw; letter-spacing: .06em; opacity: .65; }
+  .plan { width: 100%; align-self: center; }
+  .plan path { stroke: #EFE8DC; stroke-width: .8; }
 
-  /* Business cards: 85 × 55 on thick stock (the darker edge underneath) */
-  .bcard { width: 24%; aspect-ratio: 85 / 55; padding: 1.6cqw 1.8cqw; border-radius: .3cqw; }
-  .bcard--back {
-    left: 38%; bottom: 6%; background: #23211E; color: #EFE8DC;
-    display: grid; place-items: center; transform: rotate(7deg);
-    border-bottom: .35cqw solid #11100e;
-  }
-  .mono { font-family: var(--font-serif); font-size: 5cqw; line-height: 1; }
-  .bcard--front {
-    left: 14%; bottom: 3%; background: #D8C7AE; color: #23211E; transform: rotate(-5deg);
-    display: grid; align-content: space-between;
-    border-bottom: .35cqw solid #B9A788;
-  }
-  .bcard__name { font-family: var(--font-serif); font-size: 2.3cqw; }
-  .bcard__meta { font-size: 1.15cqw; line-height: 1.4; letter-spacing: .04em; opacity: .75; }
+  .bizcard .paper { background: #D8C7AE; padding: 9% 10%; display: grid; align-content: space-between; }
+  .c-name { font-family: var(--font-serif); font-size: 2cqw; }
+  .c-meta { font-size: .9cqw; letter-spacing: .06em; opacity: .7; }
 </style>
 
 <script>
@@ -108,18 +109,23 @@ const v = useContent(lang).services.visuals.print;
 
   document.querySelectorAll<HTMLElement>('[data-vz-print]').forEach((root) => {
     if (reduced) return;
-    const pieces = root.querySelectorAll<HTMLElement>('[data-piece]');
-    const plan = root.querySelectorAll<SVGPathElement>('[data-plan]');
-    const tl = gsap.timeline({ paused: true });
-    // Each piece is set down: held above the table (bigger, wide soft shadow), then it lands
-    tl.from(pieces, {
-      opacity: 0, y: -22, '--lift': 1,
-      rotation: (i) => [-2, 2, 6, -5][i] ?? 0,
-      duration: 1.2, ease: 'power3.out', stagger: 0.16,
-    })
-      // The floor plan draws on the board once it's down
-      .fromTo(plan, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: 0.15 }, 0.7);
+    const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
+    root.querySelectorAll<HTMLElement>('[data-sheet]').forEach((sheet, i) => {
+      const at = i * 0.35;
+      // 1. Outline draws: top & bottom across, left & right down
+      tl.from(sheet.querySelectorAll('.e.t, .e.b'), { scaleX: 0, duration: 0.9, ease: 'power3.inOut' }, at)
+        .from(sheet.querySelectorAll('.e.l, .e.r'), { scaleY: 0, duration: 0.9, ease: 'power3.inOut' }, at + 0.1)
+        // 2. Dimension line extends, then its label
+        .from(sheet.querySelector('[data-dim] i'), { scaleX: 0, duration: 0.8, ease: 'power3.inOut' }, at + 0.35)
+        .from(sheet.querySelector('[data-dim] b'), { opacity: 0, duration: 0.5 }, at + 0.7)
+        // 3. Printed: the paper colour wipes down like a print pass, then the ink appears
+        .fromTo(sheet.querySelector('[data-paper]'), { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'expo.inOut' }, at + 1.2)
+        .from(sheet.querySelectorAll('[data-ink]'), { opacity: 0, y: 4, duration: 0.7, stagger: 0.06 }, at + 1.9)
+        .to(sheet.querySelectorAll('.e'), { opacity: 0, duration: 0.6, ease: 'power1.out' }, at + 2);
+    });
+    // The floor plan draws on the board once it's printed
+    tl.fromTo(root.querySelectorAll('[data-plan]'), { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut', stagger: 0.15 }, 2.6);
     tl.progress(0.001).pause();
-    ScrollTrigger.create({ trigger: root, start: 'top 70%', once: true, onEnter: () => tl.play() });
+    ScrollTrigger.create({ trigger: root, start: 'top 72%', once: true, onEnter: () => tl.play() });
   });
 </script>

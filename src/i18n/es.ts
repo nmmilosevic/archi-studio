@@ -338,9 +338,9 @@ const es: Content = {
         ]
       },
     "visuals": {
-      "web": {"label": "Ejemplo de web de estudio en un portátil y un móvil", "url": "aurea-studio.com", "nav": ["Proyectos", "Estudio", "Contacto"], "headline": "Arquitectura en armonía con el lugar.", "cta": "Ver proyectos", "projects": ["Villa Aurora", "Casa Lunara", "Casa Bruta"]},
+      "web": {"label": "Una web de estudio construyéndose: estructura, luego color y contenido, luego un clic en el botón", "url": "aurea-studio.com", "nav": ["Proyectos", "Estudio", "Contacto"], "headline": "Arquitectura en armonía con el lugar.", "cta": "Ver proyectos", "projects": ["Villa Aurora", "Casa Lunara", "Casa Bruta"]},
       "print": {
-        "label": "Ejemplo de piezas impresas para un estudio: un folleto abierto, tarjetas de visita y un panel de concurso",
+        "label": "Dibujo técnico de piezas impresas con medidas: un folleto A4 abierto, un panel de concurso A1 y una tarjeta, luego impresos",
         "book": "Obras seleccionadas",
         "years": "2019–2025",
         "board": "Casa Lunara",
@@ -350,7 +350,7 @@ const es: Content = {
         "city": "Marbella"
       },
       "social": {
-        "label": "Ejemplo de feed de Instagram y newsletter diseñados para un estudio",
+        "label": "El feed de Instagram de un estudio llenándose, con una notificación de publicación y otra de newsletter",
         "handle": "aurea.studio",
         "stats": [["128", "publicaciones"], ["4,2k", "seguidores"], ["312", "seguidos"]],
         "name": "Aurea Studio",

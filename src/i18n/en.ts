@@ -339,9 +339,9 @@ const en = {
         ]
       },
     "visuals": {
-      "web": {"label": "Example studio website shown on a laptop and a phone", "url": "aurea-studio.com", "nav": ["Projects", "Studio", "Contact"], "headline": "Architecture in harmony with place.", "cta": "View projects", "projects": ["Villa Aurora", "Casa Lunara", "Casa Bruta"]},
+      "web": {"label": "A studio website building itself: wireframe, then colour and content, then a click on the button", "url": "aurea-studio.com", "nav": ["Projects", "Studio", "Contact"], "headline": "Architecture in harmony with place.", "cta": "View projects", "projects": ["Villa Aurora", "Casa Lunara", "Casa Bruta"]},
       "print": {
-        "label": "Example print set for a studio: a brochure spread, business cards and a competition board",
+        "label": "Technical drawing of a print set with dimensions: an A4 brochure spread, an A1 competition board and a business card, then printed",
         "book": "Selected works",
         "years": "2019–2025",
         "board": "Casa Lunara",
@@ -351,7 +351,7 @@ const en = {
         "city": "Marbella"
       },
       "social": {
-        "label": "Example Instagram grid and newsletter designed for a studio",
+        "label": "A studio Instagram feed filling up, with a post notification and a newsletter notification",
         "handle": "aurea.studio",
         "stats": [["128", "posts"], ["4.2k", "followers"], ["312", "following"]],
         "name": "Aurea Studio",
