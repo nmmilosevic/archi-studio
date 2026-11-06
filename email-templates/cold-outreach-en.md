@@ -14,6 +14,31 @@ Replace everything in `[brackets]`.
 
 ---
 
+## 0. Simple introduction (short, general)
+
+**Subject:** Reframe Studio: design for architecture and interior studios
+
+Hi [first name],
+
+I'm Nicolas, founder of Reframe Studio, a design studio on the Costa del Sol working only with architects, interior designers and landscape studios.
+
+We help studios present their work as well as they build it:
+
+- **Websites:** image-led portfolio sites, from 1,500€
+- **Brand identity:** logo, type, colour and guidelines
+- **Print:** brochures, portfolio books, competition boards, business cards
+- **Social & marketing:** Instagram templates, newsletters, campaign visuals
+
+You can see our work at reframestudio.es.
+
+If any of this could be useful for [studio name], just reply to this email and we'll find a time to talk. And if not, no worries, I won't follow up.
+
+Best,
+Nicolas
+Reframe Studio · hello@reframestudio.es
+
+---
+
 ## 1. Main email: the website angle (use this by default)
 
 **Subject:** [Studio name] website
