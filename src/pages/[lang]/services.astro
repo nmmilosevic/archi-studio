@@ -256,6 +256,8 @@ const stepIcons = [
     .svc-disc__list { grid-template-columns: 1fr; }
   }
   .svc-surface { background: var(--c-stone-deep); scroll-margin-top: var(--header-h); }
+  /* Phones and tablets: the visual always sits above its text, whichever side it takes on desktop */
+  @media (max-width: 899px) { .svc-disc .svc-disc__media { order: -1; } }
 
   /* Web: three groups, hairline above each */
   .svc-groups { display: grid; gap: var(--s-5); margin-top: var(--s-3); }
