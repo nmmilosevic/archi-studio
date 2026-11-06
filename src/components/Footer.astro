@@ -5,6 +5,7 @@ import Button from './Button.astro';
 import Media from './Media.astro';
 import { site, img } from '../data/site';
 import { langs, href, swapLang, useContent, type Lang, rich } from '../i18n';
+import { legal, legalDocs } from '../i18n/legal';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -18,7 +19,7 @@ const year = new Date().getFullYear();
       <h2 id="cta-title" class="t-display cta__title" data-split set:html={rich(t.cta.title)}></h2>
       <div class="cta__body" data-stagger>
         <p class="t-lead t-muted">{t.cta.body}</p>
-        <div><Button href={href(lang, '/contact/')} arrow>{t.cta.action}</Button></div>
+        <div><Button href={href(lang, '/contact/')} arrow>{t.ui.cta}</Button></div>
       </div>
       <Media class="cta__media" src={img.review} alt={t.cta.alt} ratio="3 / 2" parallax={0.08} sizes="(min-width: 900px) 50vw, 100vw" />
     </div>
@@ -47,6 +48,9 @@ const year = new Date().getFullYear();
         {langs.map((l) => (
           <a href={swapLang(path, l)} class:list={['lang__item', { 'is-current': l === lang }]} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a>
         ))}
+      </nav>
+      <nav class="footer__legal" aria-label={legal[lang].nav}>
+        {legalDocs.map((d) => <a href={href(lang, `/legal/${d}/`)} class="link link--quiet">{legal[lang].labels[d]}</a>)}
       </nav>
       <button type="button" class="link link--quiet" data-cookie-open>{t.ui.cookieSettings}</button>
       <button type="button" class="link link--quiet" data-to-top>{t.ui.backToTop}</button>
@@ -91,6 +95,7 @@ const year = new Date().getFullYear();
     padding-top: var(--s-5); border-top: var(--hairline);
   }
   .footer__base > :first-child { margin-right: auto; }
+  .footer__legal { display: flex; gap: var(--s-4); }
   .lang { display: flex; gap: .875rem; font-weight: var(--fw-medium); }
   .lang__item { color: var(--fg-muted); }
   .lang__item.is-current, .lang__item:hover { color: var(--fg); }

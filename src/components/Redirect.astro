@@ -1,0 +1,20 @@
+---
+/** Tiny static redirect for URLs from the previous site (GitHub Pages has no server redirects).
+    Meta refresh + JS replace, canonical to the new page, kept out of search results. */
+interface Props { to: string }
+const { to } = Astro.props;
+const target = new URL(to, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reframe Studio</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={target} />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <script is:inline define:vars={{ to }}>location.replace(to);</script>
+    <style>html{background:#0a0a0a;color:#f4f1ea;font-family:system-ui,sans-serif}</style>
+  </head>
+  <body><p><a href={to} style="color:inherit">{target}</a></p></body>
+</html>

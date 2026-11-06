@@ -1,4 +1,20 @@
-node_modules
-dist
-.astro
-backups
+# Build output and dependencies
+node_modules/
+dist/
+.astro/
+
+# Local backups (zips of earlier versions)
+backups/
+
+# OS, editor and tool files
+.DS_Store
+**/.DS_Store
+.claude/
+.vscode/
+.idea/
+*.log
+npm-debug.log*
+
+# Secrets
+.env
+.env.*

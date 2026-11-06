@@ -43,6 +43,9 @@ export const site = {
     ajax: 'https://formsubmit.co/ajax/hello@reframestudio.es',
     action: 'https://formsubmit.co/hello@reframestudio.es',
   },
+  // Google Analytics 4 measurement ID (e.g. 'G-XXXXXXXXXX'). Leave empty to keep analytics off.
+  // It only ever loads after the visitor clicks "Accept all" in the cookie banner.
+  analytics: { ga4: '' },
 };
 
 /** Same order as `home.directions.names` in each language file. */

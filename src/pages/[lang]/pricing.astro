@@ -1,0 +1,8 @@
+---
+/** Old URL from the previous site: /{lang}/pricing/ now lives at /{lang}/#pricing */
+import Redirect from '../../components/Redirect.astro';
+import { langPaths, href, type Lang } from '../../i18n';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+---
+<Redirect to={href(lang, '/#pricing'.replace(/#.*/, '')) + ('/#pricing'.includes('#') ? '#' + '/#pricing'.split('#')[1] : '')} />

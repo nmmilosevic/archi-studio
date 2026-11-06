@@ -7,7 +7,7 @@ const fr: Content = {
 
   meta: {
     home: {
-      title: 'Reframe Studio · Sites, identité et print pour architectes et architectes d’intérieur',
+      title: 'Reframe Studio · Web, identité et print pour architectes',
       description: 'Sites, identité, print et réseaux pour studios d’architecture, d’intérieur et de paysage. Faits avec le soin que vous mettez dans un plan.',
     },
     work: {
@@ -15,7 +15,7 @@ const fr: Content = {
       description: 'Études de refonte pour studios d’architecture et d’intérieur, avec projets mieux structurés, positionnement clair et présentation mobile soignée.',
     },
     services: {
-      title: 'Services | Reframe Studio',
+      title: 'Nos services | Reframe Studio',
       description: "Sites web, identité de marque, print et réseaux sociaux pour studios d’architecture et d’architecture d’intérieur. Un seul studio pour tout ce que vos clients voient.",
     },
     contact: {
@@ -65,6 +65,7 @@ const fr: Content = {
       primary: 'Voir le travail',
       secondary: 'Réserver une revue',
       mockAlt: 'Exemple de refonte de site pour studio d’architecture',
+      imageAlt: 'Salon contemporain et calme avec cheminée en travertin et étagères en chêne',
     },
     directions: {
       title: 'Neuf directions. *Zéro* template.',

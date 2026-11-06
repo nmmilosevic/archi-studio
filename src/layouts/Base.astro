@@ -4,6 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { langs, defaultLang, swapLang, useContent, type Lang } from '../i18n';
+import { site, img } from '../data/site';
+import { getImage } from 'astro:assets';
 
 interface Props {
   lang: Lang;
@@ -11,11 +13,15 @@ interface Props {
   description: string;
   closing?: boolean;   // show the shared CTA + footer block
   alternates?: boolean; // emit hreflang links (off for pages that exist in one language)
+  noindex?: boolean;    // keep the page out of search results (404, redirects)
 }
-const { lang, title, description, closing = true, alternates = true } = Astro.props;
+const { lang, title, description, closing = true, alternates = true, noindex = false } = Astro.props;
 const t = useContent(lang);
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site);
+// Share image for social networks and messaging apps: the hero interior, cropped to 1200 × 630
+const og = await getImage({ src: img.hero, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
+const ogUrl = new URL(og.src, Astro.site).href;
 ---
 <!doctype html>
 <html lang={lang}>
@@ -24,15 +30,27 @@ const canonical = new URL(path, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     {alternates && langs.map((l) => <link rel="alternate" hreflang={l} href={new URL(swapLang(path, l), Astro.site)} />)}
     {alternates && <link rel="alternate" hreflang="x-default" href={new URL(swapLang(path, defaultLang), Astro.site)} />}
     <meta property="og:locale" content={{ en: 'en_GB', es: 'es_ES', fr: 'fr_FR' }[lang]} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#0a0a0a" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Reframe Studio" />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
 
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -77,6 +95,26 @@ const canonical = new URL(path, Astro.site);
 
     <script>
       import '../scripts/motion';
+    </script>
+
+    <!-- Analytics: only with consent ("Accept all") and only if a GA4 ID is configured in data/site.ts -->
+    <script is:inline define:vars={{ GA: site.analytics.ga4 }}>
+      (function () {
+        if (!GA) return;
+        var loaded = false;
+        function load() {
+          if (loaded) return; loaded = true;
+          var s = document.createElement('script');
+          s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', GA, { anonymize_ip: true });
+        }
+        if (localStorage.getItem('reframe:cookies') === 'all') load();
+        addEventListener('reframe:consent', function (e) { if (e.detail === 'all') load(); });
+      })();
     </script>
   </body>
 </html>

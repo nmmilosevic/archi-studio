@@ -42,6 +42,7 @@ const t = useContent(Astro.props.lang);
   el.querySelectorAll<HTMLElement>('[data-cookie-choice]').forEach((b) =>
     b.addEventListener('click', () => {
       localStorage.setItem(KEY, b.dataset.cookieChoice!);
+      dispatchEvent(new CustomEvent('reframe:consent', { detail: b.dataset.cookieChoice }));
       hide();
     }),
   );

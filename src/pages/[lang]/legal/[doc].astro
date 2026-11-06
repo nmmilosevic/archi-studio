@@ -1,0 +1,39 @@
+---
+/** Legal pages: privacy, terms, cookies. Same URLs as the previous site (/{lang}/legal/{doc}/). */
+import Base from '../../../layouts/Base.astro';
+import { langs, type Lang } from '../../../i18n';
+import { legal, legalDocs, type LegalDoc } from '../../../i18n/legal';
+
+export function getStaticPaths() {
+  return langs.flatMap((lang) => legalDocs.map((doc) => ({ params: { lang, doc } })));
+}
+const lang = Astro.params.lang as Lang;
+const doc = legal[lang].docs[Astro.params.doc as LegalDoc];
+---
+<Base lang={lang} title={`${doc.title} | Reframe Studio`} description={doc.meta}>
+  <section class="wrap page-hero legal-hero">
+    <div class="grid">
+      <h1 class="t-h1 page-hero__title" data-split="intro">{doc.title}</h1>
+      <p class="t-small t-muted page-hero__lead" data-fade="intro">{doc.updated}</p>
+    </div>
+  </section>
+
+  <section class="wrap legal">
+    {doc.sections.map((s) => (
+      <div class="grid legal__row">
+        <h2 class="t-h4">{s.h}</h2>
+        <div class="legal__body">{s.p.map((p) => <p class="t-muted">{p}</p>)}</div>
+      </div>
+    ))}
+  </section>
+</Base>
+
+<style is:global>
+  .legal { padding-bottom: var(--s-section); }
+  .legal__row { row-gap: var(--s-3); padding-block: var(--s-6); border-top: 1px solid var(--c-line); }
+  .legal__body { display: grid; gap: var(--s-3); max-width: 42rem; }
+  @media (min-width: 900px) {
+    .legal__row > h2 { grid-column: 1 / span 4; }
+    .legal__body { grid-column: 5 / -1; }
+  }
+</style>

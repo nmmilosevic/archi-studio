@@ -1,6 +1,6 @@
 # Reframe Studio, website redesign
 
-Astro static site. Same pages and content as reframestudio.es/en, rebuilt with a new design system and motion layer.
+Astro static site for [reframestudio.es](https://reframestudio.es), in English, Spanish and French.
 
 ```bash
 npm install
@@ -14,12 +14,15 @@ Every page exists in English, Spanish and French: `/en/…`, `/es/…`, `/fr/…
 
 | Route | Content |
 |---|---|
-| `/{lang}/` | Hero, website directions, before/after, pricing + extra services, friction, audit CTA |
-| `/{lang}/work/` | Four redesign studies |
-| `/{lang}/work/[slug]/` | Case study: meta, cover, views (lightbox), what changed |
-| `/{lang}/services/` | Service index, six services in varied layouts, process timeline, pricing link |
+| `/{lang}/` | Hero, nine directions, studios, pricing + extra services, FAQ |
+| `/{lang}/work/` and `/{lang}/work/[slug]/` | Four redesign studies |
+| `/{lang}/services/` | Web, brand, print, social & marketing, everything in between, process |
 | `/{lang}/contact/` | Enquiry form |
-| `/design-system/` | Living reference for tokens, type, grid, components, motion (English only) |
+| `/{lang}/legal/{privacy,terms,cookies}/` | Legal pages |
+| `/{lang}/pricing/`, `/audit/`, `/search-visibility/` | Redirects for URLs from the previous site |
+| `/404.html`, `/sitemap.xml`, `/robots.txt` | 404 (all three languages), sitemap with hreflang, robots |
+
+`src/pages/_design-system.astro` is an internal design reference and is not published (the underscore keeps it out of the build).
 
 The EN / ES / FR switch keeps you on the same page in the other language.
 
@@ -44,6 +47,10 @@ Enquiries are emailed to **hello@reframestudio.es** (the Infomaniak mailbox) thr
 - **First submission from a new domain:** FormSubmit may email hello@reframestudio.es an activation link. Click it once, then submissions arrive normally. Check the Infomaniak spam folder the first time.
 - **Optional:** in that activation email FormSubmit offers a random alias. Swap it into `site.form` to keep the address out of the page's code.
 
-## Not done yet
+## Analytics
 
-- **Analytics:** the cookie choice is stored in `localStorage` under `reframe:cookies`. Load analytics only when it's `all`.
+Google Analytics 4 is wired in but **off** until you add a measurement ID in `src/data/site.ts` (`analytics.ga4`). It only loads after the visitor clicks "Accept all" in the cookie banner; "Reject all" loads nothing.
+
+## Deploy
+
+Pushing to `main` builds the site with GitHub Actions (`.github/workflows/pages.yml`) and publishes `dist/` to GitHub Pages. The custom domain comes from `public/CNAME` (`reframestudio.es`); HTTPS is enforced in the repository's Pages settings.

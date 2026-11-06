@@ -7,7 +7,7 @@ const es: Content = {
 
   meta: {
     home: {
-      title: 'Reframe Studio · Webs, marca e impresión para arquitectos e interioristas',
+      title: 'Reframe Studio · Web, marca e impresión para arquitectos',
       description: 'Webs, marca, impresión y redes para estudios de arquitectura, interiorismo y paisajismo. Hechas con el mismo cuidado que pones en un plano.',
     },
     work: {
@@ -65,6 +65,7 @@ const es: Content = {
       primary: 'Ver el trabajo',
       secondary: 'Reservar una revisión',
       mockAlt: 'Ejemplo de rediseño web para estudio de arquitectura',
+      imageAlt: 'Salón contemporáneo y sereno con chimenea de travertino y estanterías de roble',
     },
     directions: {
       title: 'Nueve direcciones. *Cero* plantillas.',

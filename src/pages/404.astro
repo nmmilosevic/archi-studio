@@ -1,0 +1,34 @@
+---
+/** 404: GitHub Pages serves this for any missing URL, in any language, so it speaks all three. */
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+
+const lines = [
+  { lang: 'en', text: 'This page doesn’t exist, or it moved.', cta: 'Back to the homepage' },
+  { lang: 'es', text: 'Esta página no existe o ha cambiado de sitio.', cta: 'Volver al inicio' },
+  { lang: 'fr', text: 'Cette page n’existe pas, ou elle a déménagé.', cta: 'Retour à l’accueil' },
+];
+---
+<Base lang="en" title="Page not found | Reframe Studio" description="This page doesn’t exist." alternates={false} noindex closing={false}>
+  <section class="wrap nf">
+    <p class="t-display nf__code" data-split="intro">404</p>
+    <ul class="nf__list" data-stagger="intro">
+      {lines.map((l) => (
+        <li lang={l.lang}>
+          <p class="t-lead">{l.text}</p>
+          <Button href={`/${l.lang}/`} variant="link" arrow>{l.cta}</Button>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style is:global>
+  .nf { min-height: 100svh; display: grid; align-content: center; gap: var(--s-8); padding-block: calc(var(--header-h) + var(--s-8)) var(--s-9); }
+  .nf__code { font-size: clamp(6rem, 3rem + 14vw, 16rem); line-height: .85; }
+  .nf__list { display: grid; gap: var(--s-6); }
+  .nf__list li { display: grid; gap: var(--s-3); justify-items: start; padding-top: var(--s-5); border-top: 1px solid var(--c-line); }
+  @media (min-width: 900px) {
+    .nf__list { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); }
+  }
+</style>

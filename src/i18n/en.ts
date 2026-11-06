@@ -8,7 +8,7 @@ const en = {
 
   meta: {
     home: {
-      title: 'Reframe Studio · Websites, brand and print for architects and interior designers',
+      title: 'Reframe Studio · Web, brand & print for architects',
       description: 'Websites, brand, print and social for architecture, interior and landscape studios. Made with the care you put into a floor plan.',
     },
     work: {
@@ -66,6 +66,7 @@ const en = {
       primary: 'See the work',
       secondary: 'Book a site review',
       mockAlt: 'Example architecture studio website redesign',
+      imageAlt: 'Calm contemporary living room with a travertine fireplace and oak shelving',
     },
     directions: {
       title: 'Nine directions. *Zero* templates.',

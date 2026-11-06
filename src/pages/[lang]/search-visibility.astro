@@ -1,0 +1,8 @@
+---
+/** Old URL from the previous site: /{lang}/search-visibility/ now lives at /{lang}/services/#web */
+import Redirect from '../../components/Redirect.astro';
+import { langPaths, href, type Lang } from '../../i18n';
+export const getStaticPaths = langPaths;
+const lang = Astro.params.lang as Lang;
+---
+<Redirect to={href(lang, '/services/#web'.replace(/#.*/, '')) + ('/services/#web'.includes('#') ? '#' + '/services/#web'.split('#')[1] : '')} />

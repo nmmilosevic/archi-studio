@@ -123,13 +123,13 @@ const includedIcons = [
         <div class="home-hero__foot">
           <p class="t-lead t-muted" data-fade="intro">{h.hero.lead}</p>
           <div class="home-hero__actions" data-fade="intro">
-            <Button href={href(lang, '/work/')} arrow>{h.hero.primary}</Button>
-            <Button href={contact} variant="link">{h.hero.secondary}</Button>
+            <Button href={contact} arrow>{t.ui.cta}</Button>
+            <Button href={href(lang, '/work/')} variant="link">{h.hero.primary}</Button>
           </div>
         </div>
       </div>
       <div class="home-hero__visual">
-        <Media class="home-hero__image" src={img.hero} alt="" intro priority parallax={0.08} sizes="(min-width: 900px) 42vw, 100vw" />
+        <Media class="home-hero__image" src={img.hero} alt={h.hero.imageAlt} intro priority parallax={0.08} sizes="(min-width: 900px) 42vw, 100vw" />
         <div class="home-hero__mock" data-hero-mock>
           <Media src={img.heroMock} alt={h.hero.mockAlt} intro sizes="(min-width: 900px) 18vw, 40vw" />
         </div>
@@ -231,7 +231,7 @@ const includedIcons = [
             <p class="t-small t-muted">{item.body}</p>
             <div class="home-beyond__foot">
               {item.price.map((line) => <p class="t-small">{line}</p>)}
-              {item.action && <Button href={contact} variant="link" arrow>{item.action}</Button>}
+              {item.action && <Button href={contact} variant="link" arrow>{t.ui.cta}</Button>}
             </div>
           </article>
         ))}
@@ -250,7 +250,7 @@ const includedIcons = [
       <aside class="span-4 home-faq__card" data-fade>
         <p class="t-h4">{h.faq.cardTitle}</p>
         <p class="t-muted">{h.faq.cardBody}</p>
-        <div><Button href={contact} arrow>{h.faq.cardAction}</Button></div>
+        <div><Button href={contact} arrow>{t.ui.cta}</Button></div>
       </aside>
       <div class="span-8 home-faq__list" data-stagger>
         {h.faq.items.map((item, i) => (
