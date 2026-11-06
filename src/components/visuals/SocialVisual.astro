@@ -40,7 +40,7 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
           <b>{v.name}</b>
           <span class="muted">{v.bio}</span>
           <span>{v.bio2}</span>
-          <span class="link">{v.link}</span>
+          <span class="url">{v.link}</span>
         </div>
         <div class="ig-btns" data-part><span class="btn-a">{v.follow}</span><span class="btn-b">{v.message}</span></div>
         <ul class="ig-hl" data-part>{v.highlights.map((h, i) => <li><span class="ring"><i style={`background:${['#D8C7AE', '#5F6447', '#EFE8DC', '#B5603F'][i]}`}></i></span><span>{h}</span></li>)}</ul>
@@ -107,7 +107,7 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
   .ig-bio { display: grid; gap: .1cqw; }
   .ig-bio b { font-weight: 700; }
   .ig-bio .muted { color: #8f8b84; }
-  .ig-bio .link { color: var(--accent); }
+  .ig-bio .url { color: var(--accent); }
   .ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .5cqw; }
   .ig-btns span { display: grid; place-items: center; height: 2.4cqw; border-radius: .6cqw; font-weight: 600; }
   .btn-a { background: #f4f1ea; color: #111; }
