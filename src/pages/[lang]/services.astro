@@ -283,7 +283,9 @@ const stepIcons = [
   @media (min-width: 900px) {
     /* 4 + 4 + 4 columns with the real gutter, so every item starts on a column line */
     .svc-between__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); grid-auto-rows: 1fr; }
-    .svc-between__item { padding: var(--s-6) 0; }
+    .svc-between__item { padding: var(--s-7) 0; }
+    /* icon + text sit as one group in the middle of their cell, both ways */
+    .svc-between__item { grid-template-columns: auto auto; justify-content: center; align-content: center; }
     .svc-between__item + .svc-between__item::before { content: none; }
     /* Two vertical lines between the columns */
     .svc-between__grid::before, .svc-between__grid::after {

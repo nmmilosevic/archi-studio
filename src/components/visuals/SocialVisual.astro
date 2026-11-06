@@ -24,26 +24,43 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
 ---
 <figure class:list={['vz', 'vz-social', cls]} data-vz-social data-lang={lang} role="img" aria-label={v.label}>
   <div class="stage">
-    <!-- Phone: a clean 1px outline -->
+    <!-- Phone: a clean 1px outline, laid out like the real Instagram profile -->
     <div class="phone" data-phone>
       <span class="island"></span>
-      <div class="head">
-        <span class="avatar">A</span>
-        <span class="handle">{v.handle}</span>
+      <div class="ig">
+        <div class="ig-top" data-part>
+          <b>{v.handle}</b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 10l4 4 4-4" /></svg>
+          <span class="ig-top__icons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM12 8v8M8 12h8" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></span>
+        </div>
+        <div class="ig-head" data-part>
+          <span class="avatar"><span>A</span></span>
+          <ul class="stats">{v.stats.map(([n, l]) => <li><b data-count={n}>{n}</b><span>{l}</span></li>)}</ul>
+        </div>
+        <div class="ig-bio" data-part>
+          <b>{v.name}</b>
+          <span class="muted">{v.bio}</span>
+          <span>{v.bio2}</span>
+          <span class="link">{v.link}</span>
+        </div>
+        <div class="ig-btns" data-part><span class="btn-a">{v.follow}</span><span class="btn-b">{v.message}</span></div>
+        <ul class="ig-hl" data-part>{v.highlights.map((h, i) => <li><span class="ring"><i style={`background:${['#D8C7AE', '#5F6447', '#EFE8DC', '#B5603F'][i]}`}></i></span><span>{h}</span></li>)}</ul>
+        <div class="ig-tabs" data-part>
+          <span class="is-on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 9.3h16M4 14.6h16M9.3 4v16M14.6 4v16" /></svg></span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 9h16M10.5 12.5v5l4-2.5z" /></svg></span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM12 8.5a2.5 2.5 0 1 1 0 5a2.5 2.5 0 1 1 0-5zM7.5 18c1-2.5 2.6-3.5 4.5-3.5s3.5 1 4.5 3.5" /></svg></span>
+        </div>
+        <ul class="posts">
+          {tiles.map((t) => (
+            <li class:list={['tile', `tile--${t.kind}`]} style={`background:${t.tone};color:${t.ink}`} data-tile>
+              {t.text && <span>{t.text}</span>}
+              {t.kind === 'arch' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M10 34V20a10 10 0 0 1 20 0v14" stroke="currentColor" stroke-width="1.1"/></svg>}
+              {t.kind === 'plan' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 7h26v26H7zM7 20h14M21 7v26M21 26h12" stroke="currentColor" stroke-width="1.1"/></svg>}
+              {t.kind === 'stair' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 33h7v-7h7v-7h7v-7h7" stroke="currentColor" stroke-width="1.1"/></svg>}
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul class="stats">
-        {v.stats.map(([n, l]) => <li><b data-count={n}>{n}</b><span>{l}</span></li>)}
-      </ul>
-      <ul class="posts">
-        {tiles.map((t) => (
-          <li class:list={['tile', `tile--${t.kind}`]} style={`background:${t.tone};color:${t.ink}`} data-tile>
-            {t.text && <span>{t.text}</span>}
-            {t.kind === 'arch' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M10 34V20a10 10 0 0 1 20 0v14" stroke="currentColor" stroke-width="1.1"/></svg>}
-            {t.kind === 'plan' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 7h26v26H7zM7 20h14M21 7v26M21 26h12" stroke="currentColor" stroke-width="1.1"/></svg>}
-            {t.kind === 'stair' && <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 33h7v-7h7v-7h7v-7h7" stroke="currentColor" stroke-width="1.1"/></svg>}
-          </li>
-        ))}
-      </ul>
+      <div class="ig-nav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 1 1 0 14a7 7 0 1 1 0-14zM16 16l4 4" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM12 8v8M8 12h8" /></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM10 9.5v5l4.5-2.5z" /></svg><span class="me">A</span></div>
     </div>
 
     <!-- Notifications -->
@@ -67,25 +84,54 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
   .vz-social { background: #111; border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px var(--viz-line); overflow: hidden; }
   .stage { position: relative; aspect-ratio: 4 / 3; container-type: inline-size; color: #f4f1ea; }
 
-  /* Phone: outline only */
+  /* Phone: outline only, Instagram profile inside */
   .phone {
-    position: absolute; left: 9%; top: 7%; bottom: 7%; aspect-ratio: 9 / 18.5;
-    border-radius: 4.4cqw; box-shadow: inset 0 0 0 1px #3a3a3a;
-    padding: 5cqw 2.2cqw 2.2cqw; display: grid; grid-template-rows: auto auto 1fr; gap: 1.8cqw;
+    position: absolute; left: 9%; top: 5%; bottom: 5%; aspect-ratio: 9 / 18.5;
+    border-radius: 4.4cqw; box-shadow: inset 0 0 0 1px #3a3a3a; overflow: hidden;
+    padding: 4.6cqw 0 0;
   }
-  .island { position: absolute; top: 1.6cqw; left: 50%; translate: -50% 0; width: 7cqw; height: 1.7cqw; border-radius: 99px; box-shadow: inset 0 0 0 1px #3a3a3a; }
-  .head { display: flex; align-items: center; gap: 1.2cqw; }
-  .avatar { width: 4.4cqw; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: #EFE8DC; color: #23211E; font-family: var(--font-serif); font-size: 2.2cqw; }
-  .handle { font-size: 1.35cqw; font-weight: 700; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); padding-block: 1cqw; border-block: 1px solid #262626; }
-  .stats li { display: grid; gap: .15cqw; }
-  .stats b { font-size: 1.5cqw; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .stats span { font-size: .85cqw; color: #8f8b84; }
-  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; align-content: start; margin-inline: -2.2cqw; }
+  .island { position: absolute; top: 1.4cqw; left: 50%; translate: -50% 0; width: 7cqw; height: 1.6cqw; border-radius: 99px; box-shadow: inset 0 0 0 1px #3a3a3a; }
+  .phone svg path { fill: none; stroke: #f4f1ea; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .ig { display: grid; gap: 1.15cqw; padding-inline: 1.8cqw; font-size: .9cqw; line-height: 1.3; }
+  .ig svg { width: 1.6cqw; height: 1.6cqw; flex: none; }
+  .ig-top { display: flex; align-items: center; gap: .3cqw; font-size: 1.25cqw; }
+  .ig-top svg { width: 1.2cqw; }
+  .ig-top__icons { margin-left: auto; display: flex; gap: 1.2cqw; }
+  .ig-head { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 1.6cqw; }
+  .avatar { width: 6cqw; aspect-ratio: 1; border-radius: 50%; padding: .3cqw; box-shadow: inset 0 0 0 1px #5a5a5a; display: grid; }
+  .avatar span { border-radius: 50%; border: .25cqw solid #111; background: #EFE8DC; color: #23211E; display: grid; place-items: center; font-family: var(--font-serif); font-size: 2.6cqw; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+  .stats li { display: grid; gap: .1cqw; }
+  .stats b { font-size: 1.25cqw; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .stats span { font-size: .78cqw; color: #cfcac1; }
+  .ig-bio { display: grid; gap: .1cqw; }
+  .ig-bio b { font-weight: 700; }
+  .ig-bio .muted { color: #8f8b84; }
+  .ig-bio .link { color: var(--accent); }
+  .ig-btns { display: grid; grid-template-columns: 1fr 1fr; gap: .5cqw; }
+  .ig-btns span { display: grid; place-items: center; height: 2.4cqw; border-radius: .6cqw; font-weight: 600; }
+  .btn-a { background: #f4f1ea; color: #111; }
+  .btn-b { box-shadow: inset 0 0 0 1px #3a3a3a; }
+  .ig-hl { display: flex; gap: 1.3cqw; }
+  .ig-hl li { display: grid; justify-items: center; gap: .35cqw; font-size: .75cqw; color: #cfcac1; }
+  .ring { width: 4.6cqw; aspect-ratio: 1; border-radius: 50%; padding: .35cqw; box-shadow: inset 0 0 0 1px #3a3a3a; display: grid; }
+  .ring i { border-radius: 50%; }
+  .ig-tabs { display: grid; grid-template-columns: repeat(3, 1fr); margin-inline: -1.8cqw; border-bottom: 1px solid #262626; }
+  .ig-tabs span { display: grid; place-items: center; padding-block: .7cqw; opacity: .45; }
+  .ig-tabs .is-on { opacity: 1; box-shadow: inset 0 -1px 0 #f4f1ea; }
+  .posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: -1.15cqw -1.8cqw 0; }
   .tile { aspect-ratio: 4 / 5; display: grid; place-items: center; padding: .6cqw; text-align: center; overflow: hidden; }
-  .tile--serif span { font-family: var(--font-serif); font-size: 1.7cqw; line-height: 1; }
-  .tile--kicker span { font-size: .8cqw; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; }
-  .tile svg { width: 64%; }
+  .tile--serif span { font-family: var(--font-serif); font-size: 1.5cqw; line-height: 1; }
+  .tile--kicker span { font-size: .7cqw; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; }
+  .tile svg { width: 60%; height: auto; }
+  .tile svg path { stroke: currentColor; }
+  .ig-nav {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    display: flex; justify-content: space-around; align-items: center;
+    padding: 1.1cqw 1.6cqw 2cqw; background: #111; border-top: 1px solid #262626;
+  }
+  .ig-nav svg { width: 1.7cqw; height: 1.7cqw; }
+  .me { width: 1.9cqw; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; background: #EFE8DC; color: #23211E; font-family: var(--font-serif); font-size: 1cqw; }
 
   /* Notifications */
   .notes { position: absolute; left: 47%; right: 7%; top: 50%; translate: 0 -50%; display: grid; gap: 1.6cqw; }
@@ -131,6 +177,7 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
     const [posts, followers, following, likes, opens] = counts;
     const tl = gsap.timeline({ paused: true, defaults: { ease: 'expo.out' } });
     tl.from(root.querySelector('[data-phone]'), { opacity: 0, y: 14, duration: 1 })
+      .from(root.querySelectorAll('[data-part]'), { opacity: 0, y: 6, duration: 0.7, stagger: 0.06 }, 0.25)
       // Profile counts tick up while the grid fills, tile by tile
       .add(() => { posts?.play(); followers?.play(); following?.play(); }, 0.4)
       .from(root.querySelectorAll('[data-tile]'), { opacity: 0, scale: 0.6, duration: 0.8, stagger: { each: 0.07, grid: [3, 3], from: 'start' } }, 0.45)
