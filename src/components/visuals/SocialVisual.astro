@@ -167,7 +167,7 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
       : Math.round(n).toLocaleString(lang);
     const o = { n: 0 };
     el.textContent = fmt(0);
-    return gsap.to(o, { n: value, duration: 1.6, ease: 'expo.out', onUpdate: () => { el.textContent = fmt(o.n); }, paused: true });
+    return gsap.to(o, { n: value, duration: 1.2, ease: 'expo.out', onUpdate: () => { el.textContent = fmt(o.n); }, paused: true });
   }
 
   document.querySelectorAll<HTMLElement>('[data-vz-social]').forEach((root) => {
@@ -185,6 +185,7 @@ const mail = 'M3 6h18v12H3zM3 6l9 7 9-7';
       .from(root.querySelectorAll('[data-note]'), { opacity: 0, x: 28, duration: 1, stagger: 0.35 }, 1.1)
       .add(() => likes?.play(), 1.4)
       .add(() => opens?.play(), 1.75);
+    tl.timeScale(1.35); // ~35% quicker overall, same choreography
     tl.progress(0.001).pause();
     ScrollTrigger.create({ trigger: root, start: 'top 72%', once: true, onEnter: () => tl.play() });
   });
