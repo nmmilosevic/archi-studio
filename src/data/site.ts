@@ -45,7 +45,7 @@ export const site = {
   },
   // Google Analytics 4 measurement ID (e.g. 'G-XXXXXXXXXX'). Leave empty to keep analytics off.
   // It only ever loads after the visitor clicks "Accept all" in the cookie banner.
-  analytics: { ga4: '' },
+  analytics: { ga4: 'G-BN49SL0C3D' },
 };
 
 /** Same order as `home.directions.names` in each language file. */
