@@ -102,12 +102,6 @@ const es: Content = {
           price: ['Presupuesto por proyecto'],
           action: 'Pedir presupuesto',
         },
-        {
-          title: 'Mantenimiento web',
-          body: 'Alojamiento, copias de seguridad, actualizaciones de seguridad, pequeños ajustes. Subimos tus nuevos proyectos.',
-          price: ['Alojamiento desde 30€/mes', 'Actualizaciones de contenido desde 120€/mes'],
-          action: null,
-        },
       ],
     },
     faq: {
@@ -116,8 +110,8 @@ const es: Content = {
       items: [
         { q: "¿Qué incluyen los 1.500€?", a: "Estrategia, diseño a medida, desarrollo responsive, bases SEO, formulario de contacto y soporte de lanzamiento. ¿Más páginas o cambios después? Te los presupuestamos antes. Sin facturas sorpresa." },
         { q: "¿Con quién voy a trabajar?", a: "Con quien diseña y desarrolla tu web. Sin gestores de cuenta ni intermediarios: las decisiones son rápidas y nada se pierde por el camino." },
-        { q: "¿Puedo añadir proyectos yo mismo?", a: "Sí, si quieres. Podemos dejar la web preparada para que añadas un proyecto en pocos clics. O los subimos nosotros, desde 120€/mes." },
-        { q: "¿Os ocupáis del alojamiento y el dominio?", a: "Conectamos tu dominio en el lanzamiento. Alojamiento, copias de seguridad y actualizaciones de seguridad desde 30€/mes, para que no tengas que pensar en la parte técnica." },
+        { q: "¿Puedo añadir proyectos yo mismo?", a: "Sí, si quieres. Podemos dejar la web preparada para que añadas un proyecto en pocos clics. O nos los envías y los subimos nosotros, con presupuesto previo." },
+        { q: "¿Os ocupáis del alojamiento y el dominio?", a: "Sí. Configuramos el alojamiento y conectamos tu dominio en el lanzamiento. Sin cuota mensual por nuestra parte, para que no tengas que pensar en la parte técnica." },
         { q: "¿Puede estar mi web en varios idiomas?", a: "Sí. La configuración multilingüe forma parte de nuestro trabajo web. Esta misma web funciona en inglés, español y francés." },
         { q: "¿Cómo empezamos?", a: "Envíanos tu web actual. Primero la revisamos y te decimos qué necesita, para que conozcas el alcance y el precio antes de firmar." },
       ],

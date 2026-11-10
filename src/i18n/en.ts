@@ -103,12 +103,6 @@ const en = {
           price: ['Priced per project'],
           action: 'Ask for a quote' as string | null,
         },
-        {
-          title: 'Website Care',
-          body: 'Hosting, backups, security updates, small fixes. New projects uploaded for you.',
-          price: ['Hosting from 30€/month', 'Content updates from 120€/month'],
-          action: null as string | null,
-        },
       ],
     },
     faq: {
@@ -117,8 +111,8 @@ const en = {
       items: [
         { q: "What does the 1,500€ cover?", a: "Strategy, custom design, the responsive build, SEO basics, a contact form and launch support. Want more pages or changes later? We quote them first. No surprise invoices." },
         { q: "Who will I actually work with?", a: "The person designing and building your site. No account managers, no hand-offs, so decisions are quick and nothing gets lost." },
-        { q: "Can I add new projects myself?", a: "Yes, if you want to. We can set the site up so you add a project in a few clicks. Or we upload them for you, from 120€/month." },
-        { q: "Do you handle hosting and the domain?", a: "We connect your domain at launch. Hosting, backups and security updates are available from 30€/month, so you never have to think about the technical side." },
+        { q: "Can I add new projects myself?", a: "Yes, if you want to. We can set the site up so you add a project in a few clicks. Or send them over and we add them for you, quoted up front." },
+        { q: "Do you handle hosting and the domain?", a: "Yes. We set up hosting and connect your domain at launch. There’s no monthly fee from us, so you never have to think about the technical side." },
         { q: "Can my site be in more than one language?", a: "Yes. Multilingual setup is part of our website work. This site runs in English, Spanish and French." },
         { q: "How do we start?", a: "Send us your current site. We review it first and tell you what it needs, so you know the scope and the price before you sign." },
       ],

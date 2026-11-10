@@ -26,13 +26,6 @@ const beyondIcons = [
      <g class="mv"><path class="d" pathLength="1" d="M18 14h12v10H18z" style="--i:1"/>
      <path class="d" pathLength="1" d="M18 28h12v10H18z" style="--i:2"/></g>
    </svg>`,
-  // Website Care: a window with a refresh arrow that turns once
-  `<svg class="icon-draw home-beyond__icon icon-care" viewBox="0 0 48 48" aria-hidden="true" data-draw>
-     <path class="d" pathLength="1" d="M5 9h38v30H5z" style="--i:0"/>
-     <path class="d" pathLength="1" d="M5 16h38" style="--i:1"/>
-     <g class="mv"><path class="d" pathLength="1" d="M30.5 27.5a6.5 6.5 0 1 1-1.9-4.6" style="--i:2"/>
-     <path class="d" pathLength="1" d="M29 19.5v3.6h-3.6" style="--i:3"/></g>
-   </svg>`,
 ];
 
 // 1px line illustrations for the studio types (same order as studioSlugs / studios.labels).
@@ -192,7 +185,7 @@ const includedIcons = [
   </section>
 
   <!-- Pricing: price (1–6) beside what's included as six open icon items (7–12),
-       then a heading and the three extra services as cards, 4 + 4 + 4. -->
+       then a heading and the two extra services as cards, 6 + 6. -->
   <section id="pricing" class="home-pricing" aria-labelledby="pricing-title">
     <div class="wrap section">
       <div class="grid section-head">
@@ -225,7 +218,7 @@ const includedIcons = [
       </div>
       <div class="grid cards" data-stagger>
         {h.beyond.items.map((item, i) => (
-          <article class="card span-4 home-beyond__item">
+          <article class="card span-6 home-beyond__item">
             <Fragment set:html={beyondIcons[i]} />
             <h4 class="t-h4">{item.title}</h4>
             <p class="t-small t-muted">{item.body}</p>
@@ -474,8 +467,6 @@ const includedIcons = [
   .home-beyond__icon { --icon-bg: color-mix(in srgb, var(--c-stone) 98%, white); margin-bottom: var(--s-2); }
   html.js:not(.motion-off) .icon-print .mv { transform: translate(7px, -6px); }
   html.js:not(.motion-off) .icon-feed .mv { transform: translateY(7px); }
-  html.js:not(.motion-off) .icon-care .mv { transform: rotate(-220deg); }
-  .icon-care .mv { transform-origin: 24px 27.5px; }
   .home-beyond__foot { margin-top: auto; padding-top: var(--s-4); display: grid; gap: var(--s-2); justify-items: start; }
   .home-beyond__foot .link { margin-top: var(--s-3); }
 

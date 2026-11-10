@@ -102,12 +102,6 @@ const fr: Content = {
           price: ['Devis par projet'],
           action: 'Demander un devis',
         },
-        {
-          title: 'Maintenance du site',
-          body: 'Hébergement, sauvegardes, mises à jour de sécurité, petites corrections. On met en ligne vos nouveaux projets.',
-          price: ['Hébergement à partir de 30€/mois', 'Mises à jour de contenu à partir de 120€/mois'],
-          action: null,
-        },
       ],
     },
     faq: {
@@ -116,8 +110,8 @@ const fr: Content = {
       items: [
         { q: "Que comprend le prix de 1 500€ ?", a: "La stratégie, le design sur mesure, le développement responsive, les bases SEO, un formulaire de contact et l’accompagnement au lancement. Plus de pages ou des changements plus tard ? On vous fait un devis avant. Aucune facture surprise." },
         { q: "Avec qui vais-je travailler ?", a: "Avec la personne qui conçoit et développe votre site. Pas de chef de projet ni d’intermédiaire : les décisions vont vite et rien ne se perd." },
-        { q: "Puis-je ajouter mes projets moi-même ?", a: "Oui, si vous le souhaitez. On peut préparer le site pour que vous ajoutiez un projet en quelques clics. Ou on s’en charge pour vous, à partir de 120€/mois." },
-        { q: "Vous gérez l’hébergement et le domaine ?", a: "On connecte votre domaine au lancement. Hébergement, sauvegardes et mises à jour de sécurité à partir de 30€/mois, pour ne jamais vous soucier de la technique." },
+        { q: "Puis-je ajouter mes projets moi-même ?", a: "Oui, si vous le souhaitez. On peut préparer le site pour que vous ajoutiez un projet en quelques clics. Ou vous nous les envoyez et on les met en ligne, sur devis préalable." },
+        { q: "Vous gérez l’hébergement et le domaine ?", a: "Oui. On met en place l’hébergement et on connecte votre domaine au lancement. Aucun abonnement mensuel de notre part, pour ne jamais vous soucier de la technique." },
         { q: "Mon site peut-il être multilingue ?", a: "Oui. La configuration multilingue fait partie de notre travail. Ce site fonctionne d’ailleurs en anglais, espagnol et français." },
         { q: "Comment commence-t-on ?", a: "Envoyez-nous votre site actuel. On le passe en revue et on vous dit ce dont il a besoin, pour connaître le périmètre et le prix avant de signer." },
       ],
